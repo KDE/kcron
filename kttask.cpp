@@ -256,6 +256,7 @@ KTTask::~KTTask()
 
 void KTTask::slotCommandChanged()
 {
+  /*
   QString qs(leCommand->text());
 
   int beginPos(qs.findRev("/", qs.length()) + 1);
@@ -271,6 +272,10 @@ void KTTask::slotCommandChanged()
     labIcon->setPixmap(KTIcon::task(false));
   else
     labIcon->setPixmap(qp);
+  */
+
+  labIcon->setPixmap(KTIcon::task(false));
+  return;
 }
 
 void KTTask::slotDailyChanged()
