@@ -48,9 +48,7 @@ void KTListVars::create()
   if (tempvar->dirty())
   {
     getCTCron()->variable.push_back(tempvar);
-    KTListVar* ktlv = new KTListVar(this, getCTCron(), tempvar);
-    setSelected(false);
-    ktlv->setSelected(true);
+    new KTListVar(this, getCTCron(), tempvar); // Qt will clean up
   }
   else
   {

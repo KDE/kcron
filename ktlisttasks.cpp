@@ -53,9 +53,7 @@ void KTListTasks::create()
   if (temptask->dirty())
   {
     getCTCron()->task.push_back(temptask);
-    KTListTask* ktlt = new KTListTask(this, getCTCron(), temptask);
-    setSelected(false);
-    ktlt->setSelected(true);
+    new KTListTask(this, getCTCron(), temptask); // Qt will clean up
   }
   else
   {
