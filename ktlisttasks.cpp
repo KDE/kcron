@@ -8,7 +8,7 @@
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   * 
+ *   (at your option) any later version.                                   *
  ***************************************************************************/
 
 #include "ktlisttasks.h"
@@ -45,7 +45,7 @@ QString KTListTasks::getDescription()
 void KTListTasks::create()
 {
   CTTask* temptask = new CTTask ("", "", getCTCron()->syscron);
-  KTTask* kttask = new KTTask(temptask);
+  KTTask* kttask = new KTTask(temptask,i18n("Edit Task"));
   kttask->exec();
   delete kttask;
   if (temptask->dirty())
@@ -80,10 +80,10 @@ void KTListTasks::print (KTPrint& printer) const
 
   //firstChild() does not return null if there are no children, therefore
   //we need to check the validation of the pointer without terminating
-  //the application. This maybe a bug in QT 1.44	
+  //the application. This maybe a bug in QT 1.44
 
   if (this->childCount() ==0) {
-    printer.print(i18n("No tasks..."),1,KTPrint::alignTextLeft, false);	
+    printer.print(i18n("No tasks..."),1,KTPrint::alignTextLeft, false);
     printer.levelColumns(20);
     return;
   }

@@ -8,7 +8,7 @@
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   * 
+ *   (at your option) any later version.                                   *
  ***************************************************************************/
 
 #include "kttask.h"
@@ -32,7 +32,7 @@
 
 #include "kticon.h"
 
-KTTask::KTTask(CTTask* _cttask)
+KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   : KDialog( 0, "kttask", true, WStyle_DialogBorder )
 {
   cttask = _cttask;
@@ -81,7 +81,7 @@ KTTask::KTTask(CTTask* _cttask)
 
   // command
   QHBoxLayout *h3 = new QHBoxLayout( ml, KDialogBase::spacingHint() );
-  
+
   labCommand = new QLabel( i18n("&Program:"), this, "labCommand" );
   h3->addWidget( labCommand );
 
@@ -127,7 +127,7 @@ KTTask::KTTask(CTTask* _cttask)
   }
 
   QVBoxLayout *v1 = new QVBoxLayout( h4, KDialogBase::spacingHint() );
-  
+
   // days of the month
   bgDayOfMonth = new QButtonGroup( i18n("Days of the Month"), this, "bgDayOfMonth");
   v1->addWidget( bgDayOfMonth );
@@ -138,7 +138,7 @@ KTTask::KTTask(CTTask* _cttask)
   QVBoxLayout *vdays = new QVBoxLayout( bgDayOfMonth, KDialogBase::spacingHint() );
   vdays->addSpacing( 2 * KDialogBase::spacingHint() );
   QHBoxLayout *hdays = 0;
- 
+
   for (int dm = 1; dm <= 31; dm++)
   {
     if( (dm % 7) == 1 )
@@ -162,7 +162,7 @@ KTTask::KTTask(CTTask* _cttask)
 
   QVBoxLayout *v3 = new QVBoxLayout( bgDayOfWeek, KDialogBase::spacingHint() );
   v3->addSpacing( 2 * KDialogBase::spacingHint() );
-  
+
   for (int dw = 1; dw <= 7; dw++)
   {
     cbDayOfWeek[dw] = new QCheckBox(bgDayOfWeek);
@@ -181,7 +181,7 @@ KTTask::KTTask(CTTask* _cttask)
 
   QVBoxLayout *v9 = new QVBoxLayout( bgEveryDay, KDialogBase::spacingHint() );
   v9->addSpacing( 2 * KDialogBase::spacingHint() );
-  
+
   cbEveryDay = new QCheckBox( i18n("Run Every Day"), bgEveryDay, "cbEveryDay");
   cbEveryDay->setChecked(everyDay);
   v9->addWidget( cbEveryDay );
@@ -218,18 +218,18 @@ KTTask::KTTask(CTTask* _cttask)
   labPM = new QLabel( i18n("PM"), bgHour, "labPM");
   labPM->setAlignment(AlignRight | AlignVCenter);
   v4->addWidget( labPM );
- 
-  hhours = new QHBoxLayout( v4, KDialogBase::spacingHint() );  
+
+  hhours = new QHBoxLayout( v4, KDialogBase::spacingHint() );
   for (int ho1 = 12; ho1 <= 23; ho1++)
   {
     if( ho1 == 18 )
       hhours = new QHBoxLayout( v4, KDialogBase::spacingHint() );
 
     hhours->addWidget( pbHour[ho1] );
-  }                                                                                                              
+  }
   // minutes
   bgMinute = new QButtonGroup( i18n("Minutes"), this, "bgMinute");
-  v2->addWidget( bgMinute );  
+  v2->addWidget( bgMinute );
   QVBoxLayout *vmin = new QVBoxLayout( bgMinute, KDialogBase::spacingHint() );
   vmin->addSpacing( 2 * KDialogBase::spacingHint() );
 
@@ -247,8 +247,8 @@ KTTask::KTTask(CTTask* _cttask)
   {
     if( mi1 == 30 )
       hmin = new QHBoxLayout( vmin, KDialogBase::spacingHint() );
-    
-    hmin->addWidget( pbMinute[mi1] ); 
+
+    hmin->addWidget( pbMinute[mi1] );
   }
 
   QHBoxLayout *h5 = new QHBoxLayout( ml, KDialogBase::spacingHint() );
@@ -265,7 +265,7 @@ KTTask::KTTask(CTTask* _cttask)
 
   // window
   setIcon(KTIcon::application(true));
-  setCaption(i18n("Edit Task"));
+  setCaption(_caption/*i18n("Edit Task")*/);
 
   // set focus to first widget
   if (cttask->system())
@@ -456,7 +456,7 @@ void KTTask::slotOK()
     }
     showMessage = true;
   }
-  
+
   valid = false;
   for (int mi1 = 0; mi1 <= 55; mi1+=5)
   {
@@ -472,7 +472,7 @@ void KTTask::slotOK()
     }
     showMessage = true;
   }
-  
+
   if (showMessage)
   {
     KMessageBox::information(this, message);
@@ -558,7 +558,7 @@ void KTTask::slotCancel()
 void KTTask::slotBrowse()
 {
   KURL url = KFileDialog::getOpenURL();
-  
+
   if(!url.isEmpty())
   {
     if(url.isLocalFile())

@@ -8,7 +8,7 @@
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   * 
+ *   (at your option) any later version.                                   *
  ***************************************************************************/
 
 #include "ktvariable.h"
@@ -21,14 +21,14 @@
 
 #include "kticon.h"
 
-KTVariable::KTVariable(CTVariable* _ctvar) :
+KTVariable::KTVariable(CTVariable* _ctvar,const QString &_caption) :
   QDialog(0, (const char*)"ktvariable", true, WStyle_DialogBorder)
 {
   ctvar = _ctvar;
 
   setIcon(KTIcon::application(true));
 
-  setCaption(i18n("Edit Variable"));
+  setCaption(_caption);
 
   const int height = 25;
   const int labelWidth = 80;

@@ -8,7 +8,7 @@
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   * 
+ *   (at your option) any later version.                                   *
  ***************************************************************************/
 
 #include "ktapp.h"
@@ -63,7 +63,7 @@ KTApp::KTApp() : KMainWindow(0)
 
   // Initialize view.
   view = new KTView(this);
-  setCentralWidget(view);	
+  setCentralWidget(view);
 
   // Read options.
   readOptions();
@@ -157,10 +157,7 @@ void KTApp::initMenuBar()
 
   help_menu = new QPopupMenu();
 
-  QString aboutstring = caption()  + " " + VERSION + "\n\n" +
-    "(c) 1999-2000\nGary Meyer <gary@meyer.net>\nRobert Berry <rjmber@ntlworld.com>";
-
-  help_menu = helpMenu(aboutstring);
+  help_menu = helpMenu();
 
   menuBar = new KMenuBar(this);
   menuBar->insertItem(i18n("&File"), file_menu);
@@ -236,7 +233,7 @@ void KTApp::initKeyAccel()
 }
 
 void KTApp::saveOptions()
-{	
+{
   config->setGroup(QString("General Options"));
   config->writeEntry(QString("Geometry"), size());
   config->writeEntry(QString("Show Toolbar"), toolBar()->isVisible());
@@ -254,12 +251,12 @@ void KTApp::readOptions()
   view_menu->setItemChecked(menuOptionsShowToolbar, bViewToolbar);
   if (!bViewToolbar)
     toolBar()->hide();
-	
+
   bool bViewStatusbar = config->readBoolEntry(QString("Show Statusbar"), true);
   view_menu->setItemChecked(menuOptionsShowStatusbar, bViewStatusbar);
   if (!bViewStatusbar)
     statusBar()->hide();
-	
+
   // bar position settings
   KToolBar::BarPosition tool_bar_pos;
   tool_bar_pos=(KToolBar::BarPosition)
@@ -267,7 +264,7 @@ void KTApp::readOptions()
     KToolBar::Top);
 
   toolBar()->setBarPos(tool_bar_pos);
-	
+
   QSize size=config->readSizeEntry(QString("Geometry"));
 
   // Minimum size is 350 by 250
@@ -309,7 +306,7 @@ bool KTApp::queryClose()
         break;
       case KMessageBox::No:
         return true;
-        break;	
+        break;
       case KMessageBox::Cancel:
         return false;
         break;
@@ -516,7 +513,7 @@ void KTApp::statusCallback(int id_){
       break;
     case menuFilePrint:
       slotStatusHelpMsg(i18n("Print all or current crontab(s)."));
-      break; 
+      break;
     case menuFileQuit:
       slotStatusHelpMsg(i18n("Exit %1.").arg(caption()));
       break;

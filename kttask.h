@@ -39,7 +39,7 @@ public:
 /**
   * Initialize from CTTask.
   */
-  KTTask(CTTask* _cttask = 0);
+  KTTask(CTTask* _cttask = 0, const QString &_caption="");
 
 /**
   * Destroy.

@@ -8,7 +8,7 @@
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   * 
+ *   (at your option) any later version.                                   *
  ***************************************************************************/
 
 #include "ktlistvars.h"
@@ -40,7 +40,7 @@ KTListVars::KTListVars(QListView* parent, CTCron* _ctcron) :
 void KTListVars::create()
 {
   CTVariable* tempvar = new CTVariable();
-  KTVariable* ktvar = new KTVariable(tempvar);
+  KTVariable* ktvar = new KTVariable(tempvar,i18n("Edit Variable"));
   ktvar->exec();
   delete ktvar;
   if (tempvar->dirty())
@@ -69,20 +69,20 @@ void KTListVars::print(KTPrint& printer) const
 
   printer.print(i18n("Variable:"), 1, KTPrint::alignTextLeft);
   printer.print(i18n("Value:"), 2, KTPrint::alignTextCenter);
-  printer.print(i18n("Description:"), 3, KTPrint::alignTextRight);	
- 	
+  printer.print(i18n("Description:"), 3, KTPrint::alignTextRight);
+
   printer.setFont(stnd);
-	
+
   //firstChild() does not return null if there are no children, therefore
   //we need to check the validation of the pointer without terminating
-  //the application. This maybe a bug in QT 1.44	
+  //the application. This maybe a bug in QT 1.44
 
   if (this->childCount() ==0) {
-    printer.print(i18n("No variables..."),1,KTPrint::alignTextLeft, false);	
+    printer.print(i18n("No variables..."),1,KTPrint::alignTextLeft, false);
     printer.levelColumns(20);
     return;
   }
-  	
+
   KTListItem* ktli = (KTListItem*)this->firstChild();
   CHECK_PTR(ktli);
   while (ktli) {

@@ -8,7 +8,7 @@
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   * 
+ *   (at your option) any later version.                                   *
  ***************************************************************************/
 
 #include <klocale.h>  // i18n()
@@ -49,7 +49,7 @@ void KTListTask::refresh()
 }
 
 void KTListTask::print (KTPrint &printer) const
-{    	
+{
   printer.print(QString::fromLocal8Bit(cttask->comment.c_str()), 1, KTPrint::alignTextLeft);
   if (cttask->enabled) {
     printer.print(QString::fromLocal8Bit(cttask->command.c_str()),2, KTPrint::alignTextCenter);
@@ -61,7 +61,7 @@ void KTListTask::print (KTPrint &printer) const
 
 void KTListTask::edit()
 {
-  KTTask(cttask).exec();
+  KTTask(cttask,i18n("Modify Task")).exec();
   refresh();
   parent()->sortChildItems(1, true);
 }
