@@ -43,7 +43,7 @@ const int KTApp::menuOptionsShowStatusbar (12020);
 const int KTApp::menuHelpContents         (1002);
 const int KTApp::statusMessage            (1001);
 
-KTApp::KTApp()
+KTApp::KTApp() : KMainWindow(0)
 {
   config=kapp->config();
 
@@ -63,7 +63,7 @@ KTApp::KTApp()
 
   // Initialize view.
   view = new KTView(this);
-  setView(view);	
+  setCentralWidget(view);	
 
   // Read options.
   readOptions();
@@ -169,8 +169,6 @@ void KTApp::initMenuBar()
   menuBar->insertSeparator();
   menuBar->insertItem(i18n("&Help"), help_menu);
 
-  setMenu(menuBar);
-
   connect(file_menu,SIGNAL(activated(int)),SLOT(commandCallback(int)));
   connect(file_menu,SIGNAL(highlighted(int)),SLOT(statusCallback(int)));
 
@@ -255,12 +253,12 @@ void KTApp::readOptions()
   bool bViewToolbar = config->readBoolEntry(QString("Show Toolbar"), true);
   view_menu->setItemChecked(menuOptionsShowToolbar, bViewToolbar);
   if (!bViewToolbar)
-    enableToolBar(KToolBar::Hide);
+    toolBar()->hide();
 	
   bool bViewStatusbar = config->readBoolEntry(QString("Show Statusbar"), true);
   view_menu->setItemChecked(menuOptionsShowStatusbar, bViewStatusbar);
   if (!bViewStatusbar)
-    enableStatusBar(KStatusBar::Hide);
+    statusBar()->hide();
 	
   // bar position settings
   KToolBar::BarPosition tool_bar_pos;
@@ -426,21 +424,25 @@ void KTApp::slotEditRunNow()
 
 void KTApp::slotViewToolBar()
 {
-  if (view_menu->isItemChecked(menuOptionsShowToolbar))
-    view_menu->setItemChecked(menuOptionsShowToolbar, false);
+  bool visible;
+  visible = !view_menu->isItemChecked(menuOptionsShowToolbar);
+  view_menu->setItemChecked(menuOptionsShowToolbar, visible);
+  if (visible)
+     toolBar()->show();
   else
-    view_menu->setItemChecked(menuOptionsShowToolbar, true);
-  enableToolBar();
+     toolBar()->hide();
   slotStatusMsg(i18n("Ready."));
 }
 
 void KTApp::slotViewStatusBar()
 {
-  if (view_menu->isItemChecked(menuOptionsShowStatusbar))
-    view_menu->setItemChecked(menuOptionsShowStatusbar, false);
+  bool visible;
+  visible = !view_menu->isItemChecked(menuOptionsShowStatusbar);
+  view_menu->setItemChecked(menuOptionsShowStatusbar, visible);
+  if (visible)
+    statusBar()->show();
   else
-    view_menu->setItemChecked(menuOptionsShowStatusbar, true);
-  enableStatusBar();
+    statusBar()->hide();
   slotStatusMsg(i18n("Ready."));
 }
 

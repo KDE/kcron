@@ -18,7 +18,7 @@
 #include <config.h>
 #endif
 
-#include <ktmainwindow.h>
+#include <kmainwindow.h>
 
 class QString;
 class KMenuBar;
@@ -34,7 +34,7 @@ class CTHost;
   * Provides main window handling, session management and keyboard
   * acceleration.
   */
-class KTApp : public KTMainWindow
+class KTApp : public KMainWindow
 {
   Q_OBJECT
 
