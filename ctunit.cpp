@@ -21,7 +21,7 @@
 #include <ctype.h>    // tolower
 
 template<int min, int max>
-CTUnit<min, max>::CTUnit(const string &tokStr = "")
+CTUnit<min, max>::CTUnit(const string &tokStr)
 {
   initialize(tokStr);
 }
@@ -53,7 +53,7 @@ void CTUnit<min, max>::operator = (const CTUnit<min,max>& unit)
 }
 
 template<int min, int max>
-void CTUnit<min, max>::initialize(const string &tokStr = "")
+void CTUnit<min, max>::initialize(const string &tokStr)
 {
   for (int i = min; i <= max; i++)
     enabled[i] = 0;
@@ -70,7 +70,7 @@ void CTUnit<min, max>::initialize(const string &tokStr = "")
 }
 
 template<int min, int max>
-void CTUnit<min, max>::parse(string tokStr = "")
+void CTUnit<min, max>::parse(string tokStr)
 {
   // subelement is that which is between commas
   string subelement;
