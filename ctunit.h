@@ -21,8 +21,8 @@
 #include "cti18n.h"
 #include <vector.h>
 #include <string>
-#include <iostream.h>
-#include <stdio.h>
+#include <iostream.h> // istream, ostream, cout
+#include <stdio.h>    // sprintf
 
 // Quick string to integer
 #define S2I(X) atoi((string(X).c_str()));
@@ -243,7 +243,7 @@ public:
 /**
   * Get default natural language description.
   */
-  string describe(const string *label) const
+  virtual string describe(const string *label) const
   {
     int total(count());
     int count(0);
@@ -358,7 +358,7 @@ public:
 /**
   * Destructor.
   */
-  ~CTUnit() {};
+  virtual ~CTUnit() {};
 
 /**
   * Dump guts for debugging.
@@ -384,7 +384,6 @@ public:
 
     cout << "End dumping CTUnit from context: '" << context << "'" << endl;
   }
-
 };
 
 #endif // CTUNIT_H
