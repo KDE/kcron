@@ -498,7 +498,7 @@ void KTTask::slotOK()
     if (!file.isReadable())
     {
       KMessageBox::information(this,
-        i18n("Cannot locate program.  Please re-enter."));
+        i18n("Cannot locate program. Please re-enter."));
       leCommand->setFocus();
       return;
     }
@@ -506,7 +506,7 @@ void KTTask::slotOK()
     if (!file.isExecutable())
     {
       KMessageBox::information(this,
-        i18n("Program is not an executable file.  Please re-enter."));
+        i18n("Program is not an executable file. Please re-enter."));
       leCommand->setFocus();
       return;
     }
