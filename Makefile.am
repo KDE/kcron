@@ -123,8 +123,6 @@ messages:
 
 kcron_LDADD   = $(LIB_KFILE) -lkdeprint
 
-appsdir   = $(kde_appsdir)/System
-
-apps_DATA = kcron.desktop
+xdg_apps_DATA = kcron.desktop
 
 KDE_ICON = kcron
