@@ -18,23 +18,22 @@
 #include <kcmdlineargs.h>
 #include <kaboutdata.h>
 
-static const char *description = 
-	I18N_NOOP("KDE Cron Tab editor");
-
 class CTExceptionIO;
  
 int main(int argc, char* argv[]) 
 { 
-
-  KAboutData aboutData( "kcron", I18N_NOOP("KCron"), 
-    VERSION, description, KAboutData::License_GPL, 
-    "(c) 1999-2000, Gary Meyer");
-  aboutData.addAuthor( "Gary Meyer", 0, "gary@meyer.net");
-  KCmdLineArgs::init( argc, argv, &aboutData );
-//  KCmdLineArgs::addCmdLineOptions( options ); // Add our own options.
-  
   try 
   {
+    static const char* description = I18N_NOOP("KDE Task Scheduler");
+
+    KAboutData aboutData("kcron", I18N_NOOP("KCron"), 
+      VERSION, description, KAboutData::License_GPL, 
+      "(c) 1999-2000, Gary Meyer");
+
+    aboutData.addAuthor("Gary Meyer", 0, "gary@meyer.net");
+
+    KCmdLineArgs::init(argc, argv, &aboutData);
+  
     KApplication app(&aboutData);
  
     if (app.isRestored())
