@@ -35,6 +35,7 @@
 
 #include <kaction.h>
 #include <kapplication.h>
+#include <kglobalsettings.h>
 #include <klocale.h>
 
 #include "cthost.h"
@@ -261,7 +262,7 @@ void KTView :: pageHeading (KTListItem* user, KTPrint &printer) const
     .arg(QString::fromLocal8Bit(hostName));
 
   stnd = printer.getFont();
-  printer.setFont(QFont( "arial", 14, QFont::Bold ));
+  printer.setFont(QFont( KGlobalSettings::generalFont().family(), 14, QFont::Bold ));
 
   printer.print (i18n("Scheduled Tasks"), 2, KTPrint::alignTextCenter, false);
   printer.print (logonInfo, 2, KTPrint::alignTextCenter, false);

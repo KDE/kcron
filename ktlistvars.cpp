@@ -16,6 +16,7 @@
 #include <qstring.h>
 
 #include <klocale.h>  // i18n()
+#include <kglobalsettings.h>
 
 #include "ctcron.h"
 #include "ctvariable.h"
@@ -65,7 +66,7 @@ void KTListVars::print(KTPrint& printer) const
   QFont stnd;
 
   stnd = printer.getFont() ;
-  printer.setFont(QFont( "arial", 10, QFont::Bold ));
+  printer.setFont(QFont( KGlobalSettings::generalFont().family(), 10, QFont::Bold ));
 
   printer.print(i18n("Variable:"), 1, KTPrint::alignTextLeft);
   printer.print(i18n("Value:"), 2, KTPrint::alignTextCenter);

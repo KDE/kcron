@@ -16,6 +16,7 @@
 #include <qstring.h>
 
 #include <klocale.h>  // i18n()
+#include <kglobalsettings.h>
 
 #include "ctcron.h"
 #include "cttask.h"
@@ -71,7 +72,7 @@ void KTListTasks::print (KTPrint& printer) const
 
   stnd = printer.getFont();
 
-  printer.setFont(QFont( "arial", 10, QFont::Bold ));
+  printer.setFont(QFont( KGlobalSettings::generalFont().family(), 10, QFont::Bold ));
   printer.print (i18n("Task Name:"), 1, KTPrint::alignTextLeft);
   printer.print (i18n("Program:"), 2, KTPrint::alignTextCenter);
   printer.print (i18n("Description:"),3,KTPrint::alignTextRight);
