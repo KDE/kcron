@@ -11,7 +11,7 @@
  *   (at your option) any later version.                                   * 
  ***************************************************************************/
 
-#include <kapp.h>
+#include <kapplication.h>
 #include <klocale.h>
 #include "ktapp.h"
 #include <iostream.h>

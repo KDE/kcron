@@ -14,7 +14,7 @@
 #include "ktvariable.h"
 
 #include <qlayout.h>
-#include <kapp.h>     // kapp
+#include <kapplication.h>     // kapp
 #include <klocale.h>  // i18n()
 #include <kmessagebox.h>
 

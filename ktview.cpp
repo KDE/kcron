@@ -30,7 +30,7 @@
 #include <qfile.h>
 #include <qdatetime.h>
 
-#include <kapp.h>
+#include <kapplication.h>
 #include <klocale.h>
 
 #include "cthost.h"

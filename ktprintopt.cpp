@@ -18,7 +18,7 @@
 #include <kdialog.h>
 #include <kaccel.h>
 #include <klocale.h>
-#include <kapp.h>
+#include <kapplication.h>
 #include "ktprintopt.h"
 
 KTPrintOpt::KTPrintOpt(bool root) :

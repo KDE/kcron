@@ -17,7 +17,7 @@
 #include <kaccel.h>
 #include <kmessagebox.h>
 #include <kconfig.h>
-#include <kapp.h>
+#include <kapplication.h>
 #include <klocale.h>       // i18n()
 
 #include "cthost.h"

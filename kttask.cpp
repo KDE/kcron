@@ -22,7 +22,7 @@
 #include <qpushbutton.h>
 #include <qbuttongroup.h>
 
-#include <kapp.h>
+#include <kapplication.h>
 #include <kaccel.h>
 #include <klocale.h>
 #include <kfiledialog.h>
