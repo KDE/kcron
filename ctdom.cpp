@@ -44,7 +44,7 @@ string CTDayOfMonth::getName(const int ndx)
 
 void CTDayOfMonth::initializeNames()
 {
-  if (shortName[1] == "")
+  if (shortName[1].empty())
   {
     const string shortDOMName[32] =
     {

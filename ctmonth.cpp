@@ -43,7 +43,7 @@ string CTMonth::getName(const int ndx)
 
 void CTMonth::initializeNames()
 {
-  if (shortName[1] == "")
+  if (shortName[1].empty())
   {
     const string shortMonthName[13] =
     {

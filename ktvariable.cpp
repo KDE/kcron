@@ -130,14 +130,14 @@ void KTVariable::slotVariableChanged()
 
 void KTVariable::slotOk()
 {
-  if (QString(cmbVariable->currentText()) == "")
+  if (cmbVariable->currentText().isEmpty())
   {
     KMessageBox::information(this, i18n("Please enter the variable name."));
     cmbVariable->setFocus();
     return;
   }
 
-  if (QString(leValue->text()) == "")
+  if (leValue->text().isEmpty())
   {
     KMessageBox::information(this, i18n("Please enter the variable value."));
     cmbVariable->setFocus();

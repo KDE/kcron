@@ -72,7 +72,7 @@ string CTDayOfWeek::getName(const int ndx, const bool format)
 
 void CTDayOfWeek::initializeNames()
 {
-  if (shortName[1] == "")
+  if (shortName[1].empty())
   {
     const string shortDOWName[8] =
     {

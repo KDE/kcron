@@ -552,7 +552,7 @@ void KTView::slotSetCurrent (QListViewItem* qlvi)
 
       emit(enableModificationButtons(true));
       emit(enableRunNow((currentCTTask->enabled) &&
-              (absolute() != "")));
+              (!absolute().isEmpty())));
       emit(enableEnabled(currentCTTask->enabled));
               
     }

@@ -531,7 +531,7 @@ void KTTask::slotOK()
   QString sep("\n- ");
   bool showMessage(false);
 
-  if (QString(leCommand->text()) == "")
+  if (leCommand->text().isEmpty())
   {
     message += sep + i18n("the program to run");
     leCommand->setFocus();
@@ -641,7 +641,7 @@ void KTTask::slotOK()
   }
 
   // save work in process
-  if (cttask->user != "")
+  if (!cttask->user.empty())
   {
     cttask->user = QFile::encodeName(leUser->text());
   }
