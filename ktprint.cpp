@@ -128,16 +128,23 @@ void KTPrint :: print (QString str, int col, int alignment, bool wordWrap)
 	
   //Whats left of the page
   int remainder (height - columns[col-1]->height);
-
   QRect rect=paint->boundingRect(columns[col-1]->start,columns[col-1]->height, columns[col-1]->width(), remainder,format, str);
   
-  //Should check that there is enough room.
-  
-  //Draw the text
-  paint->drawText(columns[col-1]->start,columns[col-1]->height, columns[col-1]->width(), remainder, format, str);
-	
-  //Reset the columns height
-  columns[col-1]->height += rect.height();
+  if (rect.height() <= remainder)
+  {
+    //Draw the text
+    paint->drawText(columns[col-1]->start,columns[col-1]->height, columns[col-1]->width(), remainder, format, str);
+    //Reset the columns height
+    columns[col-1]->height += rect.height();
+  }
+  else
+  {
+    newPage();
+    remainder = height - columns[col-1]->height;
+    rect=paint->boundingRect(columns[col-1]->start,columns[col-1]->height, columns[col-1]->width(), remainder,format, str);
+    paint->drawText(columns[col-1]->start,columns[col-1]->height, columns[col-1]->width(), remainder, format, str);
+    columns[col-1]->height += rect.height();
+  }
 }
 
 void KTPrint :: levelColumns(int space)
@@ -170,5 +177,8 @@ void KTPrint :: newPage ()
     columns[i]->height = topMargin;
 }
 
-
+int KTPrint :: numCopies () const
+{
+  return prnt->numCopies();
+}
 

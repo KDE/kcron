@@ -100,7 +100,11 @@ public:
   * Insert a new page
   */
   void newPage();
-	
+
+/**
+  *
+  */
+  int numCopies () const;  
 private:
 
  /**

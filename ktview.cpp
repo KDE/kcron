@@ -175,54 +175,71 @@ void KTView::print () const
   else
     return; //User does not want to print any more
 
-  if (allUsers || !cth.root()){
-    ktli = (KTListItem*)listView->firstChild();
-    CHECK_PTR(ktli);
-  }
-  else
-    ktli = (KTListItem*)listView->currentItem();
-
-  //Check that the correct item is selected, they must
-  //select the top level entry for all items to print
-
-  while (ktli->depth() != 0)
-    ktli = (KTListItem*)ktli->parent(); 
- 
-  user = ktli; //Used to store user's name
-
   KTPrint printer;
 
 
-  if (printer.start()) {
+  if (printer.start()) 
+  {
     printer.createColumns(3);
-
-    if (allUsers) {
-      while (ktli) {
-        pageHeading(ktli, printer);	
-        ktli->print(printer);
-        if (crontab)
-          pageFooter(ktli, printer);
-        ktli = (KTListItem*)ktli->nextSibling();
-        if (ktli)
-          printer.newPage();
-      }
-    }
-    else {
-      //ktli goes out of range here hence the need for user
-      pageHeading(user, printer);
-      if (!cth.root()) {
-        while (ktli) {
-          ktli->print(printer);
-          ktli = (KTListItem*)ktli->nextSibling();
-        }
+    
+    int copies = printer.numCopies();
+    while (copies != 0) 
+    { 
+      if (allUsers || !cth.root())
+      {
+        ktli = (KTListItem*)listView->firstChild();
+        CHECK_PTR(ktli);
       }
       else
-        ktli->print(printer);
-      if (crontab)
-        pageFooter(user, printer);
-    }
+        ktli = (KTListItem*)listView->currentItem();
+
+      //Check that the correct item is selected, they must
+      //select the top level entry for all items to print
+      while (ktli->depth() != 0)
+        ktli = (KTListItem*)ktli->parent(); 
+ 
+      user = ktli; //Used to store user's name
+ 
+      if (allUsers) 
+      {
+        while (ktli) 
+        {
+          pageHeading(ktli, printer);	
+          ktli->print(printer);
+          if (crontab)
+            pageFooter(ktli, printer);
+          ktli = (KTListItem*)ktli->nextSibling();
+          if (ktli)
+            printer.newPage();
+        }
+      }
+      else 
+      {
+        //ktli goes out of range here hence the need for user
+        pageHeading(user, printer);
+        if (!cth.root()) 
+        {
+          while (ktli) 
+          {
+            ktli->print(printer);
+            ktli = (KTListItem*)ktli->nextSibling();
+          }
+        }
+        else
+          ktli->print(printer);
+      
+        if (crontab)
+          pageFooter(user, printer);
+      
+      }
+
+    copies--; //Keep a track of how many copies we have printed
+    if (copies != 0) printer.newPage();
+    }//End printing loop (for more than one copy)
+
     printer.finished(); //End the print
-  }
+
+  }//End Printing if
 
 }
 
