@@ -8,7 +8,7 @@
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   * 
+ *   (at your option) any later version.                                   *
  ***************************************************************************/
 
 #ifndef CTI18N_H
@@ -24,6 +24,6 @@
 // -GM 11/99
 
 #include <klocale.h>
-#include <kapp.h>
+#include <kapplication.h>
 
 #endif // CTI18N_H
