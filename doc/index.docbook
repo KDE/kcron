@@ -6,11 +6,11 @@
   %ents;
 ]>
 
-<book id="kcron" lang="pt">
+<book id="kcron" lang="en">
 
 <bookinfo>
 
-<title>O Manual do KCron</title>
+<title>The KCron Handbook</title>
 
 <authorgroup>
 
@@ -27,7 +27,7 @@
 <surname>Meyer</surname>
 <affiliation><address><email>gary@meyer.net</email></address>
 </affiliation>
-<contrib>Programador</contrib>
+<contrib>Developer</contrib>
 </othercredit>
 
 <othercredit>
@@ -35,7 +35,7 @@
 <surname>Watts</surname>
 <affiliation><address><email>vampyr@atconnex.net</email></address>
 </affiliation>
-<contrib>Revisor</contrib>
+<contrib>Reviewer</contrib>
 </othercredit>
 
 </authorgroup>
@@ -46,21 +46,21 @@
 <revnumber>0.1</revnumber>
 <date>5.16.2000</date>
 <authorinitials>M.N.S.</authorinitials>
-<revremark>Versão inicial.</revremark>
+<revremark>Initial release.</revremark>
 </revision>
 
 <revision>
 <revnumber>0.2</revnumber>
 <date>8.9.2000</date>
 <authorinitials>M.N.S.</authorinitials>
-<revremark>Adicionou a documentação da função Imprimir. Actualizou as imagens de exemplo.</revremark>
+<revremark>Added documentation of Print function.  Updated screenshots.</revremark>
 </revision>
 
 <revision>
 <revnumber>0.3</revnumber>
 <date>8.30.2000</date>
 <authorinitials>M.N.S.</authorinitials>
-<revremark>Corrigiu pormenores menores.</revremark>
+<revremark>Corrected minor typos.</revremark>
 </revision>
 
 </revhistory>
@@ -81,25 +81,24 @@
 <keyword>kdeadmin</keyword>
 <keyword>cron</keyword>
 <keyword>crontab</keyword>
-<keyword>escalonador</keyword>
+<keyword>scheduler</keyword>
 </keywordset>
 
 <abstract>
-<para>O &kcron; é uma aplicação que faz o escalonamento das aplicações a serem
-executadas.</para>
+<para>&kcron; is an application that schedules programs to be run.</para>
 </abstract>
 
 </bookinfo>
 
 <chapter id="introduction">
-<title>Introdução</title>
+<title>Introduction</title>
 
-<para>O &kcron; é uma aplicação para escalonar os programas para serem
-executados em segundo plano. É uma interface gráfica de utilizador para o
-<application>cron</application>, o escalonador do sistema Unix.</para>
+<para>&kcron; is an application for scheduling programs to run in the
+background. It is a graphical user interface to <application>cron</application>,
+the Unix system scheduler.</para>
 
 <sect1 id="kcron-revhistory">
-<title>História das Versões do KCron</title>
+<title>KCron Revision History</title>
 
 <itemizedlist>
  <listitem><para>2.0pre</para></listitem>
@@ -110,43 +109,42 @@ executados em segundo plano. É uma interface gráfica de utilizador para o
 </chapter>
 
 <chapter id="installation">
-<title>Instalação</title>
+<title>Installation</title>
 
 <sect1 id="getting-kcron">
-<title>Como obter o KCron</title>
+<title>How to obtain KCron</title>
 
-<para>O &kcron; é parte do projecto do KDE
+<para>&kcron; is part of the KDE project 
 <ulink url="http://www.kde.org/">http://www.kde.org/</ulink>.</para>
 
-<para>O &kcron; pode ser encontrado no pacote kdeadmin em
-<ulink url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>, o
-'site' FTP principal do projecto do KDE.</para>
+<para>&kcron; can be found in the kdeadmin package on
+<ulink url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>, the main
+ftp site of the KDE project.</para>
 
 </sect1>
 
 <sect1 id="requirements">
-<title>Requisitos</title>
+<title>Requirements</title>
 
-<para>Para poder compilar com sucesso o &kcron; serão necessárias as seguintes
-bibliotecas:</para>
+<para>In order to successfully compile &kcron;, you need the following
+libraries:</para>
 
 <itemizedlist>
-<listitem><para>O <application>Cron</application>, assim como o
-<application>vixie-cron</application>.  O &kcron; usa o comando
-<filename>crontab</filename> para modificar as tarefas escalonadas do
-utilizador.</para></listitem>
-<listitem><para>Um Unix compatível com o POSIX, tal como o oferecido pela 
-glibc. O &kcron; usa algumas chamadas de sistema 'standard' do Unix para a
-localização de datas e horas.</para></listitem>
+<listitem><para><application>Cron</application>, such as
+<application>vixie-cron</application>.  &kcron; uses the
+<filename>crontab</filename> command to modify user's scheduled
+tasks.</para></listitem>
+<listitem><para>POSIX-compliant Unix, such as provided by glibc. &kcron; uses some
+standard Unix system calls for localization of dates and times</para></listitem>
 </itemizedlist>
 
 </sect1>
 
 <sect1 id="compilation">
-<title>Compilação e Instalação</title>
+<title>Compilation and installation</title>
 
-<para>Para poder compilar e instalar o &kcron; no sistema, deves introduzir
-os seguintes comandos na directoria base da distribuição do &kcron;:</para>
+<para>In order to compile and install &kcron; on your system, type the
+following in the base directory of the &kcron; distribution:</para>
 
 <screen width="40">
 <prompt>%</prompt> <command>./configure</command>
@@ -154,91 +152,87 @@ os seguintes comandos na directoria base da distribuição do &kcron;:</para>
 <prompt>%</prompt> <command>make install</command>
 </screen>
 
-<para>Dado que o &kcron; usa o <application>autoconf</application> e o
-<application>automake</application> não deve haver problemas a compilá-lo.
-Se ocorrerem problemas deves comunicá-los nas 'mailing lists' do KDE.</para>
+<para>Since &kcron; uses <application>autoconf</application> and
+<application>automake</application> you should have no trouble compiling
+it. Should you run into problems please report them to the KDE mailing
+lists.</para>
 
 </sect1>
 
 </chapter>
 
 <chapter id="using-kcron">
-<title>Usar o &kcron;</title>
+<title>Using &kcron;</title>
 
-<important><para>
-Não te esqueças de indicar ao sistema para iniciar antecipadamente o servidor
-<filename>crond</filename>, senão o &kcron; não irá funcionar.
-</para></important>
+<important><para>Don't forget to tell your system to start the <filename>crond</filename>
+cron daemon first, or &kcron; won't work.</para></important>
 
 <sect1 id="kcron-start-up">
-<title>Arranque do KCron</title>
+<title>KCron Start Up</title>
 
-<para> Quando o &kcron; arranca irás ter uma vista geral sobre as tarefas já
-existentes em escalonamento e as variáveis de ambiente. Se estiveres a correr
-como administrador, irás ver esses itens para todos os utilizadores no
-computador, assim como as tarefas de sistema escalonadas. Cada uma das pastas
-pode ser expandida ou fechada.</para>
+<para>When &kcron; starts you will see a summarized view of existing scheduled
+tasks and associated environment variables. If you are running as the root user,
+you will see these items for all users on the computer as well as the system
+scheduled tasks. Each of the folders can be expanded and contracted.</para> 
 
 <screenshot>
-<screeninfo>O &kcron; no arranque.</screeninfo>
+<screeninfo>&kcron; at start up.</screeninfo>
 <graphic fileref="kcronstart.png" format="png"></graphic>
 </screenshot>
 
 <sect2>
-<title>Tarefas Escalonadas</title>
+<title>Scheduled Tasks</title>
 
-<para>As tarefas escalonadas aparecem dentro duma pasta 
-<guilabel>Tarefas</guilabel>. Para cada tarefa escalonada é apresentado o
-seguinte:</para> 
+<para>Scheduled tasks appear under a <guilabel>Tasks</guilabel> folder. For each
+scheduled task, the following are displayed:</para> 
 
 <variablelist>
 
 <varlistentry>
-<term>Nome</term>
-<listitem><para>Um nome para identificar a tarefa escalonada.</para></listitem>
+<term>Name</term>
+<listitem><para>Name to identify the scheduled task.</para></listitem>
 </varlistentry>
 <varlistentry>
-<term>Valor</term>
-<listitem><para>O ficheiro do programa e os seus parâmetros.</para></listitem>
+<term>Value</term>
+<listitem><para>Program file and parameters.</para></listitem>
 </varlistentry>
 <varlistentry> 
-<term>Descrição</term>
-<listitem><para>Uma descrição em língua natural da tarefa escalonada.</para></listitem>
+<term>Description</term>
+<listitem><para>Natural language description of scheduled
+task.</para></listitem>
 </varlistentry> 
 </variablelist>
 
-<para>Se uma tarefa foi desactivada, não irá aparecer o ficheiro do programa
-e os seus parâmetros, e a descrição estará desactivada.</para>
+<para>If a task has been disabled, no program file and parameters will appear,
+and the description will be disabled.</para>
 </sect2>
 
 <sect2>
-<title>Variáveis de Ambiente</title>
-<para>As variáveis de ambiente aparecem dentro duma pasta 
-<guilabel>Variáveis</guilabel>. Para cada variável de ambiente, é mostrado
-o seguinte:</para>
+<title>Environment Variables</title>
+<para>Environment variables appear under a <guilabel>Variables</guilabel>
+folder. For each environment variable, the following are displayed: </para>
 
 <variablelist>
 <varlistentry>
-<term>Nome</term>
-<listitem><para>O nome da variável.</para></listitem>
+<term>Name</term>
+<listitem><para>Variable name.</para></listitem>
 </varlistentry>
 <varlistentry>
-<term>Valor</term>
-<listitem><para>O valor da variável.</para></listitem>
+<term>Value</term>
+<listitem><para>Variable value.</para></listitem>
 </varlistentry>
 <varlistentry>
-<term>Descrição</term>
-<listitem><para>Uma descrição em língua natural da variável.</para></listitem>
+<term>Description</term>
+<listitem><para>Natural language description of variable.</para></listitem>
 </varlistentry>
 </variablelist>
 
-<para>As variáveis de ambiente que aqui aparecem irão sobrepor qualquer
-variável de ambiente existente para todas as tarefas escalonadas. Se uma
-variável de ambiente foi desactivada, o seu valor não aparecerá e a descrição
-estará desactivada.</para>
+<para>Environment variables appearing here will override any existing
+environment variable for all scheduled tasks. If an environment variable has
+been disabled, no value will appear and the description will be disabled.</para>
 
 <screenshot>
-<screeninfo>A janela principal do &kcron;.</screeninfo>
+<screeninfo>&kcron; main window.</screeninfo>
 <graphic fileref="kcron.png" format="png"></graphic>
 </screenshot>
 
@@ -246,463 +240,435 @@ estará desactivada.</para>
 </sect1>
 
 <sect1 id="new-task">
-<title>Adicionar Tarefas para Escalonamento</title>
+<title>Adding Scheduled Tasks</title>
 
-<para>Para criar uma nova tarefa escalonável, primeiro selecciona a pasta
-<guilabel>Tarefas</guilabel>. Depois selecciona <menuchoice>
-<guimenu>Editar</guimenu> <guimenuitem>Novo...</guimenuitem> </menuchoice>.
-Alternativamente, podes usar o menu do botão 
-<mousebutton>direito</mousebutton> e escolher
-<menuchoice><guimenuitem>Novo...</guimenuitem></menuchoice>, ou simplesmente
-carregar em <keycombo><keycap>Ctrl</keycap><keycap>n</keycap></keycombo>.
-</para>
+<para>To create a new scheduled task, first select the <guilabel>Tasks</guilabel>
+folder. Then select <menuchoice><guimenu>Edit</guimenu>
+<guimenuitem>New...</guimenuitem> </menuchoice>. Alternatively, you can use the
+<mousebutton>right</mousebutton> mouse button menu and choose
+<menuchoice><guimenuitem>New...</guimenuitem></menuchoice>, or simply press
+<keycombo><keycap>Ctrl</keycap><keycap>n</keycap></keycombo>.</para>
 
 <sect2>
-<title>A Janela de Editar Tarefa</title>
+<title>The Edit Task Dialog</title>
 
 <screenshot>
-<screeninfo>A janela de <guilabel>Editar Tarefa</guilabel>.</screeninfo>
+<screeninfo><guilabel>Edit Task</guilabel> dialog.</screeninfo>
 <graphic fileref="newtask.png" format="png"></graphic>
 </screenshot>
 
 <variablelist>
 <varlistentry>
-<term><guilabel>Comentário</guilabel></term>
-<listitem><para>Introduz uma descrição da tarefa a escalonar.</para>
+<term><guilabel>Comment</guilabel></term>
+<listitem><para>Enter a description of the task to schedule.</para>
 </listitem> 
 </varlistentry>
 <varlistentry>
-<term><guilabel>Programa</guilabel></term>
-<listitem><para>Indica o nome do programa. Podes especificar um caminho ou 
-directoria relativo ou absoluto. Se quiseres procurar pelo programa, carrega
-em <guibutton>Procurar...</guibutton>.</para>
+<term><guilabel>Program</guilabel></term>
+<listitem><para>Enter the name of the program. You can specify either a relative
+path or absolute path. If you want to look up the program, press
+<guibutton>Browse...</guibutton>.</para>
 </listitem> 
 </varlistentry>
 <varlistentry>
-<term><guibutton>Activo</guibutton></term>
-<listitem><para>Para activar ou desactivar a tarefa, activa ou desactiva a
-opção <guilabel>Activo</guilabel>.</para>
+<term><guibutton>Enabled</guibutton></term>
+<listitem><para>To enable or disable the task, select or de-select
+<guilabel>Enabled</guilabel>.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><guilabel>Meses</guilabel></term>
-<listitem><para>Selecciona os meses durante os quais a tarefa deve ser 
-executada.</para>
+<term><guilabel>Months</guilabel></term>
+<listitem><para>Select the months during which the task is to be
+scheduled.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><guilabel>Dias do Mês</guilabel></term>
-<listitem><para>Selecciona os dias do mês nos quais a tarefa deve ser 
-executada.</para>
+<term><guilabel>Days of the Month</guilabel></term>
+<listitem><para>Select the days of the month on which the task is to be
+scheduled.</para>
 </listitem> 
 </varlistentry>
 <varlistentry>
-<term><guilabel>Dias da Semana</guilabel></term>
-<listitem><para>Selecciona os dias da semana nos quais a tarefa deve ser
-executada.</para>
+<term><guilabel>Days of the Week</guilabel></term>
+<listitem><para>Select the days of the week on which the task is to be
+scheduled.</para>
 </listitem> 
 </varlistentry>
 <varlistentry>
-<term><guilabel>Diariamente</guilabel></term>
-<listitem><para>Se queres que a tarefa se execute diariamente, selecciona
-<guibutton>Correr Todos os Dias</guibutton>.</para>
+<term><guilabel>Daily</guilabel></term>
+<listitem><para>If you want to schedule the task to run daily, select
+<guibutton>Run Every Day</guibutton>.</para>
 </listitem> 
 </varlistentry>
 <varlistentry>
-<term><guilabel>Horas</guilabel></term>
-<listitem><para>Selecciona as horas nas quais a tarefa deve ser executada.
-</para></listitem>
+<term><guilabel>Hours</guilabel></term>
+<listitem><para>Select the hours on which the task is to be
+sheduled.</para></listitem>
 </varlistentry>
 <varlistentry>
-<term><guilabel>Minutos</guilabel></term>
-<listitem><para>Selecciona os minutos nos quais a tarefa deve ser executada.
-O &kcron; não suporta escalonar tarefas em intervalos menores do que cinco
-minutos.</para>
+<term><guilabel>Minutes</guilabel></term>
+<listitem><para>Select the minute at which the task is to be scheduled. &kcron;
+does not support scheduling tasks at smaller than five minute intervals.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term><guibutton>OK</guibutton></term>
-<listitem><para>Completa a criação desta tarefa.</para>
+<listitem><para>Completes the creation of this task.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><guibutton>Cancelar</guibutton></term>
-<listitem><para>Cancela a criação desta tarefa.</para>
+<term><guibutton>Cancel</guibutton></term>
+<listitem><para>Cancels the creation of this task.</para>
 </listitem>
 </varlistentry>
 </variablelist>
 
-<para>Se seleccionares tanto os dias do mês como os da semana, a tarefa será
-executada em qualquer uma das condições. Por exemplo, se seleccionares o dia
-1 e o dia 15 e seleccionares o Domingo, o programa será executado em todos os
-dias 1 e 15 dos meses seleccionados (independentemente do dia da semana) assim
-como em todos os Domingos dos meses seleccionados (independentemente do dia
-do mês).</para>
+<para>If you select both days of the month, and days of the week, the task will
+run when either condition is met. For instance, if you select the 1st and 15th,
+and select Sunday, the program will be run every 1st and 15th of the selected
+months (regardless of day of week) as well as every Sunday of the selected
+months (regardless of day of the month).</para>
 
-<para>A tarefa escalonada não está completamente definida até o ficheiro
-<filename>crontab</filename> ser gravado.</para>
+<para>The scheduled task is not actually set up until the
+<filename>crontab</filename> has been saved.</para>
 
 </sect2>
 </sect1>
 
 <sect1 id="manage-tasks">
-<title>Gerir as Tarefas Escalonadas</title>
+<title>Managing Scheduled Tasks</title>
 
-<para>Assim como ao criar tarefas novas, as alterações não terão efeito até
-o ficheiro <filename>crontab</filename> ser gravado.</para>
+<para>As with creating new tasks, changes to tasks will not actually be made
+until the <filename>crontab</filename> is saved.</para>
 
 <sect2>
-<title>Cortar Tarefas Escalonadas</title>
+<title>Cutting Scheduled Tasks</title>
 
-<para>Para cortares uma tarefa escalonada, primeiro selecciona a tarefa a ser
-cortada. Depois selecciona <menuchoice><guimenu>Editar</guimenu> 
-<guimenuitem>Cortar</guimenuitem></menuchoice>.</para>
-<para>Alternativamente podes usar o menu do botão 
-<mousebutton>direito</mousebutton> do rato e escolher
-<menuchoice><guimenuitem>Cortar</guimenuitem></menuchoice>, ou simplesmente
-carregar em <keycombo><keycap>Ctrl</keycap><keycap>x</keycap></keycombo>.
-</para>
+<para>To cut a scheduled task, first select the task to be cut. Then select
+<menuchoice><guimenu>Edit</guimenu> <guimenuitem>Cut</guimenuitem></menuchoice>.</para>
+<para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse
+button menu and choose <menuchoice><guimenuitem>Cut</guimenuitem></menuchoice>,
+or simply press
+<keycombo><keycap>Ctrl</keycap><keycap>x</keycap></keycombo>.</para>
 
 </sect2>
 
 <sect2>
-<title>Copiar Tarefas Escalonadas</title>
+<title>Copying Scheduled Tasks</title>
 
-<para>Para copiares uma tarefa escalonada, primeiro selecciona a tarefa a ser
-copiada. Depois selecciona <menuchoice><guimenu>Editar</guimenu>
-<guimenuitem>Copiar</guimenuitem></menuchoice>.</para>
-
-<para>Alternativamente, podes usar o menu do botão
-<mousebutton>direito</mousebutton> do rato e escolher
-<menuchoice><guimenuitem>Copiar</guimenuitem></menuchoice>, ou simplesmente
-carregar em <keycombo><keycap>Ctrl</keycap><keycap>c</keycap></keycombo>.
+<para>To copy a scheduled task, first select the task to be copied. Then select
+<menuchoice><guimenu>Edit</guimenu><guimenuitem>Copy</guimenuitem></menuchoice>.
 </para>
 
-</sect2>
-
-<sect2>
-<title>Colar Tarefas Escalonadas</title>
-
-<para>Para colares uma tarefa escalonada, é preciso ter cortado ou copiado uma
-tarefa escalonada para a Área de Transferência em primeiro lugar. Logo que
-uma tarefa tenha sido cortada ou copiada, a colagem estará activa. Então aí
-selecciona a pasta <guilabel>Tarefas</guilabel>. Finalmente selecciona
-<menuchoice> <guimenu>Editar</guimenu><guimenuitem>Colar</guimenuitem> 
-</menuchoice>.</para>
-
-<para>Alternativamente, podes usar o menu do botão
-<mousebutton>direito</mousebutton> do rato e escolher
-<menuchoice><guimenuitem>Colar</guimenuitem></menuchoice>, ou simplesmente
-carrega em <keycombo><keycap>Ctrl</keycap><keycap>v</keycap></keycombo>.</para>
-	
-</sect2>
-
-<sect2>
-<title>Modificar Tarefas Escalonadas</title>
-
-<para>Para modificares uma tarefa escalonada, primeiro selecciona a tarefa a
-ser modificada. Então selecciona <menuchoice> <guimenu>Editar</guimenu>
-<guimenuitem>Modificar...</guimenuitem> </menuchoice>.
-</para>
-
-<para>Alternativamente, podes usar o menu do botão
-<mousebutton>direito</mousebutton> do rato e escolher
-<menuchoice><guimenuitem>Modificar...</guimenuitem></menuchoice>, ou carregar
-simplesmente em <keycombo><keycap>Ctrl</keycap><keycap>o</keycap></keycombo>.
-Irás ver a janela de <guilabel>Editar Tarefa</guilabel>, com a qual irás
-modificar como descrito <link linkend="new-task">acima</link>.</para>
-	
-</sect2>
-
-<sect2>
-<title>Apagar Tarefas Escalonadas</title>
-
-<para>Para apagares uma tarefa escalonada, primeiro selecciona a tarefa a ser
-removida. Então selecciona <menuchoice>
-<guimenu>Editar</guimenu> <guimenuitem>Apagar</guimenuitem> </menuchoice>.
-</para>
-
-<para>Alternativamente, podes usar o menu do botão
-<mousebutton>direito</mousebutton> do rato e escolher
-<guimenuitem>Apagar</guimenuitem>.</para>
-
-</sect2>
-
-<sect2>
-<title>Activar/Desactivar Tarefas Escalonadas</title>
-
-<para>Para activares ou desactivares uma tarefa escalonada, primeiro selecciona
-a tarefa desactivada. As tarefas desactivadas terão 
-<guilabel>Desactivado</guilabel> nas suas descrições. Então selecciona
-<menuchoice>
-<guimenu>Editar</guimenu> <guimenuitem>Activo</guimenuitem> </menuchoice>.
-</para>
-
-<para>Alternativamente, podes usar o menu do botão 
-<mousebutton>direito</mousebutton> do rato e escolher
-<menuchoice><guimenuitem>Activo</guimenuitem></menuchoice>.
-Deves confirmar se o nome do programa, os seus parâmetros e a descrição estão
-correctamente apresentados.</para>
-	
-</sect2>
-
-<sect2>
-<title>Correr Tarefas Escalonadas</title>
-
-<para>Para correres uma tarefa escolanada imediatamente, primeiro selecciona a
-tarefa. Depois selecciona
-<menuchoice>
-<guimenu>Editar</guimenu> <guimenuitem>Executar</guimenuitem> </menuchoice>.
-</para>
-
-<para>Alternativamente, podes usar o menu do botão 
-<mousebutton>direito</mousebutton> do rato e escolher
-<menuchoice><guimenuitem>Executar</guimenuitem></menuchoice>.</para>
-
-</sect2>
-</sect1>
-
-<sect1 id="new-variable">
-<title>Adicionar Variáveis de Ambiente</title>
-
-<para>Para criares uma nova variável de ambiente, primeiro selecciona a pasta
-<guilabel>Variáveis</guilabel>. Depois selecciona
-<menuchoice>
-<guimenu>Editar</guimenu><guimenuitem>Novo...</guimenuitem> </menuchoice>.
-</para>
-
-<para>Alternativamente, podes usar o menu do botão 
-<mousebutton>direito</mousebutton> e escolher
-<menuchoice><guimenuitem>Novo...</guimenuitem></menuchoice>, ou simplesmente
-carregar em <keycombo><keycap>Ctrl</keycap><keycap>n</keycap></keycombo>.
-</para>
-
-<sect2>
-<title>A janela de Editar Variável</title>
-
-<screenshot>
-<screeninfo>A janela de <guilabel>Editar Variável</guilabel>.</screeninfo>
-<graphic fileref="newvariable.png" format="png"></graphic>
-</screenshot>
-
-<variablelist>
-<varlistentry>
-<term><guilabel>Variável</guilabel></term> 
-<listitem><para>Indica o nome da variável de ambiente. Podes usar a lista
-correspondente para seleccionares o nome das variáveis de ambiente mais
-comuns que são usadas pelas tarefas escalonadas. Estas incluem:</para>
-
-<variablelist>
-
-<varlistentry>
-<term><guimenuitem>HOME</guimenuitem></term>
-<listitem><para>A ser usada em vez da directoria pessoal do utilizador por
-omissão.</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><guimenuitem>MAILTO</guimenuitem></term>
-<listitem><para>Para enviar o resultado por 'email' para um endereço diferente
-do endereço de 'email' do utilizador por omissão.</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><guimenuitem>PATH</guimenuitem></term>
-<listitem><para>A ser usada para procurar pelos programas nas directorias
-indicadas.</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term<guimenuitem>SHELL</guimenuitem></term>
-<listitem><para>A ser usada em vez da linha de comandos por omissão do
-utilizador.</para></listitem>
-</varlistentry>
-</variablelist>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><guilabel>Valor</guilabel></term>
-<listitem><para>Indica o valor da variável de ambiente.</para></listitem>
-</varlistentry>
-<varlistentry>
-<term><guilabel>Comentário</guilabel></term>
-<listitem><para>Indica uma descrição da variável de ambiente, por exemplo para
-que serve.</para></listitem>
-</varlistentry>
-<varlistentry>
-<term><guilabel>Activo</guilabel></term>
-<listitem>
-<para>Para activar ou desactivar a variável, activa ou desactiva a opção
-<guibutton>Activo</guibutton>.</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term><guibutton>OK</guibutton></term>
-<listitem>
-<para>Completa a alteração desta variável.</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term><guibutton>Cancelar</guibutton></term>
-<listitem>
-<para>Cancela a alteração desta variável.</para>
-</listitem>
-</varlistentry>
-</variablelist>
-
-<para>De facto, a variável de ambiente não é definida até o ficheiro
-<filename>crontab</filename> ser gravado.</para>
-
-</sect2>
-</sect1>
-
-<sect1 id="manage-variables">
-<title>Gerir as Variáveis de Ambiente</title>
-
-<note><para>Assim como na criação de novas variáveis, as alterações às mesmas
-não terão efeito até o ficheiro <filename>crontab</filename> ser gravado.
-</para></note>
-
-<sect2>
-<title>Cortar Variáveis de Ambiente</title>
-
-<para>Para cortares uma variável de ambiente, primeiro selecciona a variável
-a ser cortada. Depois selecciona <menuchoice><guimenu>Editar</guimenu>
-<guimenuitem>Cortar</guimenuitem> </menuchoice>.</para>
-
-<para>Alternativamente, podes usar o menu do botão
-<mousebutton>direito</mousebutton> do rato e escolher
-<menuchoice><guimenuitem>Cortar</guimenuitem></menuchoice>, ou simplesmente
-carregar em <keycombo><keycap>Ctrl</keycap><keycap>x</keycap></keycombo>.
-</para>
-
-</sect2>
-
-<sect2>
-<title>Copiar Variáveis de Ambiente</title>
-
-<para>Para copiares uma variável de ambiente, primeiro selecciona a variável a
-ser copiada. Depois selecciona <menuchoice><guimenu>Editar</guimenu>
-<guimenuitem>Copiar</guimenuitem> </menuchoice>.</para>
-
-<para>Alternativamente, podes usar o menu do botão 
-<mousebutton>direito</mousebutton> do rato e escolher
-<guimenuitem>Copiar</guimenuitem>, ou simplesmente carregar em
+<para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse
+button menu and choose <menuchoice><guimenuitem>Copy</guimenuitem></menuchoice>,
+or simply press
 <keycombo><keycap>Ctrl</keycap><keycap>c</keycap></keycombo>.</para>
 
 </sect2>
 
 <sect2>
-<title>Colar Variáveis de Ambiente</title>
+<title>Pasting Scheduled Tasks</title>
 
-<para>Para colares uma variável de ambiente, primeiro é necessário ter sido
-copiada ou colada uma variável de ambiente para a Área de Transferência. Logo
-que uma variável de ambiente tenha sido cortada ou copiada, a colagem estará
-activada. Então deves seleccionar a pasta <guilabel>Variáveis</guilabel>.
-Finalmente selecciona <menuchoice><guimenu>Editar</guimenu> 
-<guimenuitem>Colar</guimenuitem> </menuchoice>.</para>
+<para>To paste a scheduled task, first a scheduled task must have already been
+cut or copied to the clipboard. Once a scheduled task has been cut or copied,
+paste will be enabled. Then select the <guilabel>Tasks</guilabel>
+folder. Finally, select <menuchoice> <guimenu>Edit</guimenu>
+<guimenuitem>Paste</guimenuitem> </menuchoice>.</para>
 
-<para>Alternativamente, podes usar o menu do botão
-<mousebutton>direito</mousebutton> do rato e escolher
-<menuchoice><guimenuitem>Colar</guimenuitem></menuchoice>, ou simplesmente
-carregar em <keycombo><keycap>Ctrl</keycap><keycap>v</keycap></keycombo>.
-</para>
+<para> Alternatively, you can use the <mousebutton>right</mousebutton> mouse
+button menu and choose
+<menuchoice><guimenuitem>Paste</guimenuitem></menuchoice>, or simply press
+<keycombo><keycap>Ctrl</keycap><keycap>v</keycap></keycombo>.</para>
+	
 </sect2>
 
 <sect2>
-<title>Modificar Variáveis de Ambiente</title>
+<title>Modifying Scheduled Tasks</title>
 
-<para>Para modificares uma variável de ambiente, primeiro selecciona a variável
-a ser modificada. Depois selecciona <menuchoice> <guimenu>Editar</guimenu>
-<guimenuitem>Modificar...</guimenuitem> </menuchoice>.
-Alternativamente, podes usar o menu do botão <mousebutton>direito</mousebutton>
-do rato e escolher <guimenuitem>Modificar...</guimenuitem>, ou simplesmente
-carregar em  <keycombo><keycap>Ctrl</keycap><keycap>o</keycap></keycombo>.
-Irás ver a janela de <guilabel>Editar Variável</guilabel>, com a qual irás
-modificar tal como foi descrito <link linkend="new-variable">acima</link>.
-</para>
-</sect2>
-
-<sect2>
-<title>Apagar Variáveis de Ambiente</title>
-
-<para>Para apagares uma variável de ambiente, primeiro selecciona a variável a
-ser apagada. Depois selecciona
-<menuchoice><guimenu>Editar</guimenu><guimenuitem>Apagar</guimenuitem>
-</menuchoice>
-</para>
-
-<para>Alternativamente, podes usar o menu do botão 
-<mousebutton>direito</mousebutton> do rato e escolher
-<guimenuitem>Apagar</guimenuitem>.</para>
-
-</sect2>
-
-<sect2>
-<title>Activar/Desactivar Variáveis de Ambiente</title>
-
-<para>Para activares ou desactivares, selecciona em primeiro lugar a variável
-desactivada. As variáveis desactivadas terão como descrição 
-<guilabel>Desactivada</guilabel>. Então selecciona
+<para>To modify a scheduled task, first select the task to be modified. Then select
 <menuchoice>
-<guimenu>Editar</guimenu> <guimenuitem>Activo</guimenuitem> </menuchoice>.
+<guimenu>Edit</guimenu> <guimenuitem>Modify...</guimenuitem> </menuchoice>.
 </para>
 
-<para>Alternativamente, podes usar o menu do botão 
-<mousebutton>direito</mousebutton> do rato e escolher
-<menuchoice><guimenuitem>Activo</guimenuitem></menuchoice>.
-Deves confirmar se o nome e o valor da variável de ambiente estão apresentados
-correctamente.</para>
+<para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse button
+menu and choose <menuchoice><guimenuitem>Modify...</guimenuitem></menuchoice>,
+or simply press <keycombo><keycap>Ctrl</keycap><keycap>o</keycap></keycombo>.
+You will see the <guilabel>Edit Task</guilabel> dialog, which you would modify as described
+<link linkend="new-task">above</link>.</para>
+	
+</sect2>
+
+<sect2>
+<title>Deleting Scheduled Tasks</title>
+
+<para>To delete a scheduled task, first select the task to be deleted. Then select
+<menuchoice>
+<guimenu>Edit</guimenu> <guimenuitem>Delete</guimenuitem> </menuchoice>.</para>
+
+<para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse button
+menu and choose <guimenuitem>Delete</guimenuitem>.</para>
+
+</sect2>
+
+<sect2>
+<title>Enabling/Disabling Scheduled Tasks</title>
+
+<para>To enable or diabled a scheduled task, first select the disabled
+task. Disabled tasks will have <guilabel>Disabled</guilabel> in their
+descriptions. Then select
+<menuchoice>
+<guimenu>Edit</guimenu> <guimenuitem>Enabled</guimenuitem> </menuchoice>.</para>
+
+<para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse button
+menu and choose <menuchoice><guimenuitem>Enabled</guimenuitem></menuchoice>.
+Confirm that the scheduled task's program name, parameters, and description are
+correctly displayed.</para>
+	
+</sect2>
+
+<sect2>
+<title>Running Scheduled Tasks</title>
+
+<para>To run a scheduled task immediately, first select the task.  Then select
+<menuchoice>
+<guimenu>Edit</guimenu> <guimenuitem>Run Now</guimenuitem> </menuchoice>.
+</para>
+
+<para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse button
+menu and choose <menuchoice><guimenuitem>Run
+Now</guimenuitem></menuchoice>.</para>
+
+</sect2>
+</sect1>
+
+<sect1 id="new-variable">
+<title>Adding Environment Variables</title>
+
+<para>To create a new environment variable, first select the
+<guilabel>Variables</guilabel> folder. Then select
+<menuchoice>
+<guimenu>Edit</guimenu><guimenuitem>New...</guimenuitem> </menuchoice>.</para>
+
+<para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse
+button menu and choose
+<menuchoice><guimenuitem>New...</guimenuitem></menuchoice>, or simply press
+<keycombo><keycap>Ctrl</keycap><keycap>n</keycap></keycombo>.</para>
+
+<sect2>
+<title>The Edit Variable dialog</title>
+
+<screenshot>
+<screeninfo><guilabel>Edit Variable</guilabel> dialog.</screeninfo>
+<graphic fileref="newvariable.png" format="png"></graphic>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term><guilabel>Variable</guilabel></term> 
+<listitem><para>Enter the environment variable name. You can use the drop-down
+list box to select from the most common environment variables used by scheduled
+tasks. Those include:</para>
+
+<variablelist>
+
+<varlistentry>
+<term><guimenuitem>HOME</guimenuitem></term>
+<listitem><para>To be used instead of the default user's home directory.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guimenuitem>MAILTO</guimenuitem></term>
+<listitem><para>To send email output to an email address other than the user's default email
+address.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guimenuitem>PATH</guimenuitem></term>
+<listitem><para>To be used to search directories for program files.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term<guimenuitem>SHELL</guimenuitem></term>
+<listitem><para>To be used instead of the user's default value.</para></listitem>
+</varlistentry>
+</variablelist>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guilabel>Value</guilabel></term>
+<listitem><para>Enter the environment variable value.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>Comment</guilabel></term>
+<listitem><para>Enter a description for the environment variable, such as its
+purpose.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>Enabled</guilabel></term>
+<listitem>
+<para>To enable or disable the variable, select or de-select
+<guibutton>Enabled</guibutton>.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><guibutton>OK</guibutton></term>
+<listitem>
+<para>Completes the setting of this variable.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><guibutton>Cancel</guibutton></term>
+<listitem>
+<para>Cancels the setting of this variable.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para>The environment variable is not actually set up until the
+<filename>crontab</filename> has been saved.</para>
+
+</sect2>
+</sect1>
+
+<sect1 id="manage-variables">
+<title>Managing Environment Variables</title>
+
+<note><para>As with creating new variables, changes to variables will not
+actually be made until the <filename>crontab</filename> is saved.</para></note>
+
+<sect2>
+<title>Cutting Environment Variables</title>
+
+<para>To cut an environment variable, first select the variable to be cut. Then select
+<menuchoice><guimenu>Edit</guimenu> <guimenuitem>Cut</guimenuitem> </menuchoice>.</para>
+
+<para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse
+button menu and choose <menuchoice><guimenuitem>Cut</guimenuitem></menuchoice>,
+or simply press
+<keycombo><keycap>Ctrl</keycap><keycap>x</keycap></keycombo>.</para>
+
+</sect2>
+
+<sect2>
+<title>Copying Environment Variables</title>
+
+<para>To copy an environemnt variable, first select the variable to be copied. Then select
+<menuchoice>
+<guimenu>Edit</guimenu> <guimenuitem>Copy</guimenuitem> </menuchoice>.</para>
+
+<para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse button
+menu and choose <guimenuitem>Copy</guimenuitem>, or simply press
+<keycombo><keycap>Ctrl</keycap><keycap>c</keycap></keycombo>.</para>
+
+</sect2>
+
+<sect2>
+<title>Pasting Environment Variables</title>
+
+<para>To paste an environment variable, first an environment variable must have
+already been cut or copied to the clipboard. Once an environment variable has
+been cut or copied, paste will be enabled. Then select the
+<guilabel>Variables</guilabel> folder. Finally, select
+<menuchoice><guimenu>Edit</guimenu> <guimenuitem>Paste</guimenuitem> </menuchoice>.</para>
+
+<para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse
+button menu and choose
+<menuchoice><guimenuitem>Paste</guimenuitem></menuchoice>, or simply press
+<keycombo><keycap>Ctrl</keycap><keycap>v</keycap></keycombo>
+.</para>
+</sect2>
+
+<sect2>
+<title>Modifying Environemnt Variables</title>
+
+<para>To modify an environment variable, first select the variable to be
+modified. Then select
+<menuchoice>
+<guimenu>Edit</guimenu> <guimenuitem>Modify...</guimenuitem> </menuchoice>.
+Alternatively, you can use the <mousebutton>right</mousebutton> mouse button
+menu and choose <guimenuitem>Modify...</guimenuitem>, or simply press
+
+<keycombo><keycap>Ctrl</keycap><keycap>o</keycap></keycombo>.  You will see the
+<guilabel>Edit Variable</guilabel> dialog, which you would modify as described
+<link linkend="new-variable">above</link>.</para>
+</sect2>
+
+<sect2>
+<title>Deleting Environment Variables</title>
+
+<para>To delete an environment variable, first select the variable to be
+deleted. Then select
+<menuchoice><guimenu>Edit</guimenu><guimenuitem>Delete</guimenuitem></menuchoice>
+</para>
+
+<para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse button
+menu and choose <guimenuitem>Delete</guimenuitem>.</para>
+
+</sect2>
+
+<sect2>
+<title>Enabling/Disabling Environment Variables</title>
+
+<para>To enable or diabled an environment variable, first select the disabled
+variable. Disabled variables will have <guilabel>Disabled</guilabel> in their
+descriptions. Then select
+<menuchoice>
+<guimenu>Edit</guimenu> <guimenuitem>Enabled</guimenuitem> </menuchoice>.</para>
+
+<para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse button
+menu and choose <menuchoice><guimenuitem>Enabled</guimenuitem></menuchoice>.
+Confirm that the environment variable's name and value are correctly
+displayed.</para>
 
 </sect2>
 </sect1>
 
 <sect1 id="saving-crontab">
-<title>Gravar o ficheiro <filename>crontab</filename></title>
+<title>Saving the <filename>crontab</filename></title>
 
-<para>Logo que todas as tarefas escalonadas e variáveis de ambiente tenham
-sido criadas e/ou modificadas convenientemente, deves gravar o ficheiro
-<filename>crontab</filename>, seleccionando para isso <menuchoice> 
-<guimenu>Ficheiro</guimenu> <guimenuitem>Gravar</guimenuitem> </menuchoice>.
-</para>
+<para>Once all scheduled tasks and environment variables have been created
+and/or properly modified, save the <filename>crontab</filename> by selecting
+<menuchoice>
+<guimenu>File</guimenu> <guimenuitem>Save</guimenuitem>
+</menuchoice>.</para>
 
-<para>Alternativamente, podes simplesmente carregar em <keycombo>
-<keycap>Ctrl</keycap><keycap>s</keycap></keycombo>. As adições ou alterações
-não serão realizadas até isto ser feito.</para>
+<para>Alternatively, you can simply press
+<keycombo><keycap>Ctrl</keycap><keycap>s</keycap></keycombo>. Additions or
+changes will not actually be made until this is done.</para>
 
 </sect1>
 
 <sect1 id="printing-crontab">
-<title>Imprimir o ficheiro <filename>crontab</filename></title>
+<title>Printing the <filename>crontab</filename></title>
 
-<para>Para imprimires o ficheiro <filename>crontab</filename> tal como foi
-gravado, selecciona <menuchoice> <guimenu>Ficheiro</guimenu>
-<guimenuitem>Imprimir</guimenuitem></menuchoice>.</para>
+<para>To print the <filename>crontab</filename> as it has been saved, select
+<menuchoice>
+<guimenu>File</guimenu> <guimenuitem>Print</guimenuitem>
+</menuchoice>.</para>
 
 <screenshot>
-<screeninfo>Imprimir o ficheiro <filename>crontab</filename>.</screeninfo>
+<screeninfo>Printing the <filename>crontab</filename>.</screeninfo>
 <graphic fileref="print.png" format="png"></graphic>
 </screenshot>
 
-<para>Existem duas opções na janela de impressão.</para>
+<para>There are two options in the print dialog box:</para>
 
 <variablelist>
 
 <varlistentry>
-<term><guilabel>Imprimir o Crontab</guilabel></term>
+<term><guilabel>Print Crontab</guilabel></term>
 <listitem>
-<para>Imprime o ficheiro <filename>crontab</filename> para o utilizador actual.
-</para>
+<para>Prints the <filename>crontab</filename> for the current user.</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term><guilabel>Imprimir Todos os Utilizadores</guilabel></term>
+<term><guilabel>Print All Users</guilabel></term>
 <listitem>
-<para>Imprime os ficheiros <filename>crontab</filename> para todos os
-utilizadores. Esta opção só está activada para os utilizadores que tenham
-privilégios de super-utilizador.</para>
+<para>Prints the <filename>crontab</filename>s for all users.  This option is
+enabled only for users with super-user privileges.</para>
 </listitem>
 </varlistentry>
 
@@ -712,14 +678,14 @@ privilégios de super-utilizador.</para>
 </chapter>
 
 <chapter id="commands">
-<title>Referência de Comandos</title>
+<title>Command Reference</title>
 
 <sect1 id="kcron-mainwindow">
-<title>A janela principal do KCron</title>
+<title>The main KCron window</title>
 <para></para>
 
 <sect2>
-<title>O Menu Ficheiro</title>
+<title>The File Menu</title>
 
 <variablelist>
 <varlistentry>
@@ -727,22 +693,21 @@ privilégios de super-utilizador.</para>
 <shortcut>
 <keycombo><keycap>Ctrl</keycap><keycap>s</keycap></keycombo>
 </shortcut>
-<guimenu>Ficheiro</guimenu>
-<guimenuitem>Gravar</guimenuitem>
+<guimenu>File</guimenu>
+<guimenuitem>Save</guimenuitem>
 </menuchoice></term>
 <listitem>
-<para><action>Grava as alterações no ficheiro <filename>crontab</filename>.
-</action></para>
+<para><action>Saves changes to the <filename>crontab</filename>.</action></para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
 <term><menuchoice>
-<guimenu>Ficheiro</guimenu>
-<guimenuitem>Imprimir...</guimenuitem>
+<guimenu>File</guimenu>
+<guimenuitem>Print...</guimenuitem>
 </menuchoice></term>
 <listitem>
-<para><action>Imprime o ficheiro <filename>crontab</filename>.</action></para>
+<para><action>Prints the <filename>crontab</filename>.</action></para>
 </listitem>
 </varlistentry>
 
@@ -751,18 +716,18 @@ privilégios de super-utilizador.</para>
 <shortcut>
 <keycombo><keycap>Ctrl</keycap><keycap>q</keycap></keycombo>
 </shortcut>
-<guimenu>Ficheiro</guimenu>
-<guimenuitem>Sair</guimenuitem>
+<guimenu>File</guimenu>
+<guimenuitem>Quit</guimenuitem>
 </menuchoice></term>
 <listitem>
-<para><action>Sai do &kcron;.</action></para>
+<para><action>Quits &kcron;.</action></para>
 </listitem>
 </varlistentry>
 </variablelist>
 
 </sect2>
 <sect2>
-<title>O Menu Editar</title>
+<title>The Edit Menu</title>
 
 <variablelist>
 <varlistentry>
@@ -770,79 +735,76 @@ privilégios de super-utilizador.</para>
 <shortcut>
 <keycombo><keycap>Ctrl</keycap><keycap>x</keycap></keycombo>
 </shortcut>
-<guimenu>Editar</guimenu> <guimenuitem>Cortar</guimenuitem></menuchoice></term>
-<listitem><para><action>Corta a tarefa ou variável seleccionada.
-</action></para></listitem>
+<guimenu>Edit</guimenu> <guimenuitem>Cut</guimenuitem> </menuchoice></term>
+<listitem><para><action>Cut the selected task or
+variable.</action></para></listitem>
 </varlistentry>
 <varlistentry>
 <term><menuchoice>
 <shortcut>
 <keycombo><keycap>Ctrl</keycap><keycap>c</keycap></keycombo>
 </shortcut>
-<guimenu>Editar</guimenu>
-<guimenuitem>Copiar</guimenuitem>
+<guimenu>Edit</guimenu>
+<guimenuitem>Copy</guimenuitem>
 </menuchoice></term>
-<listitem><para><action>Copia a tarefa ou variável seleccionada.
-</action></para></listitem>
+<listitem><para><action>Copy the selected task or variable.</action></para></listitem>
 </varlistentry>
 <varlistentry>
 <term><menuchoice>
 <shortcut>
 <keycombo><keycap>Ctrl</keycap><keycap>v</keycap></keycombo>
 </shortcut>
-<guimenu>Editar</guimenu>
-<guimenuitem>Colar</guimenuitem>
+<guimenu>Edit</guimenu>
+<guimenuitem>Paste</guimenuitem>
 </menuchoice></term>
-<listitem><para><action>Cola uma tarefa ou variável que tenha sido copiada ou
-cortada.</action></para></listitem>
+<listitem><para><action>Paste a task or variable that has been cut or
+copied.</action></para></listitem>
 </varlistentry>
 <varlistentry>
 <term><menuchoice>
 <shortcut>
 <keycombo><keycap>Ctrl</keycap><keycap>n</keycap></keycombo>
 </shortcut>
-<guimenu>Editar</guimenu>
-<guimenuitem>Novo...</guimenuitem>
+<guimenu>Edit</guimenu>
+<guimenuitem>New...</guimenuitem>
 </menuchoice></term>
-<listitem><para><action>Cria uma nova tarefa ou variável.
-</action></para></listitem>
+<listitem><para><action>Create a new task or
+variable.</action></para></listitem>
 </varlistentry>
 <varlistentry>
 <term><menuchoice>
 <shortcut>
 <keycombo><keycap>Ctrl</keycap><keycap>o</keycap></keycombo>
 </shortcut>
-<guimenu>Editar</guimenu>
-<guimenuitem>Modificar...</guimenuitem>
+<guimenu>Edit</guimenu>
+<guimenuitem>Modify...</guimenuitem>
 </menuchoice></term>
-<listitem><para><action>Modifica a tarefa ou variável seleccionada.
-</action></para></listitem>
+<listitem><para><action>Modify the selected task or
+variable.</action></para></listitem>
 </varlistentry>
 <varlistentry>
 <term><menuchoice>
-<guimenu>Editar</guimenu>
-<guimenuitem>Apagar</guimenuitem>
+<guimenu>Edit</guimenu>
+<guimenuitem>Delete</guimenuitem>
 </menuchoice></term>
-<listitem><para><action>Apaga a tarefa ou variável seleccionada.
-</action></para></listitem>
+<listitem><para><action>Delete the selected task or
+variable.</action></para></listitem>
 </varlistentry>
 <varlistentry>
 <term><menuchoice>
-<guimenu>Editar</guimenu>
-<guimenuitem>Activo</guimenuitem>
+<guimenu>Edit></guimenu>
+<guimenuitem>Enabled</guimenuitem>
 </menuchoice></term>
 <listitem>
-<para><action>Activa ou desactiva a tarefa ou variável seleccionada.
-</action></para>
+<para><action>Enable/disable the selected task or variable.</action></para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term><menuchoice>
-<guimenu>Editar</guimenu>
-<guimenuitem>Executar</guimenuitem>
+<guimenu>Edit</guimenu>
+<guimenuitem>Run Now</guimenuitem>
 </menuchoice></term>
-<listitem><para><action>Corre a tarefa seleccionada agora.
-</action></para></listitem>
+<listitem><para><action>Run the selected task now.</action></para></listitem>
 </varlistentry>
 </variablelist>
 
@@ -850,25 +812,23 @@ cortada.</action></para></listitem>
 
 
 <sect2>
-<title>O Menu Opções</title>
+<title>The Options Menu</title>
 
 
 <variablelist>
 <varlistentry>
 <term><menuchoice>
-<guimenu>Opções</guimenu>
-<guimenuitem>Mostrar Barra de Ferramentas</guimenuitem>
+<guimenu>Options</guimenu>
+<guimenuitem>Show Toolbar</guimenuitem>
 </menuchoice></term>
-<listitem><para><action>Mostra a barra de ferramentas.
-</action></para></listitem>
+<listitem><para><action>Displays toolbar.</action></para></listitem>
 </varlistentry>
 <varlistentry>
 <term><menuchoice>
 <guimenu>Options</guimenu>
-<guimenuitem>Mostrar Barra de Estado</guimenuitem>
+<guimenuitem>Show Statusbar</guimenuitem>
 </menuchoice></term>
-<listitem><para><action>Mostra a barra de estado onde aparecem informações.
-</action></para></listitem>
+<listitem><para><action>Displays statusbar.</action></para></listitem>
 </varlistentry>
 </variablelist>
 
@@ -877,17 +837,17 @@ cortada.</action></para></listitem>
 </chapter>
 
 <chapter id="faq">
-<title>Perguntas e Respostas</title>
+<title>Questions and Answers</title>
 
 <qandaset>
 <qandaentry>
 <question>
-<para>Porque é que as alterações que estou a fazer às tarefas escalonadas e
-variáveis de ambiente não estão a fazer efeito?</para>
+<para>Why aren't the changes I'm making to scheduled tasks and/or environment
+variables taking effect?</para>
 </question>
-<answer><para>As adições ou alterações às tarefas escalonadas não ocorrem de
-facto até o ficheiro <filename>crontab</filename> ter sido 
-<link linkend="saving-crontab">gravado</link>.</para>
+<answer><para>Additions or changes to scheduled tasks do not actually happen until the
+<filename>crontab</filename> has been <link
+linkend="saving-crontab">saved</link>.</para>
 </answer>
 </qandaentry>
 </qandaset>
@@ -895,13 +855,13 @@ facto até o ficheiro <filename>crontab</filename> ter sido
 
 <chapter id="credits">
 
-<title>Créditos e Licença</title>
+<title>Credits and License</title>
 
 <para>&kcron;</para>
 
-<para>Programa copyright 2000 Gary Meyer <email>gary@meyer.net</email></para>
+<para>Program copyright 2000 Gary Meyer <email>gary@meyer.net</email></para>
 
-<para>Documentação copyright 2000 Morgan N. Sandquist
+<para>Documentation copyright 2000 Morgan N. Sandquist
 <email>morgan@pipeline.com</email></para>
 
 &license-links;
