@@ -13,10 +13,9 @@
 
 #include "ktvariable.h"
 
-#include <qmessagebox.h>  // These should be replaced by KMessageBox
-
 #include <kapp.h>     // kapp
 #include <klocale.h>  // i18n()
+#include <kmessagebox.h>
 
 #include "ctvariable.h"
 
@@ -180,9 +179,7 @@ void KTVariable::slotOK()
 {
   if (QString(cmbVariable->currentText()) == "")
   {
-    QMessageBox::information(this,
-      kapp->caption(),
-      i18n("Please enter the variable name."));
+    KMessageBox::information(this, i18n("Please enter the variable name."));
     cmbVariable->setFocus();
     return;
   }

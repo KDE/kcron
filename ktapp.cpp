@@ -13,8 +13,6 @@
 
 #include "ktapp.h"
 
-#include <qmessagebox.h>   // These should be replaced by KMessageBox!
-
 #include <kmenubar.h>
 #include <kaccel.h>
 #include <kmessagebox.h>
@@ -253,22 +251,20 @@ bool KTApp::queryClose()
   {
     KTApp* win = (KTApp*)parent();
 
-    int retVal = QMessageBox::information(win, caption(),
-      i18n("Scheduled tasks have been modified.\nDo you want to save changes?"),
-      QMessageBox::Yes | QMessageBox::Default,
-      QMessageBox::No,
-      QMessageBox::Cancel | QMessageBox::Escape);
+    int retVal = KMessageBox::warningYesNoCancel(win,
+      i18n("Scheduled tasks have been modified.\nDo you want to save changes?")
+      );
 
     switch (retVal)
     {
-      case QMessageBox::Yes:
+      case KMessageBox::Yes:
         cthost->apply();
         return true;
         break;
-      case QMessageBox::No:
+      case KMessageBox::No:
         return true;
         break;	
-      case QMessageBox::Cancel:
+      case KMessageBox::Cancel:
         return false;
         break;
       default:

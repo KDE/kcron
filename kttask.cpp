@@ -19,7 +19,6 @@
 #include <qlineedit.h>
 #include <qcheckbox.h>
 #include <qpushbutton.h>
-#include <qmessagebox.h>    // These should be replaced by KMessageBox
 #include <qbuttongroup.h>
 
 #include <kapp.h>
@@ -379,8 +378,7 @@ void KTTask::slotOK()
   
   if (showMessage)
   {
-    QMessageBox::information(this,
-      kapp->caption(), message);
+    KMessageBox::information(this, message);
     return;
   }
 
@@ -399,8 +397,7 @@ void KTTask::slotOK()
 
     if (!file.isReadable())
     {
-      QMessageBox::information(this,
-        kapp->caption(),
+      KMessageBox::information(this,
         i18n("Can not locate program.  Please re-enter."));
       leCommand->setFocus();
       return;
@@ -408,8 +405,7 @@ void KTTask::slotOK()
 
     if (!file.isExecutable())
     {
-      QMessageBox::information(this,
-        kapp->caption(),
+      KMessageBox::information(this,
         i18n("Program is not an executable file.  Please re-enter."));
       leCommand->setFocus();
       return;
@@ -477,7 +473,7 @@ void KTTask::slotBrowse()
   }
   else
   {
-    KMessageBox::sorry(0L,
+    KMessageBox::sorry(this,
       i18n("Only local or mounted files can be executed by crontab."));
   }
   
