@@ -15,14 +15,14 @@
 // I want to be able to reuse these classes with another GUI toolkit. -GM 11/99
 
 #include "cttask.h"
+
 #include "ctdebug.h"
 #include "cti18n.h"
-#include <time.h>
+#include <time.h>     // tm, strftime()
 
-CTTask::CTTask(string tokStr, string _comment, bool _syscron)
+CTTask::CTTask(string tokStr, string _comment, bool _syscron) :
+  syscron(_syscron)
 {
-  syscron = _syscron;
-
   if (tokStr.substr(0,2) == "#\\")
   {
     tokStr = tokStr.substr(2,tokStr.length() - 2);
@@ -31,9 +31,7 @@ CTTask::CTTask(string tokStr, string _comment, bool _syscron)
   else
     enabled = true;
 
-  int spacepos(0);
-
-  spacepos   = tokStr.find_first_of(" \t");
+  int spacepos(tokStr.find_first_of(" \t"));
   minute.initialize(tokStr.substr(0,spacepos));
 
   tokStr     = tokStr.substr(spacepos+1,tokStr.length()-1);
@@ -59,7 +57,7 @@ CTTask::CTTask(string tokStr, string _comment, bool _syscron)
     user       = tokStr.substr(0,spacepos);
   }
   else
-    user = string("");
+    user       = string("");
 
   command    = tokStr.substr(spacepos+1,tokStr.length()-1);
   comment    = _comment;
@@ -164,6 +162,29 @@ bool CTTask::dirty() const
 
 string CTTask::describe(bool shortNames) const
 {
+
+  // Of the whole program, this method is probably the trickiest.
+  // 
+  // This method creates the natural language description, such as
+  // "At 1:00am, every Sun".  
+  //
+  // First, I declare some strings for holding what can be internationalized.
+  // Note the tokens such as "MONTHS".  Translators should reuse these
+  // tokens in their translations.  See README.translators for more 
+  // information.
+  //
+  // Second, I get the descriptions from the component parts such as
+  // days of the month.
+  //
+  // Third, I get hour/minute time combinations.  Although a little bit
+  // awkward, I use the tm struct and strftime from <time.h>.  This
+  // way this code is portable across all Unixes.
+  //
+  // Fourth, I know that "every day of the week" and "every day of the
+  // month" simply makes "every day".
+  //
+  // Fifth and finally I do tag substitution to create the natural language
+  // description.
 
   string tmFormat(i18n("%l:%M%P"));
   string DOMFormat(i18n("DAYS_OF_MONTH of MONTHS"));

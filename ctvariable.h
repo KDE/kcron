@@ -18,17 +18,18 @@
 // I want to be able to reuse these classes with another GUI toolkit. -GM 11/99
 
 #include <string>
-#include <iostream.h>
+#include <iostream.h> // istream, ostream
 
 /**
-  * Encapsulation of cron environment variable entry.
+  * An environment variable (encapsulation of crontab environment variable
+  * entry).  Encapsulates parsing and tokenization.
   */
 class CTVariable
 {
 public:
 
 /**
-  * Constructs environment variable.
+  * Constructs environment variable from crontab format string.
   */
   CTVariable(string tokStr = "", string _comment = "");
 
@@ -43,7 +44,12 @@ public:
   void operator = (const CTVariable& source);
 
 /**
-  * Tokenizes cron table entry to output stream.
+  * Default destructor.
+  */
+  // ~CTVariable();
+
+/**
+  * Tokenizes environment variable to crontab format.
   */
   friend ostream& operator << (ostream& outputStream, const CTVariable& task);
 
@@ -58,7 +64,7 @@ public:
   void cancel();
 
 /**
-  * Indicates whether or not the task has been modified.
+  * Indicates whether or not the environment variable has been modified.
   */
   bool dirty() const;
 

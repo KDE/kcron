@@ -17,26 +17,25 @@
 // Do not introduce any Qt or KDE dependencies into the "CT"-prefixed classes.
 // I want to be able to reuse these classes with another GUI toolkit. -GM 11/99
 
+#include <string>
+
 #include "ctmonth.h"
 #include "ctdom.h"
 #include "ctdow.h"
 #include "cthour.h"
 #include "ctminute.h"
-
-#include <string>
-#include <iostream.h>
+#include <iostream.h> // istream, ostream
 
 /**
-  * Encapsulation of cron table entry.  Encapsulates
-  * parsing, tokenization, and natural language
-  * description.
+  * A scheduled task (encapsulation of crontab entry).  Encapsulates
+  * parsing, tokenization, and natural language description.
   */
 class CTTask
 {
 public:
 
 /**
-  * Constructs cron table task from tokenization string.
+  * Constructs scheduled task from crontab format string.
   */
   CTTask(string tokStr = "", string _comment = "", bool syscron = false);
 
@@ -51,7 +50,12 @@ public:
   void operator = (const CTTask& source);
 
 /**
-  * Tokenizes cron table entry to output stream.
+  * Default constructor.
+  */
+  // ~CTTask();
+
+/**
+  * Tokenizes scheduled task to crontab format.
   */
   friend ostream& operator << (ostream& outputStream, const CTTask& task);
 
@@ -71,7 +75,7 @@ public:
   bool dirty() const;
 
 /**
-  * Returns natural language description.
+  * Returns natural language description of the task's schedule.
   */
   string describe(bool format = 0) const;
 
@@ -100,4 +104,3 @@ private:
 };
 
 #endif // CTTASK_H
-
