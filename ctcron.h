@@ -27,6 +27,8 @@ class CTException;
 class CTTask;
 class CTVariable;
 
+struct passwd;
+
 /**
   * A user (encapsulation of a single crontab file).  Encapsulates
   * file i/o, parsing, tokenization, and natural language description.
@@ -44,6 +46,11 @@ public:
   * exception if the crontab file can not be found, read, or parsed.
   */
   CTCron(bool _syscron = false, std::string _login = "");
+/**
+  * If you already have a struct passwd, use it instead. This
+  * is never used for the system crontab.
+  */
+  CTCron(const struct passwd * _login = 0L);
 
 /**
   * Copy one user's tasks and environement variables to another user.
@@ -137,6 +144,10 @@ private:
   QString           tmpFileName;
 
   QString           error;
+
+protected:
+  // Initialize member variables from the struct passwd.
+  bool initFromPasswd(const struct passwd *);
 };
 
 typedef std::vector<CTTask*>::iterator CTTaskIterator;

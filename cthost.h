@@ -23,6 +23,7 @@
 #include <qstring.h> // Whatever
 
 class CTCron;
+struct passwd;
 
 /**
   * The host machine, or computer (encapsulation of crontab files on the
@@ -109,6 +110,7 @@ private:
   * Factory create a cron table.  Appends to the end of cron.
   */
   CTCron* createCTCron(bool _syscron = false, std::string _login = "");
+  CTCron* createCTCron(const struct passwd *);
 
   QString error;
 };

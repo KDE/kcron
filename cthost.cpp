@@ -17,36 +17,32 @@
 #include "cthost.h"
 
 #include "ctcron.h"
+
 #include <unistd.h>  // getuid()
-#include <fstream.h> // ifstream
+
+#include <sys/types.h>
+#include <pwd.h>
+
 
 using namespace std;
 
 CTHost::CTHost()
 {
+  struct passwd *pwd = 0L;
+
   // If it is the root user
   if (getuid() == 0)
   {
     // Create the system cron table.
     createCTCron(true);
 
-    // Get a user list out of the password file
-    ifstream inputStream("/etc/passwd");
-
-    const int MAX = 1024;
-    char buffer[MAX];
-    string line;
-    string login;
-
-    // Create each user's cron table.
-    while (inputStream)
+    // Read /etc/passwd
+    setpwent(); // restart
+    while((pwd=getpwent()))
     {
-      inputStream.getline(buffer, MAX);
-      line = buffer;
-      login = line.substr(0,line.find(":"));
-      if (login != "")
-        createCTCron(false, login);
+        createCTCron(pwd);
     }
+    setpwent(); // restart again for others
   }
   else
   // Non-root user, so just create user's cron table.
@@ -98,6 +94,19 @@ CTCron* CTHost::createCTCron(bool _syscron, string _login)
      error = p->errorMessage();
      delete p;
      return 0;
+  }
+  cron.push_back(p);
+  return p;
+}
+
+CTCron* CTHost::createCTCron(const struct passwd *pwd)
+{
+  CTCron *p = new CTCron(pwd);
+  if (p->isError())
+  {
+    error = p->errorMessage();
+    delete p;
+    return 0;
   }
   cron.push_back(p);
   return p;

@@ -45,7 +45,6 @@ CTCron::CTCron(bool _syscron, string _login) :
   tmpFileName = tmp.name();  
 
   QString readCommand;
-  passwd *pwd;
 
   if (uid == 0)
   // root, so provide requested crontab
@@ -61,15 +60,9 @@ CTCron::CTCron(bool _syscron, string _login) :
     {
       readCommand  = QString("crontab -u ") + _login.c_str() + " -l > " + KProcess::quote(tmpFileName);
       writeCommand = QString("crontab -u ") + _login.c_str() + " " + KProcess::quote(tmpFileName);
-      pwd = getpwnam(_login.c_str());
-      if (pwd == 0)
+      if (!initFromPasswd(getpwnam(_login.c_str())))
       {
          error = i18n("No password entry found for user '%1'").arg(_login.c_str());
-      }
-      else
-      {
-         login = pwd->pw_name;
-         name = pwd->pw_gecos;
       }
     }
   }
@@ -78,15 +71,9 @@ CTCron::CTCron(bool _syscron, string _login) :
   {
     readCommand  = "crontab -l > " + KProcess::quote(tmpFileName);
     writeCommand = "crontab "      + KProcess::quote(tmpFileName);
-    pwd  = getpwuid(uid);
-    if (pwd == 0)
+    if (!initFromPasswd(getpwuid(uid)))
     {
       error = i18n("No password entry found for uid '%1'").arg(uid);
-    }
-    else
-    {
-      login = pwd->pw_name;
-      name = pwd->pw_gecos;
     }
   }
 
@@ -109,6 +96,52 @@ CTCron::CTCron(bool _syscron, string _login) :
 
   initialTaskCount      = task.size();
   initialVariableCount  = variable.size();
+}
+
+CTCron::CTCron(const struct passwd *pwd)
+{
+  Q_ASSERT(pwd != 0L);
+
+  KTempFile tmp;
+  tmp.setAutoDelete(true);
+  tmp.close();
+  tmpFileName = tmp.name();  
+
+  QString readCommand  = QString("crontab -u ") + QString(pwd->pw_name) + " -l > " + KProcess::quote(tmpFileName);
+  writeCommand = QString("crontab -u ") + QString(pwd->pw_name) + " " + KProcess::quote(tmpFileName);
+
+  initFromPasswd(pwd);
+
+  initialTaskCount      = 0;
+  initialVariableCount  = 0;
+  
+  if (isError())
+     return;
+
+  // Don't set error if it can't be read, it means the user
+  // doesn't have a crontab.
+  if (system(QFile::encodeName(readCommand)) == 0)
+  {
+    ifstream cronfile(QFile::encodeName(tmpFileName));
+    cronfile >> *this;
+  }
+
+  initialTaskCount      = task.size();
+  initialVariableCount  = variable.size();
+}
+
+bool CTCron::initFromPasswd(const struct passwd *pwd)
+{
+   if (pwd == 0)
+   {
+      return false;
+   }
+   else
+   {
+      login = pwd->pw_name;
+      name = pwd->pw_gecos;
+      return true;
+   }
 }
 
 void CTCron::operator = (const CTCron& source)
