@@ -48,12 +48,12 @@ void CTMonth::initializeNames()
     const string shortMonthName[13] =
     {
       "",
-      (const char*)i18n("Jan"),  (const char*)i18n("Feb"),
-      (const char*)i18n("Mar"),  (const char*)i18n("Apr"),
-      (const char*)i18n("May"),  (const char*)i18n("Jun"),
-      (const char*)i18n("Jul"),  (const char*)i18n("Aug"),
-      (const char*)i18n("Sep"),  (const char*)i18n("Oct"),
-      (const char*)i18n("Nov"),  (const char*)i18n("Dec")
+      (const char*)i18n("January"),  (const char*)i18n("February"),
+      (const char*)i18n("March"),  (const char*)i18n("April"),
+      (const char*)i18n("May long","May"),  (const char*)i18n("June"),
+      (const char*)i18n("July"),  (const char*)i18n("August"),
+      (const char*)i18n("September"),  (const char*)i18n("October"),
+      (const char*)i18n("November"),  (const char*)i18n("December")
     };
   
     for (int i = 1; i <= 12; i++)
