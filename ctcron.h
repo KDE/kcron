@@ -21,6 +21,8 @@
 #include <string>
 #include <iostream>
 
+#include <qstring.h> // Anarchy! -WABA 
+
 class CTException;
 class CTTask;
 class CTVariable;
@@ -79,6 +81,17 @@ public:
   */
   std::string path() const;
 
+  /**
+   * Returns whether an error has occured
+   */
+  bool isError() { return !error.isEmpty(); }
+  
+  /**
+   * Return error description
+   */
+  QString errorMessage() { QString r = error; error = QString::null; return r; }  
+   
+
 /**
   * Indicates whether or not the crontab belongs to the system.
   */
@@ -123,6 +136,7 @@ private:
   std::string       writeCommand;
   std::string       tmpFileName;
 
+  QString           error;
 };
 
 typedef std::vector<CTTask*>::iterator CTTaskIterator;

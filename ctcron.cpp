@@ -17,16 +17,18 @@
 #include "ctcron.h"
 
 #include "cti18n.h"
-#include "ctexception.h"
 #include "cttask.h"
 #include "ctvariable.h"
 #include <fstream.h>     // ifstream, istream, ostream
 #include <unistd.h>      // getuid(), unlink()
 #include <pwd.h>         // pwd, getpwnam(), getpwuid()
 #include <stdio.h>
+#include <assert.h>
+
 #include <qfile.h>       // sprintf()
 
 #ifdef KDE_FIXES
+#include <klocale.h>
 #include <ktempfile.h>
 #endif
 
@@ -68,9 +70,14 @@ CTCron::CTCron(bool _syscron, string _login) :
       writeCommand = "crontab -u " + _login + " " + tmpFileName;
       pwd = getpwnam(_login.c_str());
       if (pwd == 0)
-        throw CTExceptionIO();
-      login = pwd->pw_name;
-      name = pwd->pw_gecos;
+      {
+         error = i18n("No password entry found for user '%1'").arg(_login.c_str());
+      }
+      else
+      {
+         login = pwd->pw_name;
+         name = pwd->pw_gecos;
+      }
     }
   }
   else
@@ -79,16 +86,27 @@ CTCron::CTCron(bool _syscron, string _login) :
     readCommand  = "crontab -l > " + tmpFileName;
     writeCommand = "crontab "      + tmpFileName;
     pwd  = getpwuid(uid);
-      if (pwd == 0)
-        throw CTExceptionIO();
-    login = pwd->pw_name;
-    name = pwd->pw_gecos;
+    if (pwd == 0)
+    {
+      error = i18n("No password entry found for uid '%1'").arg(uid);
+    }
+    else
+    {
+      login = pwd->pw_name;
+      name = pwd->pw_gecos;
+    }
   }
 
   if (name == "")
     name = login;
 
-  // Don't throw exception, if can't be read, it means the user
+  initialTaskCount      = 0;
+  initialVariableCount  = 0;
+  
+  if (isError())
+     return;
+
+  // Don't set error if it can't be read, it means the user
   // doesn't have a crontab.
   if (system(readCommand.c_str()) == 0)
   {
@@ -96,8 +114,7 @@ CTCron::CTCron(bool _syscron, string _login) :
     cronfile >> *this;
   }
 
-  if (unlink(tmpFileName.c_str()) != 0)
-    throw CTExceptionIO();
+  (void) unlink(tmpFileName.c_str());
 
   initialTaskCount      = task.size();
   initialVariableCount  = variable.size();
@@ -105,8 +122,7 @@ CTCron::CTCron(bool _syscron, string _login) :
 
 void CTCron::operator = (const CTCron& source)
 {
-  if (source.syscron)
-    throw CTException();
+  assert(!source.syscron);
 
   for (CTVariableIterator i = const_cast<CTCron&>(source).variable.begin();
     i != source.variable.end(); i++)
@@ -231,11 +247,15 @@ void CTCron::apply()
 
   // install temp file into crontab
   if (system(writeCommand.c_str()) != 0)
-    throw CTExceptionIO();
+  {
+    error = i18n("An error occured while updating crontab.");
+  }
 
   // remove the temp file
-  if(unlink(tmpFileName.c_str()) != 0)
-    throw CTExceptionIO();
+  (void) unlink(tmpFileName.c_str());
+
+  if (isError())
+    return;
 
   // mark as applied
   for (CTTaskIterator i = task.begin(); i != task.end(); i++)

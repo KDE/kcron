@@ -65,6 +65,11 @@ public:
   ~KTApp();
 
 /**
+ * Additional init
+ */
+ bool init();
+
+/**
   * Enable menu item/toolbar item.  Id is one of the static constants 
   * identified above.
   */

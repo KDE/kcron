@@ -17,12 +17,9 @@
 #include <iostream.h>
 #include <kcmdlineargs.h>
 #include <kaboutdata.h>
-#include "ctexception.h"
  
 int main(int argc, char* argv[]) 
 { 
-  try 
-  {
     static const char* description = I18N_NOOP("KDE Task Scheduler");
 
     KAboutData aboutData("kcron", I18N_NOOP("KCron"), 
@@ -36,6 +33,7 @@ int main(int argc, char* argv[])
   
     KApplication app(&aboutData);
  
+      
     if (app.isRestored())
       { 
         RESTORE(KTApp);
@@ -43,21 +41,9 @@ int main(int argc, char* argv[])
     else 
       {
         KTApp* kcron = new KTApp;
+        if (!kcron->init())
+           return 1;
         kcron->show();
       }
     return app.exec();
-  }
-
-  catch (CTExceptionIO& ctio)
-  {
-    cerr << (const char *)i18n("KCron fatal error: Unable to read or write file.").local8Bit() << endl;
-    return 1;
-  }
-  catch (...)
-  {
-    cerr << (const char *)i18n("KCron fatal error: Unknown.").local8Bit() << endl;
-    return 1;
-  }
-
-  return 0;
 }

@@ -17,7 +17,6 @@
 #include "cthost.h"
 
 #include "ctcron.h"
-#include "ctexception.h"
 #include <unistd.h>  // getuid()
 #include <fstream.h> // ifstream
 
@@ -65,7 +64,14 @@ CTHost::~CTHost()
 void CTHost::apply()
 {
   for (CTCronIterator i = cron.begin(); i != cron.end(); i++)
+  {
     (*i)->apply();
+    if ((*i)->isError())
+    {
+       error = (*i)->errorMessage();
+       return;
+    }
+  }
 }
 
 void CTHost::cancel()
@@ -86,15 +92,15 @@ bool CTHost::dirty()
 
 CTCron* CTHost::createCTCron(bool _syscron, string _login)
 {
-  try {
-    CTCron *p = new CTCron(_syscron, _login);
-    cron.push_back(p);
-    return p;
-  }
-  catch (CTExceptionIO& ctio)
+  CTCron *p = new CTCron(_syscron, _login);
+  if (p->isError())
   {
-    return 0;
+     error = p->errorMessage();
+     delete p;
+     return 0;
   }
+  cron.push_back(p);
+  return p;
 }
 
 bool CTHost::root() const

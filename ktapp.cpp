@@ -65,7 +65,17 @@ KTApp::KTApp() : KMainWindow(0)
 
   // Read options.
   readOptions();
+}
 
+bool KTApp::init()
+{
+  if (cthost->isError())
+  {
+    KMessageBox::error(this, i18n("The following error occured while initializing KCron:"
+                                  "\n\n%1\n\nKCron will now exit.\n").arg(cthost->errorMessage()));
+    return false;
+  }
+  
   // Display greeting screen.
   // if there currently are no scheduled tasks...
   if (!cthost->root())
@@ -85,9 +95,10 @@ KTApp::KTApp() : KMainWindow(0)
     if (taskCount == 0)
     {
       show();
-      KMessageBox::information(0L, i18n("You can use this application to schedule programs to run in the background.\nTo schedule a new task now, click on the Tasks folder and select Edit/New from the menu."), i18n("Welcome to the Task Scheduler"), "welcome");
+      KMessageBox::information(this, i18n("You can use this application to schedule programs to run in the background.\nTo schedule a new task now, click on the Tasks folder and select Edit/New from the menu."), i18n("Welcome to the Task Scheduler"), "welcome");
     }
   }
+  return true;
 }
 
 KTApp::~KTApp()
@@ -288,6 +299,11 @@ bool KTApp::queryClose()
     {
       case KMessageBox::Yes:
         cthost->apply();
+        if (cthost->isError())
+        {
+           KMessageBox::error(win, cthost->errorMessage());
+           return false;
+        }
         return true;
         break;
       case KMessageBox::No:
@@ -318,6 +334,10 @@ void KTApp::slotFileSave()
   slotStatusMsg(i18n("Saving..."));
   cthost->apply();
   slotStatusMsg(i18n("Ready."));
+  if (cthost->isError())
+  {
+     KMessageBox::error(this, cthost->errorMessage());
+  }
 }
 
 void KTApp::slotFilePrint()

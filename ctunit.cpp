@@ -31,7 +31,7 @@ CTUnit<min, max>::CTUnit(const string &tokStr)
 template<int min, int max>
 CTUnit<min, max>::CTUnit(const CTUnit& source)
 {
-  for (int i = min; i <= max; i++)
+  for (int i = 0; i <= max; i++)
   {
     initialEnabled[i] = 0;
     enabled[i] = source.enabled[i];
@@ -48,7 +48,7 @@ CTUnit<min, max>::~CTUnit()
 template<int min, int max>
 void CTUnit<min, max>::operator = (const CTUnit<min,max>& unit)
 {
-  for (int i = min; i <= max; i++)
+  for (int i = 0; i <= max; i++)
     enabled[i] = unit.enabled[i];
   isDirty = true;
   return;
@@ -57,7 +57,7 @@ void CTUnit<min, max>::operator = (const CTUnit<min,max>& unit)
 template<int min, int max>
 void CTUnit<min, max>::initialize(const string &tokStr)
 {
-  for (int i = min; i <= max; i++)
+  for (int i = 0; i <= max; i++)
     enabled[i] = 0;
 
   parse(tokStr);

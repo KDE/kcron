@@ -20,6 +20,8 @@
 #include <vector>
 #include <string>
 
+#include <qstring.h> // Whatever
+
 class CTCron;
 
 /**
@@ -70,6 +72,17 @@ public:
   bool root() const;
 
 /**
+  * Indicates an error has occured.
+  */
+  bool isError() { return !error.isEmpty(); }
+
+/**
+  * Error message
+  */
+  QString errorMessage() { QString r = error; error = QString::null; return r; }  
+
+
+/**
   * User(s). 
   *
   * If the user is the root user, the cron vector will have a member for
@@ -97,6 +110,7 @@ private:
   */
   CTCron* createCTCron(bool _syscron = false, std::string _login = "");
 
+  QString error;
 };
 
 typedef std::vector<CTCron*>::iterator CTCronIterator;
