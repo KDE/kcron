@@ -218,7 +218,6 @@ void KTApp::saveOptions()
   config->writeEntry(QString("Geometry"), size());
   config->writeEntry(QString("Show Toolbar"), toolBar()->isVisible());
   config->writeEntry(QString("Show Statusbar"), statusBar()->isVisible());
-  config->writeEntry(QString("MenuBarPos"), (int)menuBar->menuBarPos());
   config->writeEntry(QString("ToolBarPos"),  (int)toolBar()->barPos());
 }
 
@@ -239,17 +238,11 @@ void KTApp::readOptions()
     enableStatusBar(KStatusBar::Hide);
 	
   // bar position settings
-  KMenuBar::menuPosition menu_bar_pos;
-  menu_bar_pos=(KMenuBar::menuPosition)
-    config->readNumEntry(QString("MenuBarPos"),
-    KMenuBar::Top);
-
   KToolBar::BarPosition tool_bar_pos;
   tool_bar_pos=(KToolBar::BarPosition)
     config->readNumEntry(QString("ToolBarPos"),
     KToolBar::Top);
 
-  menuBar->setMenuBarPos(menu_bar_pos);
   toolBar()->setBarPos(tool_bar_pos);
 	
   QSize size=config->readSizeEntry(QString("Geometry"));
