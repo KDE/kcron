@@ -38,6 +38,7 @@
 #include "ktmshell.xpm"
 #include "kttask.xpm"
 #include "ktmtask.xpm"
+#include "ktfilesave.xpm"
 
 QPixmap KTIcon::getMiniIcon(const QString& name)
 {
@@ -51,7 +52,7 @@ QPixmap KTIcon::getIcon(const QString& name)
 
 QPixmap KTIcon::save()
 {
-  return getIcon("filefloppy.xpm");
+  return (const char**)ktfilesave;
 }
 
 QPixmap KTIcon::print()

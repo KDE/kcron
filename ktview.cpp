@@ -440,9 +440,11 @@ void KTView::enable(bool enable)
 
 void KTView::slotMenu(QListViewItem* qlvi, const QPoint& qp, int i)
 {
-  listView->setSelected(qlvi, true);
-  slotSetCurrent(qlvi);
-  ktapp->slotEdit(qp);
+  if (qlvi !=0 ) {
+    listView->setSelected(qlvi, true);
+    slotSetCurrent(qlvi);
+    ktapp->slotEdit(qp);
+  }
 }
 
 void KTView::slotEdit(QListViewItem* qlvi)

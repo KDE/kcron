@@ -158,7 +158,7 @@ void KTApp::initMenuBar()
   help_menu = new QPopupMenu();
 
   QString aboutstring = caption()  + " " + VERSION + "\n\n" +
-    "(c) 1999\nGary Meyer <gary@meyer.net>\nRobert Berry <rjmber@ntlworld.com>";
+    "(c) 1999-2000\nGary Meyer <gary@meyer.net>\nRobert Berry <rjmber@ntlworld.com>";
 
   help_menu = helpMenu(aboutstring);
 
@@ -545,7 +545,7 @@ void KTApp::statusCallback(int id_){
       break;
 
     case menuOptionsShowToolbar:
-      slotStatusHelpMsg(i18n("Enables/disable the tool bar."));
+      slotStatusHelpMsg(i18n("Enable/disable the tool bar."));
       break;
     case menuOptionsShowStatusbar:
       slotStatusHelpMsg(i18n("Enable/disable the status bar."));

@@ -117,6 +117,7 @@ EXTRA_DIST = \
 	kttask.xpm \
 	ktuser.xpm \
 	ktvariable.xpm \
+	ktfilesave.xpm \
 	Makefile.am
 
 INCLUDES= $(all_includes)

@@ -27,10 +27,10 @@ KTPrintOpt::KTPrintOpt(bool root) :
 //  printAllUsers = false;
 
   chkPrintCrontab = new QCheckBox(i18n("Print Cron&tab"), this, "chkPrintCrontab");
-  chkPrintCrontab->setGeometry(20, 10, 100, 25);
+  chkPrintCrontab->setGeometry(20, 10, 200, 25);
 
   chkPrintAllUsers = new QCheckBox(i18n("Print &All Users"), this, "chkPrintAllUsers");
-  chkPrintAllUsers->setGeometry(20, 40, 100, 25);
+  chkPrintAllUsers->setGeometry(20, 40, 200, 25);
 
   if (!root) {
     chkPrintAllUsers->setChecked(false);
