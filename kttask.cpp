@@ -33,7 +33,7 @@
 #include "kticon.h"
 
 KTTask::KTTask(CTTask* _cttask, const QString & _caption)
-  : KDialog( 0, "kttask", true, WStyle_DialogBorder )
+       :KDialog( 0, "kttask", true, WStyle_DialogBorder )
 {
   cttask = _cttask;
 
@@ -298,6 +298,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   key_accel->readSettings();
 
   setFixedSize( minimumSize() );
+  slotDailyChanged();
 }
 
 KTTask::~KTTask()
