@@ -102,4 +102,4 @@ Comment[xh]=Cwangcisa udweliso lweenkqubo ezizakusebenza kwisiqalo
 Comment[zh_CN.GB2312]=在后台调度程序的运行
 Comment[zh_TW.Big5]=排程程式在背景執行
 Terminal=0
-KDE-X-StartupNotify=true
+X-KDE-StartupNotify=true
