@@ -21,7 +21,7 @@
 #include <string>
 
 /**
-  * Cron table task day of month.
+  * Scheduled task days of month.
   */
 class CTDayOfMonth : public CTUnit<1,31>
 {
@@ -32,6 +32,21 @@ public:
   CTDayOfMonth(const string& tokStr = "");
 
 /**
+  * Default copy constructor.
+  */
+  // CTDayOfMonth(const CTDayOfMonth& source);
+
+/**
+  * Default assignment operator
+  */
+  // void operator = (const CTDayOfMonth& source);
+
+/**
+  * Default destructor.
+  */
+  // ~CTDayOfMonth();
+
+/**
   * Get natural language description.
   */
   string describe() const;
@@ -39,12 +54,10 @@ public:
 /**
   * Get day of month name.
   */
-  string getName(const int ndx,
-    const bool format = CTDayOfMonth::longFormat) const;
+  string getName(const int ndx) const;
 
 private:
   string shortName[32];
-  string longName[32];
 };
 
 #endif // CTDOM_H
