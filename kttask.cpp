@@ -486,12 +486,8 @@ void KTTask::slotCancel()
 
 void KTTask::slotBrowse()
 {
-  QString fileName = KFileDialog::getOpenFileName();
-  if (fileName.length() > 0)
-    leCommand->setText((const char*)fileName);
+  KURL url = KFileDialog::getOpenURL();
+  if( !url.isEmpty() )
+    leCommand->setText((const char*)url.url());
   leCommand->setFocus();
 }
-
-
-
-
