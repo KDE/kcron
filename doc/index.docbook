@@ -48,8 +48,8 @@
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2002-05-03</date>
-<releaseinfo>3.00.00</releaseinfo>
+<date>2002-10-03</date>
+<releaseinfo>3.0.8</releaseinfo>
 
 <keywordset>
 <keyword>KDE</keyword>
@@ -596,7 +596,7 @@ by selecting
 <guimenu>File</guimenu> <guimenuitem>Save</guimenuitem> </menuchoice>.</para>
 
 <para>Alternatively, you can simply press <keycombo
-action="simul">&Ctrl;<keycap>s</keycap></keycombo>. Additions or changes
+action="simul">&Ctrl;<keycap>S</keycap></keycombo>. Additions or changes
 will not actually be made until this is done.</para>
 
 </sect1>
