@@ -50,8 +50,8 @@
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2002-10-03</date>
-<releaseinfo>3.0.8</releaseinfo>
+<date>2003-09-16</date>
+<releaseinfo>3.1.91</releaseinfo>
 
 <abstract><para>&kcron; is an application that schedules programs to be
 run.</para></abstract>
@@ -784,19 +784,19 @@ variable.</action></para></listitem>
 </sect2>
 
 <sect2>
-<title>The <guimenu>Options</guimenu> Menu</title>
+<title>The <guimenu>Settings</guimenu> Menu</title>
 
 <variablelist>
 <varlistentry>
 <term><menuchoice>
-<guimenu>Options</guimenu>
+<guimenu>Settings</guimenu>
 <guimenuitem>Show Toolbar</guimenuitem>
 </menuchoice></term>
 <listitem><para><action>Displays toolbar.</action></para></listitem>
 </varlistentry>
 <varlistentry>
 <term><menuchoice>
-<guimenu>Options</guimenu>
+<guimenu>Settings</guimenu>
 <guimenuitem>Show Statusbar</guimenuitem>
 </menuchoice></term>
 <listitem><para><action>Displays statusbar.</action></para></listitem>
