@@ -14,6 +14,9 @@
 #ifndef CTHOST_H
 #define CTHOST_H
 
+// Do not introduce any Qt or KDE dependencies into the "CT"-prefixed classes.
+// I want to be able to reuse these classes with another GUI toolkit. -GM 11/99
+
 #include "ctexception.h"
 #include "ctcron.h"
 #include <vector.h>

@@ -14,6 +14,13 @@
 #ifndef CTI18N_H
 #define CTI18N_H
 
+// Do not introduce any Qt or KDE dependencies into the "CT"-prefixed classes.
+// I want to be able to reuse these classes with another GUI toolkit. -GM 11/99
+//
+// Note: I do make an exception to the above rule for this class, necessary
+// to support internationalization.  It is controlled with macros, but still
+// don't introduce any other Qt or KDE dependencies here. -GM 11/99
+
 #ifdef KDE
 #ifdef KDE1
 #include <kapp.h>

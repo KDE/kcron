@@ -11,6 +11,9 @@
  *   (at your option) any later version.                                   * 
  ***************************************************************************/
 
+// Do not introduce any Qt or KDE dependencies into the "CT"-prefixed classes.
+// I want to be able to reuse these classes with another GUI toolkit. -GM 11/99
+
 #include "ctdom.h"
 #include "cti18n.h"
 

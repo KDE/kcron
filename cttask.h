@@ -14,6 +14,9 @@
 #ifndef CTTASK_H
 #define CTTASK_H
 
+// Do not introduce any Qt or KDE dependencies into the "CT"-prefixed classes.
+// I want to be able to reuse these classes with another GUI toolkit. -GM 11/99
+
 #include "ctmonth.h"
 #include "ctdom.h"
 #include "ctdow.h"
