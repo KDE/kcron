@@ -21,15 +21,31 @@
 #include <string>
 
 /**
-  * Cron table task month.
+  * Scheduled task months.
   */
 class CTMonth : public CTUnit<1,12>
 {
 public:
+
 /**
   * Constructs from a tokenized string.
   */
   CTMonth(const string& tokStr = "");
+
+/**
+  * Default copy constructor.
+  */
+  // CTMonth(const CTMonth& source);
+
+/**
+  * Default assignment operator
+  */
+  // void operator = (const CTMonth& source);
+
+/**
+  * Default destructor.
+  */
+  // ~CTMonth();
 
 /**
   * Get natural language description.

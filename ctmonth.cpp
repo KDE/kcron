@@ -16,7 +16,7 @@
 
 #include "ctmonth.h"
 #include "cti18n.h"
-#include <langinfo.h>
+#include <langinfo.h>  // nl_langinfo()
 
 CTMonth::CTMonth(const string& tokStr) :
   CTUnit<1,12>(tokStr)
