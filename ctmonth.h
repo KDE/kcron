@@ -59,6 +59,7 @@ public:
     const bool format = CTMonth::longFormat);
 
 private:
+  static void initializeNames();
   static string shortName[13];
   static string longName[13];
 };

@@ -34,12 +34,19 @@ CTMonth::CTMonth(const string& tokStr) :
 
 string CTMonth::describe () const
 {
+  initializeNames();
   return (count() == 12) ?
     (const char*)i18n("every month ") :
     CTUnit<1,12>::describe(shortName);
 }
 
 string CTMonth::getName(const int ndx, const bool format)
+{
+  initializeNames();
+  return (format == shortFormat) ? shortName[ndx] : longName[ndx];
+}
+
+void CTMonth::initializeNames()
 {
   if (shortName[1] == "")
   {
@@ -71,6 +78,4 @@ string CTMonth::getName(const int ndx, const bool format)
       longName[i]  = longMonthName[i];
     }
   }
-
-  return (format == shortFormat) ? shortName[ndx] : longName[ndx];
 }

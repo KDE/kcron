@@ -64,6 +64,7 @@ public:
     const bool format = CTDayOfWeek::longFormat);
 
 private:
+  static void initializeNames();
   static string shortName[8];
   static string longName[8];
 };

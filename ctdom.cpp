@@ -30,12 +30,19 @@ CTDayOfMonth::CTDayOfMonth(const string& tokStr) :
 
 string CTDayOfMonth::describe() const
 {
+ initializeNames();
   return (count() == 31) ?
     (const char*)i18n("every day ") :
     CTUnit<1,31>::describe(shortName);
 }
 
 string CTDayOfMonth::getName(const int ndx)
+{
+  initializeNames();
+  return shortName[ndx];
+}
+
+void CTDayOfMonth::initializeNames()
 {
   if (shortName[1] == "")
   {
@@ -65,6 +72,4 @@ string CTDayOfMonth::getName(const int ndx)
       shortName[i] = shortDOMName[i];
     }
   }
-
-  return shortName[ndx];
 }

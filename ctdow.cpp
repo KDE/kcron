@@ -55,6 +55,7 @@ void CTDayOfWeek::initialize(const string &tokStr)
 
 string CTDayOfWeek::describe() const
 {
+  initializeNames();
   if (count() == 7)
     return (const char*)i18n("every day ");
   else if (get(1) && get(2) && get(3) && get(4) && get(5))
@@ -64,6 +65,12 @@ string CTDayOfWeek::describe() const
 }
 
 string CTDayOfWeek::getName(const int ndx, const bool format)
+{
+  initializeNames();
+  return (format == shortFormat) ? shortName[ndx] : longName[ndx];
+}
+
+void CTDayOfWeek::initializeNames()
 {
   if (shortName[1] == "")
   {
@@ -91,6 +98,4 @@ string CTDayOfWeek::getName(const int ndx, const bool format)
       longName[i]  = longDOWName[i];
     }
   }
-  
-  return (format == shortFormat) ? shortName[ndx] : longName[ndx];
 }

@@ -57,6 +57,7 @@ public:
   static string getName(const int ndx);
 
 private:
+  static void initializeNames();
   static string shortName[32];
 };
 
