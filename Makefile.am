@@ -3,7 +3,7 @@ bin_PROGRAMS = kcron
 kcron_SOURCES = kttask.cpp ktvariable.cpp ktview.cpp ktapp.cpp ctvariable.cpp cttask.cpp ctmonth.cpp cthost.cpp ctdow.cpp ctdom.cpp ctcron.cpp main.cpp 
 kcron_LDADD   =  -lICE -lkfile -lkdeui -lkdecore -lqt -lXext -lX11 $(LIBSOCKET)
 
-SUBDIRS = 
+SUBDIRS = docs
 
 EXTRA_DIST = main.cpp resource.h kcron.desktop kcron.xpm ctcron.cpp ctcron.h ctdebug.h ctdom.cpp ctdom.h ctdow.cpp ctdow.h ctexception.h cthost.cpp cthost.h cthour.h cti18n.h ctminute.h ctmonth.cpp ctmonth.h cttask.cpp cttask.h ctunit.h ctvariable.cpp ctvariable.h ktapp.h ktapp.cpp ktview.cpp ktview.h ktlistvar.h ktvariable.h ktvariable.cpp kttask.h kttask.cpp kticon.h ktlistcron.h ktlisttask.h 
 
