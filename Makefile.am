@@ -95,11 +95,9 @@ EXTRA_DIST = \
 	kcron.desktop \
 	kcron.lsm \
 	ktapp.xpm \
-	ktfolder.xpm \
 	kthome.xpm \
 	ktmail.xpm \
 	ktmapp.xpm \
-	ktmfolder.xpm \
 	ktmhome.xpm \
 	ktmmail.xpm \
 	ktmpath.xpm \
@@ -114,7 +112,6 @@ EXTRA_DIST = \
 	kttask.xpm \
 	ktuser.xpm \
 	ktvariable.xpm \
-	ktfilesave.xpm \
 	Makefile.am
 
 INCLUDES= $(all_includes)

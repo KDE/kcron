@@ -24,8 +24,6 @@
 #include "ktmuser.xpm"
 #include "ktsystem.xpm"
 #include "ktmsystem.xpm"
-#include "ktfolder.xpm"
-#include "ktmfolder.xpm"
 #include "ktvariable.xpm"
 #include "ktmvariable.xpm"
 #include "kthome.xpm"
@@ -38,7 +36,6 @@
 #include "ktmshell.xpm"
 #include "kttask.xpm"
 #include "ktmtask.xpm"
-#include "ktfilesave.xpm"
 
 QPixmap KTIcon::getMiniIcon(const QString& name)
 {
@@ -48,38 +45,6 @@ QPixmap KTIcon::getMiniIcon(const QString& name)
 QPixmap KTIcon::getIcon(const QString& name)
 {
   return BarIcon(name);
-}
-
-QPixmap KTIcon::save()
-{
-  // return (const char**)ktfilesave;
-  // why do they keep putting filesave.xpm in and out?
-  return getIcon("filesave.xpm");
-}
-
-QPixmap KTIcon::print()
-{
-  return getIcon("fileprint.xpm");
-}
-
-QPixmap KTIcon::cut()
-{
-  return getIcon("editcut.xpm");
-}
-
-QPixmap KTIcon::copy()
-{
-  return getIcon("editcopy.xpm");
-}
-
-QPixmap KTIcon::paste()
-{
-  return getIcon("editpaste.xpm");
-}
-
-QPixmap KTIcon::help()
-{
-  return getIcon("help.xpm");
 }
 
 QPixmap KTIcon::application(bool mini)
@@ -109,9 +74,9 @@ QPixmap KTIcon::user(bool mini)
 QPixmap KTIcon::variables(bool mini)
 {
   if (mini)
-    return (const char**)ktmfolder;
+    return getMiniIcon("folder");
   else
-    return (const char**)ktfolder;
+    return getIcon("folder");
 }
 
 QPixmap KTIcon::variable(bool mini)
@@ -157,9 +122,9 @@ QPixmap KTIcon::path(bool mini)
 QPixmap KTIcon::tasks(bool mini)
 {
   if (mini)
-    return (const char**)ktmfolder;
+    return getMiniIcon("folder");
   else
-    return (const char**)ktfolder;
+    return getIcon("folder");
 }
 
 QPixmap KTIcon::task(bool mini)

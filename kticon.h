@@ -28,12 +28,6 @@ public:
 
   static QPixmap getMiniIcon(const QString& name);
   static QPixmap getIcon(const QString& name);
-  static QPixmap save();
-  static QPixmap print();
-  static QPixmap cut();
-  static QPixmap copy();
-  static QPixmap paste();
-  static QPixmap help();
   static QPixmap application(bool mini);
   static QPixmap system(bool mini);
   static QPixmap user(bool mini);
