@@ -66,6 +66,7 @@ bool CTHost::apply()
   for (CTCronIterator i = cron.begin(); i != cron.end(); i++)
     if (!(*i)->apply())
        return false;
+  return true;
 }
 
 void CTHost::cancel()
