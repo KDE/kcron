@@ -181,10 +181,12 @@ void KTView::print () const
   else
     ktli = (KTListItem*)listView->currentItem();
 
-    //There is still a small bug here, as user may have a task or variable
-    //highlighted which means the output will be just that selected item and
-    //its children.
+  //Check that the correct item is selected, they must
+  //select the top level entry for all items to print
 
+  while (ktli->depth() != 0)
+    ktli = (KTListItem*)ktli->parent(); 
+ 
   user = ktli; //Used to store user's name
 
   KTPrint printer;

@@ -16,6 +16,8 @@
 #include <qstring.h>
 #include <qpaintdevicemetrics.h>
 
+#include <iostream.h>
+
 #include "ktprint.h"
 
 const int KTPrint::alignTextLeft             (1000);
@@ -107,8 +109,9 @@ void KTPrint :: print (QString str, int col, int alignment, bool wordWrap)
 
   int format;
  
-  if (paint==NULL)
+  if (paint==NULL) 
     return;
+  
 	
    //Setup the alignment
   switch (alignment) {
