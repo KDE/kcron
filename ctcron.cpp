@@ -19,7 +19,6 @@
 #include "cti18n.h"
 #include "cttask.h"
 #include "ctvariable.h"
-#include <fstream.h>     // ifstream, istream, ostream
 #include <unistd.h>      // getuid(), unlink()
 #include <pwd.h>         // pwd, getpwnam(), getpwuid()
 #include <stdio.h>
@@ -30,6 +29,8 @@
 #include <kprocess.h>
 #include <klocale.h>
 #include <ktempfile.h>
+
+#include <ostream>
 
 using namespace std;
 

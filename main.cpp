@@ -14,13 +14,12 @@
 #include <kapplication.h>
 #include <klocale.h>
 #include "ktapp.h"
-#include <iostream.h>
 #include <kcmdlineargs.h>
 #include <kaboutdata.h>
  
 int main(int argc, char* argv[]) 
 { 
-    static const char* description = I18N_NOOP("KDE Task Scheduler");
+    static const char description[] = I18N_NOOP("KDE Task Scheduler");
 
     KAboutData aboutData("kcron", I18N_NOOP("KCron"), 
       VERSION, description, KAboutData::License_GPL, 
