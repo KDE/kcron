@@ -89,7 +89,7 @@ KTApp::KTApp() : KMainWindow(0)
     if (taskCount == 0)
     {
       show();
-      KMessageBox::information(0L, i18n("You can use this application to schedule programs to run in the background.\nTo schedule a new task now, click on the Tasks folder and select Edit/New from the menu."), i18n("Welcome to the Task Scheduler"), "welcome");
+      KMessageBox::information(this, i18n("You can use this application to schedule programs to run in the background.\nTo schedule a new task now, click on the Tasks folder and select Edit/New from the menu."), i18n("Welcome to the Task Scheduler"), "welcome");
     }
   }
 }
@@ -295,16 +295,19 @@ bool KTApp::queryClose()
 {
   if(cthost->dirty())
   {
-    KTApp* win = (KTApp*)parent();
-
-    int retVal = KMessageBox::warningYesNoCancel(win,
+    int retVal = KMessageBox::warningYesNoCancel(this,
       i18n("Scheduled tasks have been modified.\nDo you want to save changes?")
       );
 
     switch (retVal)
     {
       case KMessageBox::Yes:
-        cthost->apply();
+        if (!cthost->apply())
+        {
+           KMessageBox::error(this, i18n("An error occured while saving.\n"
+                                        "Please check that you have permission to run the crontab program."));
+           return false;
+        }
         return true;
         break;
       case KMessageBox::No:
@@ -334,6 +337,13 @@ void KTApp::slotFileSave()
 {
   slotStatusMsg(i18n("Saving..."));
   cthost->apply();
+  if (!cthost->apply())
+  {
+     slotStatusMsg(i18n("Error."));
+     KMessageBox::error(this, i18n("An error occured while saving.\n"
+                                  "Please check that you have permission to run the crontab program."));
+     return;
+  }
   slotStatusMsg(i18n("Ready."));
 }
 

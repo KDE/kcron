@@ -17,7 +17,6 @@
 #include "ctcron.h"
 
 #include "cti18n.h"
-#include "ctexception.h"
 #include "cttask.h"
 #include "ctvariable.h"
 #include <fstream.h>     // ifstream, istream, ostream
@@ -25,6 +24,7 @@
 #include <pwd.h>         // pwd, getpwnam(), getpwuid()
 #include <stdio.h>
 #include <qfile.h>       // sprintf()
+#include <assert.h>
 
 #ifdef KDE_FIXES
 #include <ktempfile.h>
@@ -67,10 +67,16 @@ CTCron::CTCron(bool _syscron, string _login) :
       readCommand  = "crontab -u " + _login + " -l > " + tmpFileName;
       writeCommand = "crontab -u " + _login + " " + tmpFileName;
       pwd = getpwnam(_login.c_str());
-      if (pwd == 0)
-        throw CTExceptionIO();
-      login = pwd->pw_name;
-      name = pwd->pw_gecos;
+      if (pwd)
+      {
+        login = pwd->pw_name;
+        name = pwd->pw_gecos;
+      }
+      else
+      {
+        login = "nobody";
+        name = "Unknown";
+      }
     }
   }
   else
@@ -79,10 +85,16 @@ CTCron::CTCron(bool _syscron, string _login) :
     readCommand  = "crontab -l > " + tmpFileName;
     writeCommand = "crontab "      + tmpFileName;
     pwd  = getpwuid(uid);
-      if (pwd == 0)
-        throw CTExceptionIO();
-    login = pwd->pw_name;
-    name = pwd->pw_gecos;
+    if (pwd)
+    {
+      login = pwd->pw_name;
+      name = pwd->pw_gecos;
+    }
+    else
+    {
+      login = "nobody";
+      name = "Unknown";
+    }
   }
 
   if (name == "")
@@ -96,8 +108,7 @@ CTCron::CTCron(bool _syscron, string _login) :
     cronfile >> *this;
   }
 
-  if (unlink(tmpFileName.c_str()) != 0)
-    throw CTExceptionIO();
+  unlink(tmpFileName.c_str());
 
   initialTaskCount      = task.size();
   initialVariableCount  = variable.size();
@@ -105,8 +116,9 @@ CTCron::CTCron(bool _syscron, string _login) :
 
 void CTCron::operator = (const CTCron& source)
 {
+  assert(!source.syscron);
   if (source.syscron)
-    throw CTException();
+    return;
 
   for (CTVariableIterator i = const_cast<CTCron&>(source).variable.begin();
     i != source.variable.end(); i++)
@@ -223,19 +235,20 @@ CTCron::~CTCron()
     delete *i;
 }
 
-void CTCron::apply()
+bool CTCron::apply()
 {
   // write to temp file
   ofstream cronfile(tmpFileName.c_str());
   cronfile << *this << flush;
 
   // install temp file into crontab
-  if (system(writeCommand.c_str()) != 0)
-    throw CTExceptionIO();
+  int result = system(writeCommand.c_str());
 
   // remove the temp file
-  if(unlink(tmpFileName.c_str()) != 0)
-    throw CTExceptionIO();
+  unlink(tmpFileName.c_str());
+  
+  if (result != 0)
+     return false;
 
   // mark as applied
   for (CTTaskIterator i = task.begin(); i != task.end(); i++)
@@ -246,6 +259,7 @@ void CTCron::apply()
 
   initialTaskCount = task.size();
   initialVariableCount = variable.size();
+  return true;
 }
 
 void CTCron::cancel()

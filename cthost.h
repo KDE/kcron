@@ -52,7 +52,7 @@ public:
 /**
   * Apply changes.
   */
-  void apply();
+  bool apply();
 
 /**
   * Cancel changes.
