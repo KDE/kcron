@@ -12,6 +12,7 @@
  ***************************************************************************/
 
 #include <kapp.h>
+#include <klocale.h>
 #include "ktapp.h"
 #include <iostream.h>
 
