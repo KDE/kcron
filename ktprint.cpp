@@ -17,6 +17,7 @@
 #include <qpaintdevicemetrics.h>
 
 #include <ktprintopt.h>
+#include <klocale.h>
 #include "ktprint.h"
 
 const int KTPrint::alignTextLeft             (1000);
@@ -78,7 +79,7 @@ bool KTPrint:: start ()
   prnt->setDocName("Cron Tab");
   prnt->addDialogPage(new KTPrintOpt(root));
 
-  if (prnt->setup()) { //Setup a printer
+  if (prnt->setup(0L, i18n("Print Cron Tab"))) { //Setup a printer
     if (paint!=NULL) delete paint;
     paint = new  QPainter ();
     paint->begin(prnt);
