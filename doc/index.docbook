@@ -1,6 +1,7 @@
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook V3.1-Based Variant V1.0//EN" [
  <!ENTITY kcron "<application>kcron</application>">
 ]>
+
 <book lang="en">
 <bookinfo>
 <title>The KCron Handbook</title>
@@ -8,16 +9,20 @@
 <author>
 <firstname>Gary</firstname>
 <surname>Meyer</surname>
-<affiliation><address><email><ulink url="mailto:gary@meyer.net">gary@meyer.net</ulink></email></address></affiliation>
+<affiliation><address><email>gary@meyer.net</email></address></affiliation>
 </author>
 </authorgroup>
-<date>Version 0.6, November 1, 1999</date>
-<releaseinfo><!-- information about this particular version --></releaseinfo>
+<date>01/11/1999</date>
+<releaseinfo>0.06.00</releaseinfo>
 <abstract>
 <para>This Handbook describes KCron Version 0.6</para>
-<para></para><!-- Merge this with the previous paragraph; it comes from <META NAME="description" CONTENT="..."> --></abstract>
+</abstract>
 <keywordset>
 <keyword>KDE</keyword>
+<keyword>KCron</keyword>
+<keyword>cron</keyword>
+<keyword>crontab</keyword>
+<keyword>scheduler</keyword>
 </keywordset>
 </bookinfo>
 
