@@ -60,4 +60,4 @@ GenericName[zu]=Umgcini sikhathi Somsebenzi
 Terminal=0
 X-KDE-StartupNotify=true
 X-DCOP-ServiceType=Multi
-Categories=QT;KDE;System
+Categories=Qt;KDE;System
