@@ -79,6 +79,7 @@ void KTView::refresh()
   listView->setFrameStyle(QListView::Panel | QListView::Sunken);
   listView->setRootIsDecorated(true);
   listView->setAllColumnsShowFocus(true);
+  listView->setShowSortIndicator(true);
 
   const CTHost& cth(ktapp->getCTHost());
 
