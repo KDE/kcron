@@ -122,9 +122,9 @@ kcron_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 DISTCLEANFILES = $(kcron_METASOURCES)
 
 messages:
-	$(XGETTEXT) -C -ki18n -x $(includedir)/kde.pot $(kcron_SOURCES) -o $(podir)/kcron.pot
+	$(XGETTEXT) -C -kI18N_NOOP -ki18n -x $(includedir)/kde.pot $(kcron_SOURCES) -o $(podir)/kcron.pot
 
-kcron_LDADD   =  -lICE -kI18N_NOOP -lkfile -lkdeui -lkdecore -lqt -lXext -lX11 $(LIBSOCKET)
+kcron_LDADD   =  -lICE -lkfile -lkdeui -lkdecore -lqt -lXext -lX11 $(LIBSOCKET)
 
 appsdir   = $(kde_appsdir)/System
 
