@@ -136,7 +136,7 @@ appsdir   = $(kde_appsdir)/System
 
 apps_DATA = kcron.desktop
 
-KDE_ICON = kcron
+KDE_ICON = AUTO
 
 KDE_CXXFLAGS = $(USE_EXCEPTIONS)
 
