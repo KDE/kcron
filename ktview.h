@@ -169,9 +169,3 @@ private:
 };
 
 #endif // KTVIEW_H
-
-
-
-
-
-

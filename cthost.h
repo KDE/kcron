@@ -85,12 +85,12 @@ private:
 /**
   * Copy construction not allowed.
   */
-  CTHost(const CTHost& source) {};
+  CTHost(const CTHost& source);
 
 /**
   * Assignment not allowed
   */
-  void operator = (const CTHost& source) {};
+  void operator = (const CTHost& source);
 
 /**
   * Factory create a cron table.  Appends to the end of cron.

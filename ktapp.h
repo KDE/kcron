@@ -201,12 +201,12 @@ private:
 /**
   * Disabled copy constructor.
   */
-  KTApp(const KTApp& source) {};
+  KTApp(const KTApp& source);
 
 /**
   * Disabled assignment operator.
   */
-  void operator = (const KTApp& source) {};
+  void operator = (const KTApp& source);
 
 /**
   * Get application caption.
