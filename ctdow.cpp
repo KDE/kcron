@@ -17,33 +17,19 @@
 #include "ctdow.h"
 #include "cti18n.h"
 
+string CTDayOfWeek::shortName[8] =
+{
+  "", "", "", "", "", "", "", ""
+};
+
+string CTDayOfWeek::longName[8] =
+{
+  "", "", "", "", "", "", "", ""
+};
+
 CTDayOfWeek::CTDayOfWeek(const string& tokStr) :
   CTUnit<1,7>(tokStr)
 {
-  const string shortDOWName[8] =
-  {
-    "",
-    (const char*)i18n("Mon"),  (const char*)i18n("Tue"),
-    (const char*)i18n("Wed"),  (const char*)i18n("Thu"),
-    (const char*)i18n("Fri"),  (const char*)i18n("Sat"),
-    (const char*)i18n("Sun")
-  };
-
-  const string longDOWName[8] =
-  {
-    "",
-    (const char*)i18n("Monday"),     (const char*)i18n("Tuesday"),
-    (const char*)i18n("Wednesday"),  (const char*)i18n("Thursday"),
-    (const char*)i18n("Friday"),     (const char*)i18n("Saturday"),
-    (const char*)i18n("Sunday")
-  };
-
-  for (int i = 1; i <= 7; i++)
-  {
-    shortName[i] = shortDOWName[i];
-    longName[i]  = longDOWName[i];
-  }
-
   // Compensate for cron supporting Sunday as both 0 and 7.
 
   if (get(0))
@@ -77,8 +63,34 @@ string CTDayOfWeek::describe() const
     return CTUnit<1,7>::describe(shortName);
 }
 
-string CTDayOfWeek::getName(const int ndx, const bool format) const
+string CTDayOfWeek::getName(const int ndx, const bool format)
 {
-  return (format == CTDayOfWeek::shortFormat) ?
-    shortName[ndx] : longName[ndx];
+  if (shortName[1] == "")
+  {
+    const string shortDOWName[8] =
+    {
+      "",
+      (const char*)i18n("Mon"),  (const char*)i18n("Tue"),
+      (const char*)i18n("Wed"),  (const char*)i18n("Thu"),
+      (const char*)i18n("Fri"),  (const char*)i18n("Sat"),
+      (const char*)i18n("Sun")
+    };
+  
+    const string longDOWName[8] =
+    {
+      "",
+      (const char*)i18n("Monday"),     (const char*)i18n("Tuesday"),
+      (const char*)i18n("Wednesday"),  (const char*)i18n("Thursday"),
+      (const char*)i18n("Friday"),     (const char*)i18n("Saturday"),
+      (const char*)i18n("Sunday")
+    };
+  
+    for (int i = 1; i <= 7; i++)
+    {
+      shortName[i] = shortDOWName[i];
+      longName[i]  = longDOWName[i];
+    }
+  }
+  
+  return (format == shortFormat) ? shortName[ndx] : longName[ndx];
 }

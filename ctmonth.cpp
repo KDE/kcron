@@ -17,36 +17,19 @@
 #include "ctmonth.h"
 #include "cti18n.h"
 
+string CTMonth::shortName[13] =
+{
+  "", "", "", "", "", "", "", "", "", "", "", "", "",
+};
+
+string CTMonth::longName[13] =
+{
+  "", "", "", "", "", "", "", "", "", "", "", "", "",
+};
+
 CTMonth::CTMonth(const string& tokStr) :
   CTUnit<1,12>(tokStr)
 {
-  const string shortMonthName[13] =
-  {
-    "",
-    (const char*)i18n("Jan"),  (const char*)i18n("Feb"),
-    (const char*)i18n("Mar"),  (const char*)i18n("Apr"),
-    (const char*)i18n("May"),  (const char*)i18n("Jun"),
-    (const char*)i18n("Jul"),  (const char*)i18n("Aug"),
-    (const char*)i18n("Sep"),  (const char*)i18n("Oct"),
-    (const char*)i18n("Nov"),  (const char*)i18n("Dec")
-  };
-
-  const string longMonthName[13] =
-  {
-    "",
-    (const char*)i18n("January"),    (const char*)i18n("February"),
-    (const char*)i18n("March"),      (const char*)i18n("April"),
-    (const char*)i18n("May"),        (const char*)i18n("June"),
-    (const char*)i18n("July"),       (const char*)i18n("August"),
-    (const char*)i18n("September"),  (const char*)i18n("October"),
-    (const char*)i18n("November"),   (const char*)i18n("Dececember")
-  };
-
-  for (int i = 1; i <= 12; i++)
-  {
-    shortName[i] = shortMonthName[i];
-    longName[i]  = longMonthName[i];
-  }
 }
 
 string CTMonth::describe () const
@@ -56,8 +39,38 @@ string CTMonth::describe () const
     CTUnit<1,12>::describe(shortName);
 }
 
-string CTMonth::getName(const int ndx, const bool format) const
+string CTMonth::getName(const int ndx, const bool format)
 {
-  return (format == CTMonth::shortFormat) ?
-    shortName[ndx] : longName[ndx];
+  if (shortName[1] == "")
+  {
+    const string shortMonthName[13] =
+    {
+      "",
+      (const char*)i18n("Jan"),  (const char*)i18n("Feb"),
+      (const char*)i18n("Mar"),  (const char*)i18n("Apr"),
+      (const char*)i18n("May"),  (const char*)i18n("Jun"),
+      (const char*)i18n("Jul"),  (const char*)i18n("Aug"),
+      (const char*)i18n("Sep"),  (const char*)i18n("Oct"),
+      (const char*)i18n("Nov"),  (const char*)i18n("Dec")
+    };
+  
+    const string longMonthName[13] =
+    {
+      "",
+      (const char*)i18n("January"),    (const char*)i18n("February"),
+      (const char*)i18n("March"),      (const char*)i18n("April"),
+      (const char*)i18n("May"),        (const char*)i18n("June"),
+      (const char*)i18n("July"),       (const char*)i18n("August"),
+      (const char*)i18n("September"),  (const char*)i18n("October"),
+      (const char*)i18n("November"),   (const char*)i18n("Dececember")
+    };
+  
+    for (int i = 1; i <= 12; i++)
+    {
+      shortName[i] = shortMonthName[i];
+      longName[i]  = longMonthName[i];
+    }
+  }
+
+  return (format == shortFormat) ? shortName[ndx] : longName[ndx];
 }

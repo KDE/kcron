@@ -60,12 +60,12 @@ public:
 /**
   * Get day of week name.
   */
-  string getName(const int ndx,
-    const bool format = CTDayOfWeek::longFormat) const;
+  static string getName(const int ndx,
+    const bool format = CTDayOfWeek::longFormat);
 
 private:
-  string shortName[8];
-  string longName[8];
+  static string shortName[8];
+  static string longName[8];
 };
 
 #endif // CTDOW_H

@@ -55,12 +55,12 @@ public:
 /**
   * Get month name.
   */
-  string getName(const int ndx,
-    const bool format = CTMonth::longFormat) const;
+  static string getName(const int ndx,
+    const bool format = CTMonth::longFormat);
 
 private:
-  string shortName[13];
-  string longName[13];
+  static string shortName[13];
+  static string longName[13];
 };
 
 #endif // CTMONTH_H

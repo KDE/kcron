@@ -54,10 +54,10 @@ public:
 /**
   * Get day of month name.
   */
-  string getName(const int ndx) const;
+  static string getName(const int ndx);
 
 private:
-  string shortName[32];
+  static string shortName[32];
 };
 
 #endif // CTDOM_H
