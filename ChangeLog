@@ -1,0 +1,21 @@
+gary@meyer.net 06/09/1999
+
+  Fixed bug.  Program didn't exit after editing.  KDE2 only.
+  Fixed bug.  Variable editor didn't update icon.  KDE2 only.
+  Changed default sorting.  Alphabetical with System Crontab on top.
+  Removed -lkfm from Makefile.
+  Change kcron.kdelnk to kcron.desktop.
+
+gary@meyer.net 07/09/1999
+
+  cttask.h, cttash.cpp, kttask.cpp
+  Fixed bug.  New syscron task didn't let user enter "run as" field.
+
+gary@meyer.net 10/09/1999
+
+  Initial implementation of cut/copy/paste.
+
+gary@meyer.net 17/09/1999
+
+  Work around for Qt 2.0 ~QListViewItem bug.
+
