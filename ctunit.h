@@ -18,7 +18,9 @@
 // I want to be able to reuse these classes with another GUI toolkit. -GM 11/99
 
 #include <string>
-#ifndef __DECCXX
+#ifdef __DECCXX
+#include <iostream.h>
+#else
 class ostream;
 #endif
 
