@@ -22,6 +22,7 @@
 #include <kstdaction.h>
 #include <kaction.h>
 #include <kstdguiitem.h>
+#include <kiconloader.h>
 
 #include "cthost.h"
 #include "ctcron.h"
@@ -76,7 +77,7 @@ bool KTApp::init()
                                   "\n\n%1\n\nKCron will now exit.\n").arg(cthost->errorMessage()));
     return false;
   }
-  
+
   // Display greeting screen.
   // if there currently are no scheduled tasks...
   if (!cthost->root())
@@ -159,7 +160,7 @@ void KTApp::initMenuBar()
   edit_menu->insertSeparator();
   edit_menu->insertItem(i18n("&New..."), menuEditNew);
   edit_menu->insertItem(i18n("M&odify..."), menuEditModify);
-  edit_menu->insertItem(i18n("&Delete"), menuEditDelete);
+  edit_menu->insertItem(SmallIconSet("editdelete"),i18n("&Delete"), menuEditDelete);
   edit_menu->insertSeparator();
   edit_menu->insertItem(i18n("&Enabled"), menuEditEnabled);
   edit_menu->insertSeparator();
