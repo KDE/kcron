@@ -77,7 +77,7 @@ CTCron::CTCron(bool _syscron, string _login) :
     }
   }
 
-  if (name.isEmpty())
+  if (name == "")
     name = login;
 
   initialTaskCount      = 0;
