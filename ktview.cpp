@@ -30,6 +30,7 @@
 #include <qfile.h>
 #include <qdatetime.h>
 
+#include <kaction.h>
 #include <kapplication.h>
 #include <klocale.h>
 
@@ -483,9 +484,9 @@ void KTView::slotSetCurrent (QListViewItem* qlvi)
     currentCTVariable = 0;
     currentCTTask     = 0;
     currentIsTask     = false;
-    ktapp->enableCommand(KTApp::menuEditCut,    false);
-    ktapp->enableCommand(KTApp::menuEditCopy,   false);
-    ktapp->enableCommand(KTApp::menuEditPaste,  clipboardCTVariable);
+    ktapp->actionCut->setEnabled(false);
+    ktapp->actionCopy->setEnabled(false);
+    ktapp->actionPaste->setEnabled(clipboardCTVariable);
     ktapp->enableCommand(KTApp::menuEditNew,    true);
     ktapp->enableCommand(KTApp::menuEditModify, false);
     ktapp->enableCommand(KTApp::menuEditDelete, false);
@@ -499,9 +500,9 @@ void KTView::slotSetCurrent (QListViewItem* qlvi)
     currentCTVariable = 0;
     currentCTTask     = 0;
     currentIsTask     = true;
-    ktapp->enableCommand(KTApp::menuEditCut,    false);
-    ktapp->enableCommand(KTApp::menuEditCopy,   false);
-    ktapp->enableCommand(KTApp::menuEditPaste,  clipboardCTTask);
+    ktapp->actionCut->setEnabled(false);
+    ktapp->actionCopy->setEnabled(false);
+    ktapp->actionPaste->setEnabled(clipboardCTTask);
     ktapp->enableCommand(KTApp::menuEditNew,    true);
     ktapp->enableCommand(KTApp::menuEditModify, false);
     ktapp->enableCommand(KTApp::menuEditDelete, false);
@@ -517,9 +518,9 @@ void KTView::slotSetCurrent (QListViewItem* qlvi)
       currentCTVariable = ((KTListVar*)qlvi)->getCTVariable();
       currentCTTask     = 0;
       currentIsTask     = false;
-      ktapp->enableCommand(KTApp::menuEditCut,    true);
-      ktapp->enableCommand(KTApp::menuEditCopy,   true);
-      ktapp->enableCommand(KTApp::menuEditPaste,  false);
+      ktapp->actionCut->setEnabled(true);
+      ktapp->actionCopy->setEnabled(true);
+      ktapp->actionPaste->setEnabled(false);
       ktapp->enableCommand(KTApp::menuEditNew,    false);
       ktapp->enableCommand(KTApp::menuEditModify, true);
       ktapp->enableCommand(KTApp::menuEditDelete, true);
@@ -533,9 +534,9 @@ void KTView::slotSetCurrent (QListViewItem* qlvi)
       currentCTVariable = 0;
       currentCTTask     = ((KTListTask*)qlvi)->getCTTask();
       currentIsTask     = true;
-      ktapp->enableCommand(KTApp::menuEditCut,    true);
-      ktapp->enableCommand(KTApp::menuEditCopy,   true);
-      ktapp->enableCommand(KTApp::menuEditPaste,  false);
+      ktapp->actionCut->setEnabled(true);
+      ktapp->actionCopy->setEnabled(true);
+      ktapp->actionPaste->setEnabled(false);
       ktapp->enableCommand(KTApp::menuEditNew,    false);
       ktapp->enableCommand(KTApp::menuEditModify, true);
       ktapp->enableCommand(KTApp::menuEditDelete, true);
@@ -551,9 +552,9 @@ void KTView::slotSetCurrent (QListViewItem* qlvi)
     currentCTVariable = 0;
     currentCTTask     = 0;
     currentIsTask     = true;
-    ktapp->enableCommand(KTApp::menuEditCut,    false);
-    ktapp->enableCommand(KTApp::menuEditCopy,   false);
-    ktapp->enableCommand(KTApp::menuEditPaste,  false);
+    ktapp->actionCut->setEnabled(false);
+    ktapp->actionCopy->setEnabled(false);
+    ktapp->actionPaste->setEnabled(false);
     ktapp->enableCommand(KTApp::menuEditNew,    false);
     ktapp->enableCommand(KTApp::menuEditModify, false);
     ktapp->enableCommand(KTApp::menuEditDelete, false);

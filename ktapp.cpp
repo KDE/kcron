@@ -19,6 +19,8 @@
 #include <kconfig.h>
 #include <kapplication.h>
 #include <klocale.h>       // i18n()
+#include <kstdaction.h>
+#include <kaction.h>
 
 #include "cthost.h"
 #include "ctcron.h"
@@ -29,12 +31,6 @@
 #include <kpopupmenu.h>
 #include <kstatusbar.h>
 
-const int KTApp::menuFileSave             (10060);
-const int KTApp::menuFilePrint            (10070);
-const int KTApp::menuFileQuit             (10090);
-const int KTApp::menuEditCut              (11020);
-const int KTApp::menuEditCopy             (11010);
-const int KTApp::menuEditPaste            (11030);
 const int KTApp::menuEditNew              (11040);
 const int KTApp::menuEditModify           (11050);
 const int KTApp::menuEditDelete           (11060);
@@ -54,7 +50,7 @@ KTApp::KTApp() : KMainWindow(0)
   setCaption(i18n("Task Scheduler"));
 
   // Call inits to invoke all other construction parts.
-  // setupMenu();
+  initActions();
   initMenuBar();
   initToolBar();
   initStatusBar();
@@ -125,24 +121,29 @@ QString KTApp::caption()
   return cap;
 }
 
-void KTApp::setupMenu()
+void KTApp::initActions()
 {
-
+  actionSave = KStdAction::save(this, SLOT(slotFileSave()), actionCollection());
+  actionPrint = KStdAction::print(this, SLOT(slotFilePrint()), actionCollection());
+  actionCut = KStdAction::cut(this, SLOT(slotEditCut()), actionCollection());
+  actionCopy = KStdAction::copy(this, SLOT(slotEditCopy()), actionCollection());
+  actionPaste = KStdAction::paste(this, SLOT(slotEditPaste()), actionCollection());
 }
+
 void KTApp::initMenuBar()
 {
   file_menu = new QPopupMenu();
-  file_menu->insertItem(KTIcon::save() ,i18n("&Save"), menuFileSave);
+  actionSave->plug(file_menu);
   file_menu->insertSeparator();
-  file_menu->insertItem(KTIcon::print(), i18n("&Print"), menuFilePrint);
+  actionPrint->plug(file_menu);
   file_menu->insertSeparator();
-  file_menu->insertItem(i18n("&Quit"), menuFileQuit );
+  KStdAction::quit(this, SLOT(slotFileQuit()), actionCollection())->plug(file_menu);
 
   edit_menu = new QPopupMenu();
   edit_menu->setCheckable(true);
-  edit_menu->insertItem(KTIcon::cut(), i18n("Cu&t"), menuEditCut);
-  edit_menu->insertItem(KTIcon::copy(), i18n("&Copy"), menuEditCopy);
-  edit_menu->insertItem(KTIcon::paste(), i18n("&Paste"), menuEditPaste);
+  actionCut->plug(edit_menu);
+  actionCopy->plug(edit_menu);
+  actionPaste->plug(edit_menu);
   edit_menu->insertSeparator();
   edit_menu->insertItem(i18n("&New..."), menuEditNew);
   edit_menu->insertItem(i18n("M&odify..."), menuEditModify);
@@ -164,7 +165,7 @@ void KTApp::initMenuBar()
   menuBar = new KMenuBar(this);
   menuBar->insertItem(i18n("&File"), file_menu);
   menuBar->insertItem(i18n("&Edit"), edit_menu);
-  menuBar->insertItem(i18n("&Options"), view_menu);
+  menuBar->insertItem(i18n("&Settings"), view_menu);
   menuBar->insertSeparator();
   menuBar->insertItem(i18n("&Help"), help_menu);
 
@@ -180,16 +181,13 @@ void KTApp::initMenuBar()
 
 void KTApp::initToolBar()
 {
-  toolBar()->insertButton(KTIcon::save(), menuFileSave, true, i18n("Save"));
+  actionSave->plug(toolBar());
   toolBar()->insertSeparator();
-  toolBar()->insertButton(KTIcon::print(), menuFilePrint, true, i18n("Print"));
+  actionPrint->plug(toolBar());
   toolBar()->insertSeparator();
-  toolBar()->insertButton(KTIcon::cut(), menuEditCut, true, i18n("Cut"));
-  toolBar()->insertButton(KTIcon::copy(), menuEditCopy, true, i18n("Copy"));
-  toolBar()->insertButton(KTIcon::paste(), menuEditPaste, true, i18n("Paste"));
-//  toolBar()->insertSeparator();
-//  toolBar()->insertButton(KTIcon::help(), menuHelpContents, SIGNAL(clicked()),
-//    kapp, SLOT(appHelpActivated()), true, i18n("Help"));
+  actionCut->plug(toolBar());
+  actionCopy->plug(toolBar());
+  actionPaste->plug(toolBar());
 
   connect(toolBar(), SIGNAL(clicked(int)), SLOT(commandCallback(int)));
   connect(toolBar(), SIGNAL(pressed(int)), SLOT(statusCallback(int)));
@@ -205,28 +203,13 @@ void KTApp::initKeyAccel()
 {
   key_accel = new KAccel(this);
 
-  // file menu accelerators
-  key_accel->connectItem(KStdAccel::Save, this, SLOT(slotFileSave()));
-  key_accel->connectItem(KStdAccel::Print, this, SLOT(slotFilePrint()));
-  key_accel->connectItem(KStdAccel::Quit, this, SLOT(slotFileQuit()));
-
   // edit menu accelerators
-  key_accel->connectItem(KStdAccel::Cut, this, SLOT(slotEditCut()));
-  key_accel->connectItem(KStdAccel::Copy, this, SLOT(slotEditCopy()));
-  key_accel->connectItem(KStdAccel::Paste, this, SLOT(slotEditPaste()));
   key_accel->connectItem(KStdAccel::New, this, SLOT(slotEditNew()));
   //key_accel->connectItem(KStdAccel::Insert, this, SLOT(slotEditNew()));
   key_accel->connectItem(KStdAccel::Open, this, SLOT(slotEditModify()));
 
   // help menu accelerators
 //  key_accel->connectItem(KStdAccel::Help, kapp, SLOT(appHelpActivated()));
-
-  key_accel->changeMenuAccel(file_menu, menuFileSave, KStdAccel::Save);
-  key_accel->changeMenuAccel(file_menu, menuFileQuit, KStdAccel::Quit);
-
-  key_accel->changeMenuAccel(edit_menu, menuEditCut, KStdAccel::Cut);
-  key_accel->changeMenuAccel(edit_menu, menuEditCopy, KStdAccel::Copy);
-  key_accel->changeMenuAccel(edit_menu, menuEditPaste, KStdAccel::Paste);
 
   //key_accel->changeMenuAccel(edit_menu, menuEditNew, KStdAccel::Insert);
   key_accel->changeMenuAccel(edit_menu, menuEditNew, KStdAccel::New);
@@ -461,26 +444,6 @@ void KTApp::slotStatusHelpMsg(const QString & text)
 void KTApp::commandCallback(int id_){
 
   switch (id_){
-
-    case menuFileSave:
-    	slotFileSave();
-    	break;
-    case menuFilePrint:
-    	slotFilePrint();
-    	break;
-    case menuFileQuit:
-    	slotFileQuit();
-    	break;
-
-    case menuEditCut:
-    	slotEditCut();
-    	break;
-    case menuEditCopy:
-    	slotEditCopy();
-    	break;
-    case menuEditPaste:
-    	slotEditPaste();
-    	break;
     case menuEditNew:
     	slotEditNew();
     	break;
@@ -512,25 +475,6 @@ void KTApp::statusCallback(int id_){
 
   switch (id_){
 
-    case menuFileSave:
-      slotStatusHelpMsg(i18n("Save tasks and variables."));
-      break;
-    case menuFilePrint:
-      slotStatusHelpMsg(i18n("Print all or current crontab(s)."));
-      break;
-    case menuFileQuit:
-      slotStatusHelpMsg(i18n("Exit %1.").arg(caption()));
-      break;
-
-    case menuEditCut:
-      slotStatusHelpMsg(i18n("Cut the selected task or variable and put on the clipboard."));
-      break;
-    case menuEditCopy:
-      slotStatusHelpMsg(i18n("Copy the selected task or variable to the clipboard."));
-      break;
-    case menuEditPaste:
-      slotStatusHelpMsg(i18n("Paste task or variable from the clipboard."));
-      break;
     case menuEditNew:
       slotStatusHelpMsg(i18n("Create a new task or variable."));
       break;

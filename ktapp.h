@@ -20,6 +20,7 @@
 
 #include <kmainwindow.h>
 
+class KAction;
 class QString;
 class KMenuBar;
 class KAccel;
@@ -43,12 +44,6 @@ class KTApp : public KMainWindow
 public:
 
   // Menu constants
-  static const int menuFileSave;
-  static const int menuFilePrint;
-  static const int menuFileQuit;
-  static const int menuEditCut;
-  static const int menuEditCopy;
-  static const int menuEditPaste;
   static const int menuEditNew;
   static const int menuEditModify;
   static const int menuEditDelete;
@@ -84,6 +79,11 @@ public:
   * Returns a reference to the document.
   */	
   const CTHost& getCTHost() const; 	
+
+/**
+  * Actions
+  */
+  KAction *actionSave, *actionPrint, *actionCut, *actionCopy, *actionPaste;
 
 protected:
 
@@ -225,9 +225,9 @@ private:
   void initMenuBar();
 
 /**
-  * Initialize menus.
+  * Initialize actions.
   */
-  void setupMenu();
+  void initActions();
 
 /**
   * Initialize toolbar.
