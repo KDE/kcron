@@ -93,8 +93,12 @@ void CTUnit<min, max>::parse(string tokStr)
       slashpos = subelement.length();
     }
     else
+    {
       step = fieldToValue(subelement.substr(slashpos+1,
         subelement.length()-slashpos-1));
+      if (step < 1)
+        step = 1;
+    }
 
     // find "=" to determine range
     dashpos = subelement.find("-");
