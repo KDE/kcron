@@ -1,5 +1,5 @@
 /* XPM */
-static char*ktmfolder[]={
+static const char*ktmfolder[]={
 "16 16 9 1",
 "g c #808080",
 "b c #ffa858",

@@ -1,5 +1,5 @@
 /* XPM */
-static char*ktsystem[]={
+static const char*ktsystem[]={
 "32 32 8 1",
 "b c #808080",
 "d c #a0a0a0",

@@ -1,7 +1,7 @@
 /* XPM */
 /* Adapted from blockdevice by Mark Donohoe for the K Desktop Environment */
 /* See http://www.kde.org */
-static char*ktmvariable[]={
+static const char*ktmvariable[]={
 "16 16 14 1",
 "# c #000000",
 "c c #008000",

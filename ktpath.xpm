@@ -1,5 +1,5 @@
 /* XPM */
-static char*ktpath[]={
+static const char*ktpath[]={
 "32 32 7 1",
 "d c #ffa858",
 "e c #a0a0a0",

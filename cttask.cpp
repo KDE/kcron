@@ -158,7 +158,7 @@ bool CTTask::dirty() const
     (enabled != initialEnabled));
 }
 
-string CTTask::describe(bool shortNames) const
+string CTTask::describe() const
 {
 
   // Of the whole program, this method is probably the trickiest.

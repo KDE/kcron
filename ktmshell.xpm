@@ -1,7 +1,7 @@
 /* XPM */
 /* Drawn for the K Desktop Environment */
 /* See http://www.kde.org */
-static char*ktmshell[]={
+static const char*ktmshell[]={
 "16 16 5 1",
 "b c #808080",
 ". c None",

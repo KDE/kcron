@@ -1,7 +1,7 @@
 /* XPM */
 /* Adapted from kmail by Nico Shirwing for the K Desktop Environment */
 /* See http://www.kde.org */
-static char*ktmail[]={
+static const char*ktmail[]={
 "32 32 9 1",
 "# c #000000",
 "f c #800000",

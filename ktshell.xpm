@@ -1,6 +1,6 @@
 /* XPM */
 /* Drawn by Torsten Rahn dedicated to Steffi */
-static char*ktshell[]={
+static const char*ktshell[]={
 "32 32 15 1",
 "c c #808080",
 "k c #ffa858",

@@ -77,7 +77,7 @@ public:
 /**
   * Returns natural language description of the task's schedule.
   */
-  string describe(bool format = 0) const;
+  string describe() const;
 
 /**
   * Indicates whether or not the task belongs to the system crontab.

@@ -1,5 +1,5 @@
 /* XPM */
-static char*kttask[]={
+static const char*kttask[]={
 "32 32 12 1",
 "f c #808080",
 "h c #ffa858",
