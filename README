@@ -9,5 +9,9 @@ Requires:
   Unix POSIX libraries for localized dates and times (glibc)
   Cron (vixie-cron)
   Crontab (crontabs)
-  Qt 2.0 or higher
-  KDE 2.0 or higher
+  Qt 1.4.4 or higher
+  KDE 1.1.1 or higher
+
+  Note: For Qt 1.x and KDE 1.x, edit the Makefile (CPPFLAGS) to compile with
+  "-DKDE1".
+
