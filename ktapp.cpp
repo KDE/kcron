@@ -11,6 +11,8 @@
  *   (at your option) any later version.                                   * 
  ***************************************************************************/
 
+#include <kmenubar.h>
+#include <kaccel.h>
 #include <qprinter.h>
 #include <qpainter.h>
 #include <qmessagebox.h>

@@ -19,11 +19,11 @@
 #endif
 
 #include <ktmainwindow.h>
-#include <kmenubar.h>
-#include <kaccel.h>
 
-class CTHost;
+class KMenuBar;
+class KAccel;
 class KTView;
+class CTHost;
 
 /**
   * Application that sets up the main window, reads the config file,
@@ -216,6 +216,16 @@ public slots:
 private:
 
 /**
+  * Disabled copy constructor.
+  */
+  KTApp(const KTApp& source){};
+
+/**
+  * Disabled assignment operator.
+  */
+  void operator = (const KTApp& source){};
+
+/**
   * Enable menu item/toolbar item.
   */
   void enableCommand(int id_, bool enable = true);
@@ -300,5 +310,3 @@ private:
 };
  
 #endif // KTAPP_H
-
-
