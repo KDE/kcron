@@ -149,7 +149,7 @@ environment variable for all scheduled tasks. If an environment variable has
 been disabled, no value will appear and the description will be disabled.</para>
 
 <screenshot>
-<screeninfo>&kcron; main window.</screeninfo>
+<screeninfo>&kcron; main window</screeninfo>
 <mediaobject>
 <imageobject>
 <imagedata fileref="kcron.png" format="PNG"/></imageobject>
