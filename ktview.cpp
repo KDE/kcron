@@ -17,6 +17,7 @@
 #include <unistd.h>
 
 #include <strstream.h>
+#include <string>
 
 #include <qstring.h>
 #include <qheader.h>
@@ -252,9 +253,16 @@ void KTView :: pageHeading (KTListItem* user, KTPrint &printer) const
 
 void KTView :: pageFooter (KTListItem* user, KTPrint &printer) const
 {
-  ostrstream crontab;
-  crontab<<*(user->getCTCron());
-  printer.print(crontab.str(), 1, KTPrint::alignTextLeft, false);
+  //This function will be a lot cleaner when gcc supports ostringstream.
+  char buffer[4096];
+  ostrstream oss(buffer, sizeof(buffer));
+    
+  oss<<*(user->getCTCron())<<ends;
+  
+  if (oss) {
+    string crontab(oss.str());
+    printer.print(crontab.c_str(), 1, KTPrint::alignTextLeft, false);
+  }
 }
 
 KTView::~KTView()
