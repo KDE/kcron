@@ -16,6 +16,7 @@
 #include "ktapp.h"
 #include <iostream.h>
 #include <kcmdlineargs.h>
+#include <kaboutdata.h>
 
 static const char *description = 
 	I18N_NOOP("KDE Cron Tab editor");
@@ -24,9 +25,7 @@ class CTExceptionIO;
  
 int main(int argc, char* argv[]) 
 { 
-  KCmdLineArgs::init(argc, argv, "kcron", description, VERSION);
-  
-  KAboutData aboutData( "kcron", I18N_NOOP("KCron"), VERSION, I18N_NOOP(description),
+  KAboutData aboutData( "kcron", I18N_NOOP("KCron"), VERSION, description,
               KAboutData::GPL, "(c) 1999, Gary Meyer" );
   KCmdLineArgs::init( argc, argv, "kcron","","");
   KApplication::addCmdLineOptions(); // ?
