@@ -673,8 +673,9 @@ enabled only for users with super-user privileges.</para>
 
 <varlistentry>
 <term><menuchoice>
-<guimenu>File</guimenu>
-<guimenuitem>Print...</guimenuitem>
+<shortcut><keycombo 
+action="simul">&Ctrl;<keycap>P</keycap></keycombo></shortcut> 
+<guimenu>File</guimenu> <guimenuitem>Print...</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para><action>Prints</action> the <filename>crontab</filename>.</para>
