@@ -48,7 +48,7 @@ QPixmap KTIcon::getMiniIcon(const QString& name)
 #ifdef KDE1
   return KApplication::getKApplication()->getIconLoader()->loadMiniIcon(name);
 #else
-  return KGlobal::iconLoader()->loadIcon(name, KIconLoader::Small);
+  return SmallIcon(name);
 #endif
 }
 
