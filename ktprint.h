@@ -4,7 +4,7 @@
  *   --------------------------------------------------------------------  *
  *   KDE\QT Printing class                                                 *
  *   --------------------------------------------------------------------  *
- *   Copyright (C) 1999, Robert Berry <rjmber@essex.ac.uk>                 *
+ *   Copyright (C) 1999, Robert Berry <rjmber@ntlworld.com>                *
  *   --------------------------------------------------------------------  *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -16,6 +16,7 @@
 #define KTPRINT_H
 
 #include <vector>
+#include <qprinter.h>
 
 class QPainter;
 class QPrinter;
@@ -47,7 +48,14 @@ public:
   * Contructor
   */
   KTPrint(int left = defaultLeftMargin, int right = defaultRightMargin,
-                int top = defaultTopMargin, int bottom = defaultBottomMargin);
+                int top = defaultTopMargin, int bottom = defaultBottomMargin) :
+                leftMargin(left), rightMargin (right), topMargin(top),
+                bottomMargin(bottom), paint(NULL)
+  {
+    prnt = new QPrinter;
+    createColumns(1);
+  }
+
 /**
   * Destructor
   */
@@ -102,21 +110,6 @@ private:
   KTPrint& operator=(const KTPrint&) {return *this;}
 
 /**
-  * Pointer a printer object
-  */
-  QPrinter *prnt;
-
-/**
-  * Pointer to a painter object
-  */
-  QPainter *paint;
-
-/**
-  *Keep an internal track of printing status
-  */
-  bool      printing;
-
-/**
   * Left boundary
   */	
   int       leftMargin;
@@ -146,6 +139,15 @@ private:
   */
   int       height;
 
+/**
+  * Pointer to a painter object
+  */
+  QPainter *paint;
+
+/**
+  * Pointer a printer object
+  */
+  QPrinter *prnt;
 
 /**
   *Nest a column class to make text layout nicer

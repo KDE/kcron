@@ -1,18 +1,15 @@
-/***************************************************************************
-                      ktprintopt.cpp  - Print Options Dialog
-                             -------------------
-    begin                : Thu Feb 10 2000
-    copyright            : (C) 2000 by Robert Berry
-    email                : rjmber@essex.ac.uk
- ***************************************************************************/
 
 /***************************************************************************
- *                                                                         *
+ *   ktprintopt.cpp                                                        *
+ *   --------------------------------------------------------------------  *
+ *   Print Options Dialog                                                  *
+ *   --------------------------------------------------------------------  *
+ *   Copyright (C) 1999, Robert Berry <rjmber@ntlwolrd.com>                *
+ *   --------------------------------------------------------------------  *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
  *   (at your option) any later version.                                   *
- *                                                                         *
  ***************************************************************************/
 
 #include <qcheckbox.h>
@@ -23,10 +20,11 @@
 #include "ktprintopt.h"
 
 KTPrintOpt::KTPrintOpt(bool root) :
-    QDialog(0, (const char*)"ktprintopt", true, WStyle_DialogBorder)
+    QDialog(0, (const char*)"ktprintopt", true, WStyle_DialogBorder), 
+    printCrontab(false), printAllUsers(false)
 {
-  printCrontab = false;
-  printAllUsers = false;
+  //printCrontab = false;
+//  printAllUsers = false;
 
   chkPrintCrontab = new QCheckBox(i18n("Print Cron&tab"), this, "chkPrintCrontab");
   chkPrintCrontab->setGeometry(20, 10, 100, 25);

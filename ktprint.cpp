@@ -4,7 +4,7 @@
  *   --------------------------------------------------------------------  *
  *   KDE\QT printing implementation.                                       *
  *   --------------------------------------------------------------------  *
- *   Copyright (C) 1999, Robert Berry <rjmber@essex.ac.uk>                 *
+ *   Copyright (C) 1999, Robert Berry <rjmber@ntlworld.com>                *
  *   --------------------------------------------------------------------  *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -13,7 +13,6 @@
  ***************************************************************************/
 
 #include <qpainter.h>
-#include <qprinter.h>
 #include <qstring.h>
 #include <qpaintdevicemetrics.h>
 
@@ -42,19 +41,6 @@ enum AlignmentFlags { AlignLeft = 0x0001, AlignRight = 0x0002,
                       ExpandTabs = 0x0100, ShowPrefix = 0x0200, 
                       WordBreak = 0x0400, DontPrint = 0x1000 };
 
-KTPrint :: KTPrint (int left, int right, int top, int bottom)
-{
-  prnt = new QPrinter;
-
-  paint = NULL;
-  leftMargin = left;
-  rightMargin = right;
-  topMargin = top;
-  bottomMargin = bottom;
-  printing = false;
-  createColumns(1);
-}
-
 KTPrint::~KTPrint()
 {
   delete prnt;
@@ -68,15 +54,14 @@ void KTPrint :: createColumns (unsigned num_columns)
 //Construct all of the columns to be equal in size
 //I am going to add a function which works on percentages
 
-  unsigned i;
   int start;
   Column *col;
-  int col_width = width / num_columns;
+  int col_width(width / num_columns);
 
   if (columns.size()>0)
     columns.erase(columns.begin(), columns.end());
 
-  for (i = 0, start = leftMargin; i < num_columns; i++) {
+  for (unsigned i = 0, start = leftMargin; i < num_columns; i++) {
     col = new Column;
     col->start = start;
     col->finish = start + (col_width - 5);
@@ -89,11 +74,11 @@ void KTPrint :: createColumns (unsigned num_columns)
 	
 bool KTPrint:: start ()
 {
-  if (prnt->setup() && !printing) { //Setup a printer
+  if (prnt->setup()) { //Setup a printer
+    if (paint!=NULL) delete paint;
     paint = new  QPainter ();
     paint->begin(prnt);
     paint->setTabStops(20); // Setup a defualt tab stop size
-    printing = true;
     		
     //Get the information about the page size
     QPaintDeviceMetrics metrics (prnt);
@@ -120,11 +105,9 @@ void KTPrint :: print (QString str, int col, int alignment, bool wordWrap)
 //Prints the string str into the column col using
 //the remaining arguments as format flags
 
-  QRect rect;
   int format;
-  int remainder;
-
-  if (!printing)
+ 
+  if (paint==NULL)
     return;
 	
    //Setup the alignment
@@ -143,14 +126,13 @@ void KTPrint :: print (QString str, int col, int alignment, bool wordWrap)
     format = format | WordBreak;
 	
   //Whats left of the page
-  remainder = height - columns[col-1]->height;
+  int remainder (height - columns[col-1]->height);
 	
   //Get the size of the area the text will take up
-  rect = paint->boundingRect(columns[col-1]->start,columns[col-1]->height, columns[col-1]->width(), remainder,format, str);
-	
-  //Should check now if it fits on the page
-  //A TO-DO item
-	
+  //Should check now if it fits on the page   
+  //A TO-DO item 	
+  QRect rect=paint->boundingRect(columns[col-1]->start,columns[col-1]->height, columns[col-1]->width(), remainder,format, str);
+
   //Draw the text
   paint->drawText(columns[col-1]->start,columns[col-1]->height, columns[col-1]->width(), remainder, format, str);
 	
@@ -160,7 +142,7 @@ void KTPrint :: print (QString str, int col, int alignment, bool wordWrap)
 
 void KTPrint :: levelColumns(int space)
 {
-  int ht=0;
+  int ht(0);
 	
   //Find the heighest height
   for (unsigned i = 0; i < columns.size(); i++) {
@@ -175,10 +157,9 @@ void KTPrint :: levelColumns(int space)
 
 void KTPrint :: finished ()
 {
-  if (printing) {
+  if (paint!=NULL) {
     paint->end(); //Send to printer or file
     delete paint;
-    printing = false;
   }
 }
 
