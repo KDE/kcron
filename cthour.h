@@ -21,12 +21,32 @@
 #include <string>
 
 /**
-  * Cron table task hour.
+  * Scheduled task hours.
   */
 class CTHour : public CTUnit<0,23>
 {
 public:
+
+/**
+  * Constructs from a tokenized string.
+  */
   CTHour(const string &tokStr = "") : CTUnit<0,23>(tokStr) { };
+
+/**
+  * Default copy constructor.
+  */
+  // CTHour(const CTHour& source);
+
+/**
+  * Default assignment operator
+  */
+  // void operator = (const CTHour& source);
+
+/**
+  * Default destructor.
+  */
+  // ~CTHour();
+
 };
 
 #endif // CTHOUR_H
