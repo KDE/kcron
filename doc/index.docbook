@@ -1,5 +1,5 @@
 <!DOCTYPE book PUBLIC  "-//KDE//DTD DocBook V3.1-Based Variant V1.0//EN" [
- <!ENTITY kcron "<application>KCron</application>">
+ <!ENTITY kcron   "<application>KCron</application>">
  <!ENTITY kappname "&kcron;" -- this only *seems* redundant -->
  <!ENTITY % addindex "IGNORE">
  <!ENTITY % ents PUBLIC "-//KDE//ENTITIES Application-Variable Entities V1.0//EN">
@@ -10,7 +10,7 @@
 
 <bookinfo>
 
-<title>The &kcron; Handbook</title>
+<title>The KCron Handbook</title>
 
 <authorgroup>
 
@@ -56,6 +56,13 @@
 <revremark>Added documentation of Print function.  Updated screenshots.</revremark>
 </revision>
 
+<revision>
+<revnumber>0.3</revnumber>
+<date>8.30.2000</date>
+<authorinitials>M.N.S.</authorinitials>
+<revremark>Corrected minor typos.</revremark>
+</revision>
+
 </revhistory>
 
 <copyright>
@@ -65,8 +72,8 @@
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>09/08/2000</date>
-<releaseinfo>1.92.00</releaseinfo>
+<date>30/08/2000</date>
+<releaseinfo>1.93.00</releaseinfo>
 
 <keywordset>
 <keyword>KDE</keyword>
@@ -77,9 +84,9 @@
 <keyword>scheduler</keyword>
 </keywordset>
 
-<abstract><para>&kcron; is an application that schedules programs to be
-run.</para></abstract>
-
+<abstract>
+<para>&kcron; is an application that schedules programs to be run.</para>
+</abstract>
 
 </bookinfo>
 
@@ -155,11 +162,10 @@ lists.</para>
 </chapter>
 
 <chapter id="using-kcron">
-<title>Using KCron</title>
+<title>Using &kcron;</title>
 
-<important><para>Don't forget to tell your system to start the
-<filename>crond</filename> cron daemon first, or &kcron; won't
-work.</para></important>
+<important><para>Don't forget to tell your system to start the <filename>crond</filename>
+cron daemon first, or &kcron; won't work.</para></important>
 
 <sect1 id="kcron-start-up">
 <title>KCron Start Up</title>
@@ -169,23 +175,19 @@ tasks and associated environment variables. If you are running as the root user,
 you will see these items for all users on the computer as well as the system
 scheduled tasks. Each of the folders can be expanded and contracted.</para> 
 
-<mediaobject>
-<imageobject>
-<imagedata fileref="kcronstart.png" format="PNG">
-</imageobject>
-<textobject>
-<phrase>KCron at start up</phrase>
-</textobject>
-</mediaobject>
+<screenshot>
+<screeninfo>&kcron; at start up.</screeninfo>
+<graphic fileref="kcronstart.png" format="png"></graphic>
+</screenshot>
 
 <sect2>
-<Title>Scheduled Tasks</title>
+<title>Scheduled Tasks</title>
 
 <para>Scheduled tasks appear under a <guilabel>Tasks</guilabel> folder. For each
 scheduled task, the following are displayed:</para> 
 
 <variablelist>
-			
+
 <varlistentry>
 <term>Name</term>
 <listitem><para>Name to identify the scheduled task.</para></listitem>
@@ -207,9 +209,9 @@ and the description will be disabled.</para>
 
 <sect2>
 <title>Environment Variables</title>
-			
 <para>Environment variables appear under a <guilabel>Variables</guilabel>
 folder. For each environment variable, the following are displayed: </para>
+
 <variablelist>
 <varlistentry>
 <term>Name</term>
@@ -229,18 +231,14 @@ folder. For each environment variable, the following are displayed: </para>
 environment variable for all scheduled tasks. If an environment variable has
 been disabled, no value will appear and the description will be disabled.</para>
 
-<mediaobject>
-<imageobject>
-<imagedata fileref="kcron.png" format="PNG">
-</imageobject>
-<textobject>
-<phrase>KCron main window</phrase>
-</textobject>
-</mediaobject>
+<screenshot>
+<screeninfo>&kcron; main window.</screeninfo>
+<graphic fileref="kcron.png" format="png"></graphic>
+</screenshot>
 
 </sect2>
 </sect1>
-			
+
 <sect1 id="new-task">
 <title>Adding Scheduled Tasks</title>
 
@@ -254,10 +252,10 @@ folder. Then select <menuchoice><guimenu>Edit</guimenu>
 <sect2>
 <title>The Edit Task Dialog</title>
 
-<mediaobject>
-<imageobject><imagedata fileref="newtask.png" format="png"></imageobject>
-<textobject><phrase><guilabel>Edit Task</guilabel> dialog.</phrase></textobject>
-</mediaobject>
+<screenshot>
+<screeninfo><guilabel>Edit Task</guilabel> dialog.</screeninfo>
+<graphic fileref="newtask.png" format="png"></graphic>
+</screenshot>
 
 <variablelist>
 <varlistentry>
@@ -460,11 +458,10 @@ button menu and choose
 <sect2>
 <title>The Edit Variable dialog</title>
 
-<mediaobject>
-<imageobject><imagedata fileref="newvariable.png" format="png"></imageobject>
-<textobject><phrase><guilabel>Edit Variable</guilabel> dialog.</phrase></textobject>
-</mediaobject>
-
+<screenshot>
+<screeninfo><guilabel>Edit Variable</guilabel> dialog.</screeninfo>
+<graphic fileref="newvariable.png" format="png"></graphic>
+</screenshot>
 
 <variablelist>
 <varlistentry>
@@ -511,20 +508,20 @@ purpose.</para></listitem>
 <varlistentry>
 <term><guilabel>Enabled</guilabel></term>
 <listitem>
-<para>To enable or disable the task, select or de-select
+<para>To enable or disable the variable, select or de-select
 <guibutton>Enabled</guibutton>.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term><guibutton>OK</guibutton></term>
 <listitem>
-<para>Completes the creation of this task.</para>
+<para>Completes the setting of this variable.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term><guibutton>Cancel</guibutton></term>
 <listitem>
-<para>Cancels the creation of this task.</para>
+<para>Cancels the setting of this variable.</para>
 </listitem>
 </varlistentry>
 </variablelist>
@@ -544,9 +541,8 @@ actually be made until the <filename>crontab</filename> is saved.</para></note>
 <sect2>
 <title>Cutting Environment Variables</title>
 
-<para>To cut an environment variable, first select the variable to be cut. Then
-select <menuchoice><guimenu>Edit</guimenu> <guimenuitem>Cut</guimenuitem>
-</menuchoice>.</para>
+<para>To cut an environment variable, first select the variable to be cut. Then select
+<menuchoice><guimenu>Edit</guimenu> <guimenuitem>Cut</guimenuitem> </menuchoice>.</para>
 
 <para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse
 button menu and choose <menuchoice><guimenuitem>Cut</guimenuitem></menuchoice>,
@@ -558,12 +554,12 @@ or simply press
 <sect2>
 <title>Copying Environment Variables</title>
 
-<para>To copy an environemnt variable, first select the variable to be
-copied. Then select <menuchoice> <guimenu>Edit</guimenu>
-<guimenuitem>Copy</guimenuitem> </menuchoice>.</para>
+<para>To copy an environemnt variable, first select the variable to be copied. Then select
+<menuchoice>
+<guimenu>Edit</guimenu> <guimenuitem>Copy</guimenuitem> </menuchoice>.</para>
 
-<para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse
-button menu and choose <guimenuitem>Copy</guimenuitem>, or simply press
+<para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse button
+menu and choose <guimenuitem>Copy</guimenuitem>, or simply press
 <keycombo><keycap>Ctrl</keycap><keycap>c</keycap></keycombo>.</para>
 
 </sect2>
@@ -575,13 +571,13 @@ button menu and choose <guimenuitem>Copy</guimenuitem>, or simply press
 already been cut or copied to the clipboard. Once an environment variable has
 been cut or copied, paste will be enabled. Then select the
 <guilabel>Variables</guilabel> folder. Finally, select
-<menuchoice><guimenu>Edit</guimenu> <guimenuitem>Paste</guimenuitem>
-</menuchoice>.</para>
+<menuchoice><guimenu>Edit</guimenu> <guimenuitem>Paste</guimenuitem> </menuchoice>.</para>
 
 <para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse
 button menu and choose
 <menuchoice><guimenuitem>Paste</guimenuitem></menuchoice>, or simply press
-<keycombo><keycap>Ctrl</keycap><keycap>v</keycap></keycombo>.</para>
+<keycombo><keycap>Ctrl</keycap><keycap>v</keycap></keycombo>
+.</para>
 </sect2>
 
 <sect2>
@@ -648,14 +644,14 @@ changes will not actually be made until this is done.</para>
 <title>Printing the <filename>crontab</filename></title>
 
 <para>To print the <filename>crontab</filename> as it has been saved, select
-<menuchoice><guimenu>File</guimenu> <guimenuitem>Print</guimenuitem>
+<menuchoice>
+<guimenu>File</guimenu> <guimenuitem>Print</guimenuitem>
 </menuchoice>.</para>
 
-<mediaobject>
-<imageobject><imagedata fileref="print.png" format="png"></imageobject>
-<textobject><phrase>Printing the
-<filename>crontab</filename>.</phrase></textobject>
-</mediaobject>
+<screenshot>
+<screeninfo>Printing the <filename>crontab</filename>.</screeninfo>
+<graphic fileref="print.png" format="png"></graphic>
+</screenshot>
 
 <para>There are two options in the print dialog box:</para>
 
@@ -670,8 +666,10 @@ changes will not actually be made until this is done.</para>
 
 <varlistentry>
 <term><guilabel>Print All Users</guilabel></term>
-<listitem><para>Prints the <filename>crontab</filename>s for all users.  This
-option is enabled only for users with super-user privileges.</para></listitem>
+<listitem>
+<para>Prints the <filename>crontab</filename>s for all users.  This option is
+enabled only for users with super-user privileges.</para>
+</listitem>
 </varlistentry>
 
 </variablelist>
@@ -706,7 +704,7 @@ option is enabled only for users with super-user privileges.</para></listitem>
 <varlistentry>
 <term><menuchoice>
 <guimenu>File</guimenu>
-<guimenuitem>Print</guimenuitem>
+<guimenuitem>Print...</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para><action>Prints the <filename>crontab</filename>.</action></para>
