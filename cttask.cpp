@@ -236,8 +236,10 @@ string CTTask::describe() const
          switch (total - count)
          {
            case 0:  break;
-           case 1:  if (total > 2) timeDesc += i18n(",");
-                    timeDesc += i18n(" and ");
+           case 1:  if (total > 2) 
+	   	      timeDesc += i18n(", and ");
+		    else
+                      timeDesc += i18n(" and ");
                     break;
            default: timeDesc += i18n(", ");
          }
