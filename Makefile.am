@@ -45,6 +45,7 @@ uninstall-local:
 #
 ###########################################################################
 
+KDE_CXXFLAGS = $(USE_EXCEPTIONS)
 CPPFLAGS = -DKDE
 kcron_CPPFLAGS = -DKDE
 
