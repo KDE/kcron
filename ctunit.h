@@ -18,7 +18,9 @@
 // I want to be able to reuse these classes with another GUI toolkit. -GM 11/99
 
 #include <string>
+#ifndef __DECCXX
 class ostream;
+#endif
 
 /**
   * A cron table unit parser and tokenizer.
@@ -64,7 +66,7 @@ public:
   */
   friend ostream& operator << (ostream& outStr, const CTUnit<min,max>& unit)
   {
-    outStr << unit.tokenize();
+    outStr << (const CTUnit<min, max>) unit.tokenize();
     return outStr;
   };
 

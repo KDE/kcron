@@ -16,7 +16,11 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+#ifdef __DECCXX
+#include <sstream>
+#else
 #include <strstream.h>
+#endif
 #include <string>
 
 #include <qstring.h>
@@ -270,8 +274,12 @@ void KTView :: pageHeading (KTListItem* user, KTPrint &printer) const
 void KTView :: pageFooter (KTListItem* user, KTPrint &printer) const
 {
   //This function will be a lot cleaner when gcc supports ostringstream.
+#ifdef __DECCXX
+  ostringstream oss;
+#else
   char buffer[4096];
   ostrstream oss(buffer, sizeof(buffer));
+#endif
     
   oss<<*(user->getCTCron())<<ends;
   

@@ -15,7 +15,7 @@
 // I want to be able to reuse these classes with another GUI toolkit. -GM 11/99
 
 #include "cti18n.h"
-#include <vector.h>
+#include <vector>
 #include <string>
 #include <stdio.h>    // sprintf
 #include <ctype.h>    // tolower
