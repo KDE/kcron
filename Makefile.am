@@ -10,10 +10,6 @@
 #  it under the terms of the GNU General Public License as published by  #
 #  the Free Software Foundation; either version 2 of the License, or     #
 #  (at your option) any later version.                                   # 
-#  --------------------------------------------------------------------  #
-#  Note: This makefile is for the KDE CVS head only.  To build against   #
-#  KDE 1, please download the source from the author's web site at:      #
-#  http://24.8.19.113/kcron.html                                         #
 ##########################################################################
 
 AM_CPPFLAGS = -UQT_NO_ASCII_CAST -DKDE_FIXES
