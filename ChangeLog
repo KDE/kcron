@@ -27,3 +27,8 @@ gary@meyer.net November 7, 1999
 
   Added KCron handbook.  Various bug fixes.
 
+gary@meyer.net November 15, 1999
+
+  Fixed bug for supporting strftime (in CTTask::describe()) on different
+  platforms.
+

@@ -16,11 +16,6 @@
 #include "cti18n.h"
 #include <time.h>
 
-#include <qdatetime.h>
-
-#include <kglobal.h>
-#include <klocale.h>
-
 CTTask::CTTask(string tokStr, string _comment, bool _syscron)
 {
   syscron = _syscron;
@@ -166,6 +161,8 @@ bool CTTask::dirty() const
 
 string CTTask::describe(bool shortNames) const
 {
+
+  string tmFormat(i18n("%l:%M%P"));
   string DOMFormat(i18n("DAYS_OF_MONTH of MONTHS"));
   string DOWFormat(i18n("every DAYS_OF_WEEK"));
   string dateFormat(i18n("DOM_FORMAT as well as DOW_FORMAT"));
@@ -183,7 +180,7 @@ string CTTask::describe(bool shortNames) const
 
   int total(minute.count()*hour.count());
 
-  QString timeDesc;
+  string timeDesc("");
   int count(0);
 
   for (int h = 0; h <= 23; h++)
@@ -191,8 +188,24 @@ string CTTask::describe(bool shortNames) const
      for (int m = 0; m <= 59; m++)
        if (minute.get(m))
        {
-         QTime tim(h, m);
-         QString tmpStr = KGlobal::locale()->formatTime(tim, false);
+         tm time;
+         time.tm_sec  = 0;
+         time.tm_min  = m;
+         time.tm_hour = h;
+         time.tm_mday = 0;
+         time.tm_mon  = 0;
+         time.tm_year = 0;
+         time.tm_wday = 0;
+         time.tm_yday = 0;
+         time.tm_isdst= 0;
+
+         char tmp[12];
+         strftime(tmp, 12, tmFormat.c_str(), &time);
+         string tmpStr = tmp;
+
+         // remove leading space
+         if (tmpStr.substr(0,1) == " ")
+           tmpStr = tmpStr.substr(1,tmpStr.length()-1);
 
          timeDesc += tmpStr;
          count++;
@@ -258,9 +271,3 @@ bool CTTask::system() const
 {
   return syscron;
 }
-
-
-
-
-
-

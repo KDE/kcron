@@ -1,0 +1,8 @@
+README.hacking
+
+Author: Gary Meyer <gary@meyer.net>
+Date: November 15, 1999
+
+---------------------------------------------------------------------------
+Do not introduce any Qt or KDE dependencies into the "CT"-prefixed classes.
+I want to be able to reuse those classes with another GUI toolkit.
