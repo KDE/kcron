@@ -345,7 +345,7 @@ void KTView::paste()
 void KTView::create()
 {
   KTListItem* ktli = (KTListItem*)listView->currentItem();
-  CHECK_PTR(ktli);
+  Q_CHECK_PTR(ktli);
   ktli->create();
   listView->triggerUpdate();
 }
@@ -353,7 +353,7 @@ void KTView::create()
 void KTView::edit()
 {
   KTListItem* ktli = (KTListItem*)listView->currentItem();
-  CHECK_PTR(ktli);
+  Q_CHECK_PTR(ktli);
   ktli->edit();
   listView->triggerUpdate();
 }

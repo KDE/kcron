@@ -62,7 +62,7 @@ void KTListCron::print (KTPrint& printer) const
   userInfo = QString::fromLocal8Bit(getCTCron()->name.c_str());
 
   KTListItem* ktli = (KTListItem*)this->firstChild();
-  CHECK_PTR(ktli);
+  Q_CHECK_PTR(ktli);
   while (ktli) {
     ktli->print(printer);
     ktli = (KTListItem*)ktli->nextSibling();

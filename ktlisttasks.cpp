@@ -89,7 +89,7 @@ void KTListTasks::print (KTPrint& printer) const
   }
 
   KTListItem* ktli = (KTListItem*)this->firstChild();
-  CHECK_PTR(ktli);
+  Q_CHECK_PTR(ktli);
 
   while (ktli) {
     ktli->print(printer);
