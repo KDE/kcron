@@ -62,7 +62,7 @@ public:
 #ifdef KDE1
     return KApplication::getKApplication()->getIconLoader()->loadMiniIcon(name);
 #else
-    return KGlobal::iconLoader()->loadApplicationMiniIcon(name);
+    return KGlobal::iconLoader()->loadApplicationIcon(name, KIconLoader::Small);
 #endif
   }
 
