@@ -145,7 +145,7 @@ void KTView::refresh()
 
   resizeEvent();
 
-  connect(listView, SIGNAL(rightButtonClicked(QListViewItem*, const QPoint&, int)),
+  connect(listView, SIGNAL(contextMenuRequested(QListViewItem*, const QPoint&, int)),
     SLOT(slotMenu(QListViewItem*, const QPoint&, int)));
 
   connect(listView, SIGNAL(selectionChanged(QListViewItem*)),
