@@ -432,7 +432,7 @@ tasks. Those include:</para>
 <varlistentry>
 <term><guimenuitem>HOME</guimenuitem></term>
 <listitem><para>To be used instead of the default user's home
-directory.</para></listitem>
+folder.</para></listitem>
 </varlistentry>
 
 <varlistentry>
@@ -443,7 +443,7 @@ default email address.</para></listitem>
 
 <varlistentry>
 <term><guimenuitem>PATH</guimenuitem></term>
-<listitem><para>To be used to search directories for program
+<listitem><para>To be used to search folders for program
 files.</para></listitem>
 </varlistentry>
 
