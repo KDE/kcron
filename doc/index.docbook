@@ -759,7 +759,7 @@ variable.</action></para></listitem>
 </varlistentry>
 <varlistentry>
 <term><menuchoice>
-<guimenu>Edit></guimenu>
+<guimenu>Edit</guimenu>
 <guimenuitem>Enabled</guimenuitem>
 </menuchoice></term>
 <listitem>
@@ -768,8 +768,8 @@ variable.</action></para></listitem>
 </varlistentry>
 <varlistentry>
 <term><menuchoice>
-<guimenu><accel>E</accel>dit</guimenu>
-<guimenuitem><accel>R</accel>un Now</guimenuitem>
+<guimenu>Edit</guimenu>
+<guimenuitem>Run Now</guimenuitem>
 </menuchoice></term>
 <listitem><para><action>Run the selected task now.</action></para></listitem>
 </varlistentry>
