@@ -152,7 +152,7 @@ void KTVariable::slotOk()
 void KTVariable::autoWrap()
 {
   int maxCharWidth = (int)(cmbVariable->width() /
-    ((mleComment->maxLineWidth()*1.05) /
+    ((mleComment->totalWidth()*1.05) /
     mleComment->text().length()));
 
   unsigned int pos(maxCharWidth);
@@ -169,7 +169,7 @@ void KTVariable::autoWrap()
   mleComment->setText(s);
 
   mleComment->setCursorPosition(mleComment->numLines()-1,
-    mleComment->maxLineWidth()-1);
+    mleComment->totalWidth()-1);
 }
 
 #include "ktvariable.moc"
