@@ -47,7 +47,7 @@
 
 <State name="runnow_enabled">
   <Enable>
-    <Action name="edit_run">
+    <Action name="edit_run"/>
   </Enable>
 </State>
     
