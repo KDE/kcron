@@ -2,6 +2,6 @@
 
 SUBDIRS =
 
-EXTRA_DIST = Makefile.am 
+EXTRA_DIST =
 
 ####### kdevelop will overwrite this part!!! (end)############
