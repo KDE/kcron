@@ -27,7 +27,11 @@
 
 KTApp::KTApp()
 {
+#ifdef KDE1
+  config=KApplication::getKApplication()->getConfig();
+#else
   config=kapp->config();
+#endif
 
   setIcon(KTIcon::application(true));
 
@@ -139,11 +143,19 @@ void KTApp::initMenuBar()
   view_menu->insertItem(i18n("Show &Status Bar"), ID_VIEW_STATUSBAR);
 
   help_menu = new QPopupMenu();
+#ifdef KDE1
+  QString aboutstring=QString(
+    kapp->getCaption())+
+    " "+VERSION+"\n\n"+
+    "(c) 1999 Gary Meyer <gary@meyer.net>";
+  help_menu = KApplication::getKApplication()->getHelpMenu(true, aboutstring);
+#else
   QString aboutstring=QString(
     kapp->caption())+
     " "+VERSION+"\n\n"+
     "(c) 1999 Gary Meyer <gary@meyer.net>";
   help_menu = helpMenu(aboutstring);
+#endif
 
   menuBar = new KMenuBar(this);
 
@@ -325,12 +337,21 @@ bool KTApp::queryClose()
   {
     KTApp* win = (KTApp*)parent();
 
+#ifdef KDE1
+    int retVal = QMessageBox::information(win,
+      kapp->getCaption(),
+      i18n("Scheduled tasks have been modified.\nDo you want to save changes?"),
+      QMessageBox::Yes | QMessageBox::Default,
+      QMessageBox::No,
+      QMessageBox::Cancel | QMessageBox::Escape);
+#else
     int retVal = QMessageBox::information(win,
       kapp->caption(),
       i18n("Scheduled tasks have been modified.\nDo you want to save changes?"),
       QMessageBox::Yes | QMessageBox::Default,
       QMessageBox::No,
       QMessageBox::Cancel | QMessageBox::Escape);
+#endif
 
     switch (retVal)
     {
@@ -549,8 +570,13 @@ void KTApp::statusCallback(int id_){
       slotStatusHelpMsg(i18n("Print tasks and variables."));
       break;
     case ID_FILE_QUIT:
+#ifdef KDE1
+      slotStatusHelpMsg(i18n("Exit " +
+        QString(kapp->getCaption()) + "."));
+#else
       slotStatusHelpMsg(i18n("Exit " +
         QString(kapp->caption()) + "."));
+#endif
       break;
 
     case ID_EDIT_CUT:
