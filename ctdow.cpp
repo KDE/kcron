@@ -69,9 +69,9 @@ void CTDayOfWeek::initialize(const string &tokStr)
 string CTDayOfWeek::describe() const
 {
   if (count() == 7)
-    return cti18n("every day ");
+    return i18n("every day ");
   else if (get(1) && get(2) && get(3) && get(4) && get(5))
-    return cti18n("weekday ");
+    return i18n("weekday ");
   else
     return CTUnit<1,7>::describe(shortName);
 }

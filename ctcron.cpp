@@ -43,7 +43,7 @@ CTCron::CTCron(bool _syscron, string _login) :
     {
       readCommand  = "cat /etc/crontab > " + tmpFileName;
       writeCommand = "cat " + tmpFileName + " > /etc/crontab";
-      login = cti18n("(System Crontab)");
+      login = i18n("(System Crontab)");
       name = "";
     }
     else

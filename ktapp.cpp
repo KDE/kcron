@@ -37,7 +37,7 @@ KTApp::KTApp()
 
   setIcon(KTIcon::application(true));
 
-  setCaption(i18n("KDE Task Scheduler"));
+  setCaption(i18n("Task Scheduler"));
 
   // Call inits to invoke all other construction parts.
   initMenuBar();

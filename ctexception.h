@@ -24,9 +24,4 @@ class CTException {};
   */
 class CTExceptionIO : public CTException {};
 
-/**
-  * Parse exception.
-  */
-class CTExceptionParse : public CTException {};
-
 #endif // CTEXCEPTION_H

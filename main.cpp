@@ -16,7 +16,6 @@
 #include "ktapp.h"
 #include <iostream.h>
 
-class CTExceptionParse;
 class CTExceptionIO;
  
 int main(int argc, char* argv[]) { 
@@ -37,11 +36,6 @@ int main(int argc, char* argv[]) {
     return app.exec();
   }
 
-  catch (CTExceptionParse& ctep)
-  {
-    cerr << i18n("KCron fatal error: Unable to parse file.") << endl;
-    return 1;
-  }
   catch (CTExceptionIO& ctio)
   {
     cerr << i18n("KCron fatal error: Unable to read or write file.") << endl;

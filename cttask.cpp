@@ -12,9 +12,9 @@
  ***************************************************************************/
 
 #include "cttask.h"
-#include <time.h>
-#include "cti18n.h"
 #include "ctdebug.h"
+#include "cti18n.h"
+#include <time.h>
 
 CTTask::CTTask(string tokStr, string _comment, bool _syscron)
 {
@@ -162,12 +162,12 @@ bool CTTask::dirty() const
 string CTTask::describe(bool shortNames) const
 {
 
-  string tmFormat(cti18n("%l:%M%P"));
-  string DOMFormat(cti18n("DAYS_OF_MONTH of MONTHS"));
-  string DOWFormat(cti18n("every DAYS_OF_WEEK"));
-  string dateFormat(cti18n("DOM_FORMAT as well as DOW_FORMAT"));
-  string timeFormat(cti18n("At TIME"));
-  string format(cti18n("TIME_FORMAT, DATE_FORMAT"));
+  string tmFormat(i18n("%l:%M%P"));
+  string DOMFormat(i18n("DAYS_OF_MONTH of MONTHS"));
+  string DOWFormat(i18n("every DAYS_OF_WEEK"));
+  string dateFormat(i18n("DOM_FORMAT as well as DOW_FORMAT"));
+  string timeFormat(i18n("At TIME"));
+  string format(i18n("TIME_FORMAT, DATE_FORMAT"));
 
   // Get natural language description of day of month,
   // month name, and day of week.
@@ -206,10 +206,10 @@ string CTTask::describe(bool shortNames) const
          switch (total - count)
          {
            case 0:  break;
-           case 1:  if (total > 2) timeDesc += cti18n(",");
-                    timeDesc += cti18n(" and ");
+           case 1:  if (total > 2) timeDesc += i18n(",");
+                    timeDesc += i18n(" and ");
                     break;
-           default: timeDesc += cti18n(", ");
+           default: timeDesc += i18n(", ");
          }
       }
 
@@ -219,7 +219,7 @@ string CTTask::describe(bool shortNames) const
 
   if ((dayOfMonth.count() == 31) &&
     (dayOfWeek.count() == 7))
-    dateFormat = cti18n("every day ");
+    dateFormat = i18n("every day ");
   else
   {
     // Day of month not specified, so use day of week.

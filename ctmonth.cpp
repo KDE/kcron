@@ -46,7 +46,7 @@ CTMonth::CTMonth(const string& tokStr) :
 string CTMonth::describe () const
 {
   return (count() == 12) ?
-    cti18n("every month ") :
+    i18n("every month ") :
     CTUnit<1,12>::describe(shortName);
 }
 
