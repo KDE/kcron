@@ -1,7 +1,7 @@
 ####### kdevelop will overwrite this part!!! (begin)##########
 bin_PROGRAMS = kcron
 kcron_SOURCES = kttask.cpp ktvariable.cpp ktview.cpp ktapp.cpp ctvariable.cpp cttask.cpp ctmonth.cpp cthost.cpp ctdow.cpp ctdom.cpp ctcron.cpp main.cpp 
-kcron_LDADD   =  -lkfile -lkdeui -lkdecore -lqt -lXext -lX11 $(LIBSOCKET)
+kcron_LDADD   =  -lICE -lkfile -lkdeui -lkdecore -lqt -lXext -lX11 $(LIBSOCKET)
 
 SUBDIRS = 
 
