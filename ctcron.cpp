@@ -150,14 +150,14 @@ void CTCron::operator = (const CTCron& source)
   assert(!source.syscron);
 
   for (CTVariableIterator i = const_cast<CTCron&>(source).variable.begin();
-    i != source.variable.end(); i++)
+    i != source.variable.end(); ++i)
   {
     CTVariable* tmp = new CTVariable(**i);
     variable.push_back(tmp);
   }
 
   for (CTTaskIterator i = const_cast<CTCron&>(source).task.begin();
-    i != source.task.end(); i++)
+    i != source.task.end(); ++i)
   {
     CTTask* tmp = new CTTask(**i);
     task.push_back(tmp);
@@ -233,14 +233,14 @@ ostream& operator << (ostream& outputStream, const CTCron& cron)
   int itemCount(0);
 
   for (CTVariableIterator i = const_cast<CTCron&>(cron).variable.begin();
-    i != cron.variable.end(); i++)
+    i != cron.variable.end(); ++i)
   {
     outputStream << **i;
     itemCount++;
   }
 
   for (CTTaskIterator i = const_cast<CTCron&>(cron).task.begin();
-    i != cron.task.end(); i++)
+    i != cron.task.end(); ++i)
   {
     outputStream << **i;
     itemCount++;
@@ -258,9 +258,9 @@ ostream& operator << (ostream& outputStream, const CTCron& cron)
 
 CTCron::~CTCron()
 {
-  for (CTTaskIterator i = task.begin(); i != task.end(); i++)
+  for (CTTaskIterator i = task.begin(); i != task.end(); ++i)
     delete *i;
-  for (CTVariableIterator i = variable.begin(); i != variable.end(); i++)
+  for (CTVariableIterator i = variable.begin(); i != variable.end(); ++i)
     delete *i;
 }
 
@@ -283,10 +283,10 @@ void CTCron::apply()
     return;
 
   // mark as applied
-  for (CTTaskIterator i = task.begin(); i != task.end(); i++)
+  for (CTTaskIterator i = task.begin(); i != task.end(); ++i)
     (*i)->apply();
 
-  for (CTVariableIterator i = variable.begin(); i != variable.end(); i++)
+  for (CTVariableIterator i = variable.begin(); i != variable.end(); ++i)
     (*i)->apply();
 
   initialTaskCount = task.size();
@@ -295,10 +295,10 @@ void CTCron::apply()
 
 void CTCron::cancel()
 {
-  for (CTTaskIterator i = task.begin(); i != task.end(); i++)
+  for (CTTaskIterator i = task.begin(); i != task.end(); ++i)
     (*i)->cancel();
 
-  for (CTVariableIterator i = variable.begin(); i != variable.end(); i++)
+  for (CTVariableIterator i = variable.begin(); i != variable.end(); ++i)
     (*i)->cancel();
 }
 
@@ -310,10 +310,10 @@ bool CTCron::dirty()
 
   if (initialVariableCount != variable.size()) isDirty = true;
 
-  for (CTTaskIterator i = task.begin(); i != task.end(); i++)
+  for (CTTaskIterator i = task.begin(); i != task.end(); ++i)
     if ((*i)->dirty()) isDirty = true;
 
-  for (CTVariableIterator i = variable.begin(); i != variable.end(); i++)
+  for (CTVariableIterator i = variable.begin(); i != variable.end(); ++i)
     if ((*i)->dirty()) isDirty = true;
 
   return isDirty;

@@ -53,13 +53,13 @@ CTHost::CTHost()
 
 CTHost::~CTHost()
 {
-  for (CTCronIterator i = cron.begin(); i != cron.end(); i++)
+  for (CTCronIterator i = cron.begin(); i != cron.end(); ++i)
     delete *i;
 }
 
 void CTHost::apply()
 {
-  for (CTCronIterator i = cron.begin(); i != cron.end(); i++)
+  for (CTCronIterator i = cron.begin(); i != cron.end(); ++i)
   {
     (*i)->apply();
     if ((*i)->isError())
@@ -72,7 +72,7 @@ void CTHost::apply()
 
 void CTHost::cancel()
 {
-  for (CTCronIterator i = cron.begin(); i != cron.end(); i++)
+  for (CTCronIterator i = cron.begin(); i != cron.end(); ++i)
     (*i)->cancel();
 }
 
@@ -80,7 +80,7 @@ bool CTHost::dirty()
 {
   bool isDirty(false);
 
-  for (CTCronIterator i = cron.begin(); i != cron.end(); i++)
+  for (CTCronIterator i = cron.begin(); i != cron.end(); ++i)
     if ((*i)->dirty()) isDirty = true;
 
   return isDirty;
