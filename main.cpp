@@ -15,14 +15,20 @@
 #include <klocale.h>
 #include "ktapp.h"
 #include <iostream.h>
+#include <kcmdlineargs.h>
+
+static const char *description = 
+	I18N_NOOP("KDE Cron Tab editor");
 
 class CTExceptionIO;
  
-int main(int argc, char* argv[]) { 
+int main(int argc, char* argv[]) 
+{ 
+  KCmdLineArgs::init(argc, argv, "kcron", description, VERSION);
 
   try 
   {
-    KApplication app(argc,argv,"kcron");
+    KApplication app;
  
     if (app.isRestored())
       { 
