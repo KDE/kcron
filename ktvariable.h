@@ -21,10 +21,11 @@
 #include <qlabel.h>
 #include <qlineedit.h>
 #include <qcombobox.h>
-#include <qmultilineedit.h>
 #include <qcheckbox.h>
 
 #include <kdialogbase.h>
+
+class KTextEdit;
 
 class CTVariable;
 
@@ -62,11 +63,6 @@ private slots:
 private:
 
 /**
-  * Auto wrap comment text.
-  */
-  void autoWrap();
-
-/**
   * Environment variable.
   */
   CTVariable*     ctvar;
@@ -82,7 +78,7 @@ private:
   QLineEdit*      leValue;
 
   QLabel*         labComment;
-  QMultiLineEdit* mleComment;
+  KTextEdit*      teComment;
 
   QCheckBox*      chkEnabled;
 };

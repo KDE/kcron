@@ -200,6 +200,10 @@ void KTApp::initToolBar()
   actionCut->plug(toolBar());
   actionCopy->plug(toolBar());
   actionPaste->plug(toolBar());
+  toolBar()->insertSeparator();
+  toolBar()->insertButton("filenew", menuEditNew, true, i18n("New"), -1);
+  toolBar()->insertButton("edit", menuEditModify, true, i18n("Modify"), -1);
+  toolBar()->insertButton("editdelete", menuEditDelete, true, i18n("Delete"), -1);
 
   connect(toolBar(), SIGNAL(clicked(int)), SLOT(commandCallback(int)));
   connect(toolBar(), SIGNAL(pressed(int)), SLOT(statusCallback(int)));

@@ -73,6 +73,56 @@ private slots:
   */
   void slotCancel();
 
+/**
+  * Set or clear all month checkboxes
+  */
+  void slotAllMonths();
+  
+/**
+  * A month checkbox has changed
+  */
+  void slotMonthChanged();
+  
+/**
+  * Set or clear all day of month checkboxes
+  */
+  void slotAllDaysOfMonth();
+  
+/**
+  * A day of month checkbox has changed
+  */
+  void slotDayOfMonthChanged();
+  
+/**
+  * Set or clear all day of week checkboxes
+  */
+  void slotAllDaysOfWeek();
+  
+/**
+  * A day of week checkbox has changed
+  */
+  void slotDayOfWeekChanged();
+  
+/**
+  * Set or clear all hour checkboxes
+  */
+  void slotAllHours();
+  
+/**
+  * An hour checkbox has changed
+  */
+  void slotHourChanged();
+  
+/**
+  * Set or clear all minute checkboxes
+  */
+  void slotAllMinutes();
+  
+/**
+  * A minute checkbox has changed
+  */
+  void slotMinuteChanged();
+  
 private:
 
 /**
@@ -105,12 +155,15 @@ private:
 
   QButtonGroup*   bgMonth;
   QCheckBox*      cbMonth[13];
+  QPushButton*    pbAllMonths;
 
   QButtonGroup*   bgDayOfMonth;
   QPushButton*    pbDayOfMonth[32];
+  QPushButton*    pbAllDaysOfMonth;
 
   QButtonGroup*   bgDayOfWeek;
   QCheckBox*      cbDayOfWeek[8];
+  QPushButton*    pbAllDaysOfWeek;
 
   QButtonGroup*   bgEveryDay;
   QCheckBox*      cbEveryDay;
@@ -119,9 +172,11 @@ private:
   QLabel*         labAM;
   QLabel*         labPM;
   QPushButton*    pbHour[25];
+  QPushButton*    pbAllHours;
 
   QButtonGroup*   bgMinute;
   QPushButton*    pbMinute[61];
+  QPushButton*    pbAllMinutes;
 
   QPushButton*    pbOk;
   QPushButton*    pbCancel;

@@ -350,6 +350,9 @@ void KTView::paste()
 void KTView::create()
 {
   KTListItem* ktli = (KTListItem*)listView->currentItem();
+  if ((ktli->text(0) != KTListTasks::getDescription()) && (ktli->text(0) != KTListVars::getDescription())) {
+    ktli = (KTListItem*)ktli->parent();
+  }
   Q_CHECK_PTR(ktli);
   ktli->create();
   listView->triggerUpdate();
@@ -525,7 +528,7 @@ void KTView::slotSetCurrent (QListViewItem* qlvi)
       ktapp->actionCut->setEnabled(true);
       ktapp->actionCopy->setEnabled(true);
       ktapp->actionPaste->setEnabled(false);
-      ktapp->enableCommand(KTApp::menuEditNew,    false);
+      ktapp->enableCommand(KTApp::menuEditNew,    true);
       ktapp->enableCommand(KTApp::menuEditModify, true);
       ktapp->enableCommand(KTApp::menuEditDelete, true);
       ktapp->enableCommand(KTApp::menuEditRunNow, false);
@@ -541,7 +544,7 @@ void KTView::slotSetCurrent (QListViewItem* qlvi)
       ktapp->actionCut->setEnabled(true);
       ktapp->actionCopy->setEnabled(true);
       ktapp->actionPaste->setEnabled(false);
-      ktapp->enableCommand(KTApp::menuEditNew,    false);
+      ktapp->enableCommand(KTApp::menuEditNew,    true);
       ktapp->enableCommand(KTApp::menuEditModify, true);
       ktapp->enableCommand(KTApp::menuEditDelete, true);
       ktapp->enableCommand(KTApp::menuEditRunNow, (currentCTTask->enabled) &&

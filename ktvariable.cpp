@@ -14,9 +14,11 @@
 #include "ktvariable.h"
 
 #include <qlayout.h>
+
 #include <kapplication.h>     // kapp
 #include <klocale.h>  // i18n()
 #include <kmessagebox.h>
+#include <ktextedit.h>
 
 #include "ctvariable.h"
 
@@ -64,10 +66,11 @@ KTVariable::KTVariable(CTVariable* _ctvar,const QString &_caption) :
   labComment = new QLabel(i18n("Co&mment:"), page, "labComment");
   layout->addWidget(labComment, 3, 0, Qt::AlignLeft | Qt::AlignTop);
 
-  mleComment = new QMultiLineEdit(page, "mleComment");
-  layout->addMultiCellWidget(mleComment, 3, 3, 1, 2);
+  teComment = new KTextEdit(page, "teComment");
+  teComment->setTextFormat(Qt::PlainText);
+  layout->addMultiCellWidget(teComment, 3, 3, 1, 2);
 
-  labComment->setBuddy(mleComment);
+  labComment->setBuddy(teComment);
 
   // enabled
   chkEnabled = new QCheckBox(i18n("&Enabled"), page, "chkEnabled");
@@ -79,8 +82,7 @@ KTVariable::KTVariable(CTVariable* _ctvar,const QString &_caption) :
 
   leValue->setText(QString::fromLocal8Bit(ctvar->value.c_str()));
 
-  mleComment->setText(QString::fromLocal8Bit(ctvar->comment.c_str()));
-  autoWrap();
+  teComment->setText(QString::fromLocal8Bit(ctvar->comment.c_str()));
 
   chkEnabled->setChecked(ctvar->enabled);
 
@@ -103,22 +105,22 @@ void KTVariable::slotVariableChanged()
   if (variable == "HOME")
   {
     labIcon->setPixmap(KTIcon::home(false));
-    mleComment->setText(i18n("Override default home folder."));
+    teComment->setText(i18n("Override default home folder."));
   }
   else if (variable == "MAILTO")
   {
     labIcon->setPixmap(KTIcon::mail(false));
-    mleComment->setText(i18n("Email output to specified account."));
+    teComment->setText(i18n("Email output to specified account."));
   }
   else if (variable == "SHELL")
   {
     labIcon->setPixmap(KTIcon::shell(false));
-    mleComment->setText(i18n("Override default shell."));
+    teComment->setText(i18n("Override default shell."));
   }
   else if (variable == "PATH")
   {
     labIcon->setPixmap(KTIcon::path(false));
-    mleComment->setText(i18n("Folders to search for program files."));
+    teComment->setText(i18n("Folders to search for program files."));
   }
   else
   {
@@ -144,32 +146,9 @@ void KTVariable::slotOk()
 
   ctvar->variable = cmbVariable->currentText().local8Bit();
   ctvar->value    = leValue->text().local8Bit();
-  ctvar->comment  = mleComment->text().local8Bit();
+  ctvar->comment  = teComment->text().replace('\n',' ').replace('\r',' ').local8Bit();
   ctvar->enabled  = chkEnabled->isChecked();
   close();
-}
-
-void KTVariable::autoWrap()
-{
-  int maxCharWidth = (int)(cmbVariable->width() /
-    ((mleComment->totalWidth()*1.05) /
-    mleComment->text().length()));
-
-  unsigned int pos(maxCharWidth);
-  QString s = QString::fromLocal8Bit(ctvar->comment.c_str());
-
-  while(pos < s.length())
-  {
-    int foundat = s.findRev(" ", pos);
-    if (foundat)
-      s.replace(foundat, 1, "\n");
-    pos = foundat+maxCharWidth;
-  }
-
-  mleComment->setText(s);
-
-  mleComment->setCursorPosition(mleComment->numLines()-1,
-    mleComment->totalWidth()-1);
 }
 
 #include "ktvariable.moc"

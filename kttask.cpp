@@ -165,16 +165,18 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   pbBrowse = new QPushButton(this, "pbBrowse");
   pbBrowse->setText(i18n("&Browse..."));
   h3->addWidget( pbBrowse );
+  
+  QHBoxLayout *h3a = new QHBoxLayout( ml, KDialogBase::spacingHint() );
 
   // enabled
   chkEnabled = new QCheckBox(i18n("&Enabled"), this, "chkEnabled");
   chkEnabled->setChecked(cttask->enabled);
-  ml->addWidget( chkEnabled );
+  h3a->addWidget( chkEnabled );
 
   // enabled
   chkSilent = new QCheckBox(i18n("&Silent"), this, "chkSilent");
   chkSilent->setChecked(cttask->silent);
-  ml->addWidget( chkSilent );
+  h3a->addWidget( chkSilent );
 
   QHBoxLayout *h4 = new QHBoxLayout( ml, KDialogBase::spacingHint() );
 
@@ -196,6 +198,9 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
 
     if (!cttask->month.get(mo)) everyDay = false;
   }
+  pbAllMonths = new QPushButton(bgMonth, "pbAllMonths");
+  pbAllMonths->setText( i18n("Set All") );
+  vmonths->addWidget( pbAllMonths, AlignLeft );
 
   QVBoxLayout *v1 = new QVBoxLayout( h4, KDialogBase::spacingHint() );
 
@@ -226,6 +231,9 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
     hdays->addWidget( day, AlignLeft );
   }
   hdays->addStretch( 1 );
+  pbAllDaysOfMonth = new QPushButton(bgDayOfMonth, "pbAllDaysOfMonth");
+  pbAllDaysOfMonth->setText( i18n("Set All") );
+  hdays->addWidget( pbAllDaysOfMonth, AlignLeft );
 
   // days of the week
   bgDayOfWeek = new QButtonGroup( i18n("Days of Week"), this, "bgDayOfWeek");
@@ -243,6 +251,9 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
 
     if (!cttask->dayOfWeek.get(dw)) everyDay = false;
   }
+  pbAllDaysOfWeek = new QPushButton(bgDayOfWeek, "pbAllDaysOfWeek");
+  pbAllDaysOfWeek->setText( i18n("Set All") );
+  v3->addWidget( pbAllDaysOfWeek, AlignLeft );
 
   QVBoxLayout *v2 = new QVBoxLayout( h4, KDialogBase::spacingHint() );
 
@@ -298,6 +309,12 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
 
     hhours->addWidget( pbHour[ho1] );
   }
+  
+  hhours = new QHBoxLayout( v4, KDialogBase::spacingHint() );
+  pbAllHours = new QPushButton(bgHour, "pbAllHours");
+  pbAllHours->setText( i18n("Set All") );
+  hhours->addWidget( pbAllHours, AlignLeft );
+  
   // minutes
   bgMinute = new QButtonGroup( i18n("Minutes"), this, "bgMinute");
   v2->addWidget( bgMinute );
@@ -321,6 +338,11 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
 
     hmin->addWidget( pbMinute[mi1] );
   }
+  
+  hmin = new QHBoxLayout( vmin, KDialogBase::spacingHint() );
+  pbAllMinutes = new QPushButton(bgMinute, "pbAllMinutes");
+  pbAllMinutes->setText( i18n("Set All") );
+  hmin->addWidget( pbAllMinutes, AlignLeft );
 
   QHBoxLayout *h5 = new QHBoxLayout( ml, KDialogBase::spacingHint() );
   h5->addStretch( 1 );
@@ -355,7 +377,31 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   connect(cbEveryDay, SIGNAL(clicked()), SLOT(slotDailyChanged()));
   connect(pbOk, SIGNAL(clicked()), SLOT(slotOK()));
   connect(pbCancel, SIGNAL(clicked()), SLOT(slotCancel()));
-
+  connect(pbAllMonths, SIGNAL(clicked()), SLOT(slotAllMonths()));
+  for (int mo = 1; mo <= 12; mo++) {
+    connect(cbMonth[mo], SIGNAL(clicked()), SLOT(slotMonthChanged()));
+  }
+  connect(pbAllDaysOfMonth, SIGNAL(clicked()), SLOT(slotAllDaysOfMonth()));
+  for (int dm = 1; dm <= 31; dm++)
+  {
+    connect(pbDayOfMonth[dm], SIGNAL(clicked()), SLOT(slotDayOfMonthChanged()));
+  }
+  connect(pbAllDaysOfWeek, SIGNAL(clicked()), SLOT(slotAllDaysOfWeek()));
+  for (int dw = 1; dw <= 7; dw++)
+  {
+    connect(cbDayOfWeek[dw], SIGNAL(clicked()), SLOT(slotDayOfWeekChanged()));
+  }
+  connect(pbAllHours, SIGNAL(clicked()), SLOT(slotAllHours()));
+  for (int ho = 0; ho <= 23; ho++)
+  {
+    connect(pbHour[ho], SIGNAL(clicked()), SLOT(slotHourChanged()));
+  }
+  connect(pbAllMinutes, SIGNAL(clicked()), SLOT(slotAllMinutes()));
+  for (int mi = 0; mi <= 55; mi+=5)
+  {
+    connect(pbMinute[mi], SIGNAL(clicked()), SLOT(slotMinuteChanged()));
+  }
+ 
   // key acceleration
   key_accel = new KAccel(this);
   key_accel->insert(KStdAccel::Open, this, SLOT(slotOK()));
@@ -365,6 +411,11 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
 
   setFixedSize( minimumSize() );
   slotDailyChanged();
+  slotMonthChanged();
+  slotDayOfMonthChanged();
+  slotDayOfWeekChanged();
+  slotHourChanged();
+  slotMinuteChanged();
 }
 
 KTTask::~KTTask()
@@ -414,6 +465,9 @@ void KTTask::slotDailyChanged()
       cbDayOfWeek[dw]->setChecked(true);
       cbDayOfWeek[dw]->setEnabled(false);
     }
+    pbAllMonths->setEnabled(false);
+    pbAllDaysOfMonth->setEnabled(false);
+    pbAllDaysOfWeek->setEnabled(false);
   }
   else
   {
@@ -429,7 +483,13 @@ void KTTask::slotDailyChanged()
     {
       cbDayOfWeek[dw]->setEnabled(true);
     }
+    pbAllMonths->setEnabled(true);
+    pbAllDaysOfMonth->setEnabled(true);
+    pbAllDaysOfWeek->setEnabled(true);
   }
+  slotMonthChanged();
+  slotDayOfMonthChanged();
+  slotDayOfWeekChanged();
 }
 
 void KTTask::slotOK()
@@ -647,5 +707,195 @@ void KTTask::slotBrowse()
 
   leCommand->setFocus();
 }
+
+void KTTask::slotAllMonths()
+{
+  if (pbAllMonths->text() == i18n("Set All")) {
+    for (int mo = 1; mo <= 12; mo++)
+    {
+      cbMonth[mo]->setChecked(true);
+    }
+  }
+  else {
+    for (int mo = 1; mo <= 12; mo++)
+    {
+      cbMonth[mo]->setChecked(false);
+    }
+  }
+  slotMonthChanged();
+}
+
+void KTTask::slotMonthChanged()
+{
+  bool allChecked = true;
+  bool allCleared = true;
+  for (int mo = 1; mo <= 12; mo++)
+  {
+    if (cbMonth[mo]->isChecked()) {
+      allCleared = false;
+    }
+    else {
+      allChecked = false;
+    }
+  }
+  if (allCleared) {
+    pbAllMonths->setText( i18n("Set All") );
+  }
+  else {
+    pbAllMonths->setText( i18n("Clear All") );
+  }
+}
+
+void KTTask::slotAllDaysOfMonth()
+{
+  if (pbAllDaysOfMonth->text() == i18n("Set All")) {
+    for (int dm = 1; dm <= 31; dm++)
+    {
+      pbDayOfMonth[dm]->setOn(true);
+    }
+  }
+  else {
+    for (int dm = 1; dm <= 31; dm++)
+    {
+      pbDayOfMonth[dm]->setOn(false);
+    }
+  }
+  slotDayOfMonthChanged();
+}
+
+void KTTask::slotDayOfMonthChanged()
+{
+  bool allChecked = true;
+  bool allCleared = true;
+  for (int dm = 1; dm <= 31; dm++)
+  {
+    if (pbDayOfMonth[dm]->isOn()) {
+      allCleared = false;
+    }
+    else {
+      allChecked = false;
+    }
+  }
+  if (allCleared) {
+    pbAllDaysOfMonth->setText( i18n("Set All") );
+  }
+  else {
+    pbAllDaysOfMonth->setText( i18n("Clear All") );
+  }
+ }
+
+void KTTask::slotAllDaysOfWeek()
+{
+  if (pbAllDaysOfWeek->text() == i18n("Set All")) {
+    for (int dw = 1; dw <= 7; dw++)
+    {
+      cbDayOfWeek[dw]->setChecked(true);
+    }
+  }
+  else {
+    for (int dw = 1; dw <= 7; dw++)
+    {
+      cbDayOfWeek[dw]->setChecked(false);
+    }
+  }
+  slotDayOfWeekChanged();
+}
+
+void KTTask::slotDayOfWeekChanged()
+{
+  bool allChecked = true;
+  bool allCleared = true;
+  for (int dw = 1; dw <= 7; dw++)
+  {
+    if (cbDayOfWeek[dw]->isChecked()) {
+      allCleared = false;
+    }
+    else {
+      allChecked = false;
+    }
+  }
+  if (allCleared) {
+    pbAllDaysOfWeek->setText( i18n("Set All") );
+  }
+  else {
+    pbAllDaysOfWeek->setText( i18n("Clear All") );
+  }
+ }
+
+void KTTask::slotAllHours()
+{
+  if (pbAllHours->text() == i18n("Set All")) {
+    for (int ho = 0; ho <= 23; ho++)
+    {
+      pbHour[ho]->setOn(true);
+    }
+  }
+  else {
+    for (int ho = 0; ho <= 23; ho++)
+    {
+      pbHour[ho]->setOn(false);
+    }
+  }
+  slotHourChanged();
+}
+
+void KTTask::slotHourChanged()
+{
+  bool allChecked = true;
+  bool allCleared = true;
+  for (int ho = 0; ho <= 23; ho++)
+  {
+    if (pbHour[ho]->isOn()) {
+      allCleared = false;
+    }
+    else {
+      allChecked = false;
+    }
+  }
+  if (allCleared) {
+    pbAllHours->setText( i18n("Set All") );
+  }
+  else {
+    pbAllHours->setText( i18n("Clear All") );
+  }
+ }
+
+void KTTask::slotAllMinutes()
+{
+  if (pbAllMinutes->text() == i18n("Set All")) {
+    for (int mi = 0; mi <= 55; mi+=5)
+    {
+      pbMinute[mi]->setOn(true);
+    }
+  }
+  else {
+    for (int mi = 0; mi <= 55; mi+=5)
+    {
+      pbMinute[mi]->setOn(false);
+    }
+  }
+  slotMinuteChanged();
+}
+
+void KTTask::slotMinuteChanged()
+{
+  bool allChecked = true;
+  bool allCleared = true;
+  for (int mi = 0; mi <= 55; mi+=5)
+  {
+    if (pbMinute[mi]->isOn()) {
+      allCleared = false;
+    }
+    else {
+      allChecked = false;
+    }
+  }
+  if (allCleared) {
+    pbAllMinutes->setText( i18n("Set All") );
+  }
+  else {
+    pbAllMinutes->setText( i18n("Clear All") );
+  }
+ }
 
 #include "kttask.moc"

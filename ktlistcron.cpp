@@ -14,6 +14,7 @@
 #include "ktlistcron.h"
 
 #include <qstring.h>
+#include <klocale.h>
 
 #include "ctcron.h"
 
@@ -42,7 +43,7 @@ KTListCron::KTListCron(QListView* parent, CTCron* _ctcron) :
 
 void KTListCron::refresh()
 {
-  setPixmap(0, getCTCron()->login.c_str() == "system" ?
+  setPixmap(0, getCTCron()->login.c_str() == (i18n("(System Crontab)")) ?
     KTIcon::system(true) : KTIcon::user(true));
 
   QString userName = QString::fromLocal8Bit(getCTCron()->login.c_str());

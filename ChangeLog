@@ -48,6 +48,19 @@ gary@meyer.net December 2, 1999
   Cleaned up CTUnit: moved implementation to cpp file, removed macro,
   added support for "sun, Mon" and "jan, FEB" in crontab file.
 
+code@jamesots.com January 27, 2004
 
-
-
+  * Fixed bug. If only one hour wasn't checked '*' was still being used.
+  * Fixed bug. Removed autoWrap from KTVariable, as text is wrapped
+    in the line edit box anyway. Changed to use QTextEdit instead of the 
+    deprecated QMultiLineEdit.
+  * Fixed bug. Strip  out newlines from variable comments, because we
+    only read one line of comment from crontab for each entry.
+  * Fixed bug. System Crontab uses correct icon.
+  * Using standard icons for everything now.
+  * Added Set/Clear All buttons.
+  * Added New, Modify and Delete buttons on toolbar. (Bug 54399 and
+    part of bug 55684. Note about 55684: Use Ctrl-X as shortcut to delete
+    item.)
+  * Enabled New action when variables and tasks are selected, instead of
+    only when the containing label is selected.

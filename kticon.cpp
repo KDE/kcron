@@ -22,18 +22,6 @@
 #include "ktmuser.xpm"
 #include "ktsystem.xpm"
 #include "ktmsystem.xpm"
-#include "ktvariable.xpm"
-#include "ktmvariable.xpm"
-#include "kthome.xpm"
-#include "ktmhome.xpm"
-#include "ktmail.xpm"
-#include "ktmmail.xpm"
-#include "ktpath.xpm"
-#include "ktmpath.xpm"
-#include "ktshell.xpm"
-#include "ktmshell.xpm"
-#include "kttask.xpm"
-#include "ktmtask.xpm"
 
 QPixmap KTIcon::getMiniIcon(const QString& name)
 {
@@ -56,17 +44,17 @@ QPixmap KTIcon::application(bool mini)
 QPixmap KTIcon::system(bool mini)
 {
   if (mini)
-    return (const char**)ktmsystem;
+    return getMiniIcon("openterm");
   else
-    return (const char**)ktsystem;
+    return getIcon("openterm");
 }
 
 QPixmap KTIcon::user(bool mini)
 {
   if (mini)
-    return (const char**)ktmuser;
+    return getMiniIcon("kuser");
   else
-    return (const char**)ktuser;
+    return getIcon("kuser");
 }
 
 QPixmap KTIcon::variables(bool mini)
@@ -80,41 +68,41 @@ QPixmap KTIcon::variables(bool mini)
 QPixmap KTIcon::variable(bool mini)
 {
   if (mini)
-    return (const char**)ktmvariable;
+    return getMiniIcon("mime_empty");
   else
-    return (const char**)ktvariable;
+    return getIcon("mime_empty");
 }
 
 QPixmap KTIcon::mail(bool mini)
 {
   if (mini)
-    return (const char**)ktmmail;
+    return getMiniIcon("mail_generic");
   else
-    return (const char**)ktmail;
+    return getIcon("mail_generic");
 }
 
 QPixmap KTIcon::shell(bool mini)
 {
   if (mini)
-    return (const char**)ktmshell;
+    return getMiniIcon("openterm");
   else
-    return (const char**)ktshell;
+    return getIcon("openterm");
 }
 
 QPixmap KTIcon::home(bool mini)
 {
   if (mini)
-    return (const char**)ktmhome;
+    return getMiniIcon("gohome");
   else
-    return (const char**)kthome;
+    return getIcon("gohome");
 }
 
 QPixmap KTIcon::path(bool mini)
 {
   if (mini)
-    return (const char**)ktmpath;
+    return getMiniIcon("folder");
   else
-    return (const char**)ktpath;
+    return getIcon("folder");
 }
 
 QPixmap KTIcon::tasks(bool mini)
@@ -128,7 +116,7 @@ QPixmap KTIcon::tasks(bool mini)
 QPixmap KTIcon::task(bool mini)
 {
   if (mini)
-    return (const char**)ktmtask;
+    return getMiniIcon("gear");
   else
-    return (const char**)kttask;
+    return getIcon("gear");
 }
