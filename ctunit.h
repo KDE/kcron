@@ -66,7 +66,7 @@ public:
   */
   friend ostream& operator << (ostream& outStr, const CTUnit<min,max>& unit)
   {
-    outStr << (const CTUnit<min, max>) unit.tokenize();
+    outStr << ((const CTUnit<min, max>) unit).tokenize();
     return outStr;
   };
 
