@@ -184,6 +184,13 @@ void KTVariable::slotOK()
     return;
   }
 
+  if (QString(leValue->text()) == "")
+  {
+    KMessageBox::information(this, i18n("Please enter the variable value."));
+    cmbVariable->setFocus();
+    return;
+  }
+
   ctvar->variable = cmbVariable->currentText();
   ctvar->value    = leValue->text();
   ctvar->comment  = mleComment->text();
