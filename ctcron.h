@@ -17,46 +17,45 @@
 // Do not introduce any Qt or KDE dependencies into the "CT"-prefixed classes.
 // I want to be able to reuse these classes with another GUI toolkit. -GM 11/99
 
-#include "ctexception.h"
-#include "cttask.h"
-#include "ctvariable.h"
 #include <vector.h>
-#include <iostream.h>
+#include <string>
+
+class istream;
+class ostream;
+class CTException;
+class CTTask;
+class CTVariable;
 
 /**
-  * Encapsulation of the user's cron table.  Encapsulates
-  * file i/o, parsing, tokenization, and natural language
-  * description.
+  * A user (encapsulation of a single crontab file).  Encapsulates
+  * file i/o, parsing, tokenization, and natural language description.
   */
 class CTCron
 {
 public:
 
 /**
-  * Constructs the cron table.  Default is to construct
-  * the user's cron table.  Can be called, passing TRUE,
-  * to create the system cron table.  Throws an exception
-  * if the cron table can not be read or parsed.
+  * Constructs the scheduled tasks, environment variables from crontab
+  * files and obtains some information about the user from the system.
+  *
+  * Default is to construct from the user's crontab.  Can also be called,
+  * passing TRUE, to construct from the system crontab.  Throws an
+  * exception if the crontab file can not be found, read, or parsed.
   */
   CTCron(bool _syscron = false, string _login = "");
 
 /**
-  * Invalid.  Throws exception.
-  */
-  CTCron(const CTCron& source);
-
-/**
-  * Copy data members except for login and name.
+  * Copy one user's tasks and environement variables to another user.
   */
   void operator = (const CTCron& source);
 
 /**
-  * Parses cron table from input stream.
+  * Parses crontab file format.
   */
   friend istream& operator >> (istream& inputStream, CTCron& cron);
 
 /**
-  * Tokenizes cron table to output stream.
+  * Tokenizes to crontab file format.
   */
   friend ostream& operator << (ostream& outputStream, const CTCron& cron);
 
@@ -76,33 +75,35 @@ public:
   bool dirty();
 
 /**
-  * Returns the PATH environment variable value.
+  * Returns the PATH environment variable value.  A short cut to iterating
+  * the tasks vector.
   */
   string path() const;
 
 /**
-  * Indicates whether or not the cron table is the system
-  * cron table.
+  * Indicates whether or not the crontab belongs to the system.
   */
   const bool syscron;
 
 /**
-  * Account login.
+  * User  login.
   */
   string login;
 
 /**
-  * Account real name.
+  * User real name.
   */
   string name;
 
 /**
-  * Collection of scheduled tasks.
+  * User's scheduled tasks.
   */
   vector<CTTask *> task;
 
 /**
-  * Collection of environment variables set.
+  * User's environment variables.  Note:  These are only environment variables
+  * found in the user's crontab file and does not include any set in a 
+  * login or shell script such as ".bash_profile".
   */
   vector<CTVariable *> variable;
 
@@ -113,10 +114,15 @@ public:
 
 private:
 
+/**
+  * Can't copy a user!
+  */
+  CTCron(const CTCron& source);
+
   unsigned int initialTaskCount;
   unsigned int initialVariableCount;
-  string writeCommand;
-  string tmpFileName;
+  string       writeCommand;
+  string       tmpFileName;
 
 };
 

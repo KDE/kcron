@@ -14,15 +14,17 @@
 // Do not introduce any Qt or KDE dependencies into the "CT"-prefixed classes.
 // I want to be able to reuse these classes with another GUI toolkit. -GM 11/99
 
+#include "ctcron.h"
+
 #include "ctdebug.h"
 #include "cti18n.h"
-#include "ctcron.h"
-#include <unistd.h>
-#include <pwd.h>
-#include <sys/types.h>
-#include <stdio.h>
-#include <string>
-#include <fstream.h>
+#include "ctexception.h"
+#include "cttask.h"
+#include "ctvariable.h"
+#include <fstream.h>     // ifstream, istream, ostream
+#include <unistd.h>      // getuid(), unlink()
+#include <pwd.h>         // pwd, getpwnam(), getpwuid()
+#include <stdio.h>       // sprintf()
 
 CTCron::CTCron(bool _syscron, string _login) :
   syscron(_syscron)
@@ -88,13 +90,6 @@ CTCron::CTCron(bool _syscron, string _login) :
 
   initialTaskCount      = task.size();
   initialVariableCount  = variable.size();
-}
-
-CTCron::CTCron(const CTCron& source)
-{
-  CTDEBUG("CTCron copy constructor");
-
-  throw CTException();
 }
 
 void CTCron::operator = (const CTCron& source)
@@ -272,5 +267,3 @@ string CTCron::path() const
   }
   return path;
 }
-
-
