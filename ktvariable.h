@@ -21,12 +21,12 @@
 #include <kaccel.h>
 #include <qdialog.h>
 #include <qlabel.h>
-#include <qlined.h>
+#include <qlineedit.h>
 #include <qcombobox.h>
-#include <qmultilinedit.h>
+#include <qmultilineedit.h>
 #include <qcheckbox.h>
 #include <qbuttongroup.h>
-#include <qpushbt.h>
+#include <qpushbutton.h>
 
 class CTVariable;
 
