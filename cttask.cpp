@@ -104,7 +104,7 @@ void CTTask::operator = (const CTTask& source)
 
 ostream& operator << (ostream& outputStream, const CTTask& task)
 {
-  if (task.comment != string(""))
+//  if (task.comment != string(""))
     outputStream << "# " << task.comment << "\n";
 
   if (!task.enabled)
