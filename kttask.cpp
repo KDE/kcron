@@ -487,7 +487,16 @@ void KTTask::slotCancel()
 void KTTask::slotBrowse()
 {
   KURL url = KFileDialog::getOpenURL();
-  if( !url.isEmpty() )
-    leCommand->setText((const char*)url.url());
+  
+  if( url.isLocalFile() )
+  {
+    if( !url.isEmpty() )
+      leCommand->setText((const char*)url.path());
+  }
+  else
+  {
+    KMessageBox::sorry( 0L, i18n( "Only local files are supported yet" ) );
+  }
+  
   leCommand->setFocus();
 }
