@@ -133,8 +133,8 @@ private:
 
   unsigned int initialTaskCount;
   unsigned int initialVariableCount;
-  std::string       writeCommand;
-  std::string       tmpFileName;
+  QString           writeCommand;
+  QString           tmpFileName;
 
   QString           error;
 };

@@ -25,12 +25,11 @@
 #include <stdio.h>
 #include <assert.h>
 
-#include <qfile.h>       // sprintf()
+#include <qfile.h>
 
-#ifdef KDE_FIXES
+#include <kprocess.h>
 #include <klocale.h>
 #include <ktempfile.h>
-#endif
 
 using namespace std;
 
@@ -39,19 +38,12 @@ CTCron::CTCron(bool _syscron, string _login) :
 {
   int uid(getuid());
 
-#ifdef KDE_FIXES
   KTempFile tmp;
   tmp.setAutoDelete(true);
   tmp.close();
-  tmpFileName = string(QFile::encodeName(tmp.name()));  
-#else
-  char ofile[20] = "/tmp/crontab.XXXXXX";
-  sprintf (ofile+13,"%d",getpid());
+  tmpFileName = tmp.name();  
 
-  tmpFileName = string(ofile);
-#endif
-
-  string readCommand;
+  QString readCommand;
   passwd *pwd;
 
   if (uid == 0)
@@ -59,15 +51,15 @@ CTCron::CTCron(bool _syscron, string _login) :
   {
     if (syscron)
     {
-      readCommand  = "cat /etc/crontab > " + tmpFileName;
-      writeCommand = "cat " + tmpFileName + " > /etc/crontab";
+      readCommand  = "cat /etc/crontab > " + KProcess::quote(tmpFileName);
+      writeCommand = "cat " + KProcess::quote(tmpFileName) + " > /etc/crontab";
       login = (const char *)i18n("(System Crontab)").local8Bit();
       name = "";
     }
     else
     {
-      readCommand  = "crontab -u " + _login + " -l > " + tmpFileName;
-      writeCommand = "crontab -u " + _login + " " + tmpFileName;
+      readCommand  = QString("crontab -u ") + _login.c_str() + " -l > " + KProcess::quote(tmpFileName);
+      writeCommand = QString("crontab -u ") + _login.c_str() + " " + KProcess::quote(tmpFileName);
       pwd = getpwnam(_login.c_str());
       if (pwd == 0)
       {
@@ -83,8 +75,8 @@ CTCron::CTCron(bool _syscron, string _login) :
   else
   // regular user, so provide user's own crontab
   {
-    readCommand  = "crontab -l > " + tmpFileName;
-    writeCommand = "crontab "      + tmpFileName;
+    readCommand  = "crontab -l > " + KProcess::quote(tmpFileName);
+    writeCommand = "crontab "      + KProcess::quote(tmpFileName);
     pwd  = getpwuid(uid);
     if (pwd == 0)
     {
@@ -108,13 +100,11 @@ CTCron::CTCron(bool _syscron, string _login) :
 
   // Don't set error if it can't be read, it means the user
   // doesn't have a crontab.
-  if (system(readCommand.c_str()) == 0)
+  if (system(QFile::encodeName(readCommand)) == 0)
   {
-    ifstream cronfile(tmpFileName.c_str());
+    ifstream cronfile(QFile::encodeName(tmpFileName));
     cronfile >> *this;
   }
-
-  (void) unlink(tmpFileName.c_str());
 
   initialTaskCount      = task.size();
   initialVariableCount  = variable.size();
@@ -242,17 +232,17 @@ CTCron::~CTCron()
 void CTCron::apply()
 {
   // write to temp file
-  ofstream cronfile(tmpFileName.c_str());
+  ofstream cronfile(QFile::encodeName(tmpFileName));
   cronfile << *this << flush;
 
   // install temp file into crontab
-  if (system(writeCommand.c_str()) != 0)
+  if (system(QFile::encodeName(writeCommand)) != 0)
   {
     error = i18n("An error occurred while updating crontab.");
   }
 
   // remove the temp file
-  (void) unlink(tmpFileName.c_str());
+  (void) unlink(QFile::encodeName(tmpFileName));
 
   if (isError())
     return;

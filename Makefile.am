@@ -12,7 +12,7 @@
 #  (at your option) any later version.                                   # 
 ##########################################################################
 
-AM_CPPFLAGS = -UQT_NO_ASCII_CAST -DKDE_FIXES
+AM_CPPFLAGS = -UQT_NO_ASCII_CAST
 
 bin_PROGRAMS = kcron
 
