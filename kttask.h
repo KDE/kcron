@@ -14,11 +14,9 @@
 #ifndef KTTASK_H
 #define KTTASK_H
 
-#ifdef HAVE_CONFIG_H
 #include <config.h>
-#endif 
 
-#include <qdialog.h>
+#include <kdialog.h>
 
 class QLabel;
 class QLineEdit;
@@ -32,7 +30,7 @@ class CTTask;
 /**
   * Task editor window.
   */
-class KTTask : public QDialog
+class KTTask : public KDialog
 {
   Q_OBJECT
 

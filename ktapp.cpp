@@ -190,9 +190,9 @@ void KTApp::initToolBar()
   toolBar()->insertButton(KTIcon::cut(), menuEditCut, true, i18n("Cut"));
   toolBar()->insertButton(KTIcon::copy(), menuEditCopy, true, i18n("Copy"));
   toolBar()->insertButton(KTIcon::paste(), menuEditPaste, true, i18n("Paste"));
-  toolBar()->insertSeparator();
-  toolBar()->insertButton(KTIcon::help(), menuHelpContents, SIGNAL(clicked()),
-    kapp, SLOT(appHelpActivated()), true, i18n("Help"));
+//  toolBar()->insertSeparator();
+//  toolBar()->insertButton(KTIcon::help(), menuHelpContents, SIGNAL(clicked()),
+//    kapp, SLOT(appHelpActivated()), true, i18n("Help"));
 
   connect(toolBar(), SIGNAL(clicked(int)), SLOT(commandCallback(int)));
   connect(toolBar(), SIGNAL(pressed(int)), SLOT(statusCallback(int)));
@@ -221,7 +221,7 @@ void KTApp::initKeyAccel()
   key_accel->connectItem(KStdAccel::Open, this, SLOT(slotEditModify()));
 
   // help menu accelerators
-  key_accel->connectItem(KStdAccel::Help, kapp, SLOT(appHelpActivated()));
+//  key_accel->connectItem(KStdAccel::Help, kapp, SLOT(appHelpActivated()));
 
   key_accel->changeMenuAccel(file_menu, menuFileSave, KStdAccel::Save);
   key_accel->changeMenuAccel(file_menu, menuFileQuit, KStdAccel::Quit);
@@ -444,13 +444,13 @@ void KTApp::slotViewStatusBar()
   slotStatusMsg(i18n("Ready."));
 }
 
-void KTApp::slotStatusMsg(const char *text)
+void KTApp::slotStatusMsg(const QString & text)
 {
   statusBar()->clear();
   statusBar()->changeItem(text, statusMessage);
 }
 
-void KTApp::slotStatusHelpMsg(const char *text)
+void KTApp::slotStatusHelpMsg(const QString & text)
 {
   statusBar()->message(text, 2000);
 }
@@ -516,7 +516,7 @@ void KTApp::statusCallback(int id_){
       slotStatusHelpMsg(i18n("Print all or current crontab(s)."));
       break; 
     case menuFileQuit:
-      slotStatusHelpMsg(i18n("Exit " + caption() + "."));
+      slotStatusHelpMsg(i18n("Exit %1.").arg(caption()));
       break;
 
     case menuEditCut:

@@ -31,8 +31,8 @@
 
 #include "kticon.h"
 
-KTTask::KTTask(CTTask* _cttask) :
-  QDialog(0, (const char*)"kttask", true, WStyle_DialogBorder)
+KTTask::KTTask(CTTask* _cttask)
+  : KDialog( 0, "kttask", true, WStyle_DialogBorder )
 {
   cttask = _cttask;
 
@@ -444,15 +444,15 @@ void KTTask::slotOK()
   // save work in process
   if (cttask->user != "")
   {
-    cttask->user = leUser->text();
+    cttask->user = QFile::encodeName(leUser->text());
   }
   else
   {
     cttask->user = "";
   }
 
-  cttask->comment = leComment->text();
-  cttask->command = leCommand->text();
+  cttask->comment = leComment->text().local8Bit();
+  cttask->command = leCommand->text().local8Bit();
   cttask->enabled = chkEnabled->isChecked();
 
   for (int mo = 1; mo <= 12; mo++)
@@ -497,7 +497,7 @@ void KTTask::slotBrowse()
   {
     if(!url.isEmpty())
     {
-      leCommand->setText((const char*)url.path());
+      leCommand->setText(url.path());
     }
   }
   else

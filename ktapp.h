@@ -192,7 +192,7 @@ public slots:
   * Changes the status bar contents for the standard label permanently;
   * used to indicate current actions.
   */
-  void slotStatusMsg(const char *text);
+  void slotStatusMsg(const QString & text);
 
 /**
   * Changes the status message of the whole status bar for two seconds,
@@ -200,7 +200,7 @@ public slots:
   * messages that give information about actions for toolbar icons and
   * menu entries.
   */
-  void slotStatusHelpMsg(const char *text);
+  void slotStatusHelpMsg(const QString & text);
 
 private:
 

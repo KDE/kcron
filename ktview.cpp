@@ -413,7 +413,7 @@ QString KTView::absolute() const
 void KTView::run() const
 {
   QString command(absolute() + " &");
-  system(command);
+  system(QFile::encodeName(command));
 }
 
 void KTView::enable(bool enable)

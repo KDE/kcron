@@ -191,9 +191,9 @@ void KTVariable::slotOK()
     return;
   }
 
-  ctvar->variable = cmbVariable->currentText();
-  ctvar->value    = leValue->text();
-  ctvar->comment  = mleComment->text();
+  ctvar->variable = cmbVariable->currentText().local8Bit();
+  ctvar->value    = leValue->text().local8Bit();
+  ctvar->comment  = mleComment->text().local8Bit();
   ctvar->enabled  = chkEnabled->isChecked();
   close();
 }
