@@ -38,8 +38,6 @@ kcron_SOURCES = \
 	ktvariable.cpp \
 	main.cpp
 
-SUBDIRS = docs 
-
 EXTRA_DIST = \
 	ctcron.cpp \
 	ctcron.h \
