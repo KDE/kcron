@@ -18,74 +18,42 @@
 #include <config.h>
 #endif 
 
-#include <qlistview.h>
-#include <qstring.h>
+#include "ktlistitem.h"
 
-#include "ctcron.h"
-#include "kticon.h"
+class QString;
 
 /**
-  * An enhanced QListViewItem that is a tasks folder.
+  * QListViewItem of a "tasks" folder.
   */
-class KTListTasks : public QListViewItem
+class KTListTasks : public KTListItem
 {
 public:
 
 /**
-  * Internationalized description.
-  */
-  static QString getDescription()
-  {
-    return i18n("Tasks");
-  };
-
-/**
   * Construct tasks folder from branch.
   */
-  KTListTasks(QListViewItem* parent, CTCron* _ctcron) :
-    QListViewItem(parent),
-    ctcron(_ctcron)
-  {
-    refresh();
-  };
+  KTListTasks(KTListItem* parent, CTCron* _ctcron);
 
 /**
   * Construct tasks folder from root.
   */
-  KTListTasks(QListView* parent, CTCron* _ctcron) :
-    QListViewItem(parent),
-    ctcron(_ctcron)
-  {
-    refresh();
-  };
+  KTListTasks(QListView* parent, CTCron* _ctcron);
+
+ /**
+  * Internationalized description.
+  */
+  static QString getDescription();
+
+/**
+  * Create.
+  */
+  virtual void create();
 
 /**
   * Refresh.
   */
-  void refresh()
-  {
-    setText(0, getDescription());
-    setPixmap(0, KTIcon::tasks(true));
-  };
-
-/**
-  * Get the user's crontab.
-  */
-  CTCron* getCTCron() const
-  {
-    return ctcron;
-  }
-
-private:
-
-/**
-  * User's crontab.
-  */
-  CTCron* ctcron;
+  virtual void refresh();
 
 };
 
 #endif // KTLISTTASKS_H
-
-
-

@@ -1,7 +1,7 @@
 /***************************************************************************
- *   ktlistcron.h                                                          *
+ *   ktlistitem.cpp                                                        *
  *   --------------------------------------------------------------------  *
- *   KT list view item cron header.                                        *
+ *   KT list view item abstract base class implementation.                 *
  *   --------------------------------------------------------------------  *
  *   Copyright (C) 1999, Gary Meyer <gary@meyer.net>                       *
  *   --------------------------------------------------------------------  *
@@ -11,42 +11,36 @@
  *   (at your option) any later version.                                   * 
  ***************************************************************************/
 
-#ifndef KTLISTCRON_H
-#define KTLISTCRON_H
-
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif 
-
 #include "ktlistitem.h"
+#include "ctcron.h"
 
-/**
-  * QListViewItem view of a CTCron.
-  */
-class KTListCron : public KTListItem
+KTListItem::KTListItem(KTListItem* parent, const char* name, CTCron* _ctcron) :
+  QListViewItem(parent, name),
+  ctcron(_ctcron)
 {
-public:
+}
 
-/**
-  * Construct tasks or variables folder from branch.
-  */
-  KTListCron(KTListItem* parent, const char* name, CTCron* _ctcron);
+KTListItem::KTListItem(QListView* parent, const char* name, CTCron* _ctcron) :
+  QListViewItem(parent, name),
+  ctcron(_ctcron)
+{
+}
 
-/**
-  * Construct tasks or variables folder from root.
-  */
-  KTListCron(QListView* parent, const char* name, CTCron* _ctcron);
+KTListItem::~KTListItem()
+{
+}
 
-/**
-  * Construct user folder from root.
-  */
-  KTListCron(QListView* parent, CTCron* _ctcron);
+void KTListItem::create()
+{
+  return;
+}
 
-/**
-  * Refresh.
-  */
-  virtual void refresh();
+void KTListItem::edit()
+{
+  return;
+}
 
-};
-
-#endif // KTLISTCRON_H
+CTCron* KTListItem::getCTCron() const
+{
+  return ctcron;
+}

@@ -1,7 +1,7 @@
 /***************************************************************************
- *   ktlistvars.h                                                          *
+ *   ktlistitem.h                                                          *
  *   --------------------------------------------------------------------  *
- *   KT list view item cron variables folder.                              *
+ *   KT list view item abstract base class.                                *
  *   --------------------------------------------------------------------  *
  *   Copyright (C) 1999, Gary Meyer <gary@meyer.net>                       *
  *   --------------------------------------------------------------------  *
@@ -11,49 +11,67 @@
  *   (at your option) any later version.                                   * 
  ***************************************************************************/
 
-#ifndef KTLISTVARS_H
-#define KTLISTVARS_H
+#ifndef KTLISTITEM_H
+#define KTLISTITEM_H
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif 
 
-#include "ktlistitem.h"
+#include <qlistview.h>
 
-class QString;
+class CTCron;
 
 /**
-  * QListViewItem of a "variables" folder.
+  * An enhanced QListViewItem that ensures all list view items have the
+  * same interface.
   */
-class KTListVars : public KTListItem
+class KTListItem : public QListViewItem
 {
 public:
 
 /**
-  * Construct variables folder from branch.
+  * Construct a root list view item from a CTCron.
   */
-  KTListVars(KTListItem* parent, CTCron* _ctcron);
+  KTListItem(KTListItem* parent, const char* name, CTCron* _ctcron);
 
 /**
-  * Construct variables folder from root.
+  * Construct a non-root list view item from a CTCron.
   */
-  KTListVars(QListView* parent, CTCron* _ctcron);
+  KTListItem(QListView* parent, const char* name, CTCron* _ctcron);
 
 /**
-  * Internationalized description.
+  * Destructor.
   */
-  static QString getDescription();
+  virtual ~KTListItem();
 
 /**
-  * Refresh.
+  * Create.
   */
-  void refresh();
+  virtual void create();
 
 /**
   * Edit.
   */
-  void create();
+  virtual void edit();
+
+/**
+  * Refresh.
+  */
+  virtual void refresh() = 0;
+
+/**
+  * Get the user's crontab.
+  */
+  CTCron* getCTCron() const;
+
+private:
+
+/**
+  * User's crontab.
+  */
+  CTCron* ctcron;
 
 };
 
-#endif // KTLISTVARS_H
+#endif // KTLISTITEM_H
