@@ -18,7 +18,7 @@
 // I want to be able to reuse these classes with another GUI toolkit. -GM 11/99
 
 #include <string>
-#include <iostream.h> // istream, ostream
+#include <fstream>
 
 /**
   * An environment variable (encapsulation of crontab environment variable
@@ -51,7 +51,7 @@ public:
 /**
   * Tokenizes environment variable to crontab format.
   */
-  friend ostream& operator << (ostream& outputStream, const CTVariable& task);
+  friend std::ostream& operator << (std::ostream& outputStream, const CTVariable& task);
 
 /**
   * Mark changes as applied.

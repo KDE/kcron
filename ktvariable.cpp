@@ -161,7 +161,7 @@ void KTVariable::autoWrap()
   while(pos < s.length())
   {
     int foundat = s.findRev(" ", pos);
-    if (foundat);
+    if (foundat > 0)
       s.replace(foundat, 1, "\n");
     pos = foundat+maxCharWidth;
   }
