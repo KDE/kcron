@@ -503,17 +503,8 @@ void KTView::slotSetCurrent (QListViewItem* qlvi)
     ktapp->enableCut(false);
     ktapp->enableCopy(false);
     ktapp->enableRunNow(false);
-      ktapp->enableEnable(true, currentCTTask->enabled);
+    ktapp->enableEnable(true, false);
     ktapp->enablePaste(false);
     ktapp->enableEnable(false, false);
   }
 }
-
-
-
-
-
-
-
-
-
