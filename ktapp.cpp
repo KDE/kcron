@@ -141,8 +141,8 @@ void KTApp::initMenuBar()
 
   view_menu = new QPopupMenu();
   view_menu->setCheckable(true);
-  view_menu->insertItem(i18n("Show &Tool Bar"), ID_VIEW_TOOLBAR);
-  view_menu->insertItem(i18n("Show &Status Bar"), ID_VIEW_STATUSBAR);
+  view_menu->insertItem(i18n("Show &Toolbar"), ID_VIEW_TOOLBAR);
+  view_menu->insertItem(i18n("Show &Statusbar"), ID_VIEW_STATUSBAR);
 
   help_menu = new QPopupMenu();
 #ifdef KDE1
