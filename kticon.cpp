@@ -52,7 +52,9 @@ QPixmap KTIcon::getIcon(const QString& name)
 
 QPixmap KTIcon::save()
 {
-  return (const char**)ktfilesave;
+  // return (const char**)ktfilesave;
+  // why do they keep putting filesave.xpm in and out?
+  return getIcon("filesave.xpm");
 }
 
 QPixmap KTIcon::print()
