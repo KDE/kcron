@@ -21,6 +21,7 @@
 #include <klocale.h>       // i18n()
 #include <kstdaction.h>
 #include <kaction.h>
+#include <kstdguiitem.h>
 
 #include "cthost.h"
 #include "ctcron.h"
@@ -292,7 +293,9 @@ bool KTApp::queryClose()
     KTApp* win = (KTApp*)parent();
 
     int retVal = KMessageBox::warningYesNoCancel(win,
-      i18n("Scheduled tasks have been modified.\nDo you want to save changes?")
+      i18n("Scheduled tasks have been modified.\nDo you want to save changes?"),
+      QString::null,
+      KStdGuiItem::save(), KStdGuiItem::discard()
       );
 
     switch (retVal)
