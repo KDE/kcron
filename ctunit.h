@@ -18,13 +18,7 @@
 // I want to be able to reuse these classes with another GUI toolkit. -GM 11/99
 
 #include <string>
-#ifdef __DECCXX
-#include <iostream.h>
-#else
-namespace std {
-  class ostream;
-};
-#endif
+#include <iostream>
 
 /**
   * A cron table unit parser and tokenizer.

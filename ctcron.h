@@ -19,13 +19,8 @@
 
 #include <vector>
 #include <string>
+#include <iostream>
 
-#ifndef __DECCXX
-namespace std {
-  class istream;
-  class ostream;
-};
-#endif
 class CTException;
 class CTTask;
 class CTVariable;
