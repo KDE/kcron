@@ -55,7 +55,7 @@ public:
 /**
   * Get natural language description.
   */
-  string describe() const;
+  virtual string describe() const;
 
 /**
   * Get day of week name.

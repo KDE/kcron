@@ -16,7 +16,6 @@
 
 #include "cttask.h"
 
-#include "ctdebug.h"
 #include "cti18n.h"
 #include <time.h>     // tm, strftime()
 
@@ -105,7 +104,6 @@ void CTTask::operator = (const CTTask& source)
 
 ostream& operator << (ostream& outputStream, const CTTask& task)
 {
-  CTDEBUG("CTTask extraction operator");
   if (task.comment != string(""))
     outputStream << "# " << task.comment << "\n";
 
@@ -185,6 +183,8 @@ string CTTask::describe(bool shortNames) const
   //
   // Fifth and finally I do tag substitution to create the natural language
   // description.
+
+  string noteForTranslators(i18n("Translators: See README.translators!"));
 
   string tmFormat(i18n("%l:%M%P"));
   string DOMFormat(i18n("DAYS_OF_MONTH of MONTHS"));

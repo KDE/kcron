@@ -36,3 +36,18 @@ gary@meyer.net November 19, 1999
 
   Code clean up effort.
 
+gary@meyer.net November 29, 1999
+
+  Removed dependency on langinfo.h for internationalization of days of week
+  and months.  Not broadly supported across platforms/distributions.
+
+gary@meyer.net December 2, 1999
+
+  Removed CTDebug, don't really need anymore.
+  Addeed note for translators so they'll look at README.translators.
+  Cleaned up CTUnit: moved implementation to cpp file, removed macro,
+  added support for "sun, Mon" and "jan, FEB" in crontab file.
+
+
+
+

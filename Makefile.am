@@ -43,7 +43,6 @@ SUBDIRS = docs
 EXTRA_DIST = \
 	ctcron.cpp \
 	ctcron.h \
-	ctdebug.h \
 	ctdom.cpp \
 	ctdom.h \
 	ctdow.cpp \
@@ -58,6 +57,7 @@ EXTRA_DIST = \
 	ctmonth.h \
 	cttask.cpp \
 	cttask.h \
+	ctunit.cpp \
 	ctunit.h \
 	ctvariable.cpp \
 	ctvariable.h \

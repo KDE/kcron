@@ -16,7 +16,6 @@
 
 #include "ctcron.h"
 
-#include "ctdebug.h"
 #include "cti18n.h"
 #include "ctexception.h"
 #include "cttask.h"
@@ -29,8 +28,6 @@
 CTCron::CTCron(bool _syscron, string _login) :
   syscron(_syscron)
 {
-  CTDEBUG("CTCron constructor");
-
   int uid(getuid());
 
   char ofile[20] = "/tmp/crontab.XXXXXX";
@@ -94,8 +91,6 @@ CTCron::CTCron(bool _syscron, string _login) :
 
 void CTCron::operator = (const CTCron& source)
 {
-  CTDEBUG("CTCron assignment operator");
-
   if (source.syscron)
     throw CTException();
 
@@ -116,8 +111,6 @@ void CTCron::operator = (const CTCron& source)
 
 istream& operator >> (istream& inputStream, CTCron& cron)
 {
-  CTDEBUG("CTCron insertion operator");
-
   const int MAX = 1024;
   char buffer[MAX];
   string line("");
@@ -174,8 +167,6 @@ istream& operator >> (istream& inputStream, CTCron& cron)
 
 ostream& operator << (ostream& outputStream, const CTCron& cron)
 {
-  CTDEBUG("CTCron extraction operator");
-
   for (CTVariableIterator i = (CTVariableIterator)cron.variable.begin();
     i != cron.variable.end(); i++)
     outputStream << **i;
@@ -189,8 +180,6 @@ ostream& operator << (ostream& outputStream, const CTCron& cron)
 
 CTCron::~CTCron()
 {
-  CTDEBUG("CTCron destructor");
-
   for (CTTaskIterator i = task.begin(); i != task.end(); i++)
     delete *i;
   for (CTVariableIterator i = variable.begin(); i != variable.end(); i++)
@@ -199,8 +188,6 @@ CTCron::~CTCron()
 
 void CTCron::apply()
 {
-  CTDEBUG("CTCron.apply()");
-
   // write to temp file
   ofstream cronfile(tmpFileName.c_str());
   cronfile << *this << flush;
@@ -223,8 +210,6 @@ void CTCron::apply()
 
 void CTCron::cancel()
 {
-  CTDEBUG("CTCron.cancel()");
-
   for (CTTaskIterator i = task.begin(); i != task.end(); i++)
     (*i)->cancel();
 
@@ -234,8 +219,6 @@ void CTCron::cancel()
 
 bool CTCron::dirty()
 {
-  CTDEBUG("CTCron.dirty()");
-
   bool isDirty(false);
 
   if (initialTaskCount != task.size()) isDirty = true;
@@ -253,8 +236,6 @@ bool CTCron::dirty()
 
 string CTCron::path() const
 {
-  CTDEBUG("CTCron.path()");
-
   string path;
 
   for (CTVariableIterator var = (CTVariableIterator)variable.begin();

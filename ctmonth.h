@@ -50,7 +50,7 @@ public:
 /**
   * Get natural language description.
   */
-  string describe() const;
+  virtual string describe() const;
 
 /**
   * Get month name.

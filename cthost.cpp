@@ -16,15 +16,12 @@
 
 #include "cthost.h"
 
-#include "ctdebug.h"
 #include "ctcron.h"
 #include <unistd.h>  // getuid()
 #include <fstream.h> // ifstream
 
 CTHost::CTHost()
 {
-  CTDEBUG("CTHost constructor");
-
   // If it is the root user
   if (getuid() == 0)
   {
@@ -58,28 +55,24 @@ CTHost::CTHost()
 
 CTHost::~CTHost()
 {
-  CTDEBUG("CTHost destructory");
   for (CTCronIterator i = cron.begin(); i != cron.end(); i++)
     delete *i;
 }
 
 void CTHost::apply()
 {
-  CTDEBUG("CTHost apply");
   for (CTCronIterator i = cron.begin(); i != cron.end(); i++)
     (*i)->apply();
 }
 
 void CTHost::cancel()
 {
-  CTDEBUG("CTHost cancel");
   for (CTCronIterator i = cron.begin(); i != cron.end(); i++)
     (*i)->cancel();
 }
 
 bool CTHost::dirty()
 {
-  CTDEBUG("CTHost dirty");
   bool isDirty(false);
 
   for (CTCronIterator i = cron.begin(); i != cron.end(); i++)
@@ -90,7 +83,6 @@ bool CTHost::dirty()
 
 CTCron* CTHost::createCTCron(bool _syscron, string _login)
 {
-  CTDEBUG("CTHost createCTCron");
   CTCron *p = new CTCron(_syscron, _login);
   cron.push_back(p);
   return p;
@@ -98,6 +90,5 @@ CTCron* CTHost::createCTCron(bool _syscron, string _login)
 
 bool CTHost::root() const
 {
-  CTDEBUG("CTHost root");
   return (!getuid());
 }

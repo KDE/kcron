@@ -16,28 +16,26 @@
 
 #include "ctdow.h"
 #include "cti18n.h"
-#include <langinfo.h> // nl_langinfo()
 
 CTDayOfWeek::CTDayOfWeek(const string& tokStr) :
   CTUnit<1,7>(tokStr)
 {
-  // Note that langinfo.h constants for days of the week don't match
-  // crontabs.
-
   const string shortDOWName[8] =
   {
     "",
-    nl_langinfo(ABDAY_2),  nl_langinfo(ABDAY_3),  nl_langinfo(ABDAY_4),
-    nl_langinfo(ABDAY_5),  nl_langinfo(ABDAY_6),  nl_langinfo(ABDAY_7),
-    nl_langinfo(ABDAY_1)
+    (const char*)i18n("Mon"),  (const char*)i18n("Tue"),
+    (const char*)i18n("Wed"),  (const char*)i18n("Thu"),
+    (const char*)i18n("Fri"),  (const char*)i18n("Sat"),
+    (const char*)i18n("Sun")
   };
 
   const string longDOWName[8] =
   {
     "",
-    nl_langinfo(DAY_2),    nl_langinfo(DAY_3),    nl_langinfo(DAY_4),
-    nl_langinfo(DAY_5),    nl_langinfo(DAY_6),    nl_langinfo(DAY_7),
-    nl_langinfo(DAY_1)
+    (const char*)i18n("Monday"),     (const char*)i18n("Tuesday"),
+    (const char*)i18n("Wednesday"),  (const char*)i18n("Thursday"),
+    (const char*)i18n("Friday"),     (const char*)i18n("Saturday"),
+    (const char*)i18n("Sunday")
   };
 
   for (int i = 1; i <= 7; i++)
