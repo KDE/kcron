@@ -244,9 +244,9 @@ KTTask::KTTask(CTTask* _cttask) :
 
   // key acceleration
   key_accel = new KAccel(this);
-  key_accel->connectItem(KAccel::Open, this, SLOT(slotOK()));
-  key_accel->connectItem(KAccel::Close, this, SLOT(slotCancel()));
-  key_accel->connectItem(KAccel::Quit, this, SLOT(slotCancel()));
+  key_accel->connectItem(KStdAccel::Open, this, SLOT(slotOK()));
+  key_accel->connectItem(KStdAccel::Close, this, SLOT(slotCancel()));
+  key_accel->connectItem(KStdAccel::Quit, this, SLOT(slotCancel()));
   key_accel->readSettings();
 
 }

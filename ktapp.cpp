@@ -184,30 +184,30 @@ void KTApp::initKeyAccel()
   key_accel = new KAccel(this);
 
   // file menu accelerators
-  key_accel->connectItem(KAccel::Save, this, SLOT(slotFileSave()));
-  key_accel->connectItem(KAccel::Quit, this, SLOT(slotFileQuit()));
+  key_accel->connectItem(KStdAccel::Save, this, SLOT(slotFileSave()));
+  key_accel->connectItem(KStdAccel::Quit, this, SLOT(slotFileQuit()));
 
   // edit menu accelerators
-  key_accel->connectItem(KAccel::Cut, this, SLOT(slotEditCut()));
-  key_accel->connectItem(KAccel::Copy, this, SLOT(slotEditCopy()));
-  key_accel->connectItem(KAccel::Paste, this, SLOT(slotEditPaste()));
-  key_accel->connectItem(KAccel::New, this, SLOT(slotEditNew()));
-  key_accel->connectItem(KAccel::Insert, this, SLOT(slotEditNew()));
-  key_accel->connectItem(KAccel::Open, this, SLOT(slotEditModify()));
+  key_accel->connectItem(KStdAccel::Cut, this, SLOT(slotEditCut()));
+  key_accel->connectItem(KStdAccel::Copy, this, SLOT(slotEditCopy()));
+  key_accel->connectItem(KStdAccel::Paste, this, SLOT(slotEditPaste()));
+  key_accel->connectItem(KStdAccel::New, this, SLOT(slotEditNew()));
+  key_accel->connectItem(KStdAccel::Insert, this, SLOT(slotEditNew()));
+  key_accel->connectItem(KStdAccel::Open, this, SLOT(slotEditModify()));
 
   // help menu accelerators
-  key_accel->connectItem(KAccel::Help, kapp, SLOT(appHelpActivated()));
+  key_accel->connectItem(KStdAccel::Help, kapp, SLOT(appHelpActivated()));
 
-  key_accel->changeMenuAccel(file_menu, menuFileSave, KAccel::Save);
-  key_accel->changeMenuAccel(file_menu, menuFileQuit, KAccel::Quit);
+  key_accel->changeMenuAccel(file_menu, menuFileSave, KStdAccel::Save);
+  key_accel->changeMenuAccel(file_menu, menuFileQuit, KStdAccel::Quit);
 
-  key_accel->changeMenuAccel(edit_menu, menuEditCut, KAccel::Cut);
-  key_accel->changeMenuAccel(edit_menu, menuEditCopy, KAccel::Copy);
-  key_accel->changeMenuAccel(edit_menu, menuEditPaste, KAccel::Paste);
+  key_accel->changeMenuAccel(edit_menu, menuEditCut, KStdAccel::Cut);
+  key_accel->changeMenuAccel(edit_menu, menuEditCopy, KStdAccel::Copy);
+  key_accel->changeMenuAccel(edit_menu, menuEditPaste, KStdAccel::Paste);
 
-  key_accel->changeMenuAccel(edit_menu, menuEditNew, KAccel::Insert);
-  key_accel->changeMenuAccel(edit_menu, menuEditNew, KAccel::New);
-  key_accel->changeMenuAccel(edit_menu, menuEditModify, KAccel::Open);
+  key_accel->changeMenuAccel(edit_menu, menuEditNew, KStdAccel::Insert);
+  key_accel->changeMenuAccel(edit_menu, menuEditNew, KStdAccel::New);
+  key_accel->changeMenuAccel(edit_menu, menuEditModify, KStdAccel::Open);
 
   key_accel->readSettings();
 }
