@@ -376,8 +376,13 @@ void KTTask::slotOK()
   
   if (showMessage)
   {
+#ifdef KDE1
+    QMessageBox::information(this,
+      kapp->getCaption(), message);
+#else
     QMessageBox::information(this,
       kapp->caption(), message);
+#endif
     return;
   }
 
@@ -396,18 +401,30 @@ void KTTask::slotOK()
 
     if (!file.isReadable())
     {
+#ifdef KDE1
+      QMessageBox::information(this,
+        kapp->getCaption(),
+        i18n("Can not locate program.  Please re-enter."));
+#else
       QMessageBox::information(this,
         kapp->caption(),
         i18n("Can not locate program.  Please re-enter."));
+#endif
       leCommand->setFocus();
       return;
     }
 
     if (!file.isExecutable())
     {
+#ifdef KDE1
+      QMessageBox::information(this,
+        kapp->getCaption(),
+        i18n("Program is not an executable file.  Please re-enter."));
+#else
       QMessageBox::information(this,
         kapp->caption(),
         i18n("Program is not an executable file.  Please re-enter."));
+#endif
       leCommand->setFocus();
       return;
     }

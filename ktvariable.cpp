@@ -184,9 +184,15 @@ void KTVariable::slotOK()
 {
   if (QString(cmbVariable->currentText()) == "")
   {
+#ifdef KDE1
+    QMessageBox::information(this,
+      kapp->getCaption(),
+      i18n("Please enter the variable name."));
+#else
     QMessageBox::information(this,
       kapp->caption(),
-      "Please enter the variable name.");
+      i18n("Please enter the variable name."));
+#endif
     cmbVariable->setFocus();
     return;
   }
