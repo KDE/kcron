@@ -2,8 +2,10 @@
 [KDE Desktop Entry]
 Type=Application
 Exec=kcron  
-Icon=kcron.xpm
+Icon=kcron
 DocPath=kcron/index.html
 Name=Task Scheduler
+Name[ca]=Planificador de tasques
 Comment=Schedule programs to run in the background
+Comment[ca]=Planifica els programes per executar-se en segon pla
 Terminal=0
