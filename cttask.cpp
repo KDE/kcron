@@ -217,11 +217,9 @@ string CTTask::describe() const
   // Fifth and finally I do tag substitution to create the natural language
   // description.
 
-  string noteForTranslators((const char *)i18n("Translators: See README.translators!").local8Bit());
-
   string tmFormat((const char *)i18n("%H:%M").local8Bit());
-  string DOMFormat((const char *)i18n("DAYS_OF_MONTH of MONTHS").local8Bit());
-  string DOWFormat((const char *)i18n("every DAYS_OF_WEEK").local8Bit());
+  string DOMFormat((const char *)i18n("Please translator, read the README.translators file in kcron's source code","DAYS_OF_MONTH of MONTHS").local8Bit());
+  string DOWFormat((const char *)i18n("Really, read that file","every DAYS_OF_WEEK").local8Bit());
   string dateFormat((const char *)i18n("DOM_FORMAT as well as DOW_FORMAT").local8Bit());
   string timeFormat((const char *)i18n("At TIME").local8Bit());
   string format((const char *)i18n("TIME_FORMAT, DATE_FORMAT").local8Bit());
