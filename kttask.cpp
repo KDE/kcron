@@ -12,22 +12,22 @@
  ***************************************************************************/
 
 #include <qlabel.h>
+#include <qstring.h>
+#include <qfileinfo.h>
 #include <qlineedit.h>
 #include <qcheckbox.h>
-#include <qbuttongroup.h>
 #include <qpushbutton.h>
-#include <kaccel.h>
-
-#include <qstring.h>
 #include <qmessagebox.h>
-#include <qfileinfo.h>
+#include <qbuttongroup.h>
+
+#include <kapp.h>
+#include <kaccel.h>
+#include <klocale.h>
 #include <kfiledialog.h>
+#include <kmessagebox.h>
 
 #include "kttask.h"
 #include "kticon.h"
-#include "klocale.h"  // i18n()
-#include "kapp.h"     // kapp
-
 #include "cttask.h"
 
 KTTask::KTTask(CTTask* _cttask) :
