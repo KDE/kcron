@@ -185,7 +185,7 @@ private:
 /**
   * Keep a vector of the columns
   */
-  vector <Column*> columns;
+  std::vector <Column*> columns;
 
 };
 	

@@ -8,7 +8,7 @@
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   * 
+ *   (at your option) any later version.                                   *
  ***************************************************************************/
 
 // Do not introduce any Qt or KDE dependencies into the "CT"-prefixed classes.
@@ -19,6 +19,8 @@
 #include <string>
 #include <stdio.h>    // sprintf
 #include <ctype.h>    // tolower
+
+using namespace std;
 
 template<int min, int max>
 CTUnit<min, max>::CTUnit(const string &tokStr)
@@ -76,13 +78,13 @@ void CTUnit<min, max>::parse(string tokStr)
   string subelement;
   int commapos, slashpos, dashpos;
   int beginat, endat, step;
-  
+
   // loop through each subelement
   tokStr += ",";
   while ((commapos = tokStr.find(",")) > 0)
   {
     subelement = tokStr.substr(0,commapos);
-  
+
     // find "/" to determine step
     slashpos = subelement.find("/");
     if (slashpos == -1)
@@ -130,7 +132,7 @@ void CTUnit<min, max>::parse(string tokStr)
   }
   return;
 }
-  
+
 template<int min, int max>
 string CTUnit<min, max>::tokenize() const
 {

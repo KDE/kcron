@@ -8,7 +8,7 @@
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   * 
+ *   (at your option) any later version.                                   *
  ***************************************************************************/
 
 #include "ktview.h"
@@ -91,7 +91,7 @@ void KTView::refresh()
     listView->setColumnWidthMode(item, QListView::Maximum);
 
   // for each user
-  for (CTCronIterator i = (CTCronIterator)cth.cron.begin();
+  for (CTCronIterator i = const_cast<CTHost&>(cth).cron.begin();
     i != cth.cron.end(); i++)
   {
     CTCron* ctcron((CTCron*)*i);
@@ -170,10 +170,10 @@ void KTView::print () const
   KTListItem *ktli, *user;
 
   const CTHost& cth(ktapp->getCTHost());
-      	
+
   KTPrintOpt options(cth.root());
   if ( options.exec() ) {
-    crontab =options.crontab();	
+    crontab =options.crontab();
     allUsers = options.allUsers();
   }
   else
@@ -182,13 +182,13 @@ void KTView::print () const
   KTPrint printer;
 
 
-  if (printer.start()) 
+  if (printer.start())
   {
     printer.createColumns(3);
-    
+
     int copies = printer.numCopies();
-    while (copies != 0) 
-    { 
+    while (copies != 0)
+    {
       if (allUsers || !cth.root())
       {
         ktli = (KTListItem*)listView->firstChild();
@@ -200,15 +200,15 @@ void KTView::print () const
       //Check that the correct item is selected, they must
       //select the top level entry for all items to print
       while (ktli->depth() != 0)
-        ktli = (KTListItem*)ktli->parent(); 
- 
+        ktli = (KTListItem*)ktli->parent();
+
       user = ktli; //Used to store user's name
- 
-      if (allUsers) 
+
+      if (allUsers)
       {
-        while (ktli) 
+        while (ktli)
         {
-          pageHeading(ktli, printer);	
+          pageHeading(ktli, printer);
           ktli->print(printer);
           if (crontab)
             pageFooter(ktli, printer);
@@ -217,13 +217,13 @@ void KTView::print () const
             printer.newPage();
         }
       }
-      else 
+      else
       {
         //ktli goes out of range here hence the need for user
         pageHeading(user, printer);
-        if (!cth.root()) 
+        if (!cth.root())
         {
-          while (ktli) 
+          while (ktli)
           {
             ktli->print(printer);
             ktli = (KTListItem*)ktli->nextSibling();
@@ -231,10 +231,10 @@ void KTView::print () const
         }
         else
           ktli->print(printer);
-      
+
         if (crontab)
           pageFooter(user, printer);
-      
+
       }
 
     copies--; //Keep a track of how many copies we have printed
@@ -254,8 +254,8 @@ void KTView :: pageHeading (KTListItem* user, KTPrint &printer) const
   QDateTime now (QDateTime::currentDateTime());
   char hostName[20];
 
-  gethostname(hostName, 20); 
-  // SSA : Fix Me user name, logon name and host name musst be 
+  gethostname(hostName, 20);
+  // SSA : Fix Me user name, logon name and host name musst be
   // SSA : not only in us-ascii ??
   logonInfo = i18n("user on host", "%1 <%2> on %3")
     .arg(QString::fromLocal8Bit(user->getCTCron()->name.c_str()))
@@ -283,9 +283,9 @@ void KTView :: pageFooter (KTListItem* user, KTPrint &printer) const
   char buffer[4096];
   ostrstream oss(buffer, sizeof(buffer));
 #endif
-    
+
   oss<<*(user->getCTCron())<<ends;
-  
+
   if (oss) {
     string crontab(oss.str());
     printer.print(crontab.c_str(), 1, KTPrint::alignTextLeft, false);
@@ -297,7 +297,7 @@ KTView::~KTView()
   delete listView;
 }
 
-void KTView::resizeEvent (QResizeEvent* event)
+void KTView::resizeEvent (QResizeEvent*)
 {
   listView->setFixedWidth(width());
   listView->setFixedHeight(height());
@@ -317,7 +317,7 @@ void KTView::copy()
     delete clipboardCTVariable;
     clipboardCTVariable = 0;
   }
-  
+
   if (currentIsTask)
   {
     clipboardCTTask = new CTTask(*currentCTTask);
@@ -465,7 +465,7 @@ void KTView::enable(bool enable)
   }
 }
 
-void KTView::slotMenu(QListViewItem* qlvi, const QPoint& qp, int i)
+void KTView::slotMenu(QListViewItem* qlvi, const QPoint& qp, int /*i*/)
 {
   if (qlvi !=0 ) {
     listView->setSelected(qlvi, true);
@@ -474,7 +474,7 @@ void KTView::slotMenu(QListViewItem* qlvi, const QPoint& qp, int i)
   }
 }
 
-void KTView::slotEdit(QListViewItem* qlvi)
+void KTView::slotEdit(QListViewItem* /*qlvi*/)
 {
   edit();
 }

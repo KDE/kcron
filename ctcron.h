@@ -21,8 +21,10 @@
 #include <string>
 
 #ifndef __DECCXX
-class istream;
-class ostream;
+namespace std {
+  class istream;
+  class ostream;
+};
 #endif
 class CTException;
 class CTTask;
@@ -44,7 +46,7 @@ public:
   * passing TRUE, to construct from the system crontab.  Throws an
   * exception if the crontab file can not be found, read, or parsed.
   */
-  CTCron(bool _syscron = false, string _login = "");
+  CTCron(bool _syscron = false, std::string _login = "");
 
 /**
   * Copy one user's tasks and environement variables to another user.
@@ -54,12 +56,12 @@ public:
 /**
   * Parses crontab file format.
   */
-  friend istream& operator >> (istream& inputStream, CTCron& cron);
+  friend std::istream& operator >> (std::istream& inputStream, CTCron& cron);
 
 /**
   * Tokenizes to crontab file format.
   */
-  friend ostream& operator << (ostream& outputStream, const CTCron& cron);
+  friend std::ostream& operator << (std::ostream& outputStream, const CTCron& cron);
 
 /**
   * Apply changes.
@@ -80,7 +82,7 @@ public:
   * Returns the PATH environment variable value.  A short cut to iterating
   * the tasks vector.
   */
-  string path() const;
+  std::string path() const;
 
 /**
   * Indicates whether or not the crontab belongs to the system.
@@ -90,24 +92,24 @@ public:
 /**
   * User  login.
   */
-  string login;
+  std::string login;
 
 /**
   * User real name.
   */
-  string name;
+  std::string name;
 
 /**
   * User's scheduled tasks.
   */
-  vector<CTTask *> task;
+  std::vector<CTTask *> task;
 
 /**
   * User's environment variables.  Note:  These are only environment variables
   * found in the user's crontab file and does not include any set in a 
   * login or shell script such as ".bash_profile".
   */
-  vector<CTVariable *> variable;
+  std::vector<CTVariable *> variable;
 
 /**
   * Destructor.
@@ -123,12 +125,12 @@ private:
 
   unsigned int initialTaskCount;
   unsigned int initialVariableCount;
-  string       writeCommand;
-  string       tmpFileName;
+  std::string       writeCommand;
+  std::string       tmpFileName;
 
 };
 
-typedef vector<CTTask*>::iterator CTTaskIterator;
-typedef vector<CTVariable*>::iterator CTVariableIterator;
+typedef std::vector<CTTask*>::iterator CTTaskIterator;
+typedef std::vector<CTVariable*>::iterator CTVariableIterator;
 
 #endif // CTCRON_H

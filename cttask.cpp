@@ -8,7 +8,7 @@
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   * 
+ *   (at your option) any later version.                                   *
  ***************************************************************************/
 
 // Do not introduce any Qt or KDE dependencies into the "CT"-prefixed classes.
@@ -162,13 +162,13 @@ string CTTask::describe() const
 {
 
   // Of the whole program, this method is probably the trickiest.
-  // 
+  //
   // This method creates the natural language description, such as
-  // "At 1:00am, every Sun".  
+  // "At 1:00am, every Sun".
   //
   // First, I declare some strings for holding what can be internationalized.
   // Note the tokens such as "MONTHS".  Translators should reuse these
-  // tokens in their translations.  See README.translators for more 
+  // tokens in their translations.  See README.translators for more
   // information.
   //
   // Second, I get the descriptions from the component parts such as
@@ -236,12 +236,12 @@ string CTTask::describe() const
          switch (total - count)
          {
            case 0:  break;
-           case 1:  if (total > 2) 
+           case 1:  if (total > 2)
 	   	      timeDesc += (const char *)i18n(", and ").local8Bit();
 		    else
                       timeDesc += (const char *)i18n(" and ").local8Bit();
                     break;
-           default: timeDesc += i18n(", ");
+           default: timeDesc += (const char*)i18n(", ").local8Bit();
          }
       }
 

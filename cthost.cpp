@@ -8,7 +8,7 @@
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   * 
+ *   (at your option) any later version.                                   *
  ***************************************************************************/
 
 // Do not introduce any Qt or KDE dependencies into the "CT"-prefixed classes.
@@ -19,6 +19,8 @@
 #include "ctcron.h"
 #include <unistd.h>  // getuid()
 #include <fstream.h> // ifstream
+
+using namespace std;
 
 CTHost::CTHost()
 {

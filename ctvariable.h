@@ -31,7 +31,7 @@ public:
 /**
   * Constructs environment variable from crontab format string.
   */
-  CTVariable(string tokStr = "", string _comment = "");
+  CTVariable(std::string tokStr = "", std::string _comment = "");
 
 /**
   * Copy constructor.
@@ -68,15 +68,15 @@ public:
   */
   bool dirty() const;
 
-  string       variable;
-  string       value;
-  string       comment;
+  std::string       variable;
+  std::string       value;
+  std::string       comment;
   bool         enabled;
 
 private:
-  string       initialVariable;
-  string       initialValue;
-  string       initialComment;
+  std::string       initialVariable;
+  std::string       initialValue;
+  std::string       initialComment;
   bool         initialEnabled;
 
 };

@@ -21,7 +21,9 @@
 #ifdef __DECCXX
 #include <iostream.h>
 #else
-class ostream;
+namespace std {
+  class ostream;
+};
 #endif
 
 /**
@@ -46,7 +48,7 @@ public:
 /**
   * Initialize including parsing and saving initial image.
   */
-  CTUnit(const string &tokStr = "");
+  CTUnit(const std::string &tokStr = "");
 
 /**
   * Base initial image as empty and copy enabled intervals.
@@ -66,7 +68,7 @@ public:
 /**
   * Returns tokenization to output stream.
   */
-  friend ostream& operator << (ostream& outStr, const CTUnit<min,max>& unit)
+  friend std::ostream& operator << (std::ostream& outStr, const CTUnit<min,max>& unit)
   {
     outStr << ((const CTUnit<min, max>) unit).tokenize();
     return outStr;
@@ -76,24 +78,24 @@ public:
   * Parses unit such as "0-3,5,6,10-30/5".
   * And initialize array of enabled intervals.
   */
-  void initialize(const string &tokStr = "");
+  void initialize(const std::string &tokStr = "");
 
 /**
   * Parses unit such as "0-3,5,6,10-30/5".
   * Does not initialize array of enabled intervals.
   */
-  void parse(string tokStr = "");
+  void parse(std::string tokStr = "");
   
 /**
   * Tokenizes unit into string such as
   * "0,1,2,3,5,6,10,15,20,25,30".
   */
-  string tokenize() const;
+  std::string tokenize() const;
 
 /**
   * Get default natural language description.
   */
-  virtual string describe(const string *label) const;
+  virtual std::string describe(const std::string *label) const;
 
 /**
   * Lower bound.
@@ -148,11 +150,11 @@ public:
 
 private:
 
-  int fieldToValue(string entry) const;
+  int fieldToValue(std::string entry) const;
   bool isDirty;
   bool enabled[max+1];
   bool initialEnabled[max+1];
-  string initialTokStr;
+  std::string initialTokStr;
 
 };
 

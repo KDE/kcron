@@ -8,7 +8,7 @@
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   * 
+ *   (at your option) any later version.                                   *
  ***************************************************************************/
 
 // Do not introduce any Qt or KDE dependencies into the "CT"-prefixed classes.
@@ -24,6 +24,8 @@
 #include <unistd.h>      // getuid(), unlink()
 #include <pwd.h>         // pwd, getpwnam(), getpwuid()
 #include <stdio.h>       // sprintf()
+
+using namespace std;
 
 CTCron::CTCron(bool _syscron, string _login) :
   syscron(_syscron)
@@ -94,14 +96,14 @@ void CTCron::operator = (const CTCron& source)
   if (source.syscron)
     throw CTException();
 
-  for (CTVariableIterator i = (CTVariableIterator)source.variable.begin();
+  for (CTVariableIterator i = const_cast<CTCron&>(source).variable.begin();
     i != source.variable.end(); i++)
   {
     CTVariable* tmp = new CTVariable(**i);
     variable.push_back(tmp);
   }
 
-  for (CTTaskIterator i = (CTTaskIterator)source.task.begin();
+  for (CTTaskIterator i = const_cast<CTCron&>(source).task.begin();
     i != source.task.end(); i++)
   {
     CTTask* tmp = new CTTask(**i);
@@ -169,14 +171,14 @@ ostream& operator << (ostream& outputStream, const CTCron& cron)
 {
   int itemCount(0);
 
-  for (CTVariableIterator i = (CTVariableIterator)cron.variable.begin();
+  for (CTVariableIterator i = const_cast<CTCron&>(cron).variable.begin();
     i != cron.variable.end(); i++)
   {
     outputStream << **i;
     itemCount++;
   }
 
-  for (CTTaskIterator i = (CTTaskIterator)cron.task.begin();
+  for (CTTaskIterator i = const_cast<CTCron&>(cron).task.begin();
     i != cron.task.end(); i++)
   {
     outputStream << **i;
@@ -253,7 +255,7 @@ string CTCron::path() const
 {
   string path;
 
-  for (CTVariableIterator var = (CTVariableIterator)variable.begin();
+  for (CTVariableIterator var = const_cast<CTCron*>(this)->variable.begin();
     var != variable.end(); var++)
   {
     if ((*var)->variable == "PATH")

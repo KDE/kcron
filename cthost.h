@@ -78,7 +78,7 @@ public:
   * If the user is a non-root user, there will be only one member in the
   * cron vector.
   */
-  vector<CTCron*> cron;
+  std::vector<CTCron*> cron;
 
 private:
 
@@ -95,10 +95,10 @@ private:
 /**
   * Factory create a cron table.  Appends to the end of cron.
   */
-  CTCron* createCTCron(bool _syscron = false, string _login = "");
+  CTCron* createCTCron(bool _syscron = false, std::string _login = "");
 
 };
 
-typedef vector<CTCron*>::iterator CTCronIterator;
+typedef std::vector<CTCron*>::iterator CTCronIterator;
 
 #endif // CTHOST_H
