@@ -1,0 +1,685 @@
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook V3.1-Based Variant V1.0//EN" [
+ <!ENTITY kcron "<application>kcron</application>">
+]>
+
+<book lang="en">
+<bookinfo>
+<title>The KCron Handbook</title>
+<authorgroup>
+<author>
+<firstname>Gary</firstname>
+<surname>Meyer</surname>
+<affiliation><address><email>gary@meyer.net</email></address></affiliation>
+</author>
+</authorgroup>
+<date>01/11/1999</date>
+<releaseinfo>0.06.00</releaseinfo>
+<abstract>
+<para>This Handbook describes KCron Version 0.6</para>
+</abstract>
+<keywordset>
+<keyword>KDE</keyword>
+<keyword>KCron</keyword>
+<keyword>cron</keyword>
+<keyword>crontab</keyword>
+<keyword>scheduler</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="introduction">
+<title>Introduction</title>
+
+<sect1 id="description">
+<title>Description</title>
+
+<para>KCron is an application for scheduling programs to run in the background.
+It is a graphical user interface to cron, the Unix system scheduler.</para>
+</sect1>
+
+<sect1 id="acknowledgements">
+<title>Acknowledgements</title>
+
+<para>KCron was initially based upon kcrontab developed by 
+<ulink url="mailto:michael@quinto.ruhr.de">Michael Bialas</ulink>
+and documented by
+<ulink url="mailto:klemm@abacus.at">David Klemm</ulink>.</para>
+
+<para>KCron acknowledges 
+<ulink url="mailto:paul@vix.com">Paul Vixie</ulink> for vixie-cron.</para>
+</sect1>
+
+<sect1 id="license">
+<title>License</title>
+
+<para>KCron is distributed under the GNU GPL2 license.  See the <literal remap="tt">COPYING</literal> file
+included with the distribution.</para>
+</sect1>
+
+<sect1 id="feedback">
+<title>Feedback</title>
+
+<para>I hope you find this program useful.  Any suggestions or comments
+would be appreciated.</para>
+
+<para><literal remap="tt">Gary Meyer</literal></para>
+
+<para><ulink url="mailto:gary@meyer.net">gary@meyer.net</ulink></para>
+</sect1>
+</chapter>
+
+<chapter id="installation">
+<title>Installation</title>
+
+<sect1 id="howtoobtainkcron">
+<title>How to obtain KCron</title>
+
+<para>With <ulink url="http://www.kde.org">KDE</ulink> 2.x,
+KCron is distributed as part of the <literal remap="tt">kdeadmin</literal> package.</para>
+
+<para>The most recent stable source code release can be found on the 
+<ulink url="http://24.8.19.113/kcron.html">KCron homepage</ulink>.</para>
+</sect1>
+
+<sect1 id="requirements">
+<title>Requirements</title>
+
+<para>In order to successfully compile KCron, you need the following libraries:</para>
+
+<para>- <ulink url="http://www.troll.no/qt/">Qt</ulink> 1.44 or higher.</para>
+
+<para>- <ulink url="http://www.kde.org">KDE</ulink> 1.1.1 or higher.
+KCron requires several libraries in the <literal remap="tt">kdelibs</literal> package.</para>
+
+<para>- Cron, such as vixie-cron.  KCron uses the <literal remap="tt">crontab</literal> command to
+modify user's scheduled tasks.</para>
+
+<para>- POSIX-compliant Unix, such as provided by glibc.  KCron uses some standard
+Unix system calls for localization of dates and times.</para>
+</sect1>
+
+<sect1 id="compilationandinstallation">
+<title>Compilation and installation</title>
+
+<para>In order to compile and install KCron on your system, first edit
+<literal remap="tt">Makefile.am</literal> making any necessary modifications for KDE 1.x vs.
+KDE 2.x.
+<literal remap="tt">Makefile.am</literal> describes and provides examples of any modifications you
+might need to make.</para>
+
+<para>Second, type the following in the base directory of the KCron distribution:
+<screen> 
+% ./configure 
+% make 
+% make install 
+</screen>
+</para>
+
+<para>Please inform the <ulink url="mailto:gary@meyer.net">author</ulink>
+of any modifications you had to make to get KCron to compile on your platform.
+Please include operating system, compiler, Qt, and KDE version information
+in your message.</para>
+</sect1>
+</chapter>
+
+<chapter id="onscreenfundamentals">
+<title>Onscreen Fundamentals</title>
+
+<sect1 id="startup">
+<title>Start Up</title>
+
+<para>When KCron starts you will see a summarized view of scheduled tasks and
+associated environment variables.  If you are running as the <literal remap="tt">root</literal>
+user, you will see these items for all users on the computer as well
+as the system scheduled tasks.  Each of the folders can be expanded
+and contracted.</para>
+
+<para><emphasis remap="bf">Scheduled Tasks</emphasis></para>
+
+<para>Scheduled tasks appear under a "<emphasis remap="bf">Tasks</emphasis>" folder.
+For each scheduled task, the following are displayed:</para>
+
+<para>- <emphasis remap="bf">Name</emphasis></para>
+
+<para>- <emphasis remap="bf">Value</emphasis>: Program file and parameters</para>
+
+<para>- <emphasis remap="bf">Description</emphasis>: Natural language description of schedule</para>
+
+<para>If a task has been disabled, no program file and parameters will appear and
+the description will be "Disabled."</para>
+
+<para><emphasis remap="bf">Environment Variables</emphasis></para>
+
+<para>Environment various appear under a "<emphasis remap="bf">Variables</emphasis>" folder.
+For each environment variable, the following are displayed:</para>
+
+<para>- <emphasis remap="bf">Name</emphasis></para>
+
+<para>- <emphasis remap="bf">Value</emphasis></para>
+
+<para>- <emphasis remap="bf">Description</emphasis></para>
+
+<para>If an environment variable has been disabled, no value will appear and the
+description will be "Disabled."</para>
+</sect1>
+
+<sect1 id="save">
+<title>Save</title>
+
+<para>To save any modifications you have made, select <emphasis remap="bf">File/Save</emphasis> from the menu.
+Alternatively you call press the save icon on the toolbar.</para>
+
+<para>If you have made any modifications, the program will prompt you to save
+before exiting.</para>
+
+<para><emphasis remap="bf">Note</emphasis>: No changes are actually made until you explicitly save from the menu or
+toolbar, or when exiting.</para>
+</sect1>
+
+<sect1 id="quit">
+<title>Quit</title>
+
+<para>To quit the program, select <emphasis remap="bf">File/Quit</emphasis> from the menu.</para>
+
+<para>If you have made any modifications and have not saved them, the program
+will prompt you to save before exiting.</para>
+
+<para>You will be asked,
+"Scheduled tasks have been modified.  Do you want to save changes?"</para>
+
+<para>- Answer "<emphasis remap="bf">Yes</emphasis>" to save changes and exit.</para>
+
+<para>- Answer "<emphasis remap="bf">No</emphasis>" to abandon changes and exit.</para>
+
+<para>- Answer "<emphasis remap="bf">Cancel</emphasis>" to continue editing.</para>
+</sect1>
+
+<sect1 id="showtoolbar">
+<title>Show Tool Bar</title>
+
+<para>If the tool bar is not visible, select <emphasis remap="bf">Options/Show Tool Bar</emphasis>
+from the menu.
+The tool bar will be displayed and the Show Tool Bar menu item will be 
+checked.</para>
+</sect1>
+
+<sect1 id="hidetoolbar">
+<title>Hide Tool Bar</title>
+
+<para>If the tool bar is visible, select <emphasis remap="bf">Options/Show Tool Bar</emphasis>
+from the menu.
+The tool bar will no longer be displayed and the Show Tool Bar menu item
+will be unchecked.</para>
+</sect1>
+
+<sect1 id="showstatusbar">
+<title>Show Status Bar</title>
+
+<para>If the status bar is not visible, select <emphasis remap="bf">Options/Show Status Bar</emphasis>
+from the menu.
+The status bar will be displayed and the Show Status Bar menu item
+will be checked.</para>
+</sect1>
+
+<sect1 id="hidestatusbar">
+<title>Hide Status Bar</title>
+
+<para>If the status bar is visible, select <emphasis remap="bf">Options/Show Status Bar</emphasis>
+from the menu.
+The status bar will no longer be displayed and the Show Status Bar menu item
+will be unchecked.</para>
+</sect1>
+</chapter>
+
+<chapter id="scheduledtasks">
+<title>Scheduled Tasks</title>
+
+<sect1 id="createnewscheduledtask">
+<title>Create New Scheduled Task</title>
+
+<para>To create a new scheduled task, first select the "<emphasis remap="bf">Tasks</emphasis>" folder.</para>
+
+<para>Then select <emphasis remap="bf">Edit/New</emphasis> from the menu.
+Alternatively you can use the right mouse
+click menu.  You will see the "<emphasis remap="bf">Edit Task</emphasis>" dialog.</para>
+
+<para><emphasis remap="bf">Comment</emphasis></para>
+
+<para>In the "Comment" field, enter a description of the task to schedule.</para>
+
+<para><emphasis remap="bf">Program</emphasis></para>
+
+<para>In the "Program" field, enter the name of the program.  You can specify 
+either a relative path or absolute path.  If you want to look up the program,
+press the "Browse..." button.</para>
+
+<para><emphasis remap="bf">Enabled</emphasis></para>
+
+<para>If you want to disable the task, de-select, the "Enabled" check box.</para>
+
+<para><emphasis remap="bf">Daily</emphasis></para>
+
+<para>If you want to schedule the task to run daily, select the "Run Every Day"
+check box.</para>
+
+<para><emphasis remap="bf">Months</emphasis></para>
+
+<para>Check the months to schedule the task.</para>
+
+<para><emphasis remap="bf">Days of the Month</emphasis></para>
+
+<para>Check the days of the month to schedule the task.</para>
+
+<para><emphasis remap="bf">Days of the Week</emphasis></para>
+
+<para>Check the days of the week to schedule the task.</para>
+
+<para><emphasis remap="bf">Note:</emphasis> If you select both several days of the month and several days of the
+week, the task will run when either condition is met.</para>
+
+<para>For instance, if you
+select the 1st and 15th and select Sunday, the program will be run every
+1st and 15th of the selected months (regardless of day of week) <emphasis remap="bf">as well as</emphasis>
+every Sunday of the selected months (regardless of day of the month.</para>
+
+<para>To run
+on a weekday schedule, check all days of the month and the selected days
+of the week.</para>
+
+<para>To run on a days of the month schedule, check all days of the
+week, and the selected days of the month.</para>
+
+<para><emphasis remap="bf">Hours</emphasis></para>
+
+<para>Check the hours to schedule the task.</para>
+
+<para><emphasis remap="bf">Minutes</emphasis></para>
+
+<para>Check the minutes to schedule the task.  (KCron does not support scheduling
+tasks at more granular than five minute intervals.)</para>
+
+<para>Press the "<emphasis remap="bf">OK</emphasis>" button to continue.</para>
+
+<para><emphasis remap="bf">Note</emphasis>: The scheduled task is not actually
+set up until saved.  All modifications can be saved by selecting
+<emphasis remap="bf">File/Save</emphasis> from the menu.</para>
+
+<para>Alternatively press the "<emphasis remap="bf">Cancel</emphasis>" button to abandon creating this new task.</para>
+</sect1>
+
+<sect1 id="modifyscheduledtask">
+<title>Modify Scheduled Task</title>
+
+<para>To modify a scheduled task, first select the task to be modified.  Then
+select <emphasis remap="bf">Edit/Modify</emphasis> from the menu.  Alternatively you can use the right mouse
+click menu.  You will see the "<emphasis remap="bf">Edit Task</emphasis>" dialog.</para>
+
+<para><emphasis remap="bf">Comment</emphasis></para>
+
+<para>In the "Comment" field, modify the description as needed.</para>
+
+<para><emphasis remap="bf">Program</emphasis></para>
+
+<para>In the "Program" field, modify the name of the program as needed.
+You can specify either a relative path or absolute path.
+If you want to look up the program, press the "Browse..." button.</para>
+
+<para><emphasis remap="bf">Enabled</emphasis></para>
+
+<para>If you want to enable the task, select, the "Enabled" check box.</para>
+
+<para>If you want to disable the task, de-select, the "Enabled" check box.</para>
+
+<para><emphasis remap="bf">Daily</emphasis></para>
+
+<para>If you want to schedule the task to run daily, select the "Run Every Day"
+check box.</para>
+
+<para><emphasis remap="bf">Months</emphasis></para>
+
+<para>Check the months to schedule the task.</para>
+
+<para><emphasis remap="bf">Days of the Month</emphasis></para>
+
+<para>Check the days of the month to schedule the task.</para>
+
+<para><emphasis remap="bf">Days of the Week</emphasis></para>
+
+<para>Check the days of the week to schedule the task.</para>
+
+<para><emphasis remap="bf">Note:</emphasis> If you select both several days of the month and several days of the
+week, the task will run when either condition is met.</para>
+
+<para>For instance, if you
+select the 1st and 15th and select Sunday, the program will be run every
+1st and 15th of the selected months (regardless of day of week) <emphasis remap="bf">as well as</emphasis>
+every Sunday of the selected months (regardless of day of the month.</para>
+
+<para>To run
+on a weekday schedule, check all days of the month and the selected days
+of the week.</para>
+
+<para>To run on a days of the month schedule, check all days of the
+week, and the selected days of the month.</para>
+
+<para><emphasis remap="bf">Hours</emphasis></para>
+
+<para>Check the hours to schedule the task.</para>
+
+<para><emphasis remap="bf">Minutes</emphasis></para>
+
+<para>Check the minutes to schedule the task.  (KCron does not support scheduling
+tasks at more granular than five minute intervals.)</para>
+
+<para>Press the "<emphasis remap="bf">OK</emphasis>" button to continue.</para>
+
+<para><emphasis remap="bf">Note</emphasis>: The modification is not actually
+made until saved.  All modifications can be saved by selecting
+<emphasis remap="bf">File/Save</emphasis>
+from the menu.</para>
+
+<para>Alternatively press the "<emphasis remap="bf">Cancel</emphasis>" button to abandon modifying this scheduled
+task.</para>
+</sect1>
+
+<sect1 id="deletescheduledtask">
+<title>Delete Scheduled Task</title>
+
+<para>To delete a scheduled task, first select the task to be deleted.</para>
+
+<para>Then select <emphasis remap="bf">Edit/Delete</emphasis> from the menu.
+Alternatively you can use the right mouse
+click menu.</para>
+
+<para><emphasis remap="bf">Note</emphasis>: The deletion is not actually made until saved.  All modifications
+can be saved by selecting <emphasis remap="bf">File/Save</emphasis> from the menu.</para>
+</sect1>
+
+<sect1 id="cutscheduledtask">
+<title>Cut Scheduled Task</title>
+
+<para>To cut a scheduled task, first select the task to be cut.  Then
+select <emphasis remap="bf">Edit/Cut</emphasis> from the menu.  Alternatively you can use the right mouse
+click menu or tool bar.</para>
+
+<para><emphasis remap="bf">Note</emphasis>: The deletion is not actually made until saved.  All modifications
+can be saved by selecting <emphasis remap="bf">File/Save</emphasis> from the menu.</para>
+</sect1>
+
+<sect1 id="copyscheduledtask">
+<title>Copy Scheduled Task</title>
+
+<para>To copy a scheduled task, first select the task to be copied.</para>
+
+<para>Then select <emphasis remap="bf">Edit/Copy</emphasis> from the menu.  Alternatively you can use the right mouse
+click menu or tool bar.</para>
+
+<para>Once a scheduled task has been cut or copied, paste will be enabled.</para>
+</sect1>
+
+<sect1 id="pastescheduledtask">
+<title>Paste Scheduled Task</title>
+
+<para>To paste a scheduled task, first a scheduled task must have already been 
+cut or copied to the clipboard.</para>
+
+<para>Then select the "<emphasis remap="bf">Tasks</emphasis>" folder.  Then
+Finally select <emphasis remap="bf">Edit/Paste</emphasis> from the menu.  Alternatively you can use the
+right mouse click menu or tool bar.</para>
+
+<para><emphasis remap="bf">Note</emphasis>: The newly pasted task is not actually set up until saved.  All
+modifications can be saved by selecting <emphasis remap="bf">File/Save</emphasis> from the menu.</para>
+</sect1>
+
+<sect1 id="enablescheduledtask">
+<title>Enable Scheduled Task</title>
+
+<para>To enable a scheduled task, first select the disabled task.  (A disabled
+task will display "Disabled" in its description.)</para>
+
+<para>Then select <emphasis remap="bf">Edit/Enabled</emphasis> from the menu.  Alternatively you can use the
+right mouse click menu.</para>
+
+<para>Confirm that the schedule task's program name and parameters as well as
+description are displayed.</para>
+</sect1>
+
+<sect1 id="disablescheduledtask">
+<title>Disable Scheduled Task</title>
+
+<para>To disable a scheduled task, first select the enabled task.</para>
+
+<para>Then select <emphasis remap="bf">Edit/Enabled</emphasis> from the menu.  Alternatively you can use the
+right mouse click menu.</para>
+
+<para>Confirm that the schedule task's program name and parameters are no longer
+displayed and the description "Disabled" is displayed.</para>
+</sect1>
+
+<sect1 id="runscheduledtasknow">
+<title>Run Scheduled Task Now</title>
+
+<para>To run a scheduled task immediately, first select the task. </para>
+
+<para>Then select <emphasis remap="bf">Edit/Run Now</emphasis> from the menu.
+Alternatively you can use the right mouse click menu.</para>
+</sect1>
+</chapter>
+
+<chapter id="environmentvariables">
+<title>Environment Variables</title>
+
+<sect1 id="createnewenvironmentvariable">
+<title>Create New Environment Variable</title>
+
+<para>To create a new environment variable, first select the
+"<emphasis remap="bf">Variables</emphasis>" folder.</para>
+
+<para>Then select <emphasis remap="bf">Edit/New</emphasis> from the menu.
+Alternatively you can use the right mouse
+click menu.</para>
+
+<para>You will see the "<emphasis remap="bf">Edit Variable</emphasis>" dialog.</para>
+
+<para><emphasis remap="bf">Variable</emphasis></para>
+
+<para>In the "Variable" field, enter the environment variable name.  You can use
+the drop-down list box to select from the most common environment variables
+used by scheduled tasks.  Those include:</para>
+
+<para>- <emphasis remap="bf">HOME</emphasis>: To be used instead of the default user's home directory</para>
+
+<para>- <emphasis remap="bf">MAILTO</emphasis>: To send email output to an email address instead of the the user's
+default email address.</para>
+
+<para>- <emphasis remap="bf">PATH</emphasis>: To be used to search directories for program files.</para>
+
+<para>- <emphasis remap="bf">SHELL</emphasis>: To be used instead of the user's default value.</para>
+
+<para><emphasis remap="bf">Note</emphasis>: When you change the variable, both the icon, and the comment may
+be updated.</para>
+
+<para><emphasis remap="bf">Value</emphasis></para>
+
+<para>In the "Value" field, enter the environment variable value.</para>
+
+<para><emphasis remap="bf">Comment</emphasis></para>
+
+<para>In the "Comment" field, enter a description for the environment variable, such
+as its purpose.</para>
+
+<para><emphasis remap="bf">Enabled</emphasis></para>
+
+<para>If you want to disable the environment variable, de-select,
+the "Enabled" check box.</para>
+
+<para>If you want to enable the environment variable, select the "Enabled" check
+box.</para>
+
+<para>Press the "<emphasis remap="bf">OK</emphasis>" button to continue.</para>
+
+<para><emphasis remap="bf">Note</emphasis>: The environment variable is
+not actually set up until saved.  All modifications can be saved by
+selecting <emphasis remap="bf">File/Save</emphasis> from the menu.</para>
+
+<para>Alternatively press the "<emphasis remap="bf">Cancel</emphasis>" button to abandon creating this environment
+variable.</para>
+</sect1>
+
+<sect1 id="modifyenvironmentvariable">
+<title>Modify Environment Variable</title>
+
+<para>To modify an environment variable, first select
+the "<emphasis remap="bf">Variables</emphasis>" folder.</para>
+
+<para>Then select <emphasis remap="bf">Edit/Modify</emphasis> from the menu.
+Alternatively you can use the
+right mouse click menu.</para>
+
+<para>You will see the "<emphasis remap="bf">Edit Variable</emphasis>" dialog.</para>
+
+<para><emphasis remap="bf">Variable</emphasis></para>
+
+<para>In the "Variable" field, change the environment variable name as necessary.
+You can use the drop-down list box to select from the most common
+environment variables used by scheduled tasks.  Those include:</para>
+
+<para>- <emphasis remap="bf">HOME</emphasis>: To be used instead of the default user's home directory</para>
+
+<para>- <emphasis remap="bf">MAILTO</emphasis>: To send email output to an email address instead of the the user's
+default email address.</para>
+
+<para>- <emphasis remap="bf">PATH</emphasis>: To be used to search directories for program files.</para>
+
+<para>- <emphasis remap="bf">SHELL</emphasis>: To be used instead of the user's default value.</para>
+
+<para><emphasis remap="bf">Note</emphasis>: When you change the variable, both the icon, and the comment may
+be updated.</para>
+
+<para><emphasis remap="bf">Value</emphasis></para>
+
+<para>In the "Value" field, modify the environment variable value as necessary.</para>
+
+<para><emphasis remap="bf">Comment</emphasis></para>
+
+<para>In the "Comment" field, enter a description for the environment variable, such
+as its purpose.</para>
+
+<para><emphasis remap="bf">Enabled</emphasis></para>
+
+<para>If you want to disable the environment variable,
+de-select the "Enabled" check box.</para>
+
+<para>If you want to enable the environment variable, select the "Enabled" check
+box.</para>
+
+<para>Press the "<emphasis remap="bf">OK</emphasis>" button to continue.</para>
+
+<para><emphasis remap="bf">Note</emphasis>: The environment variable is
+not actually set up until saved.  All modifications can be saved by
+selecting <emphasis remap="bf">File/Save</emphasis> from the menu.</para>
+
+<para>Alternatively press the "<emphasis remap="bf">Cancel</emphasis>" button to abandon creating this environment
+variable.</para>
+</sect1>
+
+<sect1 id="deleteenvironmentvariable">
+<title>Delete Environment Variable</title>
+
+<para>To delete an environment variable, first select the variable to be deleted.</para>
+
+<para>Then select <emphasis remap="bf">Edit/Delete</emphasis> from the menu.
+Alternatively you can use the right mouse click menu.</para>
+
+<para><emphasis remap="bf">Note</emphasis>: The deletion is not actually made until saved.  All modifications
+can be saved by selecting <emphasis remap="bf">File/Save</emphasis> from the menu.</para>
+</sect1>
+
+<sect1 id="cutenvironmentvariable">
+<title>Cut Environment Variable</title>
+
+<para>To cut an environment variable, first select the variable to be cut.</para>
+
+<para>Then select <emphasis remap="bf">Edit/Cut</emphasis> from the menu.
+Alternatively you can use the right mouse click menu or tool bar.</para>
+
+<para><emphasis remap="bf">Note</emphasis>: The deletion is not actually made until saved.  All modifications
+can be saved by selecting <emphasis remap="bf">File/Save</emphasis> from the menu.</para>
+</sect1>
+
+<sect1 id="copyenvironmentvariable">
+<title>Copy Environment Variable</title>
+
+<para>To copy an environment variable, first select the variable to be copied.</para>
+
+<para>Then select <emphasis remap="bf">Edit/Copy</emphasis> from the menu.
+Alternatively you can use the right mouse click menu or tool bar.</para>
+
+<para>Once an environment variable has been cut or copied, paste will be enabled.</para>
+</sect1>
+
+<sect1 id="pasteenvironmentvariable">
+<title>Paste Environment Variable</title>
+
+<para>To paste an environment variable, first an environment variable must have already been 
+cut or copied to the clipboard.</para>
+
+<para>Then select the "<emphasis remap="bf">Variables</emphasis>" folder.</para>
+
+<para>Finally select <emphasis remap="bf">Edit/Paste</emphasis> from the menu.  Alternatively you can use the
+right mouse click menu or tool bar.</para>
+
+<para><emphasis remap="bf">Note</emphasis>: The newly pasted variable is not actually set up until saved.  All
+modifications can be saved by selecting <emphasis remap="bf">File/Save</emphasis> from the menu.</para>
+</sect1>
+
+<sect1 id="enableenvironmentvariable">
+<title>Enable Environment Variable</title>
+
+<para>To enable an environment variable, first select the disabled variable.
+(A disabled variable will display "Disabled" in its description.)</para>
+
+<para>Then select <emphasis remap="bf">Edit/Enabled</emphasis> from the menu.  Alternatively you can use the
+right mouse click menu.</para>
+
+<para>Confirm that the environment variables's program name and parameters as well as
+description are displayed.</para>
+</sect1>
+
+<sect1 id="disableenvironmentvariable">
+<title>Disable Environment Variable</title>
+
+<para>To disable an environment variable, first select the enabled variable.  (A disabled
+variable will display its value and its description.)</para>
+
+<para>Then select <emphasis remap="bf">Edit/Enabled</emphasis> from the menu.  Alternatively you can use the
+right mouse click menu.</para>
+
+<para>Confirm that the environment variables's program name and parameters are no longer
+displayed and the description "Disabled" is displayed.</para>
+</sect1>
+</chapter>
+
+<chapter id="aboutcron">
+<title>About Cron</title>
+
+<para>Please see the following manual pages for more technical information
+about cron and crontab, the native Unix system utilities used by
+KCron.</para>
+
+<para>- <literal remap="tt">crontab</literal>: Maintain crontab files for individual users.
+(Enter "<literal remap="tt">man:crontab(1)</literal>" in KDE Help.)</para>
+
+<para>- <literal remap="tt">crontab</literal> file format: Tables for driving cron.
+(Enter "<literal remap="tt">man:crontab(5)</literal>" in KDE Help.)</para>
+
+<para>- <literal remap="tt">cron</literal>: Daemon to execute scheduled commands.
+(Enter "<literal remap="tt">man:cron(8)</literal>" in KDE Help.)</para>
+</chapter>
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-omittag: nil
+sgml-shorttag: t
+End:
+-->

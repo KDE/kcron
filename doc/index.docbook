@@ -1,685 +1,799 @@
-<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook V3.1-Based Variant V1.0//EN" [
- <!ENTITY kcron "<application>kcron</application>">
+<!DOCTYPE book PUBLIC  "-//KDE//DTD DocBook V3.1-Based Variant V1.0//EN" [
+ <!ENTITY kcron   "<application>KCron</application>">
+ <!ENTITY kappname "&kcron;" -- this only *seems* redundant -->
+ <!ENTITY % addindex "IGNORE">
+ <!ENTITY % ents PUBLIC "-//KDE//ENTITIES Application-Variable Entities V1.0//EN">
+  %ents;
 ]>
 
-<book lang="en">
+<book id="kcron" lang="en">
+
 <bookinfo>
+
 <title>The KCron Handbook</title>
+
 <authorgroup>
+
 <author>
+<firstname>Morgan</firstname>
+<othername>N.</othername>
+<surname>Sandquist</surname>
+<affiliation><address><email>morgan@pipeline.com</email></address>
+</affiliation>
+</author>
+
+<othercredit>
 <firstname>Gary</firstname>
 <surname>Meyer</surname>
-<affiliation><address><email>gary@meyer.net</email></address></affiliation>
-</author>
+<affiliation><address><email>gary@meyer.net</email></address>
+</affiliation>
+<contrib>Developer</contrib>
+</othercredit>
+
+<othercredit>
+<firstname>Lauri</firstname>
+<surname>Watts</surname>
+<affiliation><address><email>vampyr@atconnex.net</email></address>
+</affiliation>
+<contrib>Reviewer</contrib>
+</othercredit>
+
 </authorgroup>
-<date>01/11/1999</date>
-<releaseinfo>0.06.00</releaseinfo>
-<abstract>
-<para>This Handbook describes KCron Version 0.6</para>
-</abstract>
+
+
+<revhistory>
+<revision>
+<revnumber>0.1</revnumber>
+<date>5.16.2000</date>
+<authorinitials>M.N.S.</authorinitials>
+<revremark>Initial release.
+</revremark>
+</revision>
+
+</revhistory>
+
+<copyright>
+<year>2000</year>
+<holder>Morgan N. Sandquist</holder>
+</copyright>
+
+<legalnotice>&FDLNotice;</legalnotice>
+
+<date>16/05/2000</date>
+<releaseinfo>1.91.00</releaseinfo>
+
 <keywordset>
 <keyword>KDE</keyword>
 <keyword>KCron</keyword>
+<keyword>kdeadmin</keyword>
 <keyword>cron</keyword>
 <keyword>crontab</keyword>
 <keyword>scheduler</keyword>
 </keywordset>
+
+<abstract>
+<para>&kcron; is an application that schedules programs to be run.</para>
+</abstract>
+
 </bookinfo>
 
 <chapter id="introduction">
 <title>Introduction</title>
 
-<sect1 id="description">
-<title>Description</title>
+<para>&kcron; is an application for scheduling programs to run in the
+background. It is a graphical user interface to <application>cron</application>,
+the Unix system scheduler.</para>
 
-<para>KCron is an application for scheduling programs to run in the background.
-It is a graphical user interface to cron, the Unix system scheduler.</para>
+<sect1 id="kcron-revhistory">
+<title>KCron Revision History</title>
+
+<itemizedlist>
+ <listitem><para>2.0pre</para></listitem>
+</itemizedlist>
+
 </sect1>
 
-<sect1 id="acknowledgements">
-<title>Acknowledgements</title>
-
-<para>KCron was initially based upon kcrontab developed by 
-<ulink url="mailto:michael@quinto.ruhr.de">Michael Bialas</ulink>
-and documented by
-<ulink url="mailto:klemm@abacus.at">David Klemm</ulink>.</para>
-
-<para>KCron acknowledges 
-<ulink url="mailto:paul@vix.com">Paul Vixie</ulink> for vixie-cron.</para>
-</sect1>
-
-<sect1 id="license">
-<title>License</title>
-
-<para>KCron is distributed under the GNU GPL2 license.  See the <literal remap="tt">COPYING</literal> file
-included with the distribution.</para>
-</sect1>
-
-<sect1 id="feedback">
-<title>Feedback</title>
-
-<para>I hope you find this program useful.  Any suggestions or comments
-would be appreciated.</para>
-
-<para><literal remap="tt">Gary Meyer</literal></para>
-
-<para><ulink url="mailto:gary@meyer.net">gary@meyer.net</ulink></para>
-</sect1>
 </chapter>
 
 <chapter id="installation">
 <title>Installation</title>
 
-<sect1 id="howtoobtainkcron">
+<sect1 id="getting-kcron">
 <title>How to obtain KCron</title>
 
-<para>With <ulink url="http://www.kde.org">KDE</ulink> 2.x,
-KCron is distributed as part of the <literal remap="tt">kdeadmin</literal> package.</para>
+<para>&kcron; is part of the KDE project <ulink
+url="http://www.kde.org/">http://www.kde.org/</ulink>.</para>
 
-<para>The most recent stable source code release can be found on the 
-<ulink url="http://24.8.19.113/kcron.html">KCron homepage</ulink>.</para>
+<para>&kcron; can be found in the kdeadmin package on <ulink
+url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>, the main
+ftp site of the KDE project.</para>
+
 </sect1>
 
 <sect1 id="requirements">
 <title>Requirements</title>
 
-<para>In order to successfully compile KCron, you need the following libraries:</para>
+<para>In order to successfully compile &kcron;, you need the following
+libraries:</para>
 
-<para>- <ulink url="http://www.troll.no/qt/">Qt</ulink> 1.44 or higher.</para>
+<itemizedlist>
+<listitem><para><application>Cron</application>, such as
+<application>vixie-cron</application>.  &kcron; uses the
+<filename>crontab</filename> command to modify user's scheduled
+tasks.</para></listitem>
+<listitem><para>POSIX-compliant Unix, such as provided by glibc. &kcron; uses some
+standard Unix system calls for localization of dates and times</para></listitem>
+</itemizedlist>
 
-<para>- <ulink url="http://www.kde.org">KDE</ulink> 1.1.1 or higher.
-KCron requires several libraries in the <literal remap="tt">kdelibs</literal> package.</para>
-
-<para>- Cron, such as vixie-cron.  KCron uses the <literal remap="tt">crontab</literal> command to
-modify user's scheduled tasks.</para>
-
-<para>- POSIX-compliant Unix, such as provided by glibc.  KCron uses some standard
-Unix system calls for localization of dates and times.</para>
 </sect1>
 
-<sect1 id="compilationandinstallation">
+<sect1 id="compilation">
 <title>Compilation and installation</title>
 
-<para>In order to compile and install KCron on your system, first edit
-<literal remap="tt">Makefile.am</literal> making any necessary modifications for KDE 1.x vs.
-KDE 2.x.
-<literal remap="tt">Makefile.am</literal> describes and provides examples of any modifications you
-might need to make.</para>
+<para>In order to compile and install &kcron; on your system, type the
+following in the base directory of the &kcron; distribution:</para>
 
-<para>Second, type the following in the base directory of the KCron distribution:
-<screen> 
-% ./configure 
-% make 
-% make install 
+<screen width="40">
+<prompt>%</prompt> <command>./configure</command>
+<prompt>%</prompt> <command>make</command>
+<prompt>%</prompt> <command>make install</command>
 </screen>
-</para>
 
-<para>Please inform the <ulink url="mailto:gary@meyer.net">author</ulink>
-of any modifications you had to make to get KCron to compile on your platform.
-Please include operating system, compiler, Qt, and KDE version information
-in your message.</para>
+<para>Since &kcron; uses <application>autoconf</application> and
+<application>automake</application> you should have no trouble compiling
+it. Should you run into problems please report them to the KDE mailing
+lists.</para>
+
 </sect1>
+
 </chapter>
 
-<chapter id="onscreenfundamentals">
-<title>Onscreen Fundamentals</title>
+<chapter id="using-kcron">
+<title>Using &kcron;</title>
 
-<sect1 id="startup">
-<title>Start Up</title>
+<important><para>Don't forget to tell your system to start the <filename>crond</filename>
+cron daemon first, or &kcron; won't work.</para></important>
 
-<para>When KCron starts you will see a summarized view of scheduled tasks and
-associated environment variables.  If you are running as the <literal remap="tt">root</literal>
-user, you will see these items for all users on the computer as well
-as the system scheduled tasks.  Each of the folders can be expanded
-and contracted.</para>
+<sect1 id="kcron-start-up">
+<title>KCron Start Up</title>
 
-<para><emphasis remap="bf">Scheduled Tasks</emphasis></para>
+<para>When &kcron; starts you will see a summarized view of existing scheduled
+tasks and associated environment variables. If you are running as the root user,
+you will see these items for all users on the computer as well as the system
+scheduled tasks. Each of the folders can be expanded and contracted.</para> 
 
-<para>Scheduled tasks appear under a "<emphasis remap="bf">Tasks</emphasis>" folder.
-For each scheduled task, the following are displayed:</para>
+<screenshot>
+<screeninfo>&kcron; at start up.</screeninfo>
+<graphic fileref="kcronstart.png" format="png"></graphic>
+</screenshot>
 
-<para>- <emphasis remap="bf">Name</emphasis></para>
-
-<para>- <emphasis remap="bf">Value</emphasis>: Program file and parameters</para>
-
-<para>- <emphasis remap="bf">Description</emphasis>: Natural language description of schedule</para>
-
-<para>If a task has been disabled, no program file and parameters will appear and
-the description will be "Disabled."</para>
-
-<para><emphasis remap="bf">Environment Variables</emphasis></para>
-
-<para>Environment various appear under a "<emphasis remap="bf">Variables</emphasis>" folder.
-For each environment variable, the following are displayed:</para>
-
-<para>- <emphasis remap="bf">Name</emphasis></para>
-
-<para>- <emphasis remap="bf">Value</emphasis></para>
-
-<para>- <emphasis remap="bf">Description</emphasis></para>
-
-<para>If an environment variable has been disabled, no value will appear and the
-description will be "Disabled."</para>
-</sect1>
-
-<sect1 id="save">
-<title>Save</title>
-
-<para>To save any modifications you have made, select <emphasis remap="bf">File/Save</emphasis> from the menu.
-Alternatively you call press the save icon on the toolbar.</para>
-
-<para>If you have made any modifications, the program will prompt you to save
-before exiting.</para>
-
-<para><emphasis remap="bf">Note</emphasis>: No changes are actually made until you explicitly save from the menu or
-toolbar, or when exiting.</para>
-</sect1>
-
-<sect1 id="quit">
-<title>Quit</title>
-
-<para>To quit the program, select <emphasis remap="bf">File/Quit</emphasis> from the menu.</para>
-
-<para>If you have made any modifications and have not saved them, the program
-will prompt you to save before exiting.</para>
-
-<para>You will be asked,
-"Scheduled tasks have been modified.  Do you want to save changes?"</para>
-
-<para>- Answer "<emphasis remap="bf">Yes</emphasis>" to save changes and exit.</para>
-
-<para>- Answer "<emphasis remap="bf">No</emphasis>" to abandon changes and exit.</para>
-
-<para>- Answer "<emphasis remap="bf">Cancel</emphasis>" to continue editing.</para>
-</sect1>
-
-<sect1 id="showtoolbar">
-<title>Show Tool Bar</title>
-
-<para>If the tool bar is not visible, select <emphasis remap="bf">Options/Show Tool Bar</emphasis>
-from the menu.
-The tool bar will be displayed and the Show Tool Bar menu item will be 
-checked.</para>
-</sect1>
-
-<sect1 id="hidetoolbar">
-<title>Hide Tool Bar</title>
-
-<para>If the tool bar is visible, select <emphasis remap="bf">Options/Show Tool Bar</emphasis>
-from the menu.
-The tool bar will no longer be displayed and the Show Tool Bar menu item
-will be unchecked.</para>
-</sect1>
-
-<sect1 id="showstatusbar">
-<title>Show Status Bar</title>
-
-<para>If the status bar is not visible, select <emphasis remap="bf">Options/Show Status Bar</emphasis>
-from the menu.
-The status bar will be displayed and the Show Status Bar menu item
-will be checked.</para>
-</sect1>
-
-<sect1 id="hidestatusbar">
-<title>Hide Status Bar</title>
-
-<para>If the status bar is visible, select <emphasis remap="bf">Options/Show Status Bar</emphasis>
-from the menu.
-The status bar will no longer be displayed and the Show Status Bar menu item
-will be unchecked.</para>
-</sect1>
-</chapter>
-
-<chapter id="scheduledtasks">
+<sect2>
 <title>Scheduled Tasks</title>
 
-<sect1 id="createnewscheduledtask">
-<title>Create New Scheduled Task</title>
-
-<para>To create a new scheduled task, first select the "<emphasis remap="bf">Tasks</emphasis>" folder.</para>
-
-<para>Then select <emphasis remap="bf">Edit/New</emphasis> from the menu.
-Alternatively you can use the right mouse
-click menu.  You will see the "<emphasis remap="bf">Edit Task</emphasis>" dialog.</para>
-
-<para><emphasis remap="bf">Comment</emphasis></para>
-
-<para>In the "Comment" field, enter a description of the task to schedule.</para>
-
-<para><emphasis remap="bf">Program</emphasis></para>
-
-<para>In the "Program" field, enter the name of the program.  You can specify 
-either a relative path or absolute path.  If you want to look up the program,
-press the "Browse..." button.</para>
-
-<para><emphasis remap="bf">Enabled</emphasis></para>
-
-<para>If you want to disable the task, de-select, the "Enabled" check box.</para>
-
-<para><emphasis remap="bf">Daily</emphasis></para>
-
-<para>If you want to schedule the task to run daily, select the "Run Every Day"
-check box.</para>
-
-<para><emphasis remap="bf">Months</emphasis></para>
-
-<para>Check the months to schedule the task.</para>
-
-<para><emphasis remap="bf">Days of the Month</emphasis></para>
-
-<para>Check the days of the month to schedule the task.</para>
-
-<para><emphasis remap="bf">Days of the Week</emphasis></para>
-
-<para>Check the days of the week to schedule the task.</para>
-
-<para><emphasis remap="bf">Note:</emphasis> If you select both several days of the month and several days of the
-week, the task will run when either condition is met.</para>
-
-<para>For instance, if you
-select the 1st and 15th and select Sunday, the program will be run every
-1st and 15th of the selected months (regardless of day of week) <emphasis remap="bf">as well as</emphasis>
-every Sunday of the selected months (regardless of day of the month.</para>
-
-<para>To run
-on a weekday schedule, check all days of the month and the selected days
-of the week.</para>
-
-<para>To run on a days of the month schedule, check all days of the
-week, and the selected days of the month.</para>
-
-<para><emphasis remap="bf">Hours</emphasis></para>
-
-<para>Check the hours to schedule the task.</para>
-
-<para><emphasis remap="bf">Minutes</emphasis></para>
-
-<para>Check the minutes to schedule the task.  (KCron does not support scheduling
-tasks at more granular than five minute intervals.)</para>
-
-<para>Press the "<emphasis remap="bf">OK</emphasis>" button to continue.</para>
-
-<para><emphasis remap="bf">Note</emphasis>: The scheduled task is not actually
-set up until saved.  All modifications can be saved by selecting
-<emphasis remap="bf">File/Save</emphasis> from the menu.</para>
-
-<para>Alternatively press the "<emphasis remap="bf">Cancel</emphasis>" button to abandon creating this new task.</para>
-</sect1>
-
-<sect1 id="modifyscheduledtask">
-<title>Modify Scheduled Task</title>
-
-<para>To modify a scheduled task, first select the task to be modified.  Then
-select <emphasis remap="bf">Edit/Modify</emphasis> from the menu.  Alternatively you can use the right mouse
-click menu.  You will see the "<emphasis remap="bf">Edit Task</emphasis>" dialog.</para>
-
-<para><emphasis remap="bf">Comment</emphasis></para>
-
-<para>In the "Comment" field, modify the description as needed.</para>
-
-<para><emphasis remap="bf">Program</emphasis></para>
-
-<para>In the "Program" field, modify the name of the program as needed.
-You can specify either a relative path or absolute path.
-If you want to look up the program, press the "Browse..." button.</para>
-
-<para><emphasis remap="bf">Enabled</emphasis></para>
-
-<para>If you want to enable the task, select, the "Enabled" check box.</para>
-
-<para>If you want to disable the task, de-select, the "Enabled" check box.</para>
-
-<para><emphasis remap="bf">Daily</emphasis></para>
-
-<para>If you want to schedule the task to run daily, select the "Run Every Day"
-check box.</para>
-
-<para><emphasis remap="bf">Months</emphasis></para>
-
-<para>Check the months to schedule the task.</para>
-
-<para><emphasis remap="bf">Days of the Month</emphasis></para>
-
-<para>Check the days of the month to schedule the task.</para>
-
-<para><emphasis remap="bf">Days of the Week</emphasis></para>
-
-<para>Check the days of the week to schedule the task.</para>
-
-<para><emphasis remap="bf">Note:</emphasis> If you select both several days of the month and several days of the
-week, the task will run when either condition is met.</para>
-
-<para>For instance, if you
-select the 1st and 15th and select Sunday, the program will be run every
-1st and 15th of the selected months (regardless of day of week) <emphasis remap="bf">as well as</emphasis>
-every Sunday of the selected months (regardless of day of the month.</para>
-
-<para>To run
-on a weekday schedule, check all days of the month and the selected days
-of the week.</para>
-
-<para>To run on a days of the month schedule, check all days of the
-week, and the selected days of the month.</para>
-
-<para><emphasis remap="bf">Hours</emphasis></para>
-
-<para>Check the hours to schedule the task.</para>
-
-<para><emphasis remap="bf">Minutes</emphasis></para>
-
-<para>Check the minutes to schedule the task.  (KCron does not support scheduling
-tasks at more granular than five minute intervals.)</para>
-
-<para>Press the "<emphasis remap="bf">OK</emphasis>" button to continue.</para>
-
-<para><emphasis remap="bf">Note</emphasis>: The modification is not actually
-made until saved.  All modifications can be saved by selecting
-<emphasis remap="bf">File/Save</emphasis>
-from the menu.</para>
-
-<para>Alternatively press the "<emphasis remap="bf">Cancel</emphasis>" button to abandon modifying this scheduled
-task.</para>
-</sect1>
-
-<sect1 id="deletescheduledtask">
-<title>Delete Scheduled Task</title>
-
-<para>To delete a scheduled task, first select the task to be deleted.</para>
-
-<para>Then select <emphasis remap="bf">Edit/Delete</emphasis> from the menu.
-Alternatively you can use the right mouse
-click menu.</para>
-
-<para><emphasis remap="bf">Note</emphasis>: The deletion is not actually made until saved.  All modifications
-can be saved by selecting <emphasis remap="bf">File/Save</emphasis> from the menu.</para>
-</sect1>
-
-<sect1 id="cutscheduledtask">
-<title>Cut Scheduled Task</title>
-
-<para>To cut a scheduled task, first select the task to be cut.  Then
-select <emphasis remap="bf">Edit/Cut</emphasis> from the menu.  Alternatively you can use the right mouse
-click menu or tool bar.</para>
-
-<para><emphasis remap="bf">Note</emphasis>: The deletion is not actually made until saved.  All modifications
-can be saved by selecting <emphasis remap="bf">File/Save</emphasis> from the menu.</para>
-</sect1>
-
-<sect1 id="copyscheduledtask">
-<title>Copy Scheduled Task</title>
-
-<para>To copy a scheduled task, first select the task to be copied.</para>
-
-<para>Then select <emphasis remap="bf">Edit/Copy</emphasis> from the menu.  Alternatively you can use the right mouse
-click menu or tool bar.</para>
-
-<para>Once a scheduled task has been cut or copied, paste will be enabled.</para>
-</sect1>
-
-<sect1 id="pastescheduledtask">
-<title>Paste Scheduled Task</title>
-
-<para>To paste a scheduled task, first a scheduled task must have already been 
-cut or copied to the clipboard.</para>
-
-<para>Then select the "<emphasis remap="bf">Tasks</emphasis>" folder.  Then
-Finally select <emphasis remap="bf">Edit/Paste</emphasis> from the menu.  Alternatively you can use the
-right mouse click menu or tool bar.</para>
-
-<para><emphasis remap="bf">Note</emphasis>: The newly pasted task is not actually set up until saved.  All
-modifications can be saved by selecting <emphasis remap="bf">File/Save</emphasis> from the menu.</para>
-</sect1>
-
-<sect1 id="enablescheduledtask">
-<title>Enable Scheduled Task</title>
-
-<para>To enable a scheduled task, first select the disabled task.  (A disabled
-task will display "Disabled" in its description.)</para>
-
-<para>Then select <emphasis remap="bf">Edit/Enabled</emphasis> from the menu.  Alternatively you can use the
-right mouse click menu.</para>
-
-<para>Confirm that the schedule task's program name and parameters as well as
-description are displayed.</para>
-</sect1>
-
-<sect1 id="disablescheduledtask">
-<title>Disable Scheduled Task</title>
-
-<para>To disable a scheduled task, first select the enabled task.</para>
-
-<para>Then select <emphasis remap="bf">Edit/Enabled</emphasis> from the menu.  Alternatively you can use the
-right mouse click menu.</para>
-
-<para>Confirm that the schedule task's program name and parameters are no longer
-displayed and the description "Disabled" is displayed.</para>
-</sect1>
-
-<sect1 id="runscheduledtasknow">
-<title>Run Scheduled Task Now</title>
-
-<para>To run a scheduled task immediately, first select the task. </para>
-
-<para>Then select <emphasis remap="bf">Edit/Run Now</emphasis> from the menu.
-Alternatively you can use the right mouse click menu.</para>
-</sect1>
-</chapter>
-
-<chapter id="environmentvariables">
+<para>Scheduled tasks appear under a <guilabel>Tasks</guilabel> folder. For each
+scheduled task, the following are displayed:</para> 
+
+<variablelist>
+
+<varlistentry>
+<term>Name</term>
+<listitem><para>Name to identify the scheduled task.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term>Value</term>
+<listitem><para>Program file and parameters.</para></listitem>
+</varlistentry>
+<varlistentry> 
+<term>Description</term>
+<listitem><para>Natural language description of scheduled
+task.</para></listitem>
+</varlistentry> 
+</variablelist>
+
+<para>If a task has been disabled, no program file and parameters will appear,
+and the description will be disabled.</para>
+</sect2>
+
+<sect2>
 <title>Environment Variables</title>
+<para>Environment variables appear under a <guilabel>Variables</guilabel>
+folder. For each environment variable, the following are displayed: </para>
 
-<sect1 id="createnewenvironmentvariable">
-<title>Create New Environment Variable</title>
+<variablelist>
+<varlistentry>
+<term>Name</term>
+<listitem><para>Variable name.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term>Value</term>
+<listitem><para>Variable value.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term>Description</term>
+<listitem><para>Natural language description of variable.</para></listitem>
+</varlistentry>
+</variablelist>
+
+<para>Environment variables appearing here will override any existing
+environment variable for all scheduled tasks. If an environment variable has
+been disabled, no value will appear and the description will be disabled.</para>
+
+<screenshot>
+<screeninfo>&kcron; main window.</screeninfo>
+<graphic fileref="kcron.png" format="png"></graphic>
+</screenshot>
+
+</sect2>
+</sect1>
+
+<sect1 id="new-task">
+<title>Adding Scheduled Tasks</title>
+
+<para>To create a new scheduled task, first select the <guilabel>Tasks</guilabel>
+folder. Then select <menuchoice><guimenu>Edit</guimenu>
+<guimenuitem>New...</guimenuitem> </menuchoice>. Alternatively, you can use the
+<mousebutton>right</mousebutton> mouse button menu and choose
+<menuchoice><guimenuitem>New...</guimenuitem></menuchoice>, or simply press
+<keycombo><keycap>Ctrl</keycap><keycap>n</keycap></keycombo>.</para>
+
+<sect2>
+<title>The Edit Task Dialog</title>
+
+<screenshot>
+<screeninfo><guilabel>Edit Task</guilabel> dialog.</screeninfo>
+<graphic fileref="newtask.png" format="png"></graphic>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term><guilabel>Comment</guilabel></term>
+<listitem><para>Enter a description of the task to schedule.</para>
+</listitem> 
+</varlistentry>
+<varlistentry>
+<term><guilabel>Program</guilabel></term>
+<listitem><para>Enter the name of the program. You can specify either a relative
+path or absolute path. If you want to look up the program, press
+<guibutton>Browse...</guibutton>.</para>
+</listitem> 
+</varlistentry>
+<varlistentry>
+<term><guibutton>Enabled</guibutton></term>
+<listitem><para>To enable or disable the task, select or de-select
+<guilabel>Enabled</guilabel>.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>Months</guilabel></term>
+<listitem><para>Select the months during which the task is to be
+scheduled.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>Days of the Month</guilabel></term>
+<listitem><para>Select the days of the month on which the task is to be
+scheduled.</para>
+</listitem> 
+</varlistentry>
+<varlistentry>
+<term><guilabel>Days of the Week</guilabel></term>
+<listitem><para>Select the days of the week on which the task is to be
+scheduled.</para>
+</listitem> 
+</varlistentry>
+<varlistentry>
+<term><guilabel>Daily</guilabel></term>
+<listitem><para>If you want to schedule the task to run daily, select
+<guibutton>Run Every Day</guibutton>.</para>
+</listitem> 
+</varlistentry>
+<varlistentry>
+<term><guilabel>Hours</guilabel></term>
+<listitem><para>Select the hours on which the task is to be
+sheduled.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>Minutes</guilabel></term>
+<listitem><para>Select the minute at which the task is to be scheduled. &kcron;
+does not support scheduling tasks at smaller than five minute intervals.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><guibutton>OK</guibutton></term>
+<listitem><para>Completes the creation of this task.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><guibutton>Cancel</guibutton></term>
+<listitem><para>Cancels the creation of this task.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para>If you select both days of the month, and days of the week, the task will
+run when either condition is met. For instance, if you select the 1st and 15th,
+and select Sunday, the program will be run every 1st and 15th of the selected
+months (regardless of day of week) as well as every Sunday of the selected
+months (regardless of day of the month).</para>
+
+<para>The scheduled task is not actually set up until the
+<filename>crontab</filename> has been saved.</para>
+
+</sect2>
+</sect1>
+
+<sect1 id="manage-tasks">
+<title>Managing Scheduled Tasks</title>
+
+<para>As with creating new tasks, changes to tasks will not actually be made
+until the <filename>crontab</filename> is saved.</para>
+
+<sect2>
+<title>Cutting Scheduled Tasks</title>
+
+<para>To cut a scheduled task, first select the task to be cut. Then select
+<menuchoice><guimenu>Edit</guimenu> <guimenuitem>Cut</guimenuitem></menuchoice>.</para>
+<para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse
+button menu and choose <menuchoice><guimenuitem>Cut</guimenuitem></menuchoice>,
+or simply press
+<keycombo><keycap>Ctrl</keycap><keycap>x</keycap></keycombo>.</para>
+
+</sect2>
+
+<sect2>
+<title>Copying Scheduled Tasks</title>
+
+<para>To copy a scheduled task, first select the task to be copied. Then select
+<menuchoice><guimenu>Edit</guimenu><guimenuitem>Copy</guimenuitem></menuchoice>.
+</para>
+
+<para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse
+button menu and choose <menuchoice><guimenuitem>Copy</guimenuitem></menuchoice>,
+or simply press
+<keycombo><keycap>Ctrl</keycap><keycap>c</keycap></keycombo>.</para>
+
+</sect2>
+
+<sect2>
+<title>Pasting Scheduled Tasks</title>
+
+<para>To paste a scheduled task, first a scheduled task must have already been
+cut or copied to the clipboard. Once a scheduled task has been cut or copied,
+paste will be enabled. Then select the <guilabel>Tasks</guilabel>
+folder. Finally, select <menuchoice> <guimenu>Edit</guimenu>
+<guimenuitem>Paste</guimenuitem> </menuchoice>.</para>
+
+<para> Alternatively, you can use the <mousebutton>right</mousebutton> mouse
+button menu and choose
+<menuchoice><guimenuitem>Paste</guimenuitem></menuchoice>, or simply press
+<keycombo><keycap>Ctrl</keycap><keycap>v</keycap></keycombo>.</para>
+	
+</sect2>
+
+<sect2>
+<title>Modifying Scheduled Tasks</title>
+
+<para>To modify a scheduled task, first select the task to be modified. Then select
+<menuchoice>
+<guimenu>Edit</guimenu> <guimenuitem>Modify...</guimenuitem> </menuchoice>.
+</para>
+
+<para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse button
+menu and choose <menuchoice><guimenuitem>Modify...</guimenuitem></menuchoice>,
+or simply press <keycombo><keycap>Ctrl</keycap><keycap>o</keycap></keycombo>.
+You will see the <guilabel>Edit Task</guilabel> dialog, which you would modify as described
+<link linkend="new-task">above</link>.</para>
+	
+</sect2>
+
+<sect2>
+<title>Deleting Scheduled Tasks</title>
+
+<para>To delete a scheduled task, first select the task to be deleted. Then select
+<menuchoice>
+<guimenu>Edit</guimenu> <guimenuitem>Delete</guimenuitem> </menuchoice>.</para>
+
+<para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse button
+menu and choose <guimenuitem>Delete</guimenuitem>.</para>
+
+</sect2>
+
+<sect2>
+<title>Enabling/Disabling Scheduled Tasks</title>
+
+<para>To enable or diabled a scheduled task, first select the disabled
+task. Disabled tasks will have <guilabel>Disabled</guilabel> in their
+descriptions. Then select
+<menuchoice>
+<guimenu>Edit</guimenu> <guimenuitem>Enabled</guimenuitem> </menuchoice>.</para>
+
+<para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse button
+menu and choose <menuchoice><guimenuitem>Enabled</guimenuitem></menuchoice>.
+Confirm that the scheduled task's program name, parameters, and description are
+correctly displayed.</para>
+	
+</sect2>
+
+<sect2>
+<title>Running Scheduled Tasks</title>
+
+<para>To run a scheduled task immediately, first select the task.  Then select
+<menuchoice>
+<guimenu>Edit</guimenu> <guimenuitem>Run Now</guimenuitem> </menuchoice>.
+</para>
+
+<para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse button
+menu and choose <menuchoice><guimenuitem>Run
+Now</guimenuitem></menuchoice>.</para>
+
+</sect2>
+</sect1>
+
+<sect1 id="new-variable">
+<title>Adding Environment Variables</title>
 
 <para>To create a new environment variable, first select the
-"<emphasis remap="bf">Variables</emphasis>" folder.</para>
+<guilabel>Variables</guilabel> folder. Then select
+<menuchoice>
+<guimenu>Edit</guimenu><guimenuitem>New...</guimenuitem> </menuchoice>.</para>
 
-<para>Then select <emphasis remap="bf">Edit/New</emphasis> from the menu.
-Alternatively you can use the right mouse
-click menu.</para>
+<para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse
+button menu and choose
+<menuchoice><guimenuitem>New...</guimenuitem></menuchoice>, or simply press
+<keycombo><keycap>Ctrl</keycap><keycap>n</keycap></keycombo>.</para>
 
-<para>You will see the "<emphasis remap="bf">Edit Variable</emphasis>" dialog.</para>
+<sect2>
+<title>The Edit Variable dialog</title>
 
-<para><emphasis remap="bf">Variable</emphasis></para>
+<screenshot>
+<screeninfo><guilabel>Edit Variable</guilabel> dialog.</screeninfo>
+<graphic fileref="newvariable.png" format="png"></graphic>
+</screenshot>
 
-<para>In the "Variable" field, enter the environment variable name.  You can use
-the drop-down list box to select from the most common environment variables
-used by scheduled tasks.  Those include:</para>
+<variablelist>
+<varlistentry>
+<term><guilabel>Variable</guilabel></term> 
+<listitem><para>Enter the environment variable name. You can use the drop-down
+list box to select from the most common environment variables used by scheduled
+tasks. Those include:</para>
 
-<para>- <emphasis remap="bf">HOME</emphasis>: To be used instead of the default user's home directory</para>
+<variablelist>
 
-<para>- <emphasis remap="bf">MAILTO</emphasis>: To send email output to an email address instead of the the user's
-default email address.</para>
+<varlistentry>
+<term><guimenuitem>HOME</guimenuitem></term>
+<listitem><para>To be used instead of the default user's home directory.</para></listitem>
+</varlistentry>
 
-<para>- <emphasis remap="bf">PATH</emphasis>: To be used to search directories for program files.</para>
+<varlistentry>
+<term><guimenuitem>MAILTO</guimenuitem></term>
+<listitem><para>To send email output to an email address other than the user's default email
+address.</para></listitem>
+</varlistentry>
 
-<para>- <emphasis remap="bf">SHELL</emphasis>: To be used instead of the user's default value.</para>
+<varlistentry>
+<term><guimenuitem>PATH</guimenuitem></term>
+<listitem><para>To be used to search directories for program files.</para></listitem>
+</varlistentry>
 
-<para><emphasis remap="bf">Note</emphasis>: When you change the variable, both the icon, and the comment may
-be updated.</para>
+<varlistentry>
+<term<guimenuitem>SHELL</guimenuitem></term>
+<listitem><para>To be used instead of the user's default value.</para></listitem>
+</varlistentry>
+</variablelist>
+</listitem>
+</varlistentry>
 
-<para><emphasis remap="bf">Value</emphasis></para>
+<varlistentry>
+<term><guilabel>Value</guilabel></term>
+<listitem><para>Enter the environment variable value.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>Comment</guilabel></term>
+<listitem><para>Enter a description for the environment variable, such as its
+purpose.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>Enabled</guilabel></term>
+<listitem>
+<para>To enable or disable the task, select or de-select
+<guibutton>Enabled</guibutton>.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><guibutton>OK</guibutton></term>
+<listitem>
+<para>Completes the creation of this task.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><guibutton>Cancel</guibutton></term>
+<listitem>
+<para>Cancels the creation of this task.</para>
+</listitem>
+</varlistentry>
+</variablelist>
 
-<para>In the "Value" field, enter the environment variable value.</para>
+<para>The environment variable is not actually set up until the
+<filename>crontab</filename> has been saved.</para>
 
-<para><emphasis remap="bf">Comment</emphasis></para>
-
-<para>In the "Comment" field, enter a description for the environment variable, such
-as its purpose.</para>
-
-<para><emphasis remap="bf">Enabled</emphasis></para>
-
-<para>If you want to disable the environment variable, de-select,
-the "Enabled" check box.</para>
-
-<para>If you want to enable the environment variable, select the "Enabled" check
-box.</para>
-
-<para>Press the "<emphasis remap="bf">OK</emphasis>" button to continue.</para>
-
-<para><emphasis remap="bf">Note</emphasis>: The environment variable is
-not actually set up until saved.  All modifications can be saved by
-selecting <emphasis remap="bf">File/Save</emphasis> from the menu.</para>
-
-<para>Alternatively press the "<emphasis remap="bf">Cancel</emphasis>" button to abandon creating this environment
-variable.</para>
+</sect2>
 </sect1>
 
-<sect1 id="modifyenvironmentvariable">
-<title>Modify Environment Variable</title>
+<sect1 id="manage-variables">
+<title>Managing Environment Variables</title>
 
-<para>To modify an environment variable, first select
-the "<emphasis remap="bf">Variables</emphasis>" folder.</para>
+<note><para>As with creating new variables, changes to variables will not
+actually be made until the <filename>crontab</filename> is saved.</para></note>
 
-<para>Then select <emphasis remap="bf">Edit/Modify</emphasis> from the menu.
-Alternatively you can use the
-right mouse click menu.</para>
+<sect2>
+<title>Cutting Environment Variables</title>
 
-<para>You will see the "<emphasis remap="bf">Edit Variable</emphasis>" dialog.</para>
+<para>To cut an environment variable, first select the variable to be cut. Then select
+<menuchoice><guimenu>Edit</guimenu> <guimenuitem>Cut</guimenuitem> </menuchoice>.</para>
 
-<para><emphasis remap="bf">Variable</emphasis></para>
+<para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse
+button menu and choose <menuchoice><guimenuitem>Cut</guimenuitem></menuchoice>,
+or simply press
+<keycombo><keycap>Ctrl</keycap><keycap>x</keycap></keycombo>.</para>
 
-<para>In the "Variable" field, change the environment variable name as necessary.
-You can use the drop-down list box to select from the most common
-environment variables used by scheduled tasks.  Those include:</para>
+</sect2>
 
-<para>- <emphasis remap="bf">HOME</emphasis>: To be used instead of the default user's home directory</para>
+<sect2>
+<title>Copying Environment Variables</title>
 
-<para>- <emphasis remap="bf">MAILTO</emphasis>: To send email output to an email address instead of the the user's
-default email address.</para>
+<para>To copy an environemnt variable, first select the variable to be copied. Then select
+<menuchoice>
+<guimenu>Edit</guimenu> <guimenuitem>Copy</guimenuitem> </menuchoice>.</para>
 
-<para>- <emphasis remap="bf">PATH</emphasis>: To be used to search directories for program files.</para>
+<para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse button
+menu and choose <guimenuitem>Copy</guimenuitem>, or simply press
+<keycombo><keycap>Ctrl</keycap><keycap>c</keycap></keycombo>.</para>
 
-<para>- <emphasis remap="bf">SHELL</emphasis>: To be used instead of the user's default value.</para>
+</sect2>
 
-<para><emphasis remap="bf">Note</emphasis>: When you change the variable, both the icon, and the comment may
-be updated.</para>
+<sect2>
+<title>Pasting Environment Variables</title>
 
-<para><emphasis remap="bf">Value</emphasis></para>
+<para>To paste an environment variable, first an environment variable must have
+already been cut or copied to the clipboard. Once an environment variable has
+been cut or copied, paste will be enabled. Then select the
+<guilabel>Variables</guilabel> folder. Finally, select
+<menuchoice><guimenu>Edit</guimenu> <guimenuitem>Paste</guimenuitem> </menuchoice>.</para>
 
-<para>In the "Value" field, modify the environment variable value as necessary.</para>
+<para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse
+button menu and choose
+<menuchoice><guimenuitem>Paste</guimenuitem></menuchoice>, or simply press
+<keycombo><keycap>Ctrl</keycap><keycap>v</keycap></keycombo>
+.</para>
+</sect2>
 
-<para><emphasis remap="bf">Comment</emphasis></para>
+<sect2>
+<title>Modifying Environemnt Variables</title>
 
-<para>In the "Comment" field, enter a description for the environment variable, such
-as its purpose.</para>
+<para>To modify an environment variable, first select the variable to be
+modified. Then select
+<menuchoice>
+<guimenu>Edit</guimenu> <guimenuitem>Modify...</guimenuitem> </menuchoice>.
+Alternatively, you can use the <mousebutton>right</mousebutton> mouse button
+menu and choose <guimenuitem>Modify...</guimenuitem>, or simply press
 
-<para><emphasis remap="bf">Enabled</emphasis></para>
+<keycombo><keycap>Ctrl</keycap><keycap>o</keycap></keycombo>.  You will see the
+<guilabel>Edit Variable</guilabel> dialog, which you would modify as described
+<link linkend="new-variable">above</link>.</para>
+</sect2>
 
-<para>If you want to disable the environment variable,
-de-select the "Enabled" check box.</para>
+<sect2>
+<title>Deleting Environment Variables</title>
 
-<para>If you want to enable the environment variable, select the "Enabled" check
-box.</para>
+<para>To delete an environment variable, first select the variable to be
+deleted. Then select
+<menuchoice><guimenu>Edit</guimenu><guimenuitem>Delete</guimenuitem></menuchoice>
+</para>
 
-<para>Press the "<emphasis remap="bf">OK</emphasis>" button to continue.</para>
+<para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse button
+menu and choose <guimenuitem>Delete</guimenuitem>.</para>
 
-<para><emphasis remap="bf">Note</emphasis>: The environment variable is
-not actually set up until saved.  All modifications can be saved by
-selecting <emphasis remap="bf">File/Save</emphasis> from the menu.</para>
+</sect2>
 
-<para>Alternatively press the "<emphasis remap="bf">Cancel</emphasis>" button to abandon creating this environment
-variable.</para>
+<sect2>
+<title>Enabling/Disabling Environment Variables</title>
+
+<para>To enable or diabled an environment variable, first select the disabled
+variable. Disabled variables will have <guilabel>Disabled</guilabel> in their
+descriptions. Then select
+<menuchoice>
+<guimenu>Edit</guimenu> <guimenuitem>Enabled</guimenuitem> </menuchoice>.</para>
+
+<para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse button
+menu and choose <menuchoice><guimenuitem>Enabled</guimenuitem></menuchoice>.
+Confirm that the environment variable's name and value are correctly
+displayed.</para>
+
+</sect2>
 </sect1>
 
-<sect1 id="deleteenvironmentvariable">
-<title>Delete Environment Variable</title>
+<sect1 id="saving-crontab">
+<title>Saving the <filename>crontab</filename></title>
 
-<para>To delete an environment variable, first select the variable to be deleted.</para>
+<para>Once all scheduled tasks and environment variables have been created
+and/or properly modified, save the <filename>crontab</filename> by selecting
+<menuchoice>
+<guimenu>File</guimenu> <guimenuitem>Save</guimenuitem> </menuchoice>.</para>
 
-<para>Then select <emphasis remap="bf">Edit/Delete</emphasis> from the menu.
-Alternatively you can use the right mouse click menu.</para>
+<para>Alternatively, you can simply press
+<keycombo><keycap>Ctrl</keycap><keycap>s</keycap></keycombo>. Additions or
+changes will not actually be made until this is done.</para>
 
-<para><emphasis remap="bf">Note</emphasis>: The deletion is not actually made until saved.  All modifications
-can be saved by selecting <emphasis remap="bf">File/Save</emphasis> from the menu.</para>
-</sect1>
-
-<sect1 id="cutenvironmentvariable">
-<title>Cut Environment Variable</title>
-
-<para>To cut an environment variable, first select the variable to be cut.</para>
-
-<para>Then select <emphasis remap="bf">Edit/Cut</emphasis> from the menu.
-Alternatively you can use the right mouse click menu or tool bar.</para>
-
-<para><emphasis remap="bf">Note</emphasis>: The deletion is not actually made until saved.  All modifications
-can be saved by selecting <emphasis remap="bf">File/Save</emphasis> from the menu.</para>
-</sect1>
-
-<sect1 id="copyenvironmentvariable">
-<title>Copy Environment Variable</title>
-
-<para>To copy an environment variable, first select the variable to be copied.</para>
-
-<para>Then select <emphasis remap="bf">Edit/Copy</emphasis> from the menu.
-Alternatively you can use the right mouse click menu or tool bar.</para>
-
-<para>Once an environment variable has been cut or copied, paste will be enabled.</para>
-</sect1>
-
-<sect1 id="pasteenvironmentvariable">
-<title>Paste Environment Variable</title>
-
-<para>To paste an environment variable, first an environment variable must have already been 
-cut or copied to the clipboard.</para>
-
-<para>Then select the "<emphasis remap="bf">Variables</emphasis>" folder.</para>
-
-<para>Finally select <emphasis remap="bf">Edit/Paste</emphasis> from the menu.  Alternatively you can use the
-right mouse click menu or tool bar.</para>
-
-<para><emphasis remap="bf">Note</emphasis>: The newly pasted variable is not actually set up until saved.  All
-modifications can be saved by selecting <emphasis remap="bf">File/Save</emphasis> from the menu.</para>
-</sect1>
-
-<sect1 id="enableenvironmentvariable">
-<title>Enable Environment Variable</title>
-
-<para>To enable an environment variable, first select the disabled variable.
-(A disabled variable will display "Disabled" in its description.)</para>
-
-<para>Then select <emphasis remap="bf">Edit/Enabled</emphasis> from the menu.  Alternatively you can use the
-right mouse click menu.</para>
-
-<para>Confirm that the environment variables's program name and parameters as well as
-description are displayed.</para>
-</sect1>
-
-<sect1 id="disableenvironmentvariable">
-<title>Disable Environment Variable</title>
-
-<para>To disable an environment variable, first select the enabled variable.  (A disabled
-variable will display its value and its description.)</para>
-
-<para>Then select <emphasis remap="bf">Edit/Enabled</emphasis> from the menu.  Alternatively you can use the
-right mouse click menu.</para>
-
-<para>Confirm that the environment variables's program name and parameters are no longer
-displayed and the description "Disabled" is displayed.</para>
 </sect1>
 </chapter>
 
-<chapter id="aboutcron">
-<title>About Cron</title>
+<chapter id="commands">
+<title>Command Reference</title>
 
-<para>Please see the following manual pages for more technical information
-about cron and crontab, the native Unix system utilities used by
-KCron.</para>
+<sect1 id="kcron-mainwindow">
+<title>The main KCron window</title>
+<para></para>
 
-<para>- <literal remap="tt">crontab</literal>: Maintain crontab files for individual users.
-(Enter "<literal remap="tt">man:crontab(1)</literal>" in KDE Help.)</para>
+<sect2>
+<title>The File Menu</title>
 
-<para>- <literal remap="tt">crontab</literal> file format: Tables for driving cron.
-(Enter "<literal remap="tt">man:crontab(5)</literal>" in KDE Help.)</para>
+<variablelist>
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo><keycap>Ctrl</keycap><keycap>s</keycap></keycombo>
+</shortcut>
+<guimenu>File</guimenu>
+<guimenuitem>Save</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para><action>Saves changes to the <filename>crontab</filename>.</action></para>
+</listitem>
+</varlistentry>
+</variablelist>
 
-<para>- <literal remap="tt">cron</literal>: Daemon to execute scheduled commands.
-(Enter "<literal remap="tt">man:cron(8)</literal>" in KDE Help.)</para>
+</sect2>
+<sect2>
+<title>The Edit Menu</title>
+
+<variablelist>
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo><keycap>Ctrl</keycap><keycap>x</keycap></keycombo>
+</shortcut>
+<guimenu>Edit</guimenu> <guimenuitem>Cut</guimenuitem> </menuchoice></term>
+<listitem><para><action>Cut the selected task or
+variable.</action></para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo><keycap>Ctrl</keycap><keycap>c</keycap></keycombo>
+</shortcut>
+<guimenu>Edit</guimenu>
+<guimenuitem>Copy</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Copy the selected task or variable.</action></para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo><keycap>Ctrl</keycap><keycap>v</keycap></keycombo>
+</shortcut>
+<guimenu>Edit</guimenu>
+<guimenuitem>Paste</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Paste a task or variable that has been cut or
+copied.</action></para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo><keycap>Ctrl</keycap><keycap>n</keycap></keycombo>
+</shortcut>
+<guimenu>Edit</guimenu>
+<guimenuitem>New...</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Create a new task or
+variable.</action></para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo><keycap>Ctrl</keycap><keycap>o</keycap></keycombo>
+</shortcut>
+<guimenu>Edit</guimenu>
+<guimenuitem>Modify...</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Modify the selected task or
+variable.</action></para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<guimenu>Edit</guimenu>
+<guimenuitem>Delete</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Delete the selected task or
+variable.</action></para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<guimenu>Edit></guimenu>
+<guimenuitem>Enabled</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para><action>Enable/disable the selected task or variable.</action></para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<guimenu>Edit</guimenu>
+<guimenuitem>Run Now</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Run the selected task now.</action></para></listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+
+
+<sect2>
+<title>The Options Menu</title>
+
+
+<variablelist>
+<varlistentry>
+<term><menuchoice>
+<guimenu>Options</guimenu>
+<guimenuitem>Show Toolbar</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Displays toolbar.</action></para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice>
+<guimenu>Options</guimenu>
+<guimenuitem>Show Statusbar</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Displays statusbar.</action></para></listitem>
+</varlistentry>
+</variablelist>
+
+</sect2>
+</sect1>
 </chapter>
+
+<chapter id="faq">
+<title>Questions and Answers</title>
+
+<qandaset>
+<qandaentry>
+<question>
+<para>Why aren't the changes I'm making to scheduled tasks and/or environment
+variables taking effect?</para>
+</question>
+<answer><para>Additions or changes to scheduled tasks do not actually happen until the
+<filename>crontab</filename> has been <link
+linkend="saving-crontab">saved</link>.</para>
+</answer>
+</qandaentry>
+</qandaset>
+</chapter>
+
+<chapter id="credits">
+
+<title>Credits and License</title>
+
+<para>&kcron;</para>
+
+<para>Program copyright 2000 Gary Meyer <email>gary@meyer.net</email></para>
+
+<para>Documentation copyright 2000 Morgan N. Sandquist
+<email>morgan@pipeline.com</email></para>
+
+&license-links;
+
+</chapter>
+
+<![ %addindex; [ &kdedocindex; ]]>
 </book>
-<!--
-Local Variables:
-mode: sgml
-sgml-omittag: nil
-sgml-shorttag: t
-End:
--->
