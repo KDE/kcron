@@ -248,7 +248,7 @@ scheduled.</para>
 <varlistentry>
 <term><guilabel>Hours</guilabel></term>
 <listitem><para>Select the hours on which the task is to be
-sheduled.</para></listitem>
+scheduled.</para></listitem>
 </varlistentry>
 <varlistentry>
 <term><guilabel>Minutes</guilabel></term>
@@ -367,7 +367,7 @@ mouse button menu and choose <guimenuitem>Delete</guimenuitem>.</para>
 <sect2>
 <title>Enabling/Disabling Scheduled Tasks</title>
 
-<para>To enable or diabled a scheduled task, first select the disabled
+<para>To enable or disable a scheduled task, first select the disabled
 task. Disabled tasks will have <guilabel>Disabled</guilabel> in their
 descriptions. Then select <menuchoice> <guimenu>Edit</guimenu>
 <guimenuitem>Enabled</guimenuitem> </menuchoice>.</para>
@@ -516,7 +516,7 @@ action="simul"><keycap>Ctrl</keycap><keycap>X</keycap></keycombo>.</para>
 <sect2>
 <title>Copying Environment Variables</title>
 
-<para>To copy an environemnt variable, first select the variable to be
+<para>To copy an environment variable, first select the variable to be
 copied. Then select <menuchoice> <guimenu>Edit</guimenu>
 <guimenuitem>Copy</guimenuitem> </menuchoice>.</para>
 
@@ -574,7 +574,7 @@ button menu and choose <guimenuitem>Delete</guimenuitem>.</para>
 <sect2>
 <title>Enabling/Disabling Environment Variables</title>
 
-<para>To enable or diabled an environment variable, first select the
+<para>To enable or disabled an environment variable, first select the
 disabled variable. Disabled variables will have
 <guilabel>Disabled</guilabel> in their descriptions. Then select
 <menuchoice>
