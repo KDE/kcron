@@ -1,3 +1,4 @@
+# $Id$
 ##########################################################################
 #  Makefile.am                                                           #
 #  --------------------------------------------------------------------  #
@@ -131,7 +132,7 @@ DISTCLEANFILES = $(kcron_METASOURCES)
 messages:
 	$(XGETTEXT) $(kcron_SOURCES) -o $(podir)/kcron.pot
 
-kcron_LDADD   =  -lICE -lkfile -lkdeui -lkdecore -lqt -lXext -lX11 $(LIBSOCKET)
+kcron_LDADD   =  $(LIB_KFILE) $(LIB_KDEUI) $(LIB_KDECORE) $(LIB_QT) -lICE -lXext -lX11 $(LIBSOCKET)
 
 appsdir   = $(kde_appsdir)/System
 
