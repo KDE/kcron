@@ -24,7 +24,6 @@
 #include "ctdow.h"
 #include "cthour.h"
 #include "ctminute.h"
-#include <iostream.h> // istream, ostream
 
 /**
   * A scheduled task (encapsulation of crontab entry).  Encapsulates
