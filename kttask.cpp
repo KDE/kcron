@@ -493,7 +493,7 @@ void KTTask::slotOK()
     if (!file.isReadable())
     {
       KMessageBox::information(this,
-        i18n("Can not locate program.  Please re-enter."));
+        i18n("Cannot locate program.  Please re-enter."));
       leCommand->setFocus();
       return;
     }
