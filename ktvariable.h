@@ -28,7 +28,7 @@
 #include <qbuttongroup.h>
 #include <qpushbt.h>
 
-#include "ctvariable.h"
+class CTVariable;
 
 /**
   * Environment variable editor window.

@@ -21,12 +21,16 @@
 #include <qstring.h>
 #include <qmessagebox.h>
 #include <qfileinfo.h>
-#include <kapp.h>
-#include <klocale.h>
 #include <kfiledialog.h>
 
 #include "kttask.h"
 #include "kticon.h"
+#include "klocale.h"  // i18n()
+
+#ifdef KDE1
+#include "kapp.h"
+#endif
+
 #include "cttask.h"
 
 KTTask::KTTask(CTTask* _cttask) :

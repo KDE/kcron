@@ -19,6 +19,7 @@
 #endif 
 
 #include <qdialog.h>
+
 class QLabel;
 class QLineEdit;
 class QCheckBox;

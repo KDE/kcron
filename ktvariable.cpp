@@ -11,12 +11,18 @@
  *   (at your option) any later version.                                   * 
  ***************************************************************************/
 
-#include <kapp.h>
-#include <klocale.h>
+#include "ktvariable.h"
+
 #include <qmessagebox.h>
 
 #include "kticon.h"
-#include "ktvariable.h"
+#include "klocale.h"  // i18n()
+
+#ifdef KDE1
+#include "kapp.h"     // i18n()
+#endif
+
+#include "ctvariable.h"
 
 KTVariable::KTVariable(CTVariable* _ctvar) :
   QDialog(0, (const char*)"ktvariable", true, WStyle_DialogBorder)
