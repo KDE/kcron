@@ -118,7 +118,7 @@ void KTVariable::slotVariableChanged()
   else if (variable == "PATH")
   {
     labIcon->setPixmap(KTIcon::path(false));
-    mleComment->setText(i18n("Folder to search for program files."));
+    mleComment->setText(i18n("Folders to search for program files."));
   }
   else
   {
