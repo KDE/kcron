@@ -71,7 +71,7 @@ bool KTApp::init()
 {
   if (cthost->isError())
   {
-    KMessageBox::error(this, i18n("The following error occured while initializing KCron:"
+    KMessageBox::error(this, i18n("The following error occurred while initializing KCron:"
                                   "\n\n%1\n\nKCron will now exit.\n").arg(cthost->errorMessage()));
     return false;
   }

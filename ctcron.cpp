@@ -248,7 +248,7 @@ void CTCron::apply()
   // install temp file into crontab
   if (system(writeCommand.c_str()) != 0)
   {
-    error = i18n("An error occured while updating crontab.");
+    error = i18n("An error occurred while updating crontab.");
   }
 
   // remove the temp file
