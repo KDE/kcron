@@ -134,7 +134,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   QVBoxLayout *v1 = new QVBoxLayout( h4, KDialogBase::spacingHint() );
 
   // days of the month
-  bgDayOfMonth = new QButtonGroup( i18n("Days of the Month"), this, "bgDayOfMonth");
+  bgDayOfMonth = new QButtonGroup( i18n("Days of Month"), this, "bgDayOfMonth");
   v1->addWidget( bgDayOfMonth );
 
   QPushButton* day;
@@ -162,7 +162,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   hdays->addStretch( 1 );
 
   // days of the week
-  bgDayOfWeek = new QButtonGroup( i18n("Days of the Week"), this, "bgDayOfWeek");
+  bgDayOfWeek = new QButtonGroup( i18n("Days of Week"), this, "bgDayOfWeek");
   v1->addWidget( bgDayOfWeek );
 
   QVBoxLayout *v3 = new QVBoxLayout( bgDayOfWeek, KDialogBase::spacingHint() );
