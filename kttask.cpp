@@ -187,7 +187,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   QVBoxLayout *v9 = new QVBoxLayout( bgEveryDay, KDialogBase::spacingHint() );
   v9->addSpacing( 2 * KDialogBase::spacingHint() );
 
-  cbEveryDay = new QCheckBox( i18n("Run Every Day"), bgEveryDay, "cbEveryDay");
+  cbEveryDay = new QCheckBox( i18n("Run every day"), bgEveryDay, "cbEveryDay");
   cbEveryDay->setChecked(everyDay);
   v9->addWidget( cbEveryDay );
 

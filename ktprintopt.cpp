@@ -28,10 +28,10 @@ KTPrintOpt::KTPrintOpt(bool root) :
 
   QVBoxLayout *main_ = new QVBoxLayout(this, KDialog::marginHint(), KDialog::spacingHint());
 
-  chkPrintCrontab = new QCheckBox(i18n("Print Cron&tab"), this, "chkPrintCrontab");
+  chkPrintCrontab = new QCheckBox(i18n("Print cron&tab"), this, "chkPrintCrontab");
   main_->addWidget(chkPrintCrontab);
 
-  chkPrintAllUsers = new QCheckBox(i18n("Print &All Users"), this, "chkPrintAllUsers");
+  chkPrintAllUsers = new QCheckBox(i18n("Print &all users"), this, "chkPrintAllUsers");
   main_->addWidget(chkPrintAllUsers);
 
   if (!root) {
