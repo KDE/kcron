@@ -98,7 +98,8 @@ CTCron::CTCron(bool _syscron, string _login) :
   initialVariableCount  = variable.size();
 }
 
-CTCron::CTCron(const struct passwd *pwd)
+CTCron::CTCron(const struct passwd *pwd) :
+  syscron(false)
 {
   Q_ASSERT(pwd != 0L);
 
