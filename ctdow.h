@@ -21,7 +21,7 @@
 #include <string>
 
 /**
-  * Cron table task day of week.
+  * Scheduled task days of week.
   */
 class CTDayOfWeek : public CTUnit<1,7>
 {
@@ -30,6 +30,21 @@ public:
   * Constructs from a tokenized string.
   */
   CTDayOfWeek(const string& tokStr = "");
+
+/**
+  * Default copy constructor.
+  */
+  // CTDayOfWeek(const CTDayOfWeek& source);
+
+/**
+  * Default assignment operator
+  */
+  // void operator = (const CTDayOfWeek& source);
+
+/**
+  * Default destructor.
+  */
+  // ~CTDayOfWeek();
 
 /**
   * Override initialize to support crontab using both 0 and 7 for

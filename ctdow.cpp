@@ -16,7 +16,7 @@
 
 #include "ctdow.h"
 #include "cti18n.h"
-#include <langinfo.h>
+#include <langinfo.h> // nl_langinfo()
 
 CTDayOfWeek::CTDayOfWeek(const string& tokStr) :
   CTUnit<1,7>(tokStr)
