@@ -425,7 +425,7 @@ files.</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term<guimenuitem>SHELL</guimenuitem></term>
+<term><guimenuitem>SHELL</guimenuitem></term>
 <listitem><para>To be used instead of the user's default
 value.</para></listitem>
 </varlistentry>
