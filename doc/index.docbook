@@ -63,6 +63,12 @@
 <revremark>Corrected minor typos.</revremark>
 </revision>
 
+<revision>
+<revnumber>0.4</revnumber>
+<date>10.3.2000</date>
+<authorinitials>M.N.S.</authorinitials>
+<revremark>Added ID to qandaset.</revremark>
+</revision>
 </revhistory>
 
 <copyright>
@@ -72,8 +78,8 @@
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>30/08/2000</date>
-<releaseinfo>1.93.00</releaseinfo>
+<date>04/10/2000</date>
+<releaseinfo>1.94.00</releaseinfo>
 
 <keywordset>
 <keyword>KDE</keyword>
@@ -839,7 +845,7 @@ variable.</action></para></listitem>
 <chapter id="faq">
 <title>Questions and Answers</title>
 
-<qandaset>
+<qandaset id="questions-and-answers">
 <qandaentry>
 <question>
 <para>Why aren't the changes I'm making to scheduled tasks and/or environment
