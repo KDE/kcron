@@ -226,5 +226,4 @@ void KTVariable::autoWrap()
     mleComment->maxLineWidth()-1);
 }
 
-
-
+#include "ktvariable.moc"

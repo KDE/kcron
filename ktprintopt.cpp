@@ -75,3 +75,5 @@ void KTPrintOpt::slotCancel()
 {
   close();
 }
+
+#include "ktprintopt.moc"

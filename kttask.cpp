@@ -508,3 +508,5 @@ void KTTask::slotBrowse()
 
   leCommand->setFocus();
 }
+
+#include "kttask.moc"

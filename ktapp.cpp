@@ -567,3 +567,5 @@ void KTApp::resizeEvent (QResizeEvent* event)
 
   repaint();
 }
+
+#include "ktapp.moc"

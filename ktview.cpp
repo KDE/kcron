@@ -557,3 +557,5 @@ void KTView::slotSetCurrent (QListViewItem* qlvi)
     ktapp->enableEnable(false, false);
   }
 }
+
+#include "ktview.moc"
