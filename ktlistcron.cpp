@@ -13,9 +13,11 @@
 
 #include "ktlistcron.h"
 
-#include "kticon.h"
-#include "ctcron.h"
 #include <qstring.h>
+
+#include "ctcron.h"
+
+#include "kticon.h"
 
 KTListCron::KTListCron(KTListItem* parent, const char* name,
   CTCron* _ctcron) :

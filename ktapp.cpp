@@ -11,19 +11,21 @@
  *   (at your option) any later version.                                   * 
  ***************************************************************************/
 
+#include "ktapp.h"
+
+#include <qmessagebox.h>   // These should be replaced by KMessageBox!
+
 #include <kmenubar.h>
 #include <kaccel.h>
-#include <qmessagebox.h>
 #include <kmessagebox.h>
 #include <kconfig.h>
 #include <kapp.h>
 #include <klocale.h>       // i18n()
 
-#include "ktapp.h"
+#include "cthost.h"
+
 #include "kticon.h"
 #include "ktview.h"
-
-#include "cthost.h"
 
 const int KTApp::menuFileSave             (10060);
 const int KTApp::menuFileQuit             (10090);
@@ -42,11 +44,7 @@ const int KTApp::statusMessage            (1001);
 
 KTApp::KTApp()
 {
-#ifdef KDE1
-  config=KApplication::getKApplication()->getConfig();
-#else
   config=kapp->config();
-#endif
 
   setIcon(KTIcon::application(true));
 
@@ -101,11 +99,7 @@ const CTHost& KTApp::getCTHost() const
 
 QString KTApp::caption()
 {
-#ifdef KDE1
-  QString cap(kapp->appName());
-#else
   QString cap(kapp->caption());
-#endif
   return cap;
 }
 
@@ -140,11 +134,7 @@ void KTApp::initMenuBar()
   QString aboutstring = caption()  + " " + VERSION + "\n\n" +
     "(c) 1999 Gary Meyer <gary@meyer.net>";
 
-#ifdef KDE1
-  help_menu = KApplication::getKApplication()->getHelpMenu(true, aboutstring);
-#else
   help_menu = helpMenu(aboutstring);
-#endif
 
   menuBar = new KMenuBar(this);
   menuBar->insertItem(i18n("&File"), file_menu);

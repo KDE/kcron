@@ -11,17 +11,13 @@
  *   (at your option) any later version.                                   * 
  ***************************************************************************/
 
-#include "ktlisttask.h"
+#include <klocale.h>  // i18n()
 
-#include "kticon.h"
-#include "klocale.h"  // i18n()
-
-#ifdef KDE1
-#include "kapp.h"     // i18n()
-#endif
-
-#include "kttask.h"
 #include "cttask.h"
+
+#include "ktlisttask.h"
+#include "kticon.h"
+#include "kttask.h"
 
 KTListTask::KTListTask(KTListItem* parent,
   CTCron* _ctcron, CTTask* _cttask) :

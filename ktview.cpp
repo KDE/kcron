@@ -11,16 +11,24 @@
  *   (at your option) any later version.                                   * 
  ***************************************************************************/
 
+#include "ktview.h"
+
 #include <stdlib.h>
+
 #include <qstring.h>
 #include <qheader.h>
 #include <qpopupmenu.h>
 #include <qfileinfo.h>
 #include <qfile.h>
+
 #include <kapp.h>
 #include <klocale.h>
 
-#include "ktview.h"
+#include "cthost.h"
+#include "ctcron.h"
+#include "ctvariable.h"
+#include "cttask.h"
+
 #include "kticon.h"
 #include "ktlistcron.h"
 #include "ktlistvars.h"
@@ -30,11 +38,6 @@
 #include "ktapp.h"
 #include "ktvariable.h"
 #include "kttask.h"
-
-#include "cthost.h"
-#include "ctcron.h"
-#include "ctvariable.h"
-#include "cttask.h"
 
 KTView::KTView(QWidget *parent, const char* name) :
   QWidget(parent, name),

@@ -13,13 +13,14 @@
 
 #include "ktvariable.h"
 
-#include <qmessagebox.h>
+#include <qmessagebox.h>  // These should be replaced by KMessageBox
 
-#include "kticon.h"
-#include "klocale.h"  // i18n()
-#include "kapp.h"     // kapp
+#include <kapp.h>     // kapp
+#include <klocale.h>  // i18n()
 
 #include "ctvariable.h"
+
+#include "kticon.h"
 
 KTVariable::KTVariable(CTVariable* _ctvar) :
   QDialog(0, (const char*)"ktvariable", true, WStyle_DialogBorder)
@@ -124,17 +125,10 @@ KTVariable::KTVariable(CTVariable* _ctvar) :
   cmbVariable->setFocus();
 
   // connect them up
-#ifdef KDE1
-  connect(cmbVariable,SIGNAL(highlighted(const char *)),
-    SLOT(slotVariableChanged()));
-  connect(cmbVariable,SIGNAL(activated(const char *)),
-    SLOT(slotVariableChanged()));
-#else
   connect(cmbVariable,SIGNAL(highlighted(const QString&)),
     SLOT(slotVariableChanged()));
   connect(cmbVariable,SIGNAL(activated(const QString&)),
     SLOT(slotVariableChanged()));
-#endif
   connect(pbOk,SIGNAL(clicked()),SLOT(slotOK()));
   connect(pbCancel,SIGNAL(clicked()),SLOT(slotCancel()));
 
@@ -186,15 +180,9 @@ void KTVariable::slotOK()
 {
   if (QString(cmbVariable->currentText()) == "")
   {
-#ifdef KDE1
-    QMessageBox::information(this,
-      kapp->getCaption(),
-      i18n("Please enter the variable name."));
-#else
     QMessageBox::information(this,
       kapp->caption(),
       i18n("Please enter the variable name."));
-#endif
     cmbVariable->setFocus();
     return;
   }

@@ -13,15 +13,12 @@
 
 #include "ktlistvar.h"
 
-#include "kticon.h"
-#include "klocale.h"  // i18n()
+#include <klocale.h>  // i18n()
 
-#ifdef KDE1
-#include "kapp.h"     // i18n()
-#endif
-
-#include "ktvariable.h"
 #include "ctvariable.h"
+
+#include "kticon.h"
+#include "ktvariable.h"
 
 KTListVar::KTListVar(KTListItem* parent, CTCron* _ctcron,
   CTVariable* _ctvariable) :

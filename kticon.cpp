@@ -13,13 +13,9 @@
 
 #include "kticon.h"
  
-#ifdef KDE1
-#include <kapp.h>
-#else
-#include <kglobal.h>
-#endif
-
 #include <qimage.h>
+
+#include <kglobal.h>
 #include <kiconloader.h>
 
 #include "ktapp.xpm"
@@ -45,20 +41,12 @@
 
 QPixmap KTIcon::getMiniIcon(const QString& name)
 {
-#ifdef KDE1
-  return KApplication::getKApplication()->getIconLoader()->loadMiniIcon(name);
-#else
   return SmallIcon(name);
-#endif
 }
 
 QPixmap KTIcon::getIcon(const QString& name)
 {
-#ifdef KDE1
-  return KApplication::getKApplication()->getIconLoader()->loadIcon(name);
-#else
   return BarIcon(name);
-#endif
 }
 
 QPixmap KTIcon::save()

@@ -11,13 +11,15 @@
  *   (at your option) any later version.                                   * 
  ***************************************************************************/
 
+#include "kttask.h"
+
 #include <qlabel.h>
 #include <qstring.h>
 #include <qfileinfo.h>
 #include <qlineedit.h>
 #include <qcheckbox.h>
 #include <qpushbutton.h>
-#include <qmessagebox.h>
+#include <qmessagebox.h>    // These should be replaced by KMessageBox
 #include <qbuttongroup.h>
 
 #include <kapp.h>
@@ -26,9 +28,9 @@
 #include <kfiledialog.h>
 #include <kmessagebox.h>
 
-#include "kttask.h"
-#include "kticon.h"
 #include "cttask.h"
+
+#include "kticon.h"
 
 KTTask::KTTask(CTTask* _cttask) :
   QDialog(0, (const char*)"kttask", true, WStyle_DialogBorder)
@@ -231,13 +233,8 @@ KTTask::KTTask(CTTask* _cttask) :
 
   // connect them up
   connect(pbBrowse, SIGNAL(clicked()), SLOT(slotBrowse()));
-#ifdef KDE1
-  connect(leCommand, SIGNAL(textChanged(const char*)),
-    SLOT(slotCommandChanged()));
-#else
   connect(leCommand, SIGNAL(textChanged(const QString&)),
     SLOT(slotCommandChanged()));
-#endif
   connect(cbEveryDay, SIGNAL(clicked()), SLOT(slotDailyChanged()));
   connect(pbOk, SIGNAL(clicked()), SLOT(slotOK()));
   connect(pbCancel, SIGNAL(clicked()), SLOT(slotCancel()));
@@ -382,13 +379,8 @@ void KTTask::slotOK()
   
   if (showMessage)
   {
-#ifdef KDE1
-    QMessageBox::information(this,
-      kapp->getCaption(), message);
-#else
     QMessageBox::information(this,
       kapp->caption(), message);
-#endif
     return;
   }
 
@@ -407,30 +399,18 @@ void KTTask::slotOK()
 
     if (!file.isReadable())
     {
-#ifdef KDE1
-      QMessageBox::information(this,
-        kapp->getCaption(),
-        i18n("Can not locate program.  Please re-enter."));
-#else
       QMessageBox::information(this,
         kapp->caption(),
         i18n("Can not locate program.  Please re-enter."));
-#endif
       leCommand->setFocus();
       return;
     }
 
     if (!file.isExecutable())
     {
-#ifdef KDE1
-      QMessageBox::information(this,
-        kapp->getCaption(),
-        i18n("Program is not an executable file.  Please re-enter."));
-#else
       QMessageBox::information(this,
         kapp->caption(),
         i18n("Program is not an executable file.  Please re-enter."));
-#endif
       leCommand->setFocus();
       return;
     }

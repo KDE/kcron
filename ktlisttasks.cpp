@@ -13,19 +13,16 @@
 
 #include "ktlisttasks.h"
 
-#include "kticon.h"
-#include "klocale.h"  // i18n()
-
-#ifdef KDE1
-#include "kapp.h"     // i18n()
-#endif
-
 #include <qstring.h>
 
+#include <klocale.h>  // i18n()
+
 #include "ctcron.h"
-#include "kttask.h"
 #include "cttask.h"
+
+#include "kticon.h"
 #include "ktlisttask.h"
+#include "kttask.h"
 
 KTListTasks::KTListTasks(KTListItem* parent, CTCron* _ctcron) :
   KTListItem(parent, 0, _ctcron)
