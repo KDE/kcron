@@ -123,16 +123,14 @@ EXTRA_DIST = \
 
 INCLUDES= $(all_includes)
 
-kcron_METASOURCES = USE_AUTOMOC
+kcron_METASOURCES = AUTO
 
 kcron_LDFLAGS = $(all_libraries) $(KDE_RPATH)
-
-DISTCLEANFILES = $(kcron_METASOURCES)
 
 messages:
 	$(XGETTEXT) $(kcron_SOURCES) -o $(podir)/kcron.pot
 
-kcron_LDADD   =  $(LIB_KFILE) $(LIB_KDEUI) $(LIB_KDECORE) $(LIB_QT) -lICE -lXext -lX11 $(LIBSOCKET)
+kcron_LDADD   = $(LIB_KFILE) -lkdeprint
 
 appsdir   = $(kde_appsdir)/System
 
@@ -141,6 +139,4 @@ apps_DATA = kcron.desktop
 KDE_ICON = kcron
 
 KDE_CXXFLAGS = $(USE_EXCEPTIONS)
-CPPFLAGS = -DKDE
-kcron_CPPFLAGS = -DKDE
 

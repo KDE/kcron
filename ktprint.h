@@ -16,10 +16,10 @@
 #define KTPRINT_H
 
 #include <vector>
-#include <qprinter.h>
+#include <kprinter.h>
 
 class QPainter;
-class QPrinter;
+class KPrinter;
 class QString;
 class QFont;
 
@@ -52,7 +52,7 @@ public:
                 leftMargin(left), rightMargin (right), topMargin(top),
                 bottomMargin(bottom), paint(NULL)
   {
-    prnt = new QPrinter;
+    prnt = new KPrinter;
     createColumns(1);
   }
 
@@ -151,7 +151,7 @@ private:
 /**
   * Pointer a printer object
   */
-  QPrinter *prnt;
+  KPrinter *prnt;
 
 /**
   *Nest a column class to make text layout nicer
