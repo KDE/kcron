@@ -7,15 +7,9 @@ SUBDIRS =
 
 EXTRA_DIST = main.cpp resource.h kcron.desktop kcron.xpm ctcron.cpp ctcron.h ctdebug.h ctdom.cpp ctdom.h ctdow.cpp ctdow.h ctexception.h cthost.cpp cthost.h cthour.h cti18n.h ctminute.h ctmonth.cpp ctmonth.h cttask.cpp cttask.h ctunit.h ctvariable.cpp ctvariable.h ktapp.h ktapp.cpp ktview.cpp ktview.h ktlistvar.h ktvariable.h ktvariable.cpp kttask.h kttask.cpp kticon.h ktlistcron.h ktlisttask.h 
 
-install-data-local:
-	$(mkinstalldirs) $(kde_appsdir)/System/
-	$(INSTALL_DATA) kcron.desktop $(kde_appsdir)/System/kcron.desktop
-	$(mkinstalldirs) $(kde_icondir)/
-	$(INSTALL_DATA) kcron.xpm $(kde_icondir)/kcron.xpm
-
-uninstall-local:
-	-rm -f $(kde_appsdir)/System/kcron.desktop
-	-rm -f $(kde_icondir)/kcron.xpm
+appsdir   = $(kde_appsdir)/Programs/System
+apps_DATA = kcron.desktop
+KDE_ICON = kcron
 
 ####### kdevelop will overwrite this part!!! (end)############
 # this 10 paths are KDE specific. Use them:

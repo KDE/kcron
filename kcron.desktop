@@ -1,7 +1,6 @@
-# KDE Config File  
-[KDE Desktop Entry]
+[Desktop Entry]
 Type=Application
-Exec=kcron  
+Exec=kcron %i %m -caption "%c" 
 Icon=kcron
 DocPath=kcron/index.html
 Name=Task Scheduler
