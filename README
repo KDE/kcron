@@ -1,0 +1,16 @@
+KCron
+
+KDE Task Scheduler
+
+GUI crontab editor
+
+Requires:
+
+  Unix POSIX libraries for localized dates and times (glibc)
+  Cron (vixie-cron)
+  Crontab (crontabs)
+  Qt 1.4.4 or 2.0
+  KDE 1.1.1 or higher
+
+See INSTALL for installation instructions.
+
