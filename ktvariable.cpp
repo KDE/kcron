@@ -103,7 +103,7 @@ void KTVariable::slotVariableChanged()
   if (variable == "HOME")
   {
     labIcon->setPixmap(KTIcon::home(false));
-    mleComment->setText(i18n("Override default home directory."));
+    mleComment->setText(i18n("Override default home folder."));
   }
   else if (variable == "MAILTO")
   {
@@ -118,7 +118,7 @@ void KTVariable::slotVariableChanged()
   else if (variable == "PATH")
   {
     labIcon->setPixmap(KTIcon::path(false));
-    mleComment->setText(i18n("Directories to search for program files."));
+    mleComment->setText(i18n("Folder to search for program files."));
   }
   else
   {
