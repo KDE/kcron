@@ -48,7 +48,7 @@
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2002-02-03</date>
+<date>2002-05-03</date>
 <releaseinfo>3.00.00</releaseinfo>
 
 <keywordset>
@@ -239,7 +239,7 @@ scheduled.</para>
 <varlistentry>
 <term><guilabel>Daily</guilabel></term>
 <listitem><para>If you want to schedule the task to run daily, select
-<guibutton>Run Every Day</guibutton>.</para>
+<guibutton>Run every day</guibutton>.</para>
 </listitem> 
 </varlistentry>
 <varlistentry>
