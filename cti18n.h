@@ -29,10 +29,10 @@
 
 #ifdef KDE1
 #include <kapp.h>
-#endif
 
 #ifndef i18n
 #define i18n(X) X
+#endif
 #endif
 
 #endif // CTI18N_H
