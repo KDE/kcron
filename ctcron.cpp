@@ -30,7 +30,7 @@
 #include <klocale.h>
 #include <ktempfile.h>
 
-#include <ostream>
+#include <iostream>
 
 using namespace std;
 
