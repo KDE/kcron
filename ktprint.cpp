@@ -145,13 +145,13 @@ void KTPrint :: levelColumns(int space)
   int ht(0);
 	
   //Find the heighest height
-  for (unsigned i = 0; i < columns.size(); i++) {
+  for (unsigned i(0); i < columns.size(); i++) {
    if (ht < columns[i]->height)
      ht = columns[i]->height;
   }
 	
   //Set all the columns to that height and then add the space argument
-  for (unsigned i = 0; i < columns.size(); i++)
+  for (unsigned i(0); i < columns.size(); i++)
     columns[i]->height = ht+space;
 }
 
@@ -166,7 +166,7 @@ void KTPrint :: finished ()
 void KTPrint :: newPage ()
 {
   prnt->newPage();
-  for (unsigned i =0; i < columns.size(); i++)
+  for (unsigned i(0); i < columns.size(); i++)
     columns[i]->height = topMargin;
 }
 

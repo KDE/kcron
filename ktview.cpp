@@ -185,7 +185,7 @@ void KTView::print () const
     //highlighted which means the output will be just that selected item and
     //its children.
 
-  user = ktli;
+  user = ktli; //Used to store user's name
 
   KTPrint printer;
 
