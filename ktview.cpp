@@ -231,12 +231,8 @@ void KTView :: pageHeading (KTListItem* user, KTPrint &printer) const
   QDateTime now (QDateTime::currentDateTime());
   char hostName[20];
 
-  logonInfo = user->getCTCron()->name.c_str();
-  logonInfo += QString (" <") + QString (user->getCTCron()->login.c_str());
-  logonInfo += QString (">")  + QString (i18n(" on "));
-
-  gethostname(hostName, 20);
-  logonInfo += QString(hostName);
+  gethostname(hostName, 20); 
+  logonInfo = i18n("%1 <%2> on %3").arg(user->getCTCron()->name.c_str()).arg(user->getCTCron()->login.c_str()).arg(hostName);
 
   stnd = printer.getFont();
   printer.setFont(QFont( "arial", 14, QFont::Bold ));
