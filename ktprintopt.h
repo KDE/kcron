@@ -31,6 +31,7 @@ class KAccel;
 
 class KTPrintOpt : public KPrintDialogPage
 {
+  Q_OBJECT
 public:
 
 /**
