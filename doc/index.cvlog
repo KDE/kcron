@@ -1,0 +1,291 @@
+=== LinuxDoc conversion errors ===================
+-> Check if any important attributes have been left behind.
+    INPUT                     OUTPUT
+Line Tag                  Line Tag
+  10 `TT'                    0 `<literal remap="tt">'
+! Check and correct manually
+  11 `'                      0 `'
+! Check the authorname (<collab><collabname> instead of <author><name>?)
+  14 `TOC'                   0 `'
+  29 `HTMLURL'               0 `<ulink>'
+  29 `HTMLURL'               0 `<ulink>'
+  34 `HTMLURL'               0 `<ulink>'
+  39 `TT'                    0 `<literal remap="tt">'
+! Check and correct manually
+  47 `TT'                    0 `<literal remap="tt">'
+! Check and correct manually
+  49 `HTMLURL'               0 `<ulink>'
+  57 `HTMLURL'               0 `<ulink>'
+  57 `TT'                    0 `<literal remap="tt">'
+! Check and correct manually
+  60 `HTMLURL'               0 `<ulink>'
+  67 `HTMLURL'               0 `<ulink>'
+  69 `HTMLURL'               0 `<ulink>'
+  69 `TT'                    0 `<literal remap="tt">'
+! Check and correct manually
+  72 `TT'                    0 `<literal remap="tt">'
+! Check and correct manually
+  80 `TT'                    0 `<literal remap="tt">'
+! Check and correct manually
+  80 `TT'                    0 `<literal remap="tt">'
+! Check and correct manually
+  86 `TSCREEN'               0 `<screen>'
+  92 `VERB'                  0 `'
+! Because it is in TSCREEN
+  95 `HTMLURL'               0 `<ulink>'
+ 104 `TT'                    0 `<literal remap="tt">'
+! Check and correct manually
+ 110 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 112 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 115 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 117 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 119 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 124 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 126 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 129 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 131 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 133 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 140 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 146 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+-> Check if any important attributes have been left behind.
+    INPUT                     OUTPUT
+Line Tag                  Line Tag
+ 151 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 159 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 161 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 163 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 167 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 174 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 181 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 188 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 198 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 200 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 200 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 204 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 208 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 214 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 218 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 223 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 227 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 231 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 235 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 238 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 250 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 254 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 259 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 261 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 261 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 265 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 269 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 269 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+-> Check if any important attributes have been left behind.
+    INPUT                     OUTPUT
+Line Tag                  Line Tag
+ 273 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 277 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 283 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 289 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 294 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 298 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 302 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 306 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 309 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 321 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 325 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 330 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 332 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 332 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 337 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 344 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 348 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 348 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 353 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 357 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 357 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 364 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 374 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 374 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 378 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 378 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 386 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 396 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+-> Check if any important attributes have been left behind.
+    INPUT                     OUTPUT
+Line Tag                  Line Tag
+ 406 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 413 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 416 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 420 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 422 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 428 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 430 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 433 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 435 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 437 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 440 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 444 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 449 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 457 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 459 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 459 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 463 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 468 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 471 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 475 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 477 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 483 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 485 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 488 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 490 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 492 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 495 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 499 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+-> Check if any important attributes have been left behind.
+    INPUT                     OUTPUT
+Line Tag                  Line Tag
+ 504 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 512 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 514 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 514 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 518 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 525 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 528 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 528 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 535 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 538 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 538 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 545 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 555 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 557 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 560 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 560 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 568 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 579 `BF'                    0 `<emphasis remap="bf">'
+! Check and correct manually
+ 591 `TT'                    0 `<literal remap="tt">'
+! Check and correct manually
+ 591 `TT'                    0 `<literal remap="tt">'
+! Check and correct manually
+ 594 `TT'                    0 `<literal remap="tt">'
+! Check and correct manually
+ 594 `TT'                    0 `<literal remap="tt">'
+! Check and correct manually
+ 597 `TT'                    0 `<literal remap="tt">'
+! Check and correct manually
+ 597 `TT'                    0 `<literal remap="tt">'
+! Check and correct manually
+=== NIF conversion errors ========================
+=== Finalising errors ===========================
