@@ -31,7 +31,7 @@
 #include <ktempfile.h>
 #endif
 
-#include <ostream.h>
+#include <iostream>
 
 using namespace std;
 
