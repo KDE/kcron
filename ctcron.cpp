@@ -23,7 +23,8 @@
 #include <fstream.h>     // ifstream, istream, ostream
 #include <unistd.h>      // getuid(), unlink()
 #include <pwd.h>         // pwd, getpwnam(), getpwuid()
-#include <stdio.h>       // sprintf()
+#include <stdio.h>
+#include <qfile.h>       // sprintf()
 
 #ifdef KDE_FIXES
 #include <ktempfile.h>

@@ -26,6 +26,8 @@
 
 #include "kticon.h"
 #include "ktview.h"
+#include <kpopupmenu.h>
+#include <kstatusbar.h>
 
 const int KTApp::menuFileSave             (10060);
 const int KTApp::menuFilePrint            (10070);
