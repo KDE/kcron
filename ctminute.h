@@ -21,12 +21,32 @@
 #include <string>
 
 /**
-  * Cron table task minute.
+  * Scheduled task minutes.
   */
 class CTMinute : public CTUnit<0,59>
 {
 public:
+
+/**
+  * Constructs from a tokenized string.
+  */
   CTMinute(const string &tokStr = "") : CTUnit<0,59>(tokStr) { };
+
+/**
+  * Default copy constructor.
+  */
+  // CTMinute(const CTMinute& source);
+
+/**
+  * Default assignment operator
+  */
+  // void operator = (const CTMinute& source);
+
+/**
+  * Default destructor.
+  */
+  // ~CTMinute();
+
 };
 
 #endif // CTMINUTE_H
