@@ -101,6 +101,7 @@ private:
   QPushButton*    pbBrowse;
 
   QCheckBox*      chkEnabled;
+  QCheckBox*      chkSilent;
 
   QButtonGroup*   bgMonth;
   QCheckBox*      cbMonth[13];

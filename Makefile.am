@@ -16,7 +16,7 @@
 #  http://24.8.19.113/kcron.html                                         #
 ##########################################################################
 
-AM_CPPFLAGS = -UQT_NO_ASCII_CAST
+AM_CPPFLAGS = -UQT_NO_ASCII_CAST -DKDE_FIXES
 
 bin_PROGRAMS = kcron
 

@@ -64,7 +64,10 @@ public:
   */
   friend std::ostream& operator << (std::ostream& outStr, const CTUnit<min,max>& unit)
   {
-    outStr << ((const CTUnit<min, max>) unit).tokenize();
+    if (unit.count() == (max - min + 1))
+       outStr << "*";
+    else 
+       outStr << ((const CTUnit<min, max>) unit).tokenize();
     return outStr;
   };
 

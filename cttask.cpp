@@ -27,30 +27,50 @@ CTTask::CTTask(string tokStr, string _comment, bool _syscron) :
     tokStr = tokStr.substr(2,tokStr.length() - 2);
     enabled = false;
   }
+  else if (tokStr.substr(0,1) == "#")
+  {
+    tokStr = tokStr.substr(1,tokStr.length() - 1);
+    enabled = false;
+  }
   else
     enabled = true;
+
+  if (tokStr.substr(0,1) == "-")
+  {
+    tokStr = tokStr.substr(1,tokStr.length() - 1);
+    silent = true;
+  }
+  else
+  {
+    silent = false;
+  }
 
   int spacepos(tokStr.find_first_of(" \t"));
   minute.initialize(tokStr.substr(0,spacepos));
 
+  while(isspace(tokStr[spacepos+1])) spacepos++;
   tokStr     = tokStr.substr(spacepos+1,tokStr.length()-1);
   spacepos   = tokStr.find_first_of(" \t");
   hour.initialize(tokStr.substr(0,spacepos));
 
+  while(isspace(tokStr[spacepos+1])) spacepos++;
   tokStr     = tokStr.substr(spacepos+1,tokStr.length()-1);
   spacepos   = tokStr.find_first_of(" \t");
   dayOfMonth.initialize(tokStr.substr(0,spacepos));
 
+  while(isspace(tokStr[spacepos+1])) spacepos++;
   tokStr     = tokStr.substr(spacepos+1,tokStr.length()-1);
   spacepos   = tokStr.find_first_of(" \t");
   month.initialize(tokStr.substr(0,spacepos));
 
+  while(isspace(tokStr[spacepos+1])) spacepos++;
   tokStr     = tokStr.substr(spacepos+1,tokStr.length()-1);
   spacepos   = tokStr.find_first_of(" \t");
   dayOfWeek.initialize(tokStr.substr(0,spacepos));
 
   if (syscron)
   {
+    while(isspace(tokStr[spacepos+1])) spacepos++;
     tokStr     = tokStr.substr(spacepos+1,tokStr.length()-1);
     spacepos   = tokStr.find_first_of(" \t");
     user       = tokStr.substr(0,spacepos);
@@ -59,12 +79,16 @@ CTTask::CTTask(string tokStr, string _comment, bool _syscron) :
     user       = string("");
 
   command    = tokStr.substr(spacepos+1,tokStr.length()-1);
+  // remove leading whitespace
+  while (command.find_first_of(" \t") == 0)
+     command = command.substr(1,command.length()-1);
   comment    = _comment;
 
   initialUser    = user;
   initialCommand = command;
   initialComment = comment;
   initialEnabled = enabled;
+  initialSilent = silent;
 }
 
 CTTask::CTTask(const CTTask &source) :
@@ -77,10 +101,12 @@ CTTask::CTTask(const CTTask &source) :
   command(source.command),
   comment(source.comment),
   enabled(source.enabled),
+  silent(source.silent),
   initialUser(""),
   initialCommand(""),
   initialComment(""),
-  initialEnabled(true)
+  initialEnabled(true),
+  initialSilent(false)
 {
 }
 
@@ -95,10 +121,12 @@ void CTTask::operator = (const CTTask& source)
   command        = source.command;
   comment        = source.comment;
   enabled        = source.enabled;
+  silent         = source.silent;
   initialUser    = "";
   initialCommand = "";
   initialComment = "";
   initialEnabled = true;
+  initialSilent  = false;
   return;
 }
 
@@ -110,10 +138,13 @@ ostream& operator << (ostream& outputStream, const CTTask& task)
   if (!task.enabled)
     outputStream << "#\\";
 
-  outputStream << task.minute << "\t";
-  outputStream << task.hour << "\t";
-  outputStream << task.dayOfMonth << "\t";
-  outputStream << task.month << "\t";
+  if (task.silent)
+    outputStream << "-";
+
+  outputStream << task.minute << " ";
+  outputStream << task.hour << " ";
+  outputStream << task.dayOfMonth << " ";
+  outputStream << task.month << " ";
   outputStream << task.dayOfWeek << "\t";
 
   if (task.user != string(""))
@@ -135,6 +166,7 @@ void CTTask::apply()
   initialCommand = command;
   initialComment = comment;
   initialEnabled = enabled;
+  initialSilent = silent;
 }
 
 void CTTask::cancel()
@@ -148,6 +180,7 @@ void CTTask::cancel()
   command = initialCommand;
   comment = initialComment;
   enabled = initialEnabled;
+  silent = initialSilent;
 }
 
 bool CTTask::dirty() const
@@ -155,7 +188,7 @@ bool CTTask::dirty() const
   return (month.dirty() || dayOfMonth.dirty() || dayOfWeek.dirty() ||
     hour.dirty() || minute.dirty() || (user != initialUser) ||
     (command != initialCommand) || (comment != initialComment) ||
-    (enabled != initialEnabled));
+    (enabled != initialEnabled) || (silent != initialSilent));
 }
 
 string CTTask::describe() const
@@ -186,7 +219,7 @@ string CTTask::describe() const
 
   string noteForTranslators((const char *)i18n("Translators: See README.translators!").local8Bit());
 
-  string tmFormat((const char *)i18n("%l:%M%P").local8Bit());
+  string tmFormat((const char *)i18n("%H:%M").local8Bit());
   string DOMFormat((const char *)i18n("DAYS_OF_MONTH of MONTHS").local8Bit());
   string DOWFormat((const char *)i18n("every DAYS_OF_WEEK").local8Bit());
   string dateFormat((const char *)i18n("DOM_FORMAT as well as DOW_FORMAT").local8Bit());

@@ -93,6 +93,7 @@ public:
   string       command;
   string       comment;
   bool         enabled;
+  bool         silent;
 
 private:
   bool         syscron;
@@ -100,7 +101,7 @@ private:
   string       initialCommand;
   string       initialComment;
   bool         initialEnabled;
-
+  bool         initialSilent;
 };
 
 #endif // CTTASK_H

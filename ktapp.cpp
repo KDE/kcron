@@ -195,7 +195,8 @@ void KTApp::initToolBar()
 
 void KTApp::initStatusBar()
 {
-  statusBar()->insertItem(i18n("Ready."), statusMessage);
+  statusBar()->insertItem(i18n("Ready."), statusMessage, 1);
+  statusBar()->setItemAlignment(statusMessage, Qt::AlignLeft | Qt::AlignVCenter);
 }
 
 void KTApp::initKeyAccel()
@@ -447,6 +448,7 @@ void KTApp::slotStatusMsg(const QString & text)
 {
   statusBar()->clear();
   statusBar()->changeItem(text, statusMessage);
+  setCaption(i18n("Task Scheduler"), cthost->dirty());
 }
 
 void KTApp::slotStatusHelpMsg(const QString & text)

@@ -105,6 +105,11 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   chkEnabled->setChecked(cttask->enabled);
   ml->addWidget( chkEnabled );
 
+  // enabled
+  chkSilent = new QCheckBox(i18n("&Silent"), this, "chkSilent");
+  chkSilent->setChecked(cttask->silent);
+  ml->addWidget( chkSilent );
+
   QHBoxLayout *h4 = new QHBoxLayout( ml, KDialogBase::spacingHint() );
 
   ml->addSpacing( 2 * KDialogBase::spacingHint() );
@@ -520,6 +525,7 @@ void KTTask::slotOK()
   cttask->comment = (const char *)leComment->text().local8Bit();
   cttask->command = (const char *)leCommand->text().local8Bit();
   cttask->enabled = chkEnabled->isChecked();
+  cttask->silent = chkSilent->isChecked();
 
   for (int mo = 1; mo <= 12; mo++)
   {

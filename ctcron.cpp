@@ -25,6 +25,10 @@
 #include <pwd.h>         // pwd, getpwnam(), getpwuid()
 #include <stdio.h>       // sprintf()
 
+#ifdef KDE_FIXES
+#include <ktempfile.h>
+#endif
+
 using namespace std;
 
 CTCron::CTCron(bool _syscron, string _login) :
@@ -32,10 +36,17 @@ CTCron::CTCron(bool _syscron, string _login) :
 {
   int uid(getuid());
 
+#ifdef KDE_FIXES
+  KTempFile tmp;
+  tmp.setAutoDelete(true);
+  tmp.close();
+  tmpFileName = string(QFile::encodeName(tmp.name()));  
+#else
   char ofile[20] = "/tmp/crontab.XXXXXX";
   sprintf (ofile+13,"%d",getpid());
 
   tmpFileName = string(ofile);
+#endif
 
   string readCommand;
   passwd *pwd;
@@ -126,16 +137,24 @@ istream& operator >> (istream& inputStream, CTCron& cron)
     // search for comments "#" but not disabled tasks "#\"
     if ((line.find("#") == 0) && (line.find("\\") != 1))
     {
-      // remove leading pound sign
-      line = line.substr(1,line.length()-1);
+      // If the first 10 characters don't contain a character, it's probably a disabled entry.
+      int first_text = line.find_first_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
+      if (first_text < 0)
+         continue;
 
-      // remove leading whitespace
-      while (line.find_first_of(" \t") == 0)
-        line = line.substr(1,line.length()-1);
-
-      comment = line;
+      if (first_text < 10) 
+      {
+         // remove leading pound sign
+         line = line.substr(1,line.length()-1);
+         // remove leading whitespace
+         while (line.find_first_of(" \t") == 0)
+            line = line.substr(1,line.length()-1);
+         comment = line;
+         continue;
+      }
     }
-    else
+
+    // else
     {
       // either a task or a variable
       int firstWhiteSpace(line.find_first_of(" \t"));
@@ -223,6 +242,9 @@ void CTCron::apply()
 
   for (CTVariableIterator i = variable.begin(); i != variable.end(); i++)
     (*i)->apply();
+
+  initialTaskCount = task.size();
+  initialVariableCount = variable.size();
 }
 
 void CTCron::cancel()
