@@ -261,7 +261,7 @@ void KTView :: pageHeading (KTListItem* user, KTPrint &printer) const
 
   printer.print (i18n("Scheduled Tasks"), 2, KTPrint::alignTextCenter, false);
   printer.print (logonInfo, 2, KTPrint::alignTextCenter, false);
-  printer.print (now.toString(), 2, KTPrint::alignTextCenter, false);
+  printer.print (KGlobal::locale()->formatDateTime(now), 2, KTPrint::alignTextCenter, false);
   printer.setFont(stnd);
 
   printer.levelColumns(20);
