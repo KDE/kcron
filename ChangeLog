@@ -32,3 +32,7 @@ gary@meyer.net November 15, 1999
   Fixed bug for supporting strftime (in CTTask::describe()) on different
   platforms.
 
+gary@meyer.net November 19, 1999
+
+  Code clean up effort.
+
