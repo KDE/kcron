@@ -215,7 +215,7 @@ void KTApp::initKeyAccel()
   key_accel->connectItem(KStdAccel::Copy, this, SLOT(slotEditCopy()));
   key_accel->connectItem(KStdAccel::Paste, this, SLOT(slotEditPaste()));
   key_accel->connectItem(KStdAccel::New, this, SLOT(slotEditNew()));
-  key_accel->connectItem(KStdAccel::Insert, this, SLOT(slotEditNew()));
+  //key_accel->connectItem(KStdAccel::Insert, this, SLOT(slotEditNew()));
   key_accel->connectItem(KStdAccel::Open, this, SLOT(slotEditModify()));
 
   // help menu accelerators
@@ -228,7 +228,7 @@ void KTApp::initKeyAccel()
   key_accel->changeMenuAccel(edit_menu, menuEditCopy, KStdAccel::Copy);
   key_accel->changeMenuAccel(edit_menu, menuEditPaste, KStdAccel::Paste);
 
-  key_accel->changeMenuAccel(edit_menu, menuEditNew, KStdAccel::Insert);
+  //key_accel->changeMenuAccel(edit_menu, menuEditNew, KStdAccel::Insert);
   key_accel->changeMenuAccel(edit_menu, menuEditNew, KStdAccel::New);
   key_accel->changeMenuAccel(edit_menu, menuEditModify, KStdAccel::Open);
 
