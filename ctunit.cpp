@@ -157,6 +157,8 @@ string CTUnit<min, max>::tokenize() const
       }
       num++;
     }
+    if (count == max)
+      tmpStr = "*";
     return tmpStr;
   }
 }
