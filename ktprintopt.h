@@ -19,7 +19,7 @@
 #include <config.h>
 #endif
 
-#include <qdialog.h>
+#include <kdeprint/kprintdialogpage.h>
 
 class QCheckBox;
 class KAccel;
@@ -29,10 +29,8 @@ class KAccel;
   *If the user is root ask if they want to print all the users
   */
 
-class KTPrintOpt : public QDialog
+class KTPrintOpt : public KPrintDialogPage
 {
-  Q_OBJECT
-
 public:
 
 /**
@@ -40,44 +38,15 @@ public:
   */
   KTPrintOpt(bool root = false);
 
-/**
-  * Destructor
-  */
   ~KTPrintOpt();
 
-/**
-  * Test if the root user wants to print all users
-  */
-  bool allUsers () {return printAllUsers;}
+  void setOptions(const QMap<QString,QString>& options);
+  void getOptions(QMap<QString,QString>& options, bool incldef = false);
 
-/**
-  * Include the actual crontab file?
-  */
-  bool crontab  () {return printCrontab; }
-
-private slots:
-/**
-  * Apply changes and close.
-  */
-  void slotOK();
-
-/**
-  * Cancel and close.
-  */
-  void slotCancel();
 
 private:
   QCheckBox*      chkPrintCrontab;
   QCheckBox*      chkPrintAllUsers;
-
-  QPushButton*    pbOk;
-  QPushButton*    pbCancel;
-
-  KAccel*         key_accel;
-
-  bool            printCrontab;
-  bool            printAllUsers;
-
 };
 
 #endif

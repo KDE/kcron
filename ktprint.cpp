@@ -16,6 +16,7 @@
 #include <qstring.h>
 #include <qpaintdevicemetrics.h>
 
+#include <ktprintopt.h>
 #include "ktprint.h"
 
 const int KTPrint::alignTextLeft             (1000);
@@ -74,6 +75,9 @@ void KTPrint :: createColumns (unsigned num_columns)
 	
 bool KTPrint:: start ()
 {
+  prnt->setDocName("Cron Tab");
+  prnt->addDialogPage(new KTPrintOpt(root));
+
   if (prnt->setup()) { //Setup a printer
     if (paint!=NULL) delete paint;
     paint = new  QPainter ();

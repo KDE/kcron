@@ -48,7 +48,6 @@
 #include "ktvariable.h"
 #include "kttask.h"
 #include "ktprint.h"
-#include "ktprintopt.h"
 
 KTView::KTView(QWidget *parent, const char* name) :
   QWidget(parent, name),
@@ -171,19 +170,13 @@ void KTView::print () const
 
   const CTHost& cth(ktapp->getCTHost());
 
-  KTPrintOpt options(cth.root());
-  if ( options.exec() ) {
-    crontab =options.crontab();
-    allUsers = options.allUsers();
-  }
-  else
-    return; //User does not want to print any more
-
-  KTPrint printer;
-
+  KTPrint printer(cth.root());
 
   if (printer.start())
   {
+    crontab = printer.crontab();
+    allUsers = printer.allUsers();
+
     printer.createColumns(3);
 
     int copies = printer.numCopies();
@@ -192,10 +185,11 @@ void KTView::print () const
       if (allUsers || !cth.root())
       {
         ktli = (KTListItem*)listView->firstChild();
-        CHECK_PTR(ktli);
       }
       else
+      {
         ktli = (KTListItem*)listView->currentItem();
+      }
 
       //Check that the correct item is selected, they must
       //select the top level entry for all items to print
@@ -244,7 +238,6 @@ void KTView::print () const
     printer.finished(); //End the print
 
   }//End Printing if
-
 }
 
 void KTView :: pageHeading (KTListItem* user, KTPrint &printer) const

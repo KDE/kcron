@@ -13,6 +13,7 @@
 
 #include "ktvariable.h"
 
+#include <qlayout.h>
 #include <kapp.h>     // kapp
 #include <klocale.h>  // i18n()
 #include <kmessagebox.h>
@@ -22,35 +23,22 @@
 #include "kticon.h"
 
 KTVariable::KTVariable(CTVariable* _ctvar,const QString &_caption) :
-  QDialog(0, (const char*)"ktvariable", true, WStyle_DialogBorder)
+  KDialogBase(0, "ktvariable", true, _caption, Ok|Cancel, Ok, true),
+  ctvar( _ctvar)
 {
-  ctvar = _ctvar;
+  QFrame *page = makeMainWidget();
+  QGridLayout *layout = new QGridLayout( page, 5, 3, 0, spacingHint() );
+  layout->setRowStretch(3, 1);
+  layout->setColStretch(1, 1);
 
   setIcon(KTIcon::application(true));
 
-  setCaption(_caption);
-
-  const int height = 25;
-  const int labelWidth = 80;
-  const int editWidth = 260;
-  const int vSpacing = 10;
-  const int hSpacing = 10;
-
-  const int editX = hSpacing + labelWidth + hSpacing;
-
-  // icon
-  labIcon = new QLabel(this, "labIcon");
-  labIcon->setGeometry(2*hSpacing+labelWidth+editWidth-32,
-    vSpacing, 32, 32);
-
   // variable
-  labVariable = new QLabel(i18n("&Variable:"), this, "labVariable");
-  labVariable->setGeometry(hSpacing, 2*vSpacing+32,
-    labelWidth, height);
+  labVariable = new QLabel(i18n("&Variable:"), page, "labVariable");
+  layout->addWidget(labVariable, 1, 0, Qt::AlignLeft | Qt::AlignTop);
 
-  cmbVariable = new QComboBox(true, this, "cmbVariable");
-  cmbVariable->setGeometry(editX, labVariable->y(),
-    editWidth, height);
+  cmbVariable = new QComboBox(true, page, "cmbVariable");
+  layout->addWidget(cmbVariable, 1, 1);
 
   cmbVariable->insertItem("HOME");
   cmbVariable->insertItem("MAILTO");
@@ -59,56 +47,31 @@ KTVariable::KTVariable(CTVariable* _ctvar,const QString &_caption) :
 
   labVariable->setBuddy(cmbVariable);
 
+  // icon
+  labIcon = new QLabel(page, "labIcon");
+  layout->addMultiCellWidget(labIcon, 0, 1, 2, 2);
+
   // value
-  labValue = new QLabel(i18n("Va&lue:"), this, "labValue");
-  labValue->setGeometry(hSpacing, labVariable->y()+height+vSpacing,
-    labelWidth, height);
+  labValue = new QLabel(i18n("Va&lue:"), page, "labValue");
+  layout->addWidget(labValue, 2, 0, Qt::AlignLeft | Qt::AlignTop);
 
-  leValue = new QLineEdit(this, "leValue");
-  leValue->setGeometry(editX, labValue->y(), editWidth, height);
+  leValue = new QLineEdit(page, "leValue");
+  layout->addMultiCellWidget(leValue, 2, 2, 1, 2);
   leValue->setMaxLength(255);
-
   labValue->setBuddy(leValue);
 
   // comment
-  labComment = new QLabel(i18n("Co&mment:"), this, "labComment");
-  labComment->setGeometry(hSpacing, labValue->y()+height+vSpacing,
-    labelWidth, height);
+  labComment = new QLabel(i18n("Co&mment:"), page, "labComment");
+  layout->addWidget(labComment, 3, 0, Qt::AlignLeft | Qt::AlignTop);
 
-  mleComment = new QMultiLineEdit(this, "mleComment");
-  mleComment->setGeometry(editX, labComment->y(), editWidth, 3*height);
+  mleComment = new QMultiLineEdit(page, "mleComment");
+  layout->addMultiCellWidget(mleComment, 3, 3, 1, 2);
 
   labComment->setBuddy(mleComment);
 
   // enabled
-  chkEnabled = new QCheckBox(i18n("&Enabled"), this, "chkEnabled");
-  chkEnabled->setGeometry(hSpacing,
-    mleComment->y()+mleComment->height()+vSpacing,
-    labelWidth, height);
-
-  // line
-  bgLine = new QButtonGroup(this, "bgLine");
-  bgLine->setGeometry(hSpacing,
-    chkEnabled->y()+chkEnabled->height()+vSpacing,
-    labelWidth + hSpacing + editWidth, 2);
-
-  // OK
-  pbOk = new QPushButton(i18n("&OK"),this,"pbOk");
-  pbOk->setGeometry(bgLine->x()+bgLine->width()-2*labelWidth-hSpacing,
-    bgLine->y()+bgLine->height()+vSpacing,
-    labelWidth, height);
-  pbOk->setDefault(true);
-
-  // Cancel
-  pbCancel = new QPushButton(i18n("&Cancel"),this,"pbCancel");
-  pbCancel->setGeometry(bgLine->x()+bgLine->width()-labelWidth,
-    bgLine->y()+bgLine->height()+vSpacing,
-    labelWidth, height);
-
-  // window
-  setFixedSize(pbCancel->x()+pbCancel->width()+hSpacing,
-    pbCancel->y()+pbCancel->height()+vSpacing);
-
+  chkEnabled = new QCheckBox(i18n("&Enabled"), page, "chkEnabled");
+  layout->addWidget(chkEnabled, 4, 0);
 
   // set starting field values
   cmbVariable->setEditText(QString::fromLocal8Bit(ctvar->variable.c_str()));
@@ -128,18 +91,6 @@ KTVariable::KTVariable(CTVariable* _ctvar,const QString &_caption) :
     SLOT(slotVariableChanged()));
   connect(cmbVariable,SIGNAL(activated(const QString&)),
     SLOT(slotVariableChanged()));
-  connect(pbOk,SIGNAL(clicked()),SLOT(slotOK()));
-  connect(pbCancel,SIGNAL(clicked()),SLOT(slotCancel()));
-
-  // key acceleration
-
-  key_accel = new KAccel(this);
-
-  key_accel->connectItem(KStdAccel::Open, this, SLOT(slotOK()));
-  key_accel->connectItem(KStdAccel::Close, this, SLOT(slotCancel()));
-  key_accel->connectItem(KStdAccel::Quit, this, SLOT(slotCancel()));
-  key_accel->readSettings();
-
 }
 
 KTVariable::~KTVariable()
@@ -175,7 +126,7 @@ void KTVariable::slotVariableChanged()
   }
 }
 
-void KTVariable::slotOK()
+void KTVariable::slotOk()
 {
   if (QString(cmbVariable->currentText()) == "")
   {
@@ -195,11 +146,6 @@ void KTVariable::slotOK()
   ctvar->value    = leValue->text().local8Bit();
   ctvar->comment  = mleComment->text().local8Bit();
   ctvar->enabled  = chkEnabled->isChecked();
-  close();
-}
-
-void KTVariable::slotCancel()
-{
   close();
 }
 

@@ -87,7 +87,7 @@ KTApp::KTApp() : KMainWindow(0)
     if (taskCount == 0)
     {
       show();
-      KMessageBox::information(0L, i18n("You can use this application to schedule programs to run in the background.\nTo schedule a new task now, click on the Tasks folder and select Edit/New from the menu."), i18n("Welcome to the Task Scheduler"));
+      KMessageBox::information(0L, i18n("You can use this application to schedule programs to run in the background.\nTo schedule a new task now, click on the Tasks folder and select Edit/New from the menu."), i18n("Welcome to the Task Scheduler"), "welcome");
     }
   }
 }

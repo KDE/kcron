@@ -47,12 +47,16 @@ public:
 /**
   * Contructor
   */
-  KTPrint(int left = defaultLeftMargin, int right = defaultRightMargin,
-                int top = defaultTopMargin, int bottom = defaultBottomMargin) :
-                leftMargin(left), rightMargin (right), topMargin(top),
-                bottomMargin(bottom), paint(NULL)
+  KTPrint(bool _root) :
+                leftMargin(defaultLeftMargin), 
+                rightMargin (defaultRightMargin), 
+                topMargin(defaultTopMargin),
+                bottomMargin(defaultBottomMargin), 
+                paint(0),
+                root(_root)
   {
     prnt = new KPrinter;
+    prnt->setOption("crontab","true");
     createColumns(1);
   }
 
@@ -105,6 +109,22 @@ public:
   *
   */
   int numCopies () const;  
+  
+/**
+  * Whether crontab should be printed
+  */
+  bool crontab() const
+  {
+     return (prnt->option("crontab") == "true");
+  }
+  
+/**  
+  * Whether all users should be printed (root only)
+  */
+  bool allUsers() const
+  {
+     return (prnt->option("allusers") == "true");
+  }
 private:
 
  /**
@@ -147,6 +167,11 @@ private:
   * Pointer to a painter object
   */
   QPainter *paint;
+
+/**
+  * Whether we are root or not
+  */
+  bool root;
 
 /**
   * Pointer a printer object

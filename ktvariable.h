@@ -18,22 +18,20 @@
 #include <config.h>
 #endif 
 
-#include <kaccel.h>
-#include <qdialog.h>
 #include <qlabel.h>
 #include <qlineedit.h>
 #include <qcombobox.h>
 #include <qmultilineedit.h>
 #include <qcheckbox.h>
-#include <qbuttongroup.h>
-#include <qpushbutton.h>
+
+#include <kdialogbase.h>
 
 class CTVariable;
 
 /**
   * Environment variable editor window.
   */
-class KTVariable : public QDialog
+class KTVariable : public KDialogBase
 {
   Q_OBJECT
 
@@ -56,15 +54,10 @@ private slots:
   */
   void slotVariableChanged();
 
-/**
-  * Apply changes and close.
-  */
-  void slotOK();
-
-/**
-  * Cancel and close.
-  */
-  void slotCancel();
+  /**
+   * Apply changes and close.
+   */
+  void slotOk();
 
 private:
 
@@ -77,12 +70,6 @@ private:
   * Environment variable.
   */
   CTVariable*     ctvar;
-
-/**
-  * Key accelerator.
-  */
-
-  KAccel*         key_accel;
 
   // Widgets.
 
@@ -98,12 +85,6 @@ private:
   QMultiLineEdit* mleComment;
 
   QCheckBox*      chkEnabled;
-
-  QButtonGroup*   bgLine;
-
-  QPushButton*    pbOk;
-  QPushButton*    pbCancel;
-
 };
 
 #endif // KTVARIABLE_H
