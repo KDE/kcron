@@ -14,11 +14,12 @@
 // Do not introduce any Qt or KDE dependencies into the "CT"-prefixed classes.
 // I want to be able to reuse these classes with another GUI toolkit. -GM 11/99
 
-#include "ctdebug.h"
 #include "cthost.h"
-#include <unistd.h>
-#include <stdio.h>
-#include <fstream.h>
+
+#include "ctdebug.h"
+#include "ctcron.h"
+#include <unistd.h>  // getuid()
+#include <fstream.h> // ifstream
 
 CTHost::CTHost()
 {

@@ -17,26 +17,35 @@
 // Do not introduce any Qt or KDE dependencies into the "CT"-prefixed classes.
 // I want to be able to reuse these classes with another GUI toolkit. -GM 11/99
 
-#include "ctexception.h"
-#include "ctcron.h"
 #include <vector.h>
+#include <string>
+
+class CTCron;
 
 /**
-  * A singleton.  For the root user, encapsulates all users' cron tables
-  * as well as the system cron table.  For non-root users, encapsulates
-  * the user's only.
+  * The host machine, or computer (encapsulation of crontab files on the
+  * host).
+  *
+  * If the user is the root user, the cron vector will have a member for
+  * each user of the host plus one for the system crontab.
+  *
+  * If the user is a non-root user, there will be only one member in the
+  * cron vector.
   */
 class CTHost
 {
 public:
 
 /**
-  * Constructs the cron table(s).
+  * Constructs the user(s), scheduled tasks, and environment variables
+  * from crontab files.
   */
   CTHost();
 
 /**
-  * Destructs the cron table(s) canceling any unapplied changes.
+  * Destroys the user(s), scheduled tasks, and environment variable
+  * objects.  Does not make any changes to the crontab files.  Any unapplied
+  * changes are consequently "cancelled."
   */
   ~CTHost();
 
@@ -56,16 +65,32 @@ public:
   bool dirty();
 
 /**
-  * Indicates whether or not the user is root user.
+  * Indicates whether or not the user is the root user.
   */
   bool root() const;
 
 /**
-  * One for each account.
+  * User(s). 
+  *
+  * If the user is the root user, the cron vector will have a member for
+  * each user of the host plus one for the system crontab.
+  *
+  * If the user is a non-root user, there will be only one member in the
+  * cron vector.
   */
   vector<CTCron*> cron;
 
 private:
+
+/**
+  * Copy construction not allowed.
+  */
+  CTHost(const CTHost& source) {};
+
+/**
+  * Assignment not allowed
+  */
+  void operator = (const CTHost& source) {};
 
 /**
   * Factory create a cron table.  Appends to the end of cron.
