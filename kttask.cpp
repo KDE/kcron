@@ -19,7 +19,6 @@
 #include <qlayout.h>
 #include <qlineedit.h>
 #include <qcheckbox.h>
-#include <qpushbutton.h>
 #include <qbuttongroup.h>
 #include <qpainter.h>
 #include <qpalette.h>
@@ -29,6 +28,8 @@
 #include <klocale.h>
 #include <kfiledialog.h>
 #include <kmessagebox.h>
+#include <kpushbutton.h>
+#include <kstdguiitem.h>
 
 #include "cttask.h"
 
@@ -348,12 +349,12 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   h5->addStretch( 1 );
 
   // OK
-  pbOk = new QPushButton(i18n("&OK"), this, "pbOk");
+  pbOk = new KPushButton(KStdGuiItem::ok(), this, "pbOk");
   pbOk->setDefault(true);
   h5->addWidget( pbOk );
 
   // Cancel
-  pbCancel = new QPushButton(i18n("&Cancel"), this, "pbCancel");
+  pbCancel = new KPushButton(KStdGuiItem::cancel(), this, "pbCancel");
   h5->addWidget( pbCancel );
 
   // window
