@@ -159,28 +159,27 @@ void KTVariable::slotVariableChanged()
   if (variable == "HOME")
   {
     labIcon->setPixmap(KTIcon::home(false));
-    mleComment->setText("Override default home directory.");
+    mleComment->setText(i18n("Override default home directory."));
   }
   else if (variable == "MAILTO")
   {
     labIcon->setPixmap(KTIcon::mail(false));
-    mleComment->setText("Email output to specified account.");
+    mleComment->setText(i18n("Email output to specified account."));
   }
   else if (variable == "SHELL")
   {
     labIcon->setPixmap(KTIcon::shell(false));
-    mleComment->setText("Override default shell.");
+    mleComment->setText(i18n("Override default shell."));
   }
   else if (variable == "PATH")
   {
     labIcon->setPixmap(KTIcon::path(false));
-    mleComment->setText("Directories to search for program files.");
+    mleComment->setText(i18n("Directories to search for program files."));
   }
   else
   {
     labIcon->setPixmap(KTIcon::variable(false));
   }
-  // autoWrap();
 }
 
 void KTVariable::slotOK()
