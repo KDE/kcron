@@ -1,5 +1,5 @@
 <!DOCTYPE book PUBLIC  "-//KDE//DTD DocBook V3.1-Based Variant V1.0//EN" [
- <!ENTITY kcron   "<application>KCron</application>">
+ <!ENTITY kcron "<application>KCron</application>">
  <!ENTITY kappname "&kcron;" -- this only *seems* redundant -->
  <!ENTITY % addindex "IGNORE">
  <!ENTITY % ents PUBLIC "-//KDE//ENTITIES Application-Variable Entities V1.0//EN">
@@ -10,7 +10,7 @@
 
 <bookinfo>
 
-<title>The KCron Handbook</title>
+<title>The &kcron; Handbook</title>
 
 <authorgroup>
 
@@ -46,8 +46,14 @@
 <revnumber>0.1</revnumber>
 <date>5.16.2000</date>
 <authorinitials>M.N.S.</authorinitials>
-<revremark>Initial release.
-</revremark>
+<revremark>Initial release.</revremark>
+</revision>
+
+<revision>
+<revnumber>0.2</revnumber>
+<date>8.9.2000</date>
+<authorinitials>M.N.S.</authorinitials>
+<revremark>Added documentation of Print function.  Updated screenshots.</revremark>
 </revision>
 
 </revhistory>
@@ -59,8 +65,8 @@
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>16/05/2000</date>
-<releaseinfo>1.91.00</releaseinfo>
+<date>09/08/2000</date>
+<releaseinfo>1.92.00</releaseinfo>
 
 <keywordset>
 <keyword>KDE</keyword>
@@ -71,9 +77,9 @@
 <keyword>scheduler</keyword>
 </keywordset>
 
-<abstract>
-<para>&kcron; is an application that schedules programs to be run.</para>
-</abstract>
+<abstract><para>&kcron; is an application that schedules programs to be
+run.</para></abstract>
+
 
 </bookinfo>
 
@@ -101,11 +107,11 @@ the Unix system scheduler.</para>
 <sect1 id="getting-kcron">
 <title>How to obtain KCron</title>
 
-<para>&kcron; is part of the KDE project <ulink
-url="http://www.kde.org/">http://www.kde.org/</ulink>.</para>
+<para>&kcron; is part of the KDE project 
+<ulink url="http://www.kde.org/">http://www.kde.org/</ulink>.</para>
 
-<para>&kcron; can be found in the kdeadmin package on <ulink
-url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>, the main
+<para>&kcron; can be found in the kdeadmin package on
+<ulink url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>, the main
 ftp site of the KDE project.</para>
 
 </sect1>
@@ -149,10 +155,11 @@ lists.</para>
 </chapter>
 
 <chapter id="using-kcron">
-<title>Using &kcron;</title>
+<title>Using KCron</title>
 
-<important><para>Don't forget to tell your system to start the <filename>crond</filename>
-cron daemon first, or &kcron; won't work.</para></important>
+<important><para>Don't forget to tell your system to start the
+<filename>crond</filename> cron daemon first, or &kcron; won't
+work.</para></important>
 
 <sect1 id="kcron-start-up">
 <title>KCron Start Up</title>
@@ -162,19 +169,23 @@ tasks and associated environment variables. If you are running as the root user,
 you will see these items for all users on the computer as well as the system
 scheduled tasks. Each of the folders can be expanded and contracted.</para> 
 
-<screenshot>
-<screeninfo>&kcron; at start up.</screeninfo>
-<graphic fileref="kcronstart.png" format="png"></graphic>
-</screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="kcronstart.png" format="PNG">
+</imageobject>
+<textobject>
+<phrase>KCron at start up</phrase>
+</textobject>
+</mediaobject>
 
 <sect2>
-<title>Scheduled Tasks</title>
+<Title>Scheduled Tasks</title>
 
 <para>Scheduled tasks appear under a <guilabel>Tasks</guilabel> folder. For each
 scheduled task, the following are displayed:</para> 
 
 <variablelist>
-
+			
 <varlistentry>
 <term>Name</term>
 <listitem><para>Name to identify the scheduled task.</para></listitem>
@@ -196,9 +207,9 @@ and the description will be disabled.</para>
 
 <sect2>
 <title>Environment Variables</title>
+			
 <para>Environment variables appear under a <guilabel>Variables</guilabel>
 folder. For each environment variable, the following are displayed: </para>
-
 <variablelist>
 <varlistentry>
 <term>Name</term>
@@ -218,14 +229,18 @@ folder. For each environment variable, the following are displayed: </para>
 environment variable for all scheduled tasks. If an environment variable has
 been disabled, no value will appear and the description will be disabled.</para>
 
-<screenshot>
-<screeninfo>&kcron; main window.</screeninfo>
-<graphic fileref="kcron.png" format="png"></graphic>
-</screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="kcron.png" format="PNG">
+</imageobject>
+<textobject>
+<phrase>KCron main window</phrase>
+</textobject>
+</mediaobject>
 
 </sect2>
 </sect1>
-
+			
 <sect1 id="new-task">
 <title>Adding Scheduled Tasks</title>
 
@@ -239,10 +254,10 @@ folder. Then select <menuchoice><guimenu>Edit</guimenu>
 <sect2>
 <title>The Edit Task Dialog</title>
 
-<screenshot>
-<screeninfo><guilabel>Edit Task</guilabel> dialog.</screeninfo>
-<graphic fileref="newtask.png" format="png"></graphic>
-</screenshot>
+<mediaobject>
+<imageobject><imagedata fileref="newtask.png" format="png"></imageobject>
+<textobject><phrase><guilabel>Edit Task</guilabel> dialog.</phrase></textobject>
+</mediaobject>
 
 <variablelist>
 <varlistentry>
@@ -445,10 +460,11 @@ button menu and choose
 <sect2>
 <title>The Edit Variable dialog</title>
 
-<screenshot>
-<screeninfo><guilabel>Edit Variable</guilabel> dialog.</screeninfo>
-<graphic fileref="newvariable.png" format="png"></graphic>
-</screenshot>
+<mediaobject>
+<imageobject><imagedata fileref="newvariable.png" format="png"></imageobject>
+<textobject><phrase><guilabel>Edit Variable</guilabel> dialog.</phrase></textobject>
+</mediaobject>
+
 
 <variablelist>
 <varlistentry>
@@ -528,8 +544,9 @@ actually be made until the <filename>crontab</filename> is saved.</para></note>
 <sect2>
 <title>Cutting Environment Variables</title>
 
-<para>To cut an environment variable, first select the variable to be cut. Then select
-<menuchoice><guimenu>Edit</guimenu> <guimenuitem>Cut</guimenuitem> </menuchoice>.</para>
+<para>To cut an environment variable, first select the variable to be cut. Then
+select <menuchoice><guimenu>Edit</guimenu> <guimenuitem>Cut</guimenuitem>
+</menuchoice>.</para>
 
 <para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse
 button menu and choose <menuchoice><guimenuitem>Cut</guimenuitem></menuchoice>,
@@ -541,12 +558,12 @@ or simply press
 <sect2>
 <title>Copying Environment Variables</title>
 
-<para>To copy an environemnt variable, first select the variable to be copied. Then select
-<menuchoice>
-<guimenu>Edit</guimenu> <guimenuitem>Copy</guimenuitem> </menuchoice>.</para>
+<para>To copy an environemnt variable, first select the variable to be
+copied. Then select <menuchoice> <guimenu>Edit</guimenu>
+<guimenuitem>Copy</guimenuitem> </menuchoice>.</para>
 
-<para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse button
-menu and choose <guimenuitem>Copy</guimenuitem>, or simply press
+<para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse
+button menu and choose <guimenuitem>Copy</guimenuitem>, or simply press
 <keycombo><keycap>Ctrl</keycap><keycap>c</keycap></keycombo>.</para>
 
 </sect2>
@@ -558,13 +575,13 @@ menu and choose <guimenuitem>Copy</guimenuitem>, or simply press
 already been cut or copied to the clipboard. Once an environment variable has
 been cut or copied, paste will be enabled. Then select the
 <guilabel>Variables</guilabel> folder. Finally, select
-<menuchoice><guimenu>Edit</guimenu> <guimenuitem>Paste</guimenuitem> </menuchoice>.</para>
+<menuchoice><guimenu>Edit</guimenu> <guimenuitem>Paste</guimenuitem>
+</menuchoice>.</para>
 
 <para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse
 button menu and choose
 <menuchoice><guimenuitem>Paste</guimenuitem></menuchoice>, or simply press
-<keycombo><keycap>Ctrl</keycap><keycap>v</keycap></keycombo>
-.</para>
+<keycombo><keycap>Ctrl</keycap><keycap>v</keycap></keycombo>.</para>
 </sect2>
 
 <sect2>
@@ -618,11 +635,46 @@ displayed.</para>
 <para>Once all scheduled tasks and environment variables have been created
 and/or properly modified, save the <filename>crontab</filename> by selecting
 <menuchoice>
-<guimenu>File</guimenu> <guimenuitem>Save</guimenuitem> </menuchoice>.</para>
+<guimenu>File</guimenu> <guimenuitem>Save</guimenuitem>
+</menuchoice>.</para>
 
 <para>Alternatively, you can simply press
 <keycombo><keycap>Ctrl</keycap><keycap>s</keycap></keycombo>. Additions or
 changes will not actually be made until this is done.</para>
+
+</sect1>
+
+<sect1 id="printing-crontab">
+<title>Printing the <filename>crontab</filename></title>
+
+<para>To print the <filename>crontab</filename> as it has been saved, select
+<menuchoice><guimenu>File</guimenu> <guimenuitem>Print</guimenuitem>
+</menuchoice>.</para>
+
+<mediaobject>
+<imageobject><imagedata fileref="print.png" format="png"></imageobject>
+<textobject><phrase>Printing the
+<filename>crontab</filename>.</phrase></textobject>
+</mediaobject>
+
+<para>There are two options in the print dialog box:</para>
+
+<variablelist>
+
+<varlistentry>
+<term><guilabel>Print Crontab</guilabel></term>
+<listitem>
+<para>Prints the <filename>crontab</filename> for the current user.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guilabel>Print All Users</guilabel></term>
+<listitem><para>Prints the <filename>crontab</filename>s for all users.  This
+option is enabled only for users with super-user privileges.</para></listitem>
+</varlistentry>
+
+</variablelist>
 
 </sect1>
 </chapter>
@@ -648,6 +700,29 @@ changes will not actually be made until this is done.</para>
 </menuchoice></term>
 <listitem>
 <para><action>Saves changes to the <filename>crontab</filename>.</action></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>File</guimenu>
+<guimenuitem>Print</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para><action>Prints the <filename>crontab</filename>.</action></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo><keycap>Ctrl</keycap><keycap>q</keycap></keycombo>
+</shortcut>
+<guimenu>File</guimenu>
+<guimenuitem>Quit</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para><action>Quits &kcron;.</action></para>
 </listitem>
 </varlistentry>
 </variablelist>
