@@ -1,0 +1,9 @@
+# KDE Config File  
+[KDE Desktop Entry]
+Type=Application
+Exec=kcron  
+Icon=kcron.xpm
+DocPath=kcron/index.html
+Comment=
+Terminal=0
+Name=kcron
