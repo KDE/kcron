@@ -330,14 +330,32 @@ void KTTask::slotDailyChanged()
     for (int mo = 1; mo <= 12; mo++)
     {
       cbMonth[mo]->setChecked(true);
+      cbMonth[mo]->setEnabled(false);
     }
     for (int dm = 1; dm <= 31; dm++)
     {
       pbDayOfMonth[dm]->setOn(true);
+      pbDayOfMonth[dm]->setEnabled(false);
     }
     for (int dw = 1; dw <= 7; dw++)
     {
       cbDayOfWeek[dw]->setChecked(true);
+      cbDayOfWeek[dw]->setEnabled(false);
+    }
+  }
+  else
+  {
+    for (int mo = 1; mo <= 12; mo++)
+    {
+      cbMonth[mo]->setEnabled(true);
+    }
+    for (int dm = 1; dm <= 31; dm++)
+    {
+      pbDayOfMonth[dm]->setEnabled(true);
+    }
+    for (int dw = 1; dw <= 7; dw++)
+    {
+      cbDayOfWeek[dw]->setEnabled(true);
     }
   }
 }
