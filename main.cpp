@@ -50,12 +50,12 @@ int main(int argc, char* argv[])
 
   catch (CTExceptionIO& ctio)
   {
-    cerr << i18n("KCron fatal error: Unable to read or write file.") << endl;
+    cerr << (const char *)i18n("KCron fatal error: Unable to read or write file.").local8Bit() << endl;
     return 1;
   }
   catch (...)
   {
-    cerr << i18n("KCron fatal error: Unknown.") << endl;
+    cerr << (const char *)i18n("KCron fatal error: Unknown.").local8Bit() << endl;
     return 1;
   }
 

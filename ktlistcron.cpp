@@ -45,12 +45,12 @@ void KTListCron::refresh()
   setPixmap(0, getCTCron()->login.c_str() == "system" ?
     KTIcon::system(true) : KTIcon::user(true));
 
-  QString userName(getCTCron()->login.c_str());
+  QString userName = QString::fromLocal8Bit(getCTCron()->login.c_str());
 
   if (getCTCron()->login != getCTCron()->name)
   {
     userName += QString(" (");
-    userName += getCTCron()->name.c_str();
+    userName += QString::fromLocal8Bit(getCTCron()->name.c_str());
     userName += QString(")");
   }
   setText(0, userName);
@@ -59,7 +59,7 @@ void KTListCron::refresh()
 void KTListCron::print (KTPrint& printer) const
 {
   QString userInfo;
-  userInfo = getCTCron()->name.c_str();
+  userInfo = QString::fromLocal8Bit(getCTCron()->name.c_str());
 
   KTListItem* ktli = (KTListItem*)this->firstChild();
   CHECK_PTR(ktli);

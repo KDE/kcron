@@ -255,9 +255,12 @@ void KTView :: pageHeading (KTListItem* user, KTPrint &printer) const
   char hostName[20];
 
   gethostname(hostName, 20); 
-  logonInfo = i18n("user on host", "%1 <%2> on %3").arg(user->
-    getCTCron()->name.c_str()).arg(user->getCTCron()->
-    login.c_str()).arg(hostName);
+  // SSA : Fix Me user name, logon name and host name musst be 
+  // SSA : not only in us-ascii ??
+  logonInfo = i18n("user on host", "%1 <%2> on %3")
+    .arg(QString::fromLocal8Bit(user->getCTCron()->name.c_str()))
+    .arg(QString::fromLocal8Bit(user->getCTCron()->login.c_str()))
+    .arg(QString::fromLocal8Bit(hostName));
 
   stnd = printer.getFont();
   printer.setFont(QFont( "arial", 14, QFont::Bold ));
@@ -405,7 +408,7 @@ void KTView::remove()
 
 QString KTView::absolute() const
 {
-  QString fullCommand(currentCTTask->command.c_str());
+  QString fullCommand = QString::fromLocal8Bit(currentCTTask->command.c_str());
   QString command(fullCommand);
   int pos(command.find(" "));
   if (pos > 0) command = command.left(pos);
@@ -413,7 +416,7 @@ QString KTView::absolute() const
   if (command.find("/") == 0)
    return fullCommand;
 
-  QString path(currentCTCron->path().c_str());
+  QString path = QString::fromLocal8Bit(currentCTCron->path().c_str());
   int begin(0);
   int end(0);
   QString prefix;

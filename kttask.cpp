@@ -53,7 +53,7 @@ KTTask::KTTask(CTTask* _cttask)
 
   if (cttask->system())
   {
-    leUser->setText(cttask->user.c_str());
+    leUser->setText(QString::fromLocal8Bit(cttask->user.c_str()));
   }
   else
   {
@@ -77,7 +77,7 @@ KTTask::KTTask(CTTask* _cttask)
   labComment->setBuddy(leComment);
   h2->addWidget( leComment );
 
-  leComment->setText(cttask->comment.c_str());
+  leComment->setText(QString::fromLocal8Bit(cttask->comment.c_str()));
 
   // command
   QHBoxLayout *h3 = new QHBoxLayout( ml, KDialogBase::spacingHint() );
@@ -89,7 +89,7 @@ KTTask::KTTask(CTTask* _cttask)
   labCommand->setBuddy(leCommand);
   h3->addWidget( leCommand );
 
-  leCommand->setText(cttask->command.c_str());
+  leCommand->setText(QString::fromLocal8Bit(cttask->command.c_str()));
 
   labComment->setFixedWidth( QMAX( labComment->width(), labCommand->width()) );
   labCommand->setFixedWidth( QMAX( labComment->width(), labCommand->width()) );
@@ -119,7 +119,7 @@ KTTask::KTTask(CTTask* _cttask)
   for (int mo = 1; mo <= 12; mo++)
   {
     cbMonth[mo] = new QCheckBox(bgMonth, "cbMonth");
-    cbMonth[mo]->setText(cttask->month.getName(mo).c_str());
+    cbMonth[mo]->setText(QString::fromLocal8Bit(cttask->month.getName(mo).c_str()));
     cbMonth[mo]->setChecked(cttask->month.get(mo));
     vmonths->addWidget( cbMonth[mo], AlignLeft );
 
@@ -166,7 +166,7 @@ KTTask::KTTask(CTTask* _cttask)
   for (int dw = 1; dw <= 7; dw++)
   {
     cbDayOfWeek[dw] = new QCheckBox(bgDayOfWeek);
-    cbDayOfWeek[dw]->setText(cttask->dayOfWeek.getName(dw).c_str());
+    cbDayOfWeek[dw]->setText(QString::fromLocal8Bit(cttask->dayOfWeek.getName(dw).c_str()));
     cbDayOfWeek[dw]->setChecked(cttask->dayOfWeek.get(dw));
     v3->addWidget( cbDayOfWeek[dw] );
 
@@ -499,8 +499,8 @@ void KTTask::slotOK()
     cttask->user = "";
   }
 
-  cttask->comment = leComment->text().local8Bit();
-  cttask->command = leCommand->text().local8Bit();
+  cttask->comment = (const char *)leComment->text().local8Bit();
+  cttask->command = (const char *)leCommand->text().local8Bit();
   cttask->enabled = chkEnabled->isChecked();
 
   for (int mo = 1; mo <= 12; mo++)

@@ -178,10 +178,10 @@ string CTUnit<min, max>::describe(const string *label) const
       switch (total - count)
       {
         case 0:  break;
-        case 1:  if (total > 2) tmpStr += i18n(",");
-                 tmpStr += i18n(" and ");
+        case 1:  if (total > 2) tmpStr += (const char *)i18n(",").local8Bit();
+                 tmpStr += (const char *)i18n(" and ").local8Bit();
                  break;
-        default: tmpStr += i18n(", ");
+        default: tmpStr += (const char *)i18n(", ").local8Bit();
                  break;
       }
     }

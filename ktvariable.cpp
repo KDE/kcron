@@ -111,12 +111,12 @@ KTVariable::KTVariable(CTVariable* _ctvar) :
 
 
   // set starting field values
-  cmbVariable->setEditText(ctvar->variable.c_str());
+  cmbVariable->setEditText(QString::fromLocal8Bit(ctvar->variable.c_str()));
   slotVariableChanged();
 
-  leValue->setText(ctvar->value.c_str());
+  leValue->setText(QString::fromLocal8Bit(ctvar->value.c_str()));
 
-  mleComment->setText(ctvar->comment.c_str());
+  mleComment->setText(QString::fromLocal8Bit(ctvar->comment.c_str()));
   autoWrap();
 
   chkEnabled->setChecked(ctvar->enabled);
@@ -210,7 +210,7 @@ void KTVariable::autoWrap()
     mleComment->text().length()));
 
   unsigned int pos(maxCharWidth);
-  QString s(ctvar->comment.c_str());
+  QString s = QString::fromLocal8Bit(ctvar->comment.c_str());
 
   while(pos < s.length())
   {

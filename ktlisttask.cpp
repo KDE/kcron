@@ -32,12 +32,12 @@ KTListTask::KTListTask(KTListItem* parent,
 
 void KTListTask::refresh()
 {
-  setText(0, cttask->comment.c_str());
+  setText(0, QString::fromLocal8Bit(cttask->comment.c_str()));
 
   if (cttask->enabled)
   {
-    setText(1, cttask->command.c_str());
-    setText(2, cttask->describe().c_str());
+    setText(1, QString::fromLocal8Bit(cttask->command.c_str()));
+    setText(2, QString::fromLocal8Bit(cttask->describe().c_str()));
   }
   else
   {
@@ -50,10 +50,10 @@ void KTListTask::refresh()
 
 void KTListTask::print (KTPrint &printer) const
 {    	
-  printer.print(cttask->comment.c_str(), 1, KTPrint::alignTextLeft);
+  printer.print(QString::fromLocal8Bit(cttask->comment.c_str()), 1, KTPrint::alignTextLeft);
   if (cttask->enabled) {
-    printer.print(cttask->command.c_str(),2, KTPrint::alignTextCenter);
-    printer.print(cttask->describe().c_str(),3, KTPrint::alignTextRight);
+    printer.print(QString::fromLocal8Bit(cttask->command.c_str()),2, KTPrint::alignTextCenter);
+    printer.print(QString::fromLocal8Bit(cttask->describe().c_str()),3, KTPrint::alignTextRight);
   }
   else
     printer.print(i18n("Disabled."), 3, KTPrint::alignTextRight);
