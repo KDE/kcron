@@ -195,7 +195,6 @@ void KTView::print () const
 
   if (printer.start()) {
     printer.createColumns(3);
-    printer.setFont(QFont( "arial", 12));
 
     if (allUsers) {
       while (ktli) {

@@ -16,8 +16,6 @@
 #include <qstring.h>
 #include <qpaintdevicemetrics.h>
 
-#include <iostream.h>
-
 #include "ktprint.h"
 
 const int KTPrint::alignTextLeft             (1000);
@@ -130,12 +128,11 @@ void KTPrint :: print (QString str, int col, int alignment, bool wordWrap)
 	
   //Whats left of the page
   int remainder (height - columns[col-1]->height);
-	
-  //Get the size of the area the text will take up
-  //Should check now if it fits on the page   
-  //A TO-DO item 	
-  QRect rect=paint->boundingRect(columns[col-1]->start,columns[col-1]->height, columns[col-1]->width(), remainder,format, str);
 
+  QRect rect=paint->boundingRect(columns[col-1]->start,columns[col-1]->height, columns[col-1]->width(), remainder,format, str);
+  
+  //Should check that there is enough room.
+  
   //Draw the text
   paint->drawText(columns[col-1]->start,columns[col-1]->height, columns[col-1]->width(), remainder, format, str);
 	
