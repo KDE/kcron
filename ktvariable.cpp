@@ -185,7 +185,7 @@ void KTVariable::slotOK()
   if (QString(cmbVariable->currentText()) == "")
   {
     QMessageBox::information(this,
-      KApplication::getKApplication()->getCaption(),
+      kapp->caption(),
       "Please enter the variable name.");
     cmbVariable->setFocus();
     return;

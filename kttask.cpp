@@ -377,7 +377,7 @@ void KTTask::slotOK()
   if (showMessage)
   {
     QMessageBox::information(this,
-      KApplication::getKApplication()->getCaption(), message);
+      kapp->caption(), message);
     return;
   }
 
@@ -397,7 +397,7 @@ void KTTask::slotOK()
     if (!file.isReadable())
     {
       QMessageBox::information(this,
-        KApplication::getKApplication()->getCaption(),
+        kapp->caption(),
         i18n("Can not locate program.  Please re-enter."));
       leCommand->setFocus();
       return;
@@ -406,7 +406,7 @@ void KTTask::slotOK()
     if (!file.isExecutable())
     {
       QMessageBox::information(this,
-        KApplication::getKApplication()->getCaption(),
+        kapp->caption(),
         i18n("Program is not an executable file.  Please re-enter."));
       leCommand->setFocus();
       return;

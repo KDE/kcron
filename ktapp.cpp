@@ -27,7 +27,7 @@
 
 KTApp::KTApp()
 {
-  config=KApplication::getKApplication()->getConfig();
+  config=kapp->config();
 
   setIcon(KTIcon::application(true));
 
@@ -140,10 +140,10 @@ void KTApp::initMenuBar()
 
   help_menu = new QPopupMenu();
   QString aboutstring=QString(
-    KApplication::getKApplication()->getCaption())+
+    kapp->caption())+
     " "+VERSION+"\n\n"+
     "(c) 1999 Gary Meyer <gary@meyer.net>";
-  help_menu = KApplication::getKApplication()->getHelpMenu(true, aboutstring);
+  help_menu = helpMenu(aboutstring);
 
   menuBar = new KMenuBar(this);
 
@@ -184,7 +184,7 @@ void KTApp::initToolBar()
 
   toolBar()->insertButton(KTIcon::help(),
     ID_HELP_CONTENTS, SIGNAL(clicked()),
-    KApplication::getKApplication(), SLOT(appHelpActivated()),
+    kapp, SLOT(appHelpActivated()),
     true, i18n("Help"));
 
   connect(toolBar(), SIGNAL(clicked(int)), SLOT(commandCallback(int)));
@@ -214,7 +214,7 @@ void KTApp::initKeyAccel()
   key_accel->connectItem(KAccel::Open, this, SLOT(slotEditModify()));
 
   // help menu accelerators
-  key_accel->connectItem(KAccel::Help, KApplication::getKApplication(),
+  key_accel->connectItem(KAccel::Help, kapp,
     SLOT(appHelpActivated()));
 
   key_accel->changeMenuAccel(file_menu, ID_FILE_SAVE, KAccel::Save);
@@ -326,7 +326,7 @@ bool KTApp::queryClose()
     KTApp* win = (KTApp*)parent();
 
     int retVal = QMessageBox::information(win,
-      KApplication::getKApplication()->getCaption(),
+      kapp->caption(),
       i18n("Scheduled tasks have been modified.\nDo you want to save changes?"),
       QMessageBox::Yes | QMessageBox::Default,
       QMessageBox::No,
@@ -550,7 +550,7 @@ void KTApp::statusCallback(int id_){
       break;
     case ID_FILE_QUIT:
       slotStatusHelpMsg(i18n("Exit " +
-        QString(KApplication::getKApplication()->getCaption()) + "."));
+        QString(kapp->caption()) + "."));
       break;
 
     case ID_EDIT_CUT:
