@@ -26,10 +26,7 @@
 #include "kttask.h"
 #include "kticon.h"
 #include "klocale.h"  // i18n()
-
-#ifdef KDE1
-#include "kapp.h"
-#endif
+#include "kapp.h"     // kapp
 
 #include "cttask.h"
 

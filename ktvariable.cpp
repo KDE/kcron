@@ -17,10 +17,7 @@
 
 #include "kticon.h"
 #include "klocale.h"  // i18n()
-
-#ifdef KDE1
-#include "kapp.h"     // i18n()
-#endif
+#include "kapp.h"     // kapp
 
 #include "ctvariable.h"
 
