@@ -15,6 +15,8 @@
 #  http://24.8.19.113/kcron.html                                         #
 ##########################################################################
 
+AM_CPPFLAGS = -UQT_NO_ASCII_CAST
+
 bin_PROGRAMS = kcron
 
 kcron_SOURCES = \
