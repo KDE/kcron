@@ -24,6 +24,8 @@ class QString;
 class QListView;
 class QListViewItem;
 class KTApp;
+class KTPrint;
+class KTListItem;
 class CTCron;
 class CTVariable;
 class CTTask;
@@ -46,6 +48,21 @@ public:
   * Destructor.
   */
   ~KTView();
+
+/**
+  * Print crontab.
+  */
+  void print() const;
+
+/**
+  * Print page heading.
+  */
+  void pageHeading (KTListItem *user, KTPrint &printer) const;
+
+/**
+  * Print page footer.
+  */
+  void pageFooter (KTListItem *user, KTPrint &printer) const;
 
 /**
   * Copies variables and/or tasks.

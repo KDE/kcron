@@ -54,6 +54,11 @@ public:
   */
   virtual void refresh();
 
+/**
+  * Print all tasks.
+  */
+  virtual void print(KTPrint &printer)const;
+
 };
 
 #endif // KTLISTTASKS_H

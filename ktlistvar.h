@@ -40,6 +40,11 @@ public:
   void refresh();
 
 /**
+  * Print variable.
+  */
+   void print(KTPrint &printer) const;
+
+/**
   * Edit variable.
   */
   virtual void edit();

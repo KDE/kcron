@@ -20,6 +20,7 @@
 
 #include <qlistview.h>
 
+class KTPrint;
 class CTCron;
 
 /**
@@ -59,6 +60,11 @@ public:
   * Refresh.
   */
   virtual void refresh() = 0;
+
+/**
+  * Print.
+  */
+  virtual void print(KTPrint &printer) const =0;
 
 /**
   * Get the user's crontab.

@@ -47,6 +47,11 @@ public:
   */
   virtual void refresh();
 
+/**
+  *Print user's crontab
+  */
+  virtual void print(KTPrint &printer) const;
+
 };
 
 #endif // KTLISTCRON_H

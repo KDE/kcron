@@ -12,6 +12,7 @@
  ***************************************************************************/
 
 #include "ktlistitem.h"
+#include "ktprint.h"
 
 #include "ctcron.h"
 

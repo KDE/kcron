@@ -18,6 +18,7 @@
 #include "ctcron.h"
 
 #include "kticon.h"
+#include "ktprint.h"
 
 KTListCron::KTListCron(KTListItem* parent, const char* name,
   CTCron* _ctcron) :
@@ -53,4 +54,17 @@ void KTListCron::refresh()
     userName += QString(")");
   }
   setText(0, userName);
+}
+
+void KTListCron::print (KTPrint& printer) const
+{
+  QString userInfo;
+  userInfo = getCTCron()->name.c_str();
+
+  KTListItem* ktli = (KTListItem*)this->firstChild();
+  CHECK_PTR(ktli);
+  while (ktli) {
+    ktli->print(printer);
+    ktli = (KTListItem*)ktli->nextSibling();
+  }
 }

@@ -14,12 +14,16 @@
 #include "ktview.h"
 
 #include <stdlib.h>
+#include <unistd.h>
+
+#include <strstream.h>
 
 #include <qstring.h>
 #include <qheader.h>
 #include <qpopupmenu.h>
 #include <qfileinfo.h>
 #include <qfile.h>
+#include <qdatetime.h>
 
 #include <kapp.h>
 #include <klocale.h>
@@ -38,6 +42,8 @@
 #include "ktapp.h"
 #include "ktvariable.h"
 #include "kttask.h"
+#include "ktprint.h"
+#include "ktprintopt.h"
 
 KTView::KTView(QWidget *parent, const char* name) :
   QWidget(parent, name),
@@ -151,6 +157,104 @@ void KTView::refresh()
     listView->setFocus();
     delete tmpListView;
   }
+}
+
+void KTView::print () const
+{
+  bool crontab, allUsers;
+  KTListItem *ktli, *user;
+
+  const CTHost& cth(ktapp->getCTHost());
+      	
+  KTPrintOpt options(cth.root());
+  if ( options.exec() ) {
+    crontab =options.crontab();	
+    allUsers = options.allUsers();
+  }
+  else
+    return; //User does not want to print any more
+
+  if (allUsers || !cth.root()){
+    ktli = (KTListItem*)listView->firstChild();
+    CHECK_PTR(ktli);
+  }
+  else
+    ktli = (KTListItem*)listView->currentItem();
+
+    //There is still a small bug here, as user may have a task or variable
+    //highlighted which means the output will be just that selected item and
+    //its children.
+
+  user = ktli;
+
+  KTPrint printer;
+
+
+  if (printer.start()) {
+    printer.createColumns(3);
+    printer.setFont(QFont( "arial", 12));
+
+    if (allUsers) {
+      while (ktli) {
+        pageHeading(ktli, printer);	
+        ktli->print(printer);
+        if (crontab)
+          pageFooter(ktli, printer);
+        ktli = (KTListItem*)ktli->nextSibling();
+        if (ktli)
+          printer.newPage();
+      }
+    }
+    else {
+      //ktli goes out of range here hence the need for user
+      pageHeading(user, printer);
+      if (!cth.root()) {
+        while (ktli) {
+          ktli->print(printer);
+          ktli = (KTListItem*)ktli->nextSibling();
+        }
+      }
+      else
+        ktli->print(printer);
+      if (crontab)
+        pageFooter(user, printer);
+    }
+    printer.finished(); //End the print
+  }
+
+}
+
+void KTView :: pageHeading (KTListItem* user, KTPrint &printer) const
+{
+  QFont stnd;
+  QString logonInfo;
+  QDateTime now (QDateTime::currentDateTime());
+  char hostName[20];
+
+  logonInfo = user->getCTCron()->name.c_str();
+  logonInfo += QString (" <") + QString (user->getCTCron()->login.c_str());
+  logonInfo += QString (">")  + QString (i18n(" on "));
+
+  gethostname(hostName, 20);
+  logonInfo += QString(hostName);
+
+  stnd = printer.getFont();
+  printer.setFont(QFont( "arial", 14, QFont::Bold ));
+
+  printer.print (i18n("Scheduled Tasks"), 2, KTPrint::alignTextCenter, false);
+  printer.print (logonInfo, 2, KTPrint::alignTextCenter, false);
+  printer.print (now.toString(), 2, KTPrint::alignTextCenter, false);
+  printer.setFont(stnd);
+
+  printer.levelColumns(20);
+
+}
+
+void KTView :: pageFooter (KTListItem* user, KTPrint &printer) const
+{
+  ostrstream crontab;
+  crontab<<*(user->getCTCron());
+  printer.print(crontab.str(), 1, KTPrint::alignTextLeft, false);
 }
 
 KTView::~KTView()

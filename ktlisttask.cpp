@@ -18,6 +18,7 @@
 #include "ktlisttask.h"
 #include "kticon.h"
 #include "kttask.h"
+#include "ktprint.h"
 
 KTListTask::KTListTask(KTListItem* parent,
   CTCron* _ctcron, CTTask* _cttask) :
@@ -45,6 +46,17 @@ void KTListTask::refresh()
   }
 
   setPixmap(0, KTIcon::task(true));
+}
+
+void KTListTask::print (KTPrint &printer) const
+{    	
+  printer.print(cttask->comment.c_str(), 1, KTPrint::alignTextLeft);
+  if (cttask->enabled) {
+    printer.print(cttask->command.c_str(),2, KTPrint::alignTextCenter);
+    printer.print(cttask->describe().c_str(),3, KTPrint::alignTextRight);
+  }
+  else
+    printer.print(i18n("Disabled."), 3, KTPrint::alignTextRight);
 }
 
 void KTListTask::edit()

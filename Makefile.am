@@ -36,6 +36,8 @@ kcron_SOURCES = \
 	ktlistvars.cpp \
 	kttask.cpp \
 	ktvariable.cpp \
+	ktprint.cpp \
+	ktprintopt.cpp \
 	main.cpp
 
 EXTRA_DIST = \
@@ -81,6 +83,10 @@ EXTRA_DIST = \
 	ktlistvar.cpp \
 	ktlistvars.h \
 	ktlistvars.cpp \
+	ktprint.h \
+	ktprint.cpp \
+	ktprintopt.h \
+	ktprintopt.cpp \
         main.cpp \
 	README \
 	AUTHORS \

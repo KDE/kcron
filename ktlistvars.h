@@ -50,6 +50,11 @@ public:
   void refresh();
 
 /**
+  * print all variables.
+  */
+   void print(KTPrint &printer) const;
+
+/**
   * Edit.
   */
   void create();

@@ -23,6 +23,7 @@
 #include "kticon.h"
 #include "ktlistvar.h"
 #include "ktvariable.h"
+#include "ktprint.h"
 
 KTListVars::KTListVars(KTListItem* parent, CTCron* _ctcron) :
   KTListItem(parent, 0, _ctcron)
@@ -57,6 +58,39 @@ void KTListVars::refresh()
 {
   setText(0, getDescription());
   setPixmap(0, KTIcon::variables(true));
+}
+
+void KTListVars::print(KTPrint& printer) const
+{
+  QFont stnd;
+
+  stnd = printer.getFont() ;
+  printer.setFont(QFont( "arial", 10, QFont::Bold ));
+
+  printer.print(i18n("Variable:"), 1, KTPrint::alignTextLeft);
+  printer.print(i18n("Value:"), 2, KTPrint::alignTextCenter);
+  printer.print(i18n("Description:"), 3, KTPrint::alignTextRight);	
+ 	
+  printer.setFont(stnd);
+	
+  //firstChild() does not return null if there are no children, therefore
+  //we need to check the validation of the pointer without terminating
+  //the application. This maybe a bug in QT 1.44	
+
+  if (this->childCount() ==0) {
+    printer.print(i18n("No variables..."),1,KTPrint::alignTextLeft, false);	
+    printer.levelColumns(20);
+    return;
+  }
+  	
+  KTListItem* ktli = (KTListItem*)this->firstChild();
+  CHECK_PTR(ktli);
+  while (ktli) {
+    ktli->print(printer);
+    ktli = (KTListItem*)ktli->nextSibling();
+    printer.levelColumns();
+  }
+  printer.levelColumns(20);
 }
 
 QString KTListVars::getDescription()

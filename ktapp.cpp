@@ -26,6 +26,7 @@
 #include "ktview.h"
 
 const int KTApp::menuFileSave             (10060);
+const int KTApp::menuFilePrint            (10070);
 const int KTApp::menuFileQuit             (10090);
 const int KTApp::menuEditCut              (11020);
 const int KTApp::menuEditCopy             (11010);
@@ -106,6 +107,8 @@ void KTApp::initMenuBar()
   file_menu = new QPopupMenu();
   file_menu->insertItem(KTIcon::save() ,i18n("&Save"), menuFileSave);
   file_menu->insertSeparator();
+  file_menu->insertItem(KTIcon::print(), i18n("&Print"), menuFilePrint);
+  file_menu->insertSeparator();
   file_menu->insertItem(i18n("&Quit"), menuFileQuit );
 
   edit_menu = new QPopupMenu();
@@ -157,6 +160,8 @@ void KTApp::initToolBar()
 {
   toolBar()->insertButton(KTIcon::save(), menuFileSave, true, i18n("Save"));
   toolBar()->insertSeparator();
+  toolBar()->insertButton(KTIcon::print(), menuFilePrint, true, i18n("Print"));
+  toolBar()->insertSeparator();
   toolBar()->insertButton(KTIcon::cut(), menuEditCut, true, i18n("Cut"));
   toolBar()->insertButton(KTIcon::copy(), menuEditCopy, true, i18n("Copy"));
   toolBar()->insertButton(KTIcon::paste(), menuEditPaste, true, i18n("Paste"));
@@ -179,6 +184,7 @@ void KTApp::initKeyAccel()
 
   // file menu accelerators
   key_accel->connectItem(KStdAccel::Save, this, SLOT(slotFileSave()));
+  key_accel->connectItem(KStdAccel::Print, this, SLOT(slotFilePrint()));
   key_accel->connectItem(KStdAccel::Quit, this, SLOT(slotFileQuit()));
 
   // edit menu accelerators
@@ -288,6 +294,13 @@ void KTApp::slotFileSave()
 {
   slotStatusMsg(i18n("Saving..."));
   cthost->apply();
+  slotStatusMsg(i18n("Ready."));
+}
+
+void KTApp::slotFilePrint()
+{
+  slotStatusMsg(i18n("Printing..."));
+  view->print();
   slotStatusMsg(i18n("Ready."));
 }
 
@@ -407,6 +420,9 @@ void KTApp::commandCallback(int id_){
     case menuFileSave:
     	slotFileSave();
     	break;
+    case menuFilePrint:
+    	slotFilePrint();
+    	break;
     case menuFileQuit:
     	slotFileQuit();
     	break;
@@ -454,6 +470,9 @@ void KTApp::statusCallback(int id_){
     case menuFileSave:
       slotStatusHelpMsg(i18n("Save tasks and variables."));
       break;
+    case menuFilePrint:
+      slotStatusHelpMsg(i18n("Print all or current crontab(s)."));
+      break; 
     case menuFileQuit:
       slotStatusHelpMsg(i18n("Exit " + caption() + "."));
       break;

@@ -44,6 +44,7 @@ public:
 
   // Menu constants
   static const int menuFileSave;
+  static const int menuFilePrint;
   static const int menuFileQuit;
   static const int menuEditCut;
   static const int menuEditCopy;
@@ -118,6 +119,11 @@ public slots:
   * Save document.
   */
   void slotFileSave();
+
+/**
+  * Print document.
+  */
+  void slotFilePrint();
 
 /**
   * Close all open windows then quits the application.  If queryClose()

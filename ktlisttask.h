@@ -40,6 +40,11 @@ public:
   virtual void refresh();
 
 /**
+  * Print task.
+  */
+  virtual void print(KTPrint &printer) const;
+
+/**
   * Edit task.
   */
   virtual void edit();

@@ -12,6 +12,7 @@
  ***************************************************************************/
 
 #include "ktlistvar.h"
+#include "ktprint.h"
 
 #include <klocale.h>  // i18n()
 
@@ -54,6 +55,18 @@ void KTListVar::refresh()
     setPixmap(0, KTIcon::path(true));
   else
     setPixmap(0, KTIcon::variable(true));
+}
+
+void KTListVar::print(KTPrint& printer) const
+{
+  printer.print(ctvar->variable.c_str(), 1, KTPrint::alignTextLeft);
+  if (ctvar->enabled) {
+    printer.print(ctvar->value.c_str(),2, KTPrint::alignTextCenter);
+    printer.print(ctvar->comment.c_str(),3,KTPrint::alignTextRight);
+  }
+  else
+    printer.print(i18n("Disabled."),3, KTPrint::alignTextRight);
+		
 }
 
 void KTListVar::edit()
