@@ -32,7 +32,6 @@ int main(int argc, char* argv[])
   aboutData.addAuthor( "Gary Meyer", 0, "gary@meyer.net");
   KCmdLineArgs::init( argc, argv, &aboutData );
 //  KCmdLineArgs::addCmdLineOptions( options ); // Add our own options.
-  KApplication app;
   
   try 
   {
