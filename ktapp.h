@@ -20,6 +20,7 @@
 
 #include <ktmainwindow.h>
 
+class QString;
 class KMenuBar;
 class KAccel;
 class KTView;
@@ -41,50 +42,37 @@ class KTApp : public KTMainWindow
 
 public:
 
+  // Menu constants
+  static const int menuFileSave;
+  static const int menuFileQuit;
+  static const int menuEditCut;
+  static const int menuEditCopy;
+  static const int menuEditPaste;
+  static const int menuEditNew;
+  static const int menuEditModify;
+  static const int menuEditDelete;
+  static const int menuEditEnabled;
+  static const int menuEditRunNow;
+  static const int menuOptionsShowToolbar;
+  static const int menuOptionsShowStatusbar;
+  static const int menuHelpContents;
+  static const int statusMessage;
+
 /**
   * Initialize the application.
   */
   KTApp();
 
 /**
-  * Destructor.
+  * Quit the application..
   */
   ~KTApp();
 
 /**
-  * Enable cut.
+  * Enable menu item/toolbar item.  Id is one of the static constants 
+  * identified above.
   */
-  void enableCut(bool enable = true);
-
-/**
-  * Enable copy.
-  */
-  void enableCopy(bool enable = true);
-
-/**
-  * Enable paste.
-  */
-  void enablePaste(bool enable = true);
-
-/**
-  * Enable new.
-  */
-  void enableNew(bool enable = true);
-
-/**
-  * Enable modify.
-  */
-  void enableModify(bool enable = true);
-
-/**
-  * Enable delete.
-  */
-  void enableDelete(bool enable = true);
-
-/**
-  * Enable run now.
-  */
-  void enableRunNow(bool enable = true);
+  void enableCommand(int id_, bool enable = true);
 
 /**
   * Enable enable.
@@ -130,11 +118,6 @@ public slots:
   * Save document.
   */
   void slotFileSave();
-
-/**
-  * Print document.
-  */
-  void slotFilePrint();
 
 /**
   * Close all open windows then quits the application.  If queryClose()
@@ -218,17 +201,17 @@ private:
 /**
   * Disabled copy constructor.
   */
-  KTApp(const KTApp& source){};
+  KTApp(const KTApp& source) {};
 
 /**
   * Disabled assignment operator.
   */
-  void operator = (const KTApp& source){};
+  void operator = (const KTApp& source) {};
 
 /**
-  * Enable menu item/toolbar item.
+  * Get application caption.
   */
-  void enableCommand(int id_, bool enable = true);
+  QString caption();
 
 /**
   * Initialize menus.
@@ -308,5 +291,5 @@ private:
   KMenuBar* menuBar;
 
 };
- 
+
 #endif // KTAPP_H
