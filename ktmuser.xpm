@@ -1,0 +1,32 @@
+/* XPM */
+/* Drawn for the K Desktop Environment */
+/* See http://www.kde.org */
+static char*ktmuser[]={
+"16 16 10 1",
+"g c #ffffff",
+"# c #000000",
+"b c #808080",
+"a c #c0c0c0",
+"c c #00ff00",
+"d c #c05800",
+"e c #ffa858",
+"f c #004000",
+"h c #585858",
+". c None",
+".##############.",
+"#aaaaaaaaaaaaaa#",
+"#b############a#",
+"#b############a#",
+"#b##c###ddddd#a#",
+"#b######dddd####",
+"#b######ee######",
+"#b######de######",
+"#b#####eeedee###",
+"#b######de#ee#e#",
+"#aaaaaaa#efeeee#",
+"#aaaaaaaaae#eee#",
+".########ee#aee#",
+"....#baga#hae##.",
+"..##aaaaaaa##...",
+"..###########..."};
+
