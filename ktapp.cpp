@@ -14,6 +14,7 @@
 #include <kmenubar.h>
 #include <kaccel.h>
 #include <qmessagebox.h>
+#include <kmessagebox.h>
 #include <kconfig.h>
 #include <kapp.h>
 #include <klocale.h>       // i18n()
@@ -66,6 +67,11 @@ KTApp::KTApp()
 
   // Read options.
   readOptions();
+
+  // Display greeting screen.
+  // if there currently are no scheduled tasks...
+  // show();
+  // KMessageBox::information(0L, i18n("You can use this application to schedule programs to run in the background.\nTo schedule a new task now, click on the Tasks folder and select Edit/New from the menu."), i18n("Welcome to the Task Scheduler"));
 }
 
 KTApp::~KTApp()
