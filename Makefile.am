@@ -94,10 +94,8 @@ EXTRA_DIST = \
 	TODO \
 	kcron.desktop \
 	kcron.lsm \
-	ktapp.xpm \
 	kthome.xpm \
 	ktmail.xpm \
-	ktmapp.xpm \
 	ktmhome.xpm \
 	ktmmail.xpm \
 	ktmpath.xpm \

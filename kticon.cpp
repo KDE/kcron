@@ -18,8 +18,6 @@
 #include <kglobal.h>
 #include <kiconloader.h>
 
-#include "ktapp.xpm"
-#include "ktmapp.xpm"
 #include "ktuser.xpm"
 #include "ktmuser.xpm"
 #include "ktsystem.xpm"
@@ -50,9 +48,9 @@ QPixmap KTIcon::getIcon(const QString& name)
 QPixmap KTIcon::application(bool mini)
 {
   if (mini)
-    return (const char**)ktmapp;
+    return getMiniIcon("kcron");
   else
-    return (const char**)ktapp;
+    return getIcon("kcron");
 }
 
 QPixmap KTIcon::system(bool mini)
