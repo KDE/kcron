@@ -9,6 +9,4 @@ Requires:
   Unix POSIX libraries for localized dates and times (glibc)
   Cron (vixie-cron)
   Crontab (crontabs)
-  Qt 2.1
-  KDE 2.0
 
