@@ -1,4 +1,3 @@
-# $Id$
 ##########################################################################
 #  Makefile.am                                                           #
 #  --------------------------------------------------------------------  #
@@ -118,8 +117,8 @@ kcron_METASOURCES = AUTO
 
 kcron_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 
-messages:
-	$(XGETTEXT) $(kcron_SOURCES) -o $(podir)/kcron.pot
+messages: rc.cpp
+	$(XGETTEXT) *.cpp -o $(podir)/kcron.pot
 
 kcron_LDADD   = $(LIB_KFILE) -lkdeprint
 
