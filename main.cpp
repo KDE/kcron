@@ -25,12 +25,15 @@ class CTExceptionIO;
  
 int main(int argc, char* argv[]) 
 { 
-  KAboutData aboutData( "kcron", I18N_NOOP("KCron"), VERSION, description,
-              KAboutData::GPL, "(c) 1999, Gary Meyer" );
-  aboutData.addAuthor( "Gary Meyer", 0, "gary@meyer.net");
-  KCmdLineArgs::init( argc, argv, "kcron","","");
-  KApplication::addCmdLineOptions(); // ?
 
+  KAboutData aboutData( "kcron", I18N_NOOP("KCron"), 
+    VERSION, description, KAboutData::GPL, 
+    "(c) 1999-2000, Gary Meyer");
+  aboutData.addAuthor( "Gary Meyer", 0, "gary@meyer.net");
+  KCmdLineArgs::init( argc, argv, &aboutData );
+//  KCmdLineArgs::addCmdLineOptions( options ); // Add our own options.
+  KApplication app;
+  
   try 
   {
     KApplication app(&aboutData);
