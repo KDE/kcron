@@ -100,6 +100,30 @@ public:
   */
   void run() const;
 
+signals:
+
+/** Enables/disables modification 
+  * buttons depending
+  * on if a task is selected
+  */
+  void enableModificationButtons(bool);
+
+/** Enables/disables paste button depending
+  * on clipboard contents
+  */
+  void enablePaste(bool);
+
+/** Enables/disables "Run now" depending
+  * on the task settings
+  */
+  void enableRunNow(bool);
+
+/** Enables/disables "Activated" setting
+  * on the menu depending on the task
+  * configuration
+  */
+  void enableEnabled(bool);
+
 public slots:
 
 /**

@@ -12,17 +12,17 @@
  ***************************************************************************/
 
 #include "ktapp.h"
-
 #include <kmenubar.h>
-#include <kaccel.h>
+#include <kstdaccel.h>
 #include <kmessagebox.h>
 #include <kconfig.h>
 #include <kapplication.h>
 #include <klocale.h>       // i18n()
 #include <kstdaction.h>
 #include <kaction.h>
-#include <kstdguiitem.h>
 #include <kiconloader.h>
+#include <kpopupmenu.h>
+#include <kstatusbar.h>
 
 #include "cthost.h"
 #include "ctcron.h"
@@ -30,18 +30,10 @@
 
 #include "kticon.h"
 #include "ktview.h"
-#include <kpopupmenu.h>
-#include <kstatusbar.h>
 
-const int KTApp::menuEditNew              (11040);
-const int KTApp::menuEditModify           (11050);
-const int KTApp::menuEditDelete           (11060);
-const int KTApp::menuEditEnabled          (11070);
-const int KTApp::menuEditRunNow           (11080);
-const int KTApp::menuOptionsShowToolbar   (12010);
-const int KTApp::menuOptionsShowStatusbar (12020);
-const int KTApp::menuHelpContents         (1002);
+
 const int KTApp::statusMessage            (1001);
+
 
 KTApp::KTApp() : KMainWindow(0)
 {
@@ -51,12 +43,6 @@ KTApp::KTApp() : KMainWindow(0)
 
   setCaption(i18n("Task Scheduler"));
 
-  // Call inits to invoke all other construction parts.
-  initActions();
-  initMenuBar();
-  initToolBar();
-  initStatusBar();
-  initKeyAccel();
 
   // Initialize document.
   cthost = new CTHost();
@@ -64,7 +50,18 @@ KTApp::KTApp() : KMainWindow(0)
   // Initialize view.
   view = new KTView(this);
   setCentralWidget(view);
-
+  
+  // Call inits to invoke all other construction parts.
+  setupActions();
+  initStatusBar();
+  createGUI();
+  
+  //Connections
+  KPopupMenu *editMenu = static_cast<KPopupMenu*>(guiFactory()->container("edit", this)); 
+  KPopupMenu *settingsMenu = static_cast<KPopupMenu*>(guiFactory()->container("settings", this)); 
+  
+  connect(editMenu,SIGNAL(highlighted(int)),this,SLOT(statusEditCallback(int)));
+  connect(settingsMenu,SIGNAL(highlighted(int)),this,SLOT(statusSettingsCallback(int)));
   // Read options.
   readOptions();
 }
@@ -109,19 +106,6 @@ KTApp::~KTApp()
  delete cthost;
 }
 
-void KTApp::enableCommand(int id_, bool enable)
-{
-  // enable menu and toolbar functions by their ID's
-  menuBar->setItemEnabled(id_, enable);
-  toolBar()->setItemEnabled(id_, enable);
-}
-
-void KTApp::enableEnable(bool display, bool enable)
-{
-  edit_menu->setItemChecked(menuEditEnabled, display ? enable : false);
-  enableCommand(menuEditEnabled, display);
-}
-
 const CTHost& KTApp::getCTHost() const
 {
   return *cthost;
@@ -134,105 +118,34 @@ QString KTApp::caption()
   return cap;
 }
 
-void KTApp::initActions()
+void KTApp::setupActions()
 {
-  actionSave = KStdAction::save(this, SLOT(slotFileSave()), actionCollection());
-  actionPrint = KStdAction::print(this, SLOT(slotFilePrint()), actionCollection());
-  actionCut = KStdAction::cut(this, SLOT(slotEditCut()), actionCollection());
-  actionCopy = KStdAction::copy(this, SLOT(slotEditCopy()), actionCollection());
-  actionPaste = KStdAction::paste(this, SLOT(slotEditPaste()), actionCollection());
-}
-
-void KTApp::initMenuBar()
-{
-  file_menu = new QPopupMenu();
-  actionSave->plug(file_menu);
-  file_menu->insertSeparator();
-  actionPrint->plug(file_menu);
-  file_menu->insertSeparator();
-  KStdAction::quit(this, SLOT(slotFileQuit()), actionCollection())->plug(file_menu);
-
-  edit_menu = new QPopupMenu();
-  edit_menu->setCheckable(true);
-  actionCut->plug(edit_menu);
-  actionCopy->plug(edit_menu);
-  actionPaste->plug(edit_menu);
-  edit_menu->insertSeparator();
-  edit_menu->insertItem(i18n("&New..."), menuEditNew);
-  edit_menu->insertItem(i18n("M&odify..."), menuEditModify);
-  edit_menu->insertItem(SmallIconSet("editdelete"),i18n("&Delete"), menuEditDelete);
-  edit_menu->insertSeparator();
-  edit_menu->insertItem(i18n("&Enabled"), menuEditEnabled);
-  edit_menu->insertSeparator();
-  edit_menu->insertItem(KTIcon::task(true), i18n("&Run Now"), menuEditRunNow);
-
-  view_menu = new QPopupMenu();
-  view_menu->setCheckable(true);
-  view_menu->insertItem(i18n("Show &Toolbar"), menuOptionsShowToolbar);
-  view_menu->insertItem(i18n("Show &Statusbar"), menuOptionsShowStatusbar);
-
-  help_menu = new QPopupMenu();
-
-  help_menu = helpMenu();
-
-  menuBar = new KMenuBar(this);
-  menuBar->insertItem(i18n("&File"), file_menu);
-  menuBar->insertItem(i18n("&Edit"), edit_menu);
-  menuBar->insertItem(i18n("&Settings"), view_menu);
-  menuBar->insertSeparator();
-  menuBar->insertItem(i18n("&Help"), help_menu);
-
-  connect(file_menu,SIGNAL(activated(int)),SLOT(commandCallback(int)));
-  connect(file_menu,SIGNAL(highlighted(int)),SLOT(statusCallback(int)));
-
-  connect(edit_menu,SIGNAL(activated(int)),SLOT(commandCallback(int)));
-  connect(edit_menu,SIGNAL(highlighted(int)),SLOT(statusCallback(int)));
-
-  connect(view_menu,SIGNAL(activated(int)),SLOT(commandCallback(int)));
-  connect(view_menu,SIGNAL(highlighted(int)),SLOT(statusCallback(int)));
-}
-
-void KTApp::initToolBar()
-{
-  actionSave->plug(toolBar());
-  toolBar()->insertSeparator();
-  actionPrint->plug(toolBar());
-  toolBar()->insertSeparator();
-  actionCut->plug(toolBar());
-  actionCopy->plug(toolBar());
-  actionPaste->plug(toolBar());
-  toolBar()->insertSeparator();
-  toolBar()->insertButton("filenew", menuEditNew, true, i18n("New"), -1);
-  toolBar()->insertButton("edit", menuEditModify, true, i18n("Modify"), -1);
-  toolBar()->insertButton("editdelete", menuEditDelete, true, i18n("Delete"), -1);
-
-  connect(toolBar(), SIGNAL(clicked(int)), SLOT(commandCallback(int)));
-  connect(toolBar(), SIGNAL(pressed(int)), SLOT(statusCallback(int)));
+  //File Menu
+  KStdAction::save(this, SLOT(slotFileSave()), actionCollection());
+  KStdAction::print(this, SLOT(slotFilePrint()), actionCollection());
+  KStdAction::quit(this, SLOT(slotFileQuit()), actionCollection());
+  
+  //Edit menu
+  KStdAction::cut(this, SLOT(slotEditCut()), actionCollection());
+  KStdAction::copy(this, SLOT(slotEditCopy()), actionCollection());
+  KStdAction::paste(this, SLOT(slotEditPaste()), actionCollection());
+  (void)new KAction(i18n("&New..."), KStdAccel::openNew(), this,SLOT(slotEditNew()),actionCollection(),"edit_new");
+  //I don't like this KStdAccel::open() for modifying, but I'm just porting this to xmlui
+  (void)new KAction(i18n("M&odify..."), KStdAccel::open(), this,SLOT(slotEditModify()),actionCollection(),"edit_modify");
+  (void)new KAction(i18n("&Delete"), 0, this,SLOT(slotEditDelete()),actionCollection(),"edit_delete");
+  (void)new KAction(i18n("&Enabled"), 0, this,SLOT(slotEditEnable()),actionCollection(),"edit_enable");
+  (void)new KAction(i18n("&Run Now"), 0, this,SLOT(slotEditRunNow()),actionCollection(),"edit_run");
+  
+  //Settings menu
+  (void)new KAction(i18n("Show &Toolbar"), 0, this,SLOT(slotViewToolBar()),actionCollection(),"show_toolbar");
+  (void)new KAction(i18n("Show &Statusbar"), 0, this,SLOT(slotViewStatusBar()),actionCollection(),"show_statusbar");
+    
 }
 
 void KTApp::initStatusBar()
 {
   statusBar()->insertItem(i18n("Ready."), statusMessage, 1);
   statusBar()->setItemAlignment(statusMessage, Qt::AlignLeft | Qt::AlignVCenter);
-}
-
-void KTApp::initKeyAccel()
-{
-  key_accel = new KAccel(this);
-
-  // edit menu accelerators
-  key_accel->insert(KStdAccel::New, this, SLOT(slotEditNew()));
-  //key_accel->connectItem(KStdAccel::Insert, this, SLOT(slotEditNew()));
-  key_accel->insert(KStdAccel::Open, this, SLOT(slotEditModify()));
-
-  // help menu accelerators
-//  key_accel->connectItem(KStdAccel::Help, kapp, SLOT(appHelpActivated()));
-
-  //key_accel->changeMenuAccel(edit_menu, menuEditNew, KStdAccel::Insert);
-  key_accel->changeMenuAccel(edit_menu, menuEditNew, KStdAccel::New);
-  key_accel->changeMenuAccel(edit_menu, menuEditModify, KStdAccel::Open);
-
-  key_accel->readSettings();
 }
 
 void KTApp::saveOptions()
@@ -248,15 +161,16 @@ void KTApp::saveOptions()
 void KTApp::readOptions()
 {
   config->setGroup(QString("General Options"));
+  KPopupMenu *settingsMenu = static_cast<KPopupMenu*>(guiFactory()->container("settings", this));
 
   // bar status settings
   bool bViewToolbar = config->readBoolEntry(QString("Show Toolbar"), true);
-  view_menu->setItemChecked(menuOptionsShowToolbar, bViewToolbar);
+  settingsMenu->setItemChecked(settingsMenu->idAt(0),bViewToolbar);
   if (!bViewToolbar)
     toolBar()->hide();
 
   bool bViewStatusbar = config->readBoolEntry(QString("Show Statusbar"), true);
-  view_menu->setItemChecked(menuOptionsShowStatusbar, bViewStatusbar);
+  settingsMenu->setItemChecked(settingsMenu->idAt(1),bViewStatusbar);
   if (!bViewStatusbar)
     statusBar()->hide();
 
@@ -363,7 +277,8 @@ void KTApp::slotFileQuit()
 
 void KTApp::slotEdit(const QPoint& qp)
 {
-  edit_menu->exec(qp, 0);
+  KPopupMenu *editMenu = static_cast<KPopupMenu*>(guiFactory()->container("edit", this));
+  editMenu->exec(qp, 0);
 }
 
 void KTApp::slotEditCut()
@@ -411,17 +326,18 @@ void KTApp::slotEditDelete()
 
 void KTApp::slotEditEnable()
 {
-  if (edit_menu->isItemChecked(menuEditEnabled))
+  KPopupMenu *editMenu = static_cast<KPopupMenu*>(guiFactory()->container("edit", this)); 
+  if (editMenu->isItemChecked(editMenu->idAt(8)))
   {
     slotStatusMsg(i18n("Disabling entry..."));
     view->enable(false);
-    edit_menu->setItemChecked(menuEditEnabled, false);
+    editMenu->setItemChecked(editMenu->idAt(8), false);
   }
   else
   {
     slotStatusMsg(i18n("Enabling entry..."));
     view->enable(true);
-    edit_menu->setItemChecked(menuEditEnabled, true);
+    editMenu->setItemChecked(editMenu->idAt(8), true);
   }
   slotStatusMsg(i18n("Ready."));
 }
@@ -435,25 +351,27 @@ void KTApp::slotEditRunNow()
 
 void KTApp::slotViewToolBar()
 {
-  bool visible;
-  visible = !view_menu->isItemChecked(menuOptionsShowToolbar);
-  view_menu->setItemChecked(menuOptionsShowToolbar, visible);
-  if (visible)
-     toolBar()->show();
+  if(toolBar()->isVisible())
+    toolBar()->hide();
   else
-     toolBar()->hide();
+    toolBar()->show();
+  
+  KPopupMenu *settingsMenu = static_cast<KPopupMenu*>(guiFactory()->container("settings", this));
+  settingsMenu->setItemChecked(settingsMenu->idAt(0),toolBar()->isVisible());
+  
   slotStatusMsg(i18n("Ready."));
 }
 
 void KTApp::slotViewStatusBar()
 {
-  bool visible;
-  visible = !view_menu->isItemChecked(menuOptionsShowStatusbar);
-  view_menu->setItemChecked(menuOptionsShowStatusbar, visible);
-  if (visible)
-    statusBar()->show();
-  else
+  if (statusBar()->isVisible())
     statusBar()->hide();
+  else
+    statusBar()->show();
+  
+  KPopupMenu *settingsMenu = static_cast<KPopupMenu*>(guiFactory()->container("settings", this));
+  settingsMenu->setItemChecked(settingsMenu->idAt(1),statusBar()->isVisible());
+  
   slotStatusMsg(i18n("Ready."));
 }
 
@@ -469,40 +387,11 @@ void KTApp::slotStatusHelpMsg(const QString & text)
   statusBar()->message(text, 2000);
 }
 
-void KTApp::commandCallback(int id_){
-
-  switch (id_){
-    case menuEditNew:
-    	slotEditNew();
-    	break;
-    case menuEditModify:
-    	slotEditModify();
-    	break;
-    case menuEditDelete:
-    	slotEditDelete();
-    	break;
-    case menuEditEnabled:
-    	slotEditEnable();
-    	break;
-    case menuEditRunNow:
-    	slotEditRunNow();
-    	break;
-
-    case menuOptionsShowToolbar:
-    	slotViewToolBar();
-    	break;
-    case menuOptionsShowStatusbar:
-    	slotViewStatusBar();
-    	break;
-    default:
-    	break;
-  }
-}
-
-void KTApp::statusCallback(int id_){
-
-  switch (id_){
-
+void KTApp::statusEditCallback(int id_)
+{
+  KPopupMenu *editMenu = static_cast<KPopupMenu*>(guiFactory()->container("edit", this)); 
+  int index = editMenu->indexOf(id_);
+  switch (index) {
     case menuEditNew:
       slotStatusHelpMsg(i18n("Create a new task or variable."));
       break;
@@ -519,28 +408,58 @@ void KTApp::statusCallback(int id_){
       slotStatusHelpMsg(i18n("Run the selected task now."));
       break;
 
-    case menuOptionsShowToolbar:
-      slotStatusHelpMsg(i18n("Enable/disable the tool bar."));
-      break;
-    case menuOptionsShowStatusbar:
-      slotStatusHelpMsg(i18n("Enable/disable the status bar."));
-      break;
-
     default:
       break;
   }
 }
 
-void KTApp::resizeEvent (QResizeEvent* event)
+void KTApp::statusSettingsCallback(int id_)
 {
-  view->setGeometry(0, menuBar->height() +
-    view_menu->isItemChecked(menuOptionsShowToolbar) * toolBar()->height(),
-    width(), height() - menuBar->height() -
-    view_menu->isItemChecked(menuOptionsShowToolbar) * toolBar()->height() -
-    view_menu->isItemChecked(menuOptionsShowStatusbar) *
-    statusBar()->height());
-
-  repaint();
+  KPopupMenu *settingsMenu = static_cast<KPopupMenu*>(guiFactory()->container("settings", this)); 
+  int index = settingsMenu->indexOf(id_);
+  switch (index) {
+    case menuSettingsShowToolBar:
+      slotStatusHelpMsg(i18n("Enable/disable the tool bar."));
+      break;
+    case menuSettingsShowStatusBar:
+      slotStatusHelpMsg(i18n("Enable/disable the status bar."));
+      break;
+    
+    default:
+      break;
+  }
 }
 
+void KTApp::slotEnableModificationButtons(bool state)
+{
+  if (state)
+    stateChanged("no_task_selected", StateReverse);
+  else
+    stateChanged("no_task_selected");
+    
+}
+
+void KTApp::slotEnablePaste(bool state)
+{
+ if (state)
+    stateChanged("paste_disabled", StateReverse);
+ else
+    stateChanged("paste_disabled");
+}
+
+void KTApp::slotEnableRunNow(bool state)
+{
+  if (state)
+    stateChanged("runnow_enabled");
+  else
+    stateChanged("runnow_enabled", StateReverse);
+}
+
+void KTApp::slotEnableEnabled(bool state)
+{
+  KPopupMenu *editMenu = static_cast<KPopupMenu*>(guiFactory()->container("edit", this));
+  editMenu->setItemChecked(editMenu->idAt(8),state);
+}      
+
 #include "ktapp.moc"
+

@@ -126,3 +126,5 @@ kcron_LDADD   = $(LIB_KFILE) -lkdeprint
 xdg_apps_DATA = kcron.desktop
 
 KDE_ICON = kcron
+shellrcdir   = $(kde_datadir)/kcron
+shellrc_DATA = kcronui.rc

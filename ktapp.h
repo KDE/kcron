@@ -22,8 +22,6 @@
 
 class KAction;
 class QString;
-class KMenuBar;
-class KAccel;
 class KTView;
 class CTHost;
 
@@ -44,16 +42,23 @@ class KTApp : public KMainWindow
 public:
 
   // Menu constants
-  static const int menuEditNew;
-  static const int menuEditModify;
-  static const int menuEditDelete;
-  static const int menuEditEnabled;
-  static const int menuEditRunNow;
-  static const int menuOptionsShowToolbar;
-  static const int menuOptionsShowStatusbar;
-  static const int menuHelpContents;
+  enum editEntries
+  { 
+    menuEditNew=4,
+    menuEditModify,
+    menuEditDelete,
+    menuEditEnabled=8,
+    menuEditRunNow=10
+  };
+  
+  enum settingsEntries
+  {
+    menuSettingsShowToolBar,
+    menuSettingsShowStatusBar
+  };
+  
   static const int statusMessage;
-
+  
 /**
   * Initialize the application.
   */
@@ -70,32 +75,11 @@ public:
  bool init();
 
 /**
-  * Enable menu item/toolbar item.  Id is one of the static constants 
-  * identified above.
-  */
-  void enableCommand(int id_, bool enable = true);
-
-/**
-  * Enable enable.
-  */
-  void enableEnable(bool display = true, bool enable = true);
-
-/**
   * Returns a reference to the document.
   */	
   const CTHost& getCTHost() const; 	
 
-/**
-  * Actions
-  */
-  KAction *actionSave, *actionPrint, *actionCut, *actionCopy, *actionPaste;
-
 protected:
-
-/**
-  * Resize application window contents.
-. */
-  virtual void resizeEvent (QResizeEvent*);
 
 /** Called on window close event.  Asks the document if it is dirty
   * and if so, prompts the user for saving before exiting..
@@ -110,15 +94,18 @@ protected:
 public slots:
 
 /**
-  * Switch argument for slot selection by menu or toolbar ID.
+  * Switch argument for status ar help entries on slot selection. Add your
+  * ID's help here for toolbars and menubar entries. This
+  * function is only for the edit menu
   */
-  void commandCallback(int id_);
+  void statusEditCallback(int id_);
 
 /**
-  * Switch argument for satus ar help entries on slot selection. Add your
-  * ID's help here for toolbars and menubar entries.
+  * Switch argument for status ar help entries on slot selection. Add your
+  * ID's help here for toolbars and menubar entries. This
+  * function is only for the settings menu
   */
-  void statusCallback(int id_);
+  void statusSettingsCallback(int id_);
 
 /**
   * Save document.
@@ -207,6 +194,22 @@ public slots:
   */
   void slotStatusHelpMsg(const QString & text);
 
+/** Enables/disables modification buttons
+  */
+  void slotEnableModificationButtons(bool);
+
+/** Enables/disables paste button
+  */
+  void slotEnablePaste(bool);
+
+/** Enables/disables "Run now"
+  */
+   void slotEnableRunNow(bool);
+
+/** Enables/disables "Activated"
+  */
+  void slotEnableEnabled(bool);
+
 private:
 
 /**
@@ -225,29 +228,14 @@ private:
   QString caption();
 
 /**
-  * Initialize menus.
-  */
-  void initMenuBar();
-
-/**
   * Initialize actions.
   */
-  void initActions();
-
-/**
-  * Initialize toolbar.
-  */
-  void initToolBar();
+  void setupActions();
 
 /**
   * Initialize status bar.
   */
   void initStatusBar();
-
-/**
-  * Initialize keyboard accelerators.
-  */
-  void initKeyAccel();
 
 /**
   * Read general options again and initialize all variables like the
@@ -262,34 +250,9 @@ private:
   void saveOptions();
 
 /**
-  * File menu.
-  */
-  QPopupMenu* file_menu;
-
-/**
-  * Edit menu.
-  */
-  QPopupMenu* edit_menu;
-
-/**
-  * View menu.
-  */
-  QPopupMenu* view_menu;
-
-/**
-  * Help menu.
-  */
-  QPopupMenu* help_menu;
-
-/**
   * Configuration object of the application.
   */
   KConfig* config;
-
-/**
-  * Key accelerator.
-  */
-  KAccel* key_accel;
 
 /**
   * Main GUI view/working area.
@@ -300,11 +263,6 @@ private:
   * Document object, here crotab enries.
   */
   CTHost* cthost;
-
-/**
-  * Menu bar
-  */
-  KMenuBar* menuBar;
 
 };
 

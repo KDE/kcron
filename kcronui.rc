@@ -1,0 +1,54 @@
+<!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
+<kpartgui name="kcron" version="1">
+<MenuBar>
+  <Menu name="edit">
+    <Separator/>
+    <Action name="edit_new"/>
+    <Action name="edit_modify"/>
+    <Action name="edit_delete"/>
+    <Separator/>
+    <Action name="edit_enable"/>
+    <Separator/>
+    <Action name="edit_run"/>
+  </Menu>
+  <Menu name="settings">
+    <Action name="show_toolbar"/>
+    <Action name="show_statusbar"/>
+  </Menu>
+</MenuBar>
+
+<ToolBar name="mainToolBar">
+  <Action name="edit_new"/>
+  <Action name="edit_modify"/>
+  <Action name="edit_delete"/>
+</ToolBar>
+
+<ActionProperties>
+  <Action name="edit_new" icon="filenew"/>
+  <Action name="edit_modify" icon="edit"/>
+  <Action name="edit_delete" icon="editdelete"/>
+  <Action name="edit_run" icon="run"/>
+</ActionProperties>
+
+<State name="no_task_selected">
+  <Disable>
+    <Action name="edit_cut"/>
+    <Action name="edit_copy"/>
+    <Action name="edit_modify"/>
+    <Action name="edit_delete"/>
+ </Disable>
+</State>
+
+<State name="paste_disabled">
+  <Disable>
+    <Action name="edit_paste"/>
+  </Disable>
+</State>
+
+<State name="runnow_enabled">
+  <Enable>
+    <Action name="edit_run">
+  </Enable>
+</State>
+    
+</kpartgui>

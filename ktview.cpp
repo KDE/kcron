@@ -33,7 +33,6 @@
 #include <qfile.h>
 #include <qdatetime.h>
 
-#include <kaction.h>
 #include <kapplication.h>
 #include <kglobalsettings.h>
 #include <klocale.h>
@@ -69,6 +68,23 @@ KTView::KTView(QWidget *parent, const char* name) :
   setBackgroundMode(PaletteBase);
   refresh();
   listView->setSelected(listView->firstChild(), true);
+  
+  connect(this, SIGNAL(enableModificationButtons(bool)), parent,
+    SLOT(slotEnableModificationButtons(bool)));
+    
+  connect(this, SIGNAL(enablePaste(bool)), parent,
+    SLOT(slotEnablePaste(bool)));
+    
+  connect(this, SIGNAL(enableRunNow(bool)), parent,
+    SLOT(slotEnableRunNow(bool)));
+  
+  connect(this, SIGNAL(enableEnabled(bool)), parent,
+    SLOT(slotEnableEnabled(bool)));
+  
+  emit(enableModificationButtons(false));
+  emit(enablePaste(clipboardCTVariable));
+  emit(enableRunNow(false));
+            
 }
 
 void KTView::refresh()
@@ -491,14 +507,11 @@ void KTView::slotSetCurrent (QListViewItem* qlvi)
     currentCTVariable = 0;
     currentCTTask     = 0;
     currentIsTask     = false;
-    ktapp->actionCut->setEnabled(false);
-    ktapp->actionCopy->setEnabled(false);
-    ktapp->actionPaste->setEnabled(clipboardCTVariable);
-    ktapp->enableCommand(KTApp::menuEditNew,    true);
-    ktapp->enableCommand(KTApp::menuEditModify, false);
-    ktapp->enableCommand(KTApp::menuEditDelete, false);
-    ktapp->enableCommand(KTApp::menuEditRunNow, false);
-    ktapp->enableEnable(false, false);
+    emit(enableModificationButtons(false));
+    emit(enablePaste(clipboardCTVariable));
+    emit(enableRunNow(false));
+    emit(enableEnabled(false));
+    
   }
   else if (qlvi->text(0) == KTListTasks::getDescription())
   {
@@ -507,14 +520,12 @@ void KTView::slotSetCurrent (QListViewItem* qlvi)
     currentCTVariable = 0;
     currentCTTask     = 0;
     currentIsTask     = true;
-    ktapp->actionCut->setEnabled(false);
-    ktapp->actionCopy->setEnabled(false);
-    ktapp->actionPaste->setEnabled(clipboardCTTask);
-    ktapp->enableCommand(KTApp::menuEditNew,    true);
-    ktapp->enableCommand(KTApp::menuEditModify, false);
-    ktapp->enableCommand(KTApp::menuEditDelete, false);
-    ktapp->enableCommand(KTApp::menuEditRunNow, false);
-    ktapp->enableEnable(false, false);
+    
+    emit(enableModificationButtons(false));
+    emit(enablePaste(clipboardCTTask));
+    emit(enableRunNow(false));
+    emit(enableEnabled(false));
+    
   }
   else if (parent)
   {
@@ -525,14 +536,11 @@ void KTView::slotSetCurrent (QListViewItem* qlvi)
       currentCTVariable = ((KTListVar*)qlvi)->getCTVariable();
       currentCTTask     = 0;
       currentIsTask     = false;
-      ktapp->actionCut->setEnabled(true);
-      ktapp->actionCopy->setEnabled(true);
-      ktapp->actionPaste->setEnabled(false);
-      ktapp->enableCommand(KTApp::menuEditNew,    true);
-      ktapp->enableCommand(KTApp::menuEditModify, true);
-      ktapp->enableCommand(KTApp::menuEditDelete, true);
-      ktapp->enableCommand(KTApp::menuEditRunNow, false);
-      ktapp->enableEnable(true, currentCTVariable->enabled);
+      
+      emit(enableModificationButtons(true));
+      emit(enableRunNow(false));
+      emit(enableEnabled(currentCTTask->enabled));
+
     }
     else if (parent->text(0) == KTListTasks::getDescription())
     {
@@ -541,15 +549,12 @@ void KTView::slotSetCurrent (QListViewItem* qlvi)
       currentCTVariable = 0;
       currentCTTask     = ((KTListTask*)qlvi)->getCTTask();
       currentIsTask     = true;
-      ktapp->actionCut->setEnabled(true);
-      ktapp->actionCopy->setEnabled(true);
-      ktapp->actionPaste->setEnabled(false);
-      ktapp->enableCommand(KTApp::menuEditNew,    true);
-      ktapp->enableCommand(KTApp::menuEditModify, true);
-      ktapp->enableCommand(KTApp::menuEditDelete, true);
-      ktapp->enableCommand(KTApp::menuEditRunNow, (currentCTTask->enabled) &&
-        (absolute() != ""));
-      ktapp->enableEnable(true, currentCTTask->enabled);
+
+      emit(enableModificationButtons(true));
+      emit(enableRunNow((currentCTTask->enabled) &&
+              (absolute() != "")));
+      emit(enableEnabled(currentCTTask->enabled));
+              
     }
   }
   else
@@ -559,14 +564,12 @@ void KTView::slotSetCurrent (QListViewItem* qlvi)
     currentCTVariable = 0;
     currentCTTask     = 0;
     currentIsTask     = true;
-    ktapp->actionCut->setEnabled(false);
-    ktapp->actionCopy->setEnabled(false);
-    ktapp->actionPaste->setEnabled(false);
-    ktapp->enableCommand(KTApp::menuEditNew,    false);
-    ktapp->enableCommand(KTApp::menuEditModify, false);
-    ktapp->enableCommand(KTApp::menuEditDelete, false);
-    ktapp->enableCommand(KTApp::menuEditRunNow, false);
-    ktapp->enableEnable(false, false);
+    
+    emit(enableModificationButtons(true));
+    emit(enablePaste(false));
+    emit(enableRunNow(false));
+    emit(enableEnabled(false));
+    
   }
 }
 
