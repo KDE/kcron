@@ -21,6 +21,8 @@
 #include <qcheckbox.h>
 #include <qpushbutton.h>
 #include <qbuttongroup.h>
+#include <qpainter.h>
+#include <qpalette.h>
 
 #include <kapplication.h>
 #include <kaccel.h>
@@ -31,6 +33,70 @@
 #include "cttask.h"
 
 #include "kticon.h"
+
+class KTPushButton : public QPushButton
+{
+public:
+   KTPushButton(QWidget * parent, const char * name = 0 ) 
+     : QPushButton(parent, name), isSelected(false), isDirty(false)
+   {
+      updatePalette();
+   }
+
+   void updatePalette()
+   {
+      palNormal = ((QWidget *)parent())->palette();
+      palSelected = palNormal;
+      for(int cg = (int) QPalette::Disabled; cg < (int) QPalette::NColorGroups; cg++)
+      {
+        palSelected.setColor((QPalette::ColorGroup)cg, QColorGroup::Button, 
+                     palSelected.color((QPalette::ColorGroup)cg, QColorGroup::Highlight));
+        palSelected.setColor((QPalette::ColorGroup)cg, QColorGroup::ButtonText, 
+                     palSelected.color((QPalette::ColorGroup)cg, QColorGroup::HighlightedText));
+      }
+      isDirty = true;
+   }
+
+   bool event( QEvent *e)
+   {
+     if (e->type() == QEvent::ParentPaletteChange)
+     {
+        updatePalette();
+        update();
+     }
+     return QPushButton::event(e);
+   }
+   
+   void drawButton ( QPainter *p )
+   {
+     if (isDirty || (isOn() != isSelected)) // Prevent infinite recursion
+     {
+       isDirty = false;
+       isSelected = isOn();
+       if (isSelected)
+         setPalette(palSelected);
+       else
+         setPalette(palNormal);
+     }
+     QPushButton::drawButton(p);
+   }
+   void drawButtonLabel ( QPainter *p )
+   {
+     p->save();
+     if (isOn())
+     {
+       QFont f = p->font();
+       f.setUnderline(true);
+       p->setFont(f);
+     }
+     QPushButton::drawButtonLabel(p);
+     p->restore();
+   }
+   bool isSelected;
+   bool isDirty;
+   QPalette palSelected;
+   QPalette palNormal;
+};
 
 KTTask::KTTask(CTTask* _cttask, const QString & _caption)
        :KDialog( 0, "kttask", true, WStyle_DialogBorder )
@@ -149,7 +215,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
     if( (dm % 7) == 1 )
       hdays = new QHBoxLayout( vdays, KDialogBase::spacingHint() );
 
-    day = new QPushButton(bgDayOfMonth);
+    day = new KTPushButton(bgDayOfMonth);
     day->setFixedSize(25, 25);
     day->setText(tmp.setNum(dm));
     day->setToggleButton(true);
@@ -204,7 +270,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
 
   for (int ho = 0; ho <= 23; ho++)
   {
-    pbHour[ho] = new QPushButton(bgHour);
+    pbHour[ho] = new KTPushButton(bgHour);
     pbHour[ho]->setText(tmp.setNum(ho));
     pbHour[ho]->setToggleButton(true);
     pbHour[ho]->setOn(cttask->hour.get(ho));
@@ -240,7 +306,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
 
   for (int mi = 0; mi <= 55; mi+=5)
   {
-    pbMinute[mi] = new QPushButton(bgMinute);
+    pbMinute[mi] = new KTPushButton(bgMinute);
     pbMinute[mi]->setText(tmp.setNum(mi));
     pbMinute[mi]->setToggleButton(true);
     pbMinute[mi]->setOn(cttask->minute.get(mi));
