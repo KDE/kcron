@@ -21,6 +21,8 @@
 #include <klocale.h>       // i18n()
 
 #include "cthost.h"
+#include "ctcron.h"
+#include "cttask.h"
 
 #include "kticon.h"
 #include "ktview.h"
@@ -50,6 +52,7 @@ KTApp::KTApp()
   setCaption(i18n("Task Scheduler"));
 
   // Call inits to invoke all other construction parts.
+  // setupMenu();
   initMenuBar();
   initToolBar();
   initStatusBar();
@@ -67,8 +70,26 @@ KTApp::KTApp()
 
   // Display greeting screen.
   // if there currently are no scheduled tasks...
-  // show();
-  // KMessageBox::information(0L, i18n("You can use this application to schedule programs to run in the background.\nTo schedule a new task now, click on the Tasks folder and select Edit/New from the menu."), i18n("Welcome to the Task Scheduler"));
+  if (!cthost->root())
+  {
+    int taskCount(0);
+
+    for (CTCronIterator i = (CTCronIterator)cthost->cron.begin();
+      i != cthost->cron.end(); i++)
+    {
+      for (CTTaskIterator j = (CTTaskIterator)(*i)->task.begin();
+        j != (*i)->task.end(); j++)
+      {
+        taskCount++;
+      }
+    }
+
+    if (taskCount == 0)
+    {
+      show();
+      KMessageBox::information(0L, i18n("You can use this application to schedule programs to run in the background.\nTo schedule a new task now, click on the Tasks folder and select Edit/New from the menu."), i18n("Welcome to the Task Scheduler"));
+    }
+  }
 }
 
 KTApp::~KTApp()
@@ -102,6 +123,10 @@ QString KTApp::caption()
   return cap;
 }
 
+void KTApp::setupMenu()
+{
+
+}
 void KTApp::initMenuBar()
 {
   file_menu = new QPopupMenu();
@@ -247,8 +272,25 @@ void KTApp::readOptions()
 	
   QSize size=config->readSizeEntry(QString("Geometry"));
 
-  if (!size.isEmpty())
-    resize(size);
+  // Minimum size is 350 by 250
+
+  if (size.isEmpty())
+  {
+    size.setWidth(350);
+    size.setHeight(250);
+  }
+
+  if (size.width() < 350)
+  {
+    size.setWidth(350);
+  }
+  if (size.height() < 250)
+  {
+    size.setHeight(250);
+  }
+
+  resize(size);
+
 }
 
 bool KTApp::queryClose()

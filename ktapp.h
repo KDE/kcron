@@ -225,6 +225,11 @@ private:
   void initMenuBar();
 
 /**
+  * Initialize menus.
+  */
+  void setupMenu();
+
+/**
   * Initialize toolbar.
   */
   void initToolBar();

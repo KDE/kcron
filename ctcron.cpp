@@ -167,13 +167,28 @@ istream& operator >> (istream& inputStream, CTCron& cron)
 
 ostream& operator << (ostream& outputStream, const CTCron& cron)
 {
+  int itemCount(0);
+
   for (CTVariableIterator i = (CTVariableIterator)cron.variable.begin();
     i != cron.variable.end(); i++)
+  {
     outputStream << **i;
+    itemCount++;
+  }
 
   for (CTTaskIterator i = (CTTaskIterator)cron.task.begin();
     i != cron.task.end(); i++)
+  {
     outputStream << **i;
+    itemCount++;
+  }
+
+  if (itemCount > 0)
+  {
+    outputStream << "# This file was written by KCron. Copyright (c) 1999, Gary Meyer\n";
+    outputStream << "# Although KCron supports most crontab formats, use care when editing.\n";
+    outputStream << "# Note: Lines beginning with \"#\\\" indicates a disabled task.\n";
+  }
 
   return outputStream;
 }

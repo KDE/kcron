@@ -296,7 +296,38 @@ void KTTask::slotDailyChanged()
 
 void KTTask::slotOK()
 {
-  // validate
+  // Make it friendly for just selecting days of the month or
+  // days of the week.
+
+  int monthDaysSelected(0);
+  for (int dm = 1; dm <= 31; dm++)
+  {
+    if (pbDayOfMonth[dm]->isOn()) monthDaysSelected++;
+  }
+
+  int weekDaysSelected(0);
+  for (int dw = 1; dw <= 7; dw++)
+  {
+    if (cbDayOfWeek[dw]->isChecked()) weekDaysSelected++;
+  }
+
+  if ((monthDaysSelected == 0) && (weekDaysSelected > 0))
+  {
+    for (int dm = 1; dm <= 31; dm++)
+    {
+      pbDayOfMonth[dm]->setOn(1);
+    }
+  }
+
+  if ((weekDaysSelected == 0) && (monthDaysSelected > 0))
+  {
+    for (int dw = 1; dw <= 7; dw++)
+    {
+      cbDayOfWeek[dw]->setChecked(1);
+    }
+  }
+
+  // Now validate
   QString message(i18n("Please enter the following to schedule the task:\n"));
   QString sep("\n- ");
   bool showMessage(false);
@@ -388,11 +419,9 @@ void KTTask::slotOK()
   QString qs(leCommand->text());
   if (qs.find("/") == 0)
   {
-    int endPos(qs.findRev(" ", qs.length()));
-    if (endPos < 0) endPos = qs.length();
-
-    QString programName(qs.left(endPos));
-
+    int spacePos(qs.find(" "));
+    if (spacePos < 0) spacePos = qs.length();
+    QString programName(qs.left(spacePos));
     QFileInfo file(programName);
 
     if (!file.isReadable())

@@ -23,16 +23,7 @@
 // Regardless, please don't introduce any other Qt or KDE dependencies here.
 // -GM 11/99
 
-#ifdef KDE
 #include <klocale.h>
-#endif
-
-#ifdef KDE1
 #include <kapp.h>
-
-#ifndef i18n
-#define i18n(X) X
-#endif
-#endif
 
 #endif // CTI18N_H
