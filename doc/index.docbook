@@ -1,9 +1,9 @@
-<!DOCTYPE book PUBLIC  "-//KDE//DTD DocBook V3.1-Based Variant V1.0//EN" [
+<?xml version="1.0" ?><!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.1-Based Variant V1.0//EN" "dtd/kdex.dtd" [
   <!ENTITY kappname "&kcron;">
-  <!ENTITY % English "INCLUDE" -- change language only here -->
+  <!ENTITY % English "INCLUDE" > <!-- change language only here -->
   <!ENTITY % addindex "IGNORE">
-  <!ENTITY % ents PUBLIC "-//KDE//ENTITIES Documentation V1.0//EN">
-  %ents;
+  
+  
 ]>
 
 <book lang="&language;">
@@ -92,7 +92,7 @@ scheduled tasks. Each of the folders can be expanded and contracted.</para>
 <screeninfo>&kcron; at start up.</screeninfo>
 <mediaobject>
 <imageobject>
-<imagedata fileref="kcronstart.png" format="PNG"></imageobject>
+<imagedata fileref="kcronstart.png" format="PNG"/></imageobject>
 <textobject><phrase>&kcron; at start up.</phrase></textobject>
 </mediaobject>
 </screenshot>
@@ -152,7 +152,7 @@ been disabled, no value will appear and the description will be disabled.</para>
 <screeninfo>&kcron; main window.</screeninfo>
 <mediaobject>
 <imageobject>
-<imagedata fileref="kcron.png" format="PNG"></imageobject>
+<imagedata fileref="kcron.png" format="PNG"/></imageobject>
 <textobject><phrase>&kcron; main window</phrase></textobject>
 </mediaobject>
 </screenshot>
@@ -178,7 +178,7 @@ action="simul"><keycap>Ctrl</keycap><keycap>N</keycap></keycombo>.</para>
 <screenshot>
 <screeninfo><guilabel>Edit Task</guilabel> dialog.</screeninfo>
 <mediaobject>
-<imageobject><imagedata fileref="newtask.png" format="PNG"></imageobject>
+<imageobject><imagedata fileref="newtask.png" format="PNG"/></imageobject>
 <textobject><phrase><guilabel>Edit Task</guilabel> dialog</phrase></textobject>
 </mediaobject>
 </screenshot>
@@ -391,7 +391,7 @@ action="simul"><keycap>Ctrl</keycap><keycap>N</keycap></keycombo>.</para>
 <screenshot>
 <screeninfo><guilabel>Edit Variable</guilabel> dialog.</screeninfo>
 <mediaobject>
-<imageobject><imagedata fileref="newvariable.png" format="PNG"></imageobject>
+<imageobject><imagedata fileref="newvariable.png" format="PNG"/></imageobject>
 <textobject><phrase><guilabel>Edit Variable</guilabel>
 dialog.</phrase></textobject>
 </mediaobject>
@@ -587,7 +587,7 @@ changes will not actually be made until this is done.</para>
 <screenshot>
 <screeninfo>Printing the <filename>crontab</filename>.</screeninfo>
 <mediaobject>
-<imageobject><imagedata fileref="print.png" format="PNG"></imageobject>
+<imageobject><imagedata fileref="print.png" format="PNG"/></imageobject>
 <textobject><phrase>Printing the
 <filename>crontab</filename>.</phrase></textobject>
 </mediaobject>
@@ -923,7 +923,7 @@ lists.</para>
 </appendix>
 
 
-<![ %addindex; [ &documentation.index; ]]>
+&documentation.index; 
 </book>
 
 <!--
@@ -935,6 +935,7 @@ sgml-indent-step:0
 sgml-indent-data:nil
 End:
 -->     
+
 
 
 
