@@ -216,9 +216,9 @@ void KTApp::initKeyAccel()
   key_accel = new KAccel(this);
 
   // edit menu accelerators
-  key_accel->connectItem(KStdAccel::New, this, SLOT(slotEditNew()));
+  key_accel->insert(KStdAccel::New, this, SLOT(slotEditNew()));
   //key_accel->connectItem(KStdAccel::Insert, this, SLOT(slotEditNew()));
-  key_accel->connectItem(KStdAccel::Open, this, SLOT(slotEditModify()));
+  key_accel->insert(KStdAccel::Open, this, SLOT(slotEditModify()));
 
   // help menu accelerators
 //  key_accel->connectItem(KStdAccel::Help, kapp, SLOT(appHelpActivated()));

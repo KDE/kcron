@@ -358,9 +358,9 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
 
   // key acceleration
   key_accel = new KAccel(this);
-  key_accel->connectItem(KStdAccel::Open, this, SLOT(slotOK()));
-  key_accel->connectItem(KStdAccel::Close, this, SLOT(slotCancel()));
-  key_accel->connectItem(KStdAccel::Quit, this, SLOT(slotCancel()));
+  key_accel->insert(KStdAccel::Open, this, SLOT(slotOK()));
+  key_accel->insert(KStdAccel::Close, this, SLOT(slotCancel()));
+  key_accel->insert(KStdAccel::Quit, this, SLOT(slotCancel()));
   key_accel->readSettings();
 
   setFixedSize( minimumSize() );
