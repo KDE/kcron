@@ -488,14 +488,17 @@ void KTTask::slotBrowse()
 {
   KURL url = KFileDialog::getOpenURL();
   
-  if( url.isLocalFile() )
+  if(url.isLocalFile())
   {
-    if( !url.isEmpty() )
+    if(!url.isEmpty())
+    {
       leCommand->setText((const char*)url.path());
+    }
   }
   else
   {
-    KMessageBox::sorry( 0L, i18n( "Only local files are supported yet" ) );
+    KMessageBox::sorry(0L,
+      i18n("Only local or mounted files can be executed by crontab."));
   }
   
   leCommand->setFocus();
