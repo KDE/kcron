@@ -232,7 +232,9 @@ void KTView :: pageHeading (KTListItem* user, KTPrint &printer) const
   char hostName[20];
 
   gethostname(hostName, 20); 
-  logonInfo = i18n("%1 <%2> on %3").arg(user->getCTCron()->name.c_str()).arg(user->getCTCron()->login.c_str()).arg(hostName);
+  logonInfo = i18n("user on host", "%1 <%2> on %3").arg(user->
+    getCTCron()->name.c_str()).arg(user->getCTCron()->
+    login.c_str()).arg(hostName);
 
   stnd = printer.getFont();
   printer.setFont(QFont( "arial", 14, QFont::Bold ));
