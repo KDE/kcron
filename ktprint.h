@@ -88,7 +88,7 @@ public:
 /**
   * Print text
   */
-  void print (QString str, int col =1, int alignment=KTPrint::defaultLeftMargin, bool wordWrap = true);
+  void print (const QString &str, int col =1, int alignment=KTPrint::defaultLeftMargin, bool wordWrap = true);
 
 /**
   * Constructs the columns

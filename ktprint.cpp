@@ -105,7 +105,7 @@ QFont KTPrint :: getFont () const
   return paint->font();	
 }
 
-void KTPrint :: print (QString str, int col, int alignment, bool wordWrap)
+void KTPrint :: print (const QString &str, int col, int alignment, bool wordWrap)
 {
 //Prints the string str into the column col using
 //the remaining arguments as format flags
