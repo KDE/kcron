@@ -13,8 +13,6 @@
 
 #include <stdlib.h>
 #include <qstring.h>
-#include <qprinter.h>
-#include <qpainter.h>
 #include <qheader.h>
 #include <qpopupmenu.h>
 #include <qfileinfo.h>
@@ -32,7 +30,6 @@
 #include "ktapp.h"
 #include "ktvariable.h"
 #include "kttask.h"
-#include "resource.h"
 
 #include "cthost.h"
 #include "ctcron.h"
@@ -158,16 +155,6 @@ KTView::~KTView()
   delete listView;
 }
 
-void KTView::print(QPrinter* m_pPrinter) const
-{
-  QPainter printpainter;
-  printpainter.begin(m_pPrinter);
-
-  // TODO: add your printing code here
-
-  printpainter.end();
-}
-
 void KTView::resizeEvent (QResizeEvent* event)
 {
   listView->setFixedWidth(width());
@@ -202,7 +189,7 @@ void KTView::copy()
 
 void KTView::paste()
 {
-  QListViewItem* qlvi = listView->currentItem();
+  KTListItem* qlvi = (KTListItem*)listView->currentItem();
 
   if (currentIsTask)
   {
@@ -222,86 +209,18 @@ void KTView::paste()
 
 void KTView::create()
 {
-  QListViewItem* qlvi = listView->currentItem();
-
-  if (currentIsTask)
-  {
-    CTTask* temptask = new CTTask("", "", currentCTCron->syscron);
-
-    // default user to root for syscron task
-    /*
-    if (temptask->system())
-    {
-      temptask->user="root";
-    }
-    */
-
-    // edit task
-    KTTask* kttask = new KTTask(temptask);
-    kttask->exec();
-    delete kttask;
-
-    if (temptask->dirty())
-    {
-      currentCTCron->task.push_back(temptask);
-      KTListTask* ktlt = new KTListTask(qlvi, currentCTCron, temptask);
-      listView->setSelected(ktlt, true);
-    }
-    else
-    {
-      // cancelled
-      delete temptask;
-    }
-  }
-  else
-  {
-    CTVariable* tempvar = new CTVariable();
-
-    // edit variable
-    KTVariable* ktvar = new KTVariable(tempvar);
-    ktvar->exec();
-    delete ktvar;
-
-    if (tempvar->dirty())
-    {
-      currentCTCron->variable.push_back(tempvar);
-      KTListVar* ktlv = new KTListVar(qlvi, currentCTCron, tempvar);
-      qlvi->sortChildItems(1, true);
-      listView->setSelected(ktlv, true);
-    }
-    else
-    {
-      // cancelled
-      delete tempvar;
-    }
-  }
+  KTListItem* ktli = (KTListItem*)listView->currentItem();
+  CHECK_PTR(ktli);
+  ktli->create();
+  listView->triggerUpdate();
 }
 
 void KTView::edit()
 {
-  QListViewItem* qlvi = listView->currentItem();
-
-  if (currentIsTask)
-  {
-    if (currentCTTask)
-    {
-      // edit task
-      KTTask(currentCTTask).exec();
-      ((KTListTask*)(qlvi))->refresh();
-      qlvi->parent()->sortChildItems(1, true);
-      listView->triggerUpdate();
-    }
-  }
-  else
-  {
-    if (currentCTVariable)
-    {
-      KTVariable(currentCTVariable).exec();
-      ((KTListVar*)(qlvi))->refresh();
-      qlvi->parent()->sortChildItems(1, true);
-      listView->triggerUpdate();
-    }
-  }
+  KTListItem* ktli = (KTListItem*)listView->currentItem();
+  CHECK_PTR(ktli);
+  ktli->edit();
+  listView->triggerUpdate();
 }
 
 void KTView::remove()
@@ -423,33 +342,33 @@ void KTView::slotSetCurrent (QListViewItem* qlvi)
   if (qlvi->text(0) == KTListVars::getDescription())
   {
     // variable label
-    currentCTCron = ((KTListCron*)qlvi)->getCTCron();
+    currentCTCron     = ((KTListCron*)qlvi)->getCTCron();
     currentCTVariable = 0;
-    currentCTTask = 0;
-    currentIsTask = false;
-    ktapp->enableNew();
-    ktapp->enableModify(false);
-    ktapp->enableDelete(false);
-    ktapp->enableCut(false);
-    ktapp->enableCopy(false);
-    ktapp->enablePaste(clipboardCTVariable);
-    ktapp->enableRunNow(false);
+    currentCTTask     = 0;
+    currentIsTask     = false;
+    ktapp->enableCommand(KTApp::menuEditCut,    false);
+    ktapp->enableCommand(KTApp::menuEditCopy,   false);
+    ktapp->enableCommand(KTApp::menuEditPaste,  clipboardCTVariable);
+    ktapp->enableCommand(KTApp::menuEditNew,    true);
+    ktapp->enableCommand(KTApp::menuEditModify, false);
+    ktapp->enableCommand(KTApp::menuEditDelete, false);
+    ktapp->enableCommand(KTApp::menuEditRunNow, false);
     ktapp->enableEnable(false, false);
   }
   else if (qlvi->text(0) == KTListTasks::getDescription())
   {
     // task label
-    currentCTCron = ((KTListCron*)qlvi)->getCTCron();
+    currentCTCron     = ((KTListCron*)qlvi)->getCTCron();
     currentCTVariable = 0;
-    currentCTTask = 0;
-    currentIsTask = true;
-    ktapp->enableNew();
-    ktapp->enableModify(false);
-    ktapp->enableDelete(false);
-    ktapp->enableCut(false);
-    ktapp->enableCopy(false);
-    ktapp->enablePaste(clipboardCTTask);
-    ktapp->enableRunNow(false);
+    currentCTTask     = 0;
+    currentIsTask     = true;
+    ktapp->enableCommand(KTApp::menuEditCut,    false);
+    ktapp->enableCommand(KTApp::menuEditCopy,   false);
+    ktapp->enableCommand(KTApp::menuEditPaste,  clipboardCTTask);
+    ktapp->enableCommand(KTApp::menuEditNew,    true);
+    ktapp->enableCommand(KTApp::menuEditModify, false);
+    ktapp->enableCommand(KTApp::menuEditDelete, false);
+    ktapp->enableCommand(KTApp::menuEditRunNow, false);
     ktapp->enableEnable(false, false);
   }
   else if (parent)
@@ -457,35 +376,33 @@ void KTView::slotSetCurrent (QListViewItem* qlvi)
     if (parent->text(0) == KTListVars::getDescription())
     {
       // variable
-      currentCTCron = ((KTListVar*)qlvi)->getCTCron();
+      currentCTCron     = ((KTListVar*)qlvi)->getCTCron();
       currentCTVariable = ((KTListVar*)qlvi)->getCTVariable();
-      currentCTTask = 0;
-      currentIsTask = false;
-      ktapp->enableNew(false);
-      ktapp->enableModify();
-      ktapp->enableDelete();
-      ktapp->enableCut();
-      ktapp->enableCopy();
-      ktapp->enablePaste(false);
-      ktapp->enableRunNow(false);
+      currentCTTask     = 0;
+      currentIsTask     = false;
+      ktapp->enableCommand(KTApp::menuEditCut,    true);
+      ktapp->enableCommand(KTApp::menuEditCopy,   true);
+      ktapp->enableCommand(KTApp::menuEditPaste,  false);
+      ktapp->enableCommand(KTApp::menuEditNew,    false);
+      ktapp->enableCommand(KTApp::menuEditModify, true);
+      ktapp->enableCommand(KTApp::menuEditDelete, true);
+      ktapp->enableCommand(KTApp::menuEditRunNow, false);
       ktapp->enableEnable(true, currentCTVariable->enabled);
     }
     else if (parent->text(0) == KTListTasks::getDescription())
     {
       // task
-      currentCTCron = ((KTListTask*)qlvi)->getCTCron();
+      currentCTCron     = ((KTListTask*)qlvi)->getCTCron();
       currentCTVariable = 0;
-      currentCTTask = ((KTListTask*)qlvi)->getCTTask();
-      currentIsTask = true;
-      ktapp->enableNew(false);
-      ktapp->enableModify();
-      ktapp->enableDelete();
-      ktapp->enableCut();
-      ktapp->enableCopy();
-      ktapp->enablePaste(false);
-
-      ktapp->enableRunNow(false);
-      ktapp->enableRunNow((currentCTTask->enabled) &&
+      currentCTTask     = ((KTListTask*)qlvi)->getCTTask();
+      currentIsTask     = true;
+      ktapp->enableCommand(KTApp::menuEditCut,    true);
+      ktapp->enableCommand(KTApp::menuEditCopy,   true);
+      ktapp->enableCommand(KTApp::menuEditPaste,  false);
+      ktapp->enableCommand(KTApp::menuEditNew,    false);
+      ktapp->enableCommand(KTApp::menuEditModify, true);
+      ktapp->enableCommand(KTApp::menuEditDelete, true);
+      ktapp->enableCommand(KTApp::menuEditRunNow, (currentCTTask->enabled) &&
         (absolute() != ""));
       ktapp->enableEnable(true, currentCTTask->enabled);
     }
@@ -493,18 +410,17 @@ void KTView::slotSetCurrent (QListViewItem* qlvi)
   else
   {
     // user
-    currentCTCron = ((KTListCron*)qlvi)->getCTCron();
+    currentCTCron     = ((KTListCron*)qlvi)->getCTCron();
     currentCTVariable = 0;
-    currentCTTask = 0;
-    currentIsTask = true;
-    ktapp->enableNew(false);
-    ktapp->enableModify(false);
-    ktapp->enableDelete(false);
-    ktapp->enableCut(false);
-    ktapp->enableCopy(false);
-    ktapp->enableRunNow(false);
-    ktapp->enableEnable(true, false);
-    ktapp->enablePaste(false);
+    currentCTTask     = 0;
+    currentIsTask     = true;
+    ktapp->enableCommand(KTApp::menuEditCut,    false);
+    ktapp->enableCommand(KTApp::menuEditCopy,   false);
+    ktapp->enableCommand(KTApp::menuEditPaste,  false);
+    ktapp->enableCommand(KTApp::menuEditNew,    false);
+    ktapp->enableCommand(KTApp::menuEditModify, false);
+    ktapp->enableCommand(KTApp::menuEditDelete, false);
+    ktapp->enableCommand(KTApp::menuEditRunNow, false);
     ktapp->enableEnable(false, false);
   }
 }

@@ -48,11 +48,6 @@ public:
   ~KTView();
 
 /**
-  * Print the view.
-  */
-  void print(QPrinter* m_pPrinter) const;
-
-/**
   * Copies variables and/or tasks.
   */
   void copy();
