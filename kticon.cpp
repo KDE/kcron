@@ -16,11 +16,6 @@
 #include <kglobal.h>
 #include <kiconloader.h>
 
-#include "ktuser.xpm"
-#include "ktmuser.xpm"
-#include "ktsystem.xpm"
-#include "ktmsystem.xpm"
-
 QPixmap KTIcon::getMiniIcon(const QString& name)
 {
   return SmallIcon(name);

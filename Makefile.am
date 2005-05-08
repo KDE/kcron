@@ -11,8 +11,6 @@
 #  (at your option) any later version.                                   # 
 ##########################################################################
 
-AM_CPPFLAGS = -UQT_NO_ASCII_CAST
-
 bin_PROGRAMS = kcron
 
 kcron_SOURCES = \
@@ -93,22 +91,6 @@ EXTRA_DIST = \
 	TODO \
 	kcron.desktop \
 	kcron.lsm \
-	kthome.xpm \
-	ktmail.xpm \
-	ktmhome.xpm \
-	ktmmail.xpm \
-	ktmpath.xpm \
-	ktmshell.xpm \
-	ktmsystem.xpm \
-	ktmtask.xpm \
-	ktmuser.xpm \
-	ktmvariable.xpm \
-	ktpath.xpm \
-	ktshell.xpm \
-	ktsystem.xpm \
-	kttask.xpm \
-	ktuser.xpm \
-	ktvariable.xpm \
 	Makefile.am
 
 INCLUDES= $(all_includes)
