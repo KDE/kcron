@@ -31,7 +31,7 @@ KTListVars::KTListVars(KTListItem* parent, CTCron* _ctcron) :
   refresh();
 }
 
-KTListVars::KTListVars(QListView* parent, CTCron* _ctcron) :
+KTListVars::KTListVars(Q3ListView* parent, CTCron* _ctcron) :
   KTListItem(parent, 0, _ctcron)
 {
   refresh();

@@ -35,7 +35,7 @@ public:
 /**
   * Construct tasks folder from root.
   */
-  KTListTasks(QListView* parent, CTCron* _ctcron);
+  KTListTasks(Q3ListView* parent, CTCron* _ctcron);
 
  /**
   * Internationalized description.

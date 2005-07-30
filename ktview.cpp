@@ -25,11 +25,13 @@
 #include <string>
 
 #include <qstring.h>
-#include <qheader.h>
-#include <qpopupmenu.h>
+#include <q3header.h>
+#include <q3popupmenu.h>
 #include <qfileinfo.h>
 #include <qfile.h>
 #include <qdatetime.h>
+//Added by qt3to4:
+#include <QResizeEvent>
 
 #include <kapplication.h>
 #include <kglobalsettings.h>
@@ -63,7 +65,7 @@ KTView::KTView(QWidget *parent, const char* name) :
   clipboardCTVariable(0)
 {
   ktapp = (KTApp*)parentWidget();
-  setBackgroundMode(PaletteBase);
+  setBackgroundMode(Qt::PaletteBase);
   refresh();
   listView->setSelected(listView->firstChild(), true);
   
@@ -87,11 +89,11 @@ KTView::KTView(QWidget *parent, const char* name) :
 
 void KTView::refresh()
 {
-  QListView* tmpListView(listView);
+  Q3ListView* tmpListView(listView);
 
-  listView = new QListView(this);
+  listView = new Q3ListView(this);
 
-  listView->setFrameStyle(QListView::Panel | QListView::Sunken);
+  listView->setFrameStyle(Q3ListView::Panel | Q3ListView::Sunken);
   listView->setRootIsDecorated(true);
   listView->setAllColumnsShowFocus(true);
   listView->setShowSortIndicator(true);
@@ -107,7 +109,7 @@ void KTView::refresh()
   listView->addColumn(i18n("Description"));
 
   for (int item = 0; item <=2; item++)
-    listView->setColumnWidthMode(item, QListView::Maximum);
+    listView->setColumnWidthMode(item, Q3ListView::Maximum);
 
   // for each user
   for (CTCronIterator i = const_cast<CTHost&>(cth).cron.begin();
@@ -161,17 +163,17 @@ void KTView::refresh()
 
   resizeEvent();
 
-  connect(listView, SIGNAL(contextMenuRequested(QListViewItem*, const QPoint&, int)),
-    SLOT(slotMenu(QListViewItem*, const QPoint&, int)));
+  connect(listView, SIGNAL(contextMenuRequested(Q3ListViewItem*, const QPoint&, int)),
+    SLOT(slotMenu(Q3ListViewItem*, const QPoint&, int)));
 
-  connect(listView, SIGNAL(selectionChanged(QListViewItem*)),
-    SLOT(slotSetCurrent(QListViewItem*)));
+  connect(listView, SIGNAL(selectionChanged(Q3ListViewItem*)),
+    SLOT(slotSetCurrent(Q3ListViewItem*)));
 
-  connect(listView, SIGNAL(doubleClicked(QListViewItem*)),
-    SLOT(slotEdit(QListViewItem*)));
+  connect(listView, SIGNAL(doubleClicked(Q3ListViewItem*)),
+    SLOT(slotEdit(Q3ListViewItem*)));
 
-  connect(listView, SIGNAL(returnPressed(QListViewItem*)),
-    SLOT(slotEdit(QListViewItem*)));
+  connect(listView, SIGNAL(returnPressed(Q3ListViewItem*)),
+    SLOT(slotEdit(Q3ListViewItem*)));
 
   // switch to the new view
   if (tmpListView)
@@ -460,7 +462,7 @@ void KTView::run() const
 
 void KTView::enable(bool enable)
 {
-  QListViewItem* qlvi = listView->currentItem();
+  Q3ListViewItem* qlvi = listView->currentItem();
 
   if (currentIsTask)
   {
@@ -480,7 +482,7 @@ void KTView::enable(bool enable)
   }
 }
 
-void KTView::slotMenu(QListViewItem* qlvi, const QPoint& qp, int /*i*/)
+void KTView::slotMenu(Q3ListViewItem* qlvi, const QPoint& qp, int /*i*/)
 {
   if (qlvi !=0 ) {
     listView->setSelected(qlvi, true);
@@ -489,14 +491,14 @@ void KTView::slotMenu(QListViewItem* qlvi, const QPoint& qp, int /*i*/)
   }
 }
 
-void KTView::slotEdit(QListViewItem* /*qlvi*/)
+void KTView::slotEdit(Q3ListViewItem* /*qlvi*/)
 {
   edit();
 }
 
-void KTView::slotSetCurrent (QListViewItem* qlvi)
+void KTView::slotSetCurrent (Q3ListViewItem* qlvi)
 {
-  QListViewItem* parent = qlvi->parent();
+  Q3ListViewItem* parent = qlvi->parent();
 
   if (qlvi->text(0) == KTListVars::getDescription())
   {

@@ -15,13 +15,13 @@
 #include "ctcron.h"
 
 KTListItem::KTListItem(KTListItem* parent, const char* name, CTCron* _ctcron) :
-  QListViewItem(parent, name),
+  Q3ListViewItem(parent, name),
   ctcron(_ctcron)
 {
 }
 
-KTListItem::KTListItem(QListView* parent, const char* name, CTCron* _ctcron) :
-  QListViewItem(parent, name),
+KTListItem::KTListItem(Q3ListView* parent, const char* name, CTCron* _ctcron) :
+  Q3ListViewItem(parent, name),
   ctcron(_ctcron)
 {
 }

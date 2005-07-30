@@ -16,7 +16,7 @@
 #include <config.h>
 #endif 
 
-#include <qlistview.h>
+#include <q3listview.h>
 
 class KTPrint;
 class CTCron;
@@ -25,7 +25,7 @@ class CTCron;
   * An enhanced QListViewItem that ensures all list view items have the
   * same interface.
   */
-class KTListItem : public QListViewItem
+class KTListItem : public Q3ListViewItem
 {
 public:
 
@@ -37,7 +37,7 @@ public:
 /**
   * Construct a non-root list view item from a CTCron.
   */
-  KTListItem(QListView* parent, const char* name, CTCron* _ctcron);
+  KTListItem(Q3ListView* parent, const char* name, CTCron* _ctcron);
 
 /**
   * Destructor.

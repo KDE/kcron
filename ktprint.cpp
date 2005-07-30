@@ -13,7 +13,7 @@
 
 #include <qpainter.h>
 #include <qstring.h>
-#include <qpaintdevicemetrics.h>
+#include <q3paintdevicemetrics.h>
 
 #include <ktprintopt.h>
 #include <klocale.h>
@@ -37,7 +37,7 @@ const int KTPrint::defaultBottomMargin       (30);
 enum AlignmentFlags { AlignLeft = 0x0001, AlignRight = 0x0002, 
                       AlignHCenter = 0x0004, AlignTop = 0x0008, 
                       AlignBottom = 0x0010, AlignVCenter = 0x0020,
-                      AlignCenter = AlignVCenter | AlignHCenter, 
+                      AlignCenter = Qt::AlignVCenter | Qt::AlignHCenter, 
                       SingleLine = 0x0040, DontClip = 0x0080, 
                       ExpandTabs = 0x0100, ShowPrefix = 0x0200, 
                       WordBreak = 0x0400, DontPrint = 0x1000 };
@@ -85,7 +85,7 @@ bool KTPrint:: start ()
     paint->setTabStops(20); // Setup a defualt tab stop size
     		
     //Get the information about the page size
-    QPaintDeviceMetrics metrics (prnt);
+    Q3PaintDeviceMetrics metrics (prnt);
     width = metrics.width () - (leftMargin + rightMargin);
     height = metrics.height () - (topMargin + bottomMargin);
     return true;

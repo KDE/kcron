@@ -12,6 +12,10 @@
 #include "ktvariable.h"
 
 #include <qlayout.h>
+//Added by qt3to4:
+#include <QLabel>
+#include <Q3Frame>
+#include <QGridLayout>
 
 #include <kapplication.h>     // kapp
 #include <klocale.h>  // i18n()

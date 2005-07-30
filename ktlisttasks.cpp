@@ -30,7 +30,7 @@ KTListTasks::KTListTasks(KTListItem* parent, CTCron* _ctcron) :
   refresh();
 }
 
-KTListTasks::KTListTasks(QListView* parent, CTCron* _ctcron) :
+KTListTasks::KTListTasks(Q3ListView* parent, CTCron* _ctcron) :
   KTListItem(parent, 0, _ctcron)
 {
   refresh();

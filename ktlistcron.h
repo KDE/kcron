@@ -33,12 +33,12 @@ public:
 /**
   * Construct tasks or variables folder from root.
   */
-  KTListCron(QListView* parent, const char* name, CTCron* _ctcron);
+  KTListCron(Q3ListView* parent, const char* name, CTCron* _ctcron);
 
 /**
   * Construct user folder from root.
   */
-  KTListCron(QListView* parent, CTCron* _ctcron);
+  KTListCron(Q3ListView* parent, CTCron* _ctcron);
 
 /**
   * Refresh.

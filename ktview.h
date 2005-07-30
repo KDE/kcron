@@ -17,10 +17,12 @@
 #endif 
 
 #include <qwidget.h>
+//Added by qt3to4:
+#include <QResizeEvent>
 
 class QString;
-class QListView;
-class QListViewItem;
+class Q3ListView;
+class Q3ListViewItem;
 class KTApp;
 class KTPrint;
 class KTListItem;
@@ -127,19 +129,19 @@ public slots:
 /**
   * Pop up context sensitive menu.
   */
-  void slotMenu(QListViewItem* qlvi, const QPoint& qp, int i);
+  void slotMenu(Q3ListViewItem* qlvi, const QPoint& qp, int i);
 
 /**
   * Default action, edit.
   */
-  void slotEdit(QListViewItem* qlvi = 0);
+  void slotEdit(Q3ListViewItem* qlvi = 0);
 
 protected slots:
 
 /**
   * Set current and update menu
   */
-  void slotSetCurrent (QListViewItem* qlvi);
+  void slotSetCurrent (Q3ListViewItem* qlvi);
 
 protected:
 
@@ -168,7 +170,7 @@ private:
 /**
   * Tree view of the crontab entries.
   */
-  QListView* listView;
+  Q3ListView* listView;
 
 /**
   * Current user's crontab.

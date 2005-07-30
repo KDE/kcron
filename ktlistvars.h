@@ -36,7 +36,7 @@ public:
 /**
   * Construct variables folder from root.
   */
-  KTListVars(QListView* parent, CTCron* _ctcron);
+  KTListVars(Q3ListView* parent, CTCron* _ctcron);
 
 /**
   * Internationalized description.

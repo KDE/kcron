@@ -26,14 +26,14 @@ KTListCron::KTListCron(KTListItem* parent, const char* name,
   refresh();
 }
 
-KTListCron::KTListCron(QListView* parent, const char* name,
+KTListCron::KTListCron(Q3ListView* parent, const char* name,
   CTCron* _ctcron) :
   KTListItem(parent, name, _ctcron)
 {
   refresh();
 }
 
-KTListCron::KTListCron(QListView* parent, CTCron* _ctcron) :
+KTListCron::KTListCron(Q3ListView* parent, CTCron* _ctcron) :
   KTListItem(parent, (const char*)0, _ctcron)
 {
   refresh();

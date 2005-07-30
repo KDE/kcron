@@ -13,6 +13,8 @@
 
 #include <qcheckbox.h>
 #include <qlayout.h>
+//Added by qt3to4:
+#include <QVBoxLayout>
 
 #include <kdialog.h>
 #include <kaccel.h>

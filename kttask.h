@@ -15,11 +15,13 @@
 #include <config.h>
 
 #include <kdialog.h>
+//Added by qt3to4:
+#include <QLabel>
 
 class QLabel;
 class QLineEdit;
 class QCheckBox;
-class QButtonGroup;
+class Q3ButtonGroup;
 class QPushButton;
 class KAccel;
 
@@ -151,28 +153,28 @@ private:
   QCheckBox*      chkEnabled;
   QCheckBox*      chkSilent;
 
-  QButtonGroup*   bgMonth;
+  Q3ButtonGroup*   bgMonth;
   QCheckBox*      cbMonth[13];
   QPushButton*    pbAllMonths;
 
-  QButtonGroup*   bgDayOfMonth;
+  Q3ButtonGroup*   bgDayOfMonth;
   QPushButton*    pbDayOfMonth[32];
   QPushButton*    pbAllDaysOfMonth;
 
-  QButtonGroup*   bgDayOfWeek;
+  Q3ButtonGroup*   bgDayOfWeek;
   QCheckBox*      cbDayOfWeek[8];
   QPushButton*    pbAllDaysOfWeek;
 
-  QButtonGroup*   bgEveryDay;
+  Q3ButtonGroup*   bgEveryDay;
   QCheckBox*      cbEveryDay;
 
-  QButtonGroup*   bgHour;
+  Q3ButtonGroup*   bgHour;
   QLabel*         labAM;
   QLabel*         labPM;
   QPushButton*    pbHour[25];
   QPushButton*    pbAllHours;
 
-  QButtonGroup*   bgMinute;
+  Q3ButtonGroup*   bgMinute;
   QPushButton*    pbMinute[61];
   QPushButton*    pbAllMinutes;
 

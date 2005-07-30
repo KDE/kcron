@@ -17,9 +17,13 @@
 #include <qlayout.h>
 #include <qlineedit.h>
 #include <qcheckbox.h>
-#include <qbuttongroup.h>
+#include <q3buttongroup.h>
 #include <qpainter.h>
 #include <qpalette.h>
+//Added by qt3to4:
+#include <QEvent>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
 
 #include <kapplication.h>
 #include <kaccel.h>
@@ -98,7 +102,7 @@ public:
 };
 
 KTTask::KTTask(CTTask* _cttask, const QString & _caption)
-       :KDialog( 0, "kttask", true, WStyle_DialogBorder )
+       :KDialog( 0, "kttask", true, Qt::WStyle_DialogBorder )
 {
   cttask = _cttask;
 
@@ -182,7 +186,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   ml->addSpacing( 2 * KDialogBase::spacingHint() );
 
   // months
-  bgMonth = new QButtonGroup( i18n("Months"), this, "bgMonth");
+  bgMonth = new Q3ButtonGroup( i18n("Months"), this, "bgMonth");
   h4->addWidget( bgMonth );
 
   QVBoxLayout *vmonths = new QVBoxLayout( bgMonth, KDialogBase::spacingHint() );
@@ -193,18 +197,18 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
     cbMonth[mo] = new QCheckBox(bgMonth, "cbMonth");
     cbMonth[mo]->setText(QString::fromLocal8Bit(cttask->month.getName(mo).c_str()));
     cbMonth[mo]->setChecked(cttask->month.get(mo));
-    vmonths->addWidget( cbMonth[mo], AlignLeft );
+    vmonths->addWidget( cbMonth[mo], Qt::AlignLeft );
 
     if (!cttask->month.get(mo)) everyDay = false;
   }
   pbAllMonths = new QPushButton(bgMonth, "pbAllMonths");
   pbAllMonths->setText( i18n("Set All") );
-  vmonths->addWidget( pbAllMonths, AlignLeft );
+  vmonths->addWidget( pbAllMonths, Qt::AlignLeft );
 
   QVBoxLayout *v1 = new QVBoxLayout( h4, KDialogBase::spacingHint() );
 
   // days of the month
-  bgDayOfMonth = new QButtonGroup( i18n("Days of Month"), this, "bgDayOfMonth");
+  bgDayOfMonth = new Q3ButtonGroup( i18n("Days of Month"), this, "bgDayOfMonth");
   v1->addWidget( bgDayOfMonth );
 
   QPushButton* day;
@@ -227,15 +231,15 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
     pbDayOfMonth[dm] = day;
     if (!cttask->dayOfMonth.get(dm)) everyDay = false;
 
-    hdays->addWidget( day, AlignLeft );
+    hdays->addWidget( day, Qt::AlignLeft );
   }
   hdays->addStretch( 1 );
   pbAllDaysOfMonth = new QPushButton(bgDayOfMonth, "pbAllDaysOfMonth");
   pbAllDaysOfMonth->setText( i18n("Set All") );
-  hdays->addWidget( pbAllDaysOfMonth, AlignLeft );
+  hdays->addWidget( pbAllDaysOfMonth, Qt::AlignLeft );
 
   // days of the week
-  bgDayOfWeek = new QButtonGroup( i18n("Days of Week"), this, "bgDayOfWeek");
+  bgDayOfWeek = new Q3ButtonGroup( i18n("Days of Week"), this, "bgDayOfWeek");
   v1->addWidget( bgDayOfWeek );
 
   QVBoxLayout *v3 = new QVBoxLayout( bgDayOfWeek, KDialogBase::spacingHint() );
@@ -252,12 +256,12 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   }
   pbAllDaysOfWeek = new QPushButton(bgDayOfWeek, "pbAllDaysOfWeek");
   pbAllDaysOfWeek->setText( i18n("Set All") );
-  v3->addWidget( pbAllDaysOfWeek, AlignLeft );
+  v3->addWidget( pbAllDaysOfWeek, Qt::AlignLeft );
 
   QVBoxLayout *v2 = new QVBoxLayout( h4, KDialogBase::spacingHint() );
 
   // daily
-  bgEveryDay = new QButtonGroup( i18n("Daily"), this, "bgEveryDay");
+  bgEveryDay = new Q3ButtonGroup( i18n("Daily"), this, "bgEveryDay");
   v2->addWidget( bgEveryDay );
 
   QVBoxLayout *v9 = new QVBoxLayout( bgEveryDay, KDialogBase::spacingHint() );
@@ -268,13 +272,13 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   v9->addWidget( cbEveryDay );
 
   // hours
-  bgHour = new QButtonGroup( i18n("Hours"), this, "bgHour");
+  bgHour = new Q3ButtonGroup( i18n("Hours"), this, "bgHour");
   v2->addWidget( bgHour );
   QVBoxLayout *v4 = new QVBoxLayout( bgHour, KDialogBase::spacingHint() );
   v4->addSpacing( 2 * KDialogBase::spacingHint() );
 
   labAM = new QLabel( i18n("AM"), bgHour, "labAM");
-  labAM->setAlignment(AlignRight | AlignVCenter);
+  labAM->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
   v4->addWidget( labAM );
 
 
@@ -297,7 +301,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   }
 
   labPM = new QLabel( i18n("PM"), bgHour, "labPM");
-  labPM->setAlignment(AlignRight | AlignVCenter);
+  labPM->setAlignment(AlignRight | Qt::AlignVCenter);
   v4->addWidget( labPM );
 
   hhours = new QHBoxLayout( v4, KDialogBase::spacingHint() );
@@ -312,10 +316,10 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   hhours = new QHBoxLayout( v4, KDialogBase::spacingHint() );
   pbAllHours = new QPushButton(bgHour, "pbAllHours");
   pbAllHours->setText( i18n("Set All") );
-  hhours->addWidget( pbAllHours, AlignLeft );
+  hhours->addWidget( pbAllHours, Qt::AlignLeft );
   
   // minutes
-  bgMinute = new QButtonGroup( i18n("Minutes"), this, "bgMinute");
+  bgMinute = new Q3ButtonGroup( i18n("Minutes"), this, "bgMinute");
   v2->addWidget( bgMinute );
   QVBoxLayout *vmin = new QVBoxLayout( bgMinute, KDialogBase::spacingHint() );
   vmin->addSpacing( 2 * KDialogBase::spacingHint() );
@@ -341,7 +345,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   hmin = new QHBoxLayout( vmin, KDialogBase::spacingHint() );
   pbAllMinutes = new QPushButton(bgMinute, "pbAllMinutes");
   pbAllMinutes->setText( i18n("Set All") );
-  hmin->addWidget( pbAllMinutes, AlignLeft );
+  hmin->addWidget( pbAllMinutes, Qt::AlignLeft );
 
   QHBoxLayout *h5 = new QHBoxLayout( ml, KDialogBase::spacingHint() );
   h5->addStretch( 1 );
