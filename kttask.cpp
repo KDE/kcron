@@ -301,7 +301,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   }
 
   labPM = new QLabel( i18n("PM"), bgHour, "labPM");
-  labPM->setAlignment(AlignRight | Qt::AlignVCenter);
+  labPM->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
   v4->addWidget( labPM );
 
   hhours = new QHBoxLayout( v4, KDialogBase::spacingHint() );
