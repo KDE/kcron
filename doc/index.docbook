@@ -201,7 +201,7 @@ action="simul"><keycap>Ctrl</keycap><keycap>N</keycap></keycombo>.</para>
 <varlistentry>
 <term><guilabel>Program</guilabel></term>
 <listitem><para>Enter the name of the program. You can specify either a
-relative path or absolute path. If you want to look up the program, press
+relative path or absolute path. If you want to look up the program, click
 <guibutton>Browse...</guibutton>.</para>
 </listitem> 
 </varlistentry>
@@ -347,8 +347,8 @@ mouse button menu and choose
 <menuchoice><guimenuitem>Modify...</guimenuitem></menuchoice>, or simply
 press <keycombo
 action="simul"><keycap>Ctrl</keycap><keycap>O</keycap></keycombo>.  You
-will see the <guilabel>Edit Task</guilabel> dialog, which you would
-modify as described <link linkend="new-task">above</link>.</para>
+will see the <guilabel>Edit Task</guilabel> dialog, with which you would
+modify the task as described <link linkend="new-task">above</link>.</para>
 
 </sect2>
 
@@ -553,8 +553,8 @@ modified. Then select <menuchoice> <guimenu>Edit</guimenu>
 can use the <mousebutton>right</mousebutton> mouse button menu and
 choose <guimenuitem>Modify...</guimenuitem>, or simply press <keycombo
 action="simul"><keycap>Ctrl</keycap><keycap>O</keycap></keycombo>.  You
-will see the <guilabel>Edit Variable</guilabel> dialog, which you would
-modify as described <link linkend="new-variable">above</link>.</para>
+will see the <guilabel>Edit Variable</guilabel> dialog, in which you would
+modify the variable as described <link linkend="new-variable">above</link>.</para>
 
 </sect2>
 
