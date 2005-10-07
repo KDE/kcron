@@ -19,7 +19,7 @@
 #include <kstdaction.h>
 #include <kaction.h>
 #include <kiconloader.h>
-#include <kpopupmenu.h>
+#include <kmenu.h>
 #include <kstatusbar.h>
 
 #include "cthost.h"
@@ -55,8 +55,8 @@ KTApp::KTApp() : KMainWindow(0)
   createGUI();
   
   //Connections
-  KPopupMenu *editMenu = static_cast<KPopupMenu*>(guiFactory()->container("edit", this)); 
-  KPopupMenu *settingsMenu = static_cast<KPopupMenu*>(guiFactory()->container("settings", this)); 
+  KMenu *editMenu = static_cast<KMenu*>(guiFactory()->container("edit", this)); 
+  KMenu *settingsMenu = static_cast<KMenu*>(guiFactory()->container("settings", this)); 
   
   connect(editMenu,SIGNAL(highlighted(int)),this,SLOT(statusEditCallback(int)));
   connect(settingsMenu,SIGNAL(highlighted(int)),this,SLOT(statusSettingsCallback(int)));
@@ -159,7 +159,7 @@ void KTApp::saveOptions()
 void KTApp::readOptions()
 {
   config->setGroup(QString("General Options"));
-  KPopupMenu *settingsMenu = static_cast<KPopupMenu*>(guiFactory()->container("settings", this));
+  KMenu *settingsMenu = static_cast<KMenu*>(guiFactory()->container("settings", this));
 
   // bar status settings
   bool bViewToolbar = config->readBoolEntry(QString("Show Toolbar"), true);
@@ -275,7 +275,7 @@ void KTApp::slotFileQuit()
 
 void KTApp::slotEdit(const QPoint& qp)
 {
-  KPopupMenu *editMenu = static_cast<KPopupMenu*>(guiFactory()->container("edit", this));
+  KMenu *editMenu = static_cast<KMenu*>(guiFactory()->container("edit", this));
   editMenu->exec(qp, 0);
 }
 
@@ -324,7 +324,7 @@ void KTApp::slotEditDelete()
 
 void KTApp::slotEditEnable()
 {
-  KPopupMenu *editMenu = static_cast<KPopupMenu*>(guiFactory()->container("edit", this)); 
+  KMenu *editMenu = static_cast<KMenu*>(guiFactory()->container("edit", this)); 
   if (editMenu->isItemChecked(editMenu->idAt(8)))
   {
     slotStatusMsg(i18n("Disabling entry..."));
@@ -354,7 +354,7 @@ void KTApp::slotViewToolBar()
   else
     toolBar()->show();
   
-  KPopupMenu *settingsMenu = static_cast<KPopupMenu*>(guiFactory()->container("settings", this));
+  KMenu *settingsMenu = static_cast<KMenu*>(guiFactory()->container("settings", this));
   settingsMenu->setItemChecked(settingsMenu->idAt(0),toolBar()->isVisible());
   
   slotStatusMsg(i18n("Ready."));
@@ -367,7 +367,7 @@ void KTApp::slotViewStatusBar()
   else
     statusBar()->show();
   
-  KPopupMenu *settingsMenu = static_cast<KPopupMenu*>(guiFactory()->container("settings", this));
+  KMenu *settingsMenu = static_cast<KMenu*>(guiFactory()->container("settings", this));
   settingsMenu->setItemChecked(settingsMenu->idAt(1),statusBar()->isVisible());
   
   slotStatusMsg(i18n("Ready."));
@@ -387,7 +387,7 @@ void KTApp::slotStatusHelpMsg(const QString & text)
 
 void KTApp::statusEditCallback(int id_)
 {
-  KPopupMenu *editMenu = static_cast<KPopupMenu*>(guiFactory()->container("edit", this)); 
+  KMenu *editMenu = static_cast<KMenu*>(guiFactory()->container("edit", this)); 
   int index = editMenu->indexOf(id_);
   switch (index) {
     case menuEditNew:
@@ -413,7 +413,7 @@ void KTApp::statusEditCallback(int id_)
 
 void KTApp::statusSettingsCallback(int id_)
 {
-  KPopupMenu *settingsMenu = static_cast<KPopupMenu*>(guiFactory()->container("settings", this)); 
+  KMenu *settingsMenu = static_cast<KMenu*>(guiFactory()->container("settings", this)); 
   int index = settingsMenu->indexOf(id_);
   switch (index) {
     case menuSettingsShowToolBar:
@@ -455,7 +455,7 @@ void KTApp::slotEnableRunNow(bool state)
 
 void KTApp::slotEnableEnabled(bool state)
 {
-  KPopupMenu *editMenu = static_cast<KPopupMenu*>(guiFactory()->container("edit", this));
+  KMenu *editMenu = static_cast<KMenu*>(guiFactory()->container("edit", this));
   editMenu->setItemChecked(editMenu->idAt(8),state);
 }      
 
