@@ -160,8 +160,8 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
 
   leCommand->setText(QString::fromLocal8Bit(cttask->command.c_str()));
 
-  labComment->setFixedWidth( QMAX( labComment->width(), labCommand->width()) );
-  labCommand->setFixedWidth( QMAX( labComment->width(), labCommand->width()) );
+  labComment->setFixedWidth( qMax( labComment->width(), labCommand->width()) );
+  labCommand->setFixedWidth( qMax( labComment->width(), labCommand->width()) );
 
   slotCommandChanged();
 
