@@ -25,7 +25,7 @@
 #include "cthost.h"
 #include "ctcron.h"
 #include "cttask.h"
-
+#include <kxmlguifactory.h>
 #include "kticon.h"
 #include "ktview.h"
 

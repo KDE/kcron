@@ -343,7 +343,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   }
   
   hmin = new QHBoxLayout( vmin, KDialogBase::spacingHint() );
-  pbAllMinutes = new QPushButton(bgMinute, "pbAllMinutes");
+  pbAllMinutes = new QPushButton(bgMinute);
   pbAllMinutes->setText( i18n("Set All") );
   hmin->addWidget( pbAllMinutes, Qt::AlignLeft );
 
@@ -351,12 +351,12 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   h5->addStretch( 1 );
 
   // OK
-  pbOk = new KPushButton(KStdGuiItem::ok(), this, "pbOk");
+  pbOk = new KPushButton(KStdGuiItem::ok(), this);
   pbOk->setDefault(true);
   h5->addWidget( pbOk );
 
   // Cancel
-  pbCancel = new KPushButton(KStdGuiItem::cancel(), this, "pbCancel");
+  pbCancel = new KPushButton(KStdGuiItem::cancel(), this);
   h5->addWidget( pbCancel );
 
   // window
