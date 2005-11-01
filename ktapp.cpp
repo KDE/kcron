@@ -26,6 +26,7 @@
 #include "ctcron.h"
 #include "cttask.h"
 #include <kxmlguifactory.h>
+#include <kglobal.h>
 #include "kticon.h"
 #include "ktview.h"
 
@@ -35,7 +36,7 @@ const int KTApp::statusMessage            (1001);
 
 KTApp::KTApp() : KMainWindow(0)
 {
-  config=kapp->config();
+  config=KGlobal::config();
 
   setIcon(KTIcon::application(true));
 

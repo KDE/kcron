@@ -33,7 +33,7 @@ int main(int argc, char* argv[])
     KApplication app(&aboutData);
  
       
-    if (app.isRestored())
+    if (app.isSessionRestored())
       { 
         RESTORE(KTApp);
       }
