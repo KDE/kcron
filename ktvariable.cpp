@@ -68,7 +68,7 @@ KTVariable::KTVariable(CTVariable* _ctvar,const QString &_caption) :
   labComment = new QLabel(i18n("Co&mment:"), page, "labComment");
   layout->addWidget(labComment, 3, 0, Qt::AlignLeft | Qt::AlignTop);
 
-  teComment = new KTextEdit(page, "teComment");
+  teComment = new KTextEdit(page);
   teComment->setTextFormat(Qt::PlainText);
   layout->addMultiCellWidget(teComment, 3, 3, 1, 2);
 
@@ -146,9 +146,9 @@ void KTVariable::slotOk()
     return;
   }
 
-  ctvar->variable = cmbVariable->currentText().local8Bit();
-  ctvar->value    = leValue->text().local8Bit();
-  ctvar->comment  = teComment->text().replace('\n',' ').replace('\r',' ').local8Bit();
+  ctvar->variable = cmbVariable->currentText().latin1()/*.local8Bit()*/;
+  ctvar->value    = leValue->text().latin1();
+  ctvar->comment  = teComment->text().replace('\n',' ').replace('\r',' ').latin1();
   ctvar->enabled  = chkEnabled->isChecked();
   close();
 }

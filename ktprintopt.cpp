@@ -23,7 +23,7 @@
 #include "ktprintopt.h"
 
 KTPrintOpt::KTPrintOpt(bool root) :
-    KPrintDialogPage(0, "ktprintopt")
+    KPrintDialogPage(this)
 {
   m_title = i18n("Cron Options");
 
