@@ -163,12 +163,12 @@ void KTApp::readOptions()
   KMenu *settingsMenu = static_cast<KMenu*>(guiFactory()->container("settings", this));
 
   // bar status settings
-  bool bViewToolbar = config->readBoolEntry(QString("Show Toolbar"), true);
+  bool bViewToolbar = config->readEntry(QString("Show Toolbar"), true);
   settingsMenu->setItemChecked(settingsMenu->idAt(0),bViewToolbar);
   if (!bViewToolbar)
     toolBar()->hide();
 
-  bool bViewStatusbar = config->readBoolEntry(QString("Show Statusbar"), true);
+  bool bViewStatusbar = config->readEntry(QString("Show Statusbar"), true);
   settingsMenu->setItemChecked(settingsMenu->idAt(1),bViewStatusbar);
   if (!bViewStatusbar)
     statusBar()->hide();
@@ -181,7 +181,7 @@ void KTApp::readOptions()
 
   toolBar()->setBarPos(tool_bar_pos);
 
-  QSize size=config->readSizeEntry(QString("Geometry"));
+  QSize size=config->readEntry(QString("Geometry"),QSize());
 
   // Minimum size is 350 by 250
 
