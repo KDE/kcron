@@ -539,7 +539,7 @@ void KTView::slotSetCurrent (Q3ListViewItem* qlvi)
       
       emit(enableModificationButtons(true));
       emit(enableRunNow(false));
-      emit(enableEnabled(currentCTTask->enabled));
+      emit(enableEnabled(currentCTVariable->enabled));
 
     }
     else if (parent->text(0) == KTListTasks::getDescription())
