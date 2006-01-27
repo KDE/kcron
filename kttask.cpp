@@ -693,7 +693,7 @@ void KTTask::slotCancel()
 
 void KTTask::slotBrowse()
 {
-  KURL url = KFileDialog::getOpenURL();
+  KUrl url = KFileDialog::getOpenURL();
 
   if(!url.isEmpty())
   {
