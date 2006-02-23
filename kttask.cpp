@@ -32,7 +32,7 @@
 #include <kmessagebox.h>
 #include <kpushbutton.h>
 #include <kstdguiitem.h>
-
+#include <kdialogbase.h>
 #include "cttask.h"
 
 #include "kticon.h"
