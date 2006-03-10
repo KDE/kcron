@@ -29,7 +29,7 @@
 #include <kglobal.h>
 #include "kticon.h"
 #include "ktview.h"
-
+#include <ktoolbar.h>
 
 const int KTApp::statusMessage            (1001);
 
