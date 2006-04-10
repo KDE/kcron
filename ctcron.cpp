@@ -60,7 +60,7 @@ CTCron::CTCron(bool _syscron, string _login) :
       writeCommand = QString("crontab -u ") + _login.c_str() + " " + KProcess::quote(tmpFileName);
       if (!initFromPasswd(getpwnam(_login.c_str())))
       {
-         error = i18n("No password entry found for user '%1'").arg(_login.c_str());
+         error = i18n("No password entry found for user '%1'", _login.c_str());
       }
     }
   }
@@ -71,7 +71,7 @@ CTCron::CTCron(bool _syscron, string _login) :
     writeCommand = "crontab "      + KProcess::quote(tmpFileName);
     if (!initFromPasswd(getpwuid(uid)))
     {
-      error = i18n("No password entry found for uid '%1'").arg(uid);
+      error = i18n("No password entry found for uid '%1'", uid);
     }
   }
 
