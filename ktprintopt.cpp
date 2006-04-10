@@ -17,7 +17,7 @@
 #include <QVBoxLayout>
 
 #include <kdialog.h>
-#include <kaccel.h>
+
 #include <klocale.h>
 #include <kapplication.h>
 #include "ktprintopt.h"
