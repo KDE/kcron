@@ -30,7 +30,7 @@ string CTDayOfMonth::describe() const
 {
  initializeNames();
   return (count() == 31) ?
-    (const char*)i18n("every day ").local8Bit() :
+    (const char*)i18n("every day ").toLocal8Bit() :
     CTUnit<1,31>::describe(shortName);
 }
 
@@ -47,22 +47,22 @@ void CTDayOfMonth::initializeNames()
     const string shortDOMName[32] =
     {
       "",
-      (const char*)i18n("1st").local8Bit(),  (const char*)i18n("2nd").local8Bit(),
-      (const char*)i18n("3rd").local8Bit(),  (const char*)i18n("4th").local8Bit(),
-      (const char*)i18n("5th").local8Bit(),  (const char*)i18n("6th").local8Bit(),
-      (const char*)i18n("7th").local8Bit(),  (const char*)i18n("8th").local8Bit(),
-      (const char*)i18n("9th").local8Bit(),  (const char*)i18n("10th").local8Bit(),
-      (const char*)i18n("11th").local8Bit(), (const char*)i18n("12th").local8Bit(),
-      (const char*)i18n("13th").local8Bit(), (const char*)i18n("14th").local8Bit(),
-      (const char*)i18n("15th").local8Bit(), (const char*)i18n("16th").local8Bit(), 
-      (const char*)i18n("17th").local8Bit(), (const char*)i18n("18th").local8Bit(),
-      (const char*)i18n("19th").local8Bit(), (const char*)i18n("20th").local8Bit(),
-      (const char*)i18n("21st").local8Bit(), (const char*)i18n("22nd").local8Bit(),
-      (const char*)i18n("23rd").local8Bit(), (const char*)i18n("24th").local8Bit(), 
-      (const char*)i18n("25th").local8Bit(), (const char*)i18n("26th").local8Bit(),
-      (const char*)i18n("27th").local8Bit(), (const char*)i18n("28th").local8Bit(), 
-      (const char*)i18n("29th").local8Bit(), (const char*)i18n("30th").local8Bit(),
-      (const char*)i18n("31st").local8Bit()
+      (const char*)i18n("1st").toLocal8Bit(),  (const char*)i18n("2nd").toLocal8Bit(),
+      (const char*)i18n("3rd").toLocal8Bit(),  (const char*)i18n("4th").toLocal8Bit(),
+      (const char*)i18n("5th").toLocal8Bit(),  (const char*)i18n("6th").toLocal8Bit(),
+      (const char*)i18n("7th").toLocal8Bit(),  (const char*)i18n("8th").toLocal8Bit(),
+      (const char*)i18n("9th").toLocal8Bit(),  (const char*)i18n("10th").toLocal8Bit(),
+      (const char*)i18n("11th").toLocal8Bit(), (const char*)i18n("12th").toLocal8Bit(),
+      (const char*)i18n("13th").toLocal8Bit(), (const char*)i18n("14th").toLocal8Bit(),
+      (const char*)i18n("15th").toLocal8Bit(), (const char*)i18n("16th").toLocal8Bit(), 
+      (const char*)i18n("17th").toLocal8Bit(), (const char*)i18n("18th").toLocal8Bit(),
+      (const char*)i18n("19th").toLocal8Bit(), (const char*)i18n("20th").toLocal8Bit(),
+      (const char*)i18n("21st").toLocal8Bit(), (const char*)i18n("22nd").toLocal8Bit(),
+      (const char*)i18n("23rd").toLocal8Bit(), (const char*)i18n("24th").toLocal8Bit(), 
+      (const char*)i18n("25th").toLocal8Bit(), (const char*)i18n("26th").toLocal8Bit(),
+      (const char*)i18n("27th").toLocal8Bit(), (const char*)i18n("28th").toLocal8Bit(), 
+      (const char*)i18n("29th").toLocal8Bit(), (const char*)i18n("30th").toLocal8Bit(),
+      (const char*)i18n("31st").toLocal8Bit()
     };
   
     for (int i = 1; i <= 31; i++)

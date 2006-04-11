@@ -51,7 +51,7 @@ CTCron::CTCron(bool _syscron, string _login) :
     {
       readCommand  = "cat /etc/crontab > " + KProcess::quote(tmpFileName);
       writeCommand = "cat " + KProcess::quote(tmpFileName) + " > /etc/crontab";
-      login = (const char *)i18n("(System Crontab)").local8Bit();
+      login = (const char *)i18n("(System Crontab)").toLocal8Bit();
       name = "";
     }
     else

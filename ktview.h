@@ -42,7 +42,7 @@ public:
 /**
   * Initializes view.
   */
-  KTView (QWidget* parent = 0, const char* name=0);
+  KTView (QWidget* parent = 0);
 
 /**
   * Destructor.

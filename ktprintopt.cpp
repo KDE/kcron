@@ -27,18 +27,24 @@ KTPrintOpt::KTPrintOpt(bool root) :
 {
   m_title = i18n("Cron Options");
 
-  QVBoxLayout *main_ = new QVBoxLayout(this, KDialog::marginHint(), KDialog::spacingHint());
-
-  chkPrintCrontab = new QCheckBox(i18n("Print cron&tab"), this, "chkPrintCrontab");
+  QVBoxLayout *main_ = new QVBoxLayout(this);
+  main_->setMargin(KDialog::marginHint());
+  main_->setSpacing(KDialog::spacingHint());
+		  
+  chkPrintCrontab = new QCheckBox(i18n("Print cron&tab"), this);
+  chkPrintCrontab->setObjectName("chkPrintCrontab");
   main_->addWidget(chkPrintCrontab);
 
-  chkPrintAllUsers = new QCheckBox(i18n("Print &all users"), this, "chkPrintAllUsers");
+  chkPrintAllUsers = new QCheckBox(i18n("Print &all users"), this);
+  chkPrintAllUsers->setObjectName("chkPrintAllUsers");
   main_->addWidget(chkPrintAllUsers);
 
   if (!root) {
     chkPrintAllUsers->setChecked(false);
     chkPrintAllUsers->setEnabled(false);
   }
+
+  setLayout(main_);
 }
 
 KTPrintOpt::~KTPrintOpt()

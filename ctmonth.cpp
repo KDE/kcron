@@ -29,7 +29,7 @@ string CTMonth::describe () const
 {
   initializeNames();
   return (count() == 12) ?
-    (const char*)i18n("every month ").local8Bit() :
+    (const char*)i18n("every month ").toLocal8Bit() :
     CTUnit<1,12>::describe(shortName);
 }
 
@@ -46,12 +46,12 @@ void CTMonth::initializeNames()
     const string shortMonthName[13] =
     {
       "",
-      (const char*)i18n("January").local8Bit(),  (const char*)i18n("February").local8Bit(),
-      (const char*)i18n("March").local8Bit(),  (const char*)i18n("April").local8Bit(),
-      (const char*)i18nc("May long","May").local8Bit(), (const char*)i18n("June").local8Bit(),
-      (const char*)i18n("July").local8Bit(),  (const char*)i18n("August").local8Bit(),
-      (const char*)i18n("September").local8Bit(),  (const char*)i18n("October").local8Bit(),
-      (const char*)i18n("November").local8Bit(),  (const char*)i18n("December").local8Bit()
+      (const char*)i18n("January").toLocal8Bit(),  (const char*)i18n("February").toLocal8Bit(),
+      (const char*)i18n("March").toLocal8Bit(),  (const char*)i18n("April").toLocal8Bit(),
+      (const char*)i18nc("May long","May").toLocal8Bit(),  (const char*)i18n("June").toLocal8Bit(),
+      (const char*)i18n("July").toLocal8Bit(),  (const char*)i18n("August").toLocal8Bit(),
+      (const char*)i18n("September").toLocal8Bit(),  (const char*)i18n("October").toLocal8Bit(),
+      (const char*)i18n("November").toLocal8Bit(),  (const char*)i18n("December").toLocal8Bit()
     };
   
     for (int i = 1; i <= 12; i++)

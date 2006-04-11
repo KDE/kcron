@@ -27,55 +27,64 @@
 #include "kticon.h"
 
 KTVariable::KTVariable(CTVariable* _ctvar,const QString &_caption) :
-  KDialogBase(0, "ktvariable", true, _caption, Ok|Cancel, Ok, true),
+  KDialogBase(Plain, _caption, Ok|Cancel, Ok),
   ctvar( _ctvar)
 {
   QFrame *page = makeMainWidget();
-  QGridLayout *layout = new QGridLayout( page, 5, 3, 0, spacingHint() );
+  QGridLayout *layout = new QGridLayout( page );
+  layout->setMargin( 0 );
+  layout->setSpacing( spacingHint() );
   layout->setRowStretch(3, 1);
-  layout->setColStretch(1, 1);
+  layout->setColumnStretch(1, 1);
 
-  setIcon(KTIcon::application(true));
+  setWindowIcon(KTIcon::application(true));
 
   // variable
-  labVariable = new QLabel(i18n("&Variable:"), page, "labVariable");
+  labVariable = new QLabel(i18n("&Variable:"), page );
+  labVariable->setObjectName("labVariable");
   layout->addWidget(labVariable, 1, 0, Qt::AlignLeft | Qt::AlignTop);
 
-  cmbVariable = new QComboBox(true, page, "cmbVariable");
+  cmbVariable = new QComboBox(page);
+  cmbVariable->setEditable(true);
+  cmbVariable->setObjectName("cmbVariable");
   layout->addWidget(cmbVariable, 1, 1);
 
-  cmbVariable->insertItem("HOME");
-  cmbVariable->insertItem("MAILTO");
-  cmbVariable->insertItem("PATH");
-  cmbVariable->insertItem("SHELL");
+  cmbVariable->addItem("HOME");
+  cmbVariable->addItem("MAILTO");
+  cmbVariable->addItem("PATH");
+  cmbVariable->addItem("SHELL");
 
   labVariable->setBuddy(cmbVariable);
 
   // icon
-  labIcon = new QLabel(page, "labIcon");
-  layout->addMultiCellWidget(labIcon, 0, 1, 2, 2);
+  labIcon = new QLabel(page);
+  labIcon->setObjectName("labIcon");
+  layout->addWidget(labIcon, 0, 2, 1, 0);
 
   // value
-  labValue = new QLabel(i18n("Va&lue:"), page, "labValue");
+  labValue = new QLabel(i18n("Va&lue:"), page);
+  labValue->setObjectName("labValue");
   layout->addWidget(labValue, 2, 0, Qt::AlignLeft | Qt::AlignTop);
 
-  leValue = new QLineEdit(page, "leValue");
-  layout->addMultiCellWidget(leValue, 2, 2, 1, 2);
+  leValue = new QLineEdit(page);
+  leValue->setObjectName("leValue");
+  layout->addWidget(leValue, 2, 1, 1, 2);
   leValue->setMaxLength(255);
   labValue->setBuddy(leValue);
 
   // comment
-  labComment = new QLabel(i18n("Co&mment:"), page, "labComment");
+  labComment = new QLabel(i18n("Co&mment:"), page);
+  labComment->setObjectName("labComment");
   layout->addWidget(labComment, 3, 0, Qt::AlignLeft | Qt::AlignTop);
 
   teComment = new KTextEdit(page);
-  teComment->setTextFormat(Qt::PlainText);
-  layout->addMultiCellWidget(teComment, 3, 3, 1, 2);
+  layout->addWidget(teComment, 3, 1, 1, 2);
 
   labComment->setBuddy(teComment);
 
   // enabled
-  chkEnabled = new QCheckBox(i18n("&Enabled"), page, "chkEnabled");
+  chkEnabled = new QCheckBox(i18n("&Enabled"), page);
+  chkEnabled->setObjectName("chkEnabled");
   layout->addWidget(chkEnabled, 4, 0);
 
   // set starting field values
@@ -84,7 +93,7 @@ KTVariable::KTVariable(CTVariable* _ctvar,const QString &_caption) :
 
   leValue->setText(QString::fromLocal8Bit(ctvar->value.c_str()));
 
-  teComment->setText(QString::fromLocal8Bit(ctvar->comment.c_str()));
+  teComment->setPlainText(QString::fromLocal8Bit(ctvar->comment.c_str()));
 
   chkEnabled->setChecked(ctvar->enabled);
 
@@ -107,22 +116,22 @@ void KTVariable::slotVariableChanged()
   if (variable == "HOME")
   {
     labIcon->setPixmap(KTIcon::home(false));
-    teComment->setText(i18n("Override default home folder."));
+    teComment->setPlainText(i18n("Override default home folder."));
   }
   else if (variable == "MAILTO")
   {
     labIcon->setPixmap(KTIcon::mail(false));
-    teComment->setText(i18n("Email output to specified account."));
+    teComment->setPlainText(i18n("Email output to specified account."));
   }
   else if (variable == "SHELL")
   {
     labIcon->setPixmap(KTIcon::shell(false));
-    teComment->setText(i18n("Override default shell."));
+    teComment->setPlainText(i18n("Override default shell."));
   }
   else if (variable == "PATH")
   {
     labIcon->setPixmap(KTIcon::path(false));
-    teComment->setText(i18n("Folders to search for program files."));
+    teComment->setPlainText(i18n("Folders to search for program files."));
   }
   else
   {
@@ -146,9 +155,9 @@ void KTVariable::slotOk()
     return;
   }
 
-  ctvar->variable = cmbVariable->currentText().latin1()/*.local8Bit()*/;
-  ctvar->value    = leValue->text().latin1();
-  ctvar->comment  = teComment->text().replace('\n',' ').replace('\r',' ').latin1();
+  ctvar->variable = (const char*)cmbVariable->currentText().toLatin1()/*.toLocal8Bit()*/;
+  ctvar->value    = (const char*)leValue->text().toLatin1();
+  ctvar->comment  = (const char*)teComment->toPlainText().replace('\n',' ').replace('\r',' ').toLatin1();
   ctvar->enabled  = chkEnabled->isChecked();
   close();
 }

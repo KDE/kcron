@@ -53,8 +53,8 @@
 #include "kttask.h"
 #include "ktprint.h"
 
-KTView::KTView(QWidget *parent, const char* name) :
-  QWidget(parent, name),
+KTView::KTView(QWidget *parent) :
+  QWidget(parent),
   listView(0),
   currentCTCron(0),
   currentIsTask(true),
@@ -65,7 +65,7 @@ KTView::KTView(QWidget *parent, const char* name) :
   clipboardCTVariable(0)
 {
   ktapp = (KTApp*)parentWidget();
-  setBackgroundMode(Qt::PaletteBase);
+  setBackgroundRole(QPalette::Base);
   refresh();
   listView->setSelected(listView->firstChild(), true);
   
@@ -427,10 +427,10 @@ QString KTView::absolute() const
 {
   QString fullCommand = QString::fromLocal8Bit(currentCTTask->command.c_str());
   QString command(fullCommand);
-  int pos(command.find(" "));
+  int pos(command.indexOf(" "));
   if (pos > 0) command = command.left(pos);
 
-  if (command.find("/") == 0)
+  if (command.indexOf("/") == 0)
    return fullCommand;
 
   QString path = QString::fromLocal8Bit(currentCTCron->path().c_str());
@@ -439,7 +439,7 @@ QString KTView::absolute() const
   QString prefix;
   QString full;
 
-  while ((end = path.find(":", begin)) > 0)
+  while ((end = path.indexOf(":", begin)) > 0)
   {
     prefix = path.mid(begin, begin + end) + "/";
     full = prefix + command;

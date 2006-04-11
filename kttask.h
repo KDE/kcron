@@ -23,7 +23,6 @@ class QLineEdit;
 class QCheckBox;
 class Q3ButtonGroup;
 class QPushButton;
-class KAccel;
 
 class CTTask;
 
@@ -130,11 +129,6 @@ private:
   */
   CTTask*         cttask;
 
-/**
-  * Key accelerator.
-  */
-
-  KAccel*         key_accel;
 
   // Widgets.
 

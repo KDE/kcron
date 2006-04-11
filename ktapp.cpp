@@ -38,7 +38,7 @@ KTApp::KTApp() : KMainWindow(0)
 {
   config=KGlobal::config();
 
-  setIcon(KTIcon::application(true));
+  setWindowIcon(KTIcon::application(true));
 
   setCaption(i18n("Task Scheduler"));
 
@@ -59,8 +59,8 @@ KTApp::KTApp() : KMainWindow(0)
   KMenu *editMenu = static_cast<KMenu*>(guiFactory()->container("edit", this)); 
   KMenu *settingsMenu = static_cast<KMenu*>(guiFactory()->container("settings", this)); 
   
-  connect(editMenu,SIGNAL(highlighted(int)),this,SLOT(statusEditCallback(int)));
-  connect(settingsMenu,SIGNAL(highlighted(int)),this,SLOT(statusSettingsCallback(int)));
+  connect(editMenu,SIGNAL(hovered(QAction*)),this,SLOT(statusEditCallback(QAction*)));
+  connect(settingsMenu,SIGNAL(hovered(QAction*)),this,SLOT(statusSettingsCallback(QAction*)));
   // Read options.
   readOptions();
 }
@@ -125,20 +125,36 @@ void KTApp::setupActions()
   KStdAction::quit(this, SLOT(slotFileQuit()), actionCollection());
   
   //Edit menu
-  KStdAction::cut(this, SLOT(slotEditCut()), actionCollection());
+  KStdAction::cut(this, SLOT(slotEditCut()), actionCollection(), "edit_cut");
   KStdAction::copy(this, SLOT(slotEditCopy()), actionCollection());
   KStdAction::paste(this, SLOT(slotEditPaste()), actionCollection());
-  (void)new KAction(i18n("&New..."), KStdAccel::openNew(), this,SLOT(slotEditNew()),actionCollection(),"edit_new");
+
+  KAction* newAct = new KAction(KIcon("filenew"), i18n("&New..."), actionCollection(), "edit_new");
+  newAct->setShortcut(KStdAccel::shortcut(KStdAccel::New));
+  connect(newAct, SIGNAL(triggered(bool)), SLOT(slotEditNew()));
+
   //I don't like this KStdAccel::open() for modifying, but I'm just porting this to xmlui
-  (void)new KAction(i18n("M&odify..."), KStdAccel::open(), this,SLOT(slotEditModify()),actionCollection(),"edit_modify");
-  (void)new KAction(i18n("&Delete"), 0, this,SLOT(slotEditDelete()),actionCollection(),"edit_delete");
-  (void)new KAction(i18n("&Enabled"), 0, this,SLOT(slotEditEnable()),actionCollection(),"edit_enable");
-  (void)new KAction(i18n("&Run Now"), 0, this,SLOT(slotEditRunNow()),actionCollection(),"edit_run");
+  KAction* modifyAct = new KAction(KIcon("fileopen"), i18n("M&odify..."), actionCollection(), "edit_modify");
+  modifyAct->setShortcut(KStdAccel::shortcut(KStdAccel::Open));
+  connect(modifyAct, SIGNAL(triggered(bool)), SLOT(slotEditModify()));
+
+  KAction* deleteAct = new KAction(KIcon("filedelete"), i18n("&Delete"), actionCollection(), "edit_delete");
+  connect(deleteAct, SIGNAL(triggered(bool)), SLOT(slotEditDelete()));
+
+  KAction* enableAct = new KAction(i18n("&Enabled"), actionCollection(), "edit_enable");
+  connect(enableAct, SIGNAL(triggered(bool)), SLOT(slotEditEnable()));
+
+  KAction* runAct = new KAction(i18n("&Run Now"), actionCollection(), "edit_run");
+  connect(runAct, SIGNAL(triggered(bool)), SLOT(slotEditRunNow()));
   
   //Settings menu
-  (void)new KAction(i18n("Show &Toolbar"), 0, this,SLOT(slotViewToolBar()),actionCollection(),"show_toolbar");
-  (void)new KAction(i18n("Show &Statusbar"), 0, this,SLOT(slotViewStatusBar()),actionCollection(),"show_statusbar");
-    
+  KToggleAction* showToolbarAct = new KToggleAction(i18n("Show &Toolbar"), actionCollection(), "show_toolbar");
+  connect(showToolbarAct, SIGNAL(triggered(bool)), SLOT(slotViewToolBar()));
+  showToolbarAct->setCheckedState(i18n("Show &Toolbar"));
+
+  KToggleAction* showStatusbarAct = new KToggleAction(i18n("Show &Statusbar"), actionCollection(), "show_statusbar");
+  connect(showStatusbarAct, SIGNAL(triggered(bool)), SLOT(slotViewStatusBar()));
+  showStatusbarAct->setCheckedState(i18n("Show &Statusbar"));
 }
 
 void KTApp::initStatusBar()
@@ -153,33 +169,30 @@ void KTApp::saveOptions()
   config->writeEntry(QString("Geometry"), size());
   config->writeEntry(QString("Show Toolbar"), toolBar()->isVisible());
   config->writeEntry(QString("Show Statusbar"), statusBar()->isVisible());
-  config->writeEntry(QString("ToolBarPos"),  (int)toolBar()->barPos());
+  config->writeEntry(QString("ToolBarArea"),  (int)toolBarArea(toolBar()));
 }
 
 
 void KTApp::readOptions()
 {
   config->setGroup(QString("General Options"));
-  KMenu *settingsMenu = static_cast<KMenu*>(guiFactory()->container("settings", this));
 
   // bar status settings
   bool bViewToolbar = config->readEntry(QString("Show Toolbar"), true);
-  settingsMenu->setItemChecked(settingsMenu->idAt(0),bViewToolbar);
+  actionCollection()->action("show_toolbar")->setChecked(bViewToolbar);
   if (!bViewToolbar)
     toolBar()->hide();
 
   bool bViewStatusbar = config->readEntry(QString("Show Statusbar"), true);
-  settingsMenu->setItemChecked(settingsMenu->idAt(1),bViewStatusbar);
+  actionCollection()->action("show_statusbar")->setChecked(bViewStatusbar);
   if (!bViewStatusbar)
     statusBar()->hide();
 
   // bar position settings
-  KToolBar::BarPosition tool_bar_pos;
-  tool_bar_pos=(KToolBar::BarPosition)
-    config->readNumEntry(QString("ToolBarPos"),
-    KToolBar::Top);
-
-  toolBar()->setBarPos(tool_bar_pos);
+  Qt::ToolBarArea tool_bar_area;
+  tool_bar_area = (Qt::ToolBarArea)config->readEntry(QString("ToolBarArea"),
+						     (int)Qt::TopToolBarArea);
+  addToolBar(tool_bar_area, toolBar());
 
   QSize size=config->readEntry(QString("Geometry"),QSize());
 
@@ -325,18 +338,18 @@ void KTApp::slotEditDelete()
 
 void KTApp::slotEditEnable()
 {
-  KMenu *editMenu = static_cast<KMenu*>(guiFactory()->container("edit", this)); 
-  if (editMenu->isItemChecked(editMenu->idAt(8)))
+  KAction* editEnable = actionCollection()->action("edit_enable");
+  if (editEnable->isChecked())
   {
     slotStatusMsg(i18n("Disabling entry..."));
     view->enable(false);
-    editMenu->setItemChecked(editMenu->idAt(8), false);
+    editEnable->setChecked(false);
   }
   else
   {
     slotStatusMsg(i18n("Enabling entry..."));
     view->enable(true);
-    editMenu->setItemChecked(editMenu->idAt(8), true);
+    editEnable->setChecked(true);
   }
   slotStatusMsg(i18n("Ready."));
 }
@@ -355,8 +368,7 @@ void KTApp::slotViewToolBar()
   else
     toolBar()->show();
   
-  KMenu *settingsMenu = static_cast<KMenu*>(guiFactory()->container("settings", this));
-  settingsMenu->setItemChecked(settingsMenu->idAt(0),toolBar()->isVisible());
+  actionCollection()->action("show_toolbar")->setChecked(toolBar()->isVisible());
   
   slotStatusMsg(i18n("Ready."));
 }
@@ -368,64 +380,46 @@ void KTApp::slotViewStatusBar()
   else
     statusBar()->show();
   
-  KMenu *settingsMenu = static_cast<KMenu*>(guiFactory()->container("settings", this));
-  settingsMenu->setItemChecked(settingsMenu->idAt(1),statusBar()->isVisible());
+  actionCollection()->action("show_toolbar")->setChecked(statusBar()->isVisible());
   
   slotStatusMsg(i18n("Ready."));
 }
 
 void KTApp::slotStatusMsg(const QString & text)
 {
-  statusBar()->clear();
+  statusBar()->clearMessage();
   statusBar()->changeItem(text, statusMessage);
   setCaption(i18n("Task Scheduler"), cthost->dirty());
 }
 
 void KTApp::slotStatusHelpMsg(const QString & text)
 {
-  statusBar()->message(text, 2000);
+  statusBar()->showMessage(text, 2000);
 }
 
-void KTApp::statusEditCallback(int id_)
+void KTApp::statusEditCallback(QAction* action)
 {
-  KMenu *editMenu = static_cast<KMenu*>(guiFactory()->container("edit", this)); 
-  int index = editMenu->indexOf(id_);
-  switch (index) {
-    case menuEditNew:
-      slotStatusHelpMsg(i18n("Create a new task or variable."));
-      break;
-    case menuEditModify:
-      slotStatusHelpMsg(i18n("Edit the selected task or variable."));
-      break;
-    case menuEditDelete:
-      slotStatusHelpMsg(i18n("Delete the selected task or variable."));
-      break;
-    case menuEditEnabled:
-      slotStatusHelpMsg(i18n("Enable/disable the selected task or variable."));
-      break;
-    case menuEditRunNow:
-      slotStatusHelpMsg(i18n("Run the selected task now."));
-      break;
-
-    default:
-      break;
+  QString text = action->text();
+  if (text == "edit_cut") {
+    slotStatusHelpMsg(i18n("Create a new task or variable."));
+  } else if (text == "edit_modify") {
+    slotStatusHelpMsg(i18n("Edit the selected task or variable."));
+  } else if (text == "edit_delete") {
+    slotStatusHelpMsg(i18n("Delete the selected task or variable."));
+  } else if (text == "edit_enable") {
+    slotStatusHelpMsg(i18n("Enable/disable the selected task or variable."));	  
+  } else if (text == "edit_run") {
+    slotStatusHelpMsg(i18n("Run the selected task now."));
   }
 }
 
-void KTApp::statusSettingsCallback(int id_)
+void KTApp::statusSettingsCallback(QAction* action)
 {
-  KMenu *settingsMenu = static_cast<KMenu*>(guiFactory()->container("settings", this)); 
-  int index = settingsMenu->indexOf(id_);
-  switch (index) {
-    case menuSettingsShowToolBar:
-      slotStatusHelpMsg(i18n("Enable/disable the tool bar."));
-      break;
-    case menuSettingsShowStatusBar:
-      slotStatusHelpMsg(i18n("Enable/disable the status bar."));
-      break;
-    
-    default:
-      break;
+  QString text = action->text();
+  if (text == "show_toolbar") {
+    slotStatusHelpMsg(i18n("Enable/disable the tool bar."));
+  } else if (text == "show_statusbar") {
+    slotStatusHelpMsg(i18n("Enable/disable the status bar."));
   }
 }
 
@@ -456,8 +450,7 @@ void KTApp::slotEnableRunNow(bool state)
 
 void KTApp::slotEnableEnabled(bool state)
 {
-  KMenu *editMenu = static_cast<KMenu*>(guiFactory()->container("edit", this));
-  editMenu->setItemChecked(editMenu->idAt(8),state);
+  actionCollection()->action("edit_enable")->setChecked(state);
 }      
 
 #include "ktapp.moc"

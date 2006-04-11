@@ -55,9 +55,9 @@ string CTDayOfWeek::describe() const
 {
   initializeNames();
   if (count() == 7)
-    return (const char*)i18n("every day ").local8Bit();
+    return (const char*)i18n("every day ").toLocal8Bit();
   else if (get(1) && get(2) && get(3) && get(4) && get(5))
-    return (const char*)i18n("weekday ").local8Bit();
+    return (const char*)i18n("weekday ").toLocal8Bit();
   else
     return CTUnit<1,7>::describe(shortName);
 }
@@ -75,19 +75,19 @@ void CTDayOfWeek::initializeNames()
     const string shortDOWName[8] =
     {
       "",
-      (const char*)i18n("Mon").local8Bit(),  (const char*)i18n("Tue").local8Bit(),
-      (const char*)i18n("Wed").local8Bit(),  (const char*)i18n("Thu").local8Bit(),
-      (const char*)i18n("Fri").local8Bit(),  (const char*)i18n("Sat").local8Bit(),
-      (const char*)i18n("Sun").local8Bit()
+      (const char*)i18n("Mon").toLocal8Bit(),  (const char*)i18n("Tue").toLocal8Bit(),
+      (const char*)i18n("Wed").toLocal8Bit(),  (const char*)i18n("Thu").toLocal8Bit(),
+      (const char*)i18n("Fri").toLocal8Bit(),  (const char*)i18n("Sat").toLocal8Bit(),
+      (const char*)i18n("Sun").toLocal8Bit()
     };
   
     const string longDOWName[8] =
     {
       "",
-      (const char*)i18n("Monday").local8Bit(),     (const char*)i18n("Tuesday").local8Bit(),
-      (const char*)i18n("Wednesday").local8Bit(),  (const char*)i18n("Thursday").local8Bit(),
-      (const char*)i18n("Friday").local8Bit(),     (const char*)i18n("Saturday").local8Bit(),
-      (const char*)i18n("Sunday").local8Bit()
+      (const char*)i18n("Monday").toLocal8Bit(),     (const char*)i18n("Tuesday").toLocal8Bit(),
+      (const char*)i18n("Wednesday").toLocal8Bit(),  (const char*)i18n("Thursday").toLocal8Bit(),
+      (const char*)i18n("Friday").toLocal8Bit(),     (const char*)i18n("Saturday").toLocal8Bit(),
+      (const char*)i18n("Sunday").toLocal8Bit()
     };
   
     for (int i = 1; i <= 7; i++)

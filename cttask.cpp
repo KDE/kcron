@@ -248,12 +248,12 @@ string CTTask::describe() const
   // Fifth and finally I do tag substitution to create the natural language
   // description.
 
-  string tmFormat((const char *)i18n("%H:%M").local8Bit());
-  string DOMFormat((const char *)i18nc("Please translator, read the README.translators file in kcron's source code","DAYS_OF_MONTH of MONTHS").local8Bit());
-  string DOWFormat((const char *)i18nc("Really, read that file","every DAYS_OF_WEEK").local8Bit());
-  string dateFormat((const char *)i18n("DOM_FORMAT as well as DOW_FORMAT").local8Bit());
-  string timeFormat((const char *)i18n("At TIME").local8Bit());
-  string format((const char *)i18n("TIME_FORMAT, DATE_FORMAT").local8Bit());
+  string tmFormat((const char *)i18n("%H:%M").toLocal8Bit());
+  string DOMFormat((const char *)i18nc("Please translator, read the README.translators file in kcron's source code","DAYS_OF_MONTH of MONTHS").toLocal8Bit());
+  string DOWFormat((const char *)i18nc("Really, read that file","every DAYS_OF_WEEK").toLocal8Bit());
+  string dateFormat((const char *)i18n("DOM_FORMAT as well as DOW_FORMAT").toLocal8Bit());
+  string timeFormat((const char *)i18n("At TIME").toLocal8Bit());
+  string format((const char *)i18n("TIME_FORMAT, DATE_FORMAT").toLocal8Bit());
 
   // Get natural language description of day of month,
   // month name, and day of week.
@@ -299,11 +299,11 @@ string CTTask::describe() const
          {
            case 0:  break;
            case 1:  if (total > 2)
-	   	      timeDesc += (const char *)i18n(", and ").local8Bit();
+	   	      timeDesc += (const char *)i18n(", and ").toLocal8Bit();
 		    else
-                      timeDesc += (const char *)i18n(" and ").local8Bit();
+                      timeDesc += (const char *)i18n(" and ").toLocal8Bit();
                     break;
-           default: timeDesc += (const char*)i18n(", ").local8Bit();
+           default: timeDesc += (const char*)i18n(", ").toLocal8Bit();
          }
       }
 
@@ -313,7 +313,7 @@ string CTTask::describe() const
 
   if ((dayOfMonth.count() == 31) &&
     (dayOfWeek.count() == 7))
-    dateFormat = (const char *)i18n("every day ").local8Bit();
+    dateFormat = (const char *)i18n("every day ").toLocal8Bit();
   else
   {
     // Day of month not specified, so use day of week.

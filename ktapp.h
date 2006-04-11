@@ -91,19 +91,8 @@ protected:
 
 public slots:
 
-/**
-  * Switch argument for status ar help entries on slot selection. Add your
-  * ID's help here for toolbars and menubar entries. This
-  * function is only for the edit menu
-  */
-  void statusEditCallback(int id_);
-
-/**
-  * Switch argument for status ar help entries on slot selection. Add your
-  * ID's help here for toolbars and menubar entries. This
-  * function is only for the settings menu
-  */
-  void statusSettingsCallback(int id_);
+  void statusEditCallback(QAction* action);
+  void statusSettingsCallback(QAction* action);
 
 /**
   * Save document.

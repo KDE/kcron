@@ -55,7 +55,6 @@ void KTPrint :: createColumns (unsigned num_columns)
 //Construct all of the columns to be equal in size
 //I am going to add a function which works on percentages
 
-  int start;
   Column *col;
   int col_width(width / num_columns);
 
