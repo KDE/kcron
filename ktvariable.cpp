@@ -30,7 +30,7 @@ KTVariable::KTVariable(CTVariable* _ctvar,const QString &_caption) :
   KDialogBase(Plain, _caption, Ok|Cancel, Ok),
   ctvar( _ctvar)
 {
-  QFrame *page = makeMainWidget();
+  QFrame *page = plainPage();
   QGridLayout *layout = new QGridLayout( page );
   layout->setMargin( 0 );
   layout->setSpacing( spacingHint() );
