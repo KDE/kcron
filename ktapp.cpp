@@ -45,16 +45,16 @@ KTApp::KTApp() : KMainWindow(0)
 
   // Initialize document.
   cthost = new CTHost();
-
-  // Initialize view.
-  view = new KTView(this);
-  setCentralWidget(view);
   
   // Call inits to invoke all other construction parts.
   setupActions();
   initStatusBar();
   createGUI();
-  
+
+  // Initialize view.
+  view = new KTView(this);
+  setCentralWidget(view);
+
   //Connections
   KMenu *editMenu = static_cast<KMenu*>(guiFactory()->container("edit", this)); 
   KMenu *settingsMenu = static_cast<KMenu*>(guiFactory()->container("settings", this)); 
