@@ -41,7 +41,7 @@ public:
   * Constructs the user(s), scheduled tasks, and environment variables
   * from crontab files.
   */
-  CTHost();
+  CTHost(const QString& cronBinary);
 
 /**
   * Destroys the user(s), scheduled tasks, and environment variable
@@ -111,6 +111,8 @@ private:
   CTCron* createCTCron(const struct passwd *);
 
   QString error;
+	
+  QString crontabBinary;
 };
 
 typedef std::vector<CTCron*>::iterator CTCronIterator;

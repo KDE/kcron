@@ -25,9 +25,11 @@
 
 using namespace std;
 
-CTHost::CTHost()
+CTHost::CTHost(const QString& cronBinary)
 {
   struct passwd *pwd = 0L;
+
+  this->crontabBinary = cronBinary;
 
   // If it is the root user
   if (getuid() == 0)
@@ -87,7 +89,7 @@ bool CTHost::dirty()
 
 CTCron* CTHost::createCTCron(bool _syscron, string _login)
 {
-  CTCron *p = new CTCron(_syscron, _login);
+  CTCron *p = new CTCron(crontabBinary, _syscron, _login);
   if (p->isError())
   {
      error = p->errorMessage();
@@ -100,7 +102,7 @@ CTCron* CTHost::createCTCron(bool _syscron, string _login)
 
 CTCron* CTHost::createCTCron(const struct passwd *pwd)
 {
-  CTCron *p = new CTCron(pwd);
+  CTCron *p = new CTCron(crontabBinary, pwd);
   if (p->isError())
   {
     error = p->errorMessage();

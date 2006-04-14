@@ -32,10 +32,12 @@
 
 using namespace std;
 
-CTCron::CTCron(bool _syscron, string _login) :
+CTCron::CTCron(const QString& crontabBinary, bool _syscron, string _login) :
   syscron(_syscron)
 {
   int uid(getuid());
+
+  this->crontab = crontabBinary;
 
   KTempFile tmp;
   tmp.setAutoDelete(true);
@@ -56,8 +58,8 @@ CTCron::CTCron(bool _syscron, string _login) :
     }
     else
     {
-      readCommand  = QString("crontab -u ") + _login.c_str() + " -l > " + KProcess::quote(tmpFileName);
-      writeCommand = QString("crontab -u ") + _login.c_str() + " " + KProcess::quote(tmpFileName);
+      readCommand  = crontab + " -u " + _login.c_str() + " -l > " + KProcess::quote(tmpFileName);
+      writeCommand = crontab + " -u " + _login.c_str() + " " + KProcess::quote(tmpFileName);
       if (!initFromPasswd(getpwnam(_login.c_str())))
       {
          error = i18n("No password entry found for user '%1'", _login.c_str());
@@ -67,8 +69,8 @@ CTCron::CTCron(bool _syscron, string _login) :
   else
   // regular user, so provide user's own crontab
   {
-    readCommand  = "crontab -l > " + KProcess::quote(tmpFileName);
-    writeCommand = "crontab "      + KProcess::quote(tmpFileName);
+    readCommand  = crontab + " -l > " + KProcess::quote(tmpFileName);
+    writeCommand = crontab + " "      + KProcess::quote(tmpFileName);
     if (!initFromPasswd(getpwuid(uid)))
     {
       error = i18n("No password entry found for uid '%1'", uid);
@@ -96,18 +98,20 @@ CTCron::CTCron(bool _syscron, string _login) :
   initialVariableCount  = variable.size();
 }
 
-CTCron::CTCron(const struct passwd *pwd) :
+CTCron::CTCron(const QString& crontabBinary, const struct passwd *pwd) :
   syscron(false)
 {
   Q_ASSERT(pwd != 0L);
+
+  crontab = crontabBinary;
 
   KTempFile tmp;
   tmp.setAutoDelete(true);
   tmp.close();
   tmpFileName = tmp.name();  
 
-  QString readCommand  = QString("crontab -u ") + QString(pwd->pw_name) + " -l > " + KProcess::quote(tmpFileName);
-  writeCommand = QString("crontab -u ") + QString(pwd->pw_name) + " " + KProcess::quote(tmpFileName);
+  QString readCommand  = crontab + " -u " + QString(pwd->pw_name) + " -l > " + KProcess::quote(tmpFileName);
+  writeCommand = crontab +  " -u " + QString(pwd->pw_name) + " " + KProcess::quote(tmpFileName);
 
   initFromPasswd(pwd);
 

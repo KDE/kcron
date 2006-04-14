@@ -43,12 +43,12 @@ public:
   * passing TRUE, to construct from the system crontab.  Throws an
   * exception if the crontab file can not be found, read, or parsed.
   */
-  CTCron(bool _syscron = false, std::string _login = "");
+  CTCron(const QString& cronBinary, bool _syscron = false, std::string _login = "");
 /**
   * If you already have a struct passwd, use it instead. This
   * is never used for the system crontab.
   */
-  CTCron(const struct passwd * _login = 0L);
+  CTCron(const QString& cronBinary, const struct passwd * _login = 0L);
 
 /**
   * Copy one user's tasks and environement variables to another user.
@@ -142,6 +142,11 @@ private:
   QString           tmpFileName;
 
   QString           error;
+
+/**
+  * Contains path to the crontab binary file
+  */
+  QString crontab;
 
 protected:
   // Initialize member variables from the struct passwd.

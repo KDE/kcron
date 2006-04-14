@@ -41,14 +41,17 @@ KTApp::KTApp() : KMainWindow(0)
   setWindowIcon(KTIcon::application(true));
 
   setCaption(i18n("Task Scheduler"));
-
-
-  // Initialize document.
-  cthost = new CTHost();
   
   // Call inits to invoke all other construction parts.
   setupActions();
   initStatusBar();
+
+  // Read options.
+  readOptions();
+
+  // Initialize document.
+  cthost = new CTHost(crontab);
+
   createGUI();
 
   // Initialize view.
@@ -61,8 +64,6 @@ KTApp::KTApp() : KMainWindow(0)
   
   connect(editMenu,SIGNAL(hovered(QAction*)),this,SLOT(statusEditCallback(QAction*)));
   connect(settingsMenu,SIGNAL(hovered(QAction*)),this,SLOT(statusSettingsCallback(QAction*)));
-  // Read options.
-  readOptions();
 }
 
 bool KTApp::init()
@@ -170,6 +171,7 @@ void KTApp::saveOptions()
   config->writeEntry(QString("Show Toolbar"), toolBar()->isVisible());
   config->writeEntry(QString("Show Statusbar"), statusBar()->isVisible());
   config->writeEntry(QString("ToolBarArea"),  (int)toolBarArea(toolBar()));
+  config->writeEntry(QString("Path to crontab"), crontab);
 }
 
 
@@ -215,6 +217,8 @@ void KTApp::readOptions()
 
   resize(size);
 
+  // get the path to the crontab binary
+  crontab = config->readEntry(QString("Path to crontab"), QString("crontab"));
 }
 
 bool KTApp::queryClose()

@@ -251,6 +251,10 @@ private:
   */
   CTHost* cthost;
 
+/**
+ * Path to the crontab binary
+ */
+  QString crontab;
 };
 
 #endif // KTAPP_H
