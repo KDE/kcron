@@ -139,7 +139,7 @@ void KTApp::setupActions()
   modifyAct->setShortcut(KStdAccel::shortcut(KStdAccel::Open));
   connect(modifyAct, SIGNAL(triggered(bool)), SLOT(slotEditModify()));
 
-  KAction* deleteAct = new KAction(KIcon("filedelete"), i18n("&Delete"), actionCollection(), "edit_delete");
+  KAction* deleteAct = new KAction(KIcon("editdelete"), i18n("&Delete"), actionCollection(), "edit_delete");
   connect(deleteAct, SIGNAL(triggered(bool)), SLOT(slotEditDelete()));
 
   KAction* enableAct = new KAction(i18n("&Enabled"), actionCollection(), "edit_enable");
