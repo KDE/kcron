@@ -21,7 +21,8 @@
 #include <kiconloader.h>
 #include <kmenu.h>
 #include <kstatusbar.h>
-
+#include <kactioncollection.h>
+#include <ktoggleaction.h>
 #include "cthost.h"
 #include "ctcron.h"
 #include "cttask.h"
