@@ -16,7 +16,7 @@
 #include <config.h>
 #endif 
 
-#include <qwidget.h>
+#include <QWidget>
 //Added by qt3to4:
 #include <QResizeEvent>
 

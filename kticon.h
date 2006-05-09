@@ -13,7 +13,7 @@
 #define KTICON_H
  
 #include <qpixmap.h>
-#include <qstring.h>
+#include <QString>
 
 /**
   * Wraps all icons used by the application.

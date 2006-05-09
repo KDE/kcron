@@ -18,7 +18,7 @@
 #include <vector>
 #include <string>
 
-#include <qstring.h> // Whatever
+#include <QString> // Whatever
 
 class CTCron;
 struct passwd;

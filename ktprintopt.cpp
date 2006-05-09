@@ -11,8 +11,8 @@
  *   (at your option) any later version.                                   *
  ***************************************************************************/
 
-#include <qcheckbox.h>
-#include <qlayout.h>
+#include <QCheckBox>
+#include <QLayout>
 //Added by qt3to4:
 #include <QVBoxLayout>
 

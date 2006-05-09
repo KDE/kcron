@@ -11,12 +11,12 @@
 
 #include "kttask.h"
 
-#include <qlabel.h>
-#include <qstring.h>
+#include <QLabel>
+#include <QString>
 #include <qfileinfo.h>
-#include <qlayout.h>
-#include <qlineedit.h>
-#include <qcheckbox.h>
+#include <QLayout>
+#include <QLineEdit>
+#include <QCheckBox>
 #include <q3buttongroup.h>
 #include <qpainter.h>
 #include <qpalette.h>

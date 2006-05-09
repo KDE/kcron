@@ -24,11 +24,11 @@
 
 #include <string>
 
-#include <qstring.h>
+#include <QString>
 #include <q3header.h>
 #include <q3popupmenu.h>
 #include <qfileinfo.h>
-#include <qfile.h>
+#include <QFile>
 #include <qdatetime.h>
 //Added by qt3to4:
 #include <QResizeEvent>

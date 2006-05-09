@@ -19,7 +19,7 @@
 #include <string>
 #include <iostream>
 
-#include <qstring.h> // Anarchy! -WABA 
+#include <QString> // Anarchy! -WABA 
 
 class CTException;
 class CTTask;

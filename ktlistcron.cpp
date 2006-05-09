@@ -11,7 +11,7 @@
 
 #include "ktlistcron.h"
 
-#include <qstring.h>
+#include <QString>
 #include <klocale.h>
 
 #include "ctcron.h"

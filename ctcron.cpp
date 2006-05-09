@@ -22,7 +22,7 @@
 #include <stdio.h>
 #include <assert.h>
 
-#include <qfile.h>
+#include <QFile>
 
 #include <kprocess.h>
 #include <klocale.h>

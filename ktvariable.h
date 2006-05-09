@@ -16,10 +16,10 @@
 #include <config.h>
 #endif 
 
-#include <qlabel.h>
-#include <qlineedit.h>
-#include <qcombobox.h>
-#include <qcheckbox.h>
+#include <QLabel>
+#include <QLineEdit>
+#include <QComboBox>
+#include <QCheckBox>
 
 #include <kdialogbase.h>
 
