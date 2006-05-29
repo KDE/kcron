@@ -30,8 +30,7 @@ int main(int argc, char* argv[])
 
     KCmdLineArgs::init(argc, argv, &aboutData);
   
-    KApplication app(&aboutData);
- 
+    KApplication app;
       
     if (app.isSessionRestored())
       { 
