@@ -15,6 +15,7 @@
 #include <unistd.h>
 
 #include <config.h>
+#include <config-kcron.h>
 
 #ifdef HAVE_SSTREAM
 #include <sstream>

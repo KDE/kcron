@@ -1,5 +1,6 @@
 project(kcron)
 
+configure_file (config-kcron.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-kcron.h )
 
 
 
