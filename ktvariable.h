@@ -21,7 +21,7 @@
 #include <QComboBox>
 #include <QCheckBox>
 
-#include <kdialogbase.h>
+#include <kdialog.h>
 
 class KTextEdit;
 
@@ -30,7 +30,7 @@ class CTVariable;
 /**
   * Environment variable editor window.
   */
-class KTVariable : public KDialogBase
+class KTVariable : public KDialog
 {
   Q_OBJECT
 

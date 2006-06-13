@@ -27,10 +27,14 @@
 #include "kticon.h"
 
 KTVariable::KTVariable(CTVariable* _ctvar,const QString &_caption) :
-  KDialogBase(Plain, _caption, Ok|Cancel, Ok),
+  KDialog(),
   ctvar( _ctvar)
 {
-  QFrame *page = plainPage();
+    setCaption( _caption );
+    setButtons( Ok|Cancel );
+    setDefaultButton( Ok );
+  QWidget *page = new QWidget( this );
+  setMainWidget( page );
   QGridLayout *layout = new QGridLayout( page );
   layout->setMargin( 0 );
   layout->setSpacing( spacingHint() );
