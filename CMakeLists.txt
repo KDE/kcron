@@ -40,8 +40,8 @@ install_targets(/bin kcron )
 
 ########### install files ###############
 
-install_files( ${XDG_APPS_DIR} FILES kcron.desktop )
-install_files( ${DATA_INSTALL_DIR}/kcron FILES kcronui.rc )
+install( FILES kcron.desktop  DESTINATION  ${XDG_APPS_DIR} )
+install( FILES kcronui.rc  DESTINATION  ${DATA_INSTALL_DIR}/kcron )
 
 kde4_install_icons( ${ICON_INSTALL_DIR}  hicolor )
 
