@@ -35,7 +35,7 @@ kde4_add_executable(kcron ${kcron_SRCS})
 
 target_link_libraries(kcron  ${KDE4_KDECORE_LIBS} kdeprint )
 
-install_targets(/bin kcron )
+install(TARGETS  kcron  DESTINATION ${BIN_INSTALL_DIR} )
 
 
 ########### install files ###############
