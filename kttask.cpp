@@ -111,10 +111,11 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   cttask = _cttask;
 
   setModal(true);
-
+  QWidget *main = new QWidget(this);
+  setMainWidget(main);
   bool everyDay(true);
 
-  QVBoxLayout *ml = new QVBoxLayout(this);
+  QVBoxLayout *ml = new QVBoxLayout(main);
   ml->setSpacing(KDialog::spacingHint());
 
   QHBoxLayout *h1 = new QHBoxLayout();
@@ -122,11 +123,11 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   ml->addLayout(h1);
 
   // user
-  labUser = new QLabel( i18n("&Run as:"), this);
+  labUser = new QLabel( i18n("&Run as:"), main);
   labUser->setObjectName("labUser");
   h1->addWidget( labUser );
 
-  leUser = new QLineEdit( this );
+  leUser = new QLineEdit(main );
   leUser->setObjectName( "leUser" );
   labUser->setBuddy(leUser);
   h1->addWidget( leUser );
@@ -142,7 +143,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   }
 
   // icon
-  labIcon = new QLabel(this);
+  labIcon = new QLabel(main);
   labIcon->setObjectName("labIcon");
   labIcon->setFixedSize(32, 32);
   h1->addStretch( 1 );
@@ -153,11 +154,11 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   h2->setSpacing( KDialog::spacingHint() );
   ml->addLayout(h2);
 
-  labComment = new QLabel( i18n("&Comment:"), this);
+  labComment = new QLabel( i18n("&Comment:"), main);
   labComment->setObjectName( "labComment" );
   h2->addWidget( labComment );
 
-  leComment = new QLineEdit(this);
+  leComment = new QLineEdit(main);
   leComment->setObjectName("leComment");
   labComment->setBuddy(leComment);
   h2->addWidget( leComment );
@@ -169,11 +170,11 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   h3->setSpacing( KDialog::spacingHint() );
   ml->addLayout(h3);
 
-  labCommand = new QLabel( i18n("&Program:"), this );
+  labCommand = new QLabel( i18n("&Program:"), main );
   labCommand->setObjectName( "labCommand" );
   h3->addWidget( labCommand );
 
-  leCommand = new QLineEdit(this);
+  leCommand = new QLineEdit(main);
   leCommand->setObjectName( "leCommand" );
   labCommand->setBuddy(leCommand);
   h3->addWidget( leCommand );
@@ -185,7 +186,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
 
   slotCommandChanged();
 
-  pbBrowse = new QPushButton(this);
+  pbBrowse = new QPushButton(main);
   pbBrowse->setObjectName("pbBrowse");
   pbBrowse->setText(i18n("&Browse..."));
   h3->addWidget( pbBrowse );
@@ -195,13 +196,13 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   ml->addLayout(h3a);
 
   // enabled
-  chkEnabled = new QCheckBox(i18n("&Enabled"), this);
+  chkEnabled = new QCheckBox(i18n("&Enabled"), main);
   chkEnabled->setObjectName("chkEnabled");
   chkEnabled->setChecked(cttask->enabled);
   h3a->addWidget( chkEnabled );
 
   // enabled
-  chkSilent = new QCheckBox(i18n("&Silent"), this);
+  chkSilent = new QCheckBox(i18n("&Silent"), main);
   chkSilent->setObjectName("chkSilent");
   chkSilent->setChecked(cttask->silent);
   h3a->addWidget( chkSilent );
@@ -213,7 +214,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   ml->addSpacing( 2 * KDialog::spacingHint() );
 
   // months
-  bgMonth = new Q3ButtonGroup( i18n("Months"), this, "bgMonth");
+  bgMonth = new Q3ButtonGroup( i18n("Months"), main, "bgMonth");
   h4->addWidget( bgMonth );
 
   QVBoxLayout *vmonths = new QVBoxLayout( bgMonth );
@@ -240,7 +241,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   h4->addLayout(v1);
 
   // days of the month
-  bgDayOfMonth = new Q3ButtonGroup( i18n("Days of Month"), this, "bgDayOfMonth");
+  bgDayOfMonth = new Q3ButtonGroup( i18n("Days of Month"), main, "bgDayOfMonth");
   v1->addWidget( bgDayOfMonth );
 
   QPushButton* day;
@@ -277,7 +278,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   hdays->addWidget( pbAllDaysOfMonth, Qt::AlignLeft );
 
   // days of the week
-  bgDayOfWeek = new Q3ButtonGroup( i18n("Days of Week"), this, "bgDayOfWeek");
+  bgDayOfWeek = new Q3ButtonGroup( i18n("Days of Week"), main, "bgDayOfWeek");
   v1->addWidget( bgDayOfWeek );
 
   QVBoxLayout *v3 = new QVBoxLayout( bgDayOfWeek );
@@ -303,7 +304,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   h4->addLayout(v2);
 
   // daily
-  bgEveryDay = new Q3ButtonGroup( i18n("Daily"), this, "bgEveryDay");
+  bgEveryDay = new Q3ButtonGroup( i18n("Daily"), main, "bgEveryDay");
   v2->addWidget( bgEveryDay );
 
   QVBoxLayout *v9 = new QVBoxLayout( bgEveryDay );
@@ -316,7 +317,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   v9->addWidget( cbEveryDay );
 
   // hours
-  bgHour = new Q3ButtonGroup( i18n("Hours"), this, "bgHour");
+  bgHour = new Q3ButtonGroup( i18n("Hours"), main, "bgHour");
   v2->addWidget( bgHour );
   QVBoxLayout *v4 = new QVBoxLayout( bgHour );
   v4->setSpacing( KDialog::spacingHint() );
@@ -379,7 +380,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   hhours->addWidget( pbAllHours, Qt::AlignLeft );
 
   // minutes
-  bgMinute = new Q3ButtonGroup( i18n("Minutes"), this, "bgMinute");
+  bgMinute = new Q3ButtonGroup( i18n("Minutes"), main, "bgMinute");
   v2->addWidget( bgMinute );
   QVBoxLayout *vmin = new QVBoxLayout( bgMinute );
   vmin->setSpacing( KDialog::spacingHint() );
@@ -422,15 +423,6 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   h5->addStretch( 1 );
   ml->addLayout(h5);
 
-  // OK
-  pbOk = new KPushButton(KStdGuiItem::ok(), this);
-  pbOk->setDefault(true);
-  h5->addWidget( pbOk );
-
-  // Cancel
-  pbCancel = new KPushButton(KStdGuiItem::cancel(), this);
-  h5->addWidget( pbCancel );
-
   // window
   setWindowIcon(KTIcon::application(true));
   setCaption(_caption/*i18n("Edit Task")*/);
@@ -450,8 +442,8 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   connect(leCommand, SIGNAL(textChanged(const QString&)),
     SLOT(slotCommandChanged()));
   connect(cbEveryDay, SIGNAL(clicked()), SLOT(slotDailyChanged()));
-  connect(pbOk, SIGNAL(clicked()), SLOT(slotOK()));
-  connect(pbCancel, SIGNAL(clicked()), SLOT(slotCancel()));
+  connect(this, SIGNAL(okClicked()), SLOT(slotOK()));
+  connect(this, SIGNAL(cancelClicked()), SLOT(slotCancel()));
   connect(pbAllMonths, SIGNAL(clicked()), SLOT(slotAllMonths()));
   for (int mo = 1; mo <= 12; mo++) {
     connect(cbMonth[mo], SIGNAL(clicked()), SLOT(slotMonthChanged()));

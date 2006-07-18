@@ -172,9 +172,6 @@ private:
   QPushButton*    pbMinute[61];
   QPushButton*    pbAllMinutes;
 
-  QPushButton*    pbOk;
-  QPushButton*    pbCancel;
-
 };
 
 #endif // KTTASK_H
