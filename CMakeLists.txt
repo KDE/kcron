@@ -33,7 +33,7 @@ kde4_automoc(${kcron_SRCS})
 
 kde4_add_executable(kcron ${kcron_SRCS})
 
-target_link_libraries(kcron  ${KDE4_KDECORE_LIBS} kdeprint )
+target_link_libraries(kcron  ${KDE4_KDECORE_LIBS} ${KDE4_KDEPRINT_LIBS} )
 
 install(TARGETS  kcron  DESTINATION ${BIN_INSTALL_DIR} )
 
