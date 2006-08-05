@@ -31,6 +31,7 @@
 #include "kticon.h"
 #include "ktview.h"
 #include <ktoolbar.h>
+#include <kicon.h>
 
 const int KTApp::statusMessage            (1001);
 
