@@ -43,7 +43,7 @@ install(TARGETS  kcron  DESTINATION ${BIN_INSTALL_DIR} )
 install( FILES kcron.desktop  DESTINATION  ${XDG_APPS_DIR} )
 install( FILES kcronui.rc  DESTINATION  ${DATA_INSTALL_DIR}/kcron )
 
-kde4_install_icons( ${ICON_INSTALL_DIR}  hicolor )
+kde4_install_icons( ${ICON_INSTALL_DIR}   )
 
 
 
