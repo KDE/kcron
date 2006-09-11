@@ -12,9 +12,7 @@
 #ifndef KTLISTITEM_H
 #define KTLISTITEM_H
 
-#ifdef HAVE_CONFIG_H
 #include <config.h>
-#endif 
 
 #include <q3listview.h>
 

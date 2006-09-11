@@ -12,9 +12,7 @@
 #ifndef KTLISTVAR_H
 #define KTLISTVAR_H
 
-#ifdef HAVE_CONFIG_H
 #include <config.h>
-#endif 
 
 #include "ktlistitem.h"
 

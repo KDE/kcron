@@ -12,9 +12,7 @@
 #ifndef KTVIEW_H
 #define KTVIEW_H
 
-#ifdef HAVE_CONFIG_H
 #include <config.h>
-#endif 
 
 #include <QWidget>
 //Added by qt3to4:

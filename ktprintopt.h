@@ -14,9 +14,7 @@
 #ifndef KTPRINTOPT_H
 #define KTPRINTOPT_H
 
-#ifdef HAVE_CONFIG_H
 #include <config.h>
-#endif
 
 #include <kdeprint/kprintdialogpage.h>
 
