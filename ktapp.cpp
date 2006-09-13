@@ -153,11 +153,11 @@ void KTApp::setupActions()
   //Settings menu
   KToggleAction* showToolbarAct = new KToggleAction(i18n("Show &Toolbar"), actionCollection(), "show_toolbar");
   connect(showToolbarAct, SIGNAL(triggered(bool)), SLOT(slotViewToolBar()));
-  showToolbarAct->setCheckedState(i18n("Show &Toolbar"));
+  showToolbarAct->setCheckedState(KGuiItem(i18n("Show &Toolbar")));
 
   KToggleAction* showStatusbarAct = new KToggleAction(i18n("Show &Statusbar"), actionCollection(), "show_statusbar");
   connect(showStatusbarAct, SIGNAL(triggered(bool)), SLOT(slotViewStatusBar()));
-  showStatusbarAct->setCheckedState(i18n("Show &Statusbar"));
+  showStatusbarAct->setCheckedState(KGuiItem(i18n("Show &Statusbar")));
 }
 
 void KTApp::initStatusBar()
