@@ -1,7 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Type=Application
-Exec=kcron %i %m -caption "%c"
+Exec=kcron %i -caption "%c"
 Icon=kcron
 DocPath=kcron/index.html
 Name=KCron
