@@ -26,7 +26,7 @@
 
 #include <kprocess.h>
 #include <klocale.h>
-#include <ktempfile.h>
+#include <ktemporaryfile.h>
 
 #include <iostream>
 
@@ -39,10 +39,9 @@ CTCron::CTCron(const QString& crontabBinary, bool _syscron, string _login) :
 
   this->crontab = crontabBinary;
 
-  KTempFile tmp;
-  tmp.setAutoDelete(true);
-  tmp.close();
-  tmpFileName = tmp.name();  
+  KTemporaryFile tmp;
+  tmp.open();
+  tmpFileName = tmp.fileName();  
 
   QString readCommand;
 
@@ -105,10 +104,9 @@ CTCron::CTCron(const QString& crontabBinary, const struct passwd *pwd) :
 
   crontab = crontabBinary;
 
-  KTempFile tmp;
-  tmp.setAutoDelete(true);
-  tmp.close();
-  tmpFileName = tmp.name();  
+  KTemporaryFile tmp;
+  tmp.open();
+  tmpFileName = tmp.fileName();  
 
   QString readCommand  = crontab + " -u " + QString(pwd->pw_name) + " -l > " + KProcess::quote(tmpFileName);
   writeCommand = crontab +  " -u " + QString(pwd->pw_name) + " " + KProcess::quote(tmpFileName);
