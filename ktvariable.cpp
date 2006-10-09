@@ -14,7 +14,6 @@
 #include <QLayout>
 //Added by qt3to4:
 #include <QLabel>
-#include <Q3Frame>
 #include <QGridLayout>
 
 #include <kapplication.h>     // kapp
