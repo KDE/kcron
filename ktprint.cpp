@@ -81,7 +81,9 @@ bool KTPrint:: start ()
     if (paint!=NULL) delete paint;
     paint = new  QPainter ();
     paint->begin(prnt);
+#ifdef __GNUC__
 #warning "kde4: port settabstops";
+#endif
     //paint->setTabStops(20); // Setup a defualt tab stop size
     		
     //Get the information about the page size
