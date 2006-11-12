@@ -11,5 +11,5 @@ GenericName[fr]=Planificateur de tâches
 GenericName[x-test]=xxTask Schedulerxx
 Terminal=false
 X-KDE-StartupNotify=true
-X-DCOP-ServiceType=Multi
+X-DBUS-StartupType=Multi
 Categories=Qt;KDE;System;
