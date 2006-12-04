@@ -43,7 +43,7 @@ KTApp::KTApp() : KMainWindow(0)
   setWindowIcon(KTIcon::application(true));
 
   setCaption(i18n("Task Scheduler"));
-  
+
   // Call inits to invoke all other construction parts.
   setupActions();
   initStatusBar();
@@ -61,9 +61,9 @@ KTApp::KTApp() : KMainWindow(0)
   setCentralWidget(view);
 
   //Connections
-  KMenu *editMenu = static_cast<KMenu*>(guiFactory()->container("edit", this)); 
-  KMenu *settingsMenu = static_cast<KMenu*>(guiFactory()->container("settings", this)); 
-  
+  KMenu *editMenu = static_cast<KMenu*>(guiFactory()->container("edit", this));
+  KMenu *settingsMenu = static_cast<KMenu*>(guiFactory()->container("settings", this));
+
   connect(editMenu,SIGNAL(hovered(QAction*)),this,SLOT(statusEditCallback(QAction*)));
   connect(settingsMenu,SIGNAL(hovered(QAction*)),this,SLOT(statusSettingsCallback(QAction*)));
 }
@@ -126,7 +126,7 @@ void KTApp::setupActions()
   KStdAction::save(this, SLOT(slotFileSave()), actionCollection());
   KStdAction::print(this, SLOT(slotFilePrint()), actionCollection());
   KStdAction::quit(this, SLOT(slotFileQuit()), actionCollection());
-  
+
   //Edit menu
   KStdAction::cut(this, SLOT(slotEditCut()), actionCollection(), "edit_cut");
   KStdAction::copy(this, SLOT(slotEditCopy()), actionCollection());
@@ -149,7 +149,7 @@ void KTApp::setupActions()
 
   KAction* runAct = new KAction(i18n("&Run Now"), actionCollection(), "edit_run");
   connect(runAct, SIGNAL(triggered(bool)), SLOT(slotEditRunNow()));
-  
+
   //Settings menu
   KToggleAction* showToolbarAct = new KToggleAction(i18n("Show &Toolbar"), actionCollection(), "show_toolbar");
   connect(showToolbarAct, SIGNAL(triggered(bool)), SLOT(slotViewToolBar()));
@@ -344,7 +344,7 @@ void KTApp::slotEditDelete()
 
 void KTApp::slotEditEnable()
 {
-  KAction* editEnable = actionCollection()->action("edit_enable");
+  QAction* editEnable = actionCollection()->action("edit_enable");
   if (editEnable->isChecked())
   {
     slotStatusMsg(i18n("Disabling entry..."));
@@ -373,9 +373,9 @@ void KTApp::slotViewToolBar()
     toolBar()->hide();
   else
     toolBar()->show();
-  
+
   actionCollection()->action("show_toolbar")->setChecked(toolBar()->isVisible());
-  
+
   slotStatusMsg(i18n("Ready."));
 }
 
@@ -385,9 +385,9 @@ void KTApp::slotViewStatusBar()
     statusBar()->hide();
   else
     statusBar()->show();
-  
+
   actionCollection()->action("show_toolbar")->setChecked(statusBar()->isVisible());
-  
+
   slotStatusMsg(i18n("Ready."));
 }
 
@@ -413,7 +413,7 @@ void KTApp::statusEditCallback(QAction* action)
   } else if (text == "edit_delete") {
     slotStatusHelpMsg(i18n("Delete the selected task or variable."));
   } else if (text == "edit_enable") {
-    slotStatusHelpMsg(i18n("Enable/disable the selected task or variable."));	  
+    slotStatusHelpMsg(i18n("Enable/disable the selected task or variable."));
   } else if (text == "edit_run") {
     slotStatusHelpMsg(i18n("Run the selected task now."));
   }
@@ -435,7 +435,7 @@ void KTApp::slotEnableModificationButtons(bool state)
     stateChanged("no_task_selected", StateReverse);
   else
     stateChanged("no_task_selected");
-    
+
 }
 
 void KTApp::slotEnablePaste(bool state)
@@ -457,7 +457,7 @@ void KTApp::slotEnableRunNow(bool state)
 void KTApp::slotEnableEnabled(bool state)
 {
   actionCollection()->action("edit_enable")->setChecked(state);
-}      
+}
 
 #include "ktapp.moc"
 
