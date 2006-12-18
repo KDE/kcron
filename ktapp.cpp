@@ -16,7 +16,7 @@
 #include <kconfig.h>
 #include <kapplication.h>
 #include <klocale.h>       // i18n()
-#include <kstdaction.h>
+#include <kstandardaction.h>
 #include <kaction.h>
 #include <kiconloader.h>
 #include <kmenu.h>
@@ -123,14 +123,14 @@ QString KTApp::caption()
 void KTApp::setupActions()
 {
   //File Menu
-  KStdAction::save(this, SLOT(slotFileSave()), actionCollection());
-  KStdAction::print(this, SLOT(slotFilePrint()), actionCollection());
-  KStdAction::quit(this, SLOT(slotFileQuit()), actionCollection());
+  KStandardAction::save(this, SLOT(slotFileSave()), actionCollection());
+  KStandardAction::print(this, SLOT(slotFilePrint()), actionCollection());
+  KStandardAction::quit(this, SLOT(slotFileQuit()), actionCollection());
 
   //Edit menu
-  KStdAction::cut(this, SLOT(slotEditCut()), actionCollection(), "edit_cut");
-  KStdAction::copy(this, SLOT(slotEditCopy()), actionCollection());
-  KStdAction::paste(this, SLOT(slotEditPaste()), actionCollection());
+  KStandardAction::cut(this, SLOT(slotEditCut()), actionCollection(), "edit_cut");
+  KStandardAction::copy(this, SLOT(slotEditCopy()), actionCollection());
+  KStandardAction::paste(this, SLOT(slotEditPaste()), actionCollection());
 
   KAction* newAct = new KAction(KIcon("filenew"), i18n("&New..."), actionCollection(), "edit_new");
   newAct->setShortcut(KStdAccel::shortcut(KStdAccel::New));
