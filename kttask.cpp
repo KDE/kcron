@@ -31,9 +31,9 @@
 #include <kfiledialog.h>
 #include <kmessagebox.h>
 #include <kpushbutton.h>
-#include <kstdguiitem.h>
+#include <KStandardGuiItem>
 #include <kdialog.h>
-#include <kstdaccel.h>
+#include <kstandardshortcut.h>
 #include "cttask.h"
 
 #include "kticon.h"
@@ -472,9 +472,9 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   // key acceleration
   /*
   key_accel = new KAccel(this);
-  key_accel->insert(KStdAccel::Open, this, SLOT(slotOK()));
-  key_accel->insert(KStdAccel::Close, this, SLOT(slotCancel()));
-  key_accel->insert(KStdAccel::Quit, this, SLOT(slotCancel()));
+  key_accel->insert(KStandardShortcut::Open, this, SLOT(slotOK()));
+  key_accel->insert(KStandardShortcut::Close, this, SLOT(slotCancel()));
+  key_accel->insert(KStandardShortcut::Quit, this, SLOT(slotCancel()));
   key_accel->readSettings();
   */
 

@@ -11,7 +11,7 @@
 
 #include "ktapp.h"
 #include <kmenubar.h>
-#include <kstdaccel.h>
+#include <kstandardshortcut.h>
 #include <kmessagebox.h>
 #include <kconfig.h>
 #include <kapplication.h>
@@ -133,12 +133,12 @@ void KTApp::setupActions()
   KStandardAction::paste(this, SLOT(slotEditPaste()), actionCollection());
 
   KAction* newAct = new KAction(KIcon("filenew"), i18n("&New..."), actionCollection(), "edit_new");
-  newAct->setShortcut(KStdAccel::shortcut(KStdAccel::New));
+  newAct->setShortcut(KStandardShortcut::shortcut(KStandardShortcut::New));
   connect(newAct, SIGNAL(triggered(bool)), SLOT(slotEditNew()));
 
-  //I don't like this KStdAccel::open() for modifying, but I'm just porting this to xmlui
+  //I don't like this KStandardShortcut::open() for modifying, but I'm just porting this to xmlui
   KAction* modifyAct = new KAction(KIcon("fileopen"), i18n("M&odify..."), actionCollection(), "edit_modify");
-  modifyAct->setShortcut(KStdAccel::shortcut(KStdAccel::Open));
+  modifyAct->setShortcut(KStandardShortcut::shortcut(KStandardShortcut::Open));
   connect(modifyAct, SIGNAL(triggered(bool)), SLOT(slotEditModify()));
 
   KAction* deleteAct = new KAction(KIcon("editdelete"), i18n("&Delete"), actionCollection(), "edit_delete");
@@ -232,7 +232,7 @@ bool KTApp::queryClose()
     int retVal = KMessageBox::warningYesNoCancel(win,
       i18n("Scheduled tasks have been modified.\nDo you want to save changes?"),
       QString::null,
-      KStdGuiItem::save(), KStdGuiItem::discard()
+      KStandardGuiItem::save(), KStandardGuiItem::discard()
       );
 
     switch (retVal)
