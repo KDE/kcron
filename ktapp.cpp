@@ -128,34 +128,46 @@ void KTApp::setupActions()
   KStandardAction::quit(this, SLOT(slotFileQuit()), actionCollection());
 
   //Edit menu
-  KStandardAction::cut(this, SLOT(slotEditCut()), actionCollection(), "edit_cut");
+  QAction *a = KStandardAction::cut(this, SLOT(slotEditCut()), actionCollection());
+  actionCollection()->addAction( "edit_cut", a );
   KStandardAction::copy(this, SLOT(slotEditCopy()), actionCollection());
   KStandardAction::paste(this, SLOT(slotEditPaste()), actionCollection());
 
-  KAction* newAct = new KAction(KIcon("filenew"), i18n("&New..."), actionCollection(), "edit_new");
-  newAct->setShortcut(KStandardShortcut::shortcut(KStandardShortcut::New));
+  QAction* newAct = actionCollection()->addAction( "edit_new" );
+  newAct->setText( i18n("&New...") );
+  newAct->setIcon( KIcon("filenew") );
+  qobject_cast<KAction*>( newAct )->setShortcut(KStandardShortcut::shortcut(KStandardShortcut::New));
   connect(newAct, SIGNAL(triggered(bool)), SLOT(slotEditNew()));
 
   //I don't like this KStandardShortcut::open() for modifying, but I'm just porting this to xmlui
-  KAction* modifyAct = new KAction(KIcon("fileopen"), i18n("M&odify..."), actionCollection(), "edit_modify");
-  modifyAct->setShortcut(KStandardShortcut::shortcut(KStandardShortcut::Open));
+  QAction *modifyAct = actionCollection()->addAction( "edit_modify" );
+  modifyAct->setText( i18n("M&odify...") );
+  modifyAct->setIcon( KIcon("fileopen") );
+  qobject_cast<KAction*>( modifyAct )->setShortcut(KStandardShortcut::shortcut(KStandardShortcut::Open));
   connect(modifyAct, SIGNAL(triggered(bool)), SLOT(slotEditModify()));
 
-  KAction* deleteAct = new KAction(KIcon("editdelete"), i18n("&Delete"), actionCollection(), "edit_delete");
+  QAction *deleteAct = actionCollection()->addAction( "edit_delete" );
+  deleteAct->setText( i18n("&Delete") );
+  deleteAct->setIcon( KIcon("editdelete") );
   connect(deleteAct, SIGNAL(triggered(bool)), SLOT(slotEditDelete()));
 
-  KAction* enableAct = new KAction(i18n("&Enabled"), actionCollection(), "edit_enable");
+  QAction *enableAct = actionCollection()->addAction( "edit_enable" );
+  enableAct->setText( i18n("&Enabled") );
   connect(enableAct, SIGNAL(triggered(bool)), SLOT(slotEditEnable()));
 
-  KAction* runAct = new KAction(i18n("&Run Now"), actionCollection(), "edit_run");
+  QAction *runAct = actionCollection()->addAction( "edit_run" );
+  runAct->setText( i18n("&Run Now") );
+
   connect(runAct, SIGNAL(triggered(bool)), SLOT(slotEditRunNow()));
 
   //Settings menu
-  KToggleAction* showToolbarAct = new KToggleAction(i18n("Show &Toolbar"), actionCollection(), "show_toolbar");
+  KToggleAction* showToolbarAct = actionCollection()->add<KToggleAction>( "show_toolbar" );
+  showToolbarAct->setText( i18n("Show &Toolbar") );
   connect(showToolbarAct, SIGNAL(triggered(bool)), SLOT(slotViewToolBar()));
   showToolbarAct->setCheckedState(KGuiItem(i18n("Show &Toolbar")));
 
-  KToggleAction* showStatusbarAct = new KToggleAction(i18n("Show &Statusbar"), actionCollection(), "show_statusbar");
+  KToggleAction* showStatusbarAct = actionCollection()->add<KToggleAction>( "show_statusbar" );
+  showStatusbarAct->setText( i18n("Show &Statusbar") );
   connect(showStatusbarAct, SIGNAL(triggered(bool)), SLOT(slotViewStatusBar()));
   showStatusbarAct->setCheckedState(KGuiItem(i18n("Show &Statusbar")));
 }
