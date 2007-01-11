@@ -19,7 +19,6 @@
 #include <kdialog.h>
 
 #include <klocale.h>
-#include <kapplication.h>
 #include "ktprintopt.h"
 
 KTPrintOpt::KTPrintOpt(bool root) :

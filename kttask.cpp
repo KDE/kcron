@@ -25,7 +25,6 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 
-#include <kapplication.h>
 
 #include <klocale.h>
 #include <kfiledialog.h>

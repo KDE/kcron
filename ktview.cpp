@@ -34,7 +34,6 @@
 //Added by qt3to4:
 #include <QResizeEvent>
 
-#include <kapplication.h>
 #include <kglobalsettings.h>
 #include <klocale.h>
 #include <kglobal.h>

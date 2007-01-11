@@ -22,6 +22,5 @@
 // -GM 11/99
 
 #include <klocale.h>
-#include <kapplication.h>
 
 #endif // CTI18N_H

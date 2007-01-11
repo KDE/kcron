@@ -16,7 +16,6 @@
 #include <QLabel>
 #include <QGridLayout>
 
-#include <kapplication.h>     // kapp
 #include <klocale.h>  // i18n()
 #include <kmessagebox.h>
 #include <ktextedit.h>
