@@ -106,6 +106,7 @@ KTVariable::KTVariable(CTVariable* _ctvar,const QString &_caption) :
     SLOT(slotVariableChanged()));
   connect(cmbVariable,SIGNAL(activated(const QString&)),
     SLOT(slotVariableChanged()));
+  connect(this,SIGNAL(okClicked()),this,SLOT(slotOk()));
 }
 
 KTVariable::~KTVariable()
