@@ -7,6 +7,7 @@ DocPath=kcron/index.html
 Name=KCron
 Name[x-test]=xxKCronxx
 GenericName=Task Scheduler
+GenericName[el]=Χρονοταξινομητής Εργασίας
 GenericName[fr]=Planificateur de tâches
 GenericName[x-test]=xxTask Schedulerxx
 Terminal=false
