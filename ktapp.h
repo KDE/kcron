@@ -14,6 +14,7 @@
 #include <config.h>
 
 #include <kmainwindow.h>
+#include <kconfig.h>
 
 class KAction;
 class QString;
@@ -236,7 +237,7 @@ private:
 /**
   * Configuration object of the application.
   */
-  KConfig* config;
+  KSharedConfigPtr config;
 
 /**
   * Main GUI view/working area.

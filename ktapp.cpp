@@ -36,10 +36,9 @@
 const int KTApp::statusMessage            (1001);
 
 
-KTApp::KTApp() : KMainWindow(0)
+KTApp::KTApp() : KMainWindow(0),
+  config(KGlobal::config())
 {
-  config=KGlobal::config();
-
   setWindowIcon(KTIcon::application(true));
 
   setCaption(i18n("Task Scheduler"));
@@ -116,7 +115,7 @@ const CTHost& KTApp::getCTHost() const
 
 QString KTApp::caption()
 {
-  QString cap(kapp->caption());
+  QString cap(KGlobal::caption());
   return cap;
 }
 
