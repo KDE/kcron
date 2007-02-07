@@ -10,19 +10,18 @@
  ***************************************************************************/
 
 #include <kapplication.h>
+#include <kdeversion.h>
 #include <klocale.h>
 #include "ktapp.h"
 #include <kcmdlineargs.h>
 #include <kaboutdata.h>
- 
-#include <config.h>
 
 int main(int argc, char* argv[]) 
 { 
     static const char description[] = I18N_NOOP("KDE Task Scheduler");
 
     KAboutData aboutData("kcron", I18N_NOOP("KCron"), 
-      VERSION, description, KAboutData::License_GPL, 
+      KDE_VERSION_STRING, description, KAboutData::License_GPL, 
       "(c) 1999-2000, Gary Meyer");
 
     aboutData.addAuthor("Gary Meyer", 0, "gary@meyer.net");
