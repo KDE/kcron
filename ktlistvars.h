@@ -13,8 +13,6 @@
 #ifndef KTLISTVARS_H
 #define KTLISTVARS_H
 
-#include <config.h>
-
 #include "ktlistitem.h"
 
 class QString;

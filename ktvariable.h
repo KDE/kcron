@@ -12,8 +12,6 @@
 #ifndef KTVARIABLE_H
 #define KTVARIABLE_H
 
-#include <config.h>
-
 #include <QLabel>
 #include <QLineEdit>
 #include <QComboBox>

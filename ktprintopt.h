@@ -14,8 +14,6 @@
 #ifndef KTPRINTOPT_H
 #define KTPRINTOPT_H
 
-#include <config.h>
-
 #include <kdeprint/kprintdialogpage.h>
 
 class QCheckBox;

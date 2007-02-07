@@ -12,8 +12,6 @@
 #ifndef KTLISTTASKS_H
 #define KTLISTTASKS_H
 
-#include <config.h>
-
 #include "ktlistitem.h"
 
 class QString;

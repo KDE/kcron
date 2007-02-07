@@ -15,6 +15,8 @@
 #include <kcmdlineargs.h>
 #include <kaboutdata.h>
  
+#include <config.h>
+
 int main(int argc, char* argv[]) 
 { 
     static const char description[] = I18N_NOOP("KDE Task Scheduler");

@@ -11,7 +11,6 @@
 
 #ifndef KTAPP_H
 #define KTAPP_H
-#include <config.h>
 
 #include <kmainwindow.h>
 #include <kconfig.h>

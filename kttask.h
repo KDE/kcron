@@ -12,8 +12,6 @@
 #ifndef KTTASK_H
 #define KTTASK_H
 
-#include <config.h>
-
 #include <kdialog.h>
 //Added by qt3to4:
 #include <QLabel>

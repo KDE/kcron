@@ -11,7 +11,6 @@
 
 #ifndef KTLISTCRON_H
 #define KTLISTCRON_H
-#include <config.h>
 
 #include "ktlistitem.h"
 

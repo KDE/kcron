@@ -12,8 +12,6 @@
 #ifndef KTLISTTASK_H
 #define KTLISTTASK_H
 
-#include <config.h>
-
 #include "ktlistitem.h"
 
 class CTTask;

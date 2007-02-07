@@ -12,8 +12,6 @@
 #ifndef KTLISTVAR_H
 #define KTLISTVAR_H
 
-#include <config.h>
-
 #include "ktlistitem.h"
 
 class CTVariable;

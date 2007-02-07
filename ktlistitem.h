@@ -12,8 +12,6 @@
 #ifndef KTLISTITEM_H
 #define KTLISTITEM_H
 
-#include <config.h>
-
 #include <q3listview.h>
 
 class KTPrint;

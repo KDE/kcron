@@ -12,8 +12,6 @@
 #ifndef KTVIEW_H
 #define KTVIEW_H
 
-#include <config.h>
-
 #include <QWidget>
 //Added by qt3to4:
 #include <QResizeEvent>
