@@ -13,7 +13,7 @@
 #define KTAPP_H
 
 #include <kmainwindow.h>
-#include <kconfig.h>
+#include <ksharedconfig.h>
 
 class KAction;
 class QString;
