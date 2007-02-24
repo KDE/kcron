@@ -179,37 +179,37 @@ void KTApp::initStatusBar()
 
 void KTApp::saveOptions()
 {
-  config->setGroup(QString("General Options"));
-  config->writeEntry(QString("Geometry"), size());
-  config->writeEntry(QString("Show Toolbar"), toolBar()->isVisible());
-  config->writeEntry(QString("Show Statusbar"), statusBar()->isVisible());
-  config->writeEntry(QString("ToolBarArea"),  (int)toolBarArea(toolBar()));
-  config->writeEntry(QString("Path to crontab"), crontab);
+  KConfigGroup group(config, "General Options");
+  group.writeEntry(QString("Geometry"), size());
+  group.writeEntry(QString("Show Toolbar"), toolBar()->isVisible());
+  group.writeEntry(QString("Show Statusbar"), statusBar()->isVisible());
+  group.writeEntry(QString("ToolBarArea"),  (int)toolBarArea(toolBar()));
+  group.writeEntry(QString("Path to crontab"), crontab);
 }
 
 
 void KTApp::readOptions()
 {
-  config->setGroup(QString("General Options"));
+  KConfigGroup group(config, "General Options");
 
   // bar status settings
-  bool bViewToolbar = config->readEntry(QString("Show Toolbar"), true);
+  bool bViewToolbar = group.readEntry(QString("Show Toolbar"), true);
   actionCollection()->action("show_toolbar")->setChecked(bViewToolbar);
   if (!bViewToolbar)
     toolBar()->hide();
 
-  bool bViewStatusbar = config->readEntry(QString("Show Statusbar"), true);
+  bool bViewStatusbar = group.readEntry(QString("Show Statusbar"), true);
   actionCollection()->action("show_statusbar")->setChecked(bViewStatusbar);
   if (!bViewStatusbar)
     statusBar()->hide();
 
   // bar position settings
   Qt::ToolBarArea tool_bar_area;
-  tool_bar_area = (Qt::ToolBarArea)config->readEntry(QString("ToolBarArea"),
+  tool_bar_area = (Qt::ToolBarArea)group.readEntry(QString("ToolBarArea"),
 						     (int)Qt::TopToolBarArea);
   addToolBar(tool_bar_area, toolBar());
 
-  QSize size=config->readEntry(QString("Geometry"),QSize());
+  QSize size=group.readEntry(QString("Geometry"),QSize());
 
   // Minimum size is 350 by 250
 
@@ -231,7 +231,7 @@ void KTApp::readOptions()
   resize(size);
 
   // get the path to the crontab binary
-  crontab = config->readEntry(QString("Path to crontab"), QString("crontab"));
+  crontab = group.readEntry(QString("Path to crontab"), QString("crontab"));
 }
 
 bool KTApp::queryClose()
