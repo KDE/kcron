@@ -134,20 +134,20 @@ void KTApp::setupActions()
 
   QAction* newAct = actionCollection()->addAction( "edit_new" );
   newAct->setText( i18n("&New...") );
-  newAct->setIcon( KIcon("filenew") );
+  newAct->setIcon( KIcon("document-new") );
   qobject_cast<KAction*>( newAct )->setShortcut(KStandardShortcut::shortcut(KStandardShortcut::New));
   connect(newAct, SIGNAL(triggered(bool)), SLOT(slotEditNew()));
 
   //I don't like this KStandardShortcut::open() for modifying, but I'm just porting this to xmlui
   QAction *modifyAct = actionCollection()->addAction( "edit_modify" );
   modifyAct->setText( i18n("M&odify...") );
-  modifyAct->setIcon( KIcon("fileopen") );
+  modifyAct->setIcon( KIcon("document-open") );
   qobject_cast<KAction*>( modifyAct )->setShortcut(KStandardShortcut::shortcut(KStandardShortcut::Open));
   connect(modifyAct, SIGNAL(triggered(bool)), SLOT(slotEditModify()));
 
   QAction *deleteAct = actionCollection()->addAction( "edit_delete" );
   deleteAct->setText( i18n("&Delete") );
-  deleteAct->setIcon( KIcon("editdelete") );
+  deleteAct->setIcon( KIcon("edit-delete") );
   connect(deleteAct, SIGNAL(triggered(bool)), SLOT(slotEditDelete()));
 
   QAction *enableAct = actionCollection()->addAction( "edit_enable" );

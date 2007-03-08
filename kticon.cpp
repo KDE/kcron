@@ -71,9 +71,9 @@ QPixmap KTIcon::variable(bool mini)
 QPixmap KTIcon::mail(bool mini)
 {
   if (mini)
-    return getMiniIcon("mail_generic");
+    return getMiniIcon("mail");
   else
-    return getIcon("mail_generic");
+    return getIcon("mail");
 }
 
 QPixmap KTIcon::shell(bool mini)
@@ -87,9 +87,9 @@ QPixmap KTIcon::shell(bool mini)
 QPixmap KTIcon::home(bool mini)
 {
   if (mini)
-    return getMiniIcon("gohome");
+    return getMiniIcon("go-home");
   else
-    return getIcon("gohome");
+    return getIcon("go-home");
 }
 
 QPixmap KTIcon::path(bool mini)
