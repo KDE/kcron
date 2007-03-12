@@ -17,6 +17,7 @@
 #include <string>
 #include <stdio.h>    // sprintf
 #include <ctype.h>    // tolower
+#include <stdlib.h>
 
 using namespace std;
 
