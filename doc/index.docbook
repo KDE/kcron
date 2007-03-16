@@ -19,14 +19,14 @@
 <firstname>Morgan</firstname>
 <othername>N.</othername>
 <surname>Sandquist</surname>
-<affiliation><address><email>morgan@pipeline.com</email></address>
+<affiliation><address>&Morgan.N.Sandquist.mail;</address>
 </affiliation>
 </author>
 
 <othercredit role="developer">
 <firstname>Gary</firstname>
 <surname>Meyer</surname>
-<affiliation><address><email>gary@meyer.net</email></address>
+<affiliation><address>&Gary.Meyer.mail;</address>
 </affiliation>
 <contrib>Developer</contrib>
 </othercredit>
@@ -34,7 +34,7 @@
 <othercredit role="reviewer">
 <firstname>Lauri</firstname>
 <surname>Watts</surname>
-<affiliation><address><email>lauri@kde.org</email></address>
+<affiliation><address>&Lauri.Watts.mail;</address>
 </affiliation>
 <contrib>Reviewer</contrib>
 </othercredit>
@@ -45,7 +45,7 @@
 
 <copyright>
 <year>2000</year>
-<holder>Morgan N. Sandquist</holder>
+<holder>&Morgan.N.Sandquist;</holder>
 </copyright>
 
 <legalnotice>&FDLNotice;</legalnotice>
@@ -820,7 +820,7 @@ variable.</action></para></listitem>
 <qandaset id="questions-and-answers">
 <qandaentry>
 <question>
-<para>Why aren't the changes I'm making to scheduled tasks and/or environment
+<para>Why aren't the changes I am making to scheduled tasks and/or environment
 variables taking effect?</para>
 </question>
 <answer><para>Additions or changes to scheduled tasks do not actually happen until the
@@ -837,10 +837,10 @@ linkend="saving-crontab">saved</link>.</para>
 
 <para>&kcron;</para>
 
-<para>Program copyright 2000 Gary Meyer <email>gary@meyer.net</email></para>
+<para>Program copyright 2000 &Gary.Meyer; &Gary.Meyer.mail;</para>
 
-<para>Documentation copyright 2000 Morgan N. Sandquist
-<email>morgan@pipeline.com</email></para>
+<para>Documentation copyright 2000 &Morgan.N.Sandquist; 
+&Morgan.N.Sandquist.mail;</para>
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
 
 &underFDL;
