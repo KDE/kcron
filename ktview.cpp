@@ -26,7 +26,6 @@
 
 #include <QString>
 #include <q3header.h>
-#include <q3popupmenu.h>
 #include <qfileinfo.h>
 #include <QFile>
 #include <qdatetime.h>
