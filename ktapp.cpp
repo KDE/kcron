@@ -14,7 +14,6 @@
 #include <kstandardshortcut.h>
 #include <kmessagebox.h>
 #include <kconfig.h>
-#include <kapplication.h>
 #include <klocale.h>       // i18n()
 #include <kstandardaction.h>
 #include <kaction.h>
