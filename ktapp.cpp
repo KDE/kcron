@@ -35,7 +35,7 @@
 const int KTApp::statusMessage            (1001);
 
 
-KTApp::KTApp() : KMainWindow(0),
+KTApp::KTApp() : KXmlGuiWindow(0),
   config(KGlobal::config())
 {
   setWindowIcon(KTIcon::application(true));

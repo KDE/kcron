@@ -12,7 +12,7 @@
 #ifndef KTAPP_H
 #define KTAPP_H
 
-#include <kmainwindow.h>
+#include <kxmlguiwindow.h>
 #include <ksharedconfig.h>
 
 class KAction;
@@ -28,7 +28,7 @@ class CTHost;
   * Provides main window handling, session management and keyboard
   * acceleration.
   */
-class KTApp : public KMainWindow
+class KTApp : public KXmlGuiWindow
 {
   Q_OBJECT
 
