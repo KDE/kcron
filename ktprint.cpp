@@ -12,7 +12,7 @@
  ***************************************************************************/
 
 #include <qpainter.h>
-#include <QString>
+
 #include <q3paintdevicemetrics.h>
 
 #include <ktprintopt.h>

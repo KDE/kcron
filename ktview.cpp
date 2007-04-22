@@ -24,7 +24,7 @@
 
 #include <string>
 
-#include <QString>
+
 #include <q3header.h>
 #include <qfileinfo.h>
 #include <QFile>

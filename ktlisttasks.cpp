@@ -11,7 +11,7 @@
 
 #include "ktlisttasks.h"
 
-#include <QString>
+
 
 #include <klocale.h>  // i18n()
 #include <kglobalsettings.h>

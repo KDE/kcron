@@ -12,7 +12,7 @@
 #include "kttask.h"
 
 #include <QLabel>
-#include <QString>
+
 #include <qfileinfo.h>
 #include <QLayout>
 #include <QLineEdit>
