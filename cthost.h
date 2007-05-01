@@ -110,6 +110,11 @@ private:
   CTCron* createCTCron(bool _syscron = false, std::string _login = "");
   CTCron* createCTCron(const struct passwd *);
 
+/**
+  * Check /etc/cron.allow, /etc/cron.deny
+  */
+  bool allowDeny(char *name);
+
   QString error;
 	
   QString crontabBinary;
