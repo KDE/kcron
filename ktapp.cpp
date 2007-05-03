@@ -52,7 +52,7 @@ KTApp::KTApp() : KXmlGuiWindow(0),
   // Initialize document.
   cthost = new CTHost(crontab);
 
-  createGUI();
+  setupGUI(QSize(600, 320));
 
   // Initialize view.
   view = new KTView(this);
@@ -155,19 +155,7 @@ void KTApp::setupActions()
 
   QAction *runAct = actionCollection()->addAction( "edit_run" );
   runAct->setText( i18n("&Run Now") );
-
   connect(runAct, SIGNAL(triggered(bool)), SLOT(slotEditRunNow()));
-
-  //Settings menu
-  KToggleAction* showToolbarAct = actionCollection()->add<KToggleAction>( "show_toolbar" );
-  showToolbarAct->setText( i18n("Show &Toolbar") );
-  connect(showToolbarAct, SIGNAL(triggered(bool)), SLOT(slotViewToolBar()));
-  showToolbarAct->setCheckedState(KGuiItem(i18n("Show &Toolbar")));
-
-  KToggleAction* showStatusbarAct = actionCollection()->add<KToggleAction>( "show_statusbar" );
-  showStatusbarAct->setText( i18n("Show &Statusbar") );
-  connect(showStatusbarAct, SIGNAL(triggered(bool)), SLOT(slotViewStatusBar()));
-  showStatusbarAct->setCheckedState(KGuiItem(i18n("Show &Statusbar")));
 }
 
 void KTApp::initStatusBar()
@@ -179,10 +167,6 @@ void KTApp::initStatusBar()
 void KTApp::saveOptions()
 {
   KConfigGroup group(config, "General Options");
-  group.writeEntry(QString("Geometry"), size());
-  group.writeEntry(QString("Show Toolbar"), toolBar()->isVisible());
-  group.writeEntry(QString("Show Statusbar"), statusBar()->isVisible());
-  group.writeEntry(QString("ToolBarArea"),  (int)toolBarArea(toolBar()));
   group.writeEntry(QString("Path to crontab"), crontab);
 }
 
@@ -190,44 +174,6 @@ void KTApp::saveOptions()
 void KTApp::readOptions()
 {
   KConfigGroup group(config, "General Options");
-
-  // bar status settings
-  bool bViewToolbar = group.readEntry(QString("Show Toolbar"), true);
-  actionCollection()->action("show_toolbar")->setChecked(bViewToolbar);
-  if (!bViewToolbar)
-    toolBar()->hide();
-
-  bool bViewStatusbar = group.readEntry(QString("Show Statusbar"), true);
-  actionCollection()->action("show_statusbar")->setChecked(bViewStatusbar);
-  if (!bViewStatusbar)
-    statusBar()->hide();
-
-  // bar position settings
-  Qt::ToolBarArea tool_bar_area;
-  tool_bar_area = (Qt::ToolBarArea)group.readEntry(QString("ToolBarArea"),
-						     (int)Qt::TopToolBarArea);
-  addToolBar(tool_bar_area, toolBar());
-
-  QSize size=group.readEntry(QString("Geometry"),QSize());
-
-  // Minimum size is 350 by 250
-
-  if (size.isEmpty())
-  {
-    size.setWidth(350);
-    size.setHeight(250);
-  }
-
-  if (size.width() < 350)
-  {
-    size.setWidth(350);
-  }
-  if (size.height() < 250)
-  {
-    size.setHeight(250);
-  }
-
-  resize(size);
 
   // get the path to the crontab binary
   crontab = group.readEntry(QString("Path to crontab"), QString("crontab"));
@@ -377,30 +323,6 @@ void KTApp::slotEditRunNow()
   slotStatusMsg(i18n("Ready."));
 }
 
-void KTApp::slotViewToolBar()
-{
-  if(toolBar()->isVisible())
-    toolBar()->hide();
-  else
-    toolBar()->show();
-
-  actionCollection()->action("show_toolbar")->setChecked(toolBar()->isVisible());
-
-  slotStatusMsg(i18n("Ready."));
-}
-
-void KTApp::slotViewStatusBar()
-{
-  if (statusBar()->isVisible())
-    statusBar()->hide();
-  else
-    statusBar()->show();
-
-  actionCollection()->action("show_toolbar")->setChecked(statusBar()->isVisible());
-
-  slotStatusMsg(i18n("Ready."));
-}
-
 void KTApp::slotStatusMsg(const QString & text)
 {
   statusBar()->clearMessage();
@@ -470,4 +392,3 @@ void KTApp::slotEnableEnabled(bool state)
 }
 
 #include "ktapp.moc"
-

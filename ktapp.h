@@ -155,16 +155,6 @@ public slots:
   void slotEditRunNow();
 
 /**
-  * Toggle the toolbar being visible.
-  */
-  void slotViewToolBar();
-
-/**
-  * Toggles the status bar being visible.
-  */
-  void slotViewStatusBar();
-
-/**
   * Changes the status bar contents for the standard label permanently;
   * used to indicate current actions.
   */
