@@ -67,7 +67,7 @@ public:
     else 
        outStr << ((const CTUnit<min, max>) unit).tokenize();
     return outStr;
-  };
+  }
 
 /**
   * Parses unit such as "0-3,5,6,10-30/5".

@@ -28,7 +28,7 @@ public:
 /**
   * Constructs from a tokenized string.
   */
-  CTMinute(const string &tokStr = "") : CTUnit<0,59>(tokStr) { };
+  CTMinute(const string &tokStr = "") : CTUnit<0,59>(tokStr) { }
 
 /**
   * Default copy constructor.

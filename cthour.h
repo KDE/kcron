@@ -28,7 +28,7 @@ public:
 /**
   * Constructs from a tokenized string.
   */
-  CTHour(const string &tokStr = "") : CTUnit<0,23>(tokStr) { };
+  CTHour(const string &tokStr = "") : CTUnit<0,23>(tokStr) { }
 
 /**
   * Default copy constructor.
