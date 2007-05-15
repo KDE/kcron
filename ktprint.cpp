@@ -13,7 +13,6 @@
 
 #include <qpainter.h>
 
-#include <q3paintdevicemetrics.h>
 
 #include <ktprintopt.h>
 #include <klocale.h>
@@ -87,9 +86,8 @@ bool KTPrint:: start ()
     //paint->setTabStops(20); // Setup a defualt tab stop size
     		
     //Get the information about the page size
-    Q3PaintDeviceMetrics metrics (prnt);
-    width = metrics.width () - (leftMargin + rightMargin);
-    height = metrics.height () - (topMargin + bottomMargin);
+    width = prnt->width () - (leftMargin + rightMargin);
+    height = prnt->height () - (topMargin + bottomMargin);
     return true;
   }
   else
