@@ -78,11 +78,13 @@ KTView::KTView(QWidget *parent, const char* name) :
   
   connect(this, SIGNAL(enableEnabled(bool)), parent,
     SLOT(slotEnableEnabled(bool)));
-  
+}
+
+void KTView::disableIcons()
+{
   emit(enableModificationButtons(false));
   emit(enablePaste(clipboardCTVariable));
-  emit(enableRunNow(false));
-            
+  emit(enableRunNow(false));        
 }
 
 void KTView::refresh()

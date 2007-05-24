@@ -98,6 +98,11 @@ public:
   */
   void run() const;
 
+/**
+  * Disable selected icons
+  */
+  void disableIcons();
+
 signals:
 
 /** Enables/disables modification 

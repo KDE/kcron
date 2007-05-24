@@ -53,6 +53,7 @@ KTApp::KTApp() : KMainWindow(0)
   setupActions();
   initStatusBar();
   createGUI();
+  view->disableIcons();
   
   //Connections
   KPopupMenu *editMenu = static_cast<KPopupMenu*>(guiFactory()->container("edit", this)); 
@@ -460,4 +461,3 @@ void KTApp::slotEnableEnabled(bool state)
 }      
 
 #include "ktapp.moc"
-
