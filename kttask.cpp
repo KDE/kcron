@@ -108,7 +108,6 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
        :KDialog( 0 )
 {
   cttask = _cttask;
-
   setModal(true);
   QWidget *main = new QWidget(this);
   setMainWidget(main);
@@ -476,8 +475,8 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   key_accel->insert(KStandardShortcut::Quit, this, SLOT(slotCancel()));
   key_accel->readSettings();
   */
-
-  setFixedSize( minimumSize() );
+  main->layout()->setSizeConstraint(QLayout::SetFixedSize);
+ 
   slotDailyChanged();
   slotMonthChanged();
   slotDayOfMonthChanged();

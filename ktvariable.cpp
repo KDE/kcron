@@ -61,7 +61,7 @@ KTVariable::KTVariable(CTVariable* _ctvar,const QString &_caption) :
   // icon
   labIcon = new QLabel(page);
   labIcon->setObjectName("labIcon");
-  layout->addWidget(labIcon, 0, 2, 1, 0);
+  layout->addWidget(labIcon, 1, 2);
 
   // value
   labValue = new QLabel(i18n("Va&lue:"), page);
