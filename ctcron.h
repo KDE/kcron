@@ -21,7 +21,6 @@
 
 #include <QString> // Anarchy! -WABA 
 
-class CTException;
 class CTTask;
 class CTVariable;
 

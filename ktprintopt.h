@@ -17,7 +17,6 @@
 #include <kdeprint/kprintdialogpage.h>
 
 class QCheckBox;
-class KAccel;
 
 /**
   *Give the user the option to print the crontab file.

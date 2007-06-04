@@ -15,7 +15,6 @@
 #include <kxmlguiwindow.h>
 #include <ksharedconfig.h>
 
-class KAction;
 class QString;
 class KTView;
 class CTHost;
