@@ -49,6 +49,11 @@ private slots:
   */
   void slotVariableChanged();
 
+/**
+   * Override QDialog::accept ()
+ */
+  void accept(); 
+
   /**
    * Apply changes and close.
    */

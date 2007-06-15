@@ -61,6 +61,11 @@ private slots:
   void slotDailyChanged();
 
 /**
+  * Override QDialog::accept ()
+  */
+  void accept(); 
+
+/**
   * Apply changes and close.
   */
   void slotOK();
@@ -172,4 +177,5 @@ private:
 
 };
 
+  
 #endif // KTTASK_H

@@ -88,7 +88,6 @@ protected:
 public slots:
 
   void statusEditCallback(QAction* action);
-  void statusSettingsCallback(QAction* action);
 
 /**
   * Save document.

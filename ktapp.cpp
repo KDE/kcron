@@ -31,6 +31,8 @@
 #include "ktview.h"
 #include <ktoolbar.h>
 #include <kicon.h>
+#include <QLabel>
+
 
 const int KTApp::statusMessage            (1001);
 
@@ -60,10 +62,7 @@ KTApp::KTApp() : KXmlGuiWindow(0),
 
   //Connections
   KMenu *editMenu = static_cast<KMenu*>(guiFactory()->container("edit", this));
-  KMenu *settingsMenu = static_cast<KMenu*>(guiFactory()->container("settings", this));
-
   connect(editMenu,SIGNAL(hovered(QAction*)),this,SLOT(statusEditCallback(QAction*)));
-  connect(settingsMenu,SIGNAL(hovered(QAction*)),this,SLOT(statusSettingsCallback(QAction*)));
 }
 
 bool KTApp::init()
@@ -132,6 +131,7 @@ void KTApp::setupActions()
   KStandardAction::paste(this, SLOT(slotEditPaste()), actionCollection());
 
   QAction* newAct = actionCollection()->addAction( "edit_new" );
+  newAct->setObjectName("edit_new");
   newAct->setText( i18n("&New...") );
   newAct->setIcon( KIcon("document-new") );
   qobject_cast<KAction*>( newAct )->setShortcut(KStandardShortcut::shortcut(KStandardShortcut::New));
@@ -139,29 +139,35 @@ void KTApp::setupActions()
 
   //I don't like this KStandardShortcut::open() for modifying, but I'm just porting this to xmlui
   QAction *modifyAct = actionCollection()->addAction( "edit_modify" );
+  modifyAct->setObjectName("edit_modify");
   modifyAct->setText( i18n("M&odify...") );
   modifyAct->setIcon( KIcon("document-open") );
   qobject_cast<KAction*>( modifyAct )->setShortcut(KStandardShortcut::shortcut(KStandardShortcut::Open));
   connect(modifyAct, SIGNAL(triggered(bool)), SLOT(slotEditModify()));
 
   QAction *deleteAct = actionCollection()->addAction( "edit_delete" );
+  deleteAct->setObjectName("edit_delete");
   deleteAct->setText( i18n("&Delete") );
   deleteAct->setIcon( KIcon("edit-delete") );
   connect(deleteAct, SIGNAL(triggered(bool)), SLOT(slotEditDelete()));
 
   QAction *enableAct = actionCollection()->addAction( "edit_enable" );
+  enableAct->setObjectName("edit_enable");
   enableAct->setText( i18n("&Enabled") );
   connect(enableAct, SIGNAL(triggered(bool)), SLOT(slotEditEnable()));
 
   QAction *runAct = actionCollection()->addAction( "edit_run" );
+  runAct->setObjectName("edit_run");
   runAct->setText( i18n("&Run Now") );
   connect(runAct, SIGNAL(triggered(bool)), SLOT(slotEditRunNow()));
 }
 
 void KTApp::initStatusBar()
 {
-  statusBar()->insertItem(i18n("Ready."), statusMessage, 1);
-  statusBar()->setItemAlignment(statusMessage, Qt::AlignLeft | Qt::AlignVCenter);
+    QLabel *defaultmsg = new QLabel(i18n(" Ready."));
+  defaultmsg->setFixedHeight( fontMetrics().height() + 2 );
+  defaultmsg->setAlignment( Qt::AlignLeft | Qt::AlignVCenter );
+  statusBar()->addWidget(defaultmsg);    
 }
 
 void KTApp::saveOptions()
@@ -325,8 +331,7 @@ void KTApp::slotEditRunNow()
 
 void KTApp::slotStatusMsg(const QString & text)
 {
-  statusBar()->clearMessage();
-  statusBar()->changeItem(text, statusMessage);
+  statusBar()->showMessage(text);
   setCaption(i18n("Task Scheduler"), cthost->dirty());
 }
 
@@ -337,8 +342,8 @@ void KTApp::slotStatusHelpMsg(const QString & text)
 
 void KTApp::statusEditCallback(QAction* action)
 {
-  QString text = action->text();
-  if (text == "edit_cut") {
+  QString text = action->objectName();
+  if (text == "edit_new") {
     slotStatusHelpMsg(i18n("Create a new task or variable."));
   } else if (text == "edit_modify") {
     slotStatusHelpMsg(i18n("Edit the selected task or variable."));
@@ -348,16 +353,6 @@ void KTApp::statusEditCallback(QAction* action)
     slotStatusHelpMsg(i18n("Enable/disable the selected task or variable."));
   } else if (text == "edit_run") {
     slotStatusHelpMsg(i18n("Run the selected task now."));
-  }
-}
-
-void KTApp::statusSettingsCallback(QAction* action)
-{
-  QString text = action->text();
-  if (text == "show_toolbar") {
-    slotStatusHelpMsg(i18n("Enable/disable the tool bar."));
-  } else if (text == "show_statusbar") {
-    slotStatusHelpMsg(i18n("Enable/disable the status bar."));
   }
 }
 

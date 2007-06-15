@@ -33,6 +33,7 @@
 #include <KStandardGuiItem>
 #include <kdialog.h>
 #include <kstandardshortcut.h>
+#include <kstandarddirs.h>
 #include "cttask.h"
 
 #include "kticon.h"
@@ -112,7 +113,6 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   QWidget *main = new QWidget(this);
   setMainWidget(main);
   bool everyDay(true);
-
   QVBoxLayout *ml = new QVBoxLayout(main);
   ml->setSpacing(KDialog::spacingHint());
 
@@ -559,7 +559,12 @@ void KTTask::slotDailyChanged()
   slotDayOfWeekChanged();
 }
 
+// Override the default OK handler in QDialog
+// to avoid auto dialog hiding.
+void KTTask::accept() {}
+
 void KTTask::slotOK()
+        
 {
   // Make it friendly for just selecting days of the month or
   // days of the week.
@@ -602,8 +607,47 @@ void KTTask::slotOK()
     message += sep + i18n("the program to run");
     leCommand->setFocus();
     showMessage = true;
+  }  
+  
+  // make sure the file name is a good one if we have an
+  // absolute path or if we are relying on $PATH
+  
+  QString pathstr, cmdstr, tmpstr;
+  QString qs(leCommand->text());
+  
+  if (qs.left(0) == "/" or qs.left(1) == "/")
+  {
+    // detected a '/' at the start - must be absolute path 
+    tmpstr = qs.section(' ', 0, 0);
+    pathstr = tmpstr.section('/', 0, -2);
+    cmdstr = tmpstr.section('/', -1);
+  }  
+  else
+  {  
+    // relying on $PATH
+    pathstr = QString();  // null string
+    cmdstr = qs.section(' ', 0, 0);
+  } 
+
+  bool found(false), exec(false);
+  if (KStandardDirs::findExe(cmdstr, pathstr, KStandardDirs::IgnoreExecBit) != "") found = true;
+  if (KStandardDirs::findExe(cmdstr, pathstr) != "") exec = true;
+  
+  if (found && !exec) 
+  {
+    message += sep + i18n("an executable program to run");
+    leCommand->setFocus();
+    showMessage = true;
   }
 
+  if (!found)
+  {
+    message += sep + i18n("a valid program to run");
+    leCommand->setFocus();
+    showMessage = true;
+  }
+  
+  // the times
   bool valid(false);
   for (int mo = 1; mo <= 12; mo++)
   {
@@ -676,34 +720,6 @@ void KTTask::slotOK()
   {
     KMessageBox::information(this, message);
     return;
-  }
-
-  // make sure the file name is a good one if we have an
-  // absolute path
-
-  QString qs(leCommand->text());
-  if (qs.indexOf("/") == 0)
-  {
-    int spacePos(qs.indexOf(" "));
-    if (spacePos < 0) spacePos = qs.length();
-    QString programName(qs.left(spacePos));
-    QFileInfo file(programName);
-
-    if (!file.isReadable())
-    {
-      KMessageBox::information(this,
-        i18n("Cannot locate program. Please re-enter."));
-      leCommand->setFocus();
-      return;
-    }
-
-    if (!file.isExecutable())
-    {
-      KMessageBox::information(this,
-        i18n("Program is not an executable file. Please re-enter."));
-      leCommand->setFocus();
-      return;
-    }
   }
 
   // save work in process

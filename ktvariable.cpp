@@ -142,6 +142,10 @@ void KTVariable::slotVariableChanged()
   }
 }
 
+// Override the default OK handler in QDialog
+// to avoid auto dialog hiding.
+void KTVariable::accept() {}
+
 void KTVariable::slotOk()
 {
   if (cmbVariable->currentText().isEmpty())
