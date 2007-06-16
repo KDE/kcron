@@ -24,7 +24,7 @@
 
 #include <QFile>
 
-#include <k3process.h>
+#include <kshell.h>
 #include <klocale.h>
 #include <ktemporaryfile.h>
 
@@ -50,15 +50,15 @@ CTCron::CTCron(const QString& crontabBinary, bool _syscron, string _login) :
   {
     if (syscron)
     {
-      readCommand  = "cat /etc/crontab > " + K3Process::quote(tmpFileName);
-      writeCommand = "cat " + K3Process::quote(tmpFileName) + " > /etc/crontab";
+      readCommand  = "cat /etc/crontab > " + KShell::quoteArg(tmpFileName);
+      writeCommand = "cat " + KShell::quoteArg(tmpFileName) + " > /etc/crontab";
       login = (const char *)i18n("(System Crontab)").toLocal8Bit();
       name = "";
     }
     else
     {
-      readCommand  = crontab + " -u " + _login.c_str() + " -l > " + K3Process::quote(tmpFileName);
-      writeCommand = crontab + " -u " + _login.c_str() + " " + K3Process::quote(tmpFileName);
+      readCommand  = crontab + " -u " + _login.c_str() + " -l > " + KShell::quoteArg(tmpFileName);
+      writeCommand = crontab + " -u " + _login.c_str() + " " + KShell::quoteArg(tmpFileName);
       if (!initFromPasswd(getpwnam(_login.c_str())))
       {
          error = i18n("No password entry found for user '%1'", _login.c_str());
@@ -68,8 +68,8 @@ CTCron::CTCron(const QString& crontabBinary, bool _syscron, string _login) :
   else
   // regular user, so provide user's own crontab
   {
-    readCommand  = crontab + " -l > " + K3Process::quote(tmpFileName);
-    writeCommand = crontab + " "      + K3Process::quote(tmpFileName);
+    readCommand  = crontab + " -l > " + KShell::quoteArg(tmpFileName);
+    writeCommand = crontab + " "      + KShell::quoteArg(tmpFileName);
     if (!initFromPasswd(getpwuid(uid)))
     {
       error = i18n("No password entry found for uid '%1'", uid);
@@ -108,8 +108,8 @@ CTCron::CTCron(const QString& crontabBinary, const struct passwd *pwd) :
   tmp.open();
   tmpFileName = tmp.fileName();  
 
-  QString readCommand  = crontab + " -u " + QString(pwd->pw_name) + " -l > " + K3Process::quote(tmpFileName);
-  writeCommand = crontab +  " -u " + QString(pwd->pw_name) + " " + K3Process::quote(tmpFileName);
+  QString readCommand  = crontab + " -u " + QString(pwd->pw_name) + " -l > " + KShell::quoteArg(tmpFileName);
+  writeCommand = crontab +  " -u " + QString(pwd->pw_name) + " " + KShell::quoteArg(tmpFileName);
 
   initFromPasswd(pwd);
 
