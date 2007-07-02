@@ -20,14 +20,14 @@ int main(int argc, char* argv[])
 { 
     static const char description[] = I18N_NOOP("KDE Task Scheduler");
 
-    KAboutData aboutData("kcron", I18N_NOOP("KCron"), 
-      KDE_VERSION_STRING, description, KAboutData::License_GPL, 
-      "(c) 1999-2000, Gary Meyer");
+    KAboutData aboutData("kcron", 0, ki18n("KCron"), 
+      KDE_VERSION_STRING, ki18n(description), KAboutData::License_GPL, 
+      ki18n("(c) 1999-2000, Gary Meyer"));
 
-    aboutData.addAuthor("Gary Meyer", 0, "gary@meyer.net");
-    aboutData.addAuthor("Robert Berry", 0, "rjmber@ntlworld.com");
-    aboutData.addAuthor("James Ots", 0, "code@jamesots.com");
-    aboutData.addAuthor("Alberto G. Hierro", 0, "alberto.hierro@kdemail.net");
+    aboutData.addAuthor(ki18n("Gary Meyer"), KLocalizedString(), "gary@meyer.net");
+    aboutData.addAuthor(ki18n("Robert Berry"), KLocalizedString(), "rjmber@ntlworld.com");
+    aboutData.addAuthor(ki18n("James Ots"), KLocalizedString(), "code@jamesots.com");
+    aboutData.addAuthor(ki18n("Alberto G. Hierro"), KLocalizedString(), "alberto.hierro@kdemail.net");
 
     KCmdLineArgs::init(argc, argv, &aboutData);
   
