@@ -29,7 +29,6 @@ set(kcron_SRCS
    ktprintopt.cpp 
    main.cpp )
 
-kde4_automoc(${kcron_SRCS})
 
 kde4_add_executable(kcron ${kcron_SRCS})
 
