@@ -28,6 +28,11 @@ QPixmap KTIcon::getIcon(const QString& name)
   return BarIcon(name);
 }
 
+QPixmap KTIcon::getMaxIcon(const QString& name)
+{
+  return DesktopIcon(name);
+}
+
 QPixmap KTIcon::application(bool mini)
 {
   if (mini)

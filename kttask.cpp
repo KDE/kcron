@@ -25,6 +25,8 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 
+#include "qstyleoption.h"
+#include "qstylepainter.h"
 
 #include <klocale.h>
 #include <kfiledialog.h>
@@ -34,15 +36,19 @@
 #include <kdialog.h>
 #include <kstandardshortcut.h>
 #include <kstandarddirs.h>
-#include "cttask.h"
+#include <ktitlewidget.h>
+#include <kiconloader.h>
 
+#include "cttask.h"
 #include "kticon.h"
+
+
 
 class KTPushButton : public QPushButton
 {
 public:
    KTPushButton(QWidget * parent)
-     : QPushButton(parent), isSelected(false), isDirty(false)
+     : QPushButton(parent), isDirty(false)
    {
       updatePalette();
    }
@@ -51,12 +57,10 @@ public:
    {
       palNormal = ((QWidget *)parent())->palette();
       palSelected = palNormal;
-      for(int cg = (int) QPalette::Disabled; cg < (int) QPalette::NColorGroups; cg++)
+      for(int cg = (int) QPalette::Active; cg < (int) QPalette::NColorGroups; cg++)
       {
-        palSelected.setColor((QPalette::ColorGroup)cg, QPalette::Button,
-                     palSelected.color((QPalette::ColorGroup)cg, QPalette::Highlight));
         palSelected.setColor((QPalette::ColorGroup)cg, QPalette::ButtonText,
-                     palSelected.color((QPalette::ColorGroup)cg, QPalette::HighlightedText));
+                     palSelected.color((QPalette::ColorGroup)cg, QPalette::Highlight));
       }
       isDirty = true;
    }
@@ -71,39 +75,31 @@ public:
      return QPushButton::event(e);
    }
 
-   void paintEvent(QPaintEvent* p)
+   void paintEvent(QPaintEvent*)
    {
-     QPushButton::paintEvent(p);
-   }
+     QStylePainter p(this);
+     QStyleOptionButton option;
+     initStyleOption(&option);
 
-   void drawButton ( QPainter* /*p*/ )
-   {
-     if (isDirty || (isChecked() != isSelected)) // Prevent infinite recursion
+     if (isDirty || isChecked())
      {
        isDirty = false;
-       isSelected = isChecked();
-       if (isSelected)
-         setPalette(palSelected);
-       else
-         setPalette(palNormal);
+       if (isChecked())
+       {
+         option.palette = palSelected;
+         QFont f=p.font();
+         f.setBold(true);
+         p.setFont(f);
+       }
      }
+   p.drawControl(QStyle::CE_PushButton, option);
    }
-   void drawButtonLabel ( QPainter *p )
-   {
-     p->save();
-     if (isChecked())
-     {
-       QFont f = p->font();
-       f.setUnderline(true);
-       p->setFont(f);
-     }
-     p->restore();
-   }
-   bool isSelected;
+
    bool isDirty;
    QPalette palSelected;
    QPalette palNormal;
 };
+
 
 KTTask::KTTask(CTTask* _cttask, const QString & _caption)
        :KDialog( 0 )
@@ -115,6 +111,15 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   bool everyDay(true);
   QVBoxLayout *ml = new QVBoxLayout(main);
   ml->setSpacing(KDialog::spacingHint());
+
+  QHBoxLayout *h0 = new QHBoxLayout();
+  h0->setSpacing(KDialog::spacingHint());
+  ml->addLayout(h0); 
+
+  // top title widget
+  titleWidget = new KTitleWidget(main);
+  // don't call setupTitleWidget() - it references leCommand() which has not yet been declared
+  h0->addWidget(titleWidget);
 
   QHBoxLayout *h1 = new QHBoxLayout();
   h1->setSpacing(KDialog::spacingHint());
@@ -139,13 +144,6 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
     labUser->hide();
     leUser->hide();
   }
-
-  // icon
-  labIcon = new QLabel(main);
-  labIcon->setObjectName("labIcon");
-  labIcon->setFixedSize(32, 32);
-  h1->addStretch( 1 );
-  h1->addWidget( labIcon );
 
   // comment
   QHBoxLayout *h2 = new QHBoxLayout();
@@ -182,8 +180,6 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   labComment->setFixedWidth( qMax( labComment->width(), labCommand->width()) );
   labCommand->setFixedWidth( qMax( labComment->width(), labCommand->width()) );
 
-  slotCommandChanged();
-
   pbBrowse = new QPushButton(main);
   pbBrowse->setObjectName("pbBrowse");
   pbBrowse->setText(i18n("&Browse..."));
@@ -199,7 +195,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   chkEnabled->setChecked(cttask->enabled);
   h3a->addWidget( chkEnabled );
 
-  // enabled
+  // silent
   chkSilent = new QCheckBox(i18n("&Silent"), main);
   chkSilent->setObjectName("chkSilent");
   chkSilent->setChecked(cttask->silent);
@@ -257,7 +253,6 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
       hdays->setSpacing( KDialog::spacingHint() );
       vdays->addLayout(hdays);
     }
-
 
     day = new KTPushButton(bgDayOfMonth);
     day->setFixedSize(25, 25);
@@ -325,7 +320,6 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   labAM->setObjectName("labAM");
   labAM->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
   v4->addWidget( labAM );
-
 
   for (int ho = 0; ho <= 23; ho++)
   {
@@ -416,11 +410,6 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   pbAllMinutes->setText( i18n("Set All") );
   hmin->addWidget( pbAllMinutes, Qt::AlignLeft );
 
-  QHBoxLayout *h5 = new QHBoxLayout();
-  h5->setSpacing( KDialog::spacingHint() );
-  h5->addStretch( 1 );
-  ml->addLayout(h5);
-
   // window
   setWindowIcon(KTIcon::application(true));
   setCaption(_caption/*i18n("Edit Task")*/);
@@ -437,34 +426,61 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
 
   // connect them up
   connect(pbBrowse, SIGNAL(clicked()), SLOT(slotBrowse()));
+  connect(pbBrowse, SIGNAL(clicked()), SLOT(slotWizard()));
+
   connect(leCommand, SIGNAL(textChanged(const QString&)),
-    SLOT(slotCommandChanged()));
+    SLOT(slotWizard()));
+
+  connect(chkEnabled, SIGNAL(clicked()), SLOT(slotEnabled()));
+
   connect(cbEveryDay, SIGNAL(clicked()), SLOT(slotDailyChanged()));
+  connect(cbEveryDay, SIGNAL(clicked()), SLOT(slotWizard()));
+
   connect(this, SIGNAL(okClicked()), SLOT(slotOK()));
   connect(this, SIGNAL(cancelClicked()), SLOT(slotCancel()));
+
   connect(pbAllMonths, SIGNAL(clicked()), SLOT(slotAllMonths()));
+  connect(pbAllMonths, SIGNAL(clicked()), SLOT(slotWizard()));
+
   for (int mo = 1; mo <= 12; mo++) {
     connect(cbMonth[mo], SIGNAL(clicked()), SLOT(slotMonthChanged()));
+    connect(cbMonth[mo], SIGNAL(clicked()), SLOT(slotWizard()));
   }
+
   connect(pbAllDaysOfMonth, SIGNAL(clicked()), SLOT(slotAllDaysOfMonth()));
+  connect(pbAllDaysOfMonth, SIGNAL(clicked()), SLOT(slotWizard()));
+
   for (int dm = 1; dm <= 31; dm++)
   {
     connect(pbDayOfMonth[dm], SIGNAL(clicked()), SLOT(slotDayOfMonthChanged()));
+    connect(pbDayOfMonth[dm], SIGNAL(clicked()), SLOT(slotWizard()));
   }
+
   connect(pbAllDaysOfWeek, SIGNAL(clicked()), SLOT(slotAllDaysOfWeek()));
+  connect(pbAllDaysOfWeek, SIGNAL(clicked()), SLOT(slotWizard()));
+
   for (int dw = 1; dw <= 7; dw++)
   {
     connect(cbDayOfWeek[dw], SIGNAL(clicked()), SLOT(slotDayOfWeekChanged()));
+    connect(cbDayOfWeek[dw], SIGNAL(clicked()), SLOT(slotWizard()));
   }
+
   connect(pbAllHours, SIGNAL(clicked()), SLOT(slotAllHours()));
+  connect(pbAllHours, SIGNAL(clicked()), SLOT(slotWizard()));
+
   for (int ho = 0; ho <= 23; ho++)
   {
     connect(pbHour[ho], SIGNAL(clicked()), SLOT(slotHourChanged()));
+    connect(pbHour[ho], SIGNAL(clicked()), SLOT(slotWizard()));
   }
+
   connect(pbAllMinutes, SIGNAL(clicked()), SLOT(slotAllMinutes()));
+  connect(pbAllMinutes, SIGNAL(clicked()), SLOT(slotWizard()));
+
   for (int mi = 0; mi <= 55; mi+=5)
   {
     connect(pbMinute[mi], SIGNAL(clicked()), SLOT(slotMinuteChanged()));
+    connect(pbMinute[mi], SIGNAL(clicked()), SLOT(slotWizard()));
   }
 
   // key acceleration
@@ -483,35 +499,45 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   slotDayOfWeekChanged();
   slotHourChanged();
   slotMinuteChanged();
+
+  slotEnabled();
+  slotWizard();
 }
 
 KTTask::~KTTask()
 {
 }
 
-void KTTask::slotCommandChanged()
+void KTTask::setupTitleWidget(const QString &comment)
 {
-  /*
-  QString qs(leCommand->text());
+  if (comment == "")
+  {
+    // try and get an icon for command
+    QString qsCommand(leCommand->text());
+  
+    // qsCommand broken down this way to split off qsCommand attributes
+    int firstSpace(qsCommand.indexOf(" "));
+    if (firstSpace > 0) qsCommand = qsCommand.left(firstSpace);
+    int lastSlash(qsCommand.lastIndexOf("/"));
+    if (lastSlash > 0) qsCommand = qsCommand.right(qsCommand.size() - lastSlash - 1);
 
-  int beginPos(qs.findRev("/", qs.length()) + 1);
-  if (beginPos < 0) beginPos = 0;
+    // using KIconLoader() instead of getMaxIcon() because we need a null pixmap if pixmap cannot be found
+    KIconLoader *loader = KIconLoader::global();
+    QPixmap qpIcon(loader->loadIcon(qsCommand, K3Icon::Desktop, 0, K3Icon::DefaultState, QStringList(), 0L, true));
+    if (qpIcon.isNull()) qpIcon = KTIcon::getMaxIcon("gear");
 
-  int endPos(qs.findRev(" ", qs.length()));
-  if (endPos < 0) endPos = qs.length();
-
-  QString iconName(qs.mid(beginPos, endPos-beginPos) + ".xpm");
-
-  QPixmap qp(KTIcon::getIcon(iconName));
-  if (qp.isNull())
-    labIcon->setPixmap(KTIcon::task(false));
-  else
-    labIcon->setPixmap(qp);
-  */
-
-  labIcon->setPixmap(KTIcon::task(false));
-  return;
+    titleWidget->setText(i18n("Add or modify a Kcron task"));  
+    titleWidget->setComment(i18n("<i>This task has a valid configuration ...</i>"));
+    titleWidget->setPixmap(qpIcon, KTitleWidget::ImageRight);
+  }  
+  else  
+  {
+    titleWidget->setText(i18n("Kcron Information"));  
+    titleWidget->setComment(comment);
+    titleWidget->setPixmap(KIcon(KTIcon::getMaxIcon("dialog-information")), KTitleWidget::ImageRight);
+  }
 }
+
 
 void KTTask::slotDailyChanged()
 {
@@ -559,9 +585,25 @@ void KTTask::slotDailyChanged()
   slotDayOfWeekChanged();
 }
 
-// Override the default OK handler in QDialog
-// to avoid auto dialog hiding.
-void KTTask::accept() {}
+void KTTask::slotEnabled()
+{
+  bool enabled = chkEnabled->isChecked();  
+  labUser->setEnabled(enabled);
+  leUser->setEnabled(enabled);
+  leComment->setEnabled(enabled);
+  labComment->setEnabled(enabled);
+  leCommand->setEnabled(enabled);
+  labCommand->setEnabled(enabled);
+  pbBrowse->setEnabled(enabled);
+  chkSilent->setEnabled(enabled);
+  bgMonth->setEnabled(enabled);
+  bgDayOfMonth->setEnabled(enabled);
+  bgDayOfWeek->setEnabled(enabled);
+  bgEveryDay->setEnabled(enabled);
+  bgHour->setEnabled(enabled);
+  bgMinute->setEnabled(enabled);
+  slotWizard();
+}
 
 void KTTask::slotOK()
         
@@ -595,131 +637,6 @@ void KTTask::slotOK()
     {
       cbDayOfWeek[dw]->setChecked(1);
     }
-  }
-
-  // Now validate
-  QString message(i18n("Please enter the following to schedule the task:\n"));
-  QString sep("\n- ");
-  bool showMessage(false);
-
-  if (leCommand->text().isEmpty())
-  {
-    message += sep + i18n("the program to run");
-    leCommand->setFocus();
-    showMessage = true;
-  }  
-  
-  // make sure the file name is a good one if we have an
-  // absolute path or if we are relying on $PATH
-  
-  QString pathstr, cmdstr, tmpstr;
-  QString qs(leCommand->text());
-  
-  if (qs.left(0) == "/" or qs.left(1) == "/")
-  {
-    // detected a '/' at the start - must be absolute path 
-    tmpstr = qs.section(' ', 0, 0);
-    pathstr = tmpstr.section('/', 0, -2);
-    cmdstr = tmpstr.section('/', -1);
-  }  
-  else
-  {  
-    // relying on $PATH
-    pathstr = QString();  // null string
-    cmdstr = qs.section(' ', 0, 0);
-  } 
-
-  bool found(false), exec(false);
-  if (KStandardDirs::findExe(cmdstr, pathstr, KStandardDirs::IgnoreExecBit) != "") found = true;
-  if (KStandardDirs::findExe(cmdstr, pathstr) != "") exec = true;
-  
-  if (found && !exec) 
-  {
-    message += sep + i18n("an executable program to run");
-    leCommand->setFocus();
-    showMessage = true;
-  }
-
-  if (!found)
-  {
-    message += sep + i18n("a valid program to run");
-    leCommand->setFocus();
-    showMessage = true;
-  }
-  
-  // the times
-  bool valid(false);
-  for (int mo = 1; mo <= 12; mo++)
-  {
-    if (cbMonth[mo]->isChecked()) valid = true;
-  }
-  if (!valid)
-  {
-    message += sep + i18n("the months");
-    if (!showMessage)
-    {
-      cbMonth[1]->setFocus();
-    }
-    showMessage = true;
-  }
-
-  valid = false;
-  for (int dm = 1; dm <= 31; dm++)
-  {
-    if (pbDayOfMonth[dm]->isChecked()) valid = true;
-  }
-  for (int dw = 1; dw <= 7; dw++)
-  {
-    if (cbDayOfWeek[dw]->isChecked()) valid = true;
-  }
-
-  if (!valid)
-  {
-    message += sep +
-      i18n("either the days of the month or the days of the week");
-    if (!showMessage)
-    {
-      pbDayOfMonth[1]->setFocus();
-    }
-    showMessage = true;
-  }
-
-  valid = false;
-  for (int ho = 0; ho <= 23; ho++)
-  {
-    if (pbHour[ho]->isChecked()) valid = true;
-  }
-
-  if (!valid)
-  {
-    message += sep + i18n("the hours");
-    if (!showMessage)
-    {
-      pbHour[0]->setFocus();
-    }
-    showMessage = true;
-  }
-
-  valid = false;
-  for (int mi1 = 0; mi1 <= 55; mi1+=5)
-  {
-    if (pbMinute[mi1]->isChecked()) valid = true;
-  }
-
-  if (!valid)
-  {
-    message += sep + i18n("the minutes");
-    if (!showMessage)
-    {
-      pbMinute[0]->setFocus();
-    }
-    showMessage = true;
-  }
-
-  if (showMessage)
-  {
-    KMessageBox::information(this, message);
-    return;
   }
 
   // save work in process
@@ -762,8 +679,138 @@ void KTTask::slotOK()
   {
     cttask->minute.set(mi1, pbMinute[mi1]->isChecked());
   }
-
   close();
+}
+
+
+void KTTask::slotWizard()
+{
+  bool error(false);
+
+
+  if (!chkEnabled->isChecked())
+  {
+    setupTitleWidget(i18n("<i>Please check 'Enabled' to edit this task ...</i>"));
+    KDialog::enableButtonOk(true);
+    chkEnabled->setFocus();
+    error = true;
+  }
+
+  if (leCommand->text().isEmpty())
+  {
+    setupTitleWidget(i18n("<i>Please browse for a program to execute ...</i>"));
+    KDialog::enableButtonOk(false);
+    leCommand->setFocus();
+    error = true;
+  }  
+  
+  // make sure the file name is a good one if we have an
+  // absolute path or if we are relying on $PATH
+  QString pathstr, cmdstr, tmpstr;
+  QString qs(leCommand->text());
+  
+  if (qs.left(0) == "/" or qs.left(1) == "/")
+  {
+    // detected a '/' at the start - must be absolute path 
+    tmpstr = qs.section(' ', 0, 0);
+    pathstr = tmpstr.section('/', 0, -2);
+    cmdstr = tmpstr.section('/', -1);
+  }  
+  else
+  {  
+    // relying on $PATH
+    pathstr = QString();  // null string
+    cmdstr = qs.section(' ', 0, 0);
+  } 
+
+  bool found(false), exec(false);
+  if (KStandardDirs::findExe(cmdstr, pathstr, KStandardDirs::IgnoreExecBit) != "") found = true;
+  if (KStandardDirs::findExe(cmdstr, pathstr) != "") exec = true;
+  
+  if (found && !exec && !error) 
+  {
+    setupTitleWidget(i18n("<i>Please select an executable program ...</i>"));
+    KDialog::enableButtonOk(false);
+    leCommand->setFocus();
+    error = true;
+  }
+
+  if (!found && !error)
+  {
+    setupTitleWidget(i18n("<i>Please browse for a program to execute ...</i>"));
+    KDialog::enableButtonOk(false);
+    leCommand->setFocus();
+    error = true;
+  }
+  
+  // the months
+  bool valid(false);
+  for (int mo = 1; mo <= 12; mo++)
+  {
+    if (cbMonth[mo]->isChecked()) valid = true;
+  }
+  if (!valid && !error)
+  {
+    setupTitleWidget(i18n("<i>Please select from the 'Months' section ...</i>"));
+    KDialog::enableButtonOk(false);
+    cbMonth[1]->setFocus();
+    error = true;
+  }
+
+  // the days
+  valid = false;
+  for (int dm = 1; dm <= 31; dm++)
+  {
+    if (pbDayOfMonth[dm]->isChecked()) valid = true;
+  }
+  for (int dw = 1; dw <= 7; dw++)
+  {
+    if (cbDayOfWeek[dw]->isChecked()) valid = true;
+  }
+
+  if (!valid && !error)
+  {
+    setupTitleWidget(i18n("<i>Please select from either the 'Days of Month' or the 'Days of Week' section ...</i>"));
+    KDialog::enableButtonOk(false);
+    pbDayOfMonth[1]->setFocus();
+    error = true;
+  }
+
+  // the hours
+  valid = false;
+  for (int ho = 0; ho <= 23; ho++)
+  {
+    if (pbHour[ho]->isChecked()) valid = true;
+  }
+
+  if (!valid && !error)
+  {
+    setupTitleWidget(i18n("<i>Please select from the 'Hours' section ...</i>"));
+    KDialog::enableButtonOk(false);
+    pbHour[0]->setFocus();
+    error = true;
+  }
+
+  // the mins
+  valid = false;
+  for (int mi1 = 0; mi1 <= 55; mi1+=5)
+  {
+    if (pbMinute[mi1]->isChecked()) valid = true;
+  }
+
+  if (!valid && !error)
+  {
+    setupTitleWidget(i18n("<i>Please select from the 'Minutes' section ...</i>"));
+    KDialog::enableButtonOk(false);
+    pbMinute[0]->setFocus();
+    error = true;
+  }
+
+  if (!error) 
+  {
+    setupTitleWidget();
+    KDialog::enableButtonOk(true);
+  }
 }
 
 void KTTask::slotCancel()
@@ -787,7 +834,6 @@ void KTTask::slotBrowse()
         i18n("Only local or mounted files can be executed by crontab."));
     }
   }
-
   leCommand->setFocus();
 }
 

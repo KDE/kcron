@@ -26,6 +26,7 @@ public:
 
   static QPixmap getMiniIcon(const QString& name);
   static QPixmap getIcon(const QString& name);
+  static QPixmap getMaxIcon(const QString& name);
   static QPixmap application(bool mini);
   static QPixmap system(bool mini);
   static QPixmap user(bool mini);
@@ -37,6 +38,7 @@ public:
   static QPixmap path(bool mini);
   static QPixmap tasks(bool mini);
   static QPixmap task(bool mini);
+  static QPixmap wizard(bool mini);
 
 };
 

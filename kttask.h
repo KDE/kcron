@@ -13,6 +13,8 @@
 #define KTTASK_H
 
 #include <kdialog.h>
+#include <kicon.h>
+#include <ktitlewidget.h>
 //Added by qt3to4:
 #include <QLabel>
 
@@ -51,9 +53,9 @@ private slots:
   void slotBrowse();
 
 /**
-  * Command has been changed.  Refresh icon.
+  * Control the task title bar.
   */
-  void slotCommandChanged();
+  void setupTitleWidget(const QString &comment="");
 
 /**
   * Daily checkbox has been changed.
@@ -61,14 +63,19 @@ private slots:
   void slotDailyChanged();
 
 /**
-  * Override QDialog::accept ()
+  * Enable / Disable task
   */
-  void accept(); 
+  void slotEnabled();
 
 /**
   * Apply changes and close.
   */
   void slotOK();
+
+/**
+  * Run the wizard.
+  */
+  void slotWizard();
 
 /**
   * Cancel and close.
@@ -135,6 +142,7 @@ private:
 
   // Widgets.
 
+  KTitleWidget*   titleWidget;
   QLabel*         labUser;
   QLineEdit*      leUser;
 

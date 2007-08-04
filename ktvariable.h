@@ -18,6 +18,7 @@
 #include <QCheckBox>
 
 #include <kdialog.h>
+#include <ktitlewidget.h>
 
 class KTextEdit;
 
@@ -45,19 +46,25 @@ public:
 private slots:
 
 /**
-  * Variable name has been changed.  Refresh icon.
+  * Setup title widget
   */
-  void slotVariableChanged();
+void setupTitleWidget(const QString &comment = "");
 
-/**
-   * Override QDialog::accept ()
- */
-  void accept(); 
+  /**
+   * Enable / disable variable
+   */
+  void slotEnabled();
 
   /**
    * Apply changes and close.
    */
   void slotOk();
+
+  /**
+   * Run the wizard.
+   */
+  void slotWizard();
+
 
 private:
 
@@ -67,6 +74,8 @@ private:
   CTVariable*     ctvar;
 
   // Widgets.
+
+  KTitleWidget*   titleWidget;
 
   QLabel*         labIcon;
 
