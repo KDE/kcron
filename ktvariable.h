@@ -16,6 +16,7 @@
 #include <QLineEdit>
 #include <QComboBox>
 #include <QCheckBox>
+#include <QTextEdit>
 
 #include <kdialog.h>
 #include <ktitlewidget.h>
@@ -86,7 +87,7 @@ private:
   QLineEdit*      leValue;
 
   QLabel*         labComment;
-  KTextEdit*      teComment;
+  QTextEdit*      teComment;
 
   QCheckBox*      chkEnabled;
 };

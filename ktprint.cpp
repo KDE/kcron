@@ -13,7 +13,6 @@
 
 #include <qpainter.h>
 
-
 #include <ktprintopt.h>
 #include <klocale.h>
 #include "ktprint.h"
@@ -46,7 +45,6 @@ KTPrint::~KTPrint()
   delete prnt;
   if (columns.size()>0)
     columns.erase(columns.begin(), columns.end());
-
 }
 
 void KTPrint :: createColumns (unsigned num_columns)
@@ -73,10 +71,13 @@ void KTPrint :: createColumns (unsigned num_columns)
 	
 bool KTPrint:: start ()
 {
-  prnt->setDocName("Cron Tab");
+   prnt->setDocName("Cron Tab");
+//FIXME - crashes here
   prnt->addDialogPage(new KTPrintOpt(root));
 
-  if (prnt->setup(0L, i18n("Print Cron Tab"))) { //Setup a printer
+  if (prnt->setup(0L, i18n("Print Cron Tab"))) 
+  { 
+    //Setup a printer
     if (paint!=NULL) delete paint;
     paint = new  QPainter ();
     paint->begin(prnt);

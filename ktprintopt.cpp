@@ -21,8 +21,7 @@
 #include <klocale.h>
 #include "ktprintopt.h"
 
-KTPrintOpt::KTPrintOpt(bool root) :
-    KPrintDialogPage(this)
+KTPrintOpt::KTPrintOpt(bool root) : KPrintDialogPage()
 {
   m_title = i18n("Cron Options");
 
@@ -50,8 +49,7 @@ KTPrintOpt::~KTPrintOpt()
 {
 }
 
-void 
-KTPrintOpt::setOptions(const QMap<QString,QString>& opts)
+void KTPrintOpt::setOptions(const QMap<QString,QString>& opts)
 {
   QString  value;
 

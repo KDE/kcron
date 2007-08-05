@@ -45,7 +45,7 @@ KTVariable::KTVariable(CTVariable* _ctvar,const QString &_caption) :
 
   // top title widget
   titleWidget = new KTitleWidget(page);
-  layout->addWidget(titleWidget, 0, 0, 1, 3);
+  layout->addWidget(titleWidget, 0, 0, 1, 2);
 
   // variable
   labVariable = new QLabel(i18n("&Variable:"), page );
@@ -55,7 +55,7 @@ KTVariable::KTVariable(CTVariable* _ctvar,const QString &_caption) :
   cmbVariable = new QComboBox(page);
   cmbVariable->setEditable(true);
   cmbVariable->setObjectName("cmbVariable");
-  layout->addWidget(cmbVariable, 1, 1, 1, 2);
+  layout->addWidget(cmbVariable, 1, 1, 1, 1);
 
   cmbVariable->addItem("HOME");
   cmbVariable->addItem("MAILTO");
@@ -71,7 +71,7 @@ KTVariable::KTVariable(CTVariable* _ctvar,const QString &_caption) :
 
   leValue = new QLineEdit(page);
   leValue->setObjectName("leValue");
-  layout->addWidget(leValue, 2, 1, 1, 2);
+  layout->addWidget(leValue, 2, 1, 1, 1);
   leValue->setMaxLength(255);
   labValue->setBuddy(leValue);
 
@@ -80,8 +80,8 @@ KTVariable::KTVariable(CTVariable* _ctvar,const QString &_caption) :
   labComment->setObjectName("labComment");
   layout->addWidget(labComment, 3, 0, Qt::AlignLeft | Qt::AlignTop);
 
-  teComment = new KTextEdit(page);
-  layout->addWidget(teComment, 3, 1, 1, 2);
+  teComment = new QTextEdit(page);
+  layout->addWidget(teComment, 3, 1, 1, 1);
   labComment->setBuddy(teComment);
 
   // enabled
