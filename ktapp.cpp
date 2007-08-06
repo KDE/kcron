@@ -154,6 +154,7 @@ void KTApp::setupActions()
   QAction *enableAct = actionCollection()->addAction( "edit_enable" );
   enableAct->setObjectName("edit_enable");
   enableAct->setText( i18n("&Enabled") );
+  enableAct->setCheckable(true);
   connect(enableAct, SIGNAL(triggered(bool)), SLOT(slotEditEnable()));
 
   QAction *runAct = actionCollection()->addAction( "edit_run" );
@@ -307,17 +308,16 @@ void KTApp::slotEditDelete()
 void KTApp::slotEditEnable()
 {
   QAction* editEnable = actionCollection()->action("edit_enable");
-  if (editEnable->isChecked())
+  // Qt4 does the checking/unchecking so logic is inverted here !
+  if (!editEnable->isChecked())
   {
     slotStatusMsg(i18n("Disabling entry..."));
     view->enable(false);
-    editEnable->setChecked(false);
   }
   else
   {
     slotStatusMsg(i18n("Enabling entry..."));
     view->enable(true);
-    editEnable->setChecked(true);
   }
   slotStatusMsg(i18n("Ready."));
 }
