@@ -17,6 +17,7 @@
 #include "kticon.h"
 #include "kttask.h"
 #include "ktprint.h"
+#include "kiconloader.h"
 
 KTListTask::KTListTask(KTListItem* parent,
   CTCron* _ctcron, CTTask* _cttask) :
@@ -42,8 +43,19 @@ void KTListTask::refresh()
     setText(1, "");
     setText(2, i18n("Disabled"));
   }
+  QString qsCommand(QString::fromLocal8Bit(cttask->command.c_str()));
 
-  setPixmap(0, KTIcon::task(true));
+  // qsCommand broken down this way to split off qsCommand attributes
+  int firstSpace(qsCommand.indexOf(" "));
+  if (firstSpace > 0) qsCommand = qsCommand.left(firstSpace);
+  int lastSlash(qsCommand.lastIndexOf("/"));
+  if (lastSlash > 0) qsCommand = qsCommand.right(qsCommand.size() - lastSlash - 1);
+
+  // using KIconLoader() instead of getMaxIcon() because we need a null pixmap if pixmap cannot be found
+  KIconLoader *loader = KIconLoader::global();
+  QPixmap qpIcon(loader->loadIcon(qsCommand, K3Icon::Small, 0, K3Icon::DefaultState, QStringList(), 0L, true));
+  if (qpIcon.isNull()) qpIcon = KTIcon::getMiniIcon("gear");
+  setPixmap(0, qpIcon);
 }
 
 void KTListTask::print (KTPrint &printer) const
