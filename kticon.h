@@ -24,21 +24,23 @@ class KTIcon
 
 public:
 
+  enum IconSize {Small,Normal,Large};
+
   static QPixmap getMiniIcon(const QString& name);
   static QPixmap getIcon(const QString& name);
   static QPixmap getMaxIcon(const QString& name);
-  static QPixmap application(bool mini);
-  static QPixmap system(bool mini);
-  static QPixmap user(bool mini);
-  static QPixmap variables(bool mini);
-  static QPixmap variable(bool mini);
-  static QPixmap mail(bool mini);
-  static QPixmap shell(bool mini);
-  static QPixmap home(bool mini);
-  static QPixmap path(bool mini);
-  static QPixmap tasks(bool mini);
-  static QPixmap task(bool mini);
-  static QPixmap wizard(bool mini);
+  static QPixmap application(int size);
+  static QPixmap system(int size);
+  static QPixmap user(int size);
+  static QPixmap variables(int size);
+  static QPixmap variable(int size);
+  static QPixmap mail(int size);
+  static QPixmap shell(int size);
+  static QPixmap home(int size);
+  static QPixmap path(int size);
+  static QPixmap tasks(int size);
+  static QPixmap task(int size);
+  static QPixmap information(int size);
 
 };
 

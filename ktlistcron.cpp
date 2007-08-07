@@ -42,7 +42,7 @@ KTListCron::KTListCron(Q3ListView* parent, CTCron* _ctcron) :
 void KTListCron::refresh()
 {
   setPixmap(0, getCTCron()->login.c_str() == (i18n("(System Crontab)")) ?
-    KTIcon::system(true) : KTIcon::user(true));
+    KTIcon::system(KTIcon::Small) : KTIcon::user(KTIcon::Small));
 
   QString userName = QString::fromLocal8Bit(getCTCron()->login.c_str());
 

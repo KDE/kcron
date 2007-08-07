@@ -41,7 +41,7 @@ KTVariable::KTVariable(CTVariable* _ctvar,const QString &_caption) :
   layout->setRowStretch(3, 1);
   layout->setColumnStretch(1, 1);
 
-  setWindowIcon(KTIcon::application(true));
+  setWindowIcon(KTIcon::application(KTIcon::Small));
 
   // top title widget
   titleWidget = new KTitleWidget(page);
@@ -114,12 +114,12 @@ void KTVariable::setupTitleWidget(const QString &comment)
   if (comment == "")
   {
     // try and get an icon for the variable
-    QPixmap qpIcon(KTIcon::getMaxIcon("mime_empty"));
+    QPixmap qpIcon(KTIcon::variable(KTIcon::Large));
     QString variable = cmbVariable->currentText();
-    if (variable == "HOME") qpIcon = KTIcon::getMaxIcon("go-home");
-    else if (variable == "MAILTO") qpIcon= KTIcon::getMaxIcon("mail");
-    else if (variable == "SHELL") qpIcon = KTIcon::getMaxIcon("openterm");
-    else if (variable == "PATH") qpIcon = KTIcon::getMaxIcon("folder");
+    if (variable == "HOME") qpIcon = KTIcon::home(KTIcon::Large);
+    else if (variable == "MAILTO") qpIcon= KTIcon::mail(KTIcon::Large);
+    else if (variable == "SHELL") qpIcon = KTIcon::shell(KTIcon::Large);
+    else if (variable == "PATH") qpIcon = KTIcon::variables(KTIcon::Large);
    
     titleWidget->setText(i18n("Add or modify a Kcron variable"));  
     titleWidget->setComment(i18n("<i>This variable has a valid configuration ...</i>"));
@@ -129,7 +129,7 @@ void KTVariable::setupTitleWidget(const QString &comment)
   {
     titleWidget->setText(i18n("Kcron Information"));  
     titleWidget->setComment(comment);
-    titleWidget->setPixmap(KIcon(KTIcon::getMaxIcon("dialog-information")), KTitleWidget::ImageRight);
+    titleWidget->setPixmap(KIcon(KTIcon::information(KTIcon::Large)), KTitleWidget::ImageRight);
   }
 }
 

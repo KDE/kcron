@@ -44,15 +44,15 @@ void KTListVar::refresh()
   }
 
   if (ctvar->variable == "MAILTO")
-    setPixmap(0, KTIcon::mail(true));
+    setPixmap(0, KTIcon::mail(KTIcon::Small));
   else if (ctvar->variable == "SHELL")
-    setPixmap(0, KTIcon::shell(true));
+    setPixmap(0, KTIcon::shell(KTIcon::Small));
   else if (ctvar->variable == "HOME")
-    setPixmap(0, KTIcon::home(true));
+    setPixmap(0, KTIcon::home(KTIcon::Small));
   else if (ctvar->variable == "PATH")
-    setPixmap(0, KTIcon::path(true));
+    setPixmap(0, KTIcon::path(KTIcon::Small));
   else
-    setPixmap(0, KTIcon::variable(true));
+    setPixmap(0, KTIcon::variable(KTIcon::Small));
 }
 
 void KTListVar::print(KTPrint& printer) const

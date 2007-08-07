@@ -72,7 +72,6 @@ void KTPrint :: createColumns (unsigned num_columns)
 bool KTPrint:: start ()
 {
    prnt->setDocName("Cron Tab");
-//FIXME - crashes here
   prnt->addDialogPage(new KTPrintOpt(root));
 
   if (prnt->setup(0L, i18n("Print Cron Tab"))) 

@@ -411,7 +411,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   hmin->addWidget( pbAllMinutes, Qt::AlignLeft );
 
   // window
-  setWindowIcon(KTIcon::application(true));
+  setWindowIcon(KTIcon::application(KTIcon::Small));
   setCaption(_caption/*i18n("Edit Task")*/);
 
   // set focus to first widget
@@ -523,7 +523,7 @@ void KTTask::setupTitleWidget(const QString &comment)
     // using KIconLoader() instead of getMaxIcon() because we need a null pixmap if pixmap cannot be found
     KIconLoader *loader = KIconLoader::global();
     QPixmap qpIcon(loader->loadIcon(qsCommand, K3Icon::Desktop, 0, K3Icon::DefaultState, QStringList(), 0L, true));
-    if (qpIcon.isNull()) qpIcon = KTIcon::getMaxIcon("gear");
+    if (qpIcon.isNull()) qpIcon = KTIcon::task(KTIcon::Large);
 
     titleWidget->setText(i18n("Add or modify a Kcron task"));  
     titleWidget->setComment(i18n("<i>This task has a valid configuration ...</i>"));
@@ -533,7 +533,7 @@ void KTTask::setupTitleWidget(const QString &comment)
   {
     titleWidget->setText(i18n("Kcron Information"));  
     titleWidget->setComment(comment);
-    titleWidget->setPixmap(KIcon(KTIcon::getMaxIcon("dialog-information")), KTitleWidget::ImageRight);
+    titleWidget->setPixmap(KIcon(KTIcon::information(KTIcon::Large)), KTitleWidget::ImageRight);
   }
 }
 

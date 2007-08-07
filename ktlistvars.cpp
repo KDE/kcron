@@ -57,7 +57,7 @@ void KTListVars::create()
 void KTListVars::refresh()
 {
   setText(0, getDescription());
-  setPixmap(0, KTIcon::variables(true));
+  setPixmap(0, KTIcon::variables(KTIcon::Small));
 }
 
 void KTListVars::print(KTPrint& printer) const

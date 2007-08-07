@@ -40,7 +40,7 @@ const int KTApp::statusMessage            (1001);
 KTApp::KTApp() : KXmlGuiWindow(0),
   config(KGlobal::config())
 {
-  setWindowIcon(KTIcon::application(true));
+  setWindowIcon(KTIcon::application(KTIcon::Small));
 
   setCaption(i18n("Task Scheduler"));
 

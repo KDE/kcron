@@ -61,7 +61,7 @@ void KTListTasks::create()
 void KTListTasks::refresh()
 {
   setText(0, getDescription());
-  setPixmap(0, KTIcon::tasks(true));
+  setPixmap(0, KTIcon::tasks(KTIcon::Small));
 }
 
 void KTListTasks::print (KTPrint& printer) const
