@@ -413,6 +413,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   // window
   setWindowIcon(KTIcon::application(KTIcon::Small));
   setCaption(_caption/*i18n("Edit Task")*/);
+  //show();
 
   // set focus to first widget
   if (cttask->system())
