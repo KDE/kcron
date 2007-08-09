@@ -28,6 +28,7 @@
 #include "qstyleoption.h"
 #include "qstylepainter.h"
 
+#include <kacceleratormanager.h>
 #include <klocale.h>
 #include <kfiledialog.h>
 #include <kmessagebox.h>
@@ -102,7 +103,7 @@ public:
 
 
 KTTask::KTTask(CTTask* _cttask, const QString & _caption)
-       :KDialog( 0 )
+       :KDialog()
 {
   cttask = _cttask;
   setModal(true);
@@ -255,6 +256,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
     }
 
     day = new KTPushButton(bgDayOfMonth);
+    KAcceleratorManager::setNoAccel(day);    
     day->setFixedSize(25, 25);
     day->setText(tmp.setNum(dm));
     day->setCheckable(true);
@@ -324,6 +326,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   for (int ho = 0; ho <= 23; ho++)
   {
     pbHour[ho] = new KTPushButton(bgHour);
+    KAcceleratorManager::setNoAccel(pbHour[ho]);  
     pbHour[ho]->setText(tmp.setNum(ho));
     pbHour[ho]->setCheckable(true);
     pbHour[ho]->setChecked(cttask->hour.get(ho));
@@ -381,6 +384,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   for (int mi = 0; mi <= 55; mi+=5)
   {
     pbMinute[mi] = new KTPushButton(bgMinute);
+    KAcceleratorManager::setNoAccel(pbMinute[mi]);  
     pbMinute[mi]->setText(tmp.setNum(mi));
     pbMinute[mi]->setCheckable(true);
     pbMinute[mi]->setChecked(cttask->minute.get(mi));
@@ -413,7 +417,6 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   // window
   setWindowIcon(KTIcon::application(KTIcon::Small));
   setCaption(_caption/*i18n("Edit Task")*/);
-  //show();
 
   // set focus to first widget
   if (cttask->system())
@@ -493,7 +496,8 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   key_accel->readSettings();
   */
   main->layout()->setSizeConstraint(QLayout::SetFixedSize);
- 
+  show();
+
   slotDailyChanged();
   slotMonthChanged();
   slotDayOfMonthChanged();
@@ -502,6 +506,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   slotMinuteChanged();
 
   slotEnabled();
+
 }
 
 KTTask::~KTTask()

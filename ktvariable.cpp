@@ -97,6 +97,7 @@ KTVariable::KTVariable(CTVariable* _ctvar,const QString &_caption) :
   cmbVariable->setFocus();
 
   slotEnabled();
+  show();
 
   // connect them up
   connect(cmbVariable,SIGNAL(textChanged(const QString&)), SLOT(slotWizard()));
