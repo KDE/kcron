@@ -60,8 +60,10 @@ public:
       palSelected = palNormal;
       for(int cg = (int) QPalette::Active; cg < (int) QPalette::NColorGroups; cg++)
       {
-        palSelected.setColor((QPalette::ColorGroup)cg, QPalette::ButtonText,
-                     palSelected.color((QPalette::ColorGroup)cg, QPalette::Highlight));
+        palSelected.setColor((QPalette::ColorGroup)cg, QColorGroup::Button,
+                     palSelected.color((QPalette::ColorGroup)cg, QColorGroup::Highlight));
+        palSelected.setColor((QPalette::ColorGroup)cg, QColorGroup::ButtonText,
+                     palSelected.color((QPalette::ColorGroup)cg, QColorGroup::HighlightedText));
       }
       isDirty = true;
    }
