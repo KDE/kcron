@@ -198,13 +198,12 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   chkEnabled->setChecked(cttask->enabled);
   h3a->addWidget( chkEnabled );
 
-  /*
   // @reboot
   chkReboot = new QCheckBox(i18n("@reboot"), main);
   chkReboot->setObjectName("chkReboot");
-  chkReboot->setChecked(cttask->silent);
+  //chkReboot->setChecked(cttask->reboot);
+  chkReboot->setEnabled(false);
   h3a->addWidget( chkReboot );
-  */
 
   QHBoxLayout *h4 = new QHBoxLayout();
   h4->setSpacing( KDialog::spacingHint() );

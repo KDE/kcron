@@ -156,7 +156,7 @@ private:
   QPushButton*    pbBrowse;
 
   QCheckBox*      chkEnabled;
-  //QCheckBox*      chkReboot;
+  QCheckBox*      chkReboot;
 
   Q3ButtonGroup*   bgMonth;
   QCheckBox*      cbMonth[13];
