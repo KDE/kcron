@@ -198,11 +198,13 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   chkEnabled->setChecked(cttask->enabled);
   h3a->addWidget( chkEnabled );
 
-  // silent
-  chkSilent = new QCheckBox(i18n("&Silent"), main);
-  chkSilent->setObjectName("chkSilent");
-  chkSilent->setChecked(cttask->silent);
-  h3a->addWidget( chkSilent );
+  /*
+  // @reboot
+  chkReboot = new QCheckBox(i18n("@reboot"), main);
+  chkReboot->setObjectName("chkReboot");
+  chkReboot->setChecked(cttask->silent);
+  h3a->addWidget( chkReboot );
+  */
 
   QHBoxLayout *h4 = new QHBoxLayout();
   h4->setSpacing( KDialog::spacingHint() );
@@ -602,7 +604,7 @@ void KTTask::slotEnabled()
   leCommand->setEnabled(enabled);
   labCommand->setEnabled(enabled);
   pbBrowse->setEnabled(enabled);
-  chkSilent->setEnabled(enabled);
+  //chkReboot->setEnabled(enabled);
   bgMonth->setEnabled(enabled);
   bgDayOfMonth->setEnabled(enabled);
   bgDayOfWeek->setEnabled(enabled);
@@ -659,7 +661,7 @@ void KTTask::slotOK()
   cttask->comment = (const char *)leComment->text().toLocal8Bit();
   cttask->command = (const char *)leCommand->text().toLocal8Bit();
   cttask->enabled = chkEnabled->isChecked();
-  cttask->silent = chkSilent->isChecked();
+  //cttask->reboot = chkReboot->isChecked();
 
   for (int mo = 1; mo <= 12; mo++)
   {

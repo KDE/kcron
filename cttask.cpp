@@ -33,16 +33,9 @@ CTTask::CTTask(string tokStr, string _comment, bool _syscron) :
   else
     enabled = true;
 
-  if (tokStr.substr(0,1) == "-")
-  {
-    tokStr = tokStr.substr(1,tokStr.length() - 1);
-    silent = true;
-  }
-  else
-  {
-    silent = false;
-  }
-  
+  // Skip over 'silence' if found ... old option in vixie cron
+  if (tokStr.substr(0,1) == "-") tokStr = tokStr.substr(1,tokStr.length() - 1);
+ 
   if (tokStr.substr(0,1) == "@")
   {
     if (tokStr.substr(1,6) == "reboot")
@@ -119,7 +112,7 @@ CTTask::CTTask(string tokStr, string _comment, bool _syscron) :
   initialCommand = command;
   initialComment = comment;
   initialEnabled = enabled;
-  initialSilent = silent;
+  //initialReboot = reboot;
 }
 
 CTTask::CTTask(const CTTask &source) :
@@ -132,12 +125,12 @@ CTTask::CTTask(const CTTask &source) :
   command(source.command),
   comment(source.comment),
   enabled(source.enabled),
-  silent(source.silent),
+  //reboot(source.reboot),
   initialUser(""),
   initialCommand(""),
   initialComment(""),
-  initialEnabled(true),
-  initialSilent(false)
+  initialEnabled(true)
+  //initialReboot(false)
 {
 }
 
@@ -152,12 +145,12 @@ void CTTask::operator = (const CTTask& source)
   command        = source.command;
   comment        = source.comment;
   enabled        = source.enabled;
-  silent         = source.silent;
+  //reboot         = source.reboot;
   initialUser    = "";
   initialCommand = "";
   initialComment = "";
   initialEnabled = true;
-  initialSilent  = false;
+  //initialReboot  = fale;
   return;
 }
 
@@ -168,9 +161,6 @@ ostream& operator << (ostream& outputStream, const CTTask& task)
 
   if (!task.enabled)
     outputStream << "#\\";
-
-  if (task.silent)
-    outputStream << "-";
 
   outputStream << task.minute << " ";
   outputStream << task.hour << " ";
@@ -197,7 +187,7 @@ void CTTask::apply()
   initialCommand = command;
   initialComment = comment;
   initialEnabled = enabled;
-  initialSilent = silent;
+  //initialReboot = reboot;
 }
 
 void CTTask::cancel()
@@ -211,7 +201,7 @@ void CTTask::cancel()
   command = initialCommand;
   comment = initialComment;
   enabled = initialEnabled;
-  silent = initialSilent;
+  //reboot = initialReboot;
 }
 
 bool CTTask::dirty() const
@@ -219,7 +209,7 @@ bool CTTask::dirty() const
   return (month.dirty() || dayOfMonth.dirty() || dayOfWeek.dirty() ||
     hour.dirty() || minute.dirty() || (user != initialUser) ||
     (command != initialCommand) || (comment != initialComment) ||
-    (enabled != initialEnabled) || (silent != initialSilent));
+    (enabled != initialEnabled)); // || (reboot != initialReboot));
 }
 
 string CTTask::describe() const
