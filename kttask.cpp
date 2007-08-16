@@ -199,7 +199,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   h3a->addWidget( chkEnabled );
 
   // @reboot
-  chkReboot = new QCheckBox(i18n("@reboot"), main);
+  chkReboot = new QCheckBox(i18n("@&reboot"), main);
   chkReboot->setObjectName("chkReboot");
   //chkReboot->setChecked(cttask->reboot);
   chkReboot->setEnabled(false);
