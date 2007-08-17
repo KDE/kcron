@@ -194,7 +194,7 @@ bool KTApp::queryClose()
 
     int retVal = KMessageBox::warningYesNoCancel(win,
       i18n("Scheduled tasks have been modified.\nDo you want to save changes?"),
-      QString::null,	//krazy:exclude=nullstrassign for old broken gcc
+      QString(),
       KStandardGuiItem::save(), KStandardGuiItem::discard()
       );
 

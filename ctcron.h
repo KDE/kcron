@@ -93,7 +93,7 @@ public:
   /**
    * Return error description
    */
-  QString errorMessage() { QString r = error; error = QString::null; return r; }	//krazy:exclude=nullstrassign for old broken gcc
+  QString errorMessage() { QString r = error; error = QString(); return r; }
 
 /**
   * Indicates whether or not the crontab belongs to the system.

@@ -78,7 +78,7 @@ public:
 /**
   * Error message
   */
-  QString errorMessage() { QString r = error; error = QString::null; return r; }	//krazy:exclude=nullstrassign for old broken gcc
+  QString errorMessage() { QString r = error; error = QString(); return r; }
 
 /**
   * User(s). 
