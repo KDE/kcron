@@ -29,7 +29,7 @@ public:
 /**
   * Constructs environment variable from crontab format string.
   */
-  CTVariable(std::string tokStr = "", std::string _comment = "");
+  explicit CTVariable(std::string tokStr = "", std::string _comment = "");
 
 /**
   * Copy constructor.

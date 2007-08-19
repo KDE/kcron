@@ -34,7 +34,7 @@ public:
 /**
   * Constructs scheduled task from crontab format string.
   */
-  CTTask(string tokStr = "", string _comment = "", bool syscron = false);
+  explicit CTTask(string tokStr = "", string _comment = "", bool syscron = false);
 
 /**
   * Copy constructor.

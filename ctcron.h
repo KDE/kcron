@@ -42,12 +42,12 @@ public:
   * passing TRUE, to construct from the system crontab.  Throws an
   * exception if the crontab file can not be found, read, or parsed.
   */
-  CTCron(const QString& cronBinary, bool _syscron = false, std::string _login = "");
+  explicit CTCron(const QString& cronBinary, bool _syscron = false, std::string _login = "");
 /**
   * If you already have a struct passwd, use it instead. This
   * is never used for the system crontab.
   */
-  CTCron(const QString& cronBinary, const struct passwd * _login = 0L);
+  explicit CTCron(const QString& cronBinary, const struct passwd * _login = 0L);
 
 /**
   * Copy one user's tasks and environement variables to another user.
@@ -86,7 +86,7 @@ public:
   std::string path() const;
 
   /**
-   * Returns whether an error has occured
+   * Returns whether an error has occurred
    */
   bool isError() { return !error.isEmpty(); }
   

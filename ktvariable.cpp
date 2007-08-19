@@ -112,7 +112,7 @@ KTVariable::~KTVariable()
 
 void KTVariable::setupTitleWidget(const QString &comment)
 {
-  if (comment == "")
+  if (comment.isEmpty())	//krazy:exclude=duoblequote_chars
   {
     // try and get an icon for the variable
     QPixmap qpIcon(KTIcon::variable(KTIcon::Large));

@@ -9,11 +9,12 @@
  *   (at your option) any later version.                                   *
  ***************************************************************************/
 
+#include "ktlisttask.h"
+
 #include <klocale.h>  // i18n()
 
 #include "cttask.h"
 
-#include "ktlisttask.h"
 #include "kticon.h"
 #include "kttask.h"
 #include "ktprint.h"

@@ -79,7 +79,7 @@ void CTUnit<min, max>::parse(string tokStr)
   int beginat, endat, step;
 
   // loop through each subelement
-  tokStr += ",";
+  tokStr += ',';
   while ((commapos = tokStr.find(",")) > 0)
   {
     subelement = tokStr.substr(0,commapos);
@@ -158,7 +158,7 @@ string CTUnit<min, max>::tokenize() const
         sprintf(cnum, "%u", num);
         tmpStr += cnum;
         if (++count < total)
-          tmpStr += ",";
+          tmpStr += ',';
       }
       num++;
     }

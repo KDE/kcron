@@ -11,15 +11,15 @@
  *   (at your option) any later version.                                   *
  ***************************************************************************/
 
+#include "ktprintopt.h"
+
 #include <QCheckBox>
 #include <QLayout>
 //Added by qt3to4:
 #include <QVBoxLayout>
 
 #include <kdialog.h>
-
 #include <klocale.h>
-#include "ktprintopt.h"
 
 KTPrintOpt::KTPrintOpt(bool root) : KPrintDialogPage()
 {

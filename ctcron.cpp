@@ -58,7 +58,7 @@ CTCron::CTCron(const QString& crontabBinary, bool _syscron, string _login) :
     else
     {
       readCommand  = crontab + " -u " + _login.c_str() + " -l > " + KShell::quoteArg(tmpFileName);
-      writeCommand = crontab + " -u " + _login.c_str() + " " + KShell::quoteArg(tmpFileName);
+      writeCommand = crontab + " -u " + _login.c_str() + ' ' + KShell::quoteArg(tmpFileName);
       if (!initFromPasswd(getpwnam(_login.c_str())))
       {
          error = i18n("No password entry found for user '%1'", _login.c_str());
@@ -69,7 +69,7 @@ CTCron::CTCron(const QString& crontabBinary, bool _syscron, string _login) :
   // regular user, so provide user's own crontab
   {
     readCommand  = crontab + " -l > " + KShell::quoteArg(tmpFileName);
-    writeCommand = crontab + " "      + KShell::quoteArg(tmpFileName);
+    writeCommand = crontab + ' '      + KShell::quoteArg(tmpFileName);
     if (!initFromPasswd(getpwuid(uid)))
     {
       error = i18n("No password entry found for uid '%1'", uid);
@@ -109,7 +109,7 @@ CTCron::CTCron(const QString& crontabBinary, const struct passwd *pwd) :
   tmpFileName = tmp.fileName();  
 
   QString readCommand  = crontab + " -u " + QString(pwd->pw_name) + " -l > " + KShell::quoteArg(tmpFileName);
-  writeCommand = crontab +  " -u " + QString(pwd->pw_name) + " " + KShell::quoteArg(tmpFileName);
+  writeCommand = crontab +  " -u " + QString(pwd->pw_name) + ' ' + KShell::quoteArg(tmpFileName);
 
   initFromPasswd(pwd);
 

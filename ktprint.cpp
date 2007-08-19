@@ -11,11 +11,12 @@
  *   (at your option) any later version.                                   *
  ***************************************************************************/
 
-#include <qpainter.h>
-
-#include <ktprintopt.h>
-#include <klocale.h>
 #include "ktprint.h"
+
+#include <qpainter.h>
+#include <ktprintopt.h>
+
+#include <klocale.h>
 
 const int KTPrint::alignTextLeft             (1000);
 const int KTPrint::alignTextRight            (2000);

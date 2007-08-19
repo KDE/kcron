@@ -71,7 +71,7 @@ public:
   bool root() const;
 
 /**
-  * Indicates an error has occured.
+  * Indicates an error has occurred.
   */
   bool isError() { return !error.isEmpty(); }
 

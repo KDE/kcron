@@ -37,7 +37,7 @@ public:
 /**
   * Initialize from CTVariable.
   */
-  KTVariable(CTVariable* _ctvar = 0, const QString &_caption="");
+  explicit KTVariable(CTVariable* _ctvar = 0, const QString &_caption="");
 
 /**
   * Destroy.

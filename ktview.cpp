@@ -440,13 +440,13 @@ QString KTView::absolute() const
 
   while ((end = path.indexOf(":", begin)) > 0)
   {
-    prefix = path.mid(begin, begin + end) + "/";
+    prefix = path.mid(begin, begin + end) + '/';
     full = prefix + command;
     if (QFileInfo(full).isExecutable())
       return QString(prefix + fullCommand);
     begin = end + 1;
   }
-  prefix = path.mid(begin, begin + end) + "/";
+  prefix = path.mid(begin, begin + end) + '/';
   full = prefix + command;
   if (QFileInfo(full).isExecutable())
     return QString(prefix + fullCommand);
