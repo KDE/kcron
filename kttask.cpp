@@ -504,16 +504,16 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   main->layout()->setSizeConstraint(QLayout::SetFixedSize);
   show();
 
-  slotDailyChanged();
   slotMonthChanged();
   slotDayOfMonthChanged();
   slotDayOfWeekChanged();
   slotHourChanged();
   slotMinuteChanged();
-  slotReboot();
+
+  slotReboot(); 
+  slotDailyChanged(); 
   slotEnabled();
   slotWizard();
-
 }
 
 KTTask::~KTTask()
@@ -550,44 +550,25 @@ void KTTask::setupTitleWidget(const QString &comment)
   }
 }
 
-
 void KTTask::slotDailyChanged()
 {
   if (cbEveryDay->isChecked())
   {
-    for (int mo = 1; mo <= 12; mo++)
-    {
-      cbMonth[mo]->setChecked(true);
-      cbMonth[mo]->setEnabled(false);
-    }
-    for (int dm = 1; dm <= 31; dm++)
-    {
-      pbDayOfMonth[dm]->setChecked(true);
-      pbDayOfMonth[dm]->setEnabled(false);
-    }
-    for (int dw = 1; dw <= 7; dw++)
-    {
-      cbDayOfWeek[dw]->setChecked(true);
-      cbDayOfWeek[dw]->setEnabled(false);
-    }
+    for (int mo = 1; mo <= 12; mo++) cbMonth[mo]->setChecked(true);
+    for (int dm = 1; dm <= 31; dm++) pbDayOfMonth[dm]->setChecked(true);
+    for (int dw = 1; dw <= 7; dw++) cbDayOfWeek[dw]->setChecked(true);
+    bgMonth->setEnabled(false);
+    bgDayOfMonth->setEnabled(false);
+    bgDayOfWeek->setEnabled(false);
     pbAllMonths->setEnabled(false);
     pbAllDaysOfMonth->setEnabled(false);
     pbAllDaysOfWeek->setEnabled(false);
   }
   else
   {
-    for (int mo = 1; mo <= 12; mo++)
-    {
-      cbMonth[mo]->setEnabled(true);
-    }
-    for (int dm = 1; dm <= 31; dm++)
-    {
-      pbDayOfMonth[dm]->setEnabled(true);
-    }
-    for (int dw = 1; dw <= 7; dw++)
-    {
-      cbDayOfWeek[dw]->setEnabled(true);
-    }
+    bgMonth->setEnabled(true);
+    bgDayOfMonth->setEnabled(true);
+    bgDayOfWeek->setEnabled(true);
     pbAllMonths->setEnabled(true);
     pbAllDaysOfMonth->setEnabled(true);
     pbAllDaysOfWeek->setEnabled(true);
@@ -612,12 +593,17 @@ void KTTask::slotEnabled()
   // if enable is checked when reboot is already checked, skip setEnabled on the following ...
   if (!chkReboot->isChecked() || !enabled)
   {
-    bgMonth->setEnabled(enabled);
-    bgDayOfMonth->setEnabled(enabled);
-    bgDayOfWeek->setEnabled(enabled);
     bgEveryDay->setEnabled(enabled);
     bgHour->setEnabled(enabled);
     bgMinute->setEnabled(enabled);
+  }
+
+  // if enable is checked when everyday is already checked, skip setEnabled on the following ...
+  if ((!chkReboot->isChecked() && !cbEveryDay->isChecked()) || !enabled)
+  {
+    bgMonth->setEnabled(enabled);
+    bgDayOfMonth->setEnabled(enabled);
+    bgDayOfWeek->setEnabled(enabled);
   }
 }
 
