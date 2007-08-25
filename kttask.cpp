@@ -512,6 +512,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   slotMinuteChanged();
   slotReboot();
   slotEnabled();
+  slotWizard();
 
 }
 
