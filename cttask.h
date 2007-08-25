@@ -90,7 +90,7 @@ public:
   string       command;
   string       comment;
   bool         enabled;
-  //bool         reboot;
+  bool         reboot;
 
 private:
   bool         syscron;
@@ -98,7 +98,7 @@ private:
   string       initialCommand;
   string       initialComment;
   bool         initialEnabled;
-  //bool         initialReboot;
+  bool         initialReboot;
 };
 
 #endif // CTTASK_H

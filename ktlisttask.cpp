@@ -36,14 +36,23 @@ void KTListTask::refresh()
 
   if (cttask->enabled)
   {
-    setText(1, QString::fromLocal8Bit(cttask->command.c_str()));
-    setText(2, QString::fromLocal8Bit(cttask->describe().c_str()));
+    if (cttask->reboot) 
+    {
+      setText(1, QString::fromLocal8Bit(cttask->command.c_str()));
+      setText(2, i18n("At system bootup"));
+    }
+    else 
+    {
+      setText(1, QString::fromLocal8Bit(cttask->command.c_str()));
+      setText(2, QString::fromLocal8Bit(cttask->describe().c_str()));
+    }
   }
   else
   {
     setText(1, "");
     setText(2, i18n("Disabled"));
   }
+
   QString qsCommand(QString::fromLocal8Bit(cttask->command.c_str()));
 
   // qsCommand broken down this way to split off qsCommand attributes

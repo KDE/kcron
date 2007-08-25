@@ -199,10 +199,9 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   h3a->addWidget( chkEnabled );
 
   // @reboot
-  chkReboot = new QCheckBox(i18n("@&reboot"), main);
+  chkReboot = new QCheckBox(i18n("Run at system bootup"), main);
   chkReboot->setObjectName("chkReboot");
-  //chkReboot->setChecked(cttask->reboot);
-  chkReboot->setEnabled(false);
+  chkReboot->setChecked(cttask->reboot);
   h3a->addWidget( chkReboot );
 
   QHBoxLayout *h4 = new QHBoxLayout();
@@ -439,6 +438,10 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
     SLOT(slotWizard()));
 
   connect(chkEnabled, SIGNAL(clicked()), SLOT(slotEnabled()));
+  connect(chkEnabled, SIGNAL(clicked()), SLOT(slotWizard()));
+
+  connect(chkReboot, SIGNAL(clicked()), SLOT(slotReboot()));
+  connect(chkReboot, SIGNAL(clicked()), SLOT(slotWizard()));
 
   connect(cbEveryDay, SIGNAL(clicked()), SLOT(slotDailyChanged()));
   connect(cbEveryDay, SIGNAL(clicked()), SLOT(slotWizard()));
@@ -507,7 +510,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   slotDayOfWeekChanged();
   slotHourChanged();
   slotMinuteChanged();
-
+  slotReboot();
   slotEnabled();
 
 }
@@ -603,18 +606,32 @@ void KTTask::slotEnabled()
   leCommand->setEnabled(enabled);
   labCommand->setEnabled(enabled);
   pbBrowse->setEnabled(enabled);
-  //chkReboot->setEnabled(enabled);
-  bgMonth->setEnabled(enabled);
-  bgDayOfMonth->setEnabled(enabled);
-  bgDayOfWeek->setEnabled(enabled);
-  bgEveryDay->setEnabled(enabled);
-  bgHour->setEnabled(enabled);
-  bgMinute->setEnabled(enabled);
-  slotWizard();
+  chkReboot->setEnabled(enabled);
+
+  // if enable is checked when reboot is already checked, skip setEnabled on the following ...
+  if (!chkReboot->isChecked() || !enabled)
+  {
+    bgMonth->setEnabled(enabled);
+    bgDayOfMonth->setEnabled(enabled);
+    bgDayOfWeek->setEnabled(enabled);
+    bgEveryDay->setEnabled(enabled);
+    bgHour->setEnabled(enabled);
+    bgMinute->setEnabled(enabled);
+  }
 }
 
-void KTTask::slotOK()
-        
+void KTTask::slotReboot()
+{
+  bool reboot = !chkReboot->isChecked();  
+  bgMonth->setEnabled(reboot);
+  bgDayOfMonth->setEnabled(reboot);
+  bgDayOfWeek->setEnabled(reboot);
+  bgEveryDay->setEnabled(reboot);
+  bgHour->setEnabled(reboot);
+  bgMinute->setEnabled(reboot);
+}
+
+void KTTask::slotOK()      
 {
   // Make it friendly for just selecting days of the month or
   // days of the week.
@@ -660,7 +677,7 @@ void KTTask::slotOK()
   cttask->comment = (const char *)leComment->text().toLocal8Bit();
   cttask->command = (const char *)leCommand->text().toLocal8Bit();
   cttask->enabled = chkEnabled->isChecked();
-  //cttask->reboot = chkReboot->isChecked();
+  cttask->reboot = chkReboot->isChecked();
 
   for (int mo = 1; mo <= 12; mo++)
   {
@@ -695,7 +712,6 @@ void KTTask::slotWizard()
 {
   bool error(false);
 
-
   if (!chkEnabled->isChecked())
   {
     setupTitleWidget(i18n("<i>Please check 'Enabled' to edit this task ...</i>"));
@@ -704,7 +720,14 @@ void KTTask::slotWizard()
     error = true;
   }
 
-  if (leCommand->text().isEmpty())
+  if (chkReboot->isChecked() && !error)
+  {
+    setupTitleWidget(i18n("<i>This task will be run on system bootup ...</i>"));
+    KDialog::enableButtonOk(true);
+    error = true;
+  }
+
+  if (leCommand->text().isEmpty() && !error)
   {
     setupTitleWidget(i18n("<i>Please browse for a program to execute ...</i>"));
     KDialog::enableButtonOk(false);

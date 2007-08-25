@@ -68,6 +68,11 @@ private slots:
   void slotEnabled();
 
 /**
+  * Enable / Disable task
+  */
+  void slotReboot();
+
+/**
   * Apply changes and close.
   */
   void slotOK();

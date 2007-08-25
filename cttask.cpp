@@ -36,14 +36,10 @@ CTTask::CTTask(string tokStr, string _comment, bool _syscron) :
   // Skip over 'silence' if found ... old option in vixie cron
   if (tokStr.substr(0,1) == "-") tokStr = tokStr.substr(1,tokStr.length() - 1);
  
+  reboot = false;
   if (tokStr.substr(0,1) == "@")
   {
-    if (tokStr.substr(1,6) == "reboot")
-    {
-      // Dunno what to do with this...
-      tokStr = "0 0 1 1 *"+tokStr.substr(7,tokStr.length()-1);
-    }
-    else if (tokStr.substr(1,6) == "yearly")
+    if (tokStr.substr(1,6) == "yearly")
     {
       tokStr = "0 0 1 1 *"+tokStr.substr(7,tokStr.length()-1);
     }
@@ -66,31 +62,40 @@ CTTask::CTTask(string tokStr, string _comment, bool _syscron) :
     else if (tokStr.substr(1,6) == "hourly")
     {
       tokStr = "0 * * * *"+tokStr.substr(7,tokStr.length()-1);
+    }    
+    else if (tokStr.substr(1,6) == "reboot")
+    {
+      tokStr = tokStr.substr(7,tokStr.length()-1);
+      reboot = true;
     }
   }
 
   int spacepos(tokStr.find_first_of(" \t"));
-  minute.initialize(tokStr.substr(0,spacepos));
-
-  while(isspace(tokStr[spacepos+1])) spacepos++;
-  tokStr     = tokStr.substr(spacepos+1,tokStr.length()-1);
-  spacepos   = tokStr.find_first_of(" \t");
-  hour.initialize(tokStr.substr(0,spacepos));
-
-  while(isspace(tokStr[spacepos+1])) spacepos++;
-  tokStr     = tokStr.substr(spacepos+1,tokStr.length()-1);
-  spacepos   = tokStr.find_first_of(" \t");
-  dayOfMonth.initialize(tokStr.substr(0,spacepos));
-
-  while(isspace(tokStr[spacepos+1])) spacepos++;
-  tokStr     = tokStr.substr(spacepos+1,tokStr.length()-1);
-  spacepos   = tokStr.find_first_of(" \t");
-  month.initialize(tokStr.substr(0,spacepos));
-
-  while(isspace(tokStr[spacepos+1])) spacepos++;
-  tokStr     = tokStr.substr(spacepos+1,tokStr.length()-1);
-  spacepos   = tokStr.find_first_of(" \t");
-  dayOfWeek.initialize(tokStr.substr(0,spacepos));
+  // If reboot bypass initialize functions so no keys selected in modify task
+  if (!reboot)
+  {
+    minute.initialize(tokStr.substr(0,spacepos));
+  
+    while(isspace(tokStr[spacepos+1])) spacepos++;
+    tokStr     = tokStr.substr(spacepos+1,tokStr.length()-1);
+    spacepos   = tokStr.find_first_of(" \t");
+    hour.initialize(tokStr.substr(0,spacepos));
+  
+    while(isspace(tokStr[spacepos+1])) spacepos++;
+    tokStr     = tokStr.substr(spacepos+1,tokStr.length()-1);
+    spacepos   = tokStr.find_first_of(" \t");
+    dayOfMonth.initialize(tokStr.substr(0,spacepos));
+  
+    while(isspace(tokStr[spacepos+1])) spacepos++;
+    tokStr     = tokStr.substr(spacepos+1,tokStr.length()-1);
+    spacepos   = tokStr.find_first_of(" \t");
+    month.initialize(tokStr.substr(0,spacepos));
+  
+    while(isspace(tokStr[spacepos+1])) spacepos++;
+    tokStr     = tokStr.substr(spacepos+1,tokStr.length()-1);
+    spacepos   = tokStr.find_first_of(" \t");
+    dayOfWeek.initialize(tokStr.substr(0,spacepos));
+  }
 
   if (syscron)
   {
@@ -112,7 +117,7 @@ CTTask::CTTask(string tokStr, string _comment, bool _syscron) :
   initialCommand = command;
   initialComment = comment;
   initialEnabled = enabled;
-  //initialReboot = reboot;
+  initialReboot = reboot;
 }
 
 CTTask::CTTask(const CTTask &source) :
@@ -125,12 +130,12 @@ CTTask::CTTask(const CTTask &source) :
   command(source.command),
   comment(source.comment),
   enabled(source.enabled),
-  //reboot(source.reboot),
+  reboot(source.reboot),
   initialUser(""),
   initialCommand(""),
   initialComment(""),
-  initialEnabled(true)
-  //initialReboot(false)
+  initialEnabled(true),
+  initialReboot(false)
 {
 }
 
@@ -145,12 +150,12 @@ void CTTask::operator = (const CTTask& source)
   command        = source.command;
   comment        = source.comment;
   enabled        = source.enabled;
-  //reboot         = source.reboot;
+  reboot         = source.reboot;
   initialUser    = "";
   initialCommand = "";
   initialComment = "";
   initialEnabled = true;
-  //initialReboot  = fale;
+  initialReboot  = false;
   return;
 }
 
@@ -162,11 +167,18 @@ ostream& operator << (ostream& outputStream, const CTTask& task)
   if (!task.enabled)
     outputStream << "#\\";
 
-  outputStream << task.minute << " ";
-  outputStream << task.hour << " ";
-  outputStream << task.dayOfMonth << " ";
-  outputStream << task.month << " ";
-  outputStream << task.dayOfWeek << "\t";
+  if (task.reboot)
+  {
+    outputStream << "@reboot\t\t";
+  }
+  else
+  {
+    outputStream << task.minute << " ";
+    outputStream << task.hour << " ";
+    outputStream << task.dayOfMonth << " ";
+    outputStream << task.month << " ";
+    outputStream << task.dayOfWeek << "\t";
+  }
 
   if (task.user != string(""))
     outputStream << task.user << "\t";
@@ -187,7 +199,7 @@ void CTTask::apply()
   initialCommand = command;
   initialComment = comment;
   initialEnabled = enabled;
-  //initialReboot = reboot;
+  initialReboot = reboot;
 }
 
 void CTTask::cancel()
@@ -201,7 +213,7 @@ void CTTask::cancel()
   command = initialCommand;
   comment = initialComment;
   enabled = initialEnabled;
-  //reboot = initialReboot;
+  reboot = initialReboot;
 }
 
 bool CTTask::dirty() const
@@ -209,7 +221,7 @@ bool CTTask::dirty() const
   return (month.dirty() || dayOfMonth.dirty() || dayOfWeek.dirty() ||
     hour.dirty() || minute.dirty() || (user != initialUser) ||
     (command != initialCommand) || (comment != initialComment) ||
-    (enabled != initialEnabled)); // || (reboot != initialReboot));
+    (enabled != initialEnabled) || (reboot != initialReboot));
 }
 
 string CTTask::describe() const
