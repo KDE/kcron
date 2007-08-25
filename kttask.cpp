@@ -15,7 +15,6 @@
 
 #include <qfileinfo.h>
 #include <QLayout>
-#include <QLineEdit>
 #include <QCheckBox>
 #include <q3buttongroup.h>
 #include <qpainter.h>
@@ -30,6 +29,7 @@
 
 #include <kacceleratormanager.h>
 #include <klocale.h>
+#include <klineedit.h>
 #include <kfiledialog.h>
 #include <kmessagebox.h>
 #include <kpushbutton.h>
@@ -133,7 +133,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   labUser->setObjectName("labUser");
   h1->addWidget( labUser );
 
-  leUser = new QLineEdit(main );
+  leUser = new KLineEdit(main );
   leUser->setObjectName( "leUser" );
   labUser->setBuddy(leUser);
   h1->addWidget( leUser );
@@ -157,7 +157,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   labComment->setObjectName( "labComment" );
   h2->addWidget( labComment );
 
-  leComment = new QLineEdit(main);
+  leComment = new KLineEdit(main);
   leComment->setObjectName("leComment");
   labComment->setBuddy(leComment);
   h2->addWidget( leComment );
@@ -173,7 +173,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   labCommand->setObjectName( "labCommand" );
   h3->addWidget( labCommand );
 
-  leCommand = new QLineEdit(main);
+  leCommand = new KLineEdit(main);
   leCommand->setObjectName( "leCommand" );
   labCommand->setBuddy(leCommand);
   h3->addWidget( leCommand );

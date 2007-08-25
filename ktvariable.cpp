@@ -16,6 +16,8 @@
 #include <QLabel>
 #include <QGridLayout>
 
+#include <kcombobox.h>
+#include <klineedit.h>
 #include <klocale.h>  // i18n()
 #include <kmessagebox.h>
 #include <ktextedit.h>
@@ -52,7 +54,7 @@ KTVariable::KTVariable(CTVariable* _ctvar,const QString &_caption) :
   labVariable->setObjectName("labVariable");
   layout->addWidget(labVariable, 1, 0, Qt::AlignLeft | Qt::AlignTop);
 
-  cmbVariable = new QComboBox(page);
+  cmbVariable = new KComboBox(page);
   cmbVariable->setEditable(true);
   cmbVariable->setObjectName("cmbVariable");
   layout->addWidget(cmbVariable, 1, 1, 1, 1);
@@ -69,7 +71,7 @@ KTVariable::KTVariable(CTVariable* _ctvar,const QString &_caption) :
   labValue->setObjectName("labValue");
   layout->addWidget(labValue, 2, 0, Qt::AlignLeft | Qt::AlignTop);
 
-  leValue = new QLineEdit(page);
+  leValue = new KLineEdit(page);
   leValue->setObjectName("leValue");
   layout->addWidget(leValue, 2, 1, 1, 1);
   leValue->setMaxLength(255);
@@ -80,7 +82,7 @@ KTVariable::KTVariable(CTVariable* _ctvar,const QString &_caption) :
   labComment->setObjectName("labComment");
   layout->addWidget(labComment, 3, 0, Qt::AlignLeft | Qt::AlignTop);
 
-  teComment = new QTextEdit(page);
+  teComment = new KLineEdit(page);
   layout->addWidget(teComment, 3, 1, 1, 1);
   labComment->setBuddy(teComment);
 
@@ -92,7 +94,7 @@ KTVariable::KTVariable(CTVariable* _ctvar,const QString &_caption) :
   // set starting field values
   cmbVariable->setEditText(QString::fromLocal8Bit(ctvar->variable.c_str()));
   leValue->setText(QString::fromLocal8Bit(ctvar->value.c_str()));
-  teComment->setPlainText(QString::fromLocal8Bit(ctvar->comment.c_str()));
+  teComment->setText(QString::fromLocal8Bit(ctvar->comment.c_str()));
   chkEnabled->setChecked(ctvar->enabled);
   cmbVariable->setFocus();
 
@@ -153,7 +155,7 @@ void KTVariable::slotOk()
 {
   ctvar->variable = (const char*)cmbVariable->currentText().toLatin1()/*.toLocal8Bit()*/;
   ctvar->value    = (const char*)leValue->text().toLatin1();
-  ctvar->comment  = (const char*)teComment->toPlainText().replace('\n',' ').replace('\r',' ').toLatin1();
+  ctvar->comment  = (const char*)teComment->originalText().replace('\n',' ').replace('\r',' ').toLatin1();
   ctvar->enabled  = chkEnabled->isChecked();
   close();
 }
@@ -162,10 +164,10 @@ void KTVariable::slotOk()
 void KTVariable::slotWizard()
 {
   QString variable = cmbVariable->currentText();
-  if (variable == "HOME") teComment->setPlainText(i18n("Override default home folder."));
-  else if (variable == "MAILTO") teComment->setPlainText(i18n("Email output to specified account."));
-  else if (variable == "SHELL") teComment->setPlainText(i18n("Override default shell."));
-  else if (variable == "PATH") teComment->setPlainText(i18n("Folders to search for program files."));
+  if (variable == "HOME") teComment->setText(i18n("Override default home folder."));
+  else if (variable == "MAILTO") teComment->setText(i18n("Email output to specified account."));
+  else if (variable == "SHELL") teComment->setText(i18n("Override default shell."));
+  else if (variable == "PATH") teComment->setText(i18n("Folders to search for program files."));
 
   bool error(false);
 
