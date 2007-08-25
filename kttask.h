@@ -58,19 +58,19 @@ private slots:
   void setupTitleWidget(const QString &comment="");
 
 /**
+  * Enable checkbox has changed
+  */
+  void slotEnabledChanged();
+
+/**
+  * Reboot checkbox has changed
+  */
+  void slotRebootChanged();
+
+/**
   * Daily checkbox has been changed.
   */
   void slotDailyChanged();
-
-/**
-  * Enable / Disable task
-  */
-  void slotEnabled();
-
-/**
-  * Enable / Disable task
-  */
-  void slotReboot();
 
 /**
   * Apply changes and close.

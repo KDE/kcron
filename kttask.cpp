@@ -437,10 +437,10 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   connect(leCommand, SIGNAL(textChanged(const QString&)),
     SLOT(slotWizard()));
 
-  connect(chkEnabled, SIGNAL(clicked()), SLOT(slotEnabled()));
+  connect(chkEnabled, SIGNAL(clicked()), SLOT(slotEnabledChanged()));
   connect(chkEnabled, SIGNAL(clicked()), SLOT(slotWizard()));
 
-  connect(chkReboot, SIGNAL(clicked()), SLOT(slotReboot()));
+  connect(chkReboot, SIGNAL(clicked()), SLOT(slotRebootChanged()));
   connect(chkReboot, SIGNAL(clicked()), SLOT(slotWizard()));
 
   connect(cbEveryDay, SIGNAL(clicked()), SLOT(slotDailyChanged()));
@@ -504,15 +504,16 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   main->layout()->setSizeConstraint(QLayout::SetFixedSize);
   show();
 
+  if (!chkEnabled->isChecked()) slotEnabledChanged();
+  else if (chkReboot->isChecked()) slotRebootChanged(); 
+  else if (cbEveryDay->isChecked()) slotDailyChanged(); 
+  
   slotMonthChanged();
   slotDayOfMonthChanged();
   slotDayOfWeekChanged();
   slotHourChanged();
   slotMinuteChanged();
 
-  slotReboot(); 
-  slotDailyChanged(); 
-  slotEnabled();
   slotWizard();
 }
 
@@ -550,6 +551,52 @@ void KTTask::setupTitleWidget(const QString &comment)
   }
 }
 
+void KTTask::slotEnabledChanged()
+{
+  bool enabled = chkEnabled->isChecked();  
+  labUser->setEnabled(enabled);
+  leUser->setEnabled(enabled);
+  leComment->setEnabled(enabled);
+  labComment->setEnabled(enabled);
+  leCommand->setEnabled(enabled);
+  labCommand->setEnabled(enabled);
+  pbBrowse->setEnabled(enabled);
+  chkReboot->setEnabled(enabled);
+
+  // if chkReboot is already checked, allow setEnabled(false) but not setEnable(true) ...
+  if (!chkReboot->isChecked() || !enabled)
+  {
+    bgEveryDay->setEnabled(enabled);
+    bgHour->setEnabled(enabled);
+    bgMinute->setEnabled(enabled);
+  }
+
+  // if cbEveryDay is already checked, allow setEnabled(false) but not setEnable(true) ...
+  if ((!chkReboot->isChecked() && !cbEveryDay->isChecked()) || !enabled)
+  {
+    bgMonth->setEnabled(enabled);
+    bgDayOfMonth->setEnabled(enabled);
+    bgDayOfWeek->setEnabled(enabled);
+  }
+}
+
+void KTTask::slotRebootChanged()
+{
+  bool reboot = !chkReboot->isChecked(); 
+  bgEveryDay->setEnabled(reboot);
+  bgHour->setEnabled(reboot);
+  bgMinute->setEnabled(reboot);
+
+  // if cbEveryDay is already checked, bgMonth, bgDayOfMonth, bgDayOfWeek are already setEnable(flase)
+  // so don't overide them ! ...
+  if (!cbEveryDay->isChecked())
+  {
+    bgMonth->setEnabled(reboot);
+    bgDayOfMonth->setEnabled(reboot);
+    bgDayOfWeek->setEnabled(reboot);
+  }
+}
+
 void KTTask::slotDailyChanged()
 {
   if (cbEveryDay->isChecked())
@@ -576,46 +623,6 @@ void KTTask::slotDailyChanged()
   slotMonthChanged();
   slotDayOfMonthChanged();
   slotDayOfWeekChanged();
-}
-
-void KTTask::slotEnabled()
-{
-  bool enabled = chkEnabled->isChecked();  
-  labUser->setEnabled(enabled);
-  leUser->setEnabled(enabled);
-  leComment->setEnabled(enabled);
-  labComment->setEnabled(enabled);
-  leCommand->setEnabled(enabled);
-  labCommand->setEnabled(enabled);
-  pbBrowse->setEnabled(enabled);
-  chkReboot->setEnabled(enabled);
-
-  // if enable is checked when reboot is already checked, skip setEnabled on the following ...
-  if (!chkReboot->isChecked() || !enabled)
-  {
-    bgEveryDay->setEnabled(enabled);
-    bgHour->setEnabled(enabled);
-    bgMinute->setEnabled(enabled);
-  }
-
-  // if enable is checked when everyday is already checked, skip setEnabled on the following ...
-  if ((!chkReboot->isChecked() && !cbEveryDay->isChecked()) || !enabled)
-  {
-    bgMonth->setEnabled(enabled);
-    bgDayOfMonth->setEnabled(enabled);
-    bgDayOfWeek->setEnabled(enabled);
-  }
-}
-
-void KTTask::slotReboot()
-{
-  bool reboot = !chkReboot->isChecked();  
-  bgMonth->setEnabled(reboot);
-  bgDayOfMonth->setEnabled(reboot);
-  bgDayOfWeek->setEnabled(reboot);
-  bgEveryDay->setEnabled(reboot);
-  bgHour->setEnabled(reboot);
-  bgMinute->setEnabled(reboot);
 }
 
 void KTTask::slotOK()      
