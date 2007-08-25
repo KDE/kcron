@@ -99,6 +99,7 @@ KTVariable::KTVariable(CTVariable* _ctvar,const QString &_caption) :
   cmbVariable->setFocus();
 
   slotEnabled();
+  slotWizard();
   show();
 
   // connect them up
@@ -146,8 +147,6 @@ void KTVariable::slotEnabled()
   leValue->setEnabled(enabled);
   labComment->setEnabled(enabled);
   teComment->setEnabled(enabled);
-
-  slotWizard();
 }
 
 
@@ -179,7 +178,7 @@ void KTVariable::slotWizard()
     error = true;
   }
 
-  if (cmbVariable->currentText().isEmpty())
+  if (cmbVariable->currentText().isEmpty() && !error)
   {
     setupTitleWidget(i18n("<i>Please enter the variable name ...</i>"));
     cmbVariable->setFocus();
@@ -187,10 +186,9 @@ void KTVariable::slotWizard()
     error = true;
   }
 
-  if (leValue->text().isEmpty())
+  if (leValue->text().isEmpty() && !error)
   {
     setupTitleWidget(i18n("<i>Please enter the variable value ...</i>"));
-    leValue->setFocus();
     KDialog::enableButtonOk(false);
     error = true;
   }
