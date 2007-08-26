@@ -39,7 +39,7 @@ void KTListTask::refresh()
     if (cttask->reboot) 
     {
       setText(1, QString::fromLocal8Bit(cttask->command.c_str()));
-      setText(2, i18n("At system bootup"));
+      setText(2, i18n("At system startup"));
     }
     else 
     {
@@ -50,7 +50,7 @@ void KTListTask::refresh()
   else
   {
     setText(1, "");
-    setText(2, i18n("Disabled"));
+    setText(2, i18nc("The cron task had been disabled", "Disabled"));
   }
 
   QString qsCommand(QString::fromLocal8Bit(cttask->command.c_str()));
@@ -76,7 +76,7 @@ void KTListTask::print (KTPrint &printer) const
     printer.print(QString::fromLocal8Bit(cttask->describe().c_str()),3, KTPrint::alignTextRight);
   }
   else
-    printer.print(i18n("Disabled."), 3, KTPrint::alignTextRight);
+    printer.print(i18nc("The cron task had been disabled", "Disabled."), 3, KTPrint::alignTextRight);
 }
 
 void KTListTask::edit()

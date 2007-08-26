@@ -67,7 +67,7 @@ void KTListVars::print(KTPrint& printer) const
   stnd = printer.getFont() ;
   printer.setFont(QFont( KGlobalSettings::generalFont().family(), 10, QFont::Bold ));
 
-  printer.print(i18n("Variable:"), 1, KTPrint::alignTextLeft);
+  printer.print(i18nc("The environmental variable name ie HOME, MAILTO etc", "Variable:"), 1, KTPrint::alignTextLeft);
   printer.print(i18n("Value:"), 2, KTPrint::alignTextCenter);
   printer.print(i18n("Description:"), 3, KTPrint::alignTextRight);
 

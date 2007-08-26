@@ -301,7 +301,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   h4->addLayout(v2);
 
   // daily
-  bgEveryDay = new Q3ButtonGroup( i18n("Daily"), main, "bgEveryDay");
+  bgEveryDay = new Q3ButtonGroup( i18nc("Every day of the week", "Daily"), main, "bgEveryDay");
   v2->addWidget( bgEveryDay );
 
   QVBoxLayout *v9 = new QVBoxLayout( bgEveryDay );

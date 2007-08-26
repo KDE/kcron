@@ -50,7 +50,7 @@ KTVariable::KTVariable(CTVariable* _ctvar,const QString &_caption) :
   layout->addWidget(titleWidget, 0, 0, 1, 2);
 
   // variable
-  labVariable = new QLabel(i18n("&Variable:"), page );
+  labVariable = new QLabel(i18nc("The environmental variable name ie HOME, MAILTO etc", "&Variable:"), page );
   labVariable->setObjectName("labVariable");
   layout->addWidget(labVariable, 1, 0, Qt::AlignLeft | Qt::AlignTop);
 

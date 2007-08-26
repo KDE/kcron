@@ -132,7 +132,7 @@ void KTApp::setupActions()
 
   QAction* newAct = actionCollection()->addAction( "edit_new" );
   newAct->setObjectName("edit_new");
-  newAct->setText( i18n("&New...") );
+  newAct->setText( i18nc("Adds a new task or variable", "&New...") );
   newAct->setIcon( KIcon("document-new") );
   qobject_cast<KAction*>( newAct )->setShortcut(KStandardShortcut::shortcut(KStandardShortcut::New));
   connect(newAct, SIGNAL(triggered(bool)), SLOT(slotEditNew()));
@@ -165,7 +165,7 @@ void KTApp::setupActions()
 
 void KTApp::initStatusBar()
 {
-    QLabel *defaultmsg = new QLabel(i18n(" Ready."));
+  QLabel *defaultmsg = new QLabel(i18nc("Kcron in ready for user input", " Ready."));
   defaultmsg->setFixedHeight( fontMetrics().height() + 2 );
   defaultmsg->setAlignment( Qt::AlignLeft | Qt::AlignVCenter );
   statusBar()->addWidget(defaultmsg);    
@@ -234,9 +234,9 @@ bool KTApp::queryExit()
 
 void KTApp::slotFileSave()
 {
-  slotStatusMsg(i18n("Saving..."));
+  slotStatusMsg(i18nc("Kcron is saving the file to the hard drive", "Saving..."));
   cthost->apply();
-  slotStatusMsg(i18n("Ready."));
+  slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
   if (cthost->isError())
   {
      KMessageBox::error(this, cthost->errorMessage());
@@ -247,7 +247,7 @@ void KTApp::slotFilePrint()
 {
   slotStatusMsg(i18n("Printing..."));
   view->print();
-  slotStatusMsg(i18n("Ready."));
+  slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
 }
 
 void KTApp::slotFileQuit()
@@ -267,42 +267,42 @@ void KTApp::slotEditCut()
   slotStatusMsg(i18n("Cutting to clipboard..."));
   view->copy();
   view->remove();
-  slotStatusMsg(i18n("Ready."));
+  slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
 }
 
 void KTApp::slotEditCopy()
 {
   slotStatusMsg(i18n("Copying to clipboard..."));
   view->copy();
-  slotStatusMsg(i18n("Ready."));
+  slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
 }
 
 void KTApp::slotEditPaste()
 {
   slotStatusMsg(i18n("Pasting from clipboard..."));
   view->paste();
-  slotStatusMsg(i18n("Ready."));
+  slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
 }
 
 void KTApp::slotEditNew()
 {
   slotStatusMsg(i18n("Adding new entry..."));
   view->create();
-  slotStatusMsg(i18n("Ready."));
+  slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
 }
 
 void KTApp::slotEditModify()
 {
   slotStatusMsg(i18n("Modifying entry..."));
   view->edit();
-  slotStatusMsg(i18n("Ready."));
+  slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
 }
 
 void KTApp::slotEditDelete()
 {
   slotStatusMsg(i18n("Deleting entry..."));
   view->remove();
-  slotStatusMsg(i18n("Ready."));
+  slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
 }
 
 void KTApp::slotEditEnable()
@@ -319,14 +319,14 @@ void KTApp::slotEditEnable()
     slotStatusMsg(i18n("Enabling entry..."));
     view->enable(true);
   }
-  slotStatusMsg(i18n("Ready."));
+  slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
 }
 
 void KTApp::slotEditRunNow()
 {
   slotStatusMsg(i18n("Running command..."));
   view->run();
-  slotStatusMsg(i18n("Ready."));
+  slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
 }
 
 void KTApp::slotStatusMsg(const QString & text)

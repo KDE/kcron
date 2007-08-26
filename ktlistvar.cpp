@@ -40,7 +40,7 @@ void KTListVar::refresh()
   else
   {
     setText(1, "");
-    setText(2, i18n("Disabled"));
+    setText(2, i18nc("The cron variable has been disabled", "Disabled"));
   }
 
   if (ctvar->variable == "MAILTO")
@@ -63,7 +63,7 @@ void KTListVar::print(KTPrint& printer) const
     printer.print(QString::fromLocal8Bit(ctvar->comment.c_str()),3,KTPrint::alignTextRight);
   }
   else
-    printer.print(i18n("Disabled."),3, KTPrint::alignTextRight);
+    printer.print(i18nc("The cron variable has been disabled", "Disabled."),3, KTPrint::alignTextRight);
 
 }
 

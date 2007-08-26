@@ -169,7 +169,7 @@ ostream& operator << (ostream& outputStream, const CTTask& task)
 
   if (task.reboot)
   {
-    outputStream << "@reboot\t\t";
+    outputStream << "@reboot\t";
   }
   else
   {
