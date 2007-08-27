@@ -271,7 +271,8 @@ void KTView :: pageHeading (KTListItem* user, KTPrint &printer) const
   gethostname(hostName, 20);
   // SSA : Fix Me user name, logon name and host name must be
   // SSA : not only in us-ascii ??
-  logonInfo = i18nc("user on host", "%1 <%2> on %3",
+  //logonInfo = i18nc("user on host", "%1 &lt;%2&gt; on %3",
+  logonInfo = i18nc("user on host", "%1 <placeholder>%2</placeholder> on %3",
      QString::fromLocal8Bit(user->getCTCron()->name.c_str()),
      QString::fromLocal8Bit(user->getCTCron()->login.c_str()),
      QString::fromLocal8Bit(hostName));
