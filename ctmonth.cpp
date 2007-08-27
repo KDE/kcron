@@ -49,7 +49,7 @@ void CTMonth::initializeNames()
       (const char*)i18n("January").toLocal8Bit(),  (const char*)i18n("February").toLocal8Bit(),
       (const char*)i18n("March").toLocal8Bit(),  (const char*)i18n("April").toLocal8Bit(),
       (const char*)i18nc("May long","May").toLocal8Bit(),  (const char*)i18n("June").toLocal8Bit(),
-      (const char*)i18n("July").toLocal8Bit(),  (const char*)i18n("August").toLocal8Bit(),
+      (const char*)i18nc("July long", "July").toLocal8Bit(),  (const char*)i18n("August").toLocal8Bit(),
       (const char*)i18n("September").toLocal8Bit(),  (const char*)i18n("October").toLocal8Bit(),
       (const char*)i18n("November").toLocal8Bit(),  (const char*)i18n("December").toLocal8Bit()
     };
