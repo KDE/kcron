@@ -71,9 +71,15 @@ void KTListTask::refresh()
 void KTListTask::print (KTPrint &printer) const
 {
   printer.print(QString::fromLocal8Bit(cttask->comment.c_str()), 1, KTPrint::alignTextLeft);
-  if (cttask->enabled) {
+  if (cttask->enabled) 
+  {      
     printer.print(QString::fromLocal8Bit(cttask->command.c_str()),2, KTPrint::alignTextCenter);
-    printer.print(QString::fromLocal8Bit(cttask->describe().c_str()),3, KTPrint::alignTextRight);
+
+    if (cttask->reboot) 
+      printer.print(i18n("At system startup"), 3, KTPrint::alignTextRight);
+
+    else 
+      printer.print(QString::fromLocal8Bit(cttask->describe().c_str()),3, KTPrint::alignTextRight);
   }
   else
     printer.print(i18nc("The cron task had been disabled", "Disabled."), 3, KTPrint::alignTextRight);
