@@ -49,15 +49,24 @@ KTVariable::KTVariable(CTVariable* _ctvar,const QString &_caption) :
   titleWidget = new KTitleWidget(page);
   layout->addWidget(titleWidget, 0, 0, 1, 2);
 
+  // comment
+  labComment = new QLabel(i18n("Co&mment:"), page);
+  labComment->setObjectName("labComment");
+  layout->addWidget(labComment, 1, 0, Qt::AlignLeft | Qt::AlignTop);
+
+  teComment = new KLineEdit(page);
+  layout->addWidget(teComment, 1, 1, 1, 1);
+  labComment->setBuddy(teComment);
+
   // variable
   labVariable = new QLabel(i18nc("The environmental variable name ie HOME, MAILTO etc", "&Variable:"), page );
   labVariable->setObjectName("labVariable");
-  layout->addWidget(labVariable, 1, 0, Qt::AlignLeft | Qt::AlignTop);
+  layout->addWidget(labVariable, 2, 0, Qt::AlignLeft | Qt::AlignTop);
 
   cmbVariable = new KComboBox(page);
   cmbVariable->setEditable(true);
   cmbVariable->setObjectName("cmbVariable");
-  layout->addWidget(cmbVariable, 1, 1, 1, 1);
+  layout->addWidget(cmbVariable, 2, 1, 1, 1);
 
   cmbVariable->addItem("HOME");
   cmbVariable->addItem("MAILTO");
@@ -69,22 +78,13 @@ KTVariable::KTVariable(CTVariable* _ctvar,const QString &_caption) :
   // value
   labValue = new QLabel(i18n("Va&lue:"), page);
   labValue->setObjectName("labValue");
-  layout->addWidget(labValue, 2, 0, Qt::AlignLeft | Qt::AlignTop);
+  layout->addWidget(labValue, 3, 0, Qt::AlignLeft | Qt::AlignTop);
 
   leValue = new KLineEdit(page);
   leValue->setObjectName("leValue");
-  layout->addWidget(leValue, 2, 1, 1, 1);
+  layout->addWidget(leValue, 3, 1, 1, 1);
   leValue->setMaxLength(255);
   labValue->setBuddy(leValue);
-
-  // comment
-  labComment = new QLabel(i18n("Co&mment:"), page);
-  labComment->setObjectName("labComment");
-  layout->addWidget(labComment, 3, 0, Qt::AlignLeft | Qt::AlignTop);
-
-  teComment = new KLineEdit(page);
-  layout->addWidget(teComment, 3, 1, 1, 1);
-  labComment->setBuddy(teComment);
 
   // enabled
   chkEnabled = new QCheckBox(i18n("&Enabled"), page);
