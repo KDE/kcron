@@ -536,7 +536,7 @@ void KTTask::setupTitleWidget(const QString &comment)
 
     // using KIconLoader() instead of getMaxIcon() because we need a null pixmap if pixmap cannot be found
     KIconLoader *loader = KIconLoader::global();
-    QPixmap qpIcon(loader->loadIcon(qsCommand, K3Icon::Desktop, 0, K3Icon::DefaultState, QStringList(), 0L, true));
+    QPixmap qpIcon(loader->loadIcon(qsCommand, KIconLoader::Desktop, 0, KIconLoader::DefaultState, QStringList(), 0L, true));
     if (qpIcon.isNull()) qpIcon = KTIcon::task(KTIcon::Large);
 
     titleWidget->setText(i18n("Add or modify a Kcron task"));  

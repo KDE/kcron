@@ -63,7 +63,7 @@ void KTListTask::refresh()
 
   // using KIconLoader() instead of getMaxIcon() because we need a null pixmap if pixmap cannot be found
   KIconLoader *loader = KIconLoader::global();
-  QPixmap qpIcon(loader->loadIcon(qsCommand, K3Icon::Small, 0, K3Icon::DefaultState, QStringList(), 0L, true));
+  QPixmap qpIcon(loader->loadIcon(qsCommand, KIconLoader::Small, 0, KIconLoader::DefaultState, QStringList(), 0L, true));
   if (qpIcon.isNull()) qpIcon = KTIcon::getMiniIcon("gear");
   setPixmap(0, qpIcon);
 }
