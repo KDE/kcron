@@ -31,6 +31,7 @@
 #include "ktview.h"
 #include <ktoolbar.h>
 #include <kicon.h>
+#include <kconfiggroup.h>
 #include <QLabel>
 
 

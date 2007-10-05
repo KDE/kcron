@@ -26,6 +26,8 @@
 
 #include <qfile.h>
 
+#include <QTextStream>
+
 using namespace std;
 
 CTHost::CTHost(const QString& cronBinary)
