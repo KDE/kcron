@@ -48,7 +48,7 @@ public:
 /**
   * Print crontab.
   */
-  void print() const;
+  void print();
 
 /**
   * Print page heading.

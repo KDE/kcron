@@ -14,7 +14,8 @@
 #include "ktprint.h"
 
 #include <qpainter.h>
-#include <ktprintopt.h>
+#include <QtGui/QPrintDialog>
+#include <kdeprintdialog.h>
 
 #include <klocale.h>
 
@@ -44,6 +45,7 @@ enum AlignmentFlags { AlignLeft = 0x0001, AlignRight = 0x0002,
 KTPrint::~KTPrint()
 {
   delete prnt;
+  delete prntOpt;
   if (columns.size()>0)
     columns.erase(columns.begin(), columns.end());
 }
@@ -73,10 +75,10 @@ void KTPrint :: createColumns (unsigned num_columns)
 bool KTPrint:: start ()
 {
    prnt->setDocName("Cron Tab");
-  prnt->addDialogPage(new KTPrintOpt(root));
 
-  if (prnt->setup(0L, i18n("Print Cron Tab"))) 
-  { 
+  QPrintDialog *printDialog = KdePrint::createPrintDialog(prnt, QList<QWidget*>() << prntOpt, parent);
+  printDialog->setWindowTitle(i18n("Print Cron Tab"));
+  if (printDialog->exec()) {
     //Setup a printer
     if (paint!=NULL) delete paint;
     paint = new  QPainter ();

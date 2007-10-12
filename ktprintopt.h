@@ -14,7 +14,7 @@
 #ifndef KTPRINTOPT_H
 #define KTPRINTOPT_H
 
-#include <kdeprint/kprintdialogpage.h>
+#include <QWidget>
 
 class QCheckBox;
 
@@ -23,7 +23,7 @@ class QCheckBox;
   *If the user is root ask if they want to print all the users
   */
 
-class KTPrintOpt : public KPrintDialogPage
+class KTPrintOpt : public QWidget
 {
   Q_OBJECT
 public:
@@ -35,9 +35,11 @@ public:
 
   ~KTPrintOpt();
 
-  void setOptions(const QMap<QString,QString>& options);
-  void getOptions(QMap<QString,QString>& options, bool incldef = false);
+  bool printCrontab();
+  void setPrintCrontab( bool setStatus );
 
+  bool printAllUsers();
+  void setPrintAllUsers( bool setStatus );
 
 private:
   QCheckBox*      chkPrintCrontab;

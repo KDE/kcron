@@ -15,17 +15,18 @@
 #define KTPRINT_H
 
 #include <vector>
-#include <kprinter.h>
+#include <QtGui/QPrinter>
+
+#include <ktprintopt.h>
 
 class QPainter;
-class KPrinter;
 class QString;
 class QFont;
 
 /**
   *Provides a wrapper for simple printing of text.
   */
-class KTPrint{
+class KTPrint {
 public:
 
 /**
@@ -46,16 +47,18 @@ public:
 /**
   * Contructor
   */
-  KTPrint(bool _root) :
+  KTPrint(bool _root, QWidget *_parent) :
                 leftMargin(defaultLeftMargin), 
                 rightMargin (defaultRightMargin), 
                 topMargin(defaultTopMargin),
                 bottomMargin(defaultBottomMargin), 
                 paint(0),
-                root(_root)
+                root(_root),
+                parent(_parent)
   {
-    prnt = new KPrinter;
-    prnt->setOption("crontab","true");
+    prnt = new QPrinter;
+    prntOpt = new KTPrintOpt(root);
+    prntOpt->setPrintCrontab("true");
     createColumns(1);
   }
 
@@ -114,7 +117,7 @@ public:
   */
   bool crontab() const
   {
-     return (prnt->option("crontab") == "true");
+     return prntOpt->printCrontab();
   }
   
 /**  
@@ -122,14 +125,14 @@ public:
   */
   bool allUsers() const
   {
-     return (prnt->option("allusers") == "true");
+     return prntOpt->printAllUsers();
   }
 private:
 
  /**
    *Disable the copy constructor and the assignment operator
    */
-  KTPrint (const KTPrint&) {}
+  //KTPrint (const KTPrint&) {}
   KTPrint& operator=(const KTPrint&) {return *this;}
 
 /**
@@ -175,7 +178,17 @@ private:
 /**
   * Pointer a printer object
   */
-  KPrinter *prnt;
+  QPrinter *prnt;
+
+/**
+  * Pointer a printer options object
+  */
+  KTPrintOpt *prntOpt;
+
+/**
+  * Pointer to parent widget
+  */
+  QWidget *parent;
 
 /**
   *Nest a column class to make text layout nicer

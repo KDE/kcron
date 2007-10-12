@@ -184,14 +184,14 @@ void KTView::refresh()
   }
 }
 
-void KTView::print () const
+void KTView::print ()
 {
   bool crontab, allUsers;
   KTListItem *ktli, *user;
 
   const CTHost& cth(ktapp->getCTHost());
 
-  KTPrint printer(cth.root());
+  KTPrint printer(cth.root(), this);
 
   if (printer.start())
   {

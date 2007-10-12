@@ -21,14 +21,14 @@
 #include <kdialog.h>
 #include <klocale.h>
 
-KTPrintOpt::KTPrintOpt(bool root) : KPrintDialogPage()
+KTPrintOpt::KTPrintOpt(bool root) : QWidget()
 {
-  m_title = i18n("Cron Options");
+  setWindowTitle(i18n("Cron Options"));
 
   QVBoxLayout *main_ = new QVBoxLayout(this);
   main_->setMargin(KDialog::marginHint());
   main_->setSpacing(KDialog::spacingHint());
-		  
+
   chkPrintCrontab = new QCheckBox(i18n("Print cron&tab"), this);
   chkPrintCrontab->setObjectName("chkPrintCrontab");
   main_->addWidget(chkPrintCrontab);
@@ -49,25 +49,24 @@ KTPrintOpt::~KTPrintOpt()
 {
 }
 
-void KTPrintOpt::setOptions(const QMap<QString,QString>& opts)
+bool KTPrintOpt::printCrontab()
 {
-  QString  value;
-
-  value = opts["crontab"];
-  chkPrintCrontab->setChecked(value == "true");
-
-  if (chkPrintAllUsers->isEnabled())
-  {
-     value = opts["allusers"];
-     chkPrintAllUsers->setChecked(value == "true");
-  }
+  return chkPrintCrontab->isChecked();
 }
 
-void KTPrintOpt::getOptions(QMap<QString,QString>& opts, bool)
+void KTPrintOpt::setPrintCrontab( bool setStatus )
 {
-  opts["crontab"] = chkPrintCrontab->isChecked() ? "true" : "false";
-  opts["allusers"] = chkPrintAllUsers->isChecked() ? "true" : "false";
+  chkPrintCrontab->setChecked(setStatus);
 }
 
+bool KTPrintOpt::printAllUsers()
+{
+  return chkPrintAllUsers->isChecked();
+}
+
+void KTPrintOpt::setPrintAllUsers( bool setStatus )
+{
+  chkPrintAllUsers->setChecked(setStatus);
+}
 
 #include "ktprintopt.moc"
