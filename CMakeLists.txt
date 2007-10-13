@@ -32,7 +32,7 @@ set(kcron_SRCS
 
 kde4_add_executable(kcron ${kcron_SRCS})
 
-target_link_libraries(kcron  ${KDE4_KDEPRINT_LIBS} ${QT_QT3SUPPORT_LIBRARY})
+target_link_libraries(kcron ${KDE4_KIO_LIBS} ${QT_QT3SUPPORT_LIBRARY})
 
 install(TARGETS  kcron  DESTINATION ${BIN_INSTALL_DIR} )
 
