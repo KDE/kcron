@@ -22,7 +22,6 @@
 #include <kdialog.h>
 #include <ktitlewidget.h>
 
-class KTextEdit;
 
 class CTVariable;
 
