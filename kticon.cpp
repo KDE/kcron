@@ -44,9 +44,9 @@ QPixmap KTIcon::application(int size)
 
 QPixmap KTIcon::system(int size)
 {
-  if (size == 0) return getMiniIcon("openterm");
-  if (size == 1) return getIcon("openterm");
-  return getMaxIcon("openterm");
+  if (size == 0) return getMiniIcon("utilities-terminal");
+  if (size == 1) return getIcon("utilities-terminal");
+  return getMaxIcon("utilities-terminal");
 }
 
 QPixmap KTIcon::user(int size)
@@ -79,9 +79,9 @@ QPixmap KTIcon::mail(int size)
 
 QPixmap KTIcon::shell(int size)
 {
-  if (size == 0) return getMiniIcon("openterm");
-  if (size == 1) return getIcon("openterm");
-  return getMaxIcon("openterm");
+  if (size == 0) return getMiniIcon("utilities-terminal");
+  if (size == 1) return getIcon("utilities-terminal");
+  return getMaxIcon("utilities-terminal");
 }
 
 QPixmap KTIcon::home(int size)
