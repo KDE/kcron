@@ -25,7 +25,7 @@
 
 <ActionProperties>
   <Action name="edit_new" icon="filenew"/>
-  <Action name="edit_modify" icon="edit"/>
+  <Action name="edit_modify" icon="object-edit"/>
   <Action name="edit_delete" icon="editdelete"/>
   <Action name="edit_run" icon="run"/>
 </ActionProperties>
