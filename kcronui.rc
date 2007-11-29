@@ -24,10 +24,10 @@
 </ToolBar>
 
 <ActionProperties>
-  <Action name="edit_new" icon="filenew"/>
+  <Action name="edit_new" icon="document-new"/>
   <Action name="edit_modify" icon="object-edit"/>
-  <Action name="edit_delete" icon="editdelete"/>
-  <Action name="edit_run" icon="run"/>
+  <Action name="edit_delete" icon="edit-delete"/>
+  <Action name="edit_run" icon="system-run"/>
 </ActionProperties>
 
 <State name="no_task_selected">
