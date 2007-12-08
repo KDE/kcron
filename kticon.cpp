@@ -51,9 +51,9 @@ QPixmap KTIcon::system(int size)
 
 QPixmap KTIcon::user(int size)
 {
-  if (size == 0) return getMiniIcon("kuser");
-  if (size == 1) return getIcon("kuser");
-  return getMaxIcon("kuser");
+  if (size == 0) return getMiniIcon("user-identity");
+  if (size == 1) return getIcon("user-identity");
+  return getMaxIcon("user-identity");
 }
 
 QPixmap KTIcon::variables(int size)
@@ -65,16 +65,16 @@ QPixmap KTIcon::variables(int size)
 
 QPixmap KTIcon::variable(int size)
 {
-  if (size == 0) return getMiniIcon("mime_empty");
-  if (size == 1) return getIcon("mine_empty");
-  return getMaxIcon("mime_empty");
+  if (size == 0) return getMiniIcon("application-x-zerosize");
+  if (size == 1) return getIcon("application-x-zerosize");
+  return getMaxIcon("application-x-zerosize");
 }
 
 QPixmap KTIcon::mail(int size)
 {
-  if (size == 0) return getMiniIcon("mail");
-  if (size == 1) return getIcon("mail");
-  return getMaxIcon("mail");
+  if (size == 0) return getMiniIcon("mail-message");
+  if (size == 1) return getIcon("mail-message");
+  return getMaxIcon("mail-message");
 }
 
 QPixmap KTIcon::shell(int size)
@@ -107,9 +107,9 @@ QPixmap KTIcon::tasks(int size)
 
 QPixmap KTIcon::task(int size)
 {
-  if (size == 0) return getMiniIcon("gear");
-  if (size == 1) return getIcon("gear");
-  return getMaxIcon("gear");
+  if (size == 0) return getMiniIcon("system-run");
+  if (size == 1) return getIcon("system-run");
+  return getMaxIcon("system-run");
 }
 
 QPixmap KTIcon::information(int size)
