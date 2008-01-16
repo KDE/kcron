@@ -1,5 +1,7 @@
 project(kcron)
 
+add_definitions (-DQT3_SUPPORT -DQT3_SUPPORT_WARNINGS)
+
 configure_file (config-kcron.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-kcron.h )
 
 
