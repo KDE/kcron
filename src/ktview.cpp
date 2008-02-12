@@ -14,13 +14,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include <config-kcron.h>
-
-#ifdef HAVE_SSTREAM
 #include <sstream>
-#else
-#include <strstream.h>
-#endif
 
 #include <string>
 
@@ -290,12 +284,7 @@ void KTView :: pageHeading (KTListItem* user, KTPrint &printer) const
 
 void KTView :: pageFooter (KTListItem* user, KTPrint &printer) const
 {
-#ifdef HAVE_SSTREAM
   ostringstream oss;
-#else
-  char buffer[4096];
-  ostrstream oss(buffer, sizeof(buffer));
-#endif
 
   oss<<*(user->getCTCron())<<ends;
 
