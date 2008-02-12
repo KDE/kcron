@@ -1,8 +1,3 @@
-include_directories( 
-	${KDE4_INCLUDE_DIR} 
-	${QT_INCLUDES}  
-)
-
 add_definitions (-DQT3_SUPPORT -DQT3_SUPPORT_WARNINGS)
 
 set(kcron_crontablib_SRCS
