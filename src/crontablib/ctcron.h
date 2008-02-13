@@ -43,6 +43,7 @@ public:
   * exception if the crontab file can not be found, read, or parsed.
   */
   explicit CTCron(const QString& cronBinary, bool _syscron = false, std::string _login = "");
+
 /**
   * If you already have a struct passwd, use it instead. This
   * is never used for the system crontab.

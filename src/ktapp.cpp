@@ -55,7 +55,7 @@ KTApp::KTApp() : KXmlGuiWindow(0),
   // Initialize document.
   cthost = new CTHost(crontab);
 
-  setupGUI(QSize(600, 320));
+  setupGUI(QSize(700, 500));
 
   // Initialize view.
   view = new KTView(this);
