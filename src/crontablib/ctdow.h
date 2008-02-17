@@ -12,59 +12,41 @@
 #ifndef CTDOW_H
 #define CTDOW_H
 
-// Do not introduce any Qt or KDE dependencies into the "CT"-prefixed classes.
-// I want to be able to reuse these classes with another GUI toolkit. -GM 11/99
+#include <QString>
+#include <QList>
 
 #include "ctunit.h"
-#include <string>
 
 /**
-  * Scheduled task days of week.
-  */
-class CTDayOfWeek : public CTUnit<1,7>
-{
+ * Scheduled task days of week.
+ */
+class CTDayOfWeek : public CTUnit {
 public:
-/**
-  * Constructs from a tokenized string.
-  */
-  CTDayOfWeek(const string& tokStr = "");
+	/**
+	 * Constructs from a tokenized string.
+	 */
+	CTDayOfWeek(const QString& tokStr = "");
 
-/**
-  * Default copy constructor.
-  */
-  // CTDayOfWeek(const CTDayOfWeek& source);
+	/**
+	 * Override initialize to support crontab using both 0 and 7 for
+	 * Sunday.
+	 */
+	void initialize(const QString& tokStr = "");
 
-/**
-  * Default assignment operator
-  */
-  // void operator = (const CTDayOfWeek& source);
+	/**
+	 * Get natural language description.
+	 */
+	virtual QString describe() const;
 
-/**
-  * Default destructor.
-  */
-  // ~CTDayOfWeek();
-
-/**
-  * Override initialize to support crontab using both 0 and 7 for
-  * Sunday.
-  */
-  void initialize(const string &tokStr = "");
-
-/**
-  * Get natural language description.
-  */
-  virtual string describe() const;
-
-/**
-  * Get day of week name.
-  */
-  static string getName(const int ndx,
-    const bool format = CTDayOfWeek::longFormat);
+	/**
+	 * Get day of week name.
+	 */
+	static QString getName(const int ndx, const bool format = CTDayOfWeek::longFormat);
 
 private:
-  static void initializeNames();
-  static string shortName[8];
-  static string longName[8];
+	static void initializeNames();
+	static QList<QString> shortName;
+	static QList<QString> longName;
 };
 
 #endif // CTDOW_H

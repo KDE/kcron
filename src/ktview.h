@@ -27,181 +27,181 @@ class CTVariable;
 class CTTask;
 
 /**
-  * Main GUI view of the crontab entries.
-  */
+ * Main GUI view of the crontab entries.
+ */
 class KTView : public QWidget
 {
-  Q_OBJECT
+	Q_OBJECT
 
 public:
 
-/**
-  * Initializes view.
-  */
-  KTView (QWidget* parent = 0);
+	/**
+	 * Initializes view.
+	 */
+	KTView (QWidget* parent = 0);
 
-/**
-  * Destructor.
-  */
-  ~KTView();
+	/**
+	 * Destructor.
+	 */
+	~KTView();
 
-/**
-  * Print crontab.
-  */
-  void print();
+	/**
+	 * Print crontab.
+	 */
+	void print();
 
-/**
-  * Print page heading.
-  */
-  void pageHeading (KTListItem *user, KTPrint &printer) const;
+	/**
+	 * Print page heading.
+	 */
+	void pageHeading (KTListItem *user, KTPrint &printer) const;
 
-/**
-  * Print page footer.
-  */
-  void pageFooter (KTListItem *user, KTPrint &printer) const;
+	/**
+	 * Print page footer.
+	 */
+	void pageFooter (KTListItem *user, KTPrint &printer) const;
 
-/**
-  * Copies variables and/or tasks.
-  */
-  void copy();
+	/**
+	 * Copies variables and/or tasks.
+	 */
+	void copy();
 
-/**
-  * Pastes variables and/or tasks from the clipboard.
-  */
-  void paste();
+	/**
+	 * Pastes variables and/or tasks from the clipboard.
+	 */
+	void paste();
 
-/**
-  * Create a new variable or task.  Default is which type is most recently
-  * selected.
-  */
-  void create();
+	/**
+	 * Create a new variable or task.  Default is which type is most recently
+	 * selected.
+	 */
+	void create();
 
-/**
-  * Edit variable or task.  Default is most recently selected.
-  */
-  void edit();
+	/**
+	 * Edit variable or task.  Default is most recently selected.
+	 */
+	void edit();
 
-/**
-  * Delete variables and/or tasks.
-  */
-  void remove();
+	/**
+	 * Delete variables and/or tasks.
+	 */
+	void remove();
 
-/**
-  * Enables/disables variables and/or tasks.
-  */
-  void enable(bool enable = true);
+	/**
+	 * Enables/disables variables and/or tasks.
+	 */
+	void enable(bool enable = true);
 
-/**
-  * Run task now.
-  */
-  void run() const;
+	/**
+	 * Run task now.
+	 */
+	void run() const;
 
-signals:
+	signals:
 
-/** Enables/disables modification 
-  * buttons depending
-  * on if a task is selected
-  */
-  void enableModificationButtons(bool);
+	/** Enables/disables modification 
+	 * buttons depending
+	 * on if a task is selected
+	 */
+	void enableModificationButtons(bool);
 
-/** Enables/disables paste button depending
-  * on clipboard contents
-  */
-  void enablePaste(bool);
+	/** Enables/disables paste button depending
+	 * on clipboard contents
+	 */
+	void enablePaste(bool);
 
-/** Enables/disables "Run now" depending
-  * on the task settings
-  */
-  void enableRunNow(bool);
+	/** Enables/disables "Run now" depending
+	 * on the task settings
+	 */
+	void enableRunNow(bool);
 
-/** Enables/disables "Activated" setting
-  * on the menu depending on the task
-  * configuration
-  */
-  void enableEnabled(bool);
+	/** Enables/disables "Activated" setting
+	 * on the menu depending on the task
+	 * configuration
+	 */
+	void enableEnabled(bool);
 
 public slots:
 
-/**
-  * Pop up context sensitive menu.
-  */
-  void slotMenu(Q3ListViewItem* qlvi, const QPoint& qp, int i);
+	/**
+	 * Pop up context sensitive menu.
+	 */
+	void slotMenu(Q3ListViewItem* qlvi, const QPoint& qp, int i);
 
-/**
-  * Default action, edit.
-  */
-  void slotEdit(Q3ListViewItem* qlvi = 0);
+	/**
+	 * Default action, edit.
+	 */
+void slotEdit(Q3ListViewItem* qlvi = 0);
 
 protected slots:
 
 /**
-  * Set current and update menu
-  */
-  void slotSetCurrent (Q3ListViewItem* qlvi);
+ * Set current and update menu
+ */
+void slotSetCurrent (Q3ListViewItem* qlvi);
 
 protected:
 
 /**
-  * Resize view contents.
-  */
-  virtual void resizeEvent (QResizeEvent* = 0);
+ * Resize view contents.
+ */
+virtual void resizeEvent (QResizeEvent* = 0);
 
 private:
 
 /**
-  * Get absolute path of command.
-  */
-  QString absolute() const;
+ * Get absolute path of command.
+ */
+QString absolute() const;
 
 /**
-  * Refresh view from underlying objects.
-  */
-  void refresh();
+ * Refresh view from underlying objects.
+ */
+void refresh();
 
 /**
-  * The application.
-  */
-  KTApp* ktapp;
+ * The application.
+ */
+KTApp* ktapp;
 
 /**
-  * Tree view of the crontab entries.
-  */
-  Q3ListView* listView;
+ * Tree view of the crontab entries.
+ */
+Q3ListView* listView;
 
 /**
-  * Current user's crontab.
-  */
-  CTCron* currentCTCron;
+ * Current user's crontab.
+ */
+CTCron* currentCTCron;
 
 /**
-  * Indicates whether or not currently selected item is a task.
-  */
-  bool currentIsTask;
+ * Indicates whether or not currently selected item is a task.
+ */
+bool currentIsTask;
 
 /**
-  * Current task.
-  */
-  CTTask* currentCTTask;
+ * Current task.
+ */
+CTTask* currentCTTask;
 
 /**
-  * Current variable.
-  */
-  CTVariable* currentCTVariable;
+ * Current variable.
+ */
+CTVariable* currentCTVariable;
 
 /**
-  * Indicates whether or not the item on the clipboard is a task.
-  */
-  bool clipboardIsTask;
+ * Indicates whether or not the item on the clipboard is a task.
+ */
+bool clipboardIsTask;
 
 /**
-  * Clipboard task.
-  */
-  CTTask* clipboardCTTask;
+ * Clipboard task.
+ */
+CTTask* clipboardCTTask;
 
 /**
-  * Clipboard variable.
-  */
-  CTVariable* clipboardCTVariable;
+ * Clipboard variable.
+ */
+CTVariable* clipboardCTVariable;
 
 };
 

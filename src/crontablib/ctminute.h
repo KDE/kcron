@@ -12,38 +12,20 @@
 #ifndef CTMINUTE_H
 #define CTMINUTE_H
 
-// Do not introduce any Qt or KDE dependencies into the "CT"-prefixed classes.
-// I want to be able to reuse these classes with another GUI toolkit. -GM 11/99
-
 #include "ctunit.h"
-#include <string>
 
 /**
-  * Scheduled task minutes.
-  */
-class CTMinute : public CTUnit<0,59>
-{
+ * Scheduled task minutes.
+ */
+class CTMinute : public CTUnit {
 public:
 
-/**
-  * Constructs from a tokenized string.
-  */
-  CTMinute(const string &tokStr = "") : CTUnit<0,59>(tokStr) { }
-
-/**
-  * Default copy constructor.
-  */
-  // CTMinute(const CTMinute& source);
-
-/**
-  * Default assignment operator
-  */
-  // void operator = (const CTMinute& source);
-
-/**
-  * Default destructor.
-  */
-  // ~CTMinute();
+	/**
+	 * Constructs from a tokenized string.
+	 */
+	CTMinute(const QString& tokStr = "") :
+		CTUnit(0, 59, tokStr) {
+	}
 
 };
 

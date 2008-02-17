@@ -12,52 +12,35 @@
 #ifndef CTMONTH_H
 #define CTMONTH_H
 
-// Do not introduce any Qt or KDE dependencies into the "CT"-prefixed classes.
-// I want to be able to reuse these classes with another GUI toolkit. -GM 11/99
+#include <QString>
+#include <QList>
 
 #include "ctunit.h"
-#include <string>
 
 /**
-  * Scheduled task months.
-  */
-class CTMonth : public CTUnit<1,12>
-{
+ * Scheduled task months.
+ */
+class CTMonth : public CTUnit {
 public:
 
-/**
-  * Constructs from a tokenized string.
-  */
-  CTMonth(const string& tokStr = "");
+	/**
+	 * Constructs from a tokenized string.
+	 */
+	CTMonth(const QString& tokStr = "");
 
-/**
-  * Default copy constructor.
-  */
-  // CTMonth(const CTMonth& source);
+	/**
+	 * Get natural language description.
+	 */
+	virtual QString describe() const;
 
-/**
-  * Default assignment operator
-  */
-  // void operator = (const CTMonth& source);
-
-/**
-  * Default destructor.
-  */
-  // ~CTMonth();
-
-/**
-  * Get natural language description.
-  */
-  virtual string describe() const;
-
-/**
-  * Get month name.
-  */
-  static string getName(const int ndx);
+	/**
+	 * Get month name.
+	 */
+	static QString getName(const int ndx);
 
 private:
-  static void initializeNames();
-  static string shortName[13];
+	static void initializeNames();
+	static QList<QString> shortName;
 };
 
 #endif // CTMONTH_H

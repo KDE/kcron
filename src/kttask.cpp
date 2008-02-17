@@ -140,7 +140,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
 
   if (cttask->system())
   {
-    leUser->setText(QString::fromLocal8Bit(cttask->user.c_str()));
+    leUser->setText(cttask->user);
   }
   else
   {
@@ -162,7 +162,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   labComment->setBuddy(leComment);
   h2->addWidget( leComment );
 
-  leComment->setText(QString::fromLocal8Bit(cttask->comment.c_str()));
+  leComment->setText(cttask->comment);
 
   // command
   QHBoxLayout *h3 = new QHBoxLayout();
@@ -178,7 +178,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   labCommand->setBuddy(leCommand);
   h3->addWidget( leCommand );
 
-  leCommand->setText(QString::fromLocal8Bit(cttask->command.c_str()));
+  leCommand->setText(cttask->command);
 
   labComment->setFixedWidth( qMax( labComment->width(), labCommand->width()) );
   labCommand->setFixedWidth( qMax( labComment->width(), labCommand->width()) );
@@ -222,7 +222,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   {
     cbMonth[mo] = new QCheckBox(bgMonth);
     cbMonth[mo]->setObjectName("cbMonth");
-    cbMonth[mo]->setText(QString::fromLocal8Bit(cttask->month.getName(mo).c_str()));
+    cbMonth[mo]->setText(cttask->month.getName(mo));
     cbMonth[mo]->setChecked(cttask->month.get(mo));
     vmonths->addWidget( cbMonth[mo], Qt::AlignLeft );
 
@@ -285,7 +285,7 @@ KTTask::KTTask(CTTask* _cttask, const QString & _caption)
   for (int dw = 1; dw <= 7; dw++)
   {
     cbDayOfWeek[dw] = new QCheckBox(bgDayOfWeek);
-    cbDayOfWeek[dw]->setText(QString::fromLocal8Bit(cttask->dayOfWeek.getName(dw).c_str()));
+    cbDayOfWeek[dw]->setText(cttask->dayOfWeek.getName(dw));
     cbDayOfWeek[dw]->setChecked(cttask->dayOfWeek.get(dw));
     v3->addWidget( cbDayOfWeek[dw] );
 
@@ -659,7 +659,7 @@ void KTTask::slotOK()
   }
 
   // save work in process
-  if (!cttask->user.empty())
+  if (!cttask->user.isEmpty())
   {
     cttask->user = (const char*)QFile::encodeName(leUser->text());
   }

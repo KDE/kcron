@@ -9,311 +9,260 @@
  *   (at your option) any later version.                                   *
  ***************************************************************************/
 
-// Do not introduce any Qt or KDE dependencies into the "CT"-prefixed classes.
-// I want to be able to reuse these classes with another GUI toolkit. -GM 11/99
+#include "ctunit.h"
 
-#include "cti18n.h"
-#include <vector>
-#include <string>
-#include <stdio.h>    // sprintf
-#include <ctype.h>    // tolower
-#include <stdlib.h>
+#include <klocale.h>
 
-using namespace std;
+#include "logging.h"
 
-template<int min, int max>
-CTUnit<min, max>::CTUnit(const string &tokStr)
-{
-  initialize(tokStr);
+CTUnit::CTUnit(int _min, int _max, const QString& tokStr) {
+	min = _min;
+	max = _max;
+	initialize(tokStr);
 }
 
-template<int min, int max>
-CTUnit<min, max>::CTUnit(const CTUnit& source)
-{
-  for (int i = 0; i <= max; i++)
-  {
-    initialEnabled[i] = 0;
-    enabled[i] = source.enabled[i];
-  }
-  initialTokStr = "";
-  isDirty = true;
+CTUnit::CTUnit(const CTUnit& source) {
+	min = source.min;
+	max = source.max;
+
+	initialEnabled.clear();
+	enabled.clear();
+	for (int i = 0; i <= max; i++) {
+		initialEnabled.append(false);
+		enabled.append(source.enabled.at(i));
+	}
+
+	initialTokStr = "";
+	isDirty = true;
 }
 
-template<int min, int max>
-CTUnit<min, max>::~CTUnit()
-{
+CTUnit::~CTUnit() {
 }
 
-template<int min, int max>
-void CTUnit<min, max>::operator = (const CTUnit<min,max>& unit)
-{
-  for (int i = 0; i <= max; i++)
-    enabled[i] = unit.enabled[i];
-  isDirty = true;
-  return;
+void CTUnit::operator = (const CTUnit& unit) {
+	min = unit.min;
+	max = unit.max;
+
+	enabled.clear();
+	for (int i = 0; i <= max; i++) {
+		enabled.append(unit.enabled[i]);
+	}
+	isDirty = true;
+	return;
 }
 
-template<int min, int max>
-void CTUnit<min, max>::initialize(const string &tokStr)
-{
-  for (int i = 0; i <= max; i++)
-    enabled[i] = 0;
+void CTUnit::initialize(const QString& tokStr) {
+	enabled.clear();
+	for (int i = 0; i <= max; i++) {
+		enabled.append(false);
+		initialEnabled.append(false);
+	}
 
-  parse(tokStr);
+	parse(tokStr);
 
-  for (int i = min; i <= max; i++)
-    initialEnabled[i] = enabled[i];
+	for (int i = min; i <= max; i++) {
+		initialEnabled[i] = enabled[i];
+	}
+	
+	initialTokStr = tokStr;
+	isDirty = false;
 
-  initialTokStr = tokStr;
-  isDirty = false;
-
-  return;
+	return;
 }
 
-template<int min, int max>
-void CTUnit<min, max>::parse(string tokStr)
-{
-  // subelement is that which is between commas
-  string subelement;
-  int commapos, slashpos, dashpos;
-  int beginat, endat, step;
 
-  // loop through each subelement
-  tokStr += ',';
-  while ((commapos = tokStr.find(",")) > 0)
-  {
-    subelement = tokStr.substr(0,commapos);
+void CTUnit::parse(const QString& tokenString) {
 
-    // find "/" to determine step
-    slashpos = subelement.find("/");
-    if (slashpos == -1)
-    {
-      step = 1;
-      slashpos = subelement.length();
-    }
-    else
-    {
-      step = fieldToValue(subelement.substr(slashpos+1,
-        subelement.length()-slashpos-1));
-      if (step < 1)
-        step = 1;
-    }
+	QString tokStr = tokenString;
 
-    // find "=" to determine range
-    dashpos = subelement.find("-");
-    if (dashpos == -1)
-    {
-      // deal with "*"
-      if (subelement.substr(0,slashpos) == "*")
-      {
-        beginat = min;
-        endat = max;
-      }
-      else
-      {
-        beginat = fieldToValue(subelement.substr(0,slashpos));
-        endat = beginat;
-      }
-    }
-    else
-    {
-      beginat = fieldToValue(subelement.substr(0,dashpos));
-      endat = fieldToValue(subelement.substr(dashpos+1,slashpos-dashpos-1));
-    }
+	// subelement is that which is between commas
+	QString subelement;
+	int commapos, slashpos, dashpos;
+	int beginat, endat, step;
 
-    // ignore out of range
-    if (beginat < 0)
-      beginat = 0;
-    if (endat > max)
-      endat = max;
+	// loop through each subelement
+	tokStr += ',';
+	while ((commapos = tokStr.indexOf(",")) > 0) {
+		subelement = tokStr.mid(0, commapos);
 
-    // setup enabled
-    for (int i = beginat; i <= endat; i+=step)
-      enabled[i] = 1;
+		// find "/" to determine step
+		slashpos = subelement.indexOf("/");
+		if (slashpos == -1) {
+			step = 1;
+			slashpos = subelement.length();
+		} else {
+			step = fieldToValue(subelement.mid(slashpos+1, subelement.length()-slashpos-1));
+			if (step < 1)
+				step = 1;
+		}
 
-    tokStr = tokStr.substr(commapos+1, tokStr.length()-commapos-1);
-  }
-  return;
+		// find "=" to determine range
+		dashpos = subelement.indexOf("-");
+		if (dashpos == -1) {
+			// deal with "*"
+			if (subelement.mid(0, slashpos) == "*") {
+				beginat = min;
+				endat = max;
+			} else {
+				beginat = fieldToValue(subelement.mid(0, slashpos));
+				endat = beginat;
+			}
+		} else {
+			beginat = fieldToValue(subelement.mid(0, dashpos));
+			endat = fieldToValue(subelement.mid(dashpos+1, slashpos-dashpos-1));
+		}
+
+		// ignore out of range
+		if (beginat < 0)
+			beginat = 0;
+		if (endat > max)
+			endat = max;
+
+		// setup enabled
+		for (int i = beginat; i <= endat; i+=step) {
+			enabled[i] = true;
+		}
+
+		tokStr = tokStr.mid(commapos+1, tokStr.length()-commapos-1);
+	}
+
+	return;
 }
 
-template<int min, int max>
-string CTUnit<min, max>::tokenize() const
-{
-  if (!isDirty)
-  {
-    return initialTokStr;
-  }
-  else
-  {
-    int total(count());
-    int count(0);
-    int num(min);
-    string tmpStr;
 
-    while (num <= max)
-    {
-      if (enabled[num])
-      {
-        char cnum[3];
-        sprintf(cnum, "%u", num);
-        tmpStr += cnum;
-        if (++count < total)
-          tmpStr += ',';
-      }
-      num++;
-    }
-    if (count == (max - min + 1))
-      tmpStr = "*";
-    return tmpStr;
-  }
+QString CTUnit::exportUnit() {
+	if (count() == (max - min + 1))
+		return "*";
+
+	return tokenize();
 }
 
-template<int min, int max>
-string CTUnit<min, max>::describe(const string *label) const
-{
-  int total(count());
-  int count(0);
-  string tmpStr;
-  for (int i = min; i <= max; i++)
-  {
-    if (enabled[i])
-    {
-      tmpStr += label[i];
-      count++;
-      switch (total - count)
-      {
-        case 0:  break;
-        case 1:  if (total > 2) tmpStr += (const char *)i18n(",").toLocal8Bit();
-                 tmpStr += (const char *)i18n(" and ").toLocal8Bit();
-                 break;
-        default: tmpStr += (const char *)i18n(", ").toLocal8Bit();
-                 break;
-      }
-    }
-  }
-  return tmpStr;
+QString CTUnit::tokenize() const {
+	if (!isDirty) {
+		return initialTokStr;
+	} else {
+		int total(count());
+		int count(0);
+		int num(min);
+		QString tmpStr;
+
+		while (num <= max) {
+			if (enabled[num]) {
+				tmpStr += QString::number(num);
+				if (++count < total)
+					tmpStr += ',';
+			}
+			num++;
+		}
+		if (count == (max - min + 1))
+			tmpStr = "*";
+
+		return tmpStr;
+	}
 }
 
-template<int min, int max>
-int CTUnit<min, max>::begin()
-{
-  return min;
+QString CTUnit::genericDescribe(const QList<QString>& label) const {
+	int total(count());
+	int count(0);
+	QString tmpStr;
+	for (int i = min; i <= max; i++) {
+		if (enabled[i]) {
+			tmpStr += label.at(i);
+			count++;
+			switch (total - count) {
+			case 0:
+				break;
+			case 1:
+				if (total > 2)
+					tmpStr += i18n(",");
+				tmpStr += i18n(" and ");
+				break;
+			default:
+				tmpStr += i18n(", ");
+				break;
+			}
+		}
+	}
+	return tmpStr;
 }
 
-template<int min, int max>
-int CTUnit<min, max>::end()
-{
-  return max;
+int CTUnit::begin() {
+	return min;
 }
 
-template<int min, int max>
-bool CTUnit<min, max>::get(int pos) const
-{
-  return enabled[pos];
+int CTUnit::end() {
+	return max;
 }
 
-template<int min, int max>
-void CTUnit<min, max>::set(int pos, bool value)
-{
-  enabled[pos] = value;
-  isDirty = true;
-  return;
+bool CTUnit::get(int pos) const {
+	return enabled.at(pos);
 }
 
-template<int min, int max>
-void CTUnit<min, max>::enable(int pos)
-{
-  enabled[pos] = true;
-  isDirty = true;
-  return;
+void CTUnit::set(int pos, bool value) {
+	enabled[pos] = value;
+	isDirty = true;
+	return;
 }
 
-template<int min, int max>
-void CTUnit<min, max>::disable(int pos)
-{
-  enabled[pos] = false;
-  isDirty = true;
-  return;
+void CTUnit::enable(int pos) {
+	enabled[pos] = true;
+	isDirty = true;
+	return;
 }
 
-template<int min, int max>
-bool CTUnit<min, max>::dirty() const
-{
-  return isDirty;
+void CTUnit::disable(int pos) {
+	enabled[pos] = false;
+	isDirty = true;
+	return;
 }
 
-template<int min, int max>
-int CTUnit<min, max>::count() const
-{
-  int total(0);
-  for (int i = min; i <= max; i++)
-    total += (enabled[i] == true);
-  return total;
+bool CTUnit::dirty() const {
+	return isDirty;
 }
 
-template<int min, int max>
-void CTUnit<min, max>::apply()
-{
-  initialTokStr = tokenize();
-  for (int i = min; i <= max; i++)
-    initialEnabled[i] = enabled[i];
-  isDirty = false;
-  return;
+int CTUnit::count() const {
+	int total(0);
+	for (int i = min; i <= max; i++)
+		total += (enabled[i] == true);
+	return total;
 }
 
-template<int min, int max>
-void CTUnit<min, max>::cancel()
-{
-  for (int i = min; i <= max; i++)
-    enabled[i] = initialEnabled[i];
-  isDirty = false;
-  return;
+void CTUnit::apply() {
+	initialTokStr = tokenize();
+	for (int i = min; i <= max; i++)
+		initialEnabled[i] = enabled[i];
+	isDirty = false;
+	return;
 }
 
-template<int min, int max>
-int CTUnit<min, max>::fieldToValue(string entry) const
-{
-  // GNU C++ STL has no String::toLower() so we have to lower
-  // by hand.
+void CTUnit::cancel() {
+	for (int i = min; i <= max; i++)
+		enabled[i] = initialEnabled[i];
+	isDirty = false;
+	return;
+}
 
-  string lower("");
-  int length = entry.length();
-  for (int i = 0; i < length; i++)
-    lower += tolower(*(entry.substr(i, 1).c_str()));
+int CTUnit::fieldToValue(const QString& entry) const {
+	QString lower = entry.toLower();
 
-  // check for days
-  string days[7] =
-  {
-    "sun", "mon", "tue", "wed", "thu", "fri", "sat"
-  };
+	// check for days
+	QList<QString> days;
+	days << "sun" << "mon" << "tue" << "wed" << "thu" << "fri" << "sat";
 
-  for (int day = 0; day < 7; day++)
-  {
-    if (lower == days[day])
-    {
-      char cnum[3];
-      sprintf(cnum, "%u", day);
-      entry = cnum;
-    }
-  }
+	int day = days.indexOf(lower);
+	if (day != -1) {
+		return day;
+	}
 
-  // check for months
-  string months[13] =
-  {
-    "",
-    "jan", "feb", "mar", "apr", "may", "jun",
-    "jul", "aug", "sep", "oct", "nov", "dec"
-  };
+	// check for months
+	QList<QString> months;
+	months << "" << "jan" << "feb" << "mar" << "apr" << "may" << "jun" << "jul" << "aug" << "sep" << "oct" << "nov" << "dec";
 
-  for (int month = 1; month < 13; month++)
-  {
-    if (lower == months[month])
-    {
-      char cnum[3];
-      sprintf(cnum, "%u", month);
-      entry = cnum;
-    }
-  }
+	int month = months.indexOf(lower);
+	if (month != -1) {
+		return month;
+	}
 
-  return atoi(entry.c_str());
+	//If the string does not match a day ora month, then it's a simple number (minute, hour or day of month)
+	return entry.toInt();
 }

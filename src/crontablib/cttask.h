@@ -12,10 +12,7 @@
 #ifndef CTTASK_H
 #define CTTASK_H
 
-// Do not introduce any Qt or KDE dependencies into the "CT"-prefixed classes.
-// I want to be able to reuse these classes with another GUI toolkit. -GM 11/99
-
-#include <string>
+#include <QString>
 
 #include "ctmonth.h"
 #include "ctdom.h"
@@ -24,81 +21,88 @@
 #include "ctminute.h"
 
 /**
-  * A scheduled task (encapsulation of crontab entry).  Encapsulates
-  * parsing, tokenization, and natural language description.
-  */
-class CTTask
-{
+ * A scheduled task (encapsulation of crontab entry).  Encapsulates
+ * parsing, tokenization, and natural language description.
+ */
+class CTTask {
 public:
 
-/**
-  * Constructs scheduled task from crontab format string.
-  */
-  explicit CTTask(string tokStr = "", string _comment = "", bool syscron = false);
+	/**
+	 * Constructs scheduled task from crontab format string.
+	 */
+	explicit CTTask(const QString& tokenString = "", const QString& _comment = "", bool syscron = false);
 
-/**
-  * Copy constructor.
-  */
-  CTTask(const CTTask& source);
+	/**
+	 * Copy constructor.
+	 */
+	CTTask(const CTTask& source);
 
-/**
-  * Assignment operator.
-  */
-  void operator = (const CTTask& source);
+	/**
+	 * Assignment operator.
+	 */
+	void operator =(const CTTask& source);
 
-/**
-  * Default constructor.
-  */
-  // ~CTTask();
+	/**
+	 * Tokenizes scheduled task to crontab format.
+	 */
+	QString exportTask();
 
-/**
-  * Tokenizes scheduled task to crontab format.
-  */
-  friend ostream& operator << (ostream& outputStream, const CTTask& task);
+	/**
+	 * Mark changes as applied.
+	 */
+	void apply();
 
-/**
-  * Mark changes as applied.
-  */
-  void apply();
+	/**
+	 * Cancel changes.
+	 */
+	void cancel();
 
-/**
-  * Cancel changes.
-  */
-  void cancel();
+	/**
+	 * Indicates whether or not the task has been modified.
+	 */
+	bool dirty() const;
 
-/**
-  * Indicates whether or not the task has been modified.
-  */
-  bool dirty() const;
+	/**
+	 * Returns natural language description of the task's schedule.
+	 */
+	QString describe() const;
 
-/**
-  * Returns natural language description of the task's schedule.
-  */
-  string describe() const;
+	/**
+	 * Indicates whether or not the task belongs to the system crontab.
+	 */
+	bool system() const;
 
-/**
-  * Indicates whether or not the task belongs to the system crontab.
-  */
-  bool system() const;
-
-  CTMonth      month;
-  CTDayOfMonth dayOfMonth;
-  CTDayOfWeek  dayOfWeek;
-  CTHour       hour;
-  CTMinute     minute;
-  string       user;
-  string       command;
-  string       comment;
-  bool         enabled;
-  bool         reboot;
+	CTMonth month;
+	CTDayOfMonth dayOfMonth;
+	CTDayOfWeek dayOfWeek;
+	CTHour hour;
+	CTMinute minute;
+	
+	QString user;
+	QString command;
+	QString comment;
+	
+	bool enabled;
+	bool reboot;
 
 private:
-  bool         syscron;
-  string       initialUser;
-  string       initialCommand;
-  string       initialComment;
-  bool         initialEnabled;
-  bool         initialReboot;
+	inline bool isSpace(const QString& token, int pos) {
+		if (pos >= token.length())
+			return false;
+
+		if (token.at(pos) == ' ')
+			return true;
+
+		return false;
+	}
+
+	bool syscron;
+	
+	QString initialUser;
+	QString initialCommand;
+	QString initialComment;
+	bool initialEnabled;
+	bool initialReboot;
 };
 
 #endif // CTTASK_H

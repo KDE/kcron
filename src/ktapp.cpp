@@ -34,357 +34,301 @@
 #include <kconfiggroup.h>
 #include <QLabel>
 
+const int KTApp::statusMessage(1001);
 
-const int KTApp::statusMessage            (1001);
+KTApp::KTApp() :
+	KXmlGuiWindow(0), config(KGlobal::config()) {
+	setWindowIcon(KTIcon::application(KTIcon::Small));
 
+	setCaption(i18n("Task Scheduler"));
 
-KTApp::KTApp() : KXmlGuiWindow(0),
-  config(KGlobal::config())
-{
-  setWindowIcon(KTIcon::application(KTIcon::Small));
+	// Call inits to invoke all other construction parts.
+	setupActions();
+	initStatusBar();
 
-  setCaption(i18n("Task Scheduler"));
+	// Read options.
+	readOptions();
 
-  // Call inits to invoke all other construction parts.
-  setupActions();
-  initStatusBar();
+	// Initialize document.
+	cthost = new CTHost(crontab);
 
-  // Read options.
-  readOptions();
+	setupGUI(QSize(700, 500));
 
-  // Initialize document.
-  cthost = new CTHost(crontab);
+	// Initialize view.
+	view = new KTView(this);
+	setCentralWidget(view);
 
-  setupGUI(QSize(700, 500));
-
-  // Initialize view.
-  view = new KTView(this);
-  setCentralWidget(view);
-
-  //Connections
-  KMenu *editMenu = static_cast<KMenu*>(guiFactory()->container("edit", this));
-  connect(editMenu,SIGNAL(hovered(QAction*)),this,SLOT(statusEditCallback(QAction*)));
+	//Connections
+	KMenu *editMenu = static_cast<KMenu*>(guiFactory()->container("edit", this));
+	connect(editMenu,SIGNAL(hovered(QAction*)),this,SLOT(statusEditCallback(QAction*)));
 }
 
-bool KTApp::init()
-{
-  if (cthost->isError())
-  {
-    KMessageBox::error(this, i18n("The following error occurred while initializing KCron:"
-                                  "\n\n%1\n\nKCron will now exit.\n", cthost->errorMessage()));
-    return false;
-  }
+bool KTApp::init() {
+	if (cthost->isError()) {
+		KMessageBox::error(this, i18n("The following error occurred while initializing KCron:"
+			"\n\n%1\n\nKCron will now exit.\n", cthost->errorMessage()));
+		return false;
+	}
 
-  // Display greeting screen.
-  // if there currently are no scheduled tasks...
-  if (!cthost->root())
-  {
-    int taskCount(0);
+	// Display greeting screen.
+	// if there currently are no scheduled tasks...
+	if (!cthost->root()) {
+		int taskCount(0);
 
-    for (CTCronIterator i = (CTCronIterator)cthost->cron.begin();
-      i != cthost->cron.end(); i++)
-    {
-      for (CTTaskIterator j = (CTTaskIterator)(*i)->task.begin();
-        j != (*i)->task.end(); j++)
-      {
-        taskCount++;
-      }
-    }
+		foreach(CTCron* ctCron, cthost->cron) {
+			taskCount += ctCron->task.count();
+		}
 
-    if (taskCount == 0)
-    {
-      show();
-      KMessageBox::information(this, i18n("You can use this application to schedule programs to run in the background.\nTo schedule a new task now, click on the Tasks folder and select Edit/New from the menu."), i18n("Welcome to the Task Scheduler"), "welcome");
-    }
-  }
-  return true;
+		if (taskCount == 0) {
+			show();
+			KMessageBox::information(this, i18n("You can use this application to schedule programs to run in the background.\nTo schedule a new task now, click on the Tasks folder and select Edit/New from the menu."), i18n("Welcome to the Task Scheduler"), "welcome");
+		}
+	}
+	return true;
 }
 
-KTApp::~KTApp()
-{
- delete view;
- delete cthost;
+KTApp::~KTApp() {
+	delete view;
+	delete cthost;
 }
 
-const CTHost& KTApp::getCTHost() const
-{
-  return *cthost;
+const CTHost& KTApp::getCTHost() const {
+	return *cthost;
 }
 
-
-QString KTApp::caption()
-{
-  QString cap(KGlobal::caption());
-  return cap;
+QString KTApp::caption() {
+	QString cap(KGlobal::caption());
+	return cap;
 }
 
-void KTApp::setupActions()
-{
-  //File Menu
-  KStandardAction::save(this, SLOT(slotFileSave()), actionCollection());
-  KStandardAction::print(this, SLOT(slotFilePrint()), actionCollection());
-  KStandardAction::quit(this, SLOT(slotFileQuit()), actionCollection());
+void KTApp::setupActions() {
+	//File Menu
+	KStandardAction::save(this, SLOT(slotFileSave()), actionCollection());
+	KStandardAction::print(this, SLOT(slotFilePrint()), actionCollection());
+	KStandardAction::quit(this, SLOT(slotFileQuit()), actionCollection());
 
-  //Edit menu
-  QAction *a = KStandardAction::cut(this, SLOT(slotEditCut()), actionCollection());
-  actionCollection()->addAction( "edit_cut", a );
-  KStandardAction::copy(this, SLOT(slotEditCopy()), actionCollection());
-  KStandardAction::paste(this, SLOT(slotEditPaste()), actionCollection());
+	//Edit menu
+	QAction *a = KStandardAction::cut(this, SLOT(slotEditCut()), actionCollection());
+	actionCollection()->addAction("edit_cut", a);
+	KStandardAction::copy(this, SLOT(slotEditCopy()), actionCollection());
+	KStandardAction::paste(this, SLOT(slotEditPaste()), actionCollection());
 
-  QAction* newAct = actionCollection()->addAction( "edit_new" );
-  newAct->setObjectName("edit_new");
-  newAct->setText( i18nc("Adds a new task or variable", "&New...") );
-  newAct->setIcon( KIcon("document-new") );
-  qobject_cast<KAction*>( newAct )->setShortcut(KStandardShortcut::shortcut(KStandardShortcut::New));
-  connect(newAct, SIGNAL(triggered(bool)), SLOT(slotEditNew()));
+	QAction* newAct = actionCollection()->addAction("edit_new");
+	newAct->setObjectName("edit_new");
+	newAct->setText(i18nc("Adds a new task or variable", "&New...") );
+	newAct->setIcon(KIcon("document-new") );
+	qobject_cast<KAction*>( newAct )->setShortcut(KStandardShortcut::shortcut(KStandardShortcut::New));
+	connect(newAct, SIGNAL(triggered(bool)), SLOT(slotEditNew()));
 
-  //I don't like this KStandardShortcut::open() for modifying, but I'm just porting this to xmlui
-  QAction *modifyAct = actionCollection()->addAction( "edit_modify" );
-  modifyAct->setObjectName("edit_modify");
-  modifyAct->setText( i18n("M&odify...") );
-  modifyAct->setIcon( KIcon("document-open") );
-  qobject_cast<KAction*>( modifyAct )->setShortcut(KStandardShortcut::shortcut(KStandardShortcut::Open));
-  connect(modifyAct, SIGNAL(triggered(bool)), SLOT(slotEditModify()));
+	//I don't like this KStandardShortcut::open() for modifying, but I'm just porting this to xmlui
+	QAction *modifyAct = actionCollection()->addAction("edit_modify");
+	modifyAct->setObjectName("edit_modify");
+	modifyAct->setText(i18n("M&odify...") );
+	modifyAct->setIcon(KIcon("document-open") );
+	qobject_cast<KAction*>( modifyAct )->setShortcut(KStandardShortcut::shortcut(KStandardShortcut::Open));
+	connect(modifyAct, SIGNAL(triggered(bool)), SLOT(slotEditModify()));
 
-  QAction *deleteAct = actionCollection()->addAction( "edit_delete" );
-  deleteAct->setObjectName("edit_delete");
-  deleteAct->setText( i18n("&Delete") );
-  deleteAct->setIcon( KIcon("edit-delete") );
-  connect(deleteAct, SIGNAL(triggered(bool)), SLOT(slotEditDelete()));
+	QAction *deleteAct = actionCollection()->addAction("edit_delete");
+	deleteAct->setObjectName("edit_delete");
+	deleteAct->setText(i18n("&Delete") );
+	deleteAct->setIcon(KIcon("edit-delete") );
+	connect(deleteAct, SIGNAL(triggered(bool)), SLOT(slotEditDelete()));
 
-  QAction *enableAct = actionCollection()->addAction( "edit_enable" );
-  enableAct->setObjectName("edit_enable");
-  enableAct->setText( i18n("&Enabled") );
-  enableAct->setCheckable(true);
-  connect(enableAct, SIGNAL(triggered(bool)), SLOT(slotEditEnable()));
+	QAction *enableAct = actionCollection()->addAction("edit_enable");
+	enableAct->setObjectName("edit_enable");
+	enableAct->setText(i18n("&Enabled") );
+	enableAct->setCheckable(true);
+	connect(enableAct, SIGNAL(triggered(bool)), SLOT(slotEditEnable()));
 
-  QAction *runAct = actionCollection()->addAction( "edit_run" );
-  runAct->setObjectName("edit_run");
-  runAct->setText( i18n("&Run Now") );
-  connect(runAct, SIGNAL(triggered(bool)), SLOT(slotEditRunNow()));
+	QAction *runAct = actionCollection()->addAction("edit_run");
+	runAct->setObjectName("edit_run");
+	runAct->setText(i18n("&Run Now") );
+	connect(runAct, SIGNAL(triggered(bool)), SLOT(slotEditRunNow()));
 }
 
-void KTApp::initStatusBar()
-{
-  QLabel *defaultmsg = new QLabel(i18nc("Kcron in ready for user input", " Ready."));
-  defaultmsg->setFixedHeight( fontMetrics().height() + 2 );
-  defaultmsg->setAlignment( Qt::AlignLeft | Qt::AlignVCenter );
-  statusBar()->addWidget(defaultmsg);    
+void KTApp::initStatusBar() {
+	QLabel *defaultmsg = new QLabel(i18nc("Kcron in ready for user input", " Ready."));
+	defaultmsg->setFixedHeight(fontMetrics().height() + 2);
+	defaultmsg->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+	statusBar()->addWidget(defaultmsg);
 }
 
-void KTApp::saveOptions()
-{
-  KConfigGroup group(config, "General Options");
-  group.writeEntry(QString("Path to crontab"), crontab);
+void KTApp::saveOptions() {
+	KConfigGroup group(config, "General Options");
+	group.writeEntry(QString("Path to crontab"), crontab);
 }
 
+void KTApp::readOptions() {
+	KConfigGroup group(config, "General Options");
 
-void KTApp::readOptions()
-{
-  KConfigGroup group(config, "General Options");
-
-  // get the path to the crontab binary
-  crontab = group.readEntry(QString("Path to crontab"), QString("crontab"));
+	// get the path to the crontab binary
+	crontab = group.readEntry(QString("Path to crontab"), QString("crontab"));
 }
 
-bool KTApp::queryClose()
-{
-  if(cthost->dirty())
-  {
-    KTApp* win = (KTApp*)parent();
+bool KTApp::queryClose() {
+	if (cthost->dirty()) {
+		KTApp* win = (KTApp*)parent();
 
-    int retVal = KMessageBox::warningYesNoCancel(win,
-      i18n("Scheduled tasks have been modified.\nDo you want to save changes?"),
-      QString(),
-      KStandardGuiItem::save(), KStandardGuiItem::discard()
-      );
+		int retVal = KMessageBox::warningYesNoCancel(win, i18n("Scheduled tasks have been modified.\nDo you want to save changes?"), QString(), KStandardGuiItem::save(), KStandardGuiItem::discard() );
 
-    switch (retVal)
-    {
-      case KMessageBox::Yes:
-        cthost->apply();
-        if (cthost->isError())
-        {
-           KMessageBox::error(win, cthost->errorMessage());
-           return false;
-        }
-        return true;
-        break;
-      case KMessageBox::No:
-        return true;
-        break;
-      case KMessageBox::Cancel:
-        return false;
-        break;
-      default:
-        return false;
-        break;
-    }
-  }
-  else
-  {
-    return true;
-  }
+		switch (retVal) {
+		case KMessageBox::Yes:
+			cthost->apply();
+			if (cthost->isError()) {
+				KMessageBox::error(win, cthost->errorMessage());
+				return false;
+			}
+			return true;
+			break;
+		case KMessageBox::No:
+			return true;
+			break;
+		case KMessageBox::Cancel:
+			return false;
+			break;
+		default:
+			return false;
+			break;
+		}
+	} else {
+		return true;
+	}
 }
 
-bool KTApp::queryExit()
-{
-  saveOptions();
-  return true;
+bool KTApp::queryExit() {
+	saveOptions();
+	return true;
 }
 
-void KTApp::slotFileSave()
-{
-  slotStatusMsg(i18nc("Kcron is saving the file to the hard drive", "Saving..."));
-  cthost->apply();
-  slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
-  if (cthost->isError())
-  {
-     KMessageBox::error(this, cthost->errorMessage());
-  }
+void KTApp::slotFileSave() {
+	slotStatusMsg(i18nc("Kcron is saving the file to the hard drive", "Saving..."));
+	cthost->apply();
+	slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
+	if (cthost->isError()) {
+		KMessageBox::error(this, cthost->errorMessage());
+	}
 }
 
-void KTApp::slotFilePrint()
-{
-  slotStatusMsg(i18n("Printing..."));
-  view->print();
-  slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
+void KTApp::slotFilePrint() {
+	slotStatusMsg(i18n("Printing..."));
+	view->print();
+	slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
 }
 
-void KTApp::slotFileQuit()
-{
-  saveOptions();
-  close();
+void KTApp::slotFileQuit() {
+	saveOptions();
+	close();
 }
 
-void KTApp::slotEdit(const QPoint& qp)
-{
-  KMenu *editMenu = static_cast<KMenu*>(guiFactory()->container("edit", this));
-  editMenu->exec(qp, 0);
+void KTApp::slotEdit(const QPoint& qp) {
+	KMenu *editMenu = static_cast<KMenu*>(guiFactory()->container("edit", this));
+	editMenu->exec(qp, 0);
 }
 
-void KTApp::slotEditCut()
-{
-  slotStatusMsg(i18n("Cutting to clipboard..."));
-  view->copy();
-  view->remove();
-  slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
+void KTApp::slotEditCut() {
+	slotStatusMsg(i18n("Cutting to clipboard..."));
+	view->copy();
+	view->remove();
+	slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
 }
 
-void KTApp::slotEditCopy()
-{
-  slotStatusMsg(i18n("Copying to clipboard..."));
-  view->copy();
-  slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
+void KTApp::slotEditCopy() {
+	slotStatusMsg(i18n("Copying to clipboard..."));
+	view->copy();
+	slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
 }
 
-void KTApp::slotEditPaste()
-{
-  slotStatusMsg(i18n("Pasting from clipboard..."));
-  view->paste();
-  slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
+void KTApp::slotEditPaste() {
+	slotStatusMsg(i18n("Pasting from clipboard..."));
+	view->paste();
+	slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
 }
 
-void KTApp::slotEditNew()
-{
-  slotStatusMsg(i18n("Adding new entry..."));
-  view->create();
-  slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
+void KTApp::slotEditNew() {
+	slotStatusMsg(i18n("Adding new entry..."));
+	view->create();
+	slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
 }
 
-void KTApp::slotEditModify()
-{
-  slotStatusMsg(i18n("Modifying entry..."));
-  view->edit();
-  slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
+void KTApp::slotEditModify() {
+	slotStatusMsg(i18n("Modifying entry..."));
+	view->edit();
+	slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
 }
 
-void KTApp::slotEditDelete()
-{
-  slotStatusMsg(i18n("Deleting entry..."));
-  view->remove();
-  slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
+void KTApp::slotEditDelete() {
+	slotStatusMsg(i18n("Deleting entry..."));
+	view->remove();
+	slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
 }
 
-void KTApp::slotEditEnable()
-{
-  QAction* editEnable = actionCollection()->action("edit_enable");
-  // Qt4 does the checking/unchecking so logic is inverted here !
-  if (!editEnable->isChecked())
-  {
-    slotStatusMsg(i18n("Disabling entry..."));
-    view->enable(false);
-  }
-  else
-  {
-    slotStatusMsg(i18n("Enabling entry..."));
-    view->enable(true);
-  }
-  slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
+void KTApp::slotEditEnable() {
+	QAction* editEnable = actionCollection()->action("edit_enable");
+	// Qt4 does the checking/unchecking so logic is inverted here !
+	if (!editEnable->isChecked()) {
+		slotStatusMsg(i18n("Disabling entry..."));
+		view->enable(false);
+	} else {
+		slotStatusMsg(i18n("Enabling entry..."));
+		view->enable(true);
+	}
+	slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
 }
 
-void KTApp::slotEditRunNow()
-{
-  slotStatusMsg(i18n("Running command..."));
-  view->run();
-  slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
+void KTApp::slotEditRunNow() {
+	slotStatusMsg(i18n("Running command..."));
+	view->run();
+	slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
 }
 
-void KTApp::slotStatusMsg(const QString & text)
-{
-  statusBar()->showMessage(text);
-  setCaption(i18n("Task Scheduler"), cthost->dirty());
+void KTApp::slotStatusMsg(const QString & text) {
+	statusBar()->showMessage(text);
+	setCaption(i18n("Task Scheduler"), cthost->dirty());
 }
 
-void KTApp::slotStatusHelpMsg(const QString & text)
-{
-  statusBar()->showMessage(text, 2000);
+void KTApp::slotStatusHelpMsg(const QString & text) {
+	statusBar()->showMessage(text, 2000);
 }
 
-void KTApp::statusEditCallback(QAction* action)
-{
-  QString text = action->objectName();
-  if (text == "edit_new") {
-    slotStatusHelpMsg(i18n("Create a new task or variable."));
-  } else if (text == "edit_modify") {
-    slotStatusHelpMsg(i18n("Edit the selected task or variable."));
-  } else if (text == "edit_delete") {
-    slotStatusHelpMsg(i18n("Delete the selected task or variable."));
-  } else if (text == "edit_enable") {
-    slotStatusHelpMsg(i18n("Enable/disable the selected task or variable."));
-  } else if (text == "edit_run") {
-    slotStatusHelpMsg(i18n("Run the selected task now."));
-  }
+void KTApp::statusEditCallback(QAction* action) {
+	QString text = action->objectName();
+	if (text == "edit_new") {
+		slotStatusHelpMsg(i18n("Create a new task or variable."));
+	} else if (text == "edit_modify") {
+		slotStatusHelpMsg(i18n("Edit the selected task or variable."));
+	} else if (text == "edit_delete") {
+		slotStatusHelpMsg(i18n("Delete the selected task or variable."));
+	} else if (text == "edit_enable") {
+		slotStatusHelpMsg(i18n("Enable/disable the selected task or variable."));
+	} else if (text == "edit_run") {
+		slotStatusHelpMsg(i18n("Run the selected task now."));
+	}
 }
 
-void KTApp::slotEnableModificationButtons(bool state)
-{
-  if (state)
-    stateChanged("no_task_selected", StateReverse);
-  else
-    stateChanged("no_task_selected");
+void KTApp::slotEnableModificationButtons(bool state) {
+	if (state)
+		stateChanged("no_task_selected", StateReverse);
+	else
+		stateChanged("no_task_selected");
 
 }
 
-void KTApp::slotEnablePaste(bool state)
-{
- if (state)
-    stateChanged("paste_disabled", StateReverse);
- else
-    stateChanged("paste_disabled");
+void KTApp::slotEnablePaste(bool state) {
+	if (state)
+		stateChanged("paste_disabled", StateReverse);
+	else
+		stateChanged("paste_disabled");
 }
 
-void KTApp::slotEnableRunNow(bool state)
-{
-  if (state)
-    stateChanged("runnow_enabled");
-  else
-    stateChanged("runnow_enabled", StateReverse);
+void KTApp::slotEnableRunNow(bool state) {
+	if (state)
+		stateChanged("runnow_enabled");
+	else
+		stateChanged("runnow_enabled", StateReverse);
 }
 
-void KTApp::slotEnableEnabled(bool state)
-{
-  actionCollection()->action("edit_enable")->setChecked(state);
+void KTApp::slotEnableEnabled(bool state) {
+	actionCollection()->action("edit_enable")->setChecked(state);
 }
 
 #include "ktapp.moc"

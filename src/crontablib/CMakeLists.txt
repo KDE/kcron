@@ -7,6 +7,7 @@ set(kcron_crontablib_SRCS
    ctdom.cpp 
    ctdow.cpp 
    cttask.cpp 
+   ctunit.cpp 
    ctvariable.cpp 
 )
 

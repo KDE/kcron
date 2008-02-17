@@ -12,147 +12,162 @@
 #ifndef CTCRON_H
 #define CTCRON_H
 
-// Do not introduce any Qt or KDE dependencies into the "CT"-prefixed classes.
-// I want to be able to reuse these classes with another GUI toolkit. -GM 11/99
-
-#include <vector>
-#include <string>
-#include <iostream>
-
-#include <QString> // Anarchy! -WABA 
+#include <QString>
+#include <QList>
+#include <QStringList>
+#include <QProcess>
 
 class CTTask;
 class CTVariable;
 
 struct passwd;
 
+class CommandLine {
+public:
+	QString commandLine;
+	
+	QStringList parameters;
+	
+	QString standardOutputFile;
+	
+	QProcess::ExitStatus execute();
+};
+
 /**
-  * A user (encapsulation of a single crontab file).  Encapsulates
-  * file i/o, parsing, tokenization, and natural language description.
-  */
-class CTCron
-{
+ * A user (encapsulation of a single crontab file).  Encapsulates
+ * file i/o, parsing, tokenization, and natural language description.
+ */
+class CTCron {
 public:
 
-/**
-  * Constructs the scheduled tasks, environment variables from crontab
-  * files and obtains some information about the user from the system.
-  *
-  * Default is to construct from the user's crontab.  Can also be called,
-  * passing TRUE, to construct from the system crontab.  Throws an
-  * exception if the crontab file can not be found, read, or parsed.
-  */
-  explicit CTCron(const QString& cronBinary, bool _syscron = false, std::string _login = "");
+	/**
+	 * Constructs the scheduled tasks, environment variables from crontab
+	 * files and obtains some information about the user from the system.
+	 *
+	 * Default is to construct from the user's crontab.  Can also be called,
+	 * passing TRUE, to construct from the system crontab.  Throws an
+	 * exception if the crontab file can not be found, read, or parsed.
+	 */
+	explicit CTCron(const QString& cronBinary, bool _syscron = false, const QString& _login = "");
 
-/**
-  * If you already have a struct passwd, use it instead. This
-  * is never used for the system crontab.
-  */
-  explicit CTCron(const QString& cronBinary, const struct passwd * _login = 0L);
+	/**
+	 * If you already have a struct passwd, use it instead. This
+	 * is never used for the system crontab.
+	 */
+	explicit CTCron(const QString& cronBinary, const struct passwd * _login = 0L);
 
-/**
-  * Copy one user's tasks and environement variables to another user.
-  */
-  void operator = (const CTCron& source);
+	/**
+	 * Copy one user's tasks and environement variables to another user.
+	 */
+	void operator =(const CTCron& source);
+	
+	
 
-/**
-  * Parses crontab file format.
-  */
-  friend std::istream& operator >> (std::istream& inputStream, CTCron& cron);
+	/**
+	 * Tokenizes to crontab file format.
+	 */
+	QString exportCron();
 
-/**
-  * Tokenizes to crontab file format.
-  */
-  friend std::ostream& operator << (std::ostream& outputStream, const CTCron& cron);
+	/**
+	 * Apply changes.
+	 */
+	void apply();
 
-/**
-  * Apply changes.
-  */
-  void apply();
+	/**
+	 * Cancel changes.
+	 */
+	void cancel();
 
-/**
-  * Cancel changes.
-  */
-  void cancel();
+	/**
+	 * Indicates whether or not dirty.
+	 */
+	bool dirty();
 
-/**
-  * Indicates whether or not dirty.
-  */
-  bool dirty();
+	/**
+	 * Returns the PATH environment variable value.  A short cut to iterating
+	 * the tasks vector.
+	 */
+	QString path() const;
 
-/**
-  * Returns the PATH environment variable value.  A short cut to iterating
-  * the tasks vector.
-  */
-  std::string path() const;
+	/**
+	 * Returns whether an error has occurred
+	 */
+	bool isError() {
+		return !error.isEmpty();
+	}
 
-  /**
-   * Returns whether an error has occurred
-   */
-  bool isError() { return !error.isEmpty(); }
-  
-  /**
-   * Return error description
-   */
-  QString errorMessage() { QString r = error; error = QString(); return r; }
+	/**
+	 * Return error description
+	 */
+	QString errorMessage() {
+		QString r = error;
+		error = QString();
+		return r;
+	}
 
-/**
-  * Indicates whether or not the crontab belongs to the system.
-  */
-  const bool syscron;
+	/**
+	 * Indicates whether or not the crontab belongs to the system.
+	 */
+	const bool syscron;
 
-/**
-  * User  login.
-  */
-  std::string login;
+	/**
+	 * User  login.
+	 */
+	QString login;
 
-/**
-  * User real name.
-  */
-  std::string name;
+	/**
+	 * User real name.
+	 */
+	QString name;
 
-/**
-  * User's scheduled tasks.
-  */
-  std::vector<CTTask *> task;
+	/**
+	 * User's scheduled tasks.
+	 */
+	QList<CTTask *> task;
 
-/**
-  * User's environment variables.  Note:  These are only environment variables
-  * found in the user's crontab file and does not include any set in a 
-  * login or shell script such as ".bash_profile".
-  */
-  std::vector<CTVariable *> variable;
+	/**
+	 * User's environment variables.  Note:  These are only environment variables
+	 * found in the user's crontab file and does not include any set in a 
+	 * login or shell script such as ".bash_profile".
+	 */
+	QList<CTVariable *> variable;
 
-/**
-  * Destructor.
-  */
-  ~CTCron();
+	/**
+	 * Destructor.
+	 */
+	~CTCron();
 
 private:
 
-/**
-  * Can't copy a user!
-  */
-  CTCron(const CTCron& source);
+	/**
+	 * Parses crontab file format.
+	 */
+	void parseFile(const QString& fileName);
 
-  unsigned int initialTaskCount;
-  unsigned int initialVariableCount;
-  QString           writeCommand;
-  QString           tmpFileName;
+	void saveToFile(const QString& fileName);
+	
+	/**
+	 * Can't copy a user!
+	 */
+	CTCron(const CTCron& source);
 
-  QString           error;
+	int initialTaskCount;
+	int initialVariableCount;
+	
+	CommandLine writeCommandLine;
+	
+	QString tmpFileName;
 
-/**
-  * Contains path to the crontab binary file
-  */
-  QString crontab;
+	QString error;
+
+	/**
+	 * Contains path to the crontab binary file
+	 */
+	QString crontab;
 
 protected:
-  // Initialize member variables from the struct passwd.
-  bool initFromPasswd(const struct passwd *);
+	// Initialize member variables from the struct passwd.
+	bool initFromPasswd(const struct passwd *);
 };
-
-typedef std::vector<CTTask*>::iterator CTTaskIterator;
-typedef std::vector<CTVariable*>::iterator CTVariableIterator;
 
 #endif // CTCRON_H

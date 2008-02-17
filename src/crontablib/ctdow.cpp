@@ -9,91 +9,55 @@
  *   (at your option) any later version.                                   * 
  ***************************************************************************/
 
-// Do not introduce any Qt or KDE dependencies into the "CT"-prefixed classes.
-// I want to be able to reuse these classes with another GUI toolkit. -GM 11/99
-
 #include "ctdow.h"
-#include "cti18n.h"
+#include <klocale.h>
 
-string CTDayOfWeek::shortName[8] =
-{
-  "", "", "", "", "", "", "", ""
-};
+QList<QString> CTDayOfWeek::shortName;
 
-string CTDayOfWeek::longName[8] =
-{
-  "", "", "", "", "", "", "", ""
-};
+QList<QString> CTDayOfWeek::longName;
 
-CTDayOfWeek::CTDayOfWeek(const string& tokStr) :
-  CTUnit<1,7>(tokStr)
-{
-  // Compensate for cron supporting Sunday as both 0 and 7.
+CTDayOfWeek::CTDayOfWeek(const QString& tokStr) :
+	CTUnit(1, 7, tokStr) {
+	// Compensate for cron supporting Sunday as both 0 and 7.
 
-  if (get(0))
-  {
-    set(0,false);
-    set(7,true);
-  }
+	if (get(0)) {
+		set(0, false);
+		set(7, true);
+	}
 }
 
-void CTDayOfWeek::initialize(const string &tokStr)
-{
-  CTUnit<1,7>::initialize(tokStr);
+void CTDayOfWeek::initialize(const QString &tokStr) {
+	CTUnit::initialize(tokStr);
 
-  // Compensate for cron supporting Sunday as both 0 and 7.
+	// Compensate for cron supporting Sunday as both 0 and 7.
 
-  if (get(0))
-  {
-    set(0,false);
-    set(7,true);
-    apply();
-  }
+	if (get(0)) {
+		set(0, false);
+		set(7, true);
+		apply();
+	}
 }
 
-string CTDayOfWeek::describe() const
-{
-  initializeNames();
-  if (count() == 7)
-    return (const char*)i18n("every day ").toLocal8Bit();
-  else if (get(1) && get(2) && get(3) && get(4) && get(5))
-    return (const char*)i18n("weekday ").toLocal8Bit();
-  else
-    return CTUnit<1,7>::describe(shortName);
+QString CTDayOfWeek::describe() const {
+	initializeNames();
+	if (count() == 7)
+		return i18n("every day ");
+	else if (get(1) && get(2) && get(3) && get(4) && get(5))
+		return i18n("weekday ");
+	else
+		return CTUnit::genericDescribe(shortName);
 }
 
-string CTDayOfWeek::getName(const int ndx, const bool format)
-{
-  initializeNames();
-  return (format == shortFormat) ? shortName[ndx] : longName[ndx];
+QString CTDayOfWeek::getName(const int ndx, const bool format) {
+	initializeNames();
+	return (format == shortFormat) ? shortName[ndx] : longName[ndx];
 }
 
-void CTDayOfWeek::initializeNames()
-{
-  if (shortName[1].empty())
-  {
-    const string shortDOWName[8] =
-    {
-      "",
-      (const char*)i18n("Mon").toLocal8Bit(),  (const char*)i18n("Tue").toLocal8Bit(),
-      (const char*)i18n("Wed").toLocal8Bit(),  (const char*)i18n("Thu").toLocal8Bit(),
-      (const char*)i18n("Fri").toLocal8Bit(),  (const char*)i18n("Sat").toLocal8Bit(),
-      (const char*)i18n("Sun").toLocal8Bit()
-    };
-  
-    const string longDOWName[8] =
-    {
-      "",
-      (const char*)i18n("Monday").toLocal8Bit(),     (const char*)i18n("Tuesday").toLocal8Bit(),
-      (const char*)i18n("Wednesday").toLocal8Bit(),  (const char*)i18n("Thursday").toLocal8Bit(),
-      (const char*)i18n("Friday").toLocal8Bit(),     (const char*)i18n("Saturday").toLocal8Bit(),
-      (const char*)i18n("Sunday").toLocal8Bit()
-    };
-  
-    for (int i = 1; i <= 7; i++)
-    {
-      shortName[i] = shortDOWName[i];
-      longName[i]  = longDOWName[i];
-    }
-  }
+void CTDayOfWeek::initializeNames() {
+	if (shortName.isEmpty()) {
+		shortName << "" << i18n("Mon") << i18n("Tue") << i18n("Wed") << i18n("Thu") << i18n("Fri") << i18n("Sat") << i18n("Sun");
+
+		longName << "" << i18n("Monday") << i18n("Tuesday") << i18n("Wednesday") << i18n("Thursday") << i18n("Friday") << i18n("Saturday") << i18n("Sunday");
+
+	}
 }

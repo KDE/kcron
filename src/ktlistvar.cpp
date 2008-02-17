@@ -30,12 +30,12 @@ KTListVar::KTListVar(KTListItem* parent, CTCron* _ctcron,
 
 void KTListVar::refresh()
 {
-  setText (0,QString::fromLocal8Bit(ctvar->variable.c_str()));
+  setText (0, ctvar->variable);
 
   if (ctvar->enabled)
   {
-    setText (1,QString::fromLocal8Bit(ctvar->value.c_str()));
-    setText (2,QString::fromLocal8Bit(ctvar->comment.c_str()));
+    setText (1, ctvar->value);
+    setText (2, ctvar->comment);
   }
   else
   {
@@ -57,10 +57,10 @@ void KTListVar::refresh()
 
 void KTListVar::print(KTPrint& printer) const
 {
-  printer.print(QString::fromLocal8Bit(ctvar->variable.c_str()), 1, KTPrint::alignTextLeft);
+  printer.print(ctvar->variable, 1, KTPrint::alignTextLeft);
   if (ctvar->enabled) {
-    printer.print(QString::fromLocal8Bit(ctvar->value.c_str()),2, KTPrint::alignTextCenter);
-    printer.print(QString::fromLocal8Bit(ctvar->comment.c_str()),3,KTPrint::alignTextRight);
+    printer.print(ctvar->value, 2, KTPrint::alignTextCenter);
+    printer.print(ctvar->comment, 3, KTPrint::alignTextRight);
   }
   else
     printer.print(i18nc("The cron variable has been disabled", "Disabled."),3, KTPrint::alignTextRight);

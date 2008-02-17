@@ -9,93 +9,78 @@
  *   (at your option) any later version.                                   *
  ***************************************************************************/
 
-// Do not introduce any Qt or KDE dependencies into the "CT"-prefixed classes.
-// I want to be able to reuse these classes with another GUI toolkit. -GM 11/99
-
 #include "ctvariable.h"
 
-using namespace std;
+#include <QRegExp>
 
-CTVariable::CTVariable(string tokStr, string _comment)
-{
-  if (tokStr.substr(0,2) == "#\\")
-  {
-    tokStr = tokStr.substr(2,tokStr.length() - 2);
-    enabled = false;
-  }
-  else
-    enabled = true;
+CTVariable::CTVariable(const QString& tokenString, const QString& _comment) {
 
-  int spacepos(0);
+	QString tokStr = tokenString;
+	
+	if (tokStr.mid(0, 2) == "#\\") {
+		tokStr = tokStr.mid(2, tokStr.length() - 2);
+		enabled = false;
+	} else
+		enabled = true;
 
-  spacepos        = tokStr.find_first_of(" =");
-  variable        = tokStr.substr(0,spacepos);
+	int spacepos(0);
 
-  value           = tokStr.substr(spacepos+1,tokStr.length()-spacepos-1);
-  comment         = _comment;
+	spacepos = tokStr.indexOf(QRegExp("[ =]"));
+	variable = tokStr.mid(0, spacepos);
 
-  initialVariable = variable;
-  initialValue    = value;
-  initialComment  = comment;
-  initialEnabled  = enabled;
+	value = tokStr.mid(spacepos+1, tokStr.length()-spacepos-1);
+	comment = _comment;
+
+	initialVariable = variable;
+	initialValue = value;
+	initialComment = comment;
+	initialEnabled = enabled;
 }
 
 CTVariable::CTVariable(const CTVariable &source) :
-  variable(source.variable),
-  value(source.value),
-  comment(source.comment),
-  enabled(source.enabled),
-  initialVariable(""),
-  initialValue(""),
-  initialComment(""),
-  initialEnabled(true)
-{
+	variable(source.variable), value(source.value), comment(source.comment), enabled(source.enabled), initialVariable(""), initialValue(""), initialComment(""), initialEnabled(true) {
 }
 
-void CTVariable::operator = (const CTVariable& source)
-{
-  variable        = source.variable;
-  value           = source.value;
-  comment         = source.comment;
-  enabled         = source.enabled;
-  initialVariable = "";
-  initialValue    = "";
-  initialComment  = "";
-  initialEnabled  = true;
-  return;
+void CTVariable::operator = (const CTVariable& source) {
+	variable = source.variable;
+	value = source.value;
+	comment = source.comment;
+	enabled = source.enabled;
+	initialVariable = "";
+	initialValue = "";
+	initialComment = "";
+	initialEnabled = true;
+	return;
 }
 
-ostream& operator << (ostream& outputStream, const CTVariable& source)
-{
-  if (source.comment != string(""))
-    outputStream << "# " << source.comment << "\n";
+QString CTVariable::exportVariable() {
+	QString exportVariable;
+	
+	if (comment.isEmpty() == false)
+		exportVariable += "# " + comment + "\n";
 
-  if (!source.enabled)
-    outputStream << "#\\";
+	if (enabled == false)
+		exportVariable += "#\\";
 
-  outputStream << source.variable << "=" << source.value << "\n";
+	exportVariable += variable + "=" + value + "\n";
 
-  return outputStream;
+	return exportVariable;
 }
 
-void CTVariable::apply()
-{
-  initialVariable = variable;
-  initialValue    = value;
-  initialComment  = comment;
-  initialEnabled  = enabled;
+void CTVariable::apply() {
+	initialVariable = variable;
+	initialValue = value;
+	initialComment = comment;
+	initialEnabled = enabled;
 }
 
-void CTVariable::cancel()
-{
-  variable = initialVariable;
-  value    = initialValue;
-  comment  = initialComment;
-  enabled  = initialEnabled;
+void CTVariable::cancel() {
+	variable = initialVariable;
+	value = initialValue;
+	comment = initialComment;
+	enabled = initialEnabled;
 }
 
-bool CTVariable::dirty() const
-{
-  return ((variable != initialVariable) || (value != initialValue) ||
-    (comment != initialComment) || (enabled != initialEnabled));
+bool CTVariable::dirty() const {
+	return ((variable != initialVariable) || (value != initialValue) || (comment != initialComment) || (enabled != initialEnabled));
 }

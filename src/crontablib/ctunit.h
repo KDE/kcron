@@ -12,147 +12,139 @@
 #ifndef CTUNIT_H
 #define CTUNIT_H
 
-// Do not introduce any Qt or KDE dependencies into the "CT"-prefixed classes.
-// I want to be able to reuse these classes with another GUI toolkit. -GM 11/99
-
-#include <string>
-#include <iostream>
+#include <QString>
+#include <QList>
 
 /**
-  * A cron table unit parser and tokenizer.
-  * Parses/tokenizes unit such as "0-3,5,6,10-30/5"
-  * Also provides default natural language description.
-  */
-template<int min, int max> class CTUnit
-{
+ * A cron table unit parser and tokenizer.
+ * Parses/tokenizes unit such as "0-3,5,6,10-30/5"
+ * Also provides default natural language description.
+ */
+class CTUnit {
+	
+protected:
+	CTUnit(int min, int max, const QString& tokStr = "");
+
+	/**
+	 * Get default natural language description.
+	 */
+	virtual QString genericDescribe(const QList<QString>& label) const;
+	
 public:
 
-/**
-  * Constant indicating short format.
-  */
-  static const bool shortFormat = 0;
+	/**
+	 * Base initial image as empty and copy enabled intervals.
+	 */
+	CTUnit(const CTUnit& source);
 
-/**
-  * Constant indicating long format.
-  */
-  static const bool longFormat = 1;
+	/**
+	 * Destructor.
+	 */
+	virtual ~CTUnit();
 
-/**
-  * Initialize including parsing and saving initial image.
-  */
-  CTUnit(const std::string &tokStr = "");
+	/**
+	 * Copy enabled intervals.
+	 */
+	void operator =(const CTUnit& unit);
 
-/**
-  * Base initial image as empty and copy enabled intervals.
-  */
-  CTUnit(const CTUnit& source);
+	/**
+	 * Returns tokenization
+	 */
+	QString exportUnit();
+	
+	/**
+	 * Parses unit such as "0-3,5,6,10-30/5".
+	 * And initialize array of enabled intervals.
+	 */
+	void initialize(const QString& tokStr = "");
 
-/**
-  * Destructor.
-  */
-  virtual ~CTUnit();
+	/**
+	 * Parses unit such as "0-3,5,6,10-30/5".
+	 * Does not initialize array of enabled intervals.
+	 */
+	void parse(const QString& tokenString = "");
 
-/**
-  * Copy enabled intervals.
-  */
-  void operator = (const CTUnit<min,max>& unit);
+	/**
+	 * Tokenizes unit into string such as
+	 * "0,1,2,3,5,6,10,15,20,25,30".
+	 */
+	QString tokenize() const;
 
-/**
-  * Returns tokenization to output stream.
-  */
-  friend std::ostream& operator << (std::ostream& outStr, const CTUnit<min,max>& unit)
-  {
-    if (unit.count() == (max - min + 1))
-       outStr << "*";
-    else 
-       outStr << ((const CTUnit<min, max>) unit).tokenize();
-    return outStr;
-  }
+	/**
+	 * Lower bound.
+	 */
+	int begin();
 
-/**
-  * Parses unit such as "0-3,5,6,10-30/5".
-  * And initialize array of enabled intervals.
-  */
-  void initialize(const std::string &tokStr = "");
+	/**
+	 * Upper bound.
+	 */
+	int end();
 
-/**
-  * Parses unit such as "0-3,5,6,10-30/5".
-  * Does not initialize array of enabled intervals.
-  */
-  void parse(std::string tokStr = "");
-  
-/**
-  * Tokenizes unit into string such as
-  * "0,1,2,3,5,6,10,15,20,25,30".
-  */
-  std::string tokenize() const;
+	/**
+	 * Accessor.
+	 */
+	bool get(int pos) const;
 
-/**
-  * Get default natural language description.
-  */
-  virtual std::string describe(const std::string *label) const;
+	/**
+	 * Mutator.
+	 */
+	void set(int pos, bool value);
 
-/**
-  * Lower bound.
-  */
-  int begin();
+	/**
+	 * Enable.
+	 */
+	void enable(int pos);
 
-/**
-  * Upper bound.
-  */
-  int end();
+	/**
+	 * Disable.
+	 */
+	void disable(int pos);
 
-/**
-  * Accessor.
-  */
-  bool get(int pos) const;
+	/**
+	 * Indicates whether enabled intervals have been modified.
+	 */
+	bool dirty() const;
 
-/**
-  * Mutator.
-  */
-  void set(int pos, bool value);
+	/**
+	 * Total count of enabled intervals.
+	 */
+	int count() const;
 
-/**
-  * Enable.
-  */
-  void enable(int pos);
+	/**
+	 * Mark changes as applied.
+	 */
+	void apply();
 
-/**
-  * Disable.
-  */
-  void disable(int pos);
-
-/**
-  * Indicates whether enabled intervals have been modified.
-  */
-  bool dirty() const;
-
-/**
-  * Total count of enabled intervals.
-  */
-  int count() const;
-
-/**
-  * Mark changes as applied.
-  */
-  void apply();
-
-/**
-  * Mark cancel changes and revert to initial or last applied
-  * image.
-  */
-  void cancel();
-
+	/**
+	 * Mark cancel changes and revert to initial or last applied
+	 * image.
+	 */
+	void cancel();
+	
 private:
+	int min;
+	int max;
 
-  int fieldToValue(std::string entry) const;
-  bool isDirty;
-  bool enabled[max+1];
-  bool initialEnabled[max+1];
-  std::string initialTokStr;
+	int fieldToValue(const QString& entry) const;
+	bool isDirty;
+	
+	QList<bool> enabled;
+	QList<bool> initialEnabled;
+	
+	QString initialTokStr;
+
+public:
+
+	/**
+	 * Constant indicating short format.
+	 */
+	static const bool shortFormat = 0;
+
+	/**
+	 * Constant indicating long format.
+	 */
+	static const bool longFormat = 1;
 
 };
-
-#include "ctunit.cpp"
 
 #endif // CTUNIT_H

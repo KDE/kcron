@@ -9,54 +9,27 @@
  *   (at your option) any later version.                                   * 
  ***************************************************************************/
 
-// Do not introduce any Qt or KDE dependencies into the "CT"-prefixed classes.
-// I want to be able to reuse these classes with another GUI toolkit. -GM 11/99
-
 #include "ctmonth.h"
-#include "cti18n.h"
+#include <klocale.h>
 
-string CTMonth::shortName[13] =
-{
-  "", "", "", "", "", "", "", "", "", "", "", "", "",
-};
+QList<QString> CTMonth::shortName;
 
-CTMonth::CTMonth(const string& tokStr) :
-  CTUnit<1,12>(tokStr)
-{
+CTMonth::CTMonth(const QString& tokStr) :
+	CTUnit(1, 12, tokStr) {
 }
 
-string CTMonth::describe () const
-{
-  initializeNames();
-  return (count() == 12) ?
-    (const char*)i18n("every month ").toLocal8Bit() :
-    CTUnit<1,12>::describe(shortName);
+QString CTMonth::describe() const {
+	initializeNames();
+	return (count() == 12) ? i18n("every month ") : CTUnit::genericDescribe(shortName);
 }
 
-string CTMonth::getName(const int ndx)
-{
-  initializeNames();
-  return shortName[ndx];
+QString CTMonth::getName(const int ndx) {
+	initializeNames();
+	return shortName[ndx];
 }
 
-void CTMonth::initializeNames()
-{
-  if (shortName[1].empty())
-  {
-    const string shortMonthName[13] =
-    {
-      "",
-      (const char*)i18n("January").toLocal8Bit(),  (const char*)i18n("February").toLocal8Bit(),
-      (const char*)i18n("March").toLocal8Bit(),  (const char*)i18n("April").toLocal8Bit(),
-      (const char*)i18nc("May long","May").toLocal8Bit(),  (const char*)i18n("June").toLocal8Bit(),
-      (const char*)i18nc("July long", "July").toLocal8Bit(),  (const char*)i18n("August").toLocal8Bit(),
-      (const char*)i18n("September").toLocal8Bit(),  (const char*)i18n("October").toLocal8Bit(),
-      (const char*)i18n("November").toLocal8Bit(),  (const char*)i18n("December").toLocal8Bit()
-    };
-  
-    for (int i = 1; i <= 12; i++)
-    {
-      shortName[i] = shortMonthName[i];
-    }
-  }
+void CTMonth::initializeNames() {
+	if (shortName.isEmpty()) {
+		shortName << "" << i18n("January") << i18n("February") << i18n("March") << i18n("April") << i18nc("May long", "May") << i18n("June") << i18nc("July long", "July") << i18n("August") << i18n("September") << i18n("October") << i18n("November") << i18n("December");
+	}
 }

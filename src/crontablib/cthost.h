@@ -12,113 +12,111 @@
 #ifndef CTHOST_H
 #define CTHOST_H
 
-// Do not introduce any Qt or KDE dependencies into the "CT"-prefixed classes.
-// I want to be able to reuse these classes with another GUI toolkit. -GM 11/99
-
-#include <vector>
-#include <string>
-
-#include <QString> // Whatever
+#include <QString>
+#include <QList>
 
 class CTCron;
 struct passwd;
 
 /**
-  * The host machine, or computer (encapsulation of crontab files on the
-  * host).
-  *
-  * If the user is the root user, the cron vector will have a member for
-  * each user of the host plus one for the system crontab.
-  *
-  * If the user is a non-root user, there will be only one member in the
-  * cron vector.
-  */
-class CTHost
-{
+ * The host machine, or computer (encapsulation of crontab files on the
+ * host).
+ *
+ * If the user is the root user, the cron vector will have a member for
+ * each user of the host plus one for the system crontab.
+ *
+ * If the user is a non-root user, there will be only one member in the
+ * cron vector.
+ */
+class CTHost {
 public:
 
-/**
-  * Constructs the user(s), scheduled tasks, and environment variables
-  * from crontab files.
-  */
-  CTHost(const QString& cronBinary);
+	/**
+	 * Constructs the user(s), scheduled tasks, and environment variables
+	 * from crontab files.
+	 */
+	CTHost(const QString& cronBinary);
 
-/**
-  * Destroys the user(s), scheduled tasks, and environment variable
-  * objects.  Does not make any changes to the crontab files.  Any unapplied
-  * changes are consequently "cancelled."
-  */
-  ~CTHost();
+	/**
+	 * Destroys the user(s), scheduled tasks, and environment variable
+	 * objects.  Does not make any changes to the crontab files.  Any unapplied
+	 * changes are consequently "cancelled."
+	 */
+	~CTHost();
 
-/**
-  * Apply changes.
-  */
-  void apply();
+	/**
+	 * Apply changes.
+	 */
+	void apply();
 
-/**
-  * Cancel changes.
-  */
-  void cancel();
+	/**
+	 * Cancel changes.
+	 */
+	void cancel();
 
-/**
-  * Indicates whether or not dirty.
-  */
-  bool dirty();
+	/**
+	 * Indicates whether or not dirty.
+	 */
+	bool dirty();
 
-/**
-  * Indicates whether or not the user is the root user.
-  */
-  bool root() const;
+	/**
+	 * Indicates whether or not the user is the root user.
+	 */
+	bool root() const;
 
-/**
-  * Indicates an error has occurred.
-  */
-  bool isError() { return !error.isEmpty(); }
+	/**
+	 * Indicates an error has occurred.
+	 */
+	bool isError() {
+		return !error.isEmpty();
+	}
 
-/**
-  * Error message
-  */
-  QString errorMessage() { QString r = error; error = QString(); return r; }
+	/**
+	 * Error message
+	 */
+	QString errorMessage() {
+		QString r = error;
+		error = QString();
+		return r;
+	}
 
-/**
-  * User(s). 
-  *
-  * If the user is the root user, the cron vector will have a member for
-  * each user of the host plus one for the system crontab.
-  *
-  * If the user is a non-root user, there will be only one member in the
-  * cron vector.
-  */
-  std::vector<CTCron*> cron;
+	/**
+	 * User(s). 
+	 *
+	 * If the user is the root user, the cron vector will have a member for
+	 * each user of the host plus one for the system crontab.
+	 *
+	 * If the user is a non-root user, there will be only one member in the
+	 * cron vector.
+	 */
+	QList<CTCron*> cron;
 
 private:
 
-/**
-  * Copy construction not allowed.
-  */
-  CTHost(const CTHost& source);
+	/**
+	 * Copy construction not allowed.
+	 */
+	CTHost(const CTHost& source);
 
-/**
-  * Assignment not allowed
-  */
-  void operator = (const CTHost& source);
+	/**
+	 * Assignment not allowed
+	 */
+	void operator =(const CTHost& source);
 
-/**
-  * Factory create a cron table.  Appends to the end of cron.
-  */
-  CTCron* createCTCron(bool _syscron = false, std::string _login = "");
-  CTCron* createCTCron(const struct passwd *);
+	/**
+	 * Factory create a cron table.  Appends to the end of cron.
+	 */
+	CTCron* createCTCron(bool _syscron = false, const QString& _login = "");
+	CTCron* createCTCron(const struct passwd* password);
 
-/**
-  * Check /etc/cron.allow, /etc/cron.deny
-  */
-  bool allowDeny(char *name);
+	/**
+	 * Check /etc/cron.allow, /etc/cron.deny
+	 */
+	bool allowDeny(char *name);
 
-  QString error;
-	
-  QString crontabBinary;
+	QString error;
+
+	QString crontabBinary;
 };
-
-typedef std::vector<CTCron*>::iterator CTCronIterator;
 
 #endif // CTHOST_H

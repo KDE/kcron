@@ -92,9 +92,9 @@ KTVariable::KTVariable(CTVariable* _ctvar,const QString &_caption) :
   layout->addWidget(chkEnabled, 4, 0);
 
   // set starting field values
-  cmbVariable->setEditText(QString::fromLocal8Bit(ctvar->variable.c_str()));
-  leValue->setText(QString::fromLocal8Bit(ctvar->value.c_str()));
-  teComment->setText(QString::fromLocal8Bit(ctvar->comment.c_str()));
+  cmbVariable->setEditText(ctvar->variable);
+  leValue->setText(ctvar->value);
+  teComment->setText(ctvar->comment);
   chkEnabled->setChecked(ctvar->enabled);
   cmbVariable->setFocus();
 

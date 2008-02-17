@@ -11,7 +11,6 @@
 
 #include "ktlistcron.h"
 
-
 #include <klocale.h>
 
 #include "ctcron.h"
@@ -19,51 +18,41 @@
 #include "kticon.h"
 #include "ktprint.h"
 
-KTListCron::KTListCron(KTListItem* parent, const char* name,
-  CTCron* _ctcron) :
-  KTListItem(parent, name, _ctcron)
-{
-  refresh();
+KTListCron::KTListCron(KTListItem* parent, const char* name, CTCron* _ctcron) :
+	KTListItem(parent, name, _ctcron) {
+	refresh();
 }
 
-KTListCron::KTListCron(Q3ListView* parent, const char* name,
-  CTCron* _ctcron) :
-  KTListItem(parent, name, _ctcron)
-{
-  refresh();
+KTListCron::KTListCron(Q3ListView* parent, const char* name, CTCron* _ctcron) :
+	KTListItem(parent, name, _ctcron) {
+	refresh();
 }
 
 KTListCron::KTListCron(Q3ListView* parent, CTCron* _ctcron) :
-  KTListItem(parent, (const char*)0, _ctcron)
-{
-  refresh();
+	KTListItem(parent, (const char*)0, _ctcron) {
+	refresh();
 }
 
-void KTListCron::refresh()
-{
-  setPixmap(0, getCTCron()->login.c_str() == (i18n("(System Crontab)")) ?
-    KTIcon::system(KTIcon::Small) : KTIcon::user(KTIcon::Small));
+void KTListCron::refresh() {
+	setPixmap(0, getCTCron()->login == i18n("(System Crontab)") ? KTIcon::system(KTIcon::Small) : KTIcon::user(KTIcon::Small));
 
-  QString userName = QString::fromLocal8Bit(getCTCron()->login.c_str());
+	QString userName = getCTCron()->login;
 
-  if (getCTCron()->login != getCTCron()->name)
-  {
-    userName += QString(" (");
-    userName += QString::fromLocal8Bit(getCTCron()->name.c_str());
-    userName += QString(")");
-  }
-  setText(0, userName);
+	if (getCTCron()->login != getCTCron()->name) {
+		userName += QString(" (");
+		userName += getCTCron()->name;
+		userName += QString(")");
+	}
+	setText(0, userName);
 }
 
-void KTListCron::print (KTPrint& printer) const
-{
-  QString userInfo;
-  userInfo = QString::fromLocal8Bit(getCTCron()->name.c_str());
+void KTListCron::print(KTPrint& printer) const {
+	QString userInfo = getCTCron()->name;
 
-  KTListItem* ktli = (KTListItem*)this->firstChild();
-  Q_CHECK_PTR(ktli);
-  while (ktli) {
-    ktli->print(printer);
-    ktli = (KTListItem*)ktli->nextSibling();
-  }
+	KTListItem* ktli = (KTListItem*)this->firstChild();
+	Q_CHECK_PTR(ktli);
+	while (ktli) {
+		ktli->print(printer);
+		ktli = (KTListItem*)ktli->nextSibling();
+	}
 }

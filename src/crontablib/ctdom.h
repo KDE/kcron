@@ -12,51 +12,34 @@
 #ifndef CTDOM_H
 #define CTDOM_H
 
-// Do not introduce any Qt or KDE dependencies into the "CT"-prefixed classes.
-// I want to be able to reuse these classes with another GUI toolkit. -GM 11/99
+#include <QString>
+#include <QList>
 
 #include "ctunit.h"
-#include <string>
 
 /**
-  * Scheduled task days of month.
-  */
-class CTDayOfMonth : public CTUnit<1,31>
-{
+ * Scheduled task days of month.
+ */
+class CTDayOfMonth : public CTUnit {
 public:
-/**
-  * Constructs from a tokenized string.
-  */
-  CTDayOfMonth(const string& tokStr = "");
+	/**
+	 * Constructs from a tokenized string.
+	 */
+	CTDayOfMonth(const QString& tokStr = "");
 
-/**
-  * Default copy constructor.
-  */
-  // CTDayOfMonth(const CTDayOfMonth& source);
+	/**
+	 * Get natural language description.
+	 */
+	virtual QString describe() const;
 
-/**
-  * Default assignment operator
-  */
-  // void operator = (const CTDayOfMonth& source);
-
-/**
-  * Default destructor.
-  */
-  // ~CTDayOfMonth();
-
-/**
-  * Get natural language description.
-  */
-  virtual string describe() const;
-
-/**
-  * Get day of month name.
-  */
-  static string getName(const int ndx);
+	/**
+	 * Get day of month name.
+	 */
+	static QString getName(const int ndx);
 
 private:
-  static void initializeNames();
-  static string shortName[32];
+	static void initializeNames();
+	static QList<QString> shortName;
 };
 
 #endif // CTDOM_H

@@ -12,38 +12,21 @@
 #ifndef CTHOUR_H
 #define CTHOUR_H
 
-// Do not introduce any Qt or KDE dependencies into the "CT"-prefixed classes.
-// I want to be able to reuse these classes with another GUI toolkit. -GM 11/99
-
 #include "ctunit.h"
-#include <string>
 
 /**
-  * Scheduled task hours.
-  */
-class CTHour : public CTUnit<0,23>
-{
+ * Scheduled task hours.
+ */
+class CTHour : public CTUnit {
 public:
 
-/**
-  * Constructs from a tokenized string.
-  */
-  CTHour(const string &tokStr = "") : CTUnit<0,23>(tokStr) { }
+	/**
+	 * Constructs from a tokenized string.
+	 */
+	CTHour(const QString& tokStr = "") :
+		CTUnit(0, 23, tokStr) {
 
-/**
-  * Default copy constructor.
-  */
-  // CTHour(const CTHour& source);
-
-/**
-  * Default assignment operator
-  */
-  // void operator = (const CTHour& source);
-
-/**
-  * Default destructor.
-  */
-  // ~CTHour();
+	}
 
 };
 
