@@ -10,111 +10,70 @@
  ***************************************************************************/
 
 #include "kticon.h"
- 
-#include <qimage.h>
-//Added by qt3to4:
+
+#include <QImage>
 #include <QPixmap>
 
 #include <kglobal.h>
 #include <kiconloader.h>
 
-
-
-QPixmap KTIcon::getMiniIcon(const QString& name)
-{
-  return SmallIcon(name);
+QPixmap KTIcon::getIcon(const QString&name, KTIcon::IconSize size) {
+	if (size == KTIcon::Small)
+		return SmallIcon(name);
+	else if (size == KTIcon::Normal)
+		return BarIcon(name);
+	
+	return DesktopIcon(name);
 }
 
-QPixmap KTIcon::getIcon(const QString& name)
-{
-  return BarIcon(name);
+QPixmap KTIcon::application(KTIcon::IconSize size) {
+	return getIcon("kcron", size);
 }
 
-QPixmap KTIcon::getMaxIcon(const QString& name)
-{
-  return DesktopIcon(name);
+QPixmap KTIcon::system(KTIcon::IconSize size) {
+	return getIcon("utilities-terminal", size);
 }
 
-QPixmap KTIcon::application(int size)
-{
-  if (size == 0) return getMiniIcon("kcron");
-  if (size == 1) return getIcon("kcron");
-  return getMaxIcon("kcron");
+QPixmap KTIcon::user(KTIcon::IconSize size) {
+	return getIcon("user-identity", size);
 }
 
-QPixmap KTIcon::system(int size)
-{
-  if (size == 0) return getMiniIcon("utilities-terminal");
-  if (size == 1) return getIcon("utilities-terminal");
-  return getMaxIcon("utilities-terminal");
+QPixmap KTIcon::variables(KTIcon::IconSize size) {
+	return getIcon("folder", size);
 }
 
-QPixmap KTIcon::user(int size)
-{
-  if (size == 0) return getMiniIcon("user-identity");
-  if (size == 1) return getIcon("user-identity");
-  return getMaxIcon("user-identity");
+QPixmap KTIcon::variable(KTIcon::IconSize size) {
+	return getIcon("text", size);
 }
 
-QPixmap KTIcon::variables(int size)
-{
-  if (size == 0) return getMiniIcon("folder");
-  if (size == 1) return getIcon("folder");
-  return getMaxIcon("folder");
+QPixmap KTIcon::mail(KTIcon::IconSize size) {
+	return getIcon("mail-message", size);
 }
 
-QPixmap KTIcon::variable(int size)
-{
-  if (size == 0) return getMiniIcon("application-x-zerosize");
-  if (size == 1) return getIcon("application-x-zerosize");
-  return getMaxIcon("application-x-zerosize");
+QPixmap KTIcon::shell(KTIcon::IconSize size) {
+	return getIcon("utilities-terminal", size);
 }
 
-QPixmap KTIcon::mail(int size)
-{
-  if (size == 0) return getMiniIcon("mail-message");
-  if (size == 1) return getIcon("mail-message");
-  return getMaxIcon("mail-message");
+QPixmap KTIcon::home(KTIcon::IconSize size) {
+	return getIcon("go-home", size);
 }
 
-QPixmap KTIcon::shell(int size)
-{
-  if (size == 0) return getMiniIcon("utilities-terminal");
-  if (size == 1) return getIcon("utilities-terminal");
-  return getMaxIcon("utilities-terminal");
+QPixmap KTIcon::path(KTIcon::IconSize size) {
+	return getIcon("folder", size);
 }
 
-QPixmap KTIcon::home(int size)
-{
-  if (size == 0) return getMiniIcon("go-home");
-  if (size == 1) return getIcon("go-home");
-  return getMaxIcon("go-home");
+QPixmap KTIcon::tasks(KTIcon::IconSize size) {
+	return getIcon("folder", size);
 }
 
-QPixmap KTIcon::path(int size)
-{
-  if (size == 0) return getMiniIcon("folder");
-  if (size == 1) return getIcon("folder");
-  return getMaxIcon("folder");
+QPixmap KTIcon::task(KTIcon::IconSize size) {
+	return getIcon("system-run", size);
 }
 
-QPixmap KTIcon::tasks(int size)
-{
-  if (size == 0) return getMiniIcon("folder");
-  if (size == 1) return getIcon("folder");
-  return getMaxIcon("folder");
+QPixmap KTIcon::information(KTIcon::IconSize size) {
+	return getIcon("dialog-information", size);
 }
 
-QPixmap KTIcon::task(int size)
-{
-  if (size == 0) return getMiniIcon("system-run");
-  if (size == 1) return getIcon("system-run");
-  return getMaxIcon("system-run");
-}
-
-QPixmap KTIcon::information(int size)
-{
-  if (size == 0) return getMiniIcon("dialog-information");
-  if (size == 1) return getIcon("dialog-information");
-  return getMaxIcon("dialog-information");
+QPixmap KTIcon::error(KTIcon::IconSize size) {
+	return getIcon("dialog-error", size);
 }

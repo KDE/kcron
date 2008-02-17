@@ -38,6 +38,7 @@ const int KTApp::statusMessage(1001);
 
 KTApp::KTApp() :
 	KXmlGuiWindow(0), config(KGlobal::config()) {
+
 	setWindowIcon(KTIcon::application(KTIcon::Small));
 
 	setCaption(i18n("Task Scheduler"));
@@ -50,7 +51,7 @@ KTApp::KTApp() :
 	readOptions();
 
 	// Initialize document.
-	cthost = new CTHost(crontab);
+	ctHost = new CTHost(crontab);
 
 	setupGUI(QSize(700, 500));
 
@@ -59,23 +60,23 @@ KTApp::KTApp() :
 	setCentralWidget(view);
 
 	//Connections
-	KMenu *editMenu = static_cast<KMenu*>(guiFactory()->container("edit", this));
-	connect(editMenu,SIGNAL(hovered(QAction*)),this,SLOT(statusEditCallback(QAction*)));
+	KMenu* editMenu = static_cast<KMenu*>(guiFactory()->container("edit", this));
+	connect(editMenu, SIGNAL(hovered(QAction*)), this, SLOT(statusEditCallback(QAction*)));
 }
 
 bool KTApp::init() {
-	if (cthost->isError()) {
+	if (ctHost->isError()) {
 		KMessageBox::error(this, i18n("The following error occurred while initializing KCron:"
-			"\n\n%1\n\nKCron will now exit.\n", cthost->errorMessage()));
+			"\n\n%1\n\nKCron will now exit.\n", ctHost->errorMessage()));
 		return false;
 	}
 
 	// Display greeting screen.
 	// if there currently are no scheduled tasks...
-	if (!cthost->root()) {
+	if (!ctHost->isRootUser()) {
 		int taskCount(0);
 
-		foreach(CTCron* ctCron, cthost->cron) {
+		foreach(CTCron* ctCron, ctHost->cron) {
 			taskCount += ctCron->task.count();
 		}
 
@@ -89,11 +90,11 @@ bool KTApp::init() {
 
 KTApp::~KTApp() {
 	delete view;
-	delete cthost;
+	delete ctHost;
 }
 
 const CTHost& KTApp::getCTHost() const {
-	return *cthost;
+	return *ctHost;
 }
 
 QString KTApp::caption() {
@@ -147,7 +148,7 @@ void KTApp::setupActions() {
 }
 
 void KTApp::initStatusBar() {
-	QLabel *defaultmsg = new QLabel(i18nc("Kcron in ready for user input", " Ready."));
+	QLabel *defaultmsg = new QLabel(i18nc("KCron in ready for user input", " Ready."));
 	defaultmsg->setFixedHeight(fontMetrics().height() + 2);
 	defaultmsg->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
 	statusBar()->addWidget(defaultmsg);
@@ -166,16 +167,16 @@ void KTApp::readOptions() {
 }
 
 bool KTApp::queryClose() {
-	if (cthost->dirty()) {
+	if (ctHost->isDirty()) {
 		KTApp* win = (KTApp*)parent();
 
 		int retVal = KMessageBox::warningYesNoCancel(win, i18n("Scheduled tasks have been modified.\nDo you want to save changes?"), QString(), KStandardGuiItem::save(), KStandardGuiItem::discard() );
 
 		switch (retVal) {
 		case KMessageBox::Yes:
-			cthost->apply();
-			if (cthost->isError()) {
-				KMessageBox::error(win, cthost->errorMessage());
+			ctHost->apply();
+			if (ctHost->isError()) {
+				KMessageBox::error(win, ctHost->errorMessage());
 				return false;
 			}
 			return true;
@@ -201,18 +202,18 @@ bool KTApp::queryExit() {
 }
 
 void KTApp::slotFileSave() {
-	slotStatusMsg(i18nc("Kcron is saving the file to the hard drive", "Saving..."));
-	cthost->apply();
-	slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
-	if (cthost->isError()) {
-		KMessageBox::error(this, cthost->errorMessage());
+	slotStatusMsg(i18nc("KCron is saving the file to the hard drive", "Saving..."));
+	ctHost->apply();
+	slotStatusMsg(i18nc("KCron is ready for user input", "Ready."));
+	if (ctHost->isError()) {
+		KMessageBox::error(this, ctHost->errorMessage());
 	}
 }
 
 void KTApp::slotFilePrint() {
 	slotStatusMsg(i18n("Printing..."));
 	view->print();
-	slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
+	slotStatusMsg(i18nc("KCron is ready for user input", "Ready."));
 }
 
 void KTApp::slotFileQuit() {
@@ -229,37 +230,37 @@ void KTApp::slotEditCut() {
 	slotStatusMsg(i18n("Cutting to clipboard..."));
 	view->copy();
 	view->remove();
-	slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
+	slotStatusMsg(i18nc("KCron is ready for user input", "Ready."));
 }
 
 void KTApp::slotEditCopy() {
 	slotStatusMsg(i18n("Copying to clipboard..."));
 	view->copy();
-	slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
+	slotStatusMsg(i18nc("KCron is ready for user input", "Ready."));
 }
 
 void KTApp::slotEditPaste() {
 	slotStatusMsg(i18n("Pasting from clipboard..."));
 	view->paste();
-	slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
+	slotStatusMsg(i18nc("KCron is ready for user input", "Ready."));
 }
 
 void KTApp::slotEditNew() {
 	slotStatusMsg(i18n("Adding new entry..."));
 	view->create();
-	slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
+	slotStatusMsg(i18nc("KCron is ready for user input", "Ready."));
 }
 
 void KTApp::slotEditModify() {
 	slotStatusMsg(i18n("Modifying entry..."));
 	view->edit();
-	slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
+	slotStatusMsg(i18nc("KCron is ready for user input", "Ready."));
 }
 
 void KTApp::slotEditDelete() {
 	slotStatusMsg(i18n("Deleting entry..."));
 	view->remove();
-	slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
+	slotStatusMsg(i18nc("KCron is ready for user input", "Ready."));
 }
 
 void KTApp::slotEditEnable() {
@@ -272,18 +273,18 @@ void KTApp::slotEditEnable() {
 		slotStatusMsg(i18n("Enabling entry..."));
 		view->enable(true);
 	}
-	slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
+	slotStatusMsg(i18nc("KCron is ready for user input", "Ready."));
 }
 
 void KTApp::slotEditRunNow() {
 	slotStatusMsg(i18n("Running command..."));
 	view->run();
-	slotStatusMsg(i18nc("Kcron is ready for user input", "Ready."));
+	slotStatusMsg(i18nc("KCron is ready for user input", "Ready."));
 }
 
 void KTApp::slotStatusMsg(const QString & text) {
 	statusBar()->showMessage(text);
-	setCaption(i18n("Task Scheduler"), cthost->dirty());
+	setCaption(i18n("Task Scheduler"), ctHost->isDirty());
 }
 
 void KTApp::slotStatusHelpMsg(const QString & text) {

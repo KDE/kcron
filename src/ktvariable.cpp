@@ -12,13 +12,12 @@
 #include "ktvariable.h"
 
 #include <QLayout>
-//Added by qt3to4:
 #include <QLabel>
+#include <QComboBox>
 #include <QGridLayout>
 
-#include <kcombobox.h>
 #include <klineedit.h>
-#include <klocale.h>  // i18n()
+#include <klocale.h>
 #include <kmessagebox.h>
 #include <ktextedit.h>
 #include <ktitlewidget.h>
@@ -26,178 +25,184 @@
 #include "ctvariable.h"
 #include "kticon.h"
 
-KTVariable::KTVariable(CTVariable* _ctvar,const QString &_caption) :
-  KDialog(),
-  ctvar( _ctvar)
-{
-  setCaption( _caption );
-  setButtons( Ok|Cancel );
-  setDefaultButton( Ok );
-  QWidget *page = new QWidget( this );
-  setMainWidget( page );
+KTVariable::KTVariable(CTVariable* _ctvar, const QString &_caption) :
+	KDialog(), ctvar(_ctvar) {
 
-  QGridLayout *layout = new QGridLayout( page );
-  layout->setMargin( 0 );
-  layout->setSpacing( spacingHint() );
-  layout->setColumnMinimumWidth(1, 270);
-  layout->setRowStretch(3, 1);
-  layout->setColumnStretch(1, 1);
+	setModal(true);
+	setCaption(_caption);
+	setButtons(Ok|Cancel);
+	setDefaultButton(Ok);
 
-  setWindowIcon(KTIcon::application(KTIcon::Small));
+	QWidget* page = new QWidget(this);
+	setMainWidget(page);
 
-  // top title widget
-  titleWidget = new KTitleWidget(page);
-  layout->addWidget(titleWidget, 0, 0, 1, 2);
+	QGridLayout* layout = new QGridLayout(page);
+	page->setLayout(layout);
 
-  // comment
-  labComment = new QLabel(i18n("Co&mment:"), page);
-  labComment->setObjectName("labComment");
-  layout->addWidget(labComment, 1, 0, Qt::AlignLeft | Qt::AlignTop);
+	layout->setMargin(0);
+	layout->setSpacing(spacingHint() );
+	layout->setColumnMinimumWidth(1, 270);
+	layout->setRowStretch(3, 1);
+	layout->setColumnStretch(1, 1);
 
-  teComment = new KLineEdit(page);
-  layout->addWidget(teComment, 1, 1, 1, 1);
-  labComment->setBuddy(teComment);
+	setWindowIcon(KTIcon::application(KTIcon::Small));
 
-  // variable
-  labVariable = new QLabel(i18nc("The environmental variable name ie HOME, MAILTO etc", "&Variable:"), page );
-  labVariable->setObjectName("labVariable");
-  layout->addWidget(labVariable, 2, 0, Qt::AlignLeft | Qt::AlignTop);
+	int layoutPosition = 0;
 
-  cmbVariable = new KComboBox(page);
-  cmbVariable->setEditable(true);
-  cmbVariable->setObjectName("cmbVariable");
-  layout->addWidget(cmbVariable, 2, 1, 1, 1);
+	// top title widget
+	titleWidget = new KTitleWidget(this);
+	titleWidget->setText(i18n("Add or modify a variable"));
+	layout->addWidget(titleWidget, layoutPosition, 0, 1, 2);
 
-  cmbVariable->addItem("HOME");
-  cmbVariable->addItem("MAILTO");
-  cmbVariable->addItem("PATH");
-  cmbVariable->addItem("SHELL");
+	// variable
+	QLabel* labVariable = new QLabel(i18nc("The environmental variable name ie HOME, MAILTO etc", "&Variable:"), this);
+	layout->addWidget(labVariable, ++layoutPosition, 0, Qt::AlignLeft);
 
-  labVariable->setBuddy(cmbVariable);
+	cmbVariable = new QComboBox(this);
+	cmbVariable->setEditable(true);
+	layout->addWidget(cmbVariable, layoutPosition, 1);
 
-  // value
-  labValue = new QLabel(i18n("Va&lue:"), page);
-  labValue->setObjectName("labValue");
-  layout->addWidget(labValue, 3, 0, Qt::AlignLeft | Qt::AlignTop);
+	cmbVariable->addItem("HOME");
+	cmbVariable->addItem("MAILTO");
+	cmbVariable->addItem("PATH");
+	cmbVariable->addItem("SHELL");
 
-  leValue = new KLineEdit(page);
-  leValue->setObjectName("leValue");
-  layout->addWidget(leValue, 3, 1, 1, 1);
-  leValue->setMaxLength(255);
-  labValue->setBuddy(leValue);
+	labVariable->setBuddy(cmbVariable);
+	
+	// details
+	QLabel* labDetails = new QLabel("", this);
+	layout->addWidget(labDetails, ++layoutPosition, 0, Qt::AlignLeft);
 
-  // enabled
-  chkEnabled = new QCheckBox(i18n("&Enabled"), page);
-  chkEnabled->setObjectName("chkEnabled");
-  layout->addWidget(chkEnabled, 4, 0);
+	QHBoxLayout* detailsLayout = new QHBoxLayout(this);
+	detailsIcon = new QLabel("", this);
+	detailsLayout->addWidget(detailsIcon);
 
-  // set starting field values
-  cmbVariable->setEditText(ctvar->variable);
-  leValue->setText(ctvar->value);
-  teComment->setText(ctvar->comment);
-  chkEnabled->setChecked(ctvar->enabled);
-  cmbVariable->setFocus();
+	details = new QLabel("", this);
+	detailsLayout->addWidget(details);
+	
+	layout->addLayout(detailsLayout, layoutPosition, 1, Qt::AlignLeft);
+	
+	// value
+	QLabel* labValue = new QLabel(i18n("Va&lue:"), this);
+	layout->addWidget(labValue, ++layoutPosition, 0, Qt::AlignLeft);
 
-  slotEnabled();
-  slotWizard();
-  show();
+	leValue = new QLineEdit(this);
+	layout->addWidget(leValue, layoutPosition, 1);
+	leValue->setMaxLength(255);
+	labValue->setBuddy(leValue);
 
-  // connect them up
-  connect(cmbVariable,SIGNAL(textChanged(const QString&)), SLOT(slotWizard()));
-  connect(leValue,SIGNAL(textChanged(const QString&)), SLOT(slotWizard()));
-  connect(this,SIGNAL(okClicked()),this,SLOT(slotOk()));
-  connect(chkEnabled, SIGNAL(clicked()), SLOT(slotEnabled()));
+	// comment
+	QLabel* labComment = new QLabel(i18n("Co&mment:"), this);
+	layout->addWidget(labComment, ++layoutPosition, 0, Qt::AlignLeft);
+
+	teComment = new KLineEdit(this);
+	layout->addWidget(teComment, layoutPosition, 1);
+	labComment->setBuddy(teComment);
+
+	// enabled
+	chkEnabled = new QCheckBox(i18n("&Enable this environment variable"), this);
+	layout->addWidget(chkEnabled, ++layoutPosition, 0, 1, 2);
+
+	// set starting field values
+	cmbVariable->setEditText(ctvar->variable);
+	leValue->setText(ctvar->value);
+	teComment->setText(ctvar->comment);
+	chkEnabled->setChecked(ctvar->enabled);
+	cmbVariable->setFocus();
+
+	slotEnabled();
+	slotWizard();
+	show();
+
+	// connect them up
+	connect(cmbVariable, SIGNAL(textChanged(const QString&)), SLOT(slotWizard()));
+	connect(leValue, SIGNAL(textChanged(const QString&)), SLOT(slotWizard()));
+	connect(this, SIGNAL(okClicked()), this, SLOT(slotOk()));
+	connect(chkEnabled, SIGNAL(clicked()), SLOT(slotEnabled()));
 }
 
-KTVariable::~KTVariable()
-{
+KTVariable::~KTVariable() {
 }
 
-void KTVariable::setupTitleWidget(const QString &comment)
-{
-  if (comment.isEmpty())	//krazy:exclude=duoblequote_chars
-  {
-    // try and get an icon for the variable
-    QPixmap qpIcon(KTIcon::variable(KTIcon::Large));
-    QString variable = cmbVariable->currentText();
-    if (variable == "HOME") qpIcon = KTIcon::home(KTIcon::Large);
-    else if (variable == "MAILTO") qpIcon= KTIcon::mail(KTIcon::Large);
-    else if (variable == "SHELL") qpIcon = KTIcon::shell(KTIcon::Large);
-    else if (variable == "PATH") qpIcon = KTIcon::variables(KTIcon::Large);
-   
-    titleWidget->setText(i18n("Add or modify a Kcron variable"));  
-    titleWidget->setComment(i18n("<i>This variable has a valid configuration ...</i>"));
-    titleWidget->setPixmap(qpIcon, KTitleWidget::ImageRight);
-  }  
-  else  
-  {
-    titleWidget->setText(i18n("Kcron Information"));  
-    titleWidget->setComment(comment);
-    titleWidget->setPixmap(KIcon(KTIcon::information(KTIcon::Large)), KTitleWidget::ImageRight);
-  }
+void KTVariable::setupTitleWidget(const QString& comment, KTitleWidget::MessageType messageType) {
+	//krazy:exclude=doublequote_chars
+	if (comment.isEmpty()) {
+		titleWidget->setComment(i18n("<i>This variable will be used by planned tasks.</i>"));
+		titleWidget->setPixmap(KTIcon::variable(KTIcon::Large), KTitleWidget::ImageRight);
+	}
+	else {
+		titleWidget->setComment(comment, messageType);
+		if (messageType == KTitleWidget::ErrorMessage)
+			titleWidget->setPixmap(KIcon(KTIcon::error(KTIcon::Large)), KTitleWidget::ImageRight);
+		else
+			titleWidget->setPixmap(KIcon(KTIcon::information(KTIcon::Large)), KTitleWidget::ImageRight);
+	}
 }
 
-
-void KTVariable::slotEnabled()
-{
-  bool enabled = chkEnabled->isChecked(); 
-  labVariable->setEnabled(enabled);
-  cmbVariable->setEnabled(enabled);
-  labValue->setEnabled(enabled);
-  leValue->setEnabled(enabled);
-  labComment->setEnabled(enabled);
-  teComment->setEnabled(enabled);
+void KTVariable::slotEnabled() {
+	bool enabled = chkEnabled->isChecked();
+	cmbVariable->setEnabled(enabled);
+	leValue->setEnabled(enabled);
+	teComment->setEnabled(enabled);
 }
 
-
-void KTVariable::slotOk()
-{
-  ctvar->variable = (const char*)cmbVariable->currentText().toLatin1()/*.toLocal8Bit()*/;
-  ctvar->value    = (const char*)leValue->text().toLatin1();
-  ctvar->comment  = (const char*)teComment->originalText().replace('\n',' ').replace('\r',' ').toLatin1();
-  ctvar->enabled  = chkEnabled->isChecked();
-  close();
+void KTVariable::slotOk() {
+	ctvar->variable = (const char*)cmbVariable->currentText().toLatin1()/*.toLocal8Bit()*/;
+	ctvar->value = (const char*)leValue->text().toLatin1();
+	ctvar->comment = (const char*)teComment->originalText().replace('\n',' ').replace('\r',' ').toLatin1();
+	ctvar->enabled = chkEnabled->isChecked();
+	close();
 }
 
+void KTVariable::slotWizard() {
+	QString variable = cmbVariable->currentText();
+	if (variable == "HOME") {
+		detailsIcon->setPixmap(KTIcon::home(KTIcon::Small));
+		details->setText(i18n("Override default home folder."));
+	}
+	else if (variable == "MAILTO") {
+		detailsIcon->setPixmap(KTIcon::mail(KTIcon::Small));
+		details->setText(i18n("Email output to specified account."));
+	}
+	else if (variable == "SHELL") {
+		detailsIcon->setPixmap(KTIcon::shell(KTIcon::Small));
+		details->setText(i18n("Override default shell."));
+	}
+	else if (variable == "PATH") {
+		detailsIcon->setPixmap(KTIcon::variables(KTIcon::Small));
+		details->setText(i18n("Folders to search for program files."));
+	}
+	else {
+		detailsIcon->setPixmap(KTIcon::variable(KTIcon::Small));
+		details->setText(i18n("Local Variable"));
+	}
 
-void KTVariable::slotWizard()
-{
-  QString variable = cmbVariable->currentText();
-  if (variable == "HOME") teComment->setText(i18n("Override default home folder."));
-  else if (variable == "MAILTO") teComment->setText(i18n("Email output to specified account."));
-  else if (variable == "SHELL") teComment->setText(i18n("Override default shell."));
-  else if (variable == "PATH") teComment->setText(i18n("Folders to search for program files."));
+	bool error = false;
 
-  bool error(false);
+	if (!chkEnabled->isChecked()) {
+		setupTitleWidget(i18n("<i>Please check 'Enabled' to edit this variable ...</i>"));
+		chkEnabled->setFocus();
+		KDialog::enableButtonOk(true);
+		error = true;
+	}
 
-  if (!chkEnabled->isChecked())
-  {
-    setupTitleWidget(i18n("<i>Please check 'Enabled' to edit this variable ...</i>"));    
-    chkEnabled->setFocus();
-    KDialog::enableButtonOk(true);
-    error = true;
-  }
+	if (cmbVariable->currentText().isEmpty() && !error) {
+		setupTitleWidget(i18n("<i>Please enter the variable name ...</i>"), KTitleWidget::ErrorMessage);
+		cmbVariable->setFocus();
+		KDialog::enableButtonOk(false);
+		error = true;
+	}
 
-  if (cmbVariable->currentText().isEmpty() && !error)
-  {
-    setupTitleWidget(i18n("<i>Please enter the variable name ...</i>"));
-    cmbVariable->setFocus();
-    KDialog::enableButtonOk(false);
-    error = true;
-  }
+	if (leValue->text().isEmpty() && !error) {
+		setupTitleWidget(i18n("<i>Please enter the variable value ...</i>"), KTitleWidget::ErrorMessage);
+		KDialog::enableButtonOk(false);
+		error = true;
+	}
 
-  if (leValue->text().isEmpty() && !error)
-  {
-    setupTitleWidget(i18n("<i>Please enter the variable value ...</i>"));
-    KDialog::enableButtonOk(false);
-    error = true;
-  }
-
-  if (!error) 
-  {
-    setupTitleWidget();
-    KDialog::enableButtonOk(true);
-  }
+	if (!error) {
+		setupTitleWidget();
+		KDialog::enableButtonOk(true);
+	}
 }
 
 #include "ktvariable.moc"

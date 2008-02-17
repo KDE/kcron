@@ -15,36 +15,35 @@
 #include "ktlistitem.h"
 
 /**
-  * QListViewItem view of a CTCron.
-  */
-class KTListCron : public KTListItem
-{
+ * QListViewItem view of a CTCron.
+ */
+class KTListCron : public KTListItem {
 public:
 
-/**
-  * Construct tasks or variables folder from branch.
-  */
-  KTListCron(KTListItem* parent, const char* name, CTCron* _ctcron);
+	/**
+	 * Construct tasks or variables folder from branch.
+	 */
+	KTListCron(KTListItem* parent, const char* name, CTCron* _ctcron);
 
-/**
-  * Construct tasks or variables folder from root.
-  */
-  KTListCron(Q3ListView* parent, const char* name, CTCron* _ctcron);
+	/**
+	 * Construct tasks or variables folder from root.
+	 */
+	KTListCron(Q3ListView* parent, const char* name, CTCron* _ctcron);
 
-/**
-  * Construct user folder from root.
-  */
-  KTListCron(Q3ListView* parent, CTCron* _ctcron);
+	/**
+	 * Construct user folder from root.
+	 */
+	KTListCron(Q3ListView* parent, CTCron* _ctcron);
 
-/**
-  * Refresh.
-  */
-  virtual void refresh();
+	/**
+	 * Refresh.
+	 */
+	virtual void refresh();
 
-/**
-  *Print user's crontab
-  */
-  virtual void print(KTPrint &printer) const;
+	/**
+	 *Print user's crontab
+	 */
+	virtual void print(KTPrint &printer) const;
 
 };
 

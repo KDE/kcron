@@ -15,12 +15,12 @@
 QList<QString> CTDayOfMonth::shortName;
 
 CTDayOfMonth::CTDayOfMonth(const QString& tokStr) :
-	CTUnit(1, 31, tokStr) {
+	CTUnit(CTDayOfMonth::MINIMUM, CTDayOfMonth::MAXIMUM, tokStr) {
 }
 
 QString CTDayOfMonth::describe() const {
 	initializeNames();
-	return (count() == 31) ? i18n("every day ") : CTUnit::genericDescribe(shortName);
+	return (count() == CTDayOfMonth::MAXIMUM) ? i18n("every day ") : CTUnit::genericDescribe(shortName);
 }
 
 QString CTDayOfMonth::getName(const int ndx) {

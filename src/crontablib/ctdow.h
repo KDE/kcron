@@ -43,6 +43,9 @@ public:
 	 */
 	static QString getName(const int ndx, const bool format = CTDayOfWeek::longFormat);
 
+	static const int MINIMUM = 1;
+	static const int MAXIMUM = 7;
+	
 private:
 	static void initializeNames();
 	static QList<QString> shortName;

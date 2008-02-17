@@ -14,8 +14,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include <q3header.h>
-#include <qfileinfo.h>
+#include <QFileInfo>
 #include <QFile>
 #include <qdatetime.h>
 #include <QResizeEvent>
@@ -47,8 +46,7 @@ KTView::KTView(QWidget *parent) :
 	refresh();
 	listView->setSelected(listView->firstChild(), true);
 
-	connect(this, SIGNAL(enableModificationButtons(bool)), parent, 
-	SLOT(slotEnableModificationButtons(bool)));
+	connect(this, SIGNAL(enableModificationButtons(bool)), parent, SLOT(slotEnableModificationButtons(bool)));
 
 	connect(this, SIGNAL(enablePaste(bool
 			)), parent, 
@@ -78,9 +76,9 @@ void KTView::refresh() {
 	listView->setAllColumnsShowFocus(true);
 	listView->setShowSortIndicator(true);
 
-	const CTHost& cth(ktapp->getCTHost());
+	const CTHost& ctHost(ktapp->getCTHost());
 
-	if (cth.root())
+	if (ctHost.isRootUser())
 		listView->addColumn(i18n("Users/Tasks/Variable"));
 	else
 		listView->addColumn(i18n("Tasks/Variables"));
@@ -92,12 +90,12 @@ void KTView::refresh() {
 		listView->setColumnWidthMode(item, Q3ListView::Maximum);
 
 	// for each user
-	foreach(CTCron* ctCron, const_cast<CTHost&>(cth).cron) {
+	foreach(CTCron* ctCron, const_cast<CTHost&>(ctHost).cron) {
 
 		KTListVars* variables(0);
 		KTListTasks* tasks(0);
 
-		if (cth.root()) {
+		if (ctHost.isRootUser()) {
 			KTListCron* user = new KTListCron(listView, ctCron);
 			if (currentCTCron == ctCron) {
 				listView->setSelected(user, true);
@@ -152,7 +150,7 @@ void KTView::print() {
 
 	const CTHost& cth(ktapp->getCTHost());
 
-	KTPrint printer(cth.root(), this);
+	KTPrint printer(cth.isRootUser(), this);
 
 	if (printer.start()) {
 		crontab = printer.crontab();
@@ -162,7 +160,7 @@ void KTView::print() {
 
 		int copies = printer.numCopies();
 		while (copies != 0) {
-			if (allUsers || !cth.root()) {
+			if (allUsers || !cth.isRootUser()) {
 				ktli = (KTListItem*)listView->firstChild();
 			} else {
 				ktli = (KTListItem*)listView->currentItem();
@@ -188,7 +186,7 @@ void KTView::print() {
 			} else {
 				//ktli goes out of range here hence the need for user
 				pageHeading(user, printer);
-				if (!cth.root()) {
+				if (!cth.isRootUser()) {
 					while (ktli) {
 						ktli->print(printer);
 						ktli = (KTListItem*)ktli->nextSibling();

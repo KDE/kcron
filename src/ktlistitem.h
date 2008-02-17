@@ -18,59 +18,58 @@ class KTPrint;
 class CTCron;
 
 /**
-  * An enhanced QListViewItem that ensures all list view items have the
-  * same interface.
-  */
-class KTListItem : public Q3ListViewItem
-{
+ * An enhanced QListViewItem that ensures all list view items have the
+ * same interface.
+ */
+class KTListItem : public Q3ListViewItem {
 public:
 
-/**
-  * Construct a root list view item from a CTCron.
-  */
-  KTListItem(KTListItem* parent, const char* name, CTCron* _ctcron);
+	/**
+	 * Construct a root list view item from a CTCron.
+	 */
+	KTListItem(KTListItem* parent, const char* name, CTCron* _ctcron);
 
-/**
-  * Construct a non-root list view item from a CTCron.
-  */
-  KTListItem(Q3ListView* parent, const char* name, CTCron* _ctcron);
+	/**
+	 * Construct a non-root list view item from a CTCron.
+	 */
+	KTListItem(Q3ListView* parent, const char* name, CTCron* _ctcron);
 
-/**
-  * Destructor.
-  */
-  virtual ~KTListItem();
+	/**
+	 * Destructor.
+	 */
+	virtual ~KTListItem();
 
-/**
-  * Create.
-  */
-  virtual void create();
+	/**
+	 * Create.
+	 */
+	virtual void create();
 
-/**
-  * Edit.
-  */
-  virtual void edit();
+	/**
+	 * Edit.
+	 */
+	virtual void edit();
 
-/**
-  * Refresh.
-  */
-  virtual void refresh() = 0;
+	/**
+	 * Refresh.
+	 */
+	virtual void refresh() = 0;
 
-/**
-  * Print.
-  */
-  virtual void print(KTPrint &printer) const =0;
+	/**
+	 * Print.
+	 */
+	virtual void print(KTPrint &printer) const =0;
 
-/**
-  * Get the user's crontab.
-  */
-  CTCron* getCTCron() const;
+	/**
+	 * Get the user's crontab.
+	 */
+	CTCron* getCTCron() const;
 
 private:
 
-/**
-  * User's crontab.
-  */
-  CTCron* ctcron;
+	/**
+	 * User's crontab.
+	 */
+	CTCron* ctcron;
 
 };
 

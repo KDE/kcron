@@ -13,7 +13,6 @@
 #define KTVIEW_H
 
 #include <QWidget>
-//Added by qt3to4:
 #include <QResizeEvent>
 
 class QString;
@@ -29,16 +28,15 @@ class CTTask;
 /**
  * Main GUI view of the crontab entries.
  */
-class KTView : public QWidget
-{
-	Q_OBJECT
+class KTView : public QWidget {
+Q_OBJECT
 
 public:
 
 	/**
 	 * Initializes view.
 	 */
-	KTView (QWidget* parent = 0);
+	KTView(QWidget* parent = 0);
 
 	/**
 	 * Destructor.
@@ -53,12 +51,12 @@ public:
 	/**
 	 * Print page heading.
 	 */
-	void pageHeading (KTListItem *user, KTPrint &printer) const;
+	void pageHeading(KTListItem* user, KTPrint& printer) const;
 
 	/**
 	 * Print page footer.
 	 */
-	void pageFooter (KTListItem *user, KTPrint &printer) const;
+	void pageFooter(KTListItem* user, KTPrint& printer) const;
 
 	/**
 	 * Copies variables and/or tasks.
@@ -96,7 +94,7 @@ public:
 	 */
 	void run() const;
 
-	signals:
+signals:
 
 	/** Enables/disables modification 
 	 * buttons depending
@@ -130,78 +128,78 @@ public slots:
 	/**
 	 * Default action, edit.
 	 */
-void slotEdit(Q3ListViewItem* qlvi = 0);
+	void slotEdit(Q3ListViewItem* qlvi = 0);
 
 protected slots:
 
-/**
- * Set current and update menu
- */
-void slotSetCurrent (Q3ListViewItem* qlvi);
+	/**
+	 * Set current and update menu
+	 */
+	void slotSetCurrent(Q3ListViewItem* qlvi);
 
 protected:
 
-/**
- * Resize view contents.
- */
-virtual void resizeEvent (QResizeEvent* = 0);
+	/**
+	 * Resize view contents.
+	 */
+	virtual void resizeEvent(QResizeEvent* = 0);
 
 private:
 
-/**
- * Get absolute path of command.
- */
-QString absolute() const;
+	/**
+	 * Get absolute path of command.
+	 */
+	QString absolute() const;
 
-/**
- * Refresh view from underlying objects.
- */
-void refresh();
+	/**
+	 * Refresh view from underlying objects.
+	 */
+	void refresh();
 
-/**
- * The application.
- */
-KTApp* ktapp;
+	/**
+	 * The application.
+	 */
+	KTApp* ktapp;
 
-/**
- * Tree view of the crontab entries.
- */
-Q3ListView* listView;
+	/**
+	 * Tree view of the crontab entries.
+	 */
+	Q3ListView* listView;
 
-/**
- * Current user's crontab.
- */
-CTCron* currentCTCron;
+	/**
+	 * Current user's crontab.
+	 */
+	CTCron* currentCTCron;
 
-/**
- * Indicates whether or not currently selected item is a task.
- */
-bool currentIsTask;
+	/**
+	 * Indicates whether or not currently selected item is a task.
+	 */
+	bool currentIsTask;
 
-/**
- * Current task.
- */
-CTTask* currentCTTask;
+	/**
+	 * Current task.
+	 */
+	CTTask* currentCTTask;
 
-/**
- * Current variable.
- */
-CTVariable* currentCTVariable;
+	/**
+	 * Current variable.
+	 */
+	CTVariable* currentCTVariable;
 
-/**
- * Indicates whether or not the item on the clipboard is a task.
- */
-bool clipboardIsTask;
+	/**
+	 * Indicates whether or not the item on the clipboard is a task.
+	 */
+	bool clipboardIsTask;
 
-/**
- * Clipboard task.
- */
-CTTask* clipboardCTTask;
+	/**
+	 * Clipboard task.
+	 */
+	CTTask* clipboardCTTask;
 
-/**
- * Clipboard variable.
- */
-CTVariable* clipboardCTVariable;
+	/**
+	 * Clipboard variable.
+	 */
+	CTVariable* clipboardCTVariable;
 
 };
 

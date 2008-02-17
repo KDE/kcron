@@ -15,32 +15,24 @@
 #include "ctcron.h"
 
 KTListItem::KTListItem(KTListItem* parent, const char* name, CTCron* _ctcron) :
-  Q3ListViewItem(parent, name),
-  ctcron(_ctcron)
-{
+	Q3ListViewItem(parent, name), ctcron(_ctcron) {
 }
 
 KTListItem::KTListItem(Q3ListView* parent, const char* name, CTCron* _ctcron) :
-  Q3ListViewItem(parent, name),
-  ctcron(_ctcron)
-{
+	Q3ListViewItem(parent, name), ctcron(_ctcron) {
 }
 
-KTListItem::~KTListItem()
-{
+KTListItem::~KTListItem() {
 }
 
-void KTListItem::create()
-{
-  return;
+void KTListItem::create() {
+	return;
 }
 
-void KTListItem::edit()
-{
-  return;
+void KTListItem::edit() {
+	return;
 }
 
-CTCron* KTListItem::getCTCron() const
-{
-  return ctcron;
+CTCron* KTListItem::getCTCron() const {
+	return ctcron;
 }

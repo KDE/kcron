@@ -17,7 +17,7 @@ QList<QString> CTDayOfWeek::shortName;
 QList<QString> CTDayOfWeek::longName;
 
 CTDayOfWeek::CTDayOfWeek(const QString& tokStr) :
-	CTUnit(1, 7, tokStr) {
+	CTUnit(CTDayOfWeek::MINIMUM, CTDayOfWeek::MAXIMUM, tokStr) {
 	// Compensate for cron supporting Sunday as both 0 and 7.
 
 	if (get(0)) {
@@ -40,7 +40,7 @@ void CTDayOfWeek::initialize(const QString &tokStr) {
 
 QString CTDayOfWeek::describe() const {
 	initializeNames();
-	if (count() == 7)
+	if (count() == CTDayOfWeek::MAXIMUM)
 		return i18n("every day ");
 	else if (get(1) && get(2) && get(3) && get(4) && get(5))
 		return i18n("weekday ");

@@ -117,7 +117,7 @@ void CTHost::cancel() {
 	}
 }
 
-bool CTHost::dirty() {
+bool CTHost::isDirty() {
 	bool isDirty(false);
 
 	foreach(CTCron* ctCron, cron) {
@@ -153,6 +153,6 @@ CTCron* CTHost::createCTCron(const struct passwd *pwd) {
 	return p;
 }
 
-bool CTHost::root() const {
+bool CTHost::isRootUser() const {
 	return (!getuid());
 }

@@ -37,6 +37,8 @@ public:
 	 */
 	static QString getName(const int ndx);
 
+	static const int MINIMUM = 1;
+	static const int MAXIMUM = 31;
 private:
 	static void initializeNames();
 	static QList<QString> shortName;

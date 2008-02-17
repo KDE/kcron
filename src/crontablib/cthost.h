@@ -57,12 +57,12 @@ public:
 	/**
 	 * Indicates whether or not dirty.
 	 */
-	bool dirty();
+	bool isDirty();
 
 	/**
 	 * Indicates whether or not the user is the root user.
 	 */
-	bool root() const;
+	bool isRootUser() const;
 
 	/**
 	 * Indicates an error has occurred.

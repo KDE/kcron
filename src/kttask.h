@@ -12,183 +12,227 @@
 #ifndef KTTASK_H
 #define KTTASK_H
 
+#include <QLabel>
+#include <QPushButton>
+#include <QGroupBox>
+
 #include <kdialog.h>
 #include <kicon.h>
 #include <ktitlewidget.h>
-//Added by qt3to4:
-#include <QLabel>
 
 class QLabel;
 class QLineEdit;
 class QCheckBox;
-class Q3ButtonGroup;
-class QPushButton;
 
 class CTTask;
 
+class SetOrClearAllButton : public QPushButton {
+	
+public:
+	
+	enum Status {
+		SET_ALL,
+		CLEAR_ALL
+	};
+	
+	SetOrClearAllButton(QWidget * parent, SetOrClearAllButton::Status status);
+	
+	void setStatus(SetOrClearAllButton::Status status);
+	
+	bool isSetAll();
+	
+	bool isClearAll();
+	
+private:
+	
+	SetOrClearAllButton::Status currentStatus;
+	
+};
+
+class KTPushButton : public QPushButton {
+public:
+	
+	KTPushButton(QWidget * parent);
+	
+	void updatePalette();
+	
+	bool event(QEvent *e);
+	
+	void paintEvent(QPaintEvent*);
+
+	bool isDirty;
+	QPalette palSelected;
+	QPalette palNormal;
+};
+
 /**
-  * Task editor window.
-  */
-class KTTask : public KDialog
-{
-  Q_OBJECT
+ * Task editor window.
+ */
+class KTTask : public KDialog {
+Q_OBJECT
 
 public:
 
-/**
-  * Initialize from CTTask.
-  */
-  explicit KTTask(CTTask* _cttask = 0, const QString &_caption="");
+	/**
+	 * Initialize from CTTask.
+	 */
+	explicit KTTask(CTTask* _cttask = NULL, const QString &_caption="");
 
-/**
-  * Destroy.
-  */
-  ~KTTask();
+	/**
+	 * Destroy.
+	 */
+	~KTTask();
 
 private slots:
 
-/**
-  * Browse for command file.
-  */
-  void slotBrowse();
+	/**
+	 * Browse for command file.
+	 */
+	void slotBrowse();
 
-/**
-  * Control the task title bar.
-  */
-  void setupTitleWidget(const QString &comment="");
+	/**
+	 * Control the task title bar.
+	 */
+	void setupTitleWidget(const QString& comment="");
 
-/**
-  * Enable checkbox has changed
-  */
-  void slotEnabledChanged();
+	/**
+	 * Enable checkbox has changed
+	 */
+	void slotEnabledChanged();
 
-/**
-  * Reboot checkbox has changed
-  */
-  void slotRebootChanged();
+	/**
+	 * Reboot checkbox has changed
+	 */
+	void slotRebootChanged();
 
-/**
-  * Daily checkbox has been changed.
-  */
-  void slotDailyChanged();
+	/**
+	 * Daily checkbox has been changed.
+	 */
+	void slotDailyChanged();
 
-/**
-  * Apply changes and close.
-  */
-  void slotOK();
+	/**
+	 * Apply changes and close.
+	 */
+	void slotOK();
 
-/**
-  * Run the wizard.
-  */
-  void slotWizard();
+	/**
+	 * Run the wizard.
+	 */
+	void slotWizard();
 
-/**
-  * Cancel and close.
-  */
-  void slotCancel();
+	/**
+	 * Cancel and close.
+	 */
+	void slotCancel();
 
-/**
-  * Set or clear all month checkboxes
-  */
-  void slotAllMonths();
-  
-/**
-  * A month checkbox has changed
-  */
-  void slotMonthChanged();
-  
-/**
-  * Set or clear all day of month checkboxes
-  */
-  void slotAllDaysOfMonth();
-  
-/**
-  * A day of month checkbox has changed
-  */
-  void slotDayOfMonthChanged();
-  
-/**
-  * Set or clear all day of week checkboxes
-  */
-  void slotAllDaysOfWeek();
-  
-/**
-  * A day of week checkbox has changed
-  */
-  void slotDayOfWeekChanged();
-  
-/**
-  * Set or clear all hour checkboxes
-  */
-  void slotAllHours();
-  
-/**
-  * An hour checkbox has changed
-  */
-  void slotHourChanged();
-  
-/**
-  * Set or clear all minute checkboxes
-  */
-  void slotAllMinutes();
-  
-/**
-  * A minute checkbox has changed
-  */
-  void slotMinuteChanged();
-  
+	/**
+	 * Set or clear all month checkboxes
+	 */
+	void slotAllMonths();
+
+	/**
+	 * A month checkbox has changed
+	 */
+	void slotMonthChanged();
+
+	/**
+	 * Set or clear all day of month checkboxes
+	 */
+	void slotAllDaysOfMonth();
+
+	/**
+	 * A day of month checkbox has changed
+	 */
+	void slotDayOfMonthChanged();
+
+	/**
+	 * Set or clear all day of week checkboxes
+	 */
+	void slotAllDaysOfWeek();
+
+	/**
+	 * A day of week checkbox has changed
+	 */
+	void slotDayOfWeekChanged();
+
+	/**
+	 * Set or clear all hour checkboxes
+	 */
+	void slotAllHours();
+
+	/**
+	 * An hour checkbox has changed
+	 */
+	void slotHourChanged();
+
+	/**
+	 * Set or clear all minute checkboxes
+	 */
+	void slotAllMinutes();
+
+	/**
+	 * A minute checkbox has changed
+	 */
+	void slotMinuteChanged();
+
 private:
+	QGroupBox* createHoursGroup(QWidget* mainWidget);
+	QGroupBox* createMinutesGroup(QWidget* mainWidget);
+	
+	QGroupBox* createMonthsGroup(QWidget* mainWidget);
+	
+	QGroupBox* createDaysOfMonthGroup(QWidget* mainWidget);
+	QGroupBox* createDaysOfWeekGroup(QWidget* mainWidget);
 
-/**
-  * Task.
-  */
-  CTTask*         cttask;
+	
+	bool isEveryDay();
+	
+	/**
+	 * Task.
+	 */
+	CTTask* cttask;
 
+	// Widgets.
 
-  // Widgets.
+	KTitleWidget* titleWidget;
+	QLabel* labUser;
+	QLineEdit* leUser;
 
-  KTitleWidget*   titleWidget;
-  QLabel*         labUser;
-  QLineEdit*      leUser;
+	QLabel* labIcon;
 
-  QLabel*         labIcon;
+	QLabel* labComment;
+	QLineEdit* leComment;
 
-  QLabel*         labComment;
-  QLineEdit*      leComment;
+	QLabel* labCommand;
+	QLineEdit* leCommand;
+	QPushButton* pbBrowse;
 
-  QLabel*         labCommand;
-  QLineEdit*      leCommand;
-  QPushButton*    pbBrowse;
+	QCheckBox* chkEnabled;
+	QCheckBox* chkReboot;
+	QCheckBox* cbEveryDay;
 
-  QCheckBox*      chkEnabled;
-  QCheckBox*      chkReboot;
+	QGroupBox* bgMonth;
+	KTPushButton* cbMonth[13];
+	SetOrClearAllButton* pbAllMonths;
 
-  Q3ButtonGroup*   bgMonth;
-  QCheckBox*      cbMonth[13];
-  QPushButton*    pbAllMonths;
+	QGroupBox* bgDayOfMonth;
+	KTPushButton* pbDayOfMonth[32];
+	SetOrClearAllButton* pbAllDaysOfMonth;
 
-  Q3ButtonGroup*   bgDayOfMonth;
-  QPushButton*    pbDayOfMonth[32];
-  QPushButton*    pbAllDaysOfMonth;
+	QGroupBox* bgDayOfWeek;
+	KTPushButton* cbDayOfWeek[8];
+	SetOrClearAllButton* pbAllDaysOfWeek;
 
-  Q3ButtonGroup*   bgDayOfWeek;
-  QCheckBox*      cbDayOfWeek[8];
-  QPushButton*    pbAllDaysOfWeek;
+	QGroupBox* bgHour;
+	QLabel* labAM;
+	QLabel* labPM;
+	QPushButton* pbHour[25];
+	SetOrClearAllButton* pbAllHours;
 
-  Q3ButtonGroup*   bgEveryDay;
-  QCheckBox*      cbEveryDay;
-
-  Q3ButtonGroup*   bgHour;
-  QLabel*         labAM;
-  QLabel*         labPM;
-  QPushButton*    pbHour[25];
-  QPushButton*    pbAllHours;
-
-  Q3ButtonGroup*   bgMinute;
-  QPushButton*    pbMinute[61];
-  QPushButton*    pbAllMinutes;
+	QGroupBox* bgMinute;
+	QPushButton* pbMinute[61];
+	SetOrClearAllButton* pbAllMinutes;
 
 };
 
-  
 #endif // KTTASK_H

@@ -18,41 +18,40 @@
 class QString;
 
 /**
-  * QListViewItem of a "variables" folder.
-  */
-class KTListVars : public KTListItem
-{
+ * QListViewItem of a "variables" folder.
+ */
+class KTListVars : public KTListItem {
 public:
 
-/**
-  * Construct variables folder from branch.
-  */
-  KTListVars(KTListItem* parent, CTCron* _ctcron);
+	/**
+	 * Construct variables folder from branch.
+	 */
+	KTListVars(KTListItem* parent, CTCron* _ctcron);
 
-/**
-  * Construct variables folder from root.
-  */
-  KTListVars(Q3ListView* parent, CTCron* _ctcron);
+	/**
+	 * Construct variables folder from root.
+	 */
+	KTListVars(Q3ListView* parent, CTCron* _ctcron);
 
-/**
-  * Internationalized description.
-  */
-  static QString getDescription();
+	/**
+	 * Internationalized description.
+	 */
+	static QString getDescription();
 
-/**
-  * Refresh.
-  */
-  void refresh();
+	/**
+	 * Refresh.
+	 */
+	void refresh();
 
-/**
-  * print all variables.
-  */
-   void print(KTPrint &printer) const;
+	/**
+	 * print all variables.
+	 */
+	void print(KTPrint &printer) const;
 
-/**
-  * Edit.
-  */
-  void create();
+	/**
+	 * Edit.
+	 */
+	void create();
 
 };
 

@@ -27,8 +27,7 @@ class CTHost;
  * Provides main window handling, session management and keyboard
  * acceleration.
  */
-class KTApp : public KXmlGuiWindow
-{
+class KTApp : public KXmlGuiWindow {
 	Q_OBJECT
 
 	friend class KTView;
@@ -36,8 +35,7 @@ class KTApp : public KXmlGuiWindow
 public:
 
 	// Menu constants
-	enum editEntries
-	{
+	enum editEntries {
 		menuEditNew=4,
 		menuEditModify,
 		menuEditDelete,
@@ -92,154 +90,154 @@ public slots:
 	/**
 	 * Save document.
 	 */
-void slotFileSave();
+	void slotFileSave();
 
-/**
- * Print document.
- */
-void slotFilePrint();
+	/**
+	 * Print document.
+	 */
+	void slotFilePrint();
 
-/**
- * Close all open windows then quits the application.  If queryClose()
- * returns false because the user canceled the saveModified() dialog, the
- * closing breaks.
- */
-void slotFileQuit();
+	/**
+	 * Close all open windows then quits the application.  If queryClose()
+	 * returns false because the user canceled the saveModified() dialog, the
+	 * closing breaks.
+	 */
+	void slotFileQuit();
 
-/**
- * Pop up an edit menu.
- */
-void slotEdit(const QPoint& qp);
+	/**
+	 * Pop up an edit menu.
+	 */
+	void slotEdit(const QPoint& qp);
 
-/**
- * Put the marked objects on the clipboard and remove it from the
- * document.
- */
-void slotEditCut();
+	/**
+	 * Put the marked objects on the clipboard and remove it from the
+	 * document.
+	 */
+	void slotEditCut();
 
-/**
- * Put the marked objects on the clipboard.
- */
-void slotEditCopy();
+	/**
+	 * Put the marked objects on the clipboard.
+	 */
+	void slotEditCopy();
 
-/**
- * Paste the object on clipboard into the document
- */
-void slotEditPaste();
+	/**
+	 * Paste the object on clipboard into the document
+	 */
+	void slotEditPaste();
 
-/**
- * New.
- */
-void slotEditNew();
+	/**
+	 * New.
+	 */
+	void slotEditNew();
 
-/**
- * Modify.
- */
-void slotEditModify();
+	/**
+	 * Modify.
+	 */
+	void slotEditModify();
 
-/**
- * Delete.
- */
-void slotEditDelete();
+	/**
+	 * Delete.
+	 */
+	void slotEditDelete();
 
-/**
- * Toggle enabled.
- */
-void slotEditEnable();
+	/**
+	 * Toggle enabled.
+	 */
+	void slotEditEnable();
 
-/**
- * Run program now.
- */
-void slotEditRunNow();
+	/**
+	 * Run program now.
+	 */
+	void slotEditRunNow();
 
-/**
- * Changes the status bar contents for the standard label permanently;
- * used to indicate current actions.
- */
-void slotStatusMsg(const QString & text);
+	/**
+	 * Changes the status bar contents for the standard label permanently;
+	 * used to indicate current actions.
+	 */
+	void slotStatusMsg(const QString & text);
 
-/**
- * Changes the status message of the whole status bar for two seconds,
- * then restores the last status. This is used to display status bar
- * messages that give information about actions for toolbar icons and
- * menu entries.
- */
-void slotStatusHelpMsg(const QString & text);
+	/**
+	 * Changes the status message of the whole status bar for two seconds,
+	 * then restores the last status. This is used to display status bar
+	 * messages that give information about actions for toolbar icons and
+	 * menu entries.
+	 */
+	void slotStatusHelpMsg(const QString & text);
 
-/** Enables/disables modification buttons
- */
-void slotEnableModificationButtons(bool);
+	/** Enables/disables modification buttons
+	 */
+	void slotEnableModificationButtons(bool);
 
-/** Enables/disables paste button
- */
-void slotEnablePaste(bool);
+	/** Enables/disables paste button
+	 */
+	void slotEnablePaste(bool);
 
-/** Enables/disables "Run now"
- */
-void slotEnableRunNow(bool);
+	/** Enables/disables "Run now"
+	 */
+	void slotEnableRunNow(bool);
 
-/** Enables/disables "Activated"
- */
-void slotEnableEnabled(bool);
+	/** Enables/disables "Activated"
+	 */
+	void slotEnableEnabled(bool);
 
 private:
 
-/**
- * Disabled copy constructor.
- */
-KTApp(const KTApp& source);
+	/**
+	 * Disabled copy constructor.
+	 */
+	KTApp(const KTApp& source);
 
-/**
- * Disabled assignment operator.
- */
-void operator =(const KTApp& source);
+	/**
+	 * Disabled assignment operator.
+	 */
+	void operator =(const KTApp& source);
 
-/**
- * Get application caption.
- */
-QString caption();
+	/**
+	 * Get application caption.
+	 */
+	QString caption();
 
-/**
- * Initialize actions.
- */
-void setupActions();
+	/**
+	 * Initialize actions.
+	 */
+	void setupActions();
 
-/**
- * Initialize status bar.
- */
-void initStatusBar();
+	/**
+	 * Initialize status bar.
+	 */
+	void initStatusBar();
 
-/**
- * Read general options again and initialize all variables like the
- * geometry.
- */
-void readOptions();
+	/**
+	 * Read general options again and initialize all variables like the
+	 * geometry.
+	 */
+	void readOptions();
 
-/**
- * Save general options like all bar positions and status as well as the
- * geometry to the configuration file.
- */
-void saveOptions();
+	/**
+	 * Save general options like all bar positions and status as well as the
+	 * geometry to the configuration file.
+	 */
+	void saveOptions();
 
-/**
- * Configuration object of the application.
- */
-KSharedConfigPtr config;
+	/**
+	 * Configuration object of the application.
+	 */
+	KSharedConfigPtr config;
 
-/**
- * Main GUI view/working area.
- */
-KTView* view;
+	/**
+	 * Main GUI view/working area.
+	 */
+	KTView* view;
 
-/**
- * Document object, here crotab enries.
- */
-CTHost* cthost;
+	/**
+	 * Document object, here crotab enries.
+	 */
+	CTHost* ctHost;
 
-/**
- * Path to the crontab binary
- */
-QString crontab;
+	/**
+	 * Path to the crontab binary
+	 */
+	QString crontab;
 };
 
 #endif // KTAPP_H

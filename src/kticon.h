@@ -11,36 +11,36 @@
 
 #ifndef KTICON_H
 #define KTICON_H
- 
-#include <qpixmap.h>
 
+#include <QPixmap>
 
 /**
-  * Wraps all icons used by the application.
-  */
+ * Wraps all icons used by the application.
+ */
 
-class KTIcon
-{
+class KTIcon {
 
 public:
 
-  enum IconSize {Small,Normal,Large};
+	enum IconSize {Small,Normal,Large};
 
-  static QPixmap getMiniIcon(const QString& name);
-  static QPixmap getIcon(const QString& name);
-  static QPixmap getMaxIcon(const QString& name);
-  static QPixmap application(int size);
-  static QPixmap system(int size);
-  static QPixmap user(int size);
-  static QPixmap variables(int size);
-  static QPixmap variable(int size);
-  static QPixmap mail(int size);
-  static QPixmap shell(int size);
-  static QPixmap home(int size);
-  static QPixmap path(int size);
-  static QPixmap tasks(int size);
-  static QPixmap task(int size);
-  static QPixmap information(int size);
+	static QPixmap application(KTIcon::IconSize size);
+	static QPixmap system(KTIcon::IconSize size);
+	static QPixmap user(KTIcon::IconSize size);
+	static QPixmap variables(KTIcon::IconSize size);
+	static QPixmap variable(KTIcon::IconSize size);
+	static QPixmap mail(KTIcon::IconSize size);
+	static QPixmap shell(KTIcon::IconSize size);
+	static QPixmap home(KTIcon::IconSize size);
+	static QPixmap path(KTIcon::IconSize size);
+	static QPixmap tasks(KTIcon::IconSize size);
+	static QPixmap task(KTIcon::IconSize size);
+	
+	static QPixmap information(KTIcon::IconSize size);
+	static QPixmap error(KTIcon::IconSize size);
+
+	static QPixmap getIcon(const QString&name, KTIcon::IconSize size);
+private:
 
 };
 

@@ -22,74 +22,69 @@
 #include <kdialog.h>
 #include <ktitlewidget.h>
 
-
 class CTVariable;
 
 /**
-  * Environment variable editor window.
-  */
-class KTVariable : public KDialog
-{
-  Q_OBJECT
+ * Environment variable editor window.
+ */
+class KTVariable : public KDialog {
+Q_OBJECT
 
 public:
 
-/**
-  * Initialize from CTVariable.
-  */
-  explicit KTVariable(CTVariable* _ctvar = 0, const QString &_caption="");
+	/**
+	 * Initialize from CTVariable.
+	 */
+	explicit KTVariable(CTVariable* _ctvar = 0, const QString &_caption="");
 
-/**
-  * Destroy.
-  */
-  ~KTVariable();
+	/**
+	 * Destroy.
+	 */
+	~KTVariable();
 
 private slots:
 
-/**
-  * Setup title widget
-  */
-void setupTitleWidget(const QString &comment = "");
+	/**
+	 * Setup title widget
+	 */
+	void setupTitleWidget(const QString& comment = "", KTitleWidget::MessageType = KTitleWidget::PlainMessage);
 
-  /**
-   * Enable / disable variable
-   */
-  void slotEnabled();
+	/**
+	 * Enable / disable variable
+	 */
+	void slotEnabled();
 
-  /**
-   * Apply changes and close.
-   */
-  void slotOk();
+	/**
+	 * Apply changes and close.
+	 */
+	void slotOk();
 
-  /**
-   * Run the wizard.
-   */
-  void slotWizard();
-
+	/**
+	 * Run the wizard.
+	 */
+	void slotWizard();
 
 private:
 
-/**
-  * Environment variable.
-  */
-  CTVariable*     ctvar;
+	/**
+	 * Environment variable.
+	 */
+	CTVariable* ctvar;
 
-  // Widgets.
+	// Widgets.
 
-  KTitleWidget*   titleWidget;
+	KTitleWidget* titleWidget;
 
-  QLabel*         labIcon;
+	QComboBox* cmbVariable;
 
-  QLabel*         labVariable;
-  QComboBox*      cmbVariable;
+	QLabel* detailsIcon;
+	QLabel* details;
+	
+	QLineEdit* leValue;
 
-  QLabel*         labValue;
-  QLineEdit*      leValue;
+	KLineEdit* teComment;
 
-  QLabel*         labComment;
-  KLineEdit*      teComment;
-
-  QCheckBox*      chkEnabled;
+	QCheckBox* chkEnabled;
 };
 
 #endif // KTVARIABLE_H

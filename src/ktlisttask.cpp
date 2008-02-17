@@ -57,7 +57,7 @@ void KTListTask::refresh() {
 	KIconLoader *loader = KIconLoader::global();
 	QPixmap qpIcon(loader->loadIcon(qsCommand, KIconLoader::Small, 0, KIconLoader::DefaultState, QStringList(), 0L, true));
 	if (qpIcon.isNull())
-		qpIcon = KTIcon::getMiniIcon("system-run");
+		qpIcon = KTIcon::getIcon("system-run", KTIcon::Small);
 	setPixmap(0, qpIcon);
 }
 
