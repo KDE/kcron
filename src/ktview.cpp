@@ -16,7 +16,7 @@
 
 #include <QFileInfo>
 #include <QFile>
-#include <qdatetime.h>
+#include <QDateTime>
 #include <QResizeEvent>
 
 #include <kglobalsettings.h>

@@ -29,7 +29,7 @@ CTTask::CTTask(const QString& tokenString, const QString& _comment, bool _syscro
 	} else
 		enabled = true;
 
-	// Skip over 'silence' if found ... old option in vixie cron
+	// Skip over 'silence' if found... old option in vixie cron
 	if (tokStr.mid(0, 1) == "-")
 		tokStr = tokStr.mid(1, tokStr.length() - 1);
 
@@ -234,8 +234,8 @@ QString CTTask::describe() const {
 
 	int total(minute.count()*hour.count());
 
-	QString timeDesc("");
-	int count(0);
+	QString timeDesc = "";
+	int count = 0;
 
 	for (int h = 0; h <= 23; h++)
 		if (hour.get(h))
@@ -267,12 +267,12 @@ QString CTTask::describe() const {
 						break;
 					case 1:
 						if (total > 2)
-							timeDesc += (const char *)i18n(", and ").toLocal8Bit();
+							timeDesc += i18n(", and ");
 						else
-							timeDesc += (const char *)i18n(" and ").toLocal8Bit();
+							timeDesc += i18n(" and ");
 						break;
 					default:
-						timeDesc += (const char*)i18n(", ").toLocal8Bit();
+						timeDesc += i18n(", ");
 					}
 				}
 
@@ -281,7 +281,7 @@ QString CTTask::describe() const {
 	// every day of month versus every day of week.
 
 	if ((dayOfMonth.count() == 31) && (dayOfWeek.count() == 7))
-		dateFormat = (const char *)i18n("every day ").toLocal8Bit();
+		dateFormat = i18n("every day ");
 	else {
 		// Day of month not specified, so use day of week.
 		if (dayOfMonth.count() == 31)
@@ -330,6 +330,6 @@ QString CTTask::describe() const {
 	return format;
 }
 
-bool CTTask::system() const {
+bool CTTask::isSystemCrontab() const {
 	return syscron;
 }

@@ -127,7 +127,7 @@ KTVariable::~KTVariable() {
 void KTVariable::setupTitleWidget(const QString& comment, KTitleWidget::MessageType messageType) {
 	//krazy:exclude=doublequote_chars
 	if (comment.isEmpty()) {
-		titleWidget->setComment(i18n("<i>This variable will be used by planned tasks.</i>"));
+		titleWidget->setComment(i18n("<i>This variable will be used by scheduled tasks.</i>"));
 		titleWidget->setPixmap(KTIcon::variable(KTIcon::Large), KTitleWidget::ImageRight);
 	}
 	else {
@@ -147,9 +147,9 @@ void KTVariable::slotEnabled() {
 }
 
 void KTVariable::slotOk() {
-	ctvar->variable = (const char*)cmbVariable->currentText().toLatin1()/*.toLocal8Bit()*/;
-	ctvar->value = (const char*)leValue->text().toLatin1();
-	ctvar->comment = (const char*)teComment->originalText().replace('\n',' ').replace('\r',' ').toLatin1();
+	ctvar->variable = cmbVariable->currentText();
+	ctvar->value = leValue->text();
+	ctvar->comment = teComment->originalText().replace('\n',' ').replace('\r',' ');
 	ctvar->enabled = chkEnabled->isChecked();
 	close();
 }
@@ -180,14 +180,14 @@ void KTVariable::slotWizard() {
 	bool error = false;
 
 	if (!chkEnabled->isChecked()) {
-		setupTitleWidget(i18n("<i>Please check 'Enabled' to edit this variable ...</i>"));
+		setupTitleWidget(i18n("<i>This variable is disabled.</i>"));
 		chkEnabled->setFocus();
 		KDialog::enableButtonOk(true);
 		error = true;
 	}
 
 	if (cmbVariable->currentText().isEmpty() && !error) {
-		setupTitleWidget(i18n("<i>Please enter the variable name ...</i>"), KTitleWidget::ErrorMessage);
+		setupTitleWidget(i18n("<i>Please enter the variable name...</i>"), KTitleWidget::ErrorMessage);
 		cmbVariable->setFocus();
 		KDialog::enableButtonOk(false);
 		error = true;

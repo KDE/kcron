@@ -24,6 +24,8 @@ class QLabel;
 class QLineEdit;
 class QCheckBox;
 
+class KUrlRequester;
+
 class CTTask;
 
 class SetOrClearAllButton : public QPushButton {
@@ -85,15 +87,11 @@ public:
 
 private slots:
 
-	/**
-	 * Browse for command file.
-	 */
-	void slotBrowse();
 
 	/**
 	 * Control the task title bar.
 	 */
-	void setupTitleWidget(const QString& comment="");
+	void setupTitleWidget(const QString& comment="", KTitleWidget::MessageType = KTitleWidget::PlainMessage);
 
 	/**
 	 * Enable checkbox has changed
@@ -183,6 +181,8 @@ private:
 	
 	QGroupBox* createDaysOfMonthGroup(QWidget* mainWidget);
 	QGroupBox* createDaysOfWeekGroup(QWidget* mainWidget);
+	
+	void defineCommandIcon();
 
 	
 	bool isEveryDay();
@@ -190,22 +190,18 @@ private:
 	/**
 	 * Task.
 	 */
-	CTTask* cttask;
+	CTTask* ctTask;
 
 	// Widgets.
 
 	KTitleWidget* titleWidget;
-	QLabel* labUser;
+
 	QLineEdit* leUser;
 
-	QLabel* labIcon;
-
-	QLabel* labComment;
 	QLineEdit* leComment;
 
-	QLabel* labCommand;
-	QLineEdit* leCommand;
-	QPushButton* pbBrowse;
+	QLabel* commandIcon;
+	KUrlRequester* command;
 
 	QCheckBox* chkEnabled;
 	QCheckBox* chkReboot;

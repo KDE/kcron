@@ -70,7 +70,7 @@ public:
 	/**
 	 * Indicates whether or not the task belongs to the system crontab.
 	 */
-	bool system() const;
+	bool isSystemCrontab() const;
 
 	CTMonth month;
 	CTDayOfMonth dayOfMonth;
