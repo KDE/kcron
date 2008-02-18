@@ -8,6 +8,14 @@ if(CMAKE_COMPILER_IS_GNUCXX)
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fmessage-length=0")
 endif(CMAKE_COMPILER_IS_GNUCXX)
 
+##
+# To specify a different install prefix, use :
+# cmake -D CMAKE_INSTALL_PREFIX=build .
+#
+# To help Eclipse discover include paths, use :
+# cmake -D CMAKE_VERBOSE_MAKEFILE=true .
+##
+
 add_subdirectory(src/crontablib)
 add_subdirectory(src) 
 
