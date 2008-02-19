@@ -1,4 +1,3 @@
-
 /***************************************************************************
  *   --------------------------------------------------------------------  *
  *   Print Options Dialog                                                  *
@@ -21,52 +20,47 @@
 #include <kdialog.h>
 #include <klocale.h>
 
-KTPrintOpt::KTPrintOpt(bool root) : QWidget()
-{
-  setWindowTitle(i18n("Cron Options"));
+KTPrintOpt::KTPrintOpt(bool root) :
+	QWidget() {
+	setWindowTitle(i18n("Cron Options"));
 
-  QVBoxLayout *main_ = new QVBoxLayout(this);
-  main_->setMargin(KDialog::marginHint());
-  main_->setSpacing(KDialog::spacingHint());
+	QVBoxLayout *main_ = new QVBoxLayout(this);
+	main_->setMargin(KDialog::marginHint());
+	main_->setSpacing(KDialog::spacingHint());
 
-  chkPrintCrontab = new QCheckBox(i18n("Print cron&tab"), this);
-  chkPrintCrontab->setObjectName("chkPrintCrontab");
-  main_->addWidget(chkPrintCrontab);
+	chkPrintCrontab = new QCheckBox(i18n("Print cron&tab"), this);
+	chkPrintCrontab->setObjectName("chkPrintCrontab");
+	main_->addWidget(chkPrintCrontab);
 
-  chkPrintAllUsers = new QCheckBox(i18n("Print &all users"), this);
-  chkPrintAllUsers->setObjectName("chkPrintAllUsers");
-  main_->addWidget(chkPrintAllUsers);
+	chkPrintAllUsers = new QCheckBox(i18n("Print &all users"), this);
+	chkPrintAllUsers->setObjectName("chkPrintAllUsers");
+	main_->addWidget(chkPrintAllUsers);
 
-  if (!root) {
-    chkPrintAllUsers->setChecked(false);
-    chkPrintAllUsers->setEnabled(false);
-  }
+	if (!root) {
+		chkPrintAllUsers->setChecked(false);
+		chkPrintAllUsers->setEnabled(false);
+	}
 
-  setLayout(main_);
+	setLayout(main_);
 }
 
-KTPrintOpt::~KTPrintOpt()
-{
+KTPrintOpt::~KTPrintOpt() {
 }
 
-bool KTPrintOpt::printCrontab()
-{
-  return chkPrintCrontab->isChecked();
+bool KTPrintOpt::printCrontab() {
+	return chkPrintCrontab->isChecked();
 }
 
-void KTPrintOpt::setPrintCrontab( bool setStatus )
-{
-  chkPrintCrontab->setChecked(setStatus);
+void KTPrintOpt::setPrintCrontab(bool setStatus) {
+	chkPrintCrontab->setChecked(setStatus);
 }
 
-bool KTPrintOpt::printAllUsers()
-{
-  return chkPrintAllUsers->isChecked();
+bool KTPrintOpt::printAllUsers() {
+	return chkPrintAllUsers->isChecked();
 }
 
-void KTPrintOpt::setPrintAllUsers( bool setStatus )
-{
-  chkPrintAllUsers->setChecked(setStatus);
+void KTPrintOpt::setPrintAllUsers(bool setStatus) {
+	chkPrintAllUsers->setChecked(setStatus);
 }
 
 #include "ktprintopt.moc"

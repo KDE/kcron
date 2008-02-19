@@ -1,4 +1,3 @@
-
 /***************************************************************************
  *   --------------------------------------------------------------------  *
  *   KDE\QT Printing class                                                 *
@@ -14,8 +13,8 @@
 #ifndef KTPRINT_H
 #define KTPRINT_H
 
-#include <vector>
-#include <QtGui/QPrinter>
+#include <QList>
+#include <QPrinter>
 
 #include <ktprintopt.h>
 
@@ -24,206 +23,200 @@ class QString;
 class QFont;
 
 /**
-  *Provides a wrapper for simple printing of text.
-  */
+ *Provides a wrapper for simple printing of text.
+ */
 class KTPrint {
 public:
 
-/**
-  *Static formatting constants
-  */
-  static const int alignTextLeft;
-  static const int alignTextRight;
-  static const int alignTextCenter;
+	/**
+	 *Static formatting constants
+	 */
+	static const int alignTextLeft;
+	static const int alignTextRight;
+	static const int alignTextCenter;
 
-/**
-  *Static Default Margin Constants
-  */
-  static const int defaultLeftMargin;
-  static const int defaultRightMargin;
-  static const int defaultTopMargin;
-  static const int defaultBottomMargin;
+	/**
+	 *Static Default Margin Constants
+	 */
+	static const int defaultLeftMargin;
+	static const int defaultRightMargin;
+	static const int defaultTopMargin;
+	static const int defaultBottomMargin;
 
-/**
-  * Contructor
-  */
-  KTPrint(bool _root, QWidget *_parent) :
-                leftMargin(defaultLeftMargin), 
-                rightMargin (defaultRightMargin), 
-                topMargin(defaultTopMargin),
-                bottomMargin(defaultBottomMargin), 
-                paint(0),
-                root(_root),
-                parent(_parent)
-  {
-    prnt = new QPrinter;
-    prntOpt = new KTPrintOpt(root);
-    prntOpt->setPrintCrontab("true");
-    createColumns(1);
-  }
+	/**
+	 * Contructor
+	 */
+	KTPrint(bool _root, QWidget *_parent) :
+		leftMargin(defaultLeftMargin), rightMargin(defaultRightMargin), topMargin(defaultTopMargin), bottomMargin(defaultBottomMargin), paint(0), root(_root), parent(_parent) {
+		prnt = new QPrinter;
+		prntOpt = new KTPrintOpt(root);
+		prntOpt->setPrintCrontab("true");
+		createColumns(1);
+	}
 
-/**
-  * Destructor
-  */
-  ~KTPrint();
-	
-/**
-  * Start the printing process, gain page info
-  */
-  bool start ();
-	
-/**
-  * Send the information to the printer
-  */
-  void finished ();
-	
-/**
-  * Set the font to be used
-  */
-  void setFont (const QFont &font);
+	/**
+	 * Destructor
+	 */
+	~KTPrint();
 
-/**
-  * Get the current font
-  */
-  QFont getFont ()const;
-	
-/**
-  * Print text
-  */
-  void print (const QString &str, int col =1, int alignment=KTPrint::defaultLeftMargin, bool wordWrap = true);
+	/**
+	 * Start the printing process, gain page info
+	 */
+	bool start();
 
-/**
-  * Constructs the columns
-  */
-  void createColumns(unsigned num_columns =1);	
+	/**
+	 * Send the information to the printer
+	 */
+	void finished();
 
-/**
-  * Make sure that all columns start printing on the same line
-  */
-  void levelColumns(int space = 5);
+	/**
+	 * Set the font to be used
+	 */
+	void setFont(const QFont &font);
 
-/**
-  * Insert a new page
-  */
-  void newPage();
+	/**
+	 * Get the current font
+	 */
+	QFont getFont() const;
 
-/**
-  *
-  */
-  int numCopies () const;  
-  
-/**
-  * Whether crontab should be printed
-  */
-  bool crontab() const
-  {
-     return prntOpt->printCrontab();
-  }
-  
-/**  
-  * Whether all users should be printed (root only)
-  */
-  bool allUsers() const
-  {
-     return prntOpt->printAllUsers();
-  }
+	/**
+	 * Print text
+	 */
+	void print(const QString &str, int col =1, int alignment=KTPrint::defaultLeftMargin, bool wordWrap = true);
+
+	/**
+	 * Constructs the columns
+	 */
+	void createColumns(unsigned num_columns =1);
+
+	/**
+	 * Make sure that all columns start printing on the same line
+	 */
+	void levelColumns(int space = 5);
+
+	/**
+	 * Insert a new page
+	 */
+	void newPage();
+
+	/**
+	 *
+	 */
+	int numCopies() const;
+
+	/**
+	 * Whether crontab should be printed
+	 */
+	bool crontab() const {
+		return prntOpt->printCrontab();
+	}
+
+	/**  
+	 * Whether all users should be printed (root only)
+	 */
+	bool allUsers() const {
+		return prntOpt->printAllUsers();
+	}
 private:
 
- /**
-   *Disable the copy constructor and the assignment operator
-   */
-  //KTPrint (const KTPrint&) {}
-  KTPrint& operator=(const KTPrint&) {return *this;}
+	/**
+	 *Disable the copy constructor and the assignment operator
+	 */
+	//KTPrint (const KTPrint&) {}
+	KTPrint& operator=(const KTPrint&) {
+		return *this;
+	}
 
-/**
-  * Left boundary
-  */	
-  int       leftMargin;
+	/**
+	 * Left boundary
+	 */
+	int leftMargin;
 
-/**
-  * Right boundary
-  */
-  int       rightMargin;
+	/**
+	 * Right boundary
+	 */
+	int rightMargin;
 
-/**
-  * Top boundary
-  */
-  int       topMargin;
+	/**
+	 * Top boundary
+	 */
+	int topMargin;
 
-/**
-  * Bottom boundary
-  */
-  int       bottomMargin;
-	
-/**
-  * Width of the page
-  */
-  int       width;
+	/**
+	 * Bottom boundary
+	 */
+	int bottomMargin;
 
-/**
-  * Height of the page
-  */
-  int       height;
+	/**
+	 * Width of the page
+	 */
+	int width;
 
-/**
-  * Pointer to a painter object
-  */
-  QPainter *paint;
+	/**
+	 * Height of the page
+	 */
+	int height;
 
-/**
-  * Whether we are root or not
-  */
-  bool root;
+	/**
+	 * Pointer to a painter object
+	 */
+	QPainter *paint;
 
-/**
-  * Pointer a printer object
-  */
-  QPrinter *prnt;
+	/**
+	 * Whether we are root or not
+	 */
+	bool root;
 
-/**
-  * Pointer a printer options object
-  */
-  KTPrintOpt *prntOpt;
+	/**
+	 * Pointer a printer object
+	 */
+	QPrinter *prnt;
 
-/**
-  * Pointer to parent widget
-  */
-  QWidget *parent;
+	/**
+	 * Pointer a printer options object
+	 */
+	KTPrintOpt *prntOpt;
 
-/**
-  *Nest a column class to make text layout nicer
-  */
+	/**
+	 * Pointer to parent widget
+	 */
+	QWidget *parent;
 
-  class Column {
-    public:
+	/**
+	 *Nest a column class to make text layout nicer
+	 */
 
-     /**
-       *Starting X co-ord
-       */
-      int start;
+	class Column {
+public:
 
-     /**
-       *Finishing X co-ord
-       */
-      int finish;
+		/**
+		 *Starting X co-ord
+		 */
+		int start;
 
-     /**
-       *Current Y co-ord
-       */
-      int height;
+		/**
+		 *Finishing X co-ord
+		 */
+		int finish;
 
+		/**
+		 *Current Y co-ord
+		 */
+		int height;
 
-    /**
-      *Return the width of the column
-      */
-      int width () const {return finish-start;}
-  };
+		/**
+		 *Return the width of the column
+		 */
+		int width() const {
+			return finish-start;
+		}
+	};
 
-/**
-  * Keep a vector of the columns
-  */
-  std::vector <Column*> columns;
+	/**
+	 * Keep a vector of the columns
+	 */
+	QList<Column*> columns;
 
 };
-	
+
 #endif

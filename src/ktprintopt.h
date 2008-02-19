@@ -1,4 +1,3 @@
-
 /***************************************************************************
  *   --------------------------------------------------------------------  *
  *   Print Options Dialog                                                  *
@@ -19,31 +18,30 @@
 class QCheckBox;
 
 /**
-  *Give the user the option to print the crontab file.
-  *If the user is root ask if they want to print all the users
-  */
+ *Give the user the option to print the crontab file.
+ *If the user is root ask if they want to print all the users
+ */
 
-class KTPrintOpt : public QWidget
-{
-  Q_OBJECT
+class KTPrintOpt : public QWidget {
+Q_OBJECT
 public:
 
-/**
-  * Constructs the dialog, if root is true the print all users is not disabled
-  */
-  KTPrintOpt(bool root = false);
+	/**
+	 * Constructs the dialog, if root is true the print all users is not disabled
+	 */
+	KTPrintOpt(bool root = false);
 
-  ~KTPrintOpt();
+	~KTPrintOpt();
 
-  bool printCrontab();
-  void setPrintCrontab( bool setStatus );
+	bool printCrontab();
+	void setPrintCrontab(bool setStatus);
 
-  bool printAllUsers();
-  void setPrintAllUsers( bool setStatus );
+	bool printAllUsers();
+	void setPrintAllUsers(bool setStatus);
 
 private:
-  QCheckBox*      chkPrintCrontab;
-  QCheckBox*      chkPrintAllUsers;
+	QCheckBox* chkPrintCrontab;
+	QCheckBox* chkPrintAllUsers;
 };
 
 #endif
