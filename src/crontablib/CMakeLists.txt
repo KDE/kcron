@@ -1,9 +1,10 @@
-add_definitions (-DQT3_SUPPORT -DQT3_SUPPORT_WARNINGS)
 
 set(kcron_crontablib_SRCS
    cthost.cpp 
    ctcron.cpp 
    ctmonth.cpp 
+   ctminute.cpp 
+   cthour.cpp 
    ctdom.cpp 
    ctdow.cpp 
    cttask.cpp 

@@ -9,8 +9,8 @@
  *   (at your option) any later version.                                   * 
  ***************************************************************************/
 
-#ifndef KTVARIABLE_H
-#define KTVARIABLE_H
+#ifndef VARIABLE_EDITOR_DIALOG_H
+#define VARIABLE_EDITOR_DIALOG_H
 
 #include <QLabel>
 #include <QLineEdit>
@@ -27,7 +27,7 @@ class CTVariable;
 /**
  * Environment variable editor window.
  */
-class KTVariable : public KDialog {
+class VariableEditorDialog : public KDialog {
 Q_OBJECT
 
 public:
@@ -35,12 +35,12 @@ public:
 	/**
 	 * Initialize from CTVariable.
 	 */
-	explicit KTVariable(CTVariable* _ctvar = 0, const QString &_caption="");
+	explicit VariableEditorDialog(CTVariable* _ctvar = 0, const QString &_caption="");
 
 	/**
 	 * Destroy.
 	 */
-	~KTVariable();
+	~VariableEditorDialog();
 
 private slots:
 
@@ -82,9 +82,9 @@ private:
 	
 	QLineEdit* leValue;
 
-	KLineEdit* teComment;
+	QLineEdit* teComment;
 
 	QCheckBox* chkEnabled;
 };
 
-#endif // KTVARIABLE_H
+#endif // VARIABLE_EDITOR_DIALOG_H

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   KT list view item task header.                                        *
+ *   CT Month Implementation                                               *
  *   --------------------------------------------------------------------  *
  *   Copyright (C) 1999, Gary Meyer <gary@meyer.net>                       *
  *   --------------------------------------------------------------------  *
@@ -9,51 +9,29 @@
  *   (at your option) any later version.                                   * 
  ***************************************************************************/
 
-#ifndef KTLISTTASK_H
-#define KTLISTTASK_H
+#include "cthour.h"
 
-#include "ktlistitem.h"
-
-class CTTask;
+#include <klocale.h>
 
 /**
-  * QListViewItem with a CTTask.
-  */
-class KTListTask : public KTListItem
-{
-public:
+ * Constructs from a tokenized string.
+ */
+CTHour::CTHour(const QString& tokStr) :
+	CTUnit(0, 23, tokStr) {
+}
 
-/**
-  * Initialize the list view item and task.
-  */
-  KTListTask(KTListItem* parent, CTCron* _ctcron, CTTask* _cttask);
 
-/**
-  * Refresh from underlying task.
-  */
-  virtual void refresh();
+int CTHour::findPeriod() const {
+	QList<int> periods;
+	periods << 2 << 3 << 4 << 6 << 8;
+	
+	return CTUnit::findPeriod(periods);
+}
 
-/**
-  * Print task.
-  */
-  virtual void print(KTPrint &printer) const;
-
-/**
-  * Edit task.
-  */
-  virtual void edit();
-
-/**
-  * Get the task.
-  */
-  CTTask* getCTTask() const;
-
-private:
-
-/**
-  * Task.
-  */
-  CTTask* cttask;
-};
-
-#endif // KTLISTTASK_H
+QString CTHour::exportUnit() const {
+	int period = findPeriod();
+	if (period!=0 && period!=1)
+		return QString("*/%1").arg(QString::number(period));
+	
+	return CTUnit::exportUnit();
+}

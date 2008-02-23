@@ -9,8 +9,8 @@
  *   (at your option) any later version.                                   * 
  ***************************************************************************/
 
-#ifndef KTTASK_H
-#define KTTASK_H
+#ifndef TASK_EDITOR_DIALOG_H
+#define TASK_EDITOR_DIALOG_H
 
 #include <QLabel>
 #include <QPushButton>
@@ -70,7 +70,7 @@ public:
 /**
  * Task editor window.
  */
-class KTTask : public KDialog {
+class TaskEditorDialog : public KDialog {
 Q_OBJECT
 
 public:
@@ -78,12 +78,12 @@ public:
 	/**
 	 * Initialize from CTTask.
 	 */
-	explicit KTTask(CTTask* _cttask = NULL, const QString &_caption="");
+	explicit TaskEditorDialog(CTTask* _cttask = NULL, const QString &_caption="");
 
 	/**
 	 * Destroy.
 	 */
-	~KTTask();
+	~TaskEditorDialog();
 
 private slots:
 
@@ -231,4 +231,4 @@ private:
 
 };
 
-#endif // KTTASK_H
+#endif // TASK_EDITOR_DIALOG_H

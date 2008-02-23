@@ -48,9 +48,11 @@ public:
 	void operator =(const CTUnit& unit);
 
 	/**
-	 * Returns tokenization
+	 * Tokenizes unit into string such as
+	 * "0,1,2,3,5,6,10,15,20,25,30".
 	 */
-	QString exportUnit();
+	virtual QString exportUnit() const;
+
 	
 	/**
 	 * Parses unit such as "0-3,5,6,10-30/5".
@@ -65,50 +67,33 @@ public:
 	void parse(const QString& tokenString = "");
 
 	/**
-	 * Tokenizes unit into string such as
-	 * "0,1,2,3,5,6,10,15,20,25,30".
-	 */
-	QString tokenize() const;
-
-	/**
 	 * Lower bound.
 	 */
-	int begin();
+	int minimum() const;
 
 	/**
 	 * Upper bound.
 	 */
-	int end();
+	int maximum() const;
 
 	/**
 	 * Accessor.
 	 */
-	bool get(int pos) const;
+	bool isEnabled(int pos) const;
 
-	/**
-	 * Mutator.
-	 */
-	void set(int pos, bool value);
+	bool isAllEnabled() const;
 
-	/**
-	 * Enable.
-	 */
-	void enable(int pos);
-
-	/**
-	 * Disable.
-	 */
-	void disable(int pos);
+	void setEnabled(int pos, bool value);
 
 	/**
 	 * Indicates whether enabled intervals have been modified.
 	 */
-	bool dirty() const;
+	bool isDirty() const;
 
 	/**
 	 * Total count of enabled intervals.
 	 */
-	int count() const;
+	int enabledCount() const;
 
 	/**
 	 * Mark changes as applied.
@@ -120,13 +105,19 @@ public:
 	 * image.
 	 */
 	void cancel();
+
+	/**
+	 * Find a period in enabled values
+	 * If no period has been found, return 0
+	 */
+	int findPeriod(const QList<int>& periods) const;
 	
 private:
 	int min;
 	int max;
 
 	int fieldToValue(const QString& entry) const;
-	bool isDirty;
+	bool dirty;
 	
 	QList<bool> enabled;
 	QList<bool> initialEnabled;

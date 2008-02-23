@@ -16,7 +16,7 @@
 #include <QList>
 #include <QPrinter>
 
-#include <ktprintopt.h>
+#include "ktprintopt.h"
 
 class QPainter;
 class QString;

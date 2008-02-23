@@ -3,52 +3,26 @@
 <MenuBar>
   <Menu name="edit">
     <Separator/>
-    <Action name="edit_new"/>
-    <Action name="edit_modify"/>
-    <Action name="edit_delete"/>
+    <Action name="edit_new_task" />
+    <Action name="edit_new_variable" />
     <Separator/>
-    <Action name="edit_enable"/>
+    <Action name="edit_modify" />
+    <Action name="edit_delete" />
     <Separator/>
-    <Action name="edit_run"/>
+    <Action name="edit_run" />
   </Menu>
   <Menu name="settings">
-    <Action name="show_toolbar"/>
-    <Action name="show_statusbar"/>
+    <Action name="show_toolbar" />
+    <Action name="show_statusbar" />
   </Menu>
 </MenuBar>
 
 <ToolBar name="mainToolBar">
-  <Action name="edit_new"/>
-  <Action name="edit_modify"/>
-  <Action name="edit_delete"/>
+  <Action name="edit_new_task" />
+  <Action name="edit_new_variable" />
+  <Separator/>
+  <Action name="edit_modify" />
+  <Action name="edit_delete" />
 </ToolBar>
 
-<ActionProperties>
-  <Action name="edit_new" icon="document-new"/>
-  <Action name="edit_modify" icon="document-properties"/>
-  <Action name="edit_delete" icon="edit-delete"/>
-  <Action name="edit_run" icon="system-run"/>
-</ActionProperties>
-
-<State name="no_task_selected">
-  <Disable>
-    <Action name="edit_cut"/>
-    <Action name="edit_copy"/>
-    <Action name="edit_modify"/>
-    <Action name="edit_delete"/>
- </Disable>
-</State>
-
-<State name="paste_disabled">
-  <Disable>
-    <Action name="edit_paste"/>
-  </Disable>
-</State>
-
-<State name="runnow_enabled">
-  <Enable>
-    <Action name="edit_run"/>
-  </Enable>
-</State>
-    
 </kpartgui>

@@ -38,10 +38,6 @@ QPixmap KTIcon::user(KTIcon::IconSize size) {
 	return getIcon("user-identity", size);
 }
 
-QPixmap KTIcon::variables(KTIcon::IconSize size) {
-	return getIcon("folder", size);
-}
-
 QPixmap KTIcon::variable(KTIcon::IconSize size) {
 	return getIcon("text", size);
 }
@@ -59,10 +55,6 @@ QPixmap KTIcon::home(KTIcon::IconSize size) {
 }
 
 QPixmap KTIcon::path(KTIcon::IconSize size) {
-	return getIcon("folder", size);
-}
-
-QPixmap KTIcon::tasks(KTIcon::IconSize size) {
 	return getIcon("folder", size);
 }
 

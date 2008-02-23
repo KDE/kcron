@@ -9,41 +9,41 @@
  *   (at your option) any later version.                                   *
  ***************************************************************************/
 
-#include "ktlisttask.h"
+#include "taskWidget.h"
 
-#include <klocale.h>  // i18n()
+#include <klocale.h>
+
 #include "cttask.h"
 
 #include "kticon.h"
-#include "kttask.h"
+#include "taskEditorDialog.h"
 #include "ktprint.h"
 #include "kiconloader.h"
 
-KTListTask::KTListTask(KTListItem* parent, CTCron* _ctcron, CTTask* _cttask) :
-	KTListItem(parent, 0, _ctcron), cttask(_cttask)
+TaskWidget::TaskWidget(TasksWidget* tasksWidget, CTTask* _cttask) :
+	QTreeWidgetItem(tasksWidget->treeWidget()) {
 
-{
+	ctTask = _cttask;
+
 	refresh();
-	parent->setOpen(true);
 }
 
-void KTListTask::refresh() {
-	setText(0, cttask->comment);
+void TaskWidget::refresh() {
+	setText(0, ctTask->schedulingCronFormat());
+	setText(1, ctTask->command);
 
-	if (cttask->enabled) {
-		if (cttask->reboot) {
-			setText(1, cttask->command);
-			setText(2, i18n("At system startup"));
-		} else {
-			setText(1, cttask->command);
-			setText(2, cttask->describe());
-		}
+	if (ctTask->enabled) {
+		setText(2, i18n("Enabled"));
+		setIcon(2, SmallIcon("ok"));
 	} else {
-		setText(1, "");
-		setText(2, i18nc("The cron task had been disabled", "Disabled"));
+		setText(2, i18n("Disabled"));
+		setIcon(2, SmallIcon("no"));
 	}
 
-	QString qsCommand = cttask->command;
+	setText(3, ctTask->comment);
+	setText(4, ctTask->describe());
+
+	QString qsCommand = ctTask->command;
 
 	// qsCommand broken down this way to split off qsCommand attributes
 	int firstSpace(qsCommand.indexOf(" "));
@@ -53,34 +53,36 @@ void KTListTask::refresh() {
 	if (lastSlash > 0)
 		qsCommand = qsCommand.right(qsCommand.size() - lastSlash - 1);
 
-	// using KIconLoader() instead of getMaxIcon() because we need a null pixmap if pixmap cannot be found
-	KIconLoader *loader = KIconLoader::global();
-	QPixmap qpIcon(loader->loadIcon(qsCommand, KIconLoader::Small, 0, KIconLoader::DefaultState, QStringList(), 0L, true));
+	QPixmap qpIcon = SmallIcon(qsCommand);
 	if (qpIcon.isNull())
-		qpIcon = KTIcon::getIcon("system-run", KTIcon::Small);
-	setPixmap(0, qpIcon);
+		qpIcon = KTIcon::task(KTIcon::Small);
+
+	setIcon(0, QIcon(qpIcon));
 }
 
-void KTListTask::print(KTPrint &printer) const {
-	printer.print(cttask->comment, 1, KTPrint::alignTextLeft);
-	if (cttask->enabled) {
-		printer.print(cttask->command, 2, KTPrint::alignTextCenter);
+void TaskWidget::print(KTPrint& printer) const {
+	printer.print(ctTask->comment, 1, KTPrint::alignTextLeft);
+	if (ctTask->enabled) {
+		printer.print(ctTask->command, 2, KTPrint::alignTextCenter);
 
-		if (cttask->reboot)
+		if (ctTask->reboot)
 			printer.print(i18n("At system startup"), 3, KTPrint::alignTextRight);
-
 		else
-			printer.print(cttask->describe(), 3, KTPrint::alignTextRight);
+			printer.print(ctTask->describe(), 3, KTPrint::alignTextRight);
 	} else
 		printer.print(i18nc("The cron task had been disabled", "Disabled."), 3, KTPrint::alignTextRight);
 }
 
-void KTListTask::edit() {
-	KTTask(cttask,i18n("Modify Task")).exec();
+void TaskWidget::modify() {
+	TaskEditorDialog(ctTask, i18n("Modify Task")).exec();
 	refresh();
-	parent()->sortChildItems(1, true);
 }
 
-CTTask* KTListTask::getCTTask() const {
-	return cttask;
+void TaskWidget::toggleEnable() {
+	ctTask->enabled = !ctTask->enabled;
+	refresh();
+}
+
+CTTask* TaskWidget::getCTTask() const {
+	return ctTask;
 }

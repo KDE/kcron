@@ -20,7 +20,7 @@ CTDayOfMonth::CTDayOfMonth(const QString& tokStr) :
 
 QString CTDayOfMonth::describe() const {
 	initializeNames();
-	return (count() == CTDayOfMonth::MAXIMUM) ? i18n("every day ") : CTUnit::genericDescribe(shortName);
+	return (enabledCount() == CTDayOfMonth::MAXIMUM) ? i18n("every day ") : CTUnit::genericDescribe(shortName);
 }
 
 QString CTDayOfMonth::getName(const int ndx) {

@@ -16,8 +16,10 @@
 #include <ksharedconfig.h>
 
 class QString;
-class KTView;
+class CrontabWidget;
 class CTHost;
+
+class KCronPrivate;
 
 /**
  * Application that sets up the main window, reads the config file,
@@ -27,39 +29,20 @@ class CTHost;
  * Provides main window handling, session management and keyboard
  * acceleration.
  */
-class KTApp : public KXmlGuiWindow {
+class KCron : public KXmlGuiWindow {
 	Q_OBJECT
 
-	friend class KTView;
-
 public:
-
-	// Menu constants
-	enum editEntries {
-		menuEditNew=4,
-		menuEditModify,
-		menuEditDelete,
-		menuEditEnabled=8,
-		menuEditRunNow=10
-	};
-
-	enum settingsEntries
-	{
-		menuSettingsShowToolBar,
-		menuSettingsShowStatusBar
-	};
-
-	static const int statusMessage;
 
 	/**
 	 * Initialize the application.
 	 */
-	KTApp();
+	KCron();
 
 	/**
 	 * Quit the application..
 	 */
-	~KTApp();
+	~KCron();
 
 	/**
 	 * Additional init
@@ -67,9 +50,9 @@ public:
 	bool init();
 
 	/**
-	 * Returns a reference to the document.
+	 * Returns a reference to the CTHost.
 	 */
-	const CTHost& getCTHost() const;
+	CTHost* getCTHost() const;
 
 protected:
 
@@ -85,76 +68,38 @@ protected:
 
 public slots:
 
-	void statusEditCallback(QAction* action);
-
 	/**
 	 * Save document.
 	 */
-	void slotFileSave();
+	void slotSave();
 
 	/**
 	 * Print document.
 	 */
-	void slotFilePrint();
+	void slotPrint();
 
 	/**
 	 * Close all open windows then quits the application.  If queryClose()
 	 * returns false because the user canceled the saveModified() dialog, the
 	 * closing breaks.
 	 */
-	void slotFileQuit();
-
-	/**
-	 * Pop up an edit menu.
-	 */
-	void slotEdit(const QPoint& qp);
-
-	/**
-	 * Put the marked objects on the clipboard and remove it from the
-	 * document.
-	 */
-	void slotEditCut();
+	void slotQuit();
 
 	/**
 	 * Put the marked objects on the clipboard.
 	 */
-	void slotEditCopy();
+	void slotCopy();
 
 	/**
 	 * Paste the object on clipboard into the document
 	 */
-	void slotEditPaste();
-
-	/**
-	 * New.
-	 */
-	void slotEditNew();
-
-	/**
-	 * Modify.
-	 */
-	void slotEditModify();
-
-	/**
-	 * Delete.
-	 */
-	void slotEditDelete();
-
-	/**
-	 * Toggle enabled.
-	 */
-	void slotEditEnable();
-
-	/**
-	 * Run program now.
-	 */
-	void slotEditRunNow();
+	void slotPaste();
 
 	/**
 	 * Changes the status bar contents for the standard label permanently;
 	 * used to indicate current actions.
 	 */
-	void slotStatusMsg(const QString & text);
+	void slotStatusMessage(const QString & text);
 
 	/**
 	 * Changes the status message of the whole status bar for two seconds,
@@ -162,35 +107,33 @@ public slots:
 	 * messages that give information about actions for toolbar icons and
 	 * menu entries.
 	 */
-	void slotStatusHelpMsg(const QString & text);
-
-	/** Enables/disables modification buttons
-	 */
-	void slotEnableModificationButtons(bool);
+	void slotStatusHelpMessage(const QString & text);
+	
+	void displayActionInformation(QAction* action);
 
 	/** Enables/disables paste button
 	 */
-	void slotEnablePaste(bool);
+	void togglePasteAction(bool);
+
+	/** Enables/disables modification buttons
+	 */
+	void toggleModificationActions(bool);
 
 	/** Enables/disables "Run now"
 	 */
-	void slotEnableRunNow(bool);
-
-	/** Enables/disables "Activated"
-	 */
-	void slotEnableEnabled(bool);
+	void toggleRunNowActions(bool);
 
 private:
 
 	/**
 	 * Disabled copy constructor.
 	 */
-	KTApp(const KTApp& source);
+	KCron(const KCron& source);
 
 	/**
 	 * Disabled assignment operator.
 	 */
-	void operator =(const KTApp& source);
+	void operator =(const KCron& source);
 
 	/**
 	 * Get application caption.
@@ -218,26 +161,14 @@ private:
 	 * geometry to the configuration file.
 	 */
 	void saveOptions();
+	
+	void prepareTasksWidgetContextualMenu();
+	void prepareVariablesWidgetContextualMenu();
+	
+	QAction* createSeparator();
 
-	/**
-	 * Configuration object of the application.
-	 */
-	KSharedConfigPtr config;
 
-	/**
-	 * Main GUI view/working area.
-	 */
-	KTView* view;
-
-	/**
-	 * Document object, here crotab enries.
-	 */
-	CTHost* ctHost;
-
-	/**
-	 * Path to the crontab binary
-	 */
-	QString crontab;
+	KCronPrivate* const d;
 };
 
 #endif // KTAPP_H

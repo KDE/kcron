@@ -23,9 +23,12 @@ public:
 	/**
 	 * Constructs from a tokenized string.
 	 */
-	CTMinute(const QString& tokStr = "") :
-		CTUnit(0, 59, tokStr) {
-	}
+	CTMinute(const QString& tokStr = "");
+
+
+	int findPeriod() const;
+	
+	QString exportUnit() const;
 
 };
 

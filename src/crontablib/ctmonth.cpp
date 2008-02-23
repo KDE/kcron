@@ -20,7 +20,7 @@ CTMonth::CTMonth(const QString& tokStr) :
 
 QString CTMonth::describe() const {
 	initializeNames();
-	return (count() == CTMonth::MAXIMUM) ? i18n("every month ") : CTUnit::genericDescribe(shortName);
+	return (enabledCount() == CTMonth::MAXIMUM) ? i18n("every month") : CTUnit::genericDescribe(shortName);
 }
 
 QString CTMonth::getName(const int ndx) {

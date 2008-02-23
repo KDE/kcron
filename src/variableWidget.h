@@ -1,5 +1,5 @@
 /***************************************************************************
- *   KT list view item cron header.                                        *
+ *   KT list view item task header.                                        *
  *   --------------------------------------------------------------------  *
  *   Copyright (C) 1999, Gary Meyer <gary@meyer.net>                       *
  *   --------------------------------------------------------------------  *
@@ -9,42 +9,56 @@
  *   (at your option) any later version.                                   * 
  ***************************************************************************/
 
-#ifndef KTLISTCRON_H
-#define KTLISTCRON_H
+#ifndef VARIABLE_WIDGET_H
+#define VARIABLE_WIDGET_H
 
-#include "ktlistitem.h"
+#include "variablesWidget.h"
+
+
+class CTVariable;
 
 /**
- * QListViewItem view of a CTCron.
+ * QTreeWidgetItem with a CTTask.
  */
-class KTListCron : public KTListItem {
+class VariableWidget : public QTreeWidgetItem {
 public:
 
 	/**
-	 * Construct tasks or variables folder from branch.
+	 * Initialize the list view item and task.
 	 */
-	KTListCron(KTListItem* parent, const char* name, CTCron* _ctcron);
+	VariableWidget(VariablesWidget* variablesWidget, CTVariable* _ctVariable);
 
 	/**
-	 * Construct tasks or variables folder from root.
+	 * Print task.
 	 */
-	KTListCron(Q3ListView* parent, const char* name, CTCron* _ctcron);
+	void print(KTPrint& printer) const;
 
 	/**
-	 * Construct user folder from root.
+	 * Edit task.
 	 */
-	KTListCron(Q3ListView* parent, CTCron* _ctcron);
+	void modify();
+	
+	/*
+	 * Change the status of this variable
+	 */
+	void toggleEnable();
 
 	/**
-	 * Refresh.
+	 * Get the task.
 	 */
-	virtual void refresh();
+	CTVariable* getCTVariable() const;
+
+private:
+	
+	/**
+	 * Refresh from underlying task.
+	 */
+	void refresh();
 
 	/**
-	 *Print user's crontab
+	 * Variable
 	 */
-	virtual void print(KTPrint &printer) const;
-
+	CTVariable* ctVariable;
 };
 
-#endif // KTLISTCRON_H
+#endif // VARIABLE_WIDGET_H

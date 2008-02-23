@@ -56,7 +56,7 @@ CTTask::CTTask(const QString& tokenString, const QString& _comment, bool _syscro
 	int spacePos(tokStr.indexOf(QRegExp("[ \t]")));
 	// If reboot bypass initialize functions so no keys selected in modify task
 	if (reboot == false) {
-		
+
 		logDebug() << "Line : " << tokStr << endl;
 		logDebug() << "MidLine : " << tokStr.mid(0, spacePos) << endl;
 		minute.initialize(tokStr.mid(0, spacePos));
@@ -141,15 +141,8 @@ QString CTTask::exportTask() {
 	if (enabled == false)
 		exportTask += "#\\";
 
-	if (reboot) {
-		exportTask += "@reboot\t";
-	} else {
-		exportTask += minute.exportUnit() + " ";
-		exportTask += hour.exportUnit() + " ";
-		exportTask += dayOfMonth.exportUnit() + " ";
-		exportTask += month.exportUnit() + " ";
-		exportTask += dayOfWeek.exportUnit() + "\t";
-	}
+	exportTask += schedulingCronFormat();
+	exportTask += "\t";
 
 	if (user != "")
 		exportTask += user + "\t";
@@ -188,77 +181,122 @@ void CTTask::cancel() {
 }
 
 bool CTTask::dirty() const {
-	return (month.dirty() || dayOfMonth.dirty() || dayOfWeek.dirty() || hour.dirty() || minute.dirty() || (user != initialUser) || (command != initialCommand) || (comment != initialComment) || (enabled != initialEnabled) || (reboot != initialReboot));
+	return (month.isDirty() || dayOfMonth.isDirty() || dayOfWeek.isDirty() || hour.isDirty() || minute.isDirty() || (user != initialUser) || (command != initialCommand) || (comment != initialComment) || (enabled != initialEnabled) || (reboot != initialReboot));
 }
 
+QString CTTask::schedulingCronFormat() const {
+	if (reboot) {
+		return "@reboot";
+	}
+
+	QString scheduling;
+
+	scheduling += minute.exportUnit() + " ";
+	scheduling += hour.exportUnit() + " ";
+	scheduling += dayOfMonth.exportUnit() + " ";
+	scheduling += month.exportUnit() + " ";
+	scheduling += dayOfWeek.exportUnit();
+
+	return scheduling;
+
+}
+
+/**
+ * Of the whole program, this method is probably the trickiest.
+ * 
+ * This method creates the natural language description, such as
+ * "At 1:00am, every Sun".
+ * 
+ * First, I declare some strings for holding what can be internationalized.
+ * Note the tokens such as "MONTHS".  Translators should reuse these
+ * tokens in their translations.  See README.translators for more
+ * information.
+ * 
+ * Second, I get the descriptions from the component parts such as
+ * days of the month.
+ * 
+ * Third, I get hour/minute time combinations.  Although a little bit
+ * awkward, I use the tm struct and strftime from <time.h>.  This
+ * way this code is portable across all Unixes.
+ * 
+ * Fourth, I know that "every day of the week" and "every day of the
+ * month" simply makes "every day".
+ * 
+ * Fifth and finally I do tag substitution to create the natural language
+ * description.
+ * 
+ */
 QString CTTask::describe() const {
 
-	// Of the whole program, this method is probably the trickiest.
-	//
-	// This method creates the natural language description, such as
-	// "At 1:00am, every Sun".
-	//
-	// First, I declare some strings for holding what can be internationalized.
-	// Note the tokens such as "MONTHS".  Translators should reuse these
-	// tokens in their translations.  See README.translators for more
-	// information.
-	//
-	// Second, I get the descriptions from the component parts such as
-	// days of the month.
-	//
-	// Third, I get hour/minute time combinations.  Although a little bit
-	// awkward, I use the tm struct and strftime from <time.h>.  This
-	// way this code is portable across all Unixes.
-	//
-	// Fourth, I know that "every day of the week" and "every day of the
-	// month" simply makes "every day".
-	//
-	// Fifth and finally I do tag substitution to create the natural language
-	// description.
+	if (reboot) {
+		return i18n("At system startup");
+	}
 
-	QString tmFormat = i18n("%H:%M");
-	QString DOMFormat = i18nc("Please translator, read the README.translators file in kcron's source code", "DAYS_OF_MONTH of MONTHS");
-	QString DOWFormat = i18nc("Really, read that file", "every DAYS_OF_WEEK");
-	QString dateFormat = i18n("DOM_FORMAT as well as DOW_FORMAT");
-	QString timeFormat = i18n("At TIME");
-	QString format = i18n("TIME_FORMAT, DATE_FORMAT");
+	QString dateFormat = createDateFormat();
 
-	// Get natural language description of day of month,
-	// month name, and day of week.
+	QString timeFormat = createTimeFormat();
 
-	QString DOMDesc(dayOfMonth.describe());
-	QString monthDesc(month.describe());
-	QString DOWDesc(dayOfWeek.describe());
+	return i18nc("1:Time Description, 2:Date Description", "%1, %2", timeFormat, dateFormat);
+}
 
+QString CTTask::describeDayOfWeek() const {
+	return i18nc("Every 'days of week'", "every %1", dayOfWeek.describe());
+}
+
+QString CTTask::describeDayOfMonth() const {
+	return i18nc("'Days of month' of 'Months'", "%1 of %2", dayOfMonth.describe(), month.describe());
+}
+
+QString CTTask::createDateFormat() const {
+	/*
+	 * "* * *" means truly every day.
+	 * Note: Languages may use different phrases to indicate
+	 * every day of month versus every day of week.
+	 */
+	QString dateFormat;
+	if ((dayOfMonth.enabledCount() == CTDayOfMonth::MAXIMUM) && (dayOfWeek.enabledCount() == CTDayOfWeek::MAXIMUM)) {
+		dateFormat = i18n("every day ");
+	}
+	// Day of month not specified, so use day of week.
+	else if (dayOfMonth.enabledCount() == CTDayOfMonth::MAXIMUM) {
+		dateFormat = describeDayOfWeek();
+	}
+	// Day of week not specified, so use day of month.
+	else if (dayOfWeek.enabledCount() == CTDayOfWeek::MAXIMUM) {
+		dateFormat = describeDayOfMonth();
+	}
+	else {
+		dateFormat = i18nc("1:Day of month, 2:Day of week", "%1 as well as %2", describeDayOfMonth(), describeDayOfWeek());
+	}
+	
+	return dateFormat;
+	
+}
+
+QString CTTask::describeDateAndHours() const {
 	// Create time description.
-
-	int total(minute.count()*hour.count());
+	int total = minute.enabledCount() * hour.enabledCount();
 
 	QString timeDesc = "";
 	int count = 0;
 
-	for (int h = 0; h <= 23; h++)
-		if (hour.get(h))
-			for (int m = 0; m <= 59; m++)
-				if (minute.get(m)) {
-					tm time;
-					time.tm_sec = 0;
-					time.tm_min = m;
-					time.tm_hour = h;
-					time.tm_mday = 0;
-					time.tm_mon = 0;
-					time.tm_year = 0;
-					time.tm_wday = 0;
-					time.tm_yday = 0;
-					time.tm_isdst= 0;
+	for (int h = 0; h <= 23; h++) {
+		if (hour.isEnabled(h)) {
+			for (int m = 0; m <= 59; m++) {
+				if (minute.isEnabled(m) == true) {
+					QString hourString;
+					if (h<10)
+						hourString = "0" + QString::number(h);
+					else
+						hourString = QString::number(h);
 
-					char tmp[12];
-					strftime(tmp, 12, tmFormat.toLocal8Bit(), &time);
-					QString tmpStr = tmp;
+					QString minuteString;
+					if (m<10)
+						minuteString = "0" + QString::number(m);
+					else
+						minuteString = QString::number(m);
 
-					// remove leading space
-					if (tmpStr.mid(0, 1) == " ")
-						tmpStr = tmpStr.mid(1, tmpStr.length()-1);
+					QString tmpStr = i18nc("1:Hour, 2:Minute", "%1:%2", hourString, minuteString);
 
 					timeDesc += tmpStr;
 					count++;
@@ -275,59 +313,25 @@ QString CTTask::describe() const {
 						timeDesc += i18n(", ");
 					}
 				}
-
-	// "* * *" means truly every day.
-	// Note: Languages may use different phrases to indicate
-	// every day of month versus every day of week.
-
-	if ((dayOfMonth.count() == 31) && (dayOfWeek.count() == 7))
-		dateFormat = i18n("every day ");
-	else {
-		// Day of month not specified, so use day of week.
-		if (dayOfMonth.count() == 31)
-			dateFormat = "DOW_FORMAT";
-		// Day of week not specified, so use day of month.
-		if (dayOfWeek.count() == 7)
-			dateFormat = "DOM_FORMAT";
+			}
+		}
 	}
+	
+	
+	return i18nc("Hour::Minute list", "At %1", timeDesc);
+	
+}
 
-	// Replace tags to build natural language description.
-
-	int pos = 0;
-
-	pos = DOMFormat.indexOf("DAYS_OF_MONTH");
-	if (pos > -1)
-		DOMFormat.replace(pos, 13, DOMDesc);
-
-	pos = DOMFormat.indexOf("MONTHS");
-	if (pos > -1)
-		DOMFormat.replace(pos, 6, monthDesc);
-
-	pos = DOWFormat.indexOf("DAYS_OF_WEEK");
-	if (pos > -1)
-		DOWFormat.replace(pos, 12, DOWDesc);
-
-	pos = dateFormat.indexOf("DOM_FORMAT");
-	if (pos > -1)
-		dateFormat.replace(pos, 10, DOMFormat);
-
-	pos = dateFormat.indexOf("DOW_FORMAT");
-	if (pos > -1)
-		dateFormat.replace(pos, 10, DOWFormat);
-
-	pos = timeFormat.indexOf("TIME");
-	if (pos > -1)
-		timeFormat.replace(pos, 4, timeDesc);
-
-	pos = format.indexOf("DATE_FORMAT");
-	if (pos > -1)
-		format.replace(pos, 11, dateFormat);
-
-	pos = format.indexOf("TIME_FORMAT");
-	if (pos > -1)
-		format.replace(pos, 11, timeFormat);
-
-	return format;
+QString CTTask::createTimeFormat() const {
+	if (hour.isAllEnabled()) {
+		int minutePeriod = minute.findPeriod();
+		if (minutePeriod == 1)
+			return i18n("Every minutes");
+		else if (minutePeriod != 0)
+			return i18n("Every %1 minutes", minutePeriod);
+	}
+	
+	return describeDateAndHours();
 }
 
 bool CTTask::isSystemCrontab() const {

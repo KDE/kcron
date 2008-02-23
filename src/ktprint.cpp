@@ -18,6 +18,8 @@
 
 #include <klocale.h>
 
+#include "logging.h"
+
 const int KTPrint::alignTextLeft(1000);
 const int KTPrint::alignTextRight(2000);
 const int KTPrint::alignTextCenter(3000);
@@ -81,7 +83,7 @@ bool KTPrint::start() {
 		paint = new QPainter ();
 		paint->begin(prnt);
 #ifdef __GNUC__
-#warning "kde4: port settabstops";
+		logDebug() << "kde4: port settabstops" << endl;
 #endif
 		//paint->setTabStops(20); // Setup a defualt tab stop size
 

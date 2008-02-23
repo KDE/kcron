@@ -23,11 +23,11 @@ public:
 	/**
 	 * Constructs from a tokenized string.
 	 */
-	CTHour(const QString& tokStr = "") :
-		CTUnit(0, 23, tokStr) {
-
-	}
-
+	CTHour(const QString& tokStr = "");
+	
+	int findPeriod() const;
+	
+	QString exportUnit() const;
 };
 
 #endif // CTHOUR_H

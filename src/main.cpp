@@ -12,7 +12,7 @@
 #include <kapplication.h>
 #include <kdeversion.h>
 #include <klocale.h>
-#include "ktapp.h"
+#include "kcron.h"
 #include <kcmdlineargs.h>
 #include <kaboutdata.h>
 
@@ -33,10 +33,10 @@ int main(int argc, char* argv[]) {
 	KApplication app;
 
 	if (app.isSessionRestored()) {
-		RESTORE(KTApp);
+		RESTORE(KCron);
 	}
 	else {
-		KTApp* kcron = new KTApp;
+		KCron* kcron = new KCron;
 		if (!kcron->init())
 			return 1;
 		kcron->show();

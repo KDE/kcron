@@ -12,9 +12,6 @@
 
 #include "cthost.h"
 
-#include "ctcron.h"
-#include <klocale.h>
-
 #include <unistd.h>  // getuid()
 #include <sys/types.h>
 #include <pwd.h>
@@ -22,6 +19,11 @@
 #include <QFile>
 
 #include <QTextStream>
+
+#include "ctcron.h"
+#include <klocale.h>
+
+#include "logging.h"
 
 CTHost::CTHost(const QString& cronBinary) {
 	struct passwd *pwd = 0L;
@@ -40,9 +42,9 @@ CTHost::CTHost(const QString& cronBinary) {
 				createCTCron(pwd);
 		}
 		setpwent(); // restart again for others
-	} else
+	}
 	// Non-root user, so just create user's cron table.
-	{
+	else {
 		// Get name from UID, check it against AllowDeny()
 		unsigned int uid = getuid();
 		setpwent(); // restart
@@ -69,7 +71,7 @@ bool CTHost::allowDeny(char *name) {
 	QFile allow("/etc/cron.allow");
 
 	// if cron.allow exists make sure user is listed
-	if (allow.open(IO_ReadOnly)) {
+	if (allow.open(QFile::ReadOnly)) {
 		QTextStream stream(&allow);
 		while (!stream.atEnd()) {
 			if (stream.readLine() == name) {
@@ -84,7 +86,7 @@ bool CTHost::allowDeny(char *name) {
 		QFile deny("/etc/cron.deny");
 
 		// else if cron.deny exists make sure user is not listed
-		if (deny.open(IO_ReadOnly)) {
+		if (deny.open(QFile::ReadOnly)) {
 			QTextStream stream(&deny);
 			while (!stream.atEnd()) {
 				if (stream.readLine() == name) {
@@ -151,6 +153,34 @@ CTCron* CTHost::createCTCron(const struct passwd *pwd) {
 	}
 	cron.append(p);
 	return p;
+}
+
+CTCron* CTHost::findCronContaining(CTTask* ctTask) const {
+	foreach(CTCron* ctCron, cron) {
+		foreach(CTTask* tempCtTask, ctCron->task) {
+			if ( tempCtTask == ctTask )
+				return ctCron;
+		}
+	}
+	
+	logDebug() << "Unable to find the parent Cron. Please report this bug and your crontab config to the developers" << endl;
+	return NULL;
+}
+
+CTCron* CTHost::findCronContaining(CTVariable* ctVariable) const {
+	foreach(CTCron* ctCron, cron) {
+		foreach(CTVariable* tempCtVariable, ctCron->variable) {
+			if ( tempCtVariable == ctVariable )
+				return ctCron;
+		}
+	}
+	
+	logDebug() << "Unable to find the parent Cron. Please report this bug and your crontab config to the developers" << endl;
+	return NULL;
+}
+
+CTCron* CTHost::firstCron() const {
+	return cron.first();
 }
 
 bool CTHost::isRootUser() const {

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   KT list view item abstract base class implementation.                 *
+ *   CT Month Implementation                                               *
  *   --------------------------------------------------------------------  *
  *   Copyright (C) 1999, Gary Meyer <gary@meyer.net>                       *
  *   --------------------------------------------------------------------  *
@@ -9,30 +9,29 @@
  *   (at your option) any later version.                                   * 
  ***************************************************************************/
 
-#include "ktlistitem.h"
-#include "ktprint.h"
+#include "ctminute.h"
 
-#include "ctcron.h"
+#include <klocale.h>
 
-KTListItem::KTListItem(KTListItem* parent, const char* name, CTCron* _ctcron) :
-	Q3ListViewItem(parent, name), ctcron(_ctcron) {
+/**
+ * Constructs from a tokenized string.
+ */
+CTMinute::CTMinute(const QString& tokStr) :
+	CTUnit(0, 59, tokStr) {
 }
 
-KTListItem::KTListItem(Q3ListView* parent, const char* name, CTCron* _ctcron) :
-	Q3ListViewItem(parent, name), ctcron(_ctcron) {
+
+int CTMinute::findPeriod() const {
+	QList<int> periods;
+	periods << 1 << 5 << 10 << 15 << 20;
+	
+	return CTUnit::findPeriod(periods);
 }
 
-KTListItem::~KTListItem() {
-}
-
-void KTListItem::create() {
-	return;
-}
-
-void KTListItem::edit() {
-	return;
-}
-
-CTCron* KTListItem::getCTCron() const {
-	return ctcron;
+QString CTMinute::exportUnit() const {
+	int period = findPeriod();
+	if (period!=0 && period!=1)
+		return QString("*/%1").arg(QString::number(period));
+	
+	return CTUnit::exportUnit();
 }

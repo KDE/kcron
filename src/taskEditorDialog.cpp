@@ -9,15 +9,15 @@
  *   (at your option) any later version.                                   *
  ***************************************************************************/
 
-#include "kttask.h"
+#include "taskEditorDialog.h"
 
 #include <QLabel>
 
-#include <QFileInfo>
 #include <QLayout>
 #include <QCheckBox>
-#include <QPainter>
 #include <QPalette>
+#include <QColorGroup>
+#include <QPainter>
 #include <QEvent>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
@@ -85,8 +85,8 @@ void KTPushButton::updatePalette() {
 	palNormal = ((QWidget *)parent())->palette();
 	palSelected = palNormal;
 	for (int cg = (int) QPalette::Active; cg < (int) QPalette::NColorGroups; cg++) {
-		palSelected.setColor((QPalette::ColorGroup)cg, QColorGroup::Button, palSelected.color((QPalette::ColorGroup)cg, QColorGroup::Highlight));
-		palSelected.setColor((QPalette::ColorGroup)cg, QColorGroup::ButtonText, palSelected.color((QPalette::ColorGroup)cg, QColorGroup::HighlightedText));
+		palSelected.setColor( (QPalette::ColorGroup)cg, QPalette::Button, palSelected.color((QPalette::ColorGroup)cg, QPalette::Highlight));
+		palSelected.setColor( (QPalette::ColorGroup)cg, QPalette::ButtonText, palSelected.color((QPalette::ColorGroup)cg, QPalette::HighlightedText));
 	}
 	isDirty = true;
 }
@@ -120,7 +120,7 @@ void KTPushButton::paintEvent(QPaintEvent*) {
  * KTTask class implementation
  */
 
-KTTask::KTTask(CTTask* _ctTask, const QString& _caption) :
+TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption) :
 	KDialog() {
 
 	setModal(true);
@@ -148,7 +148,7 @@ KTTask::KTTask(CTTask* _ctTask, const QString& _caption) :
 	commandConfigurationLayout->addWidget(labCommand, 0, 0);
 
 	QHBoxLayout* commandLayout = new QHBoxLayout(main);
-	commandIcon = new QLabel("", main);
+	commandIcon = new QLabel(main);
 	commandLayout->addWidget(commandIcon);
 
 	command = new KUrlRequester(main);
@@ -246,7 +246,7 @@ KTTask::KTTask(CTTask* _ctTask, const QString& _caption) :
 	if (ctTask->isSystemCrontab()) {
 		leUser->setFocus();
 	} else {
-		leComment->setFocus();
+		command->setFocus();
 	}
 
 	// connect them up
@@ -291,30 +291,30 @@ KTTask::KTTask(CTTask* _ctTask, const QString& _caption) :
 	slotWizard();
 }
 
-KTTask::~KTTask() {
+TaskEditorDialog::~TaskEditorDialog() {
 
 }
 
-bool KTTask::isEveryDay() {
+bool TaskEditorDialog::isEveryDay() {
 	for (int dw = CTDayOfWeek::MINIMUM; dw <= CTDayOfWeek::MAXIMUM; dw++) {
-		if (!ctTask->dayOfWeek.get(dw))
+		if (!ctTask->dayOfWeek.isEnabled(dw))
 			return false;
 	}
 
-	for (int mo = CTMonth::MINIMUM; mo <= CTMonth::MAXIMUM; mo++) {
-		if (!ctTask->month.get(mo))
+	for (int mo = ctTask->month.minimum(); mo <= ctTask->month.maximum(); mo++) {
+		if (!ctTask->month.isEnabled(mo))
 			return false;
 	}
 
 	for (int dm = CTDayOfMonth::MINIMUM; dm <= CTDayOfMonth::MAXIMUM; dm++) {
-		if (!ctTask->dayOfMonth.get(dm))
+		if (!ctTask->dayOfMonth.isEnabled(dm))
 			return false;
 	}
 
 	return true;
 }
 
-QGroupBox* KTTask::createDaysOfMonthGroup(QWidget* main) {
+QGroupBox* TaskEditorDialog::createDaysOfMonthGroup(QWidget* main) {
 
 	QGroupBox* daysOfMonthGroup = new QGroupBox( i18n("Days of Month"), main);
 	QVBoxLayout* vdays = new QVBoxLayout( daysOfMonthGroup );
@@ -331,7 +331,7 @@ QGroupBox* KTTask::createDaysOfMonthGroup(QWidget* main) {
 		day->setFixedSize(25, 25);
 		day->setText(QString::number(dm));
 		day->setCheckable(true);
-		day->setChecked(ctTask->dayOfMonth.get(dm));
+		day->setChecked(ctTask->dayOfMonth.isEnabled(dm));
 		pbDayOfMonth[dm] = day;
 
 		connect(pbDayOfMonth[dm], SIGNAL(clicked()), SLOT(slotDayOfMonthChanged()));
@@ -349,7 +349,7 @@ QGroupBox* KTTask::createDaysOfMonthGroup(QWidget* main) {
 	return daysOfMonthGroup;
 }
 
-QGroupBox* KTTask::createMonthsGroup(QWidget* main) {
+QGroupBox* TaskEditorDialog::createMonthsGroup(QWidget* main) {
 
 	QGroupBox* monthsGroup = new QGroupBox( i18n("Months"), main);
 	QGridLayout* monthsLayout = new QGridLayout(monthsGroup);
@@ -361,7 +361,7 @@ QGroupBox* KTTask::createMonthsGroup(QWidget* main) {
 		cbMonth[mo] = new KTPushButton(monthsGroup);
 		cbMonth[mo]->setText(ctTask->month.getName(mo));
 		cbMonth[mo]->setCheckable(true);
-		cbMonth[mo]->setChecked(ctTask->month.get(mo));
+		cbMonth[mo]->setChecked(ctTask->month.isEnabled(mo));
 
 		monthsLayout->addWidget(cbMonth[mo], row, column);
 
@@ -386,7 +386,7 @@ QGroupBox* KTTask::createMonthsGroup(QWidget* main) {
 
 }
 
-QGroupBox* KTTask::createDaysOfWeekGroup(QWidget* main) {
+QGroupBox* TaskEditorDialog::createDaysOfWeekGroup(QWidget* main) {
 
 	QGroupBox* daysOfWeekGroup = new QGroupBox( i18n("Days of Week"), main);
 	QGridLayout* daysOfWeekLayout = new QGridLayout(daysOfWeekGroup);
@@ -397,7 +397,7 @@ QGroupBox* KTTask::createDaysOfWeekGroup(QWidget* main) {
 		cbDayOfWeek[dw] = new KTPushButton(daysOfWeekGroup);
 		cbDayOfWeek[dw]->setText(ctTask->dayOfWeek.getName(dw));
 		cbDayOfWeek[dw]->setCheckable(true);
-		cbDayOfWeek[dw]->setChecked(ctTask->dayOfWeek.get(dw));
+		cbDayOfWeek[dw]->setChecked(ctTask->dayOfWeek.isEnabled(dw));
 		daysOfWeekLayout->addWidget(cbDayOfWeek[dw], row, column);
 
 		connect(cbDayOfWeek[dw], SIGNAL(clicked()), SLOT(slotDayOfWeekChanged()));
@@ -421,7 +421,7 @@ QGroupBox* KTTask::createDaysOfWeekGroup(QWidget* main) {
 	return daysOfWeekGroup;
 }
 
-QGroupBox* KTTask::createMinutesGroup(QWidget* main) {
+QGroupBox* TaskEditorDialog::createMinutesGroup(QWidget* main) {
 	// minutes
 	QGroupBox* minutesGroup = new QGroupBox( i18n("Minutes"), main);
 	QVBoxLayout *vmin = new QVBoxLayout( minutesGroup );
@@ -431,7 +431,7 @@ QGroupBox* KTTask::createMinutesGroup(QWidget* main) {
 		KAcceleratorManager::setNoAccel(pbMinute[minuteIndex]);
 		pbMinute[minuteIndex]->setText(QString::number(minuteIndex));
 		pbMinute[minuteIndex]->setCheckable(true);
-		pbMinute[minuteIndex]->setChecked(ctTask->minute.get(minuteIndex));
+		pbMinute[minuteIndex]->setChecked(ctTask->minute.isEnabled(minuteIndex));
 		pbMinute[minuteIndex]->setFixedSize(25, 25);
 
 		connect(pbMinute[minuteIndex], SIGNAL(clicked()), SLOT(slotMinuteChanged()));
@@ -462,7 +462,7 @@ QGroupBox* KTTask::createMinutesGroup(QWidget* main) {
 	return minutesGroup;
 }
 
-QGroupBox* KTTask::createHoursGroup(QWidget* main) {
+QGroupBox* TaskEditorDialog::createHoursGroup(QWidget* main) {
 
 	// hours
 	QGroupBox* hoursGroup = new QGroupBox( i18n("Hours"), main);
@@ -477,7 +477,7 @@ QGroupBox* KTTask::createHoursGroup(QWidget* main) {
 		KAcceleratorManager::setNoAccel(pbHour[ho]);
 		pbHour[ho]->setText(QString::number(ho));
 		pbHour[ho]->setCheckable(true);
-		pbHour[ho]->setChecked(ctTask->hour.get(ho));
+		pbHour[ho]->setChecked(ctTask->hour.isEnabled(ho));
 		pbHour[ho]->setFixedSize(25, 25);
 	}
 
@@ -524,7 +524,7 @@ QGroupBox* KTTask::createHoursGroup(QWidget* main) {
 	return hoursGroup;
 }
 
-void KTTask::defineCommandIcon() {
+void TaskEditorDialog::defineCommandIcon() {
 	// try and get an icon for command
 	QString qsCommand(command->url().path());
 
@@ -543,7 +543,7 @@ void KTTask::defineCommandIcon() {
 	commandIcon->setPixmap(qpIcon);
 }
 
-void KTTask::setupTitleWidget(const QString& comment, KTitleWidget::MessageType messageType) {
+void TaskEditorDialog::setupTitleWidget(const QString& comment, KTitleWidget::MessageType messageType) {
 	titleWidget->setComment(comment, messageType);
 
 	if (messageType == KTitleWidget::ErrorMessage)
@@ -553,7 +553,7 @@ void KTTask::setupTitleWidget(const QString& comment, KTitleWidget::MessageType 
 
 }
 
-void KTTask::slotEnabledChanged() {
+void TaskEditorDialog::slotEnabledChanged() {
 	bool enabled = chkEnabled->isChecked();
 	leUser->setEnabled(enabled);
 	leComment->setEnabled(enabled);
@@ -575,7 +575,7 @@ void KTTask::slotEnabledChanged() {
 	}
 }
 
-void KTTask::slotRebootChanged() {
+void TaskEditorDialog::slotRebootChanged() {
 	bool reboot = !chkReboot->isChecked();
 	cbEveryDay->setEnabled(reboot);
 	bgHour->setEnabled(reboot);
@@ -590,7 +590,7 @@ void KTTask::slotRebootChanged() {
 	}
 }
 
-void KTTask::slotDailyChanged() {
+void TaskEditorDialog::slotDailyChanged() {
 	if (cbEveryDay->isChecked()) {
 		for (int mo = 1; mo <= 12; mo++)
 			cbMonth[mo]->setChecked(true);
@@ -618,7 +618,7 @@ void KTTask::slotDailyChanged() {
 	slotDayOfWeekChanged();
 }
 
-void KTTask::slotOK() {
+void TaskEditorDialog::slotOK() {
 	// Make it friendly for just selecting days of the month or
 	// days of the week.
 
@@ -659,28 +659,28 @@ void KTTask::slotOK() {
 	ctTask->reboot = chkReboot->isChecked();
 
 	for (int mo = CTMonth::MINIMUM; mo <= CTMonth::MAXIMUM; mo++) {
-		ctTask->month.set(mo, cbMonth[mo]->isChecked());
+		ctTask->month.setEnabled(mo, cbMonth[mo]->isChecked());
 	}
 
 	for (int dm = 1; dm <= 31; dm++) {
-		ctTask->dayOfMonth.set(dm, pbDayOfMonth[dm]->isChecked());
+		ctTask->dayOfMonth.setEnabled(dm, pbDayOfMonth[dm]->isChecked());
 	}
 	for (int dw = 1; dw <= 7; dw++) {
-		ctTask->dayOfWeek.set(dw, cbDayOfWeek[dw]->isChecked());
+		ctTask->dayOfWeek.setEnabled(dw, cbDayOfWeek[dw]->isChecked());
 	}
 	for (int ho = 0; ho <= 23; ho++) {
-		ctTask->hour.set(ho, pbHour[ho]->isChecked());
+		ctTask->hour.setEnabled(ho, pbHour[ho]->isChecked());
 	}
 	for (int mi = 0; mi <= 59; mi++) {
-		ctTask->minute.set(mi, false);
+		ctTask->minute.setEnabled(mi, false);
 	}
 	for (int mi1 = 0; mi1 <= 55; mi1+=5) {
-		ctTask->minute.set(mi1, pbMinute[mi1]->isChecked());
+		ctTask->minute.setEnabled(mi1, pbMinute[mi1]->isChecked());
 	}
 	close();
 }
 
-void KTTask::slotWizard() {
+void TaskEditorDialog::slotWizard() {
 	bool error = false;
 
 	if (!chkEnabled->isChecked()) {
@@ -752,7 +752,7 @@ void KTTask::slotWizard() {
 		if (cbMonth[mo]->isChecked())
 			valid = true;
 	}
-	
+
 	if (!valid && !error) {
 		setupTitleWidget(i18n("<i>Please select from the 'Months' section...</i>"), KTitleWidget::ErrorMessage);
 		KDialog::enableButtonOk(false);
@@ -813,11 +813,11 @@ void KTTask::slotWizard() {
 	}
 }
 
-void KTTask::slotCancel() {
+void TaskEditorDialog::slotCancel() {
 	close();
 }
 
-void KTTask::slotAllMonths() {
+void TaskEditorDialog::slotAllMonths() {
 	bool checked = false;
 	if (pbAllMonths->isSetAll()) {
 		checked = true;
@@ -830,7 +830,7 @@ void KTTask::slotAllMonths() {
 	slotMonthChanged();
 }
 
-void KTTask::slotMonthChanged() {
+void TaskEditorDialog::slotMonthChanged() {
 	bool allCleared = true;
 	for (int mo = CTMonth::MINIMUM; mo <= CTMonth::MAXIMUM; mo++) {
 		if (cbMonth[mo]->isChecked()) {
@@ -846,7 +846,7 @@ void KTTask::slotMonthChanged() {
 	}
 }
 
-void KTTask::slotAllDaysOfMonth() {
+void TaskEditorDialog::slotAllDaysOfMonth() {
 	bool checked = false;
 	if (pbAllDaysOfMonth->isSetAll()) {
 		checked = true;
@@ -859,7 +859,7 @@ void KTTask::slotAllDaysOfMonth() {
 	slotDayOfMonthChanged();
 }
 
-void KTTask::slotDayOfMonthChanged() {
+void TaskEditorDialog::slotDayOfMonthChanged() {
 	bool allCleared = true;
 	for (int dm = CTDayOfMonth::MINIMUM; dm <= CTDayOfMonth::MAXIMUM; dm++) {
 		if (pbDayOfMonth[dm]->isChecked()) {
@@ -875,7 +875,7 @@ void KTTask::slotDayOfMonthChanged() {
 	}
 }
 
-void KTTask::slotAllDaysOfWeek() {
+void TaskEditorDialog::slotAllDaysOfWeek() {
 	if (pbAllDaysOfWeek->isSetAll()) {
 		for (int dw = 1; dw <= 7; dw++) {
 			cbDayOfWeek[dw]->setChecked(true);
@@ -888,7 +888,7 @@ void KTTask::slotAllDaysOfWeek() {
 	slotDayOfWeekChanged();
 }
 
-void KTTask::slotDayOfWeekChanged() {
+void TaskEditorDialog::slotDayOfWeekChanged() {
 	bool allChecked = true;
 	bool allCleared = true;
 	for (int dw = 1; dw <= 7; dw++) {
@@ -905,7 +905,7 @@ void KTTask::slotDayOfWeekChanged() {
 	}
 }
 
-void KTTask::slotAllHours() {
+void TaskEditorDialog::slotAllHours() {
 	if (pbAllHours->isSetAll()) {
 		for (int ho = 0; ho <= 23; ho++) {
 			pbHour[ho]->setChecked(true);
@@ -918,7 +918,7 @@ void KTTask::slotAllHours() {
 	slotHourChanged();
 }
 
-void KTTask::slotHourChanged() {
+void TaskEditorDialog::slotHourChanged() {
 	bool allChecked = true;
 	bool allCleared = true;
 	for (int ho = 0; ho <= 23; ho++) {
@@ -935,7 +935,7 @@ void KTTask::slotHourChanged() {
 	}
 }
 
-void KTTask::slotAllMinutes() {
+void TaskEditorDialog::slotAllMinutes() {
 	if (pbAllMinutes->isSetAll()) {
 		for (int mi = 0; mi <= 55; mi+=5) {
 			pbMinute[mi]->setChecked(true);
@@ -948,7 +948,7 @@ void KTTask::slotAllMinutes() {
 	slotMinuteChanged();
 }
 
-void KTTask::slotMinuteChanged() {
+void TaskEditorDialog::slotMinuteChanged() {
 	bool allChecked = true;
 	bool allCleared = true;
 	for (int mi = 0; mi <= 55; mi+=5) {
@@ -965,4 +965,4 @@ void KTTask::slotMinuteChanged() {
 	}
 }
 
-#include "kttask.moc"
+#include "taskEditorDialog.moc"

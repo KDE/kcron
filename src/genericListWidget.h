@@ -9,50 +9,47 @@
  *   (at your option) any later version.                                   * 
  ***************************************************************************/
 
-#ifndef KTLISTTASKS_H
-#define KTLISTTASKS_H
+#ifndef GENERIC_LIST_WIDGET_H
+#define GENERIC_LIST_WIDGET_H
 
-#include "ktlistitem.h"
+#include <QTreeWidget>
 
-class QString;
+#include "ktprint.h"
+
+#include "cthost.h"
+
+class GenericListWidgetPrivate;
+class QKeyEvent;
 
 /**
-  * QListViewItem of a "tasks" folder.
-  */
-class KTListTasks : public KTListItem
-{
+ * GenericListWidget
+ */
+class GenericListWidget : public QWidget {
+	Q_OBJECT
 public:
 
-/**
-  * Construct tasks folder from branch.
-  */
-  KTListTasks(KTListItem* parent, CTCron* _ctcron);
+	GenericListWidget(QWidget* parent, CTHost* ctHost, const QString& label, const QPixmap& icon);
+	
+	~GenericListWidget();
 
-/**
-  * Construct tasks folder from root.
-  */
-  KTListTasks(Q3ListView* parent, CTCron* _ctcron);
+	QTreeWidget* treeWidget() const;
+	
+	CTHost* ctHost() const;
+	
+	void resizeColumnContents();
+	
+	virtual void keyPressEvent(QKeyEvent *e);
 
- /**
-  * Internationalized description.
-  */
-  static QString getDescription();
-
-/**
-  * Create.
-  */
-  virtual void create();
-
-/**
-  * Refresh.
-  */
-  virtual void refresh();
-
-/**
-  * Print all tasks.
-  */
-  virtual void print(KTPrint &printer)const;
-
+protected slots:
+	virtual void modifySelection(QTreeWidgetItem* item, int position) = 0;
+	
+	virtual void deleteSelection() = 0;
+	
+protected:
+	QTreeWidgetItem* firstSelected() const;
+	
+	GenericListWidgetPrivate* const d;
+	
 };
 
-#endif // KTLISTTASKS_H
+#endif // GENERIC_LIST_WIDGET_H

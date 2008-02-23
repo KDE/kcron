@@ -9,23 +9,22 @@
  *   (at your option) any later version.                                   *
  ***************************************************************************/
 
-#include "ktvariable.h"
+#include "variableEditorDialog.h"
 
-#include <QLayout>
 #include <QLabel>
 #include <QComboBox>
 #include <QGridLayout>
+#include <QLineEdit>
 
 #include <klineedit.h>
 #include <klocale.h>
 #include <kmessagebox.h>
-#include <ktextedit.h>
 #include <ktitlewidget.h>
 
 #include "ctvariable.h"
 #include "kticon.h"
 
-KTVariable::KTVariable(CTVariable* _ctvar, const QString &_caption) :
+VariableEditorDialog::VariableEditorDialog(CTVariable* _ctvar, const QString &_caption) :
 	KDialog(), ctvar(_ctvar) {
 
 	setModal(true);
@@ -34,9 +33,7 @@ KTVariable::KTVariable(CTVariable* _ctvar, const QString &_caption) :
 	setDefaultButton(Ok);
 
 	QWidget* page = new QWidget(this);
-	setMainWidget(page);
-
-	QGridLayout* layout = new QGridLayout(page);
+	QGridLayout* layout = new QGridLayout();
 	page->setLayout(layout);
 
 	layout->setMargin(0);
@@ -44,6 +41,8 @@ KTVariable::KTVariable(CTVariable* _ctvar, const QString &_caption) :
 	layout->setColumnMinimumWidth(1, 270);
 	layout->setRowStretch(3, 1);
 	layout->setColumnStretch(1, 1);
+
+	setMainWidget(page);
 
 	setWindowIcon(KTIcon::application(KTIcon::Small));
 
@@ -74,10 +73,10 @@ KTVariable::KTVariable(CTVariable* _ctvar, const QString &_caption) :
 	layout->addWidget(labDetails, ++layoutPosition, 0, Qt::AlignLeft);
 
 	QHBoxLayout* detailsLayout = new QHBoxLayout(this);
-	detailsIcon = new QLabel("", this);
+	detailsIcon = new QLabel(this);
 	detailsLayout->addWidget(detailsIcon);
 
-	details = new QLabel("", this);
+	details = new QLabel(this);
 	detailsLayout->addWidget(details);
 	
 	layout->addLayout(detailsLayout, layoutPosition, 1, Qt::AlignLeft);
@@ -95,7 +94,7 @@ KTVariable::KTVariable(CTVariable* _ctvar, const QString &_caption) :
 	QLabel* labComment = new QLabel(i18n("Co&mment:"), this);
 	layout->addWidget(labComment, ++layoutPosition, 0, Qt::AlignLeft);
 
-	teComment = new KLineEdit(this);
+	teComment = new QLineEdit(this);
 	layout->addWidget(teComment, layoutPosition, 1);
 	labComment->setBuddy(teComment);
 
@@ -115,16 +114,16 @@ KTVariable::KTVariable(CTVariable* _ctvar, const QString &_caption) :
 	show();
 
 	// connect them up
-	connect(cmbVariable, SIGNAL(textChanged(const QString&)), SLOT(slotWizard()));
-	connect(leValue, SIGNAL(textChanged(const QString&)), SLOT(slotWizard()));
+	connect(cmbVariable, SIGNAL(editTextChanged(const QString&)), SLOT(slotWizard()));
+	connect(leValue, SIGNAL(textEdited(const QString&)), SLOT(slotWizard()));
 	connect(this, SIGNAL(okClicked()), this, SLOT(slotOk()));
 	connect(chkEnabled, SIGNAL(clicked()), SLOT(slotEnabled()));
 }
 
-KTVariable::~KTVariable() {
+VariableEditorDialog::~VariableEditorDialog() {
 }
 
-void KTVariable::setupTitleWidget(const QString& comment, KTitleWidget::MessageType messageType) {
+void VariableEditorDialog::setupTitleWidget(const QString& comment, KTitleWidget::MessageType messageType) {
 	//krazy:exclude=doublequote_chars
 	if (comment.isEmpty()) {
 		titleWidget->setComment(i18n("<i>This variable will be used by scheduled tasks.</i>"));
@@ -139,22 +138,22 @@ void KTVariable::setupTitleWidget(const QString& comment, KTitleWidget::MessageT
 	}
 }
 
-void KTVariable::slotEnabled() {
+void VariableEditorDialog::slotEnabled() {
 	bool enabled = chkEnabled->isChecked();
 	cmbVariable->setEnabled(enabled);
 	leValue->setEnabled(enabled);
 	teComment->setEnabled(enabled);
 }
 
-void KTVariable::slotOk() {
+void VariableEditorDialog::slotOk() {
 	ctvar->variable = cmbVariable->currentText();
 	ctvar->value = leValue->text();
-	ctvar->comment = teComment->originalText().replace('\n',' ').replace('\r',' ');
+	ctvar->comment = teComment->text().replace('\n',' ').replace('\r',' ');
 	ctvar->enabled = chkEnabled->isChecked();
 	close();
 }
 
-void KTVariable::slotWizard() {
+void VariableEditorDialog::slotWizard() {
 	QString variable = cmbVariable->currentText();
 	if (variable == "HOME") {
 		detailsIcon->setPixmap(KTIcon::home(KTIcon::Small));
@@ -169,7 +168,7 @@ void KTVariable::slotWizard() {
 		details->setText(i18n("Override default shell."));
 	}
 	else if (variable == "PATH") {
-		detailsIcon->setPixmap(KTIcon::variables(KTIcon::Small));
+		detailsIcon->setPixmap(KTIcon::path(KTIcon::Small));
 		details->setText(i18n("Folders to search for program files."));
 	}
 	else {
@@ -205,4 +204,4 @@ void KTVariable::slotWizard() {
 	}
 }
 
-#include "ktvariable.moc"
+#include "variableEditorDialog.moc"

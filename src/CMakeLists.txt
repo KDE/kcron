@@ -6,20 +6,24 @@ include_directories(
 	${CMAKE_CURRENT_SOURCE_DIR} 
 )
 
-add_definitions (-DQT3_SUPPORT -DQT3_SUPPORT_WARNINGS)
-
 set(kcron_SRCS
-   kticon.cpp 
-   ktapp.cpp 
-   ktview.cpp 
-   ktlistitem.cpp 
-   ktlistcron.cpp 
-   ktlisttask.cpp 
-   ktlisttasks.cpp 
-   ktlistvar.cpp 
-   ktlistvars.cpp 
-   kttask.cpp 
-   ktvariable.cpp 
+   genericListWidget.cpp
+    
+   tasksWidget.cpp
+   taskWidget.cpp 
+
+   variablesWidget.cpp
+   variableWidget.cpp 
+ 
+   taskEditorDialog.cpp 
+   variableEditorDialog.cpp
+
+   crontabWidget.cpp 
+
+   kticon.cpp
+
+   kcron.cpp 
+    
    ktprint.cpp 
    ktprintopt.cpp 
    main.cpp 

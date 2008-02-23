@@ -1,6 +1,5 @@
 /***************************************************************************
- *   --------------------------------------------------------------------  *
- *   KT list view item cron variables folder.                              *
+ *   KT list view item task header.                                        *
  *   --------------------------------------------------------------------  *
  *   Copyright (C) 1999, Gary Meyer <gary@meyer.net>                       *
  *   --------------------------------------------------------------------  *
@@ -10,49 +9,56 @@
  *   (at your option) any later version.                                   * 
  ***************************************************************************/
 
-#ifndef KTLISTVARS_H
-#define KTLISTVARS_H
+#ifndef TASK_WIDGET_H
+#define TASK_WIDGET_H
 
-#include "ktlistitem.h"
+#include "tasksWidget.h"
+#include "ktprint.h"
 
-class QString;
+class CTTask;
 
 /**
- * QListViewItem of a "variables" folder.
+ * QTreeWidgetItem with a CTTask.
  */
-class KTListVars : public KTListItem {
+class TaskWidget : public QTreeWidgetItem {
 public:
 
 	/**
-	 * Construct variables folder from branch.
+	 * Initialize the list view item and task.
 	 */
-	KTListVars(KTListItem* parent, CTCron* _ctcron);
+	TaskWidget(TasksWidget* tasksWidget, CTTask* _cttask);
 
 	/**
-	 * Construct variables folder from root.
-	 */
-	KTListVars(Q3ListView* parent, CTCron* _ctcron);
-
-	/**
-	 * Internationalized description.
-	 */
-	static QString getDescription();
-
-	/**
-	 * Refresh.
-	 */
-	void refresh();
-
-	/**
-	 * print all variables.
+	 * Print task.
 	 */
 	void print(KTPrint &printer) const;
 
 	/**
-	 * Edit.
+	 * Edit task.
 	 */
-	void create();
+	void modify();
 
+	/*
+	 * Change the status of this task
+	 */
+	void toggleEnable();
+
+	/**
+	 * Get the task.
+	 */
+	CTTask* getCTTask() const;
+
+private:
+
+	/**
+	 * Refresh from underlying task.
+	 */
+	void refresh();
+
+	/**
+	 * Task.
+	 */
+	CTTask* ctTask;
 };
 
-#endif // KTLISTVARS_H
+#endif // TASK_WIDGET_H

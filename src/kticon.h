@@ -27,13 +27,11 @@ public:
 	static QPixmap application(KTIcon::IconSize size);
 	static QPixmap system(KTIcon::IconSize size);
 	static QPixmap user(KTIcon::IconSize size);
-	static QPixmap variables(KTIcon::IconSize size);
 	static QPixmap variable(KTIcon::IconSize size);
 	static QPixmap mail(KTIcon::IconSize size);
 	static QPixmap shell(KTIcon::IconSize size);
 	static QPixmap home(KTIcon::IconSize size);
 	static QPixmap path(KTIcon::IconSize size);
-	static QPixmap tasks(KTIcon::IconSize size);
 	static QPixmap task(KTIcon::IconSize size);
 	
 	static QPixmap information(KTIcon::IconSize size);

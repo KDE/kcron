@@ -46,6 +46,11 @@ public:
 	 * Tokenizes scheduled task to crontab format.
 	 */
 	QString exportTask();
+	
+	/**
+	 * Scheduling using the cron format
+	 */
+	QString schedulingCronFormat() const;
 
 	/**
 	 * Mark changes as applied.
@@ -95,6 +100,13 @@ private:
 
 		return false;
 	}
+	
+	QString describeDayOfMonth() const;
+	QString describeDayOfWeek() const;
+	QString describeDateAndHours() const;
+	
+	QString createTimeFormat() const;
+	QString createDateFormat() const;
 
 	bool syscron;
 	

@@ -15,6 +15,8 @@
 #include <QString>
 #include <QList>
 
+class CTTask;
+class CTVariable;
 class CTCron;
 struct passwd;
 
@@ -79,6 +81,12 @@ public:
 		error = QString();
 		return r;
 	}
+	
+	CTCron* firstCron() const;
+	
+	CTCron* findCronContaining(CTTask* ctTask) const;
+	
+	CTCron* findCronContaining(CTVariable* ctVariable) const;
 
 	/**
 	 * User(s). 

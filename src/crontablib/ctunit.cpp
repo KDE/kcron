@@ -33,7 +33,7 @@ CTUnit::CTUnit(const CTUnit& source) {
 	}
 
 	initialTokStr = "";
-	isDirty = true;
+	dirty = true;
 }
 
 CTUnit::~CTUnit() {
@@ -47,7 +47,7 @@ void CTUnit::operator = (const CTUnit& unit) {
 	for (int i = 0; i <= max; i++) {
 		enabled.append(unit.enabled[i]);
 	}
-	isDirty = true;
+	dirty = true;
 	return;
 }
 
@@ -63,13 +63,12 @@ void CTUnit::initialize(const QString& tokStr) {
 	for (int i = min; i <= max; i++) {
 		initialEnabled[i] = enabled[i];
 	}
-	
+
 	initialTokStr = tokStr;
-	isDirty = false;
+	dirty = false;
 
 	return;
 }
-
 
 void CTUnit::parse(const QString& tokenString) {
 
@@ -129,40 +128,34 @@ void CTUnit::parse(const QString& tokenString) {
 	return;
 }
 
+QString CTUnit::exportUnit() const {
+	if (!dirty) {
+		return initialTokStr;
+	}
 
-QString CTUnit::exportUnit() {
-	if (count() == (max - min + 1))
+	if (isAllEnabled())
 		return "*";
 
-	return tokenize();
-}
+	int total = enabledCount();
+	int count = 0;
+	QString tokenizeUnit;
 
-QString CTUnit::tokenize() const {
-	if (!isDirty) {
-		return initialTokStr;
-	} else {
-		int total(count());
-		int count(0);
-		int num(min);
-		QString tmpStr;
-
-		while (num <= max) {
-			if (enabled[num]) {
-				tmpStr += QString::number(num);
-				if (++count < total)
-					tmpStr += ',';
-			}
-			num++;
+	for (int num=min; num<=max; num++) {
+		if (enabled[num]) {
+			tokenizeUnit += QString::number(num);
+			count++;
+			
+			if (count < total)
+				tokenizeUnit += ',';
 		}
-		if (count == (max - min + 1))
-			tmpStr = "*";
-
-		return tmpStr;
 	}
+
+	return tokenizeUnit;
+
 }
 
 QString CTUnit::genericDescribe(const QList<QString>& label) const {
-	int total(count());
+	int total(enabledCount());
 	int count(0);
 	QString tmpStr;
 	for (int i = min; i <= max; i++) {
@@ -186,41 +179,39 @@ QString CTUnit::genericDescribe(const QList<QString>& label) const {
 	return tmpStr;
 }
 
-int CTUnit::begin() {
+int CTUnit::minimum() const {
 	return min;
 }
 
-int CTUnit::end() {
+int CTUnit::maximum() const {
 	return max;
 }
 
-bool CTUnit::get(int pos) const {
+bool CTUnit::isEnabled(int pos) const {
 	return enabled.at(pos);
 }
 
-void CTUnit::set(int pos, bool value) {
+bool CTUnit::isAllEnabled() const {
+	for (int i = min; i <= max; i++) {
+		if (enabled.at(i) == false) {
+			return false;
+		}
+	}
+	
+	return true;
+}
+
+void CTUnit::setEnabled(int pos, bool value) {
 	enabled[pos] = value;
-	isDirty = true;
+	dirty = true;
 	return;
 }
 
-void CTUnit::enable(int pos) {
-	enabled[pos] = true;
-	isDirty = true;
-	return;
+bool CTUnit::isDirty() const {
+	return dirty;
 }
 
-void CTUnit::disable(int pos) {
-	enabled[pos] = false;
-	isDirty = true;
-	return;
-}
-
-bool CTUnit::dirty() const {
-	return isDirty;
-}
-
-int CTUnit::count() const {
+int CTUnit::enabledCount() const {
 	int total(0);
 	for (int i = min; i <= max; i++)
 		total += (enabled[i] == true);
@@ -228,17 +219,17 @@ int CTUnit::count() const {
 }
 
 void CTUnit::apply() {
-	initialTokStr = tokenize();
+	initialTokStr = exportUnit();
 	for (int i = min; i <= max; i++)
 		initialEnabled[i] = enabled[i];
-	isDirty = false;
+	dirty = false;
 	return;
 }
 
 void CTUnit::cancel() {
 	for (int i = min; i <= max; i++)
 		enabled[i] = initialEnabled[i];
-	isDirty = false;
+	dirty = false;
 	return;
 }
 
@@ -265,4 +256,33 @@ int CTUnit::fieldToValue(const QString& entry) const {
 
 	//If the string does not match a day ora month, then it's a simple number (minute, hour or day of month)
 	return entry.toInt();
+}
+
+/**
+ * Find a period in enabled values
+ * If no period has been found, return 0
+ */
+int CTUnit::findPeriod(const QList<int>& periods) const {
+	foreach(int period, periods) {
+		bool validPeriod = true;
+		
+		for (int i = minimum(); i <= maximum(); i++) {
+			bool periodTesting;
+			if ( (double)i/(double)period == i/period)
+				periodTesting = true;
+			else
+				periodTesting = false;
+			
+			if (isEnabled(i) != periodTesting) {
+				validPeriod = false;
+				break;
+			}
+		}
+		
+		if (validPeriod) {
+			return period;
+		}
+	}
+		
+	return 0;
 }
