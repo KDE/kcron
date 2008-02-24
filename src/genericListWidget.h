@@ -14,12 +14,13 @@
 
 #include <QTreeWidget>
 
-#include "ktprint.h"
+#include "crontabPrinter.h"
 
 #include "cthost.h"
 
 class GenericListWidgetPrivate;
 class QKeyEvent;
+class CrontabWidget;
 
 /**
  * GenericListWidget
@@ -28,13 +29,15 @@ class GenericListWidget : public QWidget {
 	Q_OBJECT
 public:
 
-	GenericListWidget(QWidget* parent, CTHost* ctHost, const QString& label, const QPixmap& icon);
+	GenericListWidget(CrontabWidget* crontabWidget, const QString& label, const QPixmap& icon);
 	
 	~GenericListWidget();
 
 	QTreeWidget* treeWidget() const;
 	
 	CTHost* ctHost() const;
+	
+	CrontabWidget* crontabWidget() const;
 	
 	void resizeColumnContents();
 	
@@ -46,6 +49,8 @@ protected slots:
 	virtual void deleteSelection() = 0;
 	
 protected:
+	void removeAll();
+	
 	QTreeWidgetItem* firstSelected() const;
 	
 	GenericListWidgetPrivate* const d;

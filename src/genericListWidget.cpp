@@ -23,10 +23,11 @@
 #include "ctcron.h"
 #include "cttask.h"
 
-#include "kticon.h"
+#include "crontabWidget.h"
 #include "taskWidget.h"
 #include "taskEditorDialog.h"
-#include "ktprint.h"
+#include "crontabPrinter.h"
+#include "kticon.h"
 
 #include "logging.h"
 
@@ -34,21 +35,22 @@ class GenericListWidgetPrivate {
 
 public:
 
-	CTHost* ctHost;
-
 	QTreeWidget* treeWidget;
+	
+	CrontabWidget* crontabWidget;
 
 };
 
 /**
  * Construct tasks folder from branch.
  */
-GenericListWidget::GenericListWidget(QWidget* parent, CTHost* ctHost, const QString& label, const QPixmap& icon) :
-	QWidget(parent), d(new GenericListWidgetPrivate()) {
+GenericListWidget::GenericListWidget(CrontabWidget* crontabWidget, const QString& label, const QPixmap& icon) :
+	QWidget(crontabWidget), d(new GenericListWidgetPrivate()) {
 
 	QVBoxLayout* layout = new QVBoxLayout(this);
+	layout->setContentsMargins(0, 0, 0, 0);
 
-	d->ctHost = ctHost;
+	d->crontabWidget = crontabWidget;
 
 	QHBoxLayout* labelLayout = new QHBoxLayout();
 
@@ -96,8 +98,12 @@ QTreeWidget* GenericListWidget::treeWidget() const {
 	return d->treeWidget;
 }
 
+CrontabWidget* GenericListWidget::crontabWidget() const {
+	return d->crontabWidget;
+}
+
 CTHost* GenericListWidget::ctHost() const {
-	return d->ctHost;
+	return d->crontabWidget->ctHost();
 }
 
 void GenericListWidget::resizeColumnContents() {
@@ -121,5 +127,14 @@ QTreeWidgetItem* GenericListWidget::firstSelected() const {
 void GenericListWidget::keyPressEvent(QKeyEvent *e) {
 	if ( e->key() == Qt::Key_Delete ) {
 		deleteSelection();
+	}
+}
+
+
+void GenericListWidget::removeAll() {
+	//Remove previous items
+	for(int i= treeWidget()->topLevelItemCount()-1; i>=0; --i) {
+		delete treeWidget()->takeTopLevelItem(i);
+		
 	}
 }

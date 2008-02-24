@@ -31,7 +31,7 @@ public:
 	/**
 	 * Print task.
 	 */
-	void print(KTPrint& printer) const;
+	void print(CrontabPrinter& printer) const;
 
 	/**
 	 * Edit task.

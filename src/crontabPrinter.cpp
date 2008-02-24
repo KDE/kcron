@@ -10,7 +10,7 @@
  *   (at your option) any later version.                                   *
  ***************************************************************************/
 
-#include "ktprint.h"
+#include "crontabPrinter.h"
 
 #include <QPainter>
 #include <QPrintDialog>
@@ -20,14 +20,14 @@
 
 #include "logging.h"
 
-const int KTPrint::alignTextLeft(1000);
-const int KTPrint::alignTextRight(2000);
-const int KTPrint::alignTextCenter(3000);
+const int CrontabPrinter::alignTextLeft(1000);
+const int CrontabPrinter::alignTextRight(2000);
+const int CrontabPrinter::alignTextCenter(3000);
 
-const int KTPrint::defaultLeftMargin(20);
-const int KTPrint::defaultRightMargin(20);
-const int KTPrint::defaultTopMargin(30);
-const int KTPrint::defaultBottomMargin(30);
+const int CrontabPrinter::defaultLeftMargin(20);
+const int CrontabPrinter::defaultRightMargin(20);
+const int CrontabPrinter::defaultTopMargin(30);
+const int CrontabPrinter::defaultBottomMargin(30);
 
 /*
  I had to add this enum to get the file to compile. Since I ported
@@ -43,14 +43,14 @@ enum AlignmentFlags {AlignLeft = 0x0001, AlignRight = 0x0002,
 	ExpandTabs = 0x0100, ShowPrefix = 0x0200,
 	WordBreak = 0x0400, DontPrint = 0x1000};
 
-KTPrint::~KTPrint() {
+CrontabPrinter::~CrontabPrinter() {
 	delete prnt;
 	delete prntOpt;
 	if (columns.isEmpty()==false)
 		columns.erase(columns.begin(), columns.end());
 }
 
-void KTPrint::createColumns(unsigned num_columns) {
+void CrontabPrinter::createColumns(unsigned num_columns) {
 	//Construct all of the columns to be equal in size
 	//I am going to add a function which works on percentages
 
@@ -71,7 +71,7 @@ void KTPrint::createColumns(unsigned num_columns) {
 
 }
 
-bool KTPrint::start() {
+bool CrontabPrinter::start() {
 	prnt->setDocName("Cron Tab");
 
 	QPrintDialog *printDialog = KdePrint::createPrintDialog(prnt, QList<QWidget*>() << prntOpt, parent);
@@ -95,15 +95,15 @@ bool KTPrint::start() {
 		return false;
 }
 
-void KTPrint::setFont(const QFont &font) {
+void CrontabPrinter::setFont(const QFont &font) {
 	paint->setFont(font);
 }
 
-QFont KTPrint::getFont() const {
+QFont CrontabPrinter::getFont() const {
 	return paint->font();
 }
 
-void KTPrint::print(const QString &str, int col, int alignment, bool wordWrap) {
+void CrontabPrinter::print(const QString &str, int col, int alignment, bool wordWrap) {
 	//Prints the string str into the column col using
 	//the remaining arguments as format flags
 
@@ -151,7 +151,7 @@ void KTPrint::print(const QString &str, int col, int alignment, bool wordWrap) {
 	}
 }
 
-void KTPrint::levelColumns(int space) {
+void CrontabPrinter::levelColumns(int space) {
 	int ht(0);
 
 	//Find the heighest height
@@ -165,20 +165,20 @@ void KTPrint::levelColumns(int space) {
 		columns[i]->height = ht+space;
 }
 
-void KTPrint::finished() {
+void CrontabPrinter::finished() {
 	if (paint!=NULL) {
 		paint->end(); //Send to printer or file
 		delete paint;
 	}
 }
 
-void KTPrint::newPage() {
+void CrontabPrinter::newPage() {
 	prnt->newPage();
 	for (int i = 0; i < columns.size(); i++)
 		columns[i]->height = topMargin;
 }
 
-int KTPrint::numCopies() const {
+int CrontabPrinter::numCopies() const {
 	return prnt->numCopies();
 }
 

@@ -18,7 +18,7 @@
 #include "variableEditorDialog.h"
 #include "kticon.h"
 #include "taskEditorDialog.h"
-#include "ktprint.h"
+#include "crontabPrinter.h"
 
 VariableWidget::VariableWidget(VariablesWidget* variablesWidget, CTVariable* _ctVariable) :
 	QTreeWidgetItem(variablesWidget->treeWidget()) {
@@ -58,13 +58,13 @@ void VariableWidget::refresh() {
 	setIcon(0, QIcon(qpIcon));
 }
 
-void VariableWidget::print(KTPrint& printer) const {
-	printer.print(ctVariable->variable, 1, KTPrint::alignTextLeft);
+void VariableWidget::print(CrontabPrinter& printer) const {
+	printer.print(ctVariable->variable, 1, CrontabPrinter::alignTextLeft);
 	if (ctVariable->enabled) {
-		printer.print(ctVariable->value, 2, KTPrint::alignTextCenter);
-		printer.print(ctVariable->comment, 3, KTPrint::alignTextRight);
+		printer.print(ctVariable->value, 2, CrontabPrinter::alignTextCenter);
+		printer.print(ctVariable->comment, 3, CrontabPrinter::alignTextRight);
 	} else {
-		printer.print(i18nc("The cron variable has been disabled", "Disabled."), 3, KTPrint::alignTextRight);
+		printer.print(i18nc("The cron variable has been disabled", "Disabled."), 3, CrontabPrinter::alignTextRight);
 	}
 
 }

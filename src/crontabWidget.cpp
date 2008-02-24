@@ -15,14 +15,19 @@
 #include <unistd.h>
 
 #include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <QDateTime>
-#include <QResizeEvent>
 #include <QLabel>
 #include <QSplitter>
+#include <QRadioButton>
+#include <QButtonGroup>
+#include <QComboBox>
 
 #include <kglobalsettings.h>
 #include <klocale.h>
 #include <kglobal.h>
+#include <kicon.h>
+#include <kiconloader.h>
 
 #include "cthost.h"
 #include "ctcron.h"
@@ -37,7 +42,7 @@
 #include "variableWidget.h"
 
 #include "kcron.h"
-#include "ktprint.h"
+#include "crontabPrinter.h"
 
 #include "logging.h"
 
@@ -74,36 +79,92 @@ public:
 	 */
 	//CTVariable* clipboardCTVariable;
 
+	QRadioButton* currentUserCronRadio;
+	QRadioButton* systemCronRadio;
+	QRadioButton* otherUserCronRadio;
+
+	QComboBox* otherUsers;
+
 };
 
 CrontabWidget::CrontabWidget(QWidget* parent, CTHost* ctHost) :
-	QWidget(parent), 
-	d(new CrontabWidgetPrivate()) {
+	QWidget(parent), d(new CrontabWidgetPrivate()) {
 
 	d->tasksWidget = NULL;
 	d->variablesWidget = NULL;
+
 	/*
-	d->clipboardIsTask = true;
-	d->clipboardCTTask = NULL;
-	d->clipboardCTVariable = NULL;
-	*/
+	 d->clipboardIsTask = true;
+	 d->clipboardCTTask = NULL;
+	 d->clipboardCTVariable = NULL;
+	 */
 	d->ctHost = ctHost;
 
 	initialize();
 
-	emit modificationActionsToggled(false);
-	emit runNowActionToggled(false);
+	emit 	modificationActionsToggled(false);
+	emit 	runNowActionToggled(false);
 	//emit pasteActionToggled(d->clipboardCTVariable);
 
 	d->tasksWidget->setFocus();
-	
+
 	QTreeWidgetItem* item = d->tasksWidget->treeWidget()->topLevelItem(0);
 	if (item != NULL) {
 		logDebug() << "First item found" << d->tasksWidget->treeWidget()->topLevelItemCount() << endl;
 		item->setSelected(true);
 	}
 
+}
 
+QHBoxLayout* CrontabWidget::createCronSelector() {
+	QHBoxLayout* layout = new QHBoxLayout(this);
+	layout->setSpacing(4);
+
+	QLabel* cronSelectorIcon = new QLabel(this);
+	cronSelectorIcon->setPixmap(SmallIcon("table"));
+	layout->addWidget(cronSelectorIcon);
+
+	layout->addWidget(new QLabel(i18n("Show the following Cron:"), this));
+
+	QButtonGroup* group = new QButtonGroup(this);
+
+	d->currentUserCronRadio = new QRadioButton(i18n("Personal Cron"), this);
+	d->currentUserCronRadio->setChecked(true);
+	group->addButton(d->currentUserCronRadio);
+	layout->addWidget(d->currentUserCronRadio);
+
+	d->systemCronRadio = new QRadioButton(i18n("System Cron"), this);
+	group->addButton(d->systemCronRadio);
+	layout->addWidget(d->systemCronRadio);
+
+	d->otherUserCronRadio = new QRadioButton(i18n("Cron of User:"), this);
+	group->addButton(d->otherUserCronRadio);
+
+	d->otherUsers = new QComboBox(this);
+
+	layout->addWidget(d->otherUserCronRadio);
+	layout->addWidget(d->otherUsers);
+
+	if (ctHost()->isRootUser()) {
+		QStringList users;
+
+		foreach(CTCron* ctCron, ctHost()->cron) {
+			d->otherUsers->addItem(ctCron->userLogin());
+
+		}
+
+		//d->otherUsers->addItem(KIcon("users"), i18n("All users"));
+	} else {
+		d->otherUserCronRadio->hide();
+		d->otherUsers->hide();
+	}
+
+	connect(group, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(refreshCron()));
+	connect(d->otherUsers, SIGNAL(currentIndexChanged(int)), this, SLOT(checkOtherUsers()));
+
+	layout->addStretch(1);
+
+	return layout;
 }
 
 void CrontabWidget::initialize() {
@@ -113,102 +174,60 @@ void CrontabWidget::initialize() {
 
 	logDebug() << "Creating Tasks list..." << endl;
 
+	QHBoxLayout* cronSelector = createCronSelector();
+	layout->addLayout(cronSelector);
+
 	QSplitter* splitter = new QSplitter(this);
 	splitter->setOrientation(Qt::Vertical);
 	layout->addWidget(splitter);
 
-	d->tasksWidget = new TasksWidget(this, d->ctHost);
+	d->tasksWidget = new TasksWidget(this);
 	splitter->addWidget(d->tasksWidget);
 	splitter->setStretchFactor(0, 2);
 
-	d->variablesWidget = new VariablesWidget(this, d->ctHost);
+	d->variablesWidget = new VariablesWidget(this);
 	splitter->addWidget(d->variablesWidget);
 	splitter->setStretchFactor(1, 1);
 
 	logDebug() << "Variables list created" << endl;
 
-	// For each user
-	foreach(CTCron* ctCron, d->ctHost->cron) {
-
-		foreach(CTTask* ctTask, ctCron->task) {
-			new TaskWidget(d->tasksWidget, ctTask);
-		}
-
-		foreach(CTVariable* ctVariable, ctCron->variable) {
-			new VariableWidget(d->variablesWidget, ctVariable);
-		}
-	}
-
-	//Resize all columns except the last one (which always take the last available space)
-	d->tasksWidget->resizeColumnContents();
-	d->variablesWidget->resizeColumnContents();
-
-	logDebug() << "Connecting, showing" << endl;
-
 	connect(d->tasksWidget->treeWidget(), SIGNAL(itemSelectionChanged()), this, SLOT(slotSetCurrentItem()));
 	connect(d->variablesWidget->treeWidget(), SIGNAL(itemSelectionChanged()), this, SLOT(slotSetCurrentItem()));
 
-	logDebug() << "View refreshed" << endl;
+	logDebug() << "View initialized" << endl;
+
+	refreshCron();
 
 }
 
 CrontabWidget::~CrontabWidget() {
 	delete d->tasksWidget;
 	delete d->variablesWidget;
-	
+
 	delete d;
 }
 
-void CrontabWidget::copy() {
-	/*
-	if (d->clipboardCTTask) {
-		delete d->clipboardCTTask;
-		d->clipboardCTTask = NULL;
-	}
+void CrontabWidget::refreshCron() {
 
-	if (d->clipboardCTVariable) {
-		delete d->clipboardCTVariable;
-		d->clipboardCTVariable = NULL;
-	}
+	CTCron* ctCron = currentCron();
 
-	TaskWidget* taskWidget = d->tasksWidget->firstSelectedTaskWidget();
-	VariableWidget* variableWidget = d->variablesWidget->firstSelectedVariableWidget();
-
-	if (taskWidget != NULL) {
-		d->clipboardCTTask = new CTTask( *(taskWidget->getCTTask()) );
-		d->clipboardIsTask = true;
-	} else if (variableWidget != NULL) {
-		d->clipboardCTVariable = new CTVariable( *(variableWidget->getCTVariable()) );
-		d->clipboardIsTask = false;
-	}
-	*/
-}
-
-void CrontabWidget::cut() {
-	/*
-	copy();
+	d->tasksWidget->refreshTasks(ctCron);
+	d->variablesWidget->refreshVariables(ctCron);
 	
-	d->tasksWidget->deleteSelection();
-	d->variablesWidget->deleteSelection();
-	*/
-}
-
-void CrontabWidget::paste() {
-	/*
-	 KTListItem* qlvi = (KTListItem*)tasksListWidget->currentItem();
-
-	 if (currentIsTask) {
-	 CTTask* temptask = new CTTask(*clipboardCTTask);
-	 currentCTCron->task.push_back(temptask);
-	 KTListTask* ktlt = new KTListTask(qlvi, currentCTCron, temptask);
-	 tasksListWidget->setSelected(ktlt, true);
-	 } else {
-	 CTVariable* tempvar = new CTVariable(*clipboardCTVariable);
-	 currentCTCron->variable.push_back(tempvar);
-	 KTListVar* ktlv = new KTListVar(qlvi, currentCTCron, tempvar);
-	 tasksListWidget->setSelected(ktlv, true);
-	 }
-	 */
+	if (ctCron->isSystemCron() && ctHost()->isRootUser()==false) {
+		d->tasksWidget->setEnabled(false);
+		d->variablesWidget->setEnabled(false);
+		
+		emit newEntryToggled(false);
+		emit modificationActionsToggled(false);
+		emit runNowActionToggled(false);
+	}
+	else {
+		d->tasksWidget->setEnabled(true);
+		d->variablesWidget->setEnabled(true);
+		
+		emit newEntryToggled(true);
+	}
 }
 
 void CrontabWidget::slotSetCurrentItem() {
@@ -232,120 +251,152 @@ void CrontabWidget::slotSetCurrentItem() {
 	if (taskWidget!=NULL || variableWidget!=NULL) {
 		emit modificationActionsToggled(true);
 	}
-	
+
 	if (taskWidget==NULL)
 		emit runNowActionToggled(false);
-	else 
+	else
 		emit runNowActionToggled(true);
+
+}
+
+void CrontabWidget::print() {
+
+	CrontabPrinter printer(d->ctHost->isRootUser(), this);
+
+	if (printer.start() == false) {
+		logDebug() << "Unable to start printer" << endl;
+		return;
+	}
+
+	printer.createColumns(3);
+
+	int copies = printer.numCopies();
+	while (copies != 0) {
+		pageHeading(printer);
+		
+		tasksWidget()->print(printer);
+		variablesWidget()->print(printer);
+
+		if (printer.crontab()) {
+			pageFooter(printer);
+		}
+
+
+		copies--;
+		if (copies != 0)
+			printer.newPage();
+	
+
+	}
+
+	printer.finished(); //End the print
 	
 }
 
+void CrontabWidget::pageHeading(CrontabPrinter& printer) const {
+	QDateTime now(QDateTime::currentDateTime());
+	char hostName[20];
 
-void CrontabWidget::print() {
+	gethostname(hostName, 20);
+	// SSA : Fix Me user name, logon name and host name must be
+	// SSA : not only in us-ascii ??
+	QString logonInfo = i18nc("user on host", "%1 <placeholder>%2</placeholder> on %3", currentCron()->userRealName(), currentCron()->userLogin(), QString::fromLocal8Bit(hostName));
+
+	QFont stnd = printer.getFont();
+	printer.setFont(QFont(KGlobalSettings::generalFont().family(), 14, QFont::Bold));
+
+	printer.print(i18n("Scheduled Tasks"), 2, CrontabPrinter::alignTextCenter, false);
+	printer.print(logonInfo, 2, CrontabPrinter::alignTextCenter, false);
+	printer.print(KGlobal::locale()->formatDateTime(now), 2, CrontabPrinter::alignTextCenter, false);
+	printer.setFont(stnd);
+
+	printer.levelColumns(20);
+
+}
+
+void CrontabWidget::pageFooter(CrontabPrinter& printer) const {
+	QString crontab = currentCron()->exportCron();
+	printer.print(crontab, 1, CrontabPrinter::alignTextLeft, false);
+}
+
+void CrontabWidget::copy() {
 	/*
-	 bool crontab, allUsers;
-	 KTListItem *ktli, *user;
+	 if (d->clipboardCTTask) {
+	 delete d->clipboardCTTask;
+	 d->clipboardCTTask = NULL;
+	 }
 
-	 const CTHost& cth(ktapp->getCTHost());
+	 if (d->clipboardCTVariable) {
+	 delete d->clipboardCTVariable;
+	 d->clipboardCTVariable = NULL;
+	 }
 
-	 KTPrint printer(cth.isRootUser(), this);
+	 TaskWidget* taskWidget = d->tasksWidget->firstSelectedTaskWidget();
+	 VariableWidget* variableWidget = d->variablesWidget->firstSelectedVariableWidget();
 
-	 if (printer.start()) {
-	 crontab = printer.crontab();
-	 allUsers = printer.allUsers();
+	 if (taskWidget != NULL) {
+	 d->clipboardCTTask = new CTTask( *(taskWidget->getCTTask()) );
+	 d->clipboardIsTask = true;
+	 } else if (variableWidget != NULL) {
+	 d->clipboardCTVariable = new CTVariable( *(variableWidget->getCTVariable()) );
+	 d->clipboardIsTask = false;
+	 }
+	 */
+}
 
-	 printer.createColumns(3);
+void CrontabWidget::cut() {
+	/*
+	 copy();
+	 
+	 d->tasksWidget->deleteSelection();
+	 d->variablesWidget->deleteSelection();
+	 */
+}
 
-	 int copies = printer.numCopies();
-	 while (copies != 0) {
-	 if (allUsers || !cth.isRootUser()) {
-	 ktli = (KTListItem*)listView->firstChild();
+void CrontabWidget::paste() {
+	/*
+	 KTListItem* qlvi = (KTListItem*)tasksListWidget->currentItem();
+
+	 if (currentIsTask) {
+	 CTTask* temptask = new CTTask(*clipboardCTTask);
+	 currentCTCron->task.push_back(temptask);
+	 KTListTask* ktlt = new KTListTask(qlvi, currentCTCron, temptask);
+	 tasksListWidget->setSelected(ktlt, true);
 	 } else {
-	 ktli = (KTListItem*)listView->currentItem();
+	 CTVariable* tempvar = new CTVariable(*clipboardCTVariable);
+	 currentCTCron->variable.push_back(tempvar);
+	 KTListVar* ktlv = new KTListVar(qlvi, currentCTCron, tempvar);
+	 tasksListWidget->setSelected(ktlv, true);
 	 }
-
-	 //Check that the correct item is selected, they must
-	 //select the top level entry for all items to print
-	 while (ktli->depth() != 0)
-	 ktli = (KTListItem*)ktli->parent();
-
-	 user = ktli; //Used to store user's name
-
-	 if (allUsers) {
-	 while (ktli) {
-	 pageHeading(ktli, printer);
-	 ktli->print(printer);
-	 if (crontab)
-	 pageFooter(ktli, printer);
-	 ktli = (KTListItem*)ktli->nextSibling();
-	 if (ktli)
-	 printer.newPage();
-	 }
-	 } else {
-	 //ktli goes out of range here hence the need for user
-	 pageHeading(user, printer);
-	 if (!cth.isRootUser()) {
-	 while (ktli) {
-	 ktli->print(printer);
-	 ktli = (KTListItem*)ktli->nextSibling();
-	 }
-	 } else
-	 ktli->print(printer);
-
-	 if (crontab)
-	 pageFooter(user, printer);
-
-	 }
-
-	 copies--; //Keep a track of how many copies we have printed
-	 if (copies != 0)
-	 printer.newPage();
-	 }//End printing loop (for more than one copy)
-
-	 printer.finished(); //End the print
-
-	 }//End Printing if
 	 */
 }
 
-void CrontabWidget::pageHeading(/*KTListItem* user, */KTPrint& /*printer*/) const {
-	/*
-	 QFont stnd;
-	 QString logonInfo;
-	 QDateTime now(QDateTime::currentDateTime());
-	 char hostName[20];
+CTCron* CrontabWidget::currentCron() const {
+	if (d->currentUserCronRadio->isChecked())
+		return d->ctHost->findCurrentUserCron();
+	else if (d->systemCronRadio->isChecked())
+		return d->ctHost->findSystemCron();
 
-	 gethostname(hostName, 20);
-	 // SSA : Fix Me user name, logon name and host name must be
-	 // SSA : not only in us-ascii ??
-	 logonInfo = i18nc("user on host", "%1 <placeholder>%2</placeholder> on %3", user->getCTCron()->name, user->getCTCron()->login, QString::fromLocal8Bit(hostName));
-
-	 stnd = printer.getFont();
-	 printer.setFont(QFont(KGlobalSettings::generalFont().family(), 14, QFont::Bold));
-
-	 printer.print(i18n("Scheduled Tasks"), 2, KTPrint::alignTextCenter, false);
-	 printer.print(logonInfo, 2, KTPrint::alignTextCenter, false);
-	 printer.print(KGlobal::locale()->formatDateTime(now), 2, KTPrint::alignTextCenter, false);
-	 printer.setFont(stnd);
-
-	 printer.levelColumns(20);
-	 */
-
+	QString currentUserLogin = d->otherUsers->currentText();
+	return d->ctHost->findUserCron(currentUserLogin);
 }
 
-void CrontabWidget::pageFooter(/*KTListItem* user, */KTPrint& /*printer*/) const {
-	/*
-	 QString crontab = user->getCTCron()->exportCron();
-	 printer.print(crontab, 1, KTPrint::alignTextLeft, false);
-	 */
-}
-
-TasksWidget* CrontabWidget::tasksWidget() {
+TasksWidget* CrontabWidget::tasksWidget() const {
 	return d->tasksWidget;
 }
 
-VariablesWidget* CrontabWidget::variablesWidget() {
+VariablesWidget* CrontabWidget::variablesWidget() const {
 	return d->variablesWidget;
+}
+
+CTHost* CrontabWidget::ctHost() const {
+	return d->ctHost;
+}
+
+void CrontabWidget::checkOtherUsers() {
+	d->otherUserCronRadio->setChecked(true);
+
+	refreshCron();
 }
 
 #include "crontabWidget.moc"

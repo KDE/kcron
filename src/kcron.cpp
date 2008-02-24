@@ -94,6 +94,8 @@ KCron::KCron() :
 	connect(d->crontabWidget, SIGNAL(modificationActionsToggled(bool)), this, SLOT(toggleModificationActions(bool)));
 	connect(d->crontabWidget, SIGNAL(pasteActionToggled(bool)), this, SLOT(togglePasteAction(bool)));
 	connect(d->crontabWidget, SIGNAL(runNowActionToggled(bool)), this, SLOT(toggleRunNowActions(bool)));
+	connect(d->crontabWidget, SIGNAL(newEntryToggled(bool)), this, SLOT(toggleNewEntryActions(bool)));
+	
 
 	// Call inits to invoke all other construction parts.
 	setupActions();
@@ -118,7 +120,7 @@ bool KCron::init() {
 	if (!d->ctHost->isRootUser()) {
 		int taskCount = 0;
 		foreach(CTCron* ctCron, d->ctHost->cron) {
-			taskCount += ctCron->task.count();
+			taskCount += ctCron->tasks().count();
 		}
 
 		if (taskCount == 0) {
@@ -251,7 +253,7 @@ bool KCron::queryClose() {
 
 		switch (retVal) {
 		case KMessageBox::Yes:
-			d->ctHost->apply();
+			d->ctHost->save();
 			if (d->ctHost->isError()) {
 				KMessageBox::error(win, d->ctHost->errorMessage());
 				return false;
@@ -280,7 +282,7 @@ bool KCron::queryExit() {
 
 void KCron::slotSave() {
 	slotStatusMessage(i18nc("Saving the file to the hard drive", "Saving..."));
-	d->ctHost->apply();
+	d->ctHost->save();
 	slotStatusMessage(i18nc("Ready for user input", "Ready."));
 	if (d->ctHost->isError()) {
 		KMessageBox::error(this, d->ctHost->errorMessage());
@@ -354,9 +356,12 @@ void KCron::togglePasteAction(bool /*state*/) {
 }
 
 void KCron::toggleRunNowActions(bool state) {
-	logDebug() << "Toggle Run now at" << state << endl;
-
 	d->runNowAction->setEnabled(state);
+}
+
+void KCron::toggleNewEntryActions(bool state) {
+	d->newTaskAction->setEnabled(state);
+	d->newVariableAction->setEnabled(state);
 }
 
 #include "kcron.moc"

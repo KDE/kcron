@@ -23,22 +23,24 @@
 #include "ctvariable.h"
 
 #include "kticon.h"
+#include "crontabWidget.h"
 #include "variableWidget.h"
 #include "variableEditorDialog.h"
-#include "ktprint.h"
+#include "crontabPrinter.h"
 
-	
 /**
  * Construct tasks folder from branch.
  */
-VariablesWidget::VariablesWidget(QWidget* parent, CTHost* ctHost) :
-	GenericListWidget(parent, ctHost, i18n("<b>Variables</b>"), KTIcon::variable(KTIcon::Small)) {
+VariablesWidget::VariablesWidget(CrontabWidget* crontabWidget) :
+	GenericListWidget(crontabWidget, i18n("<b>Environment Variables</b>"), KTIcon::variable(KTIcon::Small)) {
 	
 	QStringList headerLabels;
 
-	if (ctHost->isRootUser()) {
+	/*
+	if (crontabWidget()->isAllUsersSelected()) {
 		headerLabels << i18n("Users");
 	}
+	*/
 
 	headerLabels << i18n("Variable");
 	headerLabels << i18n("Value");
@@ -56,6 +58,7 @@ void VariablesWidget::modifySelection() {
 
 void VariablesWidget::modifySelection(QTreeWidgetItem* item, int position) {
 	VariableWidget* variableWidget = static_cast<VariableWidget*>(item);
+	
 	if (variableWidget!=NULL) {
 		
 		if (position == statusColumnIndex()) {
@@ -83,7 +86,7 @@ void VariablesWidget::deleteSelection() {
 	foreach(QTreeWidgetItem* item, variablesItems) {
 		VariableWidget* variableWidget = static_cast<VariableWidget*>(item);
 
-		ctHost()->findCronContaining(variableWidget->getCTVariable())->variable.removeAll(variableWidget->getCTVariable());
+		crontabWidget()->currentCron()->variables().removeAll(variableWidget->getCTVariable());
 		delete variableWidget->getCTVariable();
 		treeWidget()->takeTopLevelItem( treeWidget()->indexOfTopLevelItem(variableWidget) );
 		delete variableWidget;
@@ -93,18 +96,18 @@ void VariablesWidget::deleteSelection() {
 }
 
 
-void VariablesWidget::print(KTPrint& printer) {
+void VariablesWidget::print(CrontabPrinter& printer) {
 	QFont stnd = printer.getFont() ;
 	printer.setFont(QFont(KGlobalSettings::generalFont().family(), 10, QFont::Bold));
 
-	printer.print(i18nc("The environmental variable name ie HOME, MAILTO etc", "Variable:"), 1, KTPrint::alignTextLeft);
-	printer.print(i18n("Value:"), 2, KTPrint::alignTextCenter);
-	printer.print(i18n("Description:"), 3, KTPrint::alignTextRight);
+	printer.print(i18nc("The environmental variable name ie HOME, MAILTO etc", "Variable:"), 1, CrontabPrinter::alignTextLeft);
+	printer.print(i18n("Value:"), 2, CrontabPrinter::alignTextCenter);
+	printer.print(i18n("Description:"), 3, CrontabPrinter::alignTextRight);
 
 	printer.setFont(stnd);
 
 	if (treeWidget()->topLevelItemCount() ==0) {
-		printer.print(i18n("No variables..."), 1, KTPrint::alignTextLeft, false);
+		printer.print(i18n("No variables..."), 1, CrontabPrinter::alignTextLeft, false);
 		printer.levelColumns(20);
 		return;
 	}
@@ -124,8 +127,10 @@ void VariablesWidget::print(KTPrint& printer) {
 
 
 int VariablesWidget::statusColumnIndex() {
-	if (ctHost()->isRootUser())
+	/*
+	if (crontabWidget()->isAllUsersSelected())
 		return 3;
+	*/
 
 	return 2;
 }
@@ -138,9 +143,20 @@ void VariablesWidget::createVariable() {
 	variableEditorDialog.exec();
 
 	if (variable->dirty()) {
-		ctHost()->firstCron()->variable.append(variable);
+		crontabWidget()->currentCron()->variables().append(variable);
 		new VariableWidget(this, variable);
 	} else {
 		delete variable;
 	}
+}
+
+void VariablesWidget::refreshVariables(CTCron* cron) {
+	//Remove previous items
+	removeAll();
+
+	foreach(CTVariable* ctVariable, cron->variables()) {
+		new VariableWidget(this, ctVariable);
+	}
+	
+	resizeColumnContents();
 }

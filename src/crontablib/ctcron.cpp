@@ -26,8 +26,8 @@
 
 #include <unistd.h>      // getuid(), unlink()
 #include <pwd.h>         // pwd, getpwnam(), getpwuid()
-#include <stdio.h>
-#include <assert.h>
+
+#include "logging.h"
 
 QProcess::ExitStatus CommandLine::execute() {
 	QProcess process;
@@ -41,63 +41,92 @@ QProcess::ExitStatus CommandLine::execute() {
 	return process.exitStatus();
 }
 
-CTCron::CTCron(const QString& crontabBinary, bool _syscron, const QString& _login) :
-	syscron(_syscron) {
-	int uid(getuid());
+class CTCronPrivate {
+public:
 
-	this->crontab = crontabBinary;
+	/**
+	 * Indicates whether or not the crontab belongs to the system.
+	 */
+	bool systemCron;
+	
+	/**
+	 * Indicates whether or not the crontab belongs to the current user.
+	 */
+	bool currentUserCron;
+
+	/**
+	 * User  login.
+	 */
+	QString userLogin;
+
+	/**
+	 * User real name.
+	 */
+	QString userRealName;
+
+	/**
+	 * User's scheduled tasks.
+	 */
+	QList<CTTask *> task;
+
+	/**
+	 * User's environment variables.  Note:  These are only environment variables
+	 * found in the user's crontab file and does not include any set in a 
+	 * login or shell script such as ".bash_profile".
+	 */
+	QList<CTVariable *> variable;
+
+	int initialTaskCount;
+	int initialVariableCount;
+	
+	CommandLine writeCommandLine;
+	
+	QString tmpFileName;
+
+	QString error;
+
+	/**
+	 * Contains path to the crontab binary file
+	 */
+	QString crontabBinary;
+
+};
+
+CTCron::CTCron(const QString& crontabBinary, bool systemCron) :
+	d(new CTCronPrivate()) {
+	
+	d->systemCron = systemCron;
+	d->currentUserCron = false;
+	
+	if (d->systemCron == false) {
+		logDebug() << "Use this constructor only for system cron" << endl;
+		return;
+	}
+
+	d->crontabBinary = crontabBinary;
 
 	KTemporaryFile tmp;
 	tmp.open();
-	tmpFileName = tmp.fileName();
+	d->tmpFileName = tmp.fileName();
 
 	CommandLine readCommandLine;
 
 	// root, so provide requested crontab
-	if (uid == 0) {
-		if (syscron) {
-			readCommandLine.commandLine = "cat";
-			readCommandLine.parameters << "/etc/crontab";
-			readCommandLine.standardOutputFile = tmpFileName;
+	if (systemCron) {
+		readCommandLine.commandLine = "cat";
+		readCommandLine.parameters << "/etc/crontab";
+		readCommandLine.standardOutputFile = d->tmpFileName;
 
-			writeCommandLine.commandLine = "cat";
-			writeCommandLine.parameters << tmpFileName;
-			writeCommandLine.standardOutputFile = "/etc/crontab";
+		d->writeCommandLine.commandLine = "cat";
+		d->writeCommandLine.parameters << d->tmpFileName;
+		d->writeCommandLine.standardOutputFile = "/etc/crontab";
 
-			login = i18n("(System Crontab)");
-			name = "";
-		} else {
-			readCommandLine.commandLine = crontab;
-			readCommandLine.parameters << "-u" << _login << "-l";
-			readCommandLine.standardOutputFile = tmpFileName;
-			
-			writeCommandLine.commandLine = crontab;
-			writeCommandLine.parameters << "-u" << _login << tmpFileName;
-
-			if (!initFromPasswd(getpwnam(_login.toLocal8Bit()))) {
-				error = i18n("No password entry found for user '%1'", _login);
-			}
-		}
-	}
-	// regular user, so provide user's own crontab
-	else {
-		readCommandLine.commandLine = crontab;
-		readCommandLine.parameters << "-l";
-		readCommandLine.standardOutputFile = tmpFileName;
-
-		writeCommandLine.commandLine = crontab;
-		writeCommandLine.parameters << tmpFileName;
-
-		if (!initFromPasswd(getpwuid(uid))) {
-			error = i18n("No password entry found for uid '%1'", uid);
-		}
+		d->userLogin = i18n("(System Crontab)");
+		d->userRealName = d->userLogin;
 	}
 
-	if (name.isEmpty())
-		name = login;
-
-	initialTaskCount = 0;
-	initialVariableCount = 0;
+	d->initialTaskCount = 0;
+	d->initialVariableCount = 0;
 
 	if (isError())
 		return;
@@ -106,70 +135,92 @@ CTCron::CTCron(const QString& crontabBinary, bool _syscron, const QString& _logi
 	// Don't set error if it can't be read, it means the user
 	// doesn't have a crontab.
 	if (readCommandLine.execute() == QProcess::NormalExit) {
-		this->parseFile(tmpFileName);
+		this->parseFile(d->tmpFileName);
 	}
 
-	initialTaskCount = task.size();
-	initialVariableCount = variable.size();
+	d->initialTaskCount = d->task.size();
+	d->initialVariableCount = d->variable.size();
 }
 
-CTCron::CTCron(const QString& crontabBinary, const struct passwd *pwd) :
-	syscron(false) {
-	Q_ASSERT(pwd != 0L);
+CTCron::CTCron(const QString& crontabBinary, const struct passwd* userInfos, bool currentUserCron) :
+	d(new CTCronPrivate()) {
+	
+	Q_ASSERT(userInfos != NULL);
 
-	crontab = crontabBinary;
+	d->systemCron = false;
+	d->currentUserCron = currentUserCron;
+
+	d->crontabBinary = crontabBinary;
 
 	KTemporaryFile tmp;
 	tmp.open();
-	tmpFileName = tmp.fileName();
+	d->tmpFileName = tmp.fileName();
 
 	CommandLine readCommandLine;
-	readCommandLine.commandLine = crontab;
-	readCommandLine.parameters << "-u" << QString(pwd->pw_name) << "-l";
-	readCommandLine.standardOutputFile = tmpFileName;
+	
+	// regular user, so provide user's own crontab
+	if (currentUserCron == true) {
+		readCommandLine.commandLine = d->crontabBinary;
+		readCommandLine.parameters << "-l";
+		readCommandLine.standardOutputFile = d->tmpFileName;
 
-	writeCommandLine.commandLine = crontab;
-	writeCommandLine.parameters << "-u" << QString(pwd->pw_name) << tmpFileName;
+		d->writeCommandLine.commandLine = d->crontabBinary;
+		d->writeCommandLine.parameters << d->tmpFileName;
 
-	initFromPasswd(pwd);
+	}
+	else {
 
-	initialTaskCount = 0;
-	initialVariableCount = 0;
+		readCommandLine.commandLine = d->crontabBinary;
+		readCommandLine.parameters << "-u" << QString(userInfos->pw_name) << "-l";
+		readCommandLine.standardOutputFile = d->tmpFileName;
+	
+		d->writeCommandLine.commandLine = d->crontabBinary;
+		d->writeCommandLine.parameters << "-u" << QString(userInfos->pw_name) << d->tmpFileName;
+	}
 
-	if (isError())
+
+	d->initialTaskCount = 0;
+	d->initialVariableCount = 0;
+	
+	if (initializeFromUserInfos(userInfos) == false) {
+		d->error = i18n("No password entry found for uid '%1'", getuid());
+		logDebug() << "Error in crontab creation of" << userInfos->pw_name << endl;
 		return;
+	}
 
 	// Don't set error if it can't be read, it means the user
 	// doesn't have a crontab.
 	if (readCommandLine.execute() == QProcess::NormalExit) {
-		this->parseFile(tmpFileName);
+		this->parseFile(d->tmpFileName);
 	}
 
-	initialTaskCount = task.size();
-	initialVariableCount = variable.size();
+	d->initialTaskCount = d->task.size();
+	d->initialVariableCount = d->variable.size();
 }
 
-bool CTCron::initFromPasswd(const struct passwd *pwd) {
-	if (pwd == 0) {
+bool CTCron::initializeFromUserInfos(const struct passwd* userInfos) {
+	if (userInfos == 0) {
 		return false;
 	} else {
-		login = pwd->pw_name;
-		name = pwd->pw_gecos;
+		d->userLogin = userInfos->pw_name;
+		d->userRealName = userInfos->pw_gecos;
 		return true;
 	}
 }
 
 void CTCron::operator = (const CTCron& source) {
-	assert(!source.syscron);
-
-	foreach(CTVariable* ctVariable, source.variable) {
-		CTVariable* tmp = new CTVariable(*ctVariable);
-		variable.append(tmp);
+	if (source.isSystemCron() == true) {
+		logDebug() << "Trying to affect the system cron" << endl;
 	}
 
-	foreach(CTTask* ctTask, source.task) {
+	foreach(CTVariable* ctVariable, source.variables()) {
+		CTVariable* tmp = new CTVariable(*ctVariable);
+		d->variable.append(tmp);
+	}
+
+	foreach(CTTask* ctTask, source.tasks()) {
 		CTTask* tmp = new CTTask(*ctTask);
-		task.append(tmp);
+		d->task.append(tmp);
 	}
 }
 
@@ -213,14 +264,14 @@ void CTCron::parseFile(const QString& fileName) {
 		if ((firstEquals > 0) && ((firstWhiteSpace == -1) || firstWhiteSpace > firstEquals)) {
 			// create variable
 			CTVariable* tmp = new CTVariable(line, comment);
-			variable.append(tmp);
+			d->variable.append(tmp);
 			comment = "";
 		}
 		// must be a task, either enabled or disabled
 		else {
 			if (firstWhiteSpace > 0) {
-				CTTask* tmp = new CTTask(line, comment, syscron);
-				task.append(tmp);
+				CTTask* tmp = new CTTask(line, comment, d->systemCron);
+				d->task.append(tmp);
 				comment = "";
 			}
 		}
@@ -231,17 +282,17 @@ void CTCron::parseFile(const QString& fileName) {
 
 }
 
-QString CTCron::exportCron() {
+QString CTCron::exportCron() const {
 	QString exportCron;
 	exportCron += "# This file was written by KCron.\n";
 	exportCron += "# Although KCron supports most crontab formats, use care when editing.\n";
 	exportCron += "# Note: Lines beginning with \"#\\\" indicates a disabled task.\n\n";
 
-	foreach(CTVariable* ctVariable, variable) {
+	foreach(CTVariable* ctVariable, d->variable) {
 		exportCron += ctVariable->exportVariable();
 	}
 
-	foreach(CTTask* ctTask, task) {
+	foreach(CTTask* ctTask, d->task) {
 		exportCron += ctTask->exportTask();
 	}
 
@@ -249,13 +300,15 @@ QString CTCron::exportCron() {
 }
 
 CTCron::~CTCron() {
-	foreach(CTTask* ctTask, task) {
+	foreach(CTTask* ctTask, d->task) {
 		delete ctTask;
 	}
 
-	foreach(CTVariable* ctVariable, variable) {
+	foreach(CTVariable* ctVariable, d->variable) {
 		delete ctVariable;
 	}
+	
+	delete d;
 }
 
 void CTCron::saveToFile(const QString& fileName) {
@@ -270,58 +323,58 @@ void CTCron::saveToFile(const QString& fileName) {
 	file.close();
 }
 
-void CTCron::apply() {
+void CTCron::save() {
 	// write to temp file
-	saveToFile(tmpFileName);
+	saveToFile(d->tmpFileName);
 
 	// install temp file into crontab
-	if (writeCommandLine.execute() == QProcess::CrashExit) {
-		error = i18n("An error occurred while updating crontab.");
+	if (d->writeCommandLine.execute() == QProcess::CrashExit) {
+		d->error = i18n("An error occurred while updating crontab.");
 	}
 
 	// remove the temp file
-	QFile::remove(tmpFileName);
+	QFile::remove(d->tmpFileName);
 
 	if (isError())
 		return;
 
 	// mark as applied
-	foreach(CTTask* ctTask, task) {
+	foreach(CTTask* ctTask, d->task) {
 		ctTask->apply();
 	}
 
-	foreach(CTVariable* ctVariable, variable) {
+	foreach(CTVariable* ctVariable, d->variable) {
 		ctVariable->apply();
 	}
 
-	initialTaskCount = task.size();
-	initialVariableCount = variable.size();
+	d->initialTaskCount = d->task.size();
+	d->initialVariableCount = d->variable.size();
 }
 
 void CTCron::cancel() {
-	foreach(CTTask* ctTask, task) {
+	foreach(CTTask* ctTask, d->task) {
 		ctTask->cancel();
 	}
 
-	foreach(CTVariable* ctVariable, variable) {
+	foreach(CTVariable* ctVariable, d->variable) {
 		ctVariable->cancel();
 	}
 
 }
 
-bool CTCron::dirty() {
-	if (initialTaskCount != task.count())
+bool CTCron::isDirty() const {
+	if (d->initialTaskCount != d->task.count())
 		return true;
 
-	if (initialVariableCount != variable.count())
+	if (d->initialVariableCount != d->variable.count())
 		return true;
 
-	foreach(CTTask* ctTask, task) {
+	foreach(CTTask* ctTask, d->task) {
 		if (ctTask->dirty())
 		return true;
 	}
 
-	foreach(CTVariable* ctVariable, variable) {
+	foreach(CTVariable* ctVariable, d->variable) {
 		if (ctVariable->dirty())
 		return true;
 	}
@@ -332,7 +385,7 @@ bool CTCron::dirty() {
 QString CTCron::path() const {
 	QString path;
 
-	foreach(CTVariable* ctVariable, variable) {
+	foreach(CTVariable* ctVariable, d->variable) {
 		if (ctVariable->variable == "PATH") {
 			path = ctVariable->value;
 		}
@@ -340,4 +393,40 @@ QString CTCron::path() const {
 
 	return path;
 
+}
+/**
+ * Return error description
+ */
+QString CTCron::errorMessage() {
+	QString r = d->error;
+	d->error = QString();
+	return r;
+}
+
+bool CTCron::isError() const {
+	return ! d->error.isEmpty();
+}
+
+QList<CTTask*> CTCron::tasks() const {
+	return d->task;
+}
+
+QList<CTVariable*> CTCron::variables() const {
+	return d->variable;
+}
+
+bool CTCron::isSystemCron() const {
+	return d->systemCron;
+}
+
+bool CTCron::isCurrentUserCron() const {
+	return d->currentUserCron;
+}
+
+QString CTCron::userLogin() const {
+	return d->userLogin;
+}
+
+QString CTCron::userRealName() const {
+	return d->userRealName;
 }

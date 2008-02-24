@@ -49,7 +49,7 @@ public:
 	/**
 	 * Apply changes.
 	 */
-	void apply();
+	void save();
 
 	/**
 	 * Cancel changes.
@@ -60,11 +60,6 @@ public:
 	 * Indicates whether or not dirty.
 	 */
 	bool isDirty();
-
-	/**
-	 * Indicates whether or not the user is the root user.
-	 */
-	bool isRootUser() const;
 
 	/**
 	 * Indicates an error has occurred.
@@ -82,11 +77,14 @@ public:
 		return r;
 	}
 	
-	CTCron* firstCron() const;
+	/**
+	 * Indicates whether or not the user is the root user.
+	 */
+	bool isRootUser() const;
 	
-	CTCron* findCronContaining(CTTask* ctTask) const;
-	
-	CTCron* findCronContaining(CTVariable* ctVariable) const;
+	CTCron* findCurrentUserCron() const;
+	CTCron* findSystemCron() const;
+	CTCron* findUserCron(const QString& userLogin) const;
 
 	/**
 	 * User(s). 
@@ -114,7 +112,8 @@ private:
 	/**
 	 * Factory create a cron table.  Appends to the end of cron.
 	 */
-	CTCron* createCTCron(bool _syscron = false, const QString& _login = "");
+	CTCron* createSystemCron();
+	CTCron* createCurrentUserCron();
 	CTCron* createCTCron(const struct passwd* password);
 
 	/**

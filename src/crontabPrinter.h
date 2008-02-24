@@ -25,7 +25,7 @@ class QFont;
 /**
  *Provides a wrapper for simple printing of text.
  */
-class KTPrint {
+class CrontabPrinter {
 public:
 
 	/**
@@ -46,7 +46,7 @@ public:
 	/**
 	 * Contructor
 	 */
-	KTPrint(bool _root, QWidget *_parent) :
+	CrontabPrinter(bool _root, QWidget *_parent) :
 		leftMargin(defaultLeftMargin), rightMargin(defaultRightMargin), topMargin(defaultTopMargin), bottomMargin(defaultBottomMargin), paint(0), root(_root), parent(_parent) {
 		prnt = new QPrinter;
 		prntOpt = new KTPrintOpt(root);
@@ -57,7 +57,7 @@ public:
 	/**
 	 * Destructor
 	 */
-	~KTPrint();
+	~CrontabPrinter();
 
 	/**
 	 * Start the printing process, gain page info
@@ -82,7 +82,7 @@ public:
 	/**
 	 * Print text
 	 */
-	void print(const QString &str, int col =1, int alignment=KTPrint::defaultLeftMargin, bool wordWrap = true);
+	void print(const QString &str, int col =1, int alignment=CrontabPrinter::defaultLeftMargin, bool wordWrap = true);
 
 	/**
 	 * Constructs the columns
@@ -123,7 +123,7 @@ private:
 	 *Disable the copy constructor and the assignment operator
 	 */
 	//KTPrint (const KTPrint&) {}
-	KTPrint& operator=(const KTPrint&) {
+	CrontabPrinter& operator=(const CrontabPrinter&) {
 		return *this;
 	}
 

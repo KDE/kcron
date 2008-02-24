@@ -24,7 +24,7 @@ set(kcron_SRCS
 
    kcron.cpp 
     
-   ktprint.cpp 
+   crontabPrinter.cpp 
    ktprintopt.cpp 
    main.cpp 
 )

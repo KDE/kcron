@@ -13,18 +13,21 @@
 #define KTVIEW_H
 
 #include <QWidget>
-#include <QResizeEvent>
 
 #include "tasksWidget.h"
 #include "variablesWidget.h"
 
 class QString;
+class QHBoxLayout;
+class QAbstractButton;
+
+
 class CTHost;
-class KTPrint;
 class CTCron;
 class CTVariable;
 class CTTask;
 
+class CrontabPrinter;
 class TaskWidget;
 class VariableWidget;
 
@@ -48,9 +51,11 @@ public:
 	 */
 	~CrontabWidget();
 	
-	TasksWidget* tasksWidget();
+	TasksWidget* tasksWidget() const;
 	
-	VariablesWidget* variablesWidget();
+	VariablesWidget* variablesWidget() const;
+	
+	CTHost* ctHost() const;
 
 public slots:
 	
@@ -70,6 +75,8 @@ public slots:
 	 * Pastes variables and/or tasks from the clipboard.
 	 */
 	void paste();
+	
+	CTCron* currentCron() const;
 
 signals:
 
@@ -77,40 +84,52 @@ signals:
 	 * buttons depending
 	 * on if a task is selected
 	 */
-	void modificationActionsToggled(bool);
+	void modificationActionsToggled(bool enabled);
+
+	/** 
+	 * Enables/disables "Run now" depending
+	 * on the task settings
+	 */
+	void runNowActionToggled(bool enabled);
+	
+	/**
+	 * Toggle new entries
+	 */
+	void newEntryToggled(bool enabled);
 
 	/** 
 	 * Enables/disables paste button depending
 	 * on clipboard contents
 	 */
-	void pasteActionToggled(bool);
-
-	/** Enables/disables "Run now" depending
-	 * on the task settings
-	 */
-	void runNowActionToggled(bool);
+	void pasteActionToggled(bool enabled);
 
 protected slots:
 
 	void slotSetCurrentItem();
 
+	void refreshCron();
+
+	void checkOtherUsers();
+	
 private:
 	
 	/**
 	 * Print page heading.
 	 */
-	void pageHeading(/*KTListItem* user, */KTPrint& printer) const;
+	void pageHeading(CrontabPrinter& printer) const;
 
 	/**
 	 * Print page footer.
 	 */
-	void pageFooter(/*KTListItem* user, */KTPrint& printer) const;
+	void pageFooter(CrontabPrinter& printer) const;
 
 	/**
 	 * Initialize view from underlying objects.
 	 */
 	void initialize();
-
+	
+	QHBoxLayout* createCronSelector();
+	
 	CrontabWidgetPrivate* const d;
 	
 };

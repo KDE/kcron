@@ -113,15 +113,17 @@ public slots:
 
 	/** Enables/disables paste button
 	 */
-	void togglePasteAction(bool);
+	void togglePasteAction(bool enabled);
 
 	/** Enables/disables modification buttons
 	 */
-	void toggleModificationActions(bool);
+	void toggleModificationActions(bool enabled);
 
 	/** Enables/disables "Run now"
 	 */
-	void toggleRunNowActions(bool);
+	void toggleRunNowActions(bool enabled);
+	
+	void toggleNewEntryActions(bool enabled);
 
 private:
 

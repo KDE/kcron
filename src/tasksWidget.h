@@ -14,7 +14,7 @@
 
 #include <QTreeWidget>
 
-#include "ktprint.h"
+#include "crontabPrinter.h"
 
 #include "genericListWidget.h"
 #include "cthost.h"
@@ -32,16 +32,18 @@ public:
 	/**
 	 * Construct tasks folder from branch.
 	 */
-	TasksWidget(QWidget* parent, CTHost* ctHost);
+	TasksWidget(CrontabWidget* crontabWidget);
 	
 	~TasksWidget();
 
 	/**
 	 * Print all tasks.
 	 */
-	void print(KTPrint& printer);
+	void print(CrontabPrinter& printer);
 
 	TaskWidget* firstSelectedTaskWidget() const;
+	
+	void refreshTasks(CTCron* cron);
 
 public slots:
 	void modifySelection();

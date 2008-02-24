@@ -27,26 +27,29 @@
 #include "ctvariable.h"
 
 #include "kticon.h"
+#include "crontabWidget.h"
 #include "taskWidget.h"
 #include "taskEditorDialog.h"
-#include "ktprint.h"
+#include "crontabPrinter.h"
 
 #include "logging.h"
 
 /**
  * Construct tasks folder from branch.
  */
-TasksWidget::TasksWidget(QWidget* parent, CTHost* ctHost) :
-	GenericListWidget(parent, ctHost, i18n("<b>Tasks</b>"), KTIcon::task(KTIcon::Small)) {
+TasksWidget::TasksWidget(CrontabWidget* crontabWidget) :
+	GenericListWidget(crontabWidget, i18n("<b>Tasks</b>"), KTIcon::task(KTIcon::Small)) {
 	
 	QStringList headerLabels;
 	
-	if (ctHost->isRootUser()) {
+	/*
+	if (crontabWidget()->isAllUsersSelected()) {
 		headerLabels << i18n("Users");
 	}
+	*/
 
 	headerLabels << i18n("Scheduling");
-	headerLabels << i18n("Command Task");
+	headerLabels << i18n("Command");
 	headerLabels << i18n("Status");
 	headerLabels << i18n("Description");
 	headerLabels << i18n("Scheduling Details");
@@ -63,18 +66,18 @@ TasksWidget::~TasksWidget() {
 
 }
 
-void TasksWidget::print(KTPrint& printer) {
+void TasksWidget::print(CrontabPrinter& printer) {
 	QFont stnd = printer.getFont();
 
 	printer.setFont(QFont(KGlobalSettings::generalFont().family(), 10, QFont::Bold));
-	printer.print(i18n("Task name:"), 1, KTPrint::alignTextLeft);
-	printer.print(i18n("Program:"), 2, KTPrint::alignTextCenter);
-	printer.print(i18n("Description:"), 3, KTPrint::alignTextRight);
+	printer.print(i18n("Task name:"), 1, CrontabPrinter::alignTextLeft);
+	printer.print(i18n("Program:"), 2, CrontabPrinter::alignTextCenter);
+	printer.print(i18n("Description:"), 3, CrontabPrinter::alignTextRight);
 
 	printer.setFont(stnd);
 
 	if (treeWidget()->topLevelItemCount() == 0) {
-		printer.print(i18n("No tasks..."), 1, KTPrint::alignTextLeft, false);
+		printer.print(i18n("No tasks..."), 1, CrontabPrinter::alignTextLeft, false);
 		printer.levelColumns(20);
 		return;
 	}
@@ -129,7 +132,7 @@ void TasksWidget::deleteSelection() {
 	foreach(QTreeWidgetItem* item, tasksItems) {
 		TaskWidget* taskWidget = static_cast<TaskWidget*>(item);
 
-		ctHost()->findCronContaining(taskWidget->getCTTask())->task.removeAll(taskWidget->getCTTask());
+		crontabWidget()->currentCron()->tasks().removeAll(taskWidget->getCTTask());
 		delete taskWidget->getCTTask();
 		treeWidget()->takeTopLevelItem( treeWidget()->indexOfTopLevelItem(taskWidget) );
 		delete taskWidget;
@@ -140,8 +143,10 @@ void TasksWidget::deleteSelection() {
 }
 
 int TasksWidget::statusColumnIndex() {
-	if (ctHost()->isRootUser())
+	/*
+	if (crontabWidget()->isAllUsersSelected())
 		return 3;
+	*/
 
 	return 2;
 }
@@ -155,7 +160,7 @@ void TasksWidget::runTaskNow() const {
 	
 	QString echoMessage = i18nc("Do not use any quote characters (') in this string", "End of script execution. Type Enter or Ctrl+C to exit.");
 
-	CTCron* ctCron = ctHost()->findCronContaining(taskWidget->getCTTask());
+	CTCron* ctCron = crontabWidget()->currentCron();
 	if (ctCron == NULL) {
 		logDebug() << "Unable to find the related CtCron, please report this bug to KCron developer" << endl;
 		return;
@@ -164,7 +169,7 @@ void TasksWidget::runTaskNow() const {
 
 	QStringList commandList;
 	
-	foreach(CTVariable* variable, ctCron->variable) {
+	foreach(CTVariable* variable, ctCron->variables()) {
 		commandList << QString("export %1=\"%2\"").arg(variable->variable, variable->value);
 	}
 	
@@ -184,16 +189,29 @@ void TasksWidget::runTaskNow() const {
 }
 
 void TasksWidget::createTask() {
-	CTTask* task = new CTTask("", "", ctHost()->firstCron()->syscron);
+	CTTask* task = new CTTask("", "", crontabWidget()->currentCron()->isSystemCron());
 
 	TaskEditorDialog taskEditorDialog(task, i18n("New Task"));
 	taskEditorDialog.exec();
 
 	if (task->dirty()) {
-		ctHost()->firstCron()->task.append(task);
+		crontabWidget()->currentCron()->tasks().append(task);
 		new TaskWidget(this, task);
 	} else {
 		delete task;
 	}
 }
 
+
+void TasksWidget::refreshTasks(CTCron* cron) {
+	//Remove previous items
+	removeAll();
+	
+	//Add new items
+	foreach(CTTask* ctTask, cron->tasks()) {
+		new TaskWidget(this, ctTask);
+	}
+	
+	resizeColumnContents();
+
+}

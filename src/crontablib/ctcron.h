@@ -22,6 +22,8 @@ class CTVariable;
 
 struct passwd;
 
+class CTCronPrivate;
+
 class CommandLine {
 public:
 	QString commandLine;
@@ -48,13 +50,18 @@ public:
 	 * passing TRUE, to construct from the system crontab.  Throws an
 	 * exception if the crontab file can not be found, read, or parsed.
 	 */
-	explicit CTCron(const QString& cronBinary, bool _syscron = false, const QString& _login = "");
+	explicit CTCron(const QString& cronBinary, bool systemCron);
 
 	/**
 	 * If you already have a struct passwd, use it instead. This
 	 * is never used for the system crontab.
 	 */
-	explicit CTCron(const QString& cronBinary, const struct passwd * _login = 0L);
+	explicit CTCron(const QString& cronBinary, const struct passwd* userInfos, bool currentUserCron);
+
+	/**
+	 * Destructor.
+	 */
+	~CTCron();
 
 	/**
 	 * Copy one user's tasks and environement variables to another user.
@@ -66,12 +73,12 @@ public:
 	/**
 	 * Tokenizes to crontab file format.
 	 */
-	QString exportCron();
+	QString exportCron() const;
 
 	/**
 	 * Apply changes.
 	 */
-	void apply();
+	void save();
 
 	/**
 	 * Cancel changes.
@@ -81,7 +88,7 @@ public:
 	/**
 	 * Indicates whether or not dirty.
 	 */
-	bool dirty();
+	bool isDirty() const;
 
 	/**
 	 * Returns the PATH environment variable value.  A short cut to iterating
@@ -92,51 +99,29 @@ public:
 	/**
 	 * Returns whether an error has occurred
 	 */
-	bool isError() {
-		return !error.isEmpty();
-	}
+	bool isError() const;
 
 	/**
 	 * Return error description
 	 */
-	QString errorMessage() {
-		QString r = error;
-		error = QString();
-		return r;
-	}
+	QString errorMessage();
+	
+	QList<CTTask*> tasks() const;
+	
+	QList<CTVariable*> variables() const;
+	
+	bool isSystemCron() const;
+	
+	bool isCurrentUserCron() const;
+	
+	QString userLogin() const;
+	
+	QString userRealName() const;
 
-	/**
-	 * Indicates whether or not the crontab belongs to the system.
-	 */
-	const bool syscron;
-
-	/**
-	 * User  login.
-	 */
-	QString login;
-
-	/**
-	 * User real name.
-	 */
-	QString name;
-
-	/**
-	 * User's scheduled tasks.
-	 */
-	QList<CTTask *> task;
-
-	/**
-	 * User's environment variables.  Note:  These are only environment variables
-	 * found in the user's crontab file and does not include any set in a 
-	 * login or shell script such as ".bash_profile".
-	 */
-	QList<CTVariable *> variable;
-
-	/**
-	 * Destructor.
-	 */
-	~CTCron();
-
+protected:
+	// Initialize member variables from the struct passwd.
+	bool initializeFromUserInfos(const struct passwd* userInfos);
+	
 private:
 
 	/**
@@ -151,23 +136,7 @@ private:
 	 */
 	CTCron(const CTCron& source);
 
-	int initialTaskCount;
-	int initialVariableCount;
-	
-	CommandLine writeCommandLine;
-	
-	QString tmpFileName;
-
-	QString error;
-
-	/**
-	 * Contains path to the crontab binary file
-	 */
-	QString crontab;
-
-protected:
-	// Initialize member variables from the struct passwd.
-	bool initFromPasswd(const struct passwd *);
+	CTCronPrivate* const d;
 };
 
 #endif // CTCRON_H
