@@ -29,11 +29,6 @@ public:
 	VariableWidget(VariablesWidget* variablesWidget, CTVariable* _ctVariable);
 
 	/**
-	 * Print task.
-	 */
-	void print(CrontabPrinter& printer) const;
-
-	/**
 	 * Edit task.
 	 */
 	void modify();

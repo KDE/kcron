@@ -26,11 +26,10 @@
 #include "cttask.h"
 #include "ctvariable.h"
 
-#include "kticon.h"
+#include "kcronIcons.h"
 #include "crontabWidget.h"
 #include "taskWidget.h"
 #include "taskEditorDialog.h"
-#include "crontabPrinter.h"
 
 #include "logging.h"
 
@@ -38,7 +37,7 @@
  * Construct tasks folder from branch.
  */
 TasksWidget::TasksWidget(CrontabWidget* crontabWidget) :
-	GenericListWidget(crontabWidget, i18n("<b>Tasks</b>"), KTIcon::task(KTIcon::Small)) {
+	GenericListWidget(crontabWidget, i18n("<b>Tasks</b>"), KCronIcons::task(KCronIcons::Small)) {
 	
 	QStringList headerLabels;
 	
@@ -65,36 +64,6 @@ TasksWidget::TasksWidget(CrontabWidget* crontabWidget) :
 TasksWidget::~TasksWidget() {
 
 }
-
-void TasksWidget::print(CrontabPrinter& printer) {
-	QFont stnd = printer.getFont();
-
-	printer.setFont(QFont(KGlobalSettings::generalFont().family(), 10, QFont::Bold));
-	printer.print(i18n("Task name:"), 1, CrontabPrinter::alignTextLeft);
-	printer.print(i18n("Program:"), 2, CrontabPrinter::alignTextCenter);
-	printer.print(i18n("Description:"), 3, CrontabPrinter::alignTextRight);
-
-	printer.setFont(stnd);
-
-	if (treeWidget()->topLevelItemCount() == 0) {
-		printer.print(i18n("No tasks..."), 1, CrontabPrinter::alignTextLeft, false);
-		printer.levelColumns(20);
-		return;
-	}
-
-	QTreeWidgetItemIterator it(treeWidget());
-	while (*it != NULL) {
-		TaskWidget* item = static_cast<TaskWidget*>(*it);
-		
-		item->print(printer);
-		printer.levelColumns();
-			
-		++it;
-	}
-
-	printer.levelColumns(20);
-}
-
 
 TaskWidget* TasksWidget::firstSelectedTaskWidget() const {
 	QTreeWidgetItem* item = firstSelected();
@@ -132,7 +101,7 @@ void TasksWidget::deleteSelection() {
 	foreach(QTreeWidgetItem* item, tasksItems) {
 		TaskWidget* taskWidget = static_cast<TaskWidget*>(item);
 
-		crontabWidget()->currentCron()->tasks().removeAll(taskWidget->getCTTask());
+		crontabWidget()->currentCron()->removeTask(taskWidget->getCTTask());
 		delete taskWidget->getCTTask();
 		treeWidget()->takeTopLevelItem( treeWidget()->indexOfTopLevelItem(taskWidget) );
 		delete taskWidget;
@@ -195,7 +164,7 @@ void TasksWidget::createTask() {
 	taskEditorDialog.exec();
 
 	if (task->dirty()) {
-		crontabWidget()->currentCron()->tasks().append(task);
+		crontabWidget()->currentCron()->addTask(task);
 		new TaskWidget(this, task);
 	} else {
 		delete task;

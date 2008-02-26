@@ -16,11 +16,16 @@
 #include <QList>
 #include <QPrinter>
 
-#include "ktprintopt.h"
+#include "crontabPrinterWidget.h"
 
 class QPainter;
 class QString;
 class QFont;
+
+class CrontabWidget;
+class CTTask;
+
+class CrontabPrinterPrivate;
 
 /**
  *Provides a wrapper for simple printing of text.
@@ -29,193 +34,60 @@ class CrontabPrinter {
 public:
 
 	/**
-	 *Static formatting constants
-	 */
-	static const int alignTextLeft;
-	static const int alignTextRight;
-	static const int alignTextCenter;
-
-	/**
-	 *Static Default Margin Constants
-	 */
-	static const int defaultLeftMargin;
-	static const int defaultRightMargin;
-	static const int defaultTopMargin;
-	static const int defaultBottomMargin;
-
-	/**
 	 * Contructor
 	 */
-	CrontabPrinter(bool _root, QWidget *_parent) :
-		leftMargin(defaultLeftMargin), rightMargin(defaultRightMargin), topMargin(defaultTopMargin), bottomMargin(defaultBottomMargin), paint(0), root(_root), parent(_parent) {
-		prnt = new QPrinter;
-		prntOpt = new KTPrintOpt(root);
-		prntOpt->setPrintCrontab("true");
-		createColumns(1);
-	}
+	CrontabPrinter(CrontabWidget* crontabWidget);
 
 	/**
 	 * Destructor
 	 */
 	~CrontabPrinter();
-
-	/**
-	 * Start the printing process, gain page info
-	 */
+	
 	bool start();
-
-	/**
-	 * Send the information to the printer
-	 */
-	void finished();
-
-	/**
-	 * Set the font to be used
-	 */
-	void setFont(const QFont &font);
-
-	/**
-	 * Get the current font
-	 */
-	QFont getFont() const;
-
-	/**
-	 * Print text
-	 */
-	void print(const QString &str, int col =1, int alignment=CrontabPrinter::defaultLeftMargin, bool wordWrap = true);
-
-	/**
-	 * Constructs the columns
-	 */
-	void createColumns(unsigned num_columns =1);
-
-	/**
-	 * Make sure that all columns start printing on the same line
-	 */
-	void levelColumns(int space = 5);
-
-	/**
-	 * Insert a new page
-	 */
-	void newPage();
-
-	/**
-	 *
-	 */
-	int numCopies() const;
+	void finish();
+	void printTasks();
+	void printVariables();
 
 	/**
 	 * Whether crontab should be printed
 	 */
-	bool crontab() const {
-		return prntOpt->printCrontab();
-	}
-
+	bool isPrintCrontab() const;
+	
 	/**  
 	 * Whether all users should be printed (root only)
 	 */
-	bool allUsers() const {
-		return prntOpt->printAllUsers();
-	}
+	bool isAllUsers() const;
+	
 private:
 
 	/**
 	 *Disable the copy constructor and the assignment operator
 	 */
-	//KTPrint (const KTPrint&) {}
 	CrontabPrinter& operator=(const CrontabPrinter&) {
 		return *this;
 	}
+	
+	void printPageNumber();
+	
+	void drawMainTitle();
+	void drawTitle(const QString& title);
+	
+	void drawHeader(const QList<int>& columnWidths, const QStringList& headers);
+	void drawContentRow(const QList<int>& columnWidths, const QStringList& contents);
+	
+	void drawTable(const QList<int>& columnWidths);
+	
+	void needNewPage();
+	int maxWidth();
 
-	/**
-	 * Left boundary
-	 */
-	int leftMargin;
+	void changeRow(int x, int y);
+	int computeMargin() const;
+	int computeStringHeight(const QString& text) const;
 
-	/**
-	 * Right boundary
-	 */
-	int rightMargin;
-
-	/**
-	 * Top boundary
-	 */
-	int topMargin;
-
-	/**
-	 * Bottom boundary
-	 */
-	int bottomMargin;
-
-	/**
-	 * Width of the page
-	 */
-	int width;
-
-	/**
-	 * Height of the page
-	 */
-	int height;
-
-	/**
-	 * Pointer to a painter object
-	 */
-	QPainter *paint;
-
-	/**
-	 * Whether we are root or not
-	 */
-	bool root;
-
-	/**
-	 * Pointer a printer object
-	 */
-	QPrinter *prnt;
-
-	/**
-	 * Pointer a printer options object
-	 */
-	KTPrintOpt *prntOpt;
-
-	/**
-	 * Pointer to parent widget
-	 */
-	QWidget *parent;
-
-	/**
-	 *Nest a column class to make text layout nicer
-	 */
-
-	class Column {
-public:
-
-		/**
-		 *Starting X co-ord
-		 */
-		int start;
-
-		/**
-		 *Finishing X co-ord
-		 */
-		int finish;
-
-		/**
-		 *Current Y co-ord
-		 */
-		int height;
-
-		/**
-		 *Return the width of the column
-		 */
-		int width() const {
-			return finish-start;
-		}
-	};
-
-	/**
-	 * Keep a vector of the columns
-	 */
-	QList<Column*> columns;
+	QList<int> findMaxWidths(const QList<QStringList>& tasksContent, int columnCount);
+	QList<int> findColumnWidths(const QList<QStringList>& tasksContent, int columnCount);
+	
+	CrontabPrinterPrivate* const d;
 
 };
 

@@ -22,7 +22,7 @@
 #include <ktitlewidget.h>
 
 #include "ctvariable.h"
-#include "kticon.h"
+#include "kcronIcons.h"
 
 VariableEditorDialog::VariableEditorDialog(CTVariable* _ctvar, const QString &_caption) :
 	KDialog(), ctvar(_ctvar) {
@@ -44,7 +44,7 @@ VariableEditorDialog::VariableEditorDialog(CTVariable* _ctvar, const QString &_c
 
 	setMainWidget(page);
 
-	setWindowIcon(KTIcon::application(KTIcon::Small));
+	setWindowIcon(KCronIcons::application(KCronIcons::Small));
 
 	int layoutPosition = 0;
 
@@ -127,14 +127,14 @@ void VariableEditorDialog::setupTitleWidget(const QString& comment, KTitleWidget
 	//krazy:exclude=doublequote_chars
 	if (comment.isEmpty()) {
 		titleWidget->setComment(i18n("<i>This variable will be used by scheduled tasks.</i>"));
-		titleWidget->setPixmap(KTIcon::variable(KTIcon::Large), KTitleWidget::ImageRight);
+		titleWidget->setPixmap(KCronIcons::variable(KCronIcons::Large), KTitleWidget::ImageRight);
 	}
 	else {
 		titleWidget->setComment(comment, messageType);
 		if (messageType == KTitleWidget::ErrorMessage)
-			titleWidget->setPixmap(KIcon(KTIcon::error(KTIcon::Large)), KTitleWidget::ImageRight);
+			titleWidget->setPixmap(KIcon(KCronIcons::error(KCronIcons::Large)), KTitleWidget::ImageRight);
 		else
-			titleWidget->setPixmap(KIcon(KTIcon::information(KTIcon::Large)), KTitleWidget::ImageRight);
+			titleWidget->setPixmap(KIcon(KCronIcons::information(KCronIcons::Large)), KTitleWidget::ImageRight);
 	}
 }
 
@@ -156,23 +156,23 @@ void VariableEditorDialog::slotOk() {
 void VariableEditorDialog::slotWizard() {
 	QString variable = cmbVariable->currentText();
 	if (variable == "HOME") {
-		detailsIcon->setPixmap(KTIcon::home(KTIcon::Small));
+		detailsIcon->setPixmap(KCronIcons::home(KCronIcons::Small));
 		details->setText(i18n("Override default home folder."));
 	}
 	else if (variable == "MAILTO") {
-		detailsIcon->setPixmap(KTIcon::mail(KTIcon::Small));
+		detailsIcon->setPixmap(KCronIcons::mail(KCronIcons::Small));
 		details->setText(i18n("Email output to specified account."));
 	}
 	else if (variable == "SHELL") {
-		detailsIcon->setPixmap(KTIcon::shell(KTIcon::Small));
+		detailsIcon->setPixmap(KCronIcons::shell(KCronIcons::Small));
 		details->setText(i18n("Override default shell."));
 	}
 	else if (variable == "PATH") {
-		detailsIcon->setPixmap(KTIcon::path(KTIcon::Small));
+		detailsIcon->setPixmap(KCronIcons::path(KCronIcons::Small));
 		details->setText(i18n("Folders to search for program files."));
 	}
 	else {
-		detailsIcon->setPixmap(KTIcon::variable(KTIcon::Small));
+		detailsIcon->setPixmap(KCronIcons::variable(KCronIcons::Small));
 		details->setText(i18n("Local Variable"));
 	}
 

@@ -42,7 +42,7 @@
 #include "logging.h"
 #include "cttask.h"
 
-#include "kticon.h"
+#include "kcronIcons.h"
 
 /**
  * SetOrClearAllButton class implementation
@@ -239,7 +239,7 @@ TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption) :
 	v2->addStretch(1);
 
 	// window
-	setWindowIcon(KTIcon::application(KTIcon::Small));
+	setWindowIcon(KCronIcons::application(KCronIcons::Small));
 	setCaption(_caption/*i18n("Edit Task")*/);
 
 	// set focus to first widget
@@ -538,7 +538,7 @@ void TaskEditorDialog::defineCommandIcon() {
 
 	QPixmap qpIcon = SmallIcon(qsCommand);
 	if (qpIcon.isNull())
-		qpIcon = KTIcon::task(KTIcon::Small);
+		qpIcon = KCronIcons::task(KCronIcons::Small);
 
 	commandIcon->setPixmap(qpIcon);
 }
@@ -547,9 +547,9 @@ void TaskEditorDialog::setupTitleWidget(const QString& comment, KTitleWidget::Me
 	titleWidget->setComment(comment, messageType);
 
 	if (messageType == KTitleWidget::ErrorMessage)
-		titleWidget->setPixmap(KIcon(KTIcon::error(KTIcon::Large)), KTitleWidget::ImageRight);
+		titleWidget->setPixmap(KIcon(KCronIcons::error(KCronIcons::Large)), KTitleWidget::ImageRight);
 	else
-		titleWidget->setPixmap(KIcon(KTIcon::task(KTIcon::Large)), KTitleWidget::ImageRight);
+		titleWidget->setPixmap(KIcon(KCronIcons::task(KCronIcons::Large)), KTitleWidget::ImageRight);
 
 }
 

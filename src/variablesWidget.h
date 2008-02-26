@@ -14,8 +14,6 @@
 
 #include <QTreeWidget>
 
-#include "crontabPrinter.h"
-
 #include "genericListWidget.h"
 #include "cthost.h"
 
@@ -34,11 +32,6 @@ public:
 	 * Construct tasks folder from branch.
 	 */
 	VariablesWidget(CrontabWidget* crontabWidget);
-
-	/**
-	 * Print all tasks.
-	 */
-	void print(CrontabPrinter& printer);
 
 	VariableWidget* firstSelectedVariableWidget() const;
 	

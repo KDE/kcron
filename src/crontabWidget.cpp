@@ -34,7 +34,7 @@
 #include "ctvariable.h"
 #include "cttask.h"
 
-#include "kticon.h"
+#include "kcronIcons.h"
 #include "tasksWidget.h"
 #include "taskWidget.h"
 
@@ -113,6 +113,7 @@ CrontabWidget::CrontabWidget(QWidget* parent, CTHost* ctHost) :
 		logDebug() << "First item found" << d->tasksWidget->treeWidget()->topLevelItemCount() << endl;
 		item->setSelected(true);
 	}
+	
 
 }
 
@@ -260,63 +261,19 @@ void CrontabWidget::slotSetCurrentItem() {
 }
 
 void CrontabWidget::print() {
-
-	CrontabPrinter printer(d->ctHost->isRootUser(), this);
+	
+	CrontabPrinter printer(this);
 
 	if (printer.start() == false) {
 		logDebug() << "Unable to start printer" << endl;
 		return;
 	}
-
-	printer.createColumns(3);
-
-	int copies = printer.numCopies();
-	while (copies != 0) {
-		pageHeading(printer);
-		
-		tasksWidget()->print(printer);
-		variablesWidget()->print(printer);
-
-		if (printer.crontab()) {
-			pageFooter(printer);
-		}
-
-
-		copies--;
-		if (copies != 0)
-			printer.newPage();
+	printer.printTasks();
+	printer.printVariables();
 	
-
-	}
-
-	printer.finished(); //End the print
+	printer.finish();
 	
-}
-
-void CrontabWidget::pageHeading(CrontabPrinter& printer) const {
-	QDateTime now(QDateTime::currentDateTime());
-	char hostName[20];
-
-	gethostname(hostName, 20);
-	// SSA : Fix Me user name, logon name and host name must be
-	// SSA : not only in us-ascii ??
-	QString logonInfo = i18nc("user on host", "%1 <placeholder>%2</placeholder> on %3", currentCron()->userRealName(), currentCron()->userLogin(), QString::fromLocal8Bit(hostName));
-
-	QFont stnd = printer.getFont();
-	printer.setFont(QFont(KGlobalSettings::generalFont().family(), 14, QFont::Bold));
-
-	printer.print(i18n("Scheduled Tasks"), 2, CrontabPrinter::alignTextCenter, false);
-	printer.print(logonInfo, 2, CrontabPrinter::alignTextCenter, false);
-	printer.print(KGlobal::locale()->formatDateTime(now), 2, CrontabPrinter::alignTextCenter, false);
-	printer.setFont(stnd);
-
-	printer.levelColumns(20);
-
-}
-
-void CrontabWidget::pageFooter(CrontabPrinter& printer) const {
-	QString crontab = currentCron()->exportCron();
-	printer.print(crontab, 1, CrontabPrinter::alignTextLeft, false);
+	
 }
 
 void CrontabWidget::copy() {

@@ -15,9 +15,8 @@
 
 #include "cttask.h"
 
-#include "kticon.h"
+#include "kcronIcons.h"
 #include "taskEditorDialog.h"
-#include "crontabPrinter.h"
 #include "kiconloader.h"
 
 TaskWidget::TaskWidget(TasksWidget* tasksWidget, CTTask* _cttask) :
@@ -55,22 +54,9 @@ void TaskWidget::refresh() {
 
 	QPixmap qpIcon = SmallIcon(qsCommand);
 	if (qpIcon.isNull())
-		qpIcon = KTIcon::task(KTIcon::Small);
+		qpIcon = KCronIcons::task(KCronIcons::Small);
 
 	setIcon(0, QIcon(qpIcon));
-}
-
-void TaskWidget::print(CrontabPrinter& printer) const {
-	printer.print(ctTask->comment, 1, CrontabPrinter::alignTextLeft);
-	if (ctTask->enabled) {
-		printer.print(ctTask->command, 2, CrontabPrinter::alignTextCenter);
-
-		if (ctTask->reboot)
-			printer.print(i18n("At system startup"), 3, CrontabPrinter::alignTextRight);
-		else
-			printer.print(ctTask->describe(), 3, CrontabPrinter::alignTextRight);
-	} else
-		printer.print(i18nc("The cron task had been disabled", "Disabled."), 3, CrontabPrinter::alignTextRight);
 }
 
 void TaskWidget::modify() {

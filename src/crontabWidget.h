@@ -112,16 +112,6 @@ protected slots:
 	void checkOtherUsers();
 	
 private:
-	
-	/**
-	 * Print page heading.
-	 */
-	void pageHeading(CrontabPrinter& printer) const;
-
-	/**
-	 * Print page footer.
-	 */
-	void pageFooter(CrontabPrinter& printer) const;
 
 	/**
 	 * Initialize view from underlying objects.

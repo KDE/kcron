@@ -13,7 +13,6 @@
 #define TASK_WIDGET_H
 
 #include "tasksWidget.h"
-#include "crontabPrinter.h"
 
 class CTTask;
 
@@ -27,11 +26,6 @@ public:
 	 * Initialize the list view item and task.
 	 */
 	TaskWidget(TasksWidget* tasksWidget, CTTask* _cttask);
-
-	/**
-	 * Print task.
-	 */
-	void print(CrontabPrinter &printer) const;
 
 	/**
 	 * Edit task.

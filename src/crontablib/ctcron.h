@@ -110,6 +110,13 @@ public:
 	
 	QList<CTVariable*> variables() const;
 	
+	void addTask(CTTask* task);
+	void addVariable(CTVariable* variable);
+	
+	void removeVariable(CTVariable* variable);
+	void removeTask(CTTask* task);
+
+	
 	bool isSystemCron() const;
 	
 	bool isCurrentUserCron() const;

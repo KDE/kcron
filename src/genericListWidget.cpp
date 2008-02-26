@@ -26,8 +26,7 @@
 #include "crontabWidget.h"
 #include "taskWidget.h"
 #include "taskEditorDialog.h"
-#include "crontabPrinter.h"
-#include "kticon.h"
+#include "kcronIcons.h"
 
 #include "logging.h"
 

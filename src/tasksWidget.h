@@ -14,8 +14,6 @@
 
 #include <QTreeWidget>
 
-#include "crontabPrinter.h"
-
 #include "genericListWidget.h"
 #include "cthost.h"
 
@@ -35,11 +33,6 @@ public:
 	TasksWidget(CrontabWidget* crontabWidget);
 	
 	~TasksWidget();
-
-	/**
-	 * Print all tasks.
-	 */
-	void print(CrontabPrinter& printer);
 
 	TaskWidget* firstSelectedTaskWidget() const;
 	

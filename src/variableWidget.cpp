@@ -16,9 +16,8 @@
 #include "ctvariable.h"
 
 #include "variableEditorDialog.h"
-#include "kticon.h"
+#include "kcronIcons.h"
 #include "taskEditorDialog.h"
-#include "crontabPrinter.h"
 
 VariableWidget::VariableWidget(VariablesWidget* variablesWidget, CTVariable* _ctVariable) :
 	QTreeWidgetItem(variablesWidget->treeWidget()) {
@@ -45,28 +44,17 @@ void VariableWidget::refresh() {
 
 	QPixmap qpIcon;
 	if (ctVariable->variable == "MAILTO")
-		qpIcon = KTIcon::mail(KTIcon::Small);
+		qpIcon = KCronIcons::mail(KCronIcons::Small);
 	else if (ctVariable->variable == "SHELL")
-		qpIcon = KTIcon::shell(KTIcon::Small);
+		qpIcon = KCronIcons::shell(KCronIcons::Small);
 	else if (ctVariable->variable == "HOME")
-		qpIcon = KTIcon::home(KTIcon::Small);
+		qpIcon = KCronIcons::home(KCronIcons::Small);
 	else if (ctVariable->variable == "PATH")
-		qpIcon = KTIcon::path(KTIcon::Small);
+		qpIcon = KCronIcons::path(KCronIcons::Small);
 	else
-		qpIcon = KTIcon::variable(KTIcon::Small);
+		qpIcon = KCronIcons::variable(KCronIcons::Small);
 
 	setIcon(0, QIcon(qpIcon));
-}
-
-void VariableWidget::print(CrontabPrinter& printer) const {
-	printer.print(ctVariable->variable, 1, CrontabPrinter::alignTextLeft);
-	if (ctVariable->enabled) {
-		printer.print(ctVariable->value, 2, CrontabPrinter::alignTextCenter);
-		printer.print(ctVariable->comment, 3, CrontabPrinter::alignTextRight);
-	} else {
-		printer.print(i18nc("The cron variable has been disabled", "Disabled."), 3, CrontabPrinter::alignTextRight);
-	}
-
 }
 
 void VariableWidget::modify() {

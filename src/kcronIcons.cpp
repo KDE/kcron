@@ -9,7 +9,7 @@
  *   (at your option) any later version.                                   * 
  ***************************************************************************/
 
-#include "kticon.h"
+#include "kcronIcons.h"
 
 #include <QImage>
 #include <QPixmap>
@@ -17,55 +17,55 @@
 #include <kglobal.h>
 #include <kiconloader.h>
 
-QPixmap KTIcon::getIcon(const QString&name, KTIcon::IconSize size) {
-	if (size == KTIcon::Small)
+QPixmap KCronIcons::getIcon(const QString&name, KCronIcons::IconSize size) {
+	if (size == KCronIcons::Small)
 		return SmallIcon(name);
-	else if (size == KTIcon::Normal)
+	else if (size == KCronIcons::Normal)
 		return BarIcon(name);
 	
 	return DesktopIcon(name);
 }
 
-QPixmap KTIcon::application(KTIcon::IconSize size) {
+QPixmap KCronIcons::application(KCronIcons::IconSize size) {
 	return getIcon("kcron", size);
 }
 
-QPixmap KTIcon::system(KTIcon::IconSize size) {
+QPixmap KCronIcons::system(KCronIcons::IconSize size) {
 	return getIcon("utilities-terminal", size);
 }
 
-QPixmap KTIcon::user(KTIcon::IconSize size) {
+QPixmap KCronIcons::user(KCronIcons::IconSize size) {
 	return getIcon("user-identity", size);
 }
 
-QPixmap KTIcon::variable(KTIcon::IconSize size) {
+QPixmap KCronIcons::variable(KCronIcons::IconSize size) {
 	return getIcon("text", size);
 }
 
-QPixmap KTIcon::mail(KTIcon::IconSize size) {
+QPixmap KCronIcons::mail(KCronIcons::IconSize size) {
 	return getIcon("mail-message", size);
 }
 
-QPixmap KTIcon::shell(KTIcon::IconSize size) {
+QPixmap KCronIcons::shell(KCronIcons::IconSize size) {
 	return getIcon("utilities-terminal", size);
 }
 
-QPixmap KTIcon::home(KTIcon::IconSize size) {
+QPixmap KCronIcons::home(KCronIcons::IconSize size) {
 	return getIcon("go-home", size);
 }
 
-QPixmap KTIcon::path(KTIcon::IconSize size) {
+QPixmap KCronIcons::path(KCronIcons::IconSize size) {
 	return getIcon("folder", size);
 }
 
-QPixmap KTIcon::task(KTIcon::IconSize size) {
+QPixmap KCronIcons::task(KCronIcons::IconSize size) {
 	return getIcon("system-run", size);
 }
 
-QPixmap KTIcon::information(KTIcon::IconSize size) {
+QPixmap KCronIcons::information(KCronIcons::IconSize size) {
 	return getIcon("dialog-information", size);
 }
 
-QPixmap KTIcon::error(KTIcon::IconSize size) {
+QPixmap KCronIcons::error(KCronIcons::IconSize size) {
 	return getIcon("dialog-error", size);
 }

@@ -22,16 +22,16 @@ class QCheckBox;
  *If the user is root ask if they want to print all the users
  */
 
-class KTPrintOpt : public QWidget {
+class CrontabPrinterWidget : public QWidget {
 Q_OBJECT
 public:
 
 	/**
 	 * Constructs the dialog, if root is true the print all users is not disabled
 	 */
-	KTPrintOpt(bool root = false);
+	CrontabPrinterWidget(bool root = false);
 
-	~KTPrintOpt();
+	~CrontabPrinterWidget();
 
 	bool printCrontab();
 	void setPrintCrontab(bool setStatus);

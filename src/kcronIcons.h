@@ -18,26 +18,26 @@
  * Wraps all icons used by the application.
  */
 
-class KTIcon {
+class KCronIcons {
 
 public:
 
 	enum IconSize {Small,Normal,Large};
 
-	static QPixmap application(KTIcon::IconSize size);
-	static QPixmap system(KTIcon::IconSize size);
-	static QPixmap user(KTIcon::IconSize size);
-	static QPixmap variable(KTIcon::IconSize size);
-	static QPixmap mail(KTIcon::IconSize size);
-	static QPixmap shell(KTIcon::IconSize size);
-	static QPixmap home(KTIcon::IconSize size);
-	static QPixmap path(KTIcon::IconSize size);
-	static QPixmap task(KTIcon::IconSize size);
+	static QPixmap application(KCronIcons::IconSize size);
+	static QPixmap system(KCronIcons::IconSize size);
+	static QPixmap user(KCronIcons::IconSize size);
+	static QPixmap variable(KCronIcons::IconSize size);
+	static QPixmap mail(KCronIcons::IconSize size);
+	static QPixmap shell(KCronIcons::IconSize size);
+	static QPixmap home(KCronIcons::IconSize size);
+	static QPixmap path(KCronIcons::IconSize size);
+	static QPixmap task(KCronIcons::IconSize size);
 	
-	static QPixmap information(KTIcon::IconSize size);
-	static QPixmap error(KTIcon::IconSize size);
+	static QPixmap information(KCronIcons::IconSize size);
+	static QPixmap error(KCronIcons::IconSize size);
 
-	static QPixmap getIcon(const QString&name, KTIcon::IconSize size);
+	static QPixmap getIcon(const QString&name, KCronIcons::IconSize size);
 private:
 
 };

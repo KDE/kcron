@@ -10,17 +10,16 @@
  *   (at your option) any later version.                                   *
  ***************************************************************************/
 
-#include "ktprintopt.h"
+#include "crontabPrinterWidget.h"
 
 #include <QCheckBox>
 #include <QLayout>
-//Added by qt3to4:
 #include <QVBoxLayout>
 
 #include <kdialog.h>
 #include <klocale.h>
 
-KTPrintOpt::KTPrintOpt(bool root) :
+CrontabPrinterWidget::CrontabPrinterWidget(bool root) :
 	QWidget() {
 	setWindowTitle(i18n("Cron Options"));
 
@@ -44,23 +43,23 @@ KTPrintOpt::KTPrintOpt(bool root) :
 	setLayout(main_);
 }
 
-KTPrintOpt::~KTPrintOpt() {
+CrontabPrinterWidget::~CrontabPrinterWidget() {
 }
 
-bool KTPrintOpt::printCrontab() {
+bool CrontabPrinterWidget::printCrontab() {
 	return chkPrintCrontab->isChecked();
 }
 
-void KTPrintOpt::setPrintCrontab(bool setStatus) {
+void CrontabPrinterWidget::setPrintCrontab(bool setStatus) {
 	chkPrintCrontab->setChecked(setStatus);
 }
 
-bool KTPrintOpt::printAllUsers() {
+bool CrontabPrinterWidget::printAllUsers() {
 	return chkPrintAllUsers->isChecked();
 }
 
-void KTPrintOpt::setPrintAllUsers(bool setStatus) {
+void CrontabPrinterWidget::setPrintAllUsers(bool setStatus) {
 	chkPrintAllUsers->setChecked(setStatus);
 }
 
-#include "ktprintopt.moc"
+#include "crontabPrinterWidget.moc"

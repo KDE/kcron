@@ -14,8 +14,6 @@
 
 #include <QTreeWidget>
 
-#include "crontabPrinter.h"
-
 #include "cthost.h"
 
 class GenericListWidgetPrivate;

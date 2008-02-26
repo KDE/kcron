@@ -20,12 +20,12 @@ set(kcron_SRCS
 
    crontabWidget.cpp 
 
-   kticon.cpp
+   kcronIcons.cpp
 
    kcron.cpp 
     
    crontabPrinter.cpp 
-   ktprintopt.cpp 
+   crontabPrinterWidget.cpp 
    main.cpp 
 )
 

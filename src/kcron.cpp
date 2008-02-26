@@ -35,7 +35,7 @@
 #include "ctcron.h"
 #include "cttask.h"
 
-#include "kticon.h"
+#include "kcronIcons.h"
 #include "crontabWidget.h"
 #include "logging.h"
 
@@ -80,7 +80,7 @@ KCron::KCron() :
 
 	d->config = KGlobal::config();
 
-	setWindowIcon(KTIcon::application(KTIcon::Small));
+	setWindowIcon(KCronIcons::application(KCronIcons::Small));
 
 	setCaption(i18n("Task Scheduler"));
 

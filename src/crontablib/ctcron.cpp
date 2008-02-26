@@ -285,7 +285,7 @@ void CTCron::parseFile(const QString& fileName) {
 QString CTCron::exportCron() const {
 	QString exportCron;
 	exportCron += "# This file was written by KCron.\n";
-	exportCron += "# Although KCron supports most crontab formats, use care when editing.\n";
+	exportCron += "# Although KCron supports most crontab formats, use with care when editing.\n";
 	exportCron += "# Note: Lines beginning with \"#\\\" indicates a disabled task.\n\n";
 
 	foreach(CTVariable* ctVariable, d->variable) {
@@ -316,6 +316,7 @@ void CTCron::saveToFile(const QString& fileName) {
 	if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
 		return;
 
+	logDebug() << exportCron() << endl;
 	QTextStream out(&file);
 	out << exportCron();
 
@@ -414,6 +415,22 @@ QList<CTTask*> CTCron::tasks() const {
 QList<CTVariable*> CTCron::variables() const {
 	return d->variable;
 }
+
+void CTCron::addTask(CTTask* task) {
+	d->task.append(task);
+}
+void CTCron::addVariable(CTVariable* variable) {
+	d->variable.append(variable);
+}
+
+void CTCron::removeTask(CTTask* task) {
+	d->task.removeAll(task);
+}
+
+void CTCron::removeVariable(CTVariable* variable) {
+	d->variable.removeAll(variable);
+}
+
 
 bool CTCron::isSystemCron() const {
 	return d->systemCron;
