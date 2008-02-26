@@ -33,6 +33,8 @@ public:
 	 */
 	VariablesWidget(CrontabWidget* crontabWidget);
 
+	QList<VariableWidget*> selectedVariablesWidget() const;
+	
 	VariableWidget* firstSelectedVariableWidget() const;
 	
 	void refreshVariables(CTCron* cron);

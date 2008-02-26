@@ -65,6 +65,18 @@ TasksWidget::~TasksWidget() {
 
 }
 
+QList<TaskWidget*> TasksWidget::selectedTasksWidget() const {
+	QList<TaskWidget*> tasksWidget;
+	
+	QList<QTreeWidgetItem*> tasksItems = treeWidget()->selectedItems();
+	foreach(QTreeWidgetItem* item, tasksItems) {
+		TaskWidget* taskWidget = static_cast<TaskWidget*>(item);
+		tasksWidget.append(taskWidget);
+	}
+	
+	return tasksWidget;
+}
+
 TaskWidget* TasksWidget::firstSelectedTaskWidget() const {
 	QTreeWidgetItem* item = firstSelected();
 	if (item==NULL)

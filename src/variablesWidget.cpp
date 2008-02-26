@@ -72,6 +72,18 @@ void VariablesWidget::modifySelection(QTreeWidgetItem* item, int position) {
 		
 }
 
+QList<VariableWidget*> VariablesWidget::selectedVariablesWidget() const {
+	QList<VariableWidget*> variablesWidget;
+	
+	QList<QTreeWidgetItem*> variablesItems = treeWidget()->selectedItems();
+	foreach(QTreeWidgetItem* item, variablesItems) {
+		VariableWidget* variableWidget = static_cast<VariableWidget*>(item);
+		variablesWidget.append(variableWidget);
+	}
+	
+	return variablesWidget;
+}
+
 
 VariableWidget* VariablesWidget::firstSelectedVariableWidget() const {
 	QTreeWidgetItem* item = firstSelected();

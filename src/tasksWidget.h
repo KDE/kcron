@@ -36,6 +36,8 @@ public:
 
 	TaskWidget* firstSelectedTaskWidget() const;
 	
+	QList<TaskWidget*> selectedTasksWidget() const;
+	
 	void refreshTasks(CTCron* cron);
 
 public slots:

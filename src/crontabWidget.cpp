@@ -65,19 +65,14 @@ public:
 	VariablesWidget* variablesWidget;
 
 	/**
-	 * Indicates whether or not the item on the clipboard is a task.
+	 * Clipboard tasks.
 	 */
-	//bool clipboardIsTask;
-
-	/**
-	 * Clipboard task.
-	 */
-	//CTTask* clipboardCTTask;
+	QList<CTTask*> clipboardTasks;
 
 	/**
 	 * Clipboard variable.
 	 */
-	//CTVariable* clipboardCTVariable;
+	QList<CTVariable*> clipboardVariables;
 
 	QRadioButton* currentUserCronRadio;
 	QRadioButton* systemCronRadio;
@@ -93,18 +88,13 @@ CrontabWidget::CrontabWidget(QWidget* parent, CTHost* ctHost) :
 	d->tasksWidget = NULL;
 	d->variablesWidget = NULL;
 
-	/*
-	 d->clipboardIsTask = true;
-	 d->clipboardCTTask = NULL;
-	 d->clipboardCTVariable = NULL;
-	 */
 	d->ctHost = ctHost;
 
 	initialize();
 
 	emit 	modificationActionsToggled(false);
 	emit 	runNowActionToggled(false);
-	//emit pasteActionToggled(d->clipboardCTVariable);
+	emit 	pasteActionToggled(hasClipboardContent());
 
 	d->tasksWidget->setFocus();
 
@@ -115,6 +105,16 @@ CrontabWidget::CrontabWidget(QWidget* parent, CTHost* ctHost) :
 	}
 	
 
+}
+
+bool CrontabWidget::hasClipboardContent() {
+	if (d->clipboardTasks.isEmpty() == false)
+		return true;
+	
+	if (d->clipboardVariables.isEmpty() == false) 
+		return true;
+	
+	return false;
 }
 
 QHBoxLayout* CrontabWidget::createCronSelector() {
@@ -277,16 +277,21 @@ void CrontabWidget::print() {
 }
 
 void CrontabWidget::copy() {
-	/*
-	 if (d->clipboardCTTask) {
-	 delete d->clipboardCTTask;
-	 d->clipboardCTTask = NULL;
-	 }
+	foreach(CTTask* task, d->clipboardTasks) {
+		delete task;
+	}
+	d->clipboardTasks.clear();
 
-	 if (d->clipboardCTVariable) {
-	 delete d->clipboardCTVariable;
-	 d->clipboardCTVariable = NULL;
-	 }
+	foreach(CTVariable* variable, d->clipboardVariables) {
+		delete variable;
+	}
+	d->clipboardVariables.clear();
+
+	QList<TaskWidget*> tasksWidget = d->tasksWidget->selectedTasksWidget();
+	logDebug() << "TODODODOODODODO" << endl;
+	
+	QList<VariableWidget*> variablesWidget = d->variablesWidget->selectedVariablesWidget();
+	/*
 
 	 TaskWidget* taskWidget = d->tasksWidget->firstSelectedTaskWidget();
 	 VariableWidget* variableWidget = d->variablesWidget->firstSelectedVariableWidget();

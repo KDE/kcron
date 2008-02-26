@@ -120,6 +120,8 @@ private:
 	
 	QHBoxLayout* createCronSelector();
 	
+	bool hasClipboardContent();
+	
 	CrontabWidgetPrivate* const d;
 	
 };

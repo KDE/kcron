@@ -58,7 +58,6 @@ CTTask::CTTask(const QString& tokenString, const QString& _comment, bool _syscro
 	if (reboot == false) {
 
 		logDebug() << "Line : " << tokStr << endl;
-		logDebug() << "MidLine : " << tokStr.mid(0, spacePos) << endl;
 		minute.initialize(tokStr.mid(0, spacePos));
 
 		while (isSpace(tokStr, spacePos+1))
