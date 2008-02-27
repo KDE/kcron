@@ -24,7 +24,7 @@ public:
 	/**
 	 * Constructs environment variable from crontab format string.
 	 */
-	explicit CTVariable(const QString& tokenString = "", const QString& _comment = "");
+	explicit CTVariable(const QString& tokenString, const QString& _comment, const QString& _userLogin);
 
 	/**
 	 * Copy constructor.
@@ -59,12 +59,15 @@ public:
 	QString variable;
 	QString value;
 	QString comment;
+	QString userLogin;
+	
 	bool enabled;
 
 private:
 	QString initialVariable;
 	QString initialValue;
 	QString initialComment;
+	QString initialUserLogin;
 	bool initialEnabled;
 
 };

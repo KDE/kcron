@@ -9,7 +9,9 @@ set(kcron_crontablib_SRCS
    ctdow.cpp 
    cttask.cpp 
    ctunit.cpp 
-   ctvariable.cpp 
+   ctvariable.cpp
+   
+   ctGlobalCron.cpp  
 )
 
 kde4_add_library(kcron_crontablib STATIC ${kcron_crontablib_SRCS})

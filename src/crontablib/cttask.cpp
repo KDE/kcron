@@ -16,8 +16,8 @@
 #include <time.h>     // tm, strftime()
 #include "logging.h"
 
-CTTask::CTTask(const QString& tokenString, const QString& _comment, bool _syscron) :
-	syscron(_syscron) {
+CTTask::CTTask(const QString& tokenString, const QString& _comment, const QString& _userLogin, bool _syscron) :
+	systemCrontab(_syscron) {
 
 	QString tokStr = tokenString;
 	if (tokStr.mid(0, 2) == "#\\") {
@@ -85,14 +85,16 @@ CTTask::CTTask(const QString& tokenString, const QString& _comment, bool _syscro
 		dayOfWeek.initialize(tokStr.mid(0, spacePos));
 	}
 
-	if (syscron) {
+	if (systemCrontab) {
 		while (isSpace(tokStr, spacePos+1))
 			spacePos++;
 		tokStr = tokStr.mid(spacePos+1, tokStr.length()-1);
 		spacePos = tokStr.indexOf(QRegExp("[ \t]"));
-		user = tokStr.mid(0, spacePos);
-	} else
-		user = "";
+		userLogin = tokStr.mid(0, spacePos);
+	}
+	else {
+		userLogin = _userLogin;
+	}
 
 	command = tokStr.mid(spacePos+1, tokStr.length()-1);
 	// remove leading whitespace
@@ -100,7 +102,7 @@ CTTask::CTTask(const QString& tokenString, const QString& _comment, bool _syscro
 		command = command.mid(1, command.length()-1);
 	comment = _comment;
 
-	initialUser = user;
+	initialUserLogin = userLogin;
 	initialCommand = command;
 	initialComment = comment;
 	initialEnabled = enabled;
@@ -108,7 +110,7 @@ CTTask::CTTask(const QString& tokenString, const QString& _comment, bool _syscro
 }
 
 CTTask::CTTask(const CTTask &source) :
-	month(source.month), dayOfMonth(source.dayOfMonth), dayOfWeek(source.dayOfWeek), hour(source.hour), minute(source.minute), user(source.user), command(source.command), comment(source.comment), enabled(source.enabled), reboot(source.reboot), initialUser(""), initialCommand(""),
+	month(source.month), dayOfMonth(source.dayOfMonth), dayOfWeek(source.dayOfWeek), hour(source.hour), minute(source.minute), userLogin(source.userLogin), command(source.command), comment(source.comment), enabled(source.enabled), reboot(source.reboot), initialUserLogin(""), initialCommand(""),
 			initialComment(""), initialEnabled(true), initialReboot(false) {
 }
 
@@ -118,12 +120,12 @@ void CTTask::operator = (const CTTask& source) {
 	dayOfWeek = source.dayOfWeek;
 	hour = source.hour;
 	minute = source.minute;
-	user = source.user;
+	userLogin = source.userLogin;
 	command = source.command;
 	comment = source.comment;
 	enabled = source.enabled;
 	reboot = source.reboot;
-	initialUser = "";
+	initialUserLogin = "";
 	initialCommand = "";
 	initialComment = "";
 	initialEnabled = true;
@@ -143,8 +145,8 @@ QString CTTask::exportTask() {
 	exportTask += schedulingCronFormat();
 	exportTask += "\t";
 
-	if (user != "")
-		exportTask += user + "\t";
+	if (isSystemCrontab() == true)
+		exportTask += userLogin + "\t";
 
 	exportTask += command + "\n";
 
@@ -158,7 +160,7 @@ void CTTask::apply() {
 	hour.apply();
 	minute.apply();
 
-	initialUser = user;
+	initialUserLogin = userLogin;
 	initialCommand = command;
 	initialComment = comment;
 	initialEnabled = enabled;
@@ -172,7 +174,7 @@ void CTTask::cancel() {
 	hour.cancel();
 	minute.cancel();
 
-	user = initialUser;
+	userLogin = initialUserLogin;
 	command = initialCommand;
 	comment = initialComment;
 	enabled = initialEnabled;
@@ -180,7 +182,7 @@ void CTTask::cancel() {
 }
 
 bool CTTask::dirty() const {
-	return (month.isDirty() || dayOfMonth.isDirty() || dayOfWeek.isDirty() || hour.isDirty() || minute.isDirty() || (user != initialUser) || (command != initialCommand) || (comment != initialComment) || (enabled != initialEnabled) || (reboot != initialReboot));
+	return (month.isDirty() || dayOfMonth.isDirty() || dayOfWeek.isDirty() || hour.isDirty() || minute.isDirty() || (userLogin != initialUserLogin) || (command != initialCommand) || (comment != initialComment) || (enabled != initialEnabled) || (reboot != initialReboot));
 }
 
 QString CTTask::schedulingCronFormat() const {
@@ -334,5 +336,9 @@ QString CTTask::createTimeFormat() const {
 }
 
 bool CTTask::isSystemCrontab() const {
-	return syscron;
+	return systemCrontab;
+}
+
+void CTTask::setSystemCrontab(bool _systemCrontab) {
+	systemCrontab = _systemCrontab;
 }

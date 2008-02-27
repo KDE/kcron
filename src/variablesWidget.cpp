@@ -54,7 +54,11 @@ void VariablesWidget::modifySelection(QTreeWidgetItem* item, int position) {
 			variableWidget->toggleEnable();
 		}
 		else {
-			VariableEditorDialog(variableWidget->getCTVariable(), i18n("Modify Variable")).exec();
+			CTVariable* variable = variableWidget->getCTVariable();
+			VariableEditorDialog variableEditorDialog(variable, i18n("Modify Variable"));
+			variableEditorDialog.exec();
+			
+			crontabWidget()->currentCron()->modifyVariable(variable);
 			variableWidget->refresh();
 		}
 	}
@@ -108,7 +112,7 @@ int VariablesWidget::statusColumnIndex() {
 
 
 void VariablesWidget::createVariable() {
-	CTVariable* variable = new CTVariable();
+	CTVariable* variable = new CTVariable("", "", crontabWidget()->currentCron()->userLogin());
 
 	VariableEditorDialog variableEditorDialog(variable, i18n("New Variable"));
 	variableEditorDialog.exec();

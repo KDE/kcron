@@ -178,7 +178,7 @@ void CrontabPrinter::drawMainTitle() {
 	d->painter->setFont(titleFont);
 	
 	QString mainTitle;
-	if (cron->isSystemCron())
+	if (cron->isMultiUserCron())
 		mainTitle = i18n("System Crontab");
 	else 
 		mainTitle = i18nc("Crontab of user login", "Crontab of user %1", cron->userLogin());

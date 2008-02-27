@@ -35,6 +35,7 @@
 #include "ctcron.h"
 #include "ctvariable.h"
 #include "cttask.h"
+#include "ctGlobalCron.h"
 
 #include "kcronIcons.h"
 #include "tasksWidget.h"
@@ -47,6 +48,8 @@
 #include "crontabPrinter.h"
 
 #include "logging.h"
+
+class CTGlobalCron;
 
 class CrontabWidgetPrivate {
 public:
@@ -81,6 +84,11 @@ public:
 	QRadioButton* otherUserCronRadio;
 
 	QComboBox* otherUsers;
+	
+	/**
+	 * Pointer to the pseudo Global Cron object
+	 */ 
+	CTGlobalCron* ctGlobalCron;
 
 };
 
@@ -91,6 +99,7 @@ CrontabWidget::CrontabWidget(QWidget* parent, CTHost* ctHost) :
 	d->variablesWidget = NULL;
 
 	d->ctHost = ctHost;
+	d->ctGlobalCron = new CTGlobalCron(d->ctHost);
 
 	initialize();
 
@@ -150,18 +159,18 @@ QHBoxLayout* CrontabWidget::createCronSelector() {
 	if (ctHost()->isRootUser()) {
 		QStringList users;
 
-		foreach(CTCron* ctCron, ctHost()->cron) {
+		foreach(CTCron* ctCron, ctHost()->crons) {
 			if (ctCron->isCurrentUserCron())
 				continue;
 			
-			if (ctCron->isSystemCron())
+			if (ctCron->isMultiUserCron())
 				continue;
 			
 			d->otherUsers->addItem(ctCron->userLogin());
 
 		}
 
-		//d->otherUsers->addItem(KIcon("users"), i18n("All users"));
+		d->otherUsers->addItem(KIcon("users"), i18n("Show all users"));
 	} else {
 		d->otherUserCronRadio->hide();
 		d->otherUsers->hide();
@@ -222,7 +231,7 @@ void CrontabWidget::refreshCron() {
 	d->tasksWidget->refreshTasks(ctCron);
 	d->variablesWidget->refreshVariables(ctCron);
 
-	if (ctCron->isSystemCron() && ctHost()->isRootUser()==false) {
+	if (ctCron->isMultiUserCron() && ctHost()->isRootUser()==false) {
 		d->tasksWidget->setEnabled(false);
 		d->variablesWidget->setEnabled(false);
 
@@ -367,6 +376,11 @@ CTCron* CrontabWidget::currentCron() const {
 	else if (d->systemCronRadio->isChecked())
 		return d->ctHost->findSystemCron();
 
+	if (d->otherUsers->currentIndex() == d->otherUsers->count()-1) {
+		logDebug() << "Using Global Cron" << endl;
+		return d->ctGlobalCron;
+	}
+	
 	QString currentUserLogin = d->otherUsers->currentText();
 	return d->ctHost->findUserCron(currentUserLogin);
 }

@@ -50,6 +50,11 @@ public:
 	bool systemCron;
 	
 	/**
+	 * Indicates if this cron could have tasks and variables from different user
+	 */
+	bool multiUserCron;
+	
+	/**
 	 * Indicates whether or not the crontab belongs to the current user.
 	 */
 	bool currentUserCron;
@@ -96,9 +101,10 @@ CTCron::CTCron(const QString& crontabBinary, bool systemCron) :
 	d(new CTCronPrivate()) {
 	
 	d->systemCron = systemCron;
+	d->multiUserCron = systemCron;
 	d->currentUserCron = false;
 	
-	if (d->systemCron == false) {
+	if (d->multiUserCron == false) {
 		logDebug() << "Use this constructor only for system cron" << endl;
 		return;
 	}
@@ -121,7 +127,7 @@ CTCron::CTCron(const QString& crontabBinary, bool systemCron) :
 		d->writeCommandLine.parameters << d->tmpFileName;
 		d->writeCommandLine.standardOutputFile = "/etc/crontab";
 
-		d->userLogin = i18n("(System Crontab)");
+		d->userLogin = i18n("System Crontab");
 		d->userRealName = d->userLogin;
 	}
 
@@ -147,6 +153,7 @@ CTCron::CTCron(const QString& crontabBinary, const struct passwd* userInfos, boo
 	
 	Q_ASSERT(userInfos != NULL);
 
+	d->multiUserCron = false;
 	d->systemCron = false;
 	d->currentUserCron = currentUserCron;
 
@@ -198,6 +205,18 @@ CTCron::CTCron(const QString& crontabBinary, const struct passwd* userInfos, boo
 	d->initialVariableCount = d->variable.size();
 }
 
+CTCron::CTCron(const QString& userLogin) :
+	d(new CTCronPrivate()) {
+	
+	logDebug() << "Initializing a CTGlobalCron from CTCron constructor" << endl;
+	
+	d->multiUserCron = true;
+	d->systemCron = false;
+	d->currentUserCron = false;
+
+	d->userLogin = userLogin;
+	
+}
 bool CTCron::initializeFromUserInfos(const struct passwd* userInfos) {
 	if (userInfos == 0) {
 		return false;
@@ -209,7 +228,7 @@ bool CTCron::initializeFromUserInfos(const struct passwd* userInfos) {
 }
 
 void CTCron::operator = (const CTCron& source) {
-	if (source.isSystemCron() == true) {
+	if (source.isMultiUserCron() == true) {
 		logDebug() << "Trying to affect the system cron" << endl;
 	}
 
@@ -263,14 +282,14 @@ void CTCron::parseFile(const QString& fileName) {
 		// sign, it must be a variable
 		if ((firstEquals > 0) && ((firstWhiteSpace == -1) || firstWhiteSpace > firstEquals)) {
 			// create variable
-			CTVariable* tmp = new CTVariable(line, comment);
+			CTVariable* tmp = new CTVariable(line, comment, d->userLogin);
 			d->variable.append(tmp);
 			comment = "";
 		}
 		// must be a task, either enabled or disabled
 		else {
 			if (firstWhiteSpace > 0) {
-				CTTask* tmp = new CTTask(line, comment, d->systemCron);
+				CTTask* tmp = new CTTask(line, comment, d->userLogin, d->multiUserCron);
 				d->task.append(tmp);
 				comment = "";
 			}
@@ -417,10 +436,31 @@ QList<CTVariable*> CTCron::variables() const {
 }
 
 void CTCron::addTask(CTTask* task) {
+	if (isMultiUserCron()) {
+		task->userLogin = "root";
+		task->setSystemCrontab(true);
+	}
+	else {
+		task->setSystemCrontab(false);
+	}
+
 	d->task.append(task);
 }
 void CTCron::addVariable(CTVariable* variable) {
+	if (isMultiUserCron()) {
+		variable->userLogin = "root";
+	}
+
 	d->variable.append(variable);
+}
+
+
+void CTCron::modifyTask(CTTask* /*task*/) {
+	//Nothing to do specifically when modifying a task
+}
+
+void CTCron::modifyVariable(CTVariable* /*variable*/) {
+	//Nothing to do specifically when modifying a task
 }
 
 void CTCron::removeTask(CTTask* task) {
@@ -432,13 +472,18 @@ void CTCron::removeVariable(CTVariable* variable) {
 }
 
 
-bool CTCron::isSystemCron() const {
-	return d->systemCron;
+bool CTCron::isMultiUserCron() const {
+	return d->multiUserCron;
 }
 
 bool CTCron::isCurrentUserCron() const {
 	return d->currentUserCron;
 }
+
+bool CTCron::isSystemCron() const {
+	return d->systemCron;
+}
+
 
 QString CTCron::userLogin() const {
 	return d->userLogin;
@@ -447,3 +492,5 @@ QString CTCron::userLogin() const {
 QString CTCron::userRealName() const {
 	return d->userRealName;
 }
+
+

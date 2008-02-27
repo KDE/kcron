@@ -61,14 +61,25 @@ public:
 	/**
 	 * Destructor.
 	 */
-	~CTCron();
+	virtual ~CTCron();
 
 	/**
 	 * Copy one user's tasks and environement variables to another user.
 	 */
 	void operator =(const CTCron& source);
 	
+	virtual QList<CTTask*> tasks() const;
 	
+	virtual QList<CTVariable*> variables() const;
+	
+	virtual void addTask(CTTask* task);
+	virtual void addVariable(CTVariable* variable);
+	
+	virtual void modifyTask(CTTask* task);
+	virtual void modifyVariable(CTVariable* variable);
+		
+	virtual void removeVariable(CTVariable* variable);
+	virtual void removeTask(CTTask* task);
 
 	/**
 	 * Tokenizes to crontab file format.
@@ -105,27 +116,37 @@ public:
 	 * Return error description
 	 */
 	QString errorMessage();
-	
-	QList<CTTask*> tasks() const;
-	
-	QList<CTVariable*> variables() const;
-	
-	void addTask(CTTask* task);
-	void addVariable(CTVariable* variable);
-	
-	void removeVariable(CTVariable* variable);
-	void removeTask(CTTask* task);
 
-	
+	/**
+	 * Returns true if this cron could have tasks and variables from different user
+	 */
+	bool isMultiUserCron() const;
+
+	/**
+	 * Returns true if this cron is the system cron
+	 */
 	bool isSystemCron() const;
-	
+
+	/**
+	 * Returns true if this cron is the cron of the user who launches this app
+	 */
 	bool isCurrentUserCron() const;
 	
 	QString userLogin() const;
 	
+	/**
+	 * Bugged method for the moment (need to parse x,x,x,x data from /etc/passwd)
+	 */
 	QString userRealName() const;
 
 protected:
+	
+	/**
+	 * Constructor reserved to CTGlobalCron
+	 * TODO Move this code to the CTGlobalCron by make allows it to access to CTCronPrivate* d 
+	 */
+	explicit CTCron(const QString& userLogin);
+	
 	// Initialize member variables from the struct passwd.
 	bool initializeFromUserInfos(const struct passwd* userInfos);
 	

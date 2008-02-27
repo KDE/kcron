@@ -85,6 +85,8 @@ public:
 	CTCron* findCurrentUserCron() const;
 	CTCron* findSystemCron() const;
 	CTCron* findUserCron(const QString& userLogin) const;
+	
+	CTCron* findCronContaining(CTTask* ctTask) const;
 
 	/**
 	 * User(s). 
@@ -95,7 +97,7 @@ public:
 	 * If the user is a non-root user, there will be only one member in the
 	 * cron vector.
 	 */
-	QList<CTCron*> cron;
+	QList<CTCron*> crons;
 
 private:
 

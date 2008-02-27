@@ -121,7 +121,7 @@ bool KCron::init() {
 	// if there currently are no scheduled tasks...
 	if (!d->ctHost->isRootUser()) {
 		int taskCount = 0;
-		foreach(CTCron* ctCron, d->ctHost->cron) {
+		foreach(CTCron* ctCron, d->ctHost->crons) {
 			taskCount += ctCron->tasks().count();
 		}
 

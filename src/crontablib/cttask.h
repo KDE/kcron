@@ -30,7 +30,7 @@ public:
 	/**
 	 * Constructs scheduled task from crontab format string.
 	 */
-	explicit CTTask(const QString& tokenString = "", const QString& _comment = "", bool syscron = false);
+	explicit CTTask(const QString& tokenString, const QString& _comment, const QString& _userLogin, bool syscron = false);
 
 	/**
 	 * Copy constructor.
@@ -76,6 +76,8 @@ public:
 	 * Indicates whether or not the task belongs to the system crontab.
 	 */
 	bool isSystemCrontab() const;
+	
+	void setSystemCrontab(bool systemCrontab);
 
 	CTMonth month;
 	CTDayOfMonth dayOfMonth;
@@ -83,7 +85,7 @@ public:
 	CTHour hour;
 	CTMinute minute;
 	
-	QString user;
+	QString userLogin;
 	QString command;
 	QString comment;
 	
@@ -108,9 +110,9 @@ private:
 	QString createTimeFormat() const;
 	QString createDateFormat() const;
 
-	bool syscron;
+	bool systemCrontab;
 	
-	QString initialUser;
+	QString initialUserLogin;
 	QString initialCommand;
 	QString initialComment;
 	bool initialEnabled;

@@ -13,7 +13,7 @@
 
 #include <QRegExp>
 
-CTVariable::CTVariable(const QString& tokenString, const QString& _comment) {
+CTVariable::CTVariable(const QString& tokenString, const QString& _comment, const QString& _userLogin) {
 
 	QString tokStr = tokenString;
 	
@@ -31,10 +31,14 @@ CTVariable::CTVariable(const QString& tokenString, const QString& _comment) {
 	value = tokStr.mid(spacepos+1, tokStr.length()-spacepos-1);
 	comment = _comment;
 
+	userLogin = _userLogin;
+	
 	initialVariable = variable;
 	initialValue = value;
 	initialComment = comment;
+	initialUserLogin = userLogin;
 	initialEnabled = enabled;
+	
 }
 
 CTVariable::CTVariable(const CTVariable &source) :
@@ -45,10 +49,13 @@ void CTVariable::operator = (const CTVariable& source) {
 	variable = source.variable;
 	value = source.value;
 	comment = source.comment;
+	userLogin = source.userLogin;
 	enabled = source.enabled;
+	
 	initialVariable = "";
 	initialValue = "";
 	initialComment = "";
+	initialUserLogin = "";
 	initialEnabled = true;
 	return;
 }
@@ -71,6 +78,8 @@ void CTVariable::apply() {
 	initialVariable = variable;
 	initialValue = value;
 	initialComment = comment;
+	initialUserLogin = userLogin;
+	
 	initialEnabled = enabled;
 }
 
@@ -78,9 +87,10 @@ void CTVariable::cancel() {
 	variable = initialVariable;
 	value = initialValue;
 	comment = initialComment;
+	userLogin = initialUserLogin;
 	enabled = initialEnabled;
 }
 
 bool CTVariable::dirty() const {
-	return ((variable != initialVariable) || (value != initialValue) || (comment != initialComment) || (enabled != initialEnabled));
+	return ((variable != initialVariable) || (value != initialValue) || (comment != initialComment) || (userLogin != initialUserLogin) || (enabled != initialEnabled));
 }

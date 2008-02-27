@@ -71,54 +71,10 @@ TaskWidget* TasksWidget::firstSelectedTaskWidget() const {
 	return static_cast<TaskWidget*>(item);
 }
 
-
-void TasksWidget::modifySelection() {
-	modifySelection(firstSelectedTaskWidget(), -1);
-}
-
-void TasksWidget::modifySelection(QTreeWidgetItem* item, int position) {
-	TaskWidget* taskWidget = static_cast<TaskWidget*>(item);
-	if (taskWidget!=NULL) {
-		
-		if (position == statusColumnIndex()) {
-			taskWidget->toggleEnable();
-		}
-		else {
-			TaskEditorDialog(taskWidget->getCTTask(), i18n("Modify Task"), crontabWidget()->ctHost()).exec();
-			taskWidget->refresh();
-		}
-
-	}
-	
-	logDebug() << "End of modification" << endl;
-		
-}
-
-void TasksWidget::deleteSelection() {
-	logDebug() << "Selection deleting..." << endl;
-	
-	QList<QTreeWidgetItem*> tasksItems = treeWidget()->selectedItems();
-	foreach(QTreeWidgetItem* item, tasksItems) {
-		TaskWidget* taskWidget = static_cast<TaskWidget*>(item);
-
-		crontabWidget()->currentCron()->removeTask(taskWidget->getCTTask());
-		delete taskWidget->getCTTask();
-		treeWidget()->takeTopLevelItem( treeWidget()->indexOfTopLevelItem(taskWidget) );
-		delete taskWidget;
-		
-	}
-
-	logDebug() << "End of deletion" << endl;
-}
-
 int TasksWidget::statusColumnIndex() {
-	if (crontabWidget()->currentCron()->isSystemCron()) {
+	if (crontabWidget()->currentCron()->isMultiUserCron()) {
 		return 3;
 	}
-	/*
-	if (crontabWidget()->isAllUsersSelected())
-		return 3;
-	*/
 
 	return 2;
 }
@@ -161,9 +117,9 @@ void TasksWidget::runTaskNow() const {
 }
 
 void TasksWidget::createTask() {
-	CTTask* task = new CTTask("", "", crontabWidget()->currentCron()->isSystemCron());
+	CTTask* task = new CTTask("", "", crontabWidget()->currentCron()->userLogin(), crontabWidget()->currentCron()->isMultiUserCron());
 
-	TaskEditorDialog taskEditorDialog(task, i18n("New Task"), crontabWidget()->ctHost());
+	TaskEditorDialog taskEditorDialog(task, i18n("New Task"), crontabWidget());
 	taskEditorDialog.exec();
 
 	if (task->dirty()) {
@@ -176,12 +132,52 @@ void TasksWidget::createTask() {
 
 void TasksWidget::addTask(CTTask* task) {
 	CTCron* cron = crontabWidget()->currentCron();
-	if (cron->isSystemCron()) {
-		task->user = "root";
-	}
 	
 	cron->addTask(task);
 	new TaskWidget(this, task);
+}
+
+void TasksWidget::modifySelection() {
+	modifySelection(firstSelectedTaskWidget(), -1);
+}
+
+void TasksWidget::modifySelection(QTreeWidgetItem* item, int position) {
+	TaskWidget* taskWidget = static_cast<TaskWidget*>(item);
+	if (taskWidget!=NULL) {
+		
+		if (position == statusColumnIndex()) {
+			taskWidget->toggleEnable();
+		}
+		else {
+			CTTask* task = taskWidget->getCTTask();
+			TaskEditorDialog taskEditorDialog(task, i18n("Modify Task"), crontabWidget());
+			taskEditorDialog.exec();
+			
+			crontabWidget()->currentCron()->modifyTask(task);
+			taskWidget->refresh();
+		}
+
+	}
+	
+	logDebug() << "End of modification" << endl;
+		
+}
+
+void TasksWidget::deleteSelection() {
+	logDebug() << "Selection deleting..." << endl;
+	
+	QList<QTreeWidgetItem*> tasksItems = treeWidget()->selectedItems();
+	foreach(QTreeWidgetItem* item, tasksItems) {
+		TaskWidget* taskWidget = static_cast<TaskWidget*>(item);
+
+		crontabWidget()->currentCron()->removeTask(taskWidget->getCTTask());
+		delete taskWidget->getCTTask();
+		treeWidget()->takeTopLevelItem( treeWidget()->indexOfTopLevelItem(taskWidget) );
+		delete taskWidget;
+		
+	}
+
+	logDebug() << "End of deletion" << endl;
 }
 
 void TasksWidget::refreshTasks(CTCron* cron) {
@@ -210,7 +206,7 @@ void TasksWidget::refreshHeaders() {
 
 	headerLabels << i18n("Scheduling");
 	
-	if (crontabWidget()->currentCron()->isSystemCron()) {
+	if (crontabWidget()->currentCron()->isMultiUserCron()) {
 		headerLabels << i18n("User");
 	}
 	
@@ -221,7 +217,7 @@ void TasksWidget::refreshHeaders() {
 
 	treeWidget()->setHeaderLabels(headerLabels);
 	
-	if (crontabWidget()->currentCron()->isSystemCron())
+	if (crontabWidget()->currentCron()->isMultiUserCron())
 		treeWidget()->setColumnCount(6);
 	else
 		treeWidget()->setColumnCount(5);

@@ -12,6 +12,7 @@
 #include "taskWidget.h"
 
 #include <klocale.h>
+#include <kiconloader.h>
 
 #include "cttask.h"
 #include "ctcron.h"
@@ -20,7 +21,8 @@
 #include "crontabWidget.h"
 #include "kcronIcons.h"
 #include "taskEditorDialog.h"
-#include "kiconloader.h"
+
+#include "logging.h"
 
 TaskWidget::TaskWidget(TasksWidget* _tasksWidget, CTTask* _cttask) :
 	QTreeWidgetItem(_tasksWidget->treeWidget()) {
@@ -36,10 +38,11 @@ void TaskWidget::refresh() {
 	
 	setText(column++, ctTask->schedulingCronFormat());
 	
-	if (tasksWidget->crontabWidget()->currentCron()->isSystemCron()) {
-		setText(column++, ctTask->user);
+	if (tasksWidget->crontabWidget()->currentCron()->isMultiUserCron()) {
+		setText(column++, ctTask->userLogin);
 	}
 	
+	logDebug() << "Command" << ctTask->command << endl;
 	setText(column++, ctTask->command);
 
 	if (ctTask->enabled) {

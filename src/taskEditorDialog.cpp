@@ -44,6 +44,8 @@
 #include "ctcron.h"
 #include "cthost.h"
 
+#include "crontabWidget.h"
+
 #include "kcronIcons.h"
 
 /**
@@ -122,7 +124,7 @@ void KTPushButton::paintEvent(QPaintEvent*) {
  * KTTask class implementation
  */
 
-TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption, CTHost* ctHost) :
+TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption, CrontabWidget* crontabWidget) :
 	KDialog() {
 
 	setModal(true);
@@ -171,16 +173,16 @@ TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption, CTH
 	labUser->setBuddy(leUser);
 	commandConfigurationLayout->addWidget(leUser, 1, 1);
 
-	if (ctTask->isSystemCrontab()) {
+	if (crontabWidget->currentCron()->isMultiUserCron()) {
 		int userComboIndex = 0;
-		foreach(CTCron* ctCron, ctHost->cron) {
-			if (ctCron->isSystemCron())
+		foreach(CTCron* ctCron, crontabWidget->ctHost()->crons) {
+			if (ctCron->isMultiUserCron())
 				continue;
 			
 			leUser->addItem(ctCron->userLogin());
 			
 			//Select the actual user
-			if (ctCron->userLogin() == ctTask->user) {
+			if (ctCron->userLogin() == ctTask->userLogin) {
 				leUser->setCurrentIndex(userComboIndex);
 			}
 
@@ -258,7 +260,7 @@ TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption, CTH
 
 	// window
 	setWindowIcon(KCronIcons::application(KCronIcons::Small));
-	setCaption(_caption/*i18n("Edit Task")*/);
+	setCaption(_caption);
 
 	// set focus to first widget
 	if (ctTask->isSystemCrontab()) {
@@ -282,14 +284,6 @@ TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption, CTH
 	connect(this, SIGNAL(okClicked()), SLOT(slotOK()));
 	connect(this, SIGNAL(cancelClicked()), SLOT(slotCancel()));
 
-	// key acceleration
-	/*
-	 key_accel = new KAccel(this);
-	 key_accel->insert(KStandardShortcut::Open, this, SLOT(slotOK()));
-	 key_accel->insert(KStandardShortcut::Close, this, SLOT(slotCancel()));
-	 key_accel->insert(KStandardShortcut::Quit, this, SLOT(slotCancel()));
-	 key_accel->readSettings();
-	 */
 	main->layout()->setSizeConstraint(QLayout::SetFixedSize);
 	show();
 
@@ -665,10 +659,10 @@ void TaskEditorDialog::slotOK() {
 	}
 
 	// save work in process
-	if (!ctTask->user.isEmpty()) {
-		ctTask->user = QFile::encodeName(leUser->currentText());
+	if (!ctTask->userLogin.isEmpty()) {
+		ctTask->userLogin = QFile::encodeName(leUser->currentText());
 	} else {
-		ctTask->user = "";
+		ctTask->userLogin = "";
 	}
 
 	ctTask->comment = leComment->text();

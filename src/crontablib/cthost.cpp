@@ -71,7 +71,7 @@ CTHost::CTHost(const QString& cronBinary) {
 }
 
 CTHost::~CTHost() {
-	foreach(CTCron* ctCron, cron) {
+	foreach(CTCron* ctCron, crons) {
 		delete ctCron;
 	}
 }
@@ -123,7 +123,7 @@ void CTHost::save() {
 		return;
 	}
 	
-	foreach(CTCron* ctCron, cron) {
+	foreach(CTCron* ctCron, crons) {
 		ctCron->save();
 		if (ctCron->isError()) {
 			error = ctCron->errorMessage();
@@ -133,7 +133,7 @@ void CTHost::save() {
 }
 
 void CTHost::cancel() {
-	foreach(CTCron* ctCron, cron) {
+	foreach(CTCron* ctCron, crons) {
 		ctCron->cancel();
 	}
 }
@@ -141,7 +141,7 @@ void CTHost::cancel() {
 bool CTHost::isDirty() {
 	bool isDirty(false);
 
-	foreach(CTCron* ctCron, cron) {
+	foreach(CTCron* ctCron, crons) {
 		if (ctCron->isDirty()) {
 			isDirty = true;
 		}
@@ -158,7 +158,7 @@ CTCron* CTHost::createSystemCron() {
 		return 0;
 	}
 
-	cron.append(p);
+	crons.append(p);
 
 	return p;
 }
@@ -175,12 +175,12 @@ CTCron* CTHost::createCTCron(const struct passwd* userInfos) {
 		delete p;
 		return 0;
 	}
-	cron.append(p);
+	crons.append(p);
 	return p;
 }
 
 CTCron* CTHost::findCurrentUserCron() const {
-	foreach(CTCron* ctCron, cron) {
+	foreach(CTCron* ctCron, crons) {
 		if (ctCron->isCurrentUserCron())
 			return ctCron;
 	}
@@ -190,8 +190,8 @@ CTCron* CTHost::findCurrentUserCron() const {
 }
 
 CTCron* CTHost::findSystemCron() const {
-	foreach(CTCron* ctCron, cron) {
-		if (ctCron->isSystemCron())
+	foreach(CTCron* ctCron, crons) {
+		if (ctCron->isMultiUserCron())
 			return ctCron;
 	}
 	
@@ -200,13 +200,25 @@ CTCron* CTHost::findSystemCron() const {
 }
 
 CTCron* CTHost::findUserCron(const QString& userLogin) const {
-	foreach(CTCron* ctCron, cron) {
+	foreach(CTCron* ctCron, crons) {
 		if (ctCron->userLogin() == userLogin)
 			return ctCron;
 	}
 	
 	logDebug() << "Unable to find the user Cron " << userLogin << ". Please report this bug and your crontab config to the developers" << endl;
 	return NULL;
+}
+
+CTCron* CTHost::findCronContaining(CTTask* ctTask) const {
+	foreach(CTCron* ctCron, crons) {
+		if (ctCron->tasks().contains(ctTask) == true) {
+			return ctCron;
+		}
+	}
+	
+	logDebug() << "Unable to find the cron of this task. Please report this bug and your crontab config to the developers" << endl;
+	return NULL;
+
 }
 
 bool CTHost::isRootUser() const {

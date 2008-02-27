@@ -30,6 +30,8 @@ class KUrlRequester;
 class CTHost;
 class CTTask;
 
+class CrontabWidget;
+
 class SetOrClearAllButton : public QPushButton {
 	
 public:
@@ -80,7 +82,7 @@ public:
 	/**
 	 * Initialize from CTTask.
 	 */
-	explicit TaskEditorDialog(CTTask* _cttask, const QString &_caption, CTHost* ctHost);
+	explicit TaskEditorDialog(CTTask* ctTask, const QString& caption, CrontabWidget* crontabWidget);
 
 	/**
 	 * Destroy.
