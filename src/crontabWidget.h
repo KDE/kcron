@@ -95,7 +95,7 @@ signals:
 	/**
 	 * Toggle new entries
 	 */
-	void newEntryToggled(bool enabled);
+	void newEntryActionsToggled(bool enabled);
 
 	/** 
 	 * Enables/disables paste button depending

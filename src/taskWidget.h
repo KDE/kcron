@@ -12,9 +12,10 @@
 #ifndef TASK_WIDGET_H
 #define TASK_WIDGET_H
 
-#include "tasksWidget.h"
+#include <QTreeWidgetItem>
 
 class CTTask;
+class TasksWidget;
 
 /**
  * QTreeWidgetItem with a CTTask.
@@ -27,11 +28,6 @@ public:
 	 */
 	TaskWidget(TasksWidget* tasksWidget, CTTask* _cttask);
 
-	/**
-	 * Edit task.
-	 */
-	void modify();
-
 	/*
 	 * Change the status of this task
 	 */
@@ -42,17 +38,19 @@ public:
 	 */
 	CTTask* getCTTask() const;
 
-private:
-
 	/**
 	 * Refresh from underlying task.
 	 */
 	void refresh();
 
+private:
+
 	/**
 	 * Task.
 	 */
 	CTTask* ctTask;
+	
+	TasksWidget* tasksWidget;
 };
 
 #endif // TASK_WIDGET_H

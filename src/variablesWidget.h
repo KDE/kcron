@@ -48,11 +48,15 @@ public slots:
 	 * Create a new variable.  Default is which type is most recently selected.
 	 */
 	void createVariable();
+	
+	void addVariable(CTVariable* variable);
 
 protected slots:
 	void modifySelection(QTreeWidgetItem* item, int position);
 	
 private:
+	void refreshHeaders();
+	
 	int statusColumnIndex();
 
 };

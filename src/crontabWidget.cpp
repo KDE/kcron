@@ -22,6 +22,8 @@
 #include <QRadioButton>
 #include <QButtonGroup>
 #include <QComboBox>
+#include <QApplication>
+#include <QClipboard>
 
 #include <kglobalsettings.h>
 #include <klocale.h>
@@ -92,10 +94,10 @@ CrontabWidget::CrontabWidget(QWidget* parent, CTHost* ctHost) :
 
 	initialize();
 
-	emit 	modificationActionsToggled(false);
-	emit 	runNowActionToggled(false);
-	emit 	pasteActionToggled(hasClipboardContent());
-
+	logDebug() << "Clipboard Status " << hasClipboardContent() << endl;
+	emit modificationActionsToggled(false);
+	emit runNowActionToggled(false);
+	
 	d->tasksWidget->setFocus();
 
 	QTreeWidgetItem* item = d->tasksWidget->treeWidget()->topLevelItem(0);
@@ -103,17 +105,16 @@ CrontabWidget::CrontabWidget(QWidget* parent, CTHost* ctHost) :
 		logDebug() << "First item found" << d->tasksWidget->treeWidget()->topLevelItemCount() << endl;
 		item->setSelected(true);
 	}
-	
 
 }
 
 bool CrontabWidget::hasClipboardContent() {
 	if (d->clipboardTasks.isEmpty() == false)
 		return true;
-	
-	if (d->clipboardVariables.isEmpty() == false) 
+
+	if (d->clipboardVariables.isEmpty() == false)
 		return true;
-	
+
 	return false;
 }
 
@@ -150,6 +151,12 @@ QHBoxLayout* CrontabWidget::createCronSelector() {
 		QStringList users;
 
 		foreach(CTCron* ctCron, ctHost()->cron) {
+			if (ctCron->isCurrentUserCron())
+				continue;
+			
+			if (ctCron->isSystemCron())
+				continue;
+			
 			d->otherUsers->addItem(ctCron->userLogin());
 
 		}
@@ -214,20 +221,22 @@ void CrontabWidget::refreshCron() {
 
 	d->tasksWidget->refreshTasks(ctCron);
 	d->variablesWidget->refreshVariables(ctCron);
-	
+
 	if (ctCron->isSystemCron() && ctHost()->isRootUser()==false) {
 		d->tasksWidget->setEnabled(false);
 		d->variablesWidget->setEnabled(false);
-		
-		emit newEntryToggled(false);
+
+		emit newEntryActionsToggled(false);
 		emit modificationActionsToggled(false);
 		emit runNowActionToggled(false);
+		emit pasteActionToggled(false);
 	}
 	else {
 		d->tasksWidget->setEnabled(true);
 		d->variablesWidget->setEnabled(true);
-		
-		emit newEntryToggled(true);
+
+		emit newEntryActionsToggled(true);
+		emit pasteActionToggled(hasClipboardContent());
 	}
 }
 
@@ -261,7 +270,7 @@ void CrontabWidget::slotSetCurrentItem() {
 }
 
 void CrontabWidget::print() {
-	
+
 	CrontabPrinter printer(this);
 
 	if (printer.start() == false) {
@@ -270,10 +279,9 @@ void CrontabWidget::print() {
 	}
 	printer.printTasks();
 	printer.printVariables();
-	
+
 	printer.finish();
-	
-	
+
 }
 
 void CrontabWidget::copy() {
@@ -287,50 +295,70 @@ void CrontabWidget::copy() {
 	}
 	d->clipboardVariables.clear();
 
-	QList<TaskWidget*> tasksWidget = d->tasksWidget->selectedTasksWidget();
-	logDebug() << "TODODODOODODODO" << endl;
+	QString clipboardText;
 	
-	QList<VariableWidget*> variablesWidget = d->variablesWidget->selectedVariablesWidget();
-	/*
+	if (d->tasksWidget->treeWidget()->hasFocus()) {
+		logDebug() << "Tasks copying" << endl;
+		
+		QList<TaskWidget*> tasksWidget = d->tasksWidget->selectedTasksWidget();
+		foreach(TaskWidget* taskWidget, tasksWidget) {
+			CTTask* task = new CTTask( *(taskWidget->getCTTask()) );
+			d->clipboardTasks.append(task);
+			
+			clipboardText += task->exportTask() + "\n";
+		}
+	}
 
-	 TaskWidget* taskWidget = d->tasksWidget->firstSelectedTaskWidget();
-	 VariableWidget* variableWidget = d->variablesWidget->firstSelectedVariableWidget();
+	if (d->variablesWidget->treeWidget()->hasFocus()) {
+		logDebug() << "Variables copying" << endl;
+		
+		QList<VariableWidget*> variablesWidget = d->variablesWidget->selectedVariablesWidget();
+		foreach(VariableWidget* variableWidget, variablesWidget) {
+			CTVariable* variable = new CTVariable( *(variableWidget->getCTVariable()) );
+			d->clipboardVariables.append(variable);
+			
+			clipboardText += variable->exportVariable() + "\n";
+		}
+	}
+	
+	QApplication::clipboard()->setText(clipboardText, QClipboard::Clipboard);
+	QApplication::clipboard()->setText(clipboardText, QClipboard::Selection);
 
-	 if (taskWidget != NULL) {
-	 d->clipboardCTTask = new CTTask( *(taskWidget->getCTTask()) );
-	 d->clipboardIsTask = true;
-	 } else if (variableWidget != NULL) {
-	 d->clipboardCTVariable = new CTVariable( *(variableWidget->getCTVariable()) );
-	 d->clipboardIsTask = false;
-	 }
-	 */
+	logDebug() << "Clipboard Status " << hasClipboardContent() << endl;
+	emit pasteActionToggled(hasClipboardContent());
 }
 
 void CrontabWidget::cut() {
-	/*
-	 copy();
-	 
-	 d->tasksWidget->deleteSelection();
-	 d->variablesWidget->deleteSelection();
-	 */
+	logDebug() << "Cut content" << endl;
+	
+	copy();
+
+	if (d->tasksWidget->treeWidget()->hasFocus()) {
+		logDebug() << "Tasks cutting" << endl;
+		d->tasksWidget->deleteSelection();
+	}
+	
+	if (d->variablesWidget->treeWidget()->hasFocus()) {
+		logDebug() << "Variables cutting" << endl;
+		d->variablesWidget->deleteSelection();
+	}
 }
 
 void CrontabWidget::paste() {
-	/*
-	 KTListItem* qlvi = (KTListItem*)tasksListWidget->currentItem();
+	logDebug() << "Paste content" << endl;
+	
+	if (d->tasksWidget->treeWidget()->hasFocus()) {
+		foreach(CTTask* task, d->clipboardTasks) {
+			d->tasksWidget->addTask(new CTTask(*task));
+		}
+	}
+	
+	if (d->variablesWidget->treeWidget()->hasFocus()) {
+		foreach(CTVariable* variable, d->clipboardVariables) {
+			d->variablesWidget->addVariable(new CTVariable(*variable));
+		}
+	}
 
-	 if (currentIsTask) {
-	 CTTask* temptask = new CTTask(*clipboardCTTask);
-	 currentCTCron->task.push_back(temptask);
-	 KTListTask* ktlt = new KTListTask(qlvi, currentCTCron, temptask);
-	 tasksListWidget->setSelected(ktlt, true);
-	 } else {
-	 CTVariable* tempvar = new CTVariable(*clipboardCTVariable);
-	 currentCTCron->variable.push_back(tempvar);
-	 KTListVar* ktlv = new KTListVar(qlvi, currentCTCron, tempvar);
-	 tasksListWidget->setSelected(ktlv, true);
-	 }
-	 */
 }
 
 CTCron* CrontabWidget::currentCron() const {

@@ -74,26 +74,11 @@ public slots:
 	void slotSave();
 
 	/**
-	 * Print document.
-	 */
-	void slotPrint();
-
-	/**
 	 * Close all open windows then quits the application.  If queryClose()
 	 * returns false because the user canceled the saveModified() dialog, the
 	 * closing breaks.
 	 */
 	void slotQuit();
-
-	/**
-	 * Put the marked objects on the clipboard.
-	 */
-	void slotCopy();
-
-	/**
-	 * Paste the object on clipboard into the document
-	 */
-	void slotPaste();
 
 	/**
 	 * Changes the status bar contents for the standard label permanently;

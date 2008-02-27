@@ -35,20 +35,8 @@
 VariablesWidget::VariablesWidget(CrontabWidget* crontabWidget) :
 	GenericListWidget(crontabWidget, i18n("<b>Environment Variables</b>"), KCronIcons::variable(KCronIcons::Small)) {
 	
-	QStringList headerLabels;
-
-	/*
-	if (crontabWidget()->isAllUsersSelected()) {
-		headerLabels << i18n("Users");
-	}
-	*/
-
-	headerLabels << i18n("Variable");
-	headerLabels << i18n("Value");
-	headerLabels << i18n("Status");
-	headerLabels << i18n("Comment");
-
-	treeWidget()->setHeaderLabels(headerLabels);
+	refreshHeaders();
+	
 	treeWidget()->sortItems(0, Qt::AscendingOrder);
 
 }
@@ -66,7 +54,8 @@ void VariablesWidget::modifySelection(QTreeWidgetItem* item, int position) {
 			variableWidget->toggleEnable();
 		}
 		else {
-			variableWidget->modify();
+			VariableEditorDialog(variableWidget->getCTVariable(), i18n("Modify Variable")).exec();
+			variableWidget->refresh();
 		}
 	}
 		
@@ -125,21 +114,46 @@ void VariablesWidget::createVariable() {
 	variableEditorDialog.exec();
 
 	if (variable->dirty()) {
-		logDebug() << "Add a new variable" << endl;
-		crontabWidget()->currentCron()->addVariable(variable);
-		new VariableWidget(this, variable);
+		addVariable(variable);
 	} else {
 		delete variable;
 	}
 }
 
+void VariablesWidget::addVariable(CTVariable* variable) {
+	logDebug() << "Add a new variable" << endl;
+	crontabWidget()->currentCron()->addVariable(variable);
+	new VariableWidget(this, variable);
+}
+
 void VariablesWidget::refreshVariables(CTCron* cron) {
 	//Remove previous items
 	removeAll();
+	
+	refreshHeaders();
 
 	foreach(CTVariable* ctVariable, cron->variables()) {
 		new VariableWidget(this, ctVariable);
 	}
 	
 	resizeColumnContents();
+}
+
+void VariablesWidget::refreshHeaders() {
+	QStringList headerLabels;
+
+	/*
+	if (crontabWidget()->isAllUsersSelected()) {
+		headerLabels << i18n("User");
+	}
+	*/
+
+	headerLabels << i18n("Variable");
+	headerLabels << i18n("Value");
+	headerLabels << i18n("Status");
+	headerLabels << i18n("Comment");
+
+	treeWidget()->setHeaderLabels(headerLabels);
+	treeWidget()->setColumnCount(4);
+
 }

@@ -14,33 +14,44 @@
 #include <klocale.h>
 
 #include "cttask.h"
+#include "ctcron.h"
 
+#include "tasksWidget.h"
+#include "crontabWidget.h"
 #include "kcronIcons.h"
 #include "taskEditorDialog.h"
 #include "kiconloader.h"
 
-TaskWidget::TaskWidget(TasksWidget* tasksWidget, CTTask* _cttask) :
-	QTreeWidgetItem(tasksWidget->treeWidget()) {
+TaskWidget::TaskWidget(TasksWidget* _tasksWidget, CTTask* _cttask) :
+	QTreeWidgetItem(_tasksWidget->treeWidget()) {
 
 	ctTask = _cttask;
+	tasksWidget = _tasksWidget;
 
 	refresh();
 }
 
 void TaskWidget::refresh() {
-	setText(0, ctTask->schedulingCronFormat());
-	setText(1, ctTask->command);
+	int column = 0;
+	
+	setText(column++, ctTask->schedulingCronFormat());
+	
+	if (tasksWidget->crontabWidget()->currentCron()->isSystemCron()) {
+		setText(column++, ctTask->user);
+	}
+	
+	setText(column++, ctTask->command);
 
 	if (ctTask->enabled) {
-		setText(2, i18n("Enabled"));
-		setIcon(2, SmallIcon("ok"));
+		setText(column, i18n("Enabled"));
+		setIcon(column++, SmallIcon("ok"));
 	} else {
-		setText(2, i18n("Disabled"));
-		setIcon(2, SmallIcon("no"));
+		setText(column, i18n("Disabled"));
+		setIcon(column++, SmallIcon("no"));
 	}
 
-	setText(3, ctTask->comment);
-	setText(4, ctTask->describe());
+	setText(column++, ctTask->comment);
+	setText(column++, ctTask->describe());
 
 	QString qsCommand = ctTask->command;
 
@@ -57,11 +68,6 @@ void TaskWidget::refresh() {
 		qpIcon = KCronIcons::task(KCronIcons::Small);
 
 	setIcon(0, QIcon(qpIcon));
-}
-
-void TaskWidget::modify() {
-	TaskEditorDialog(ctTask, i18n("Modify Task")).exec();
-	refresh();
 }
 
 void TaskWidget::toggleEnable() {

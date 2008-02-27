@@ -27,11 +27,11 @@ public:
 	 * Initialize the list view item and task.
 	 */
 	VariableWidget(VariablesWidget* variablesWidget, CTVariable* _ctVariable);
-
+	
 	/**
-	 * Edit task.
+	 * Refresh from underlying task.
 	 */
-	void modify();
+	void refresh();
 	
 	/*
 	 * Change the status of this variable
@@ -44,11 +44,6 @@ public:
 	CTVariable* getCTVariable() const;
 
 private:
-	
-	/**
-	 * Refresh from underlying task.
-	 */
-	void refresh();
 
 	/**
 	 * Variable

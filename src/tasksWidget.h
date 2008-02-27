@@ -54,11 +54,14 @@ public slots:
 	 * Create a new task.  Default is which type is most recently selected.
 	 */
 	void createTask();
+	
+	void addTask(CTTask* task);
 
 protected slots:
 	void modifySelection(QTreeWidgetItem* item, int position);
 	
 private:
+	void refreshHeaders();
 	
 	int statusColumnIndex();
 

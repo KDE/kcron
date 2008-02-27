@@ -63,6 +63,8 @@ public:
 	QString crontab;
 
 	QAction* cutAction;
+	QAction* copyAction;
+	QAction* pasteAction;
 
 	QAction* newTaskAction;
 
@@ -94,7 +96,7 @@ KCron::KCron() :
 	connect(d->crontabWidget, SIGNAL(modificationActionsToggled(bool)), this, SLOT(toggleModificationActions(bool)));
 	connect(d->crontabWidget, SIGNAL(pasteActionToggled(bool)), this, SLOT(togglePasteAction(bool)));
 	connect(d->crontabWidget, SIGNAL(runNowActionToggled(bool)), this, SLOT(toggleRunNowActions(bool)));
-	connect(d->crontabWidget, SIGNAL(newEntryToggled(bool)), this, SLOT(toggleNewEntryActions(bool)));
+	connect(d->crontabWidget, SIGNAL(newEntryActionsToggled(bool)), this, SLOT(toggleNewEntryActions(bool)));
 	
 
 	// Call inits to invoke all other construction parts.
@@ -149,16 +151,15 @@ QString KCron::caption() {
 void KCron::setupActions() {
 	//File Menu
 	KStandardAction::save(this, SLOT(slotSave()), actionCollection());
-	KStandardAction::print(this, SLOT(slotPrint()), actionCollection());
 	KStandardAction::quit(this, SLOT(slotQuit()), actionCollection());
+	KStandardAction::print(d->crontabWidget, SLOT(print()), actionCollection());
 
-	/*
 	//Edit menu
 	d->cutAction = KStandardAction::cut(d->crontabWidget, SLOT(cut()), actionCollection());
-	actionCollection()->addAction("edit_cut", d->cutAction);
-	KStandardAction::copy(this, SLOT(slotCopy()), actionCollection());
-	KStandardAction::paste(this, SLOT(slotPaste()), actionCollection());
-	*/
+	d->copyAction = KStandardAction::copy(d->crontabWidget, SLOT(copy()), actionCollection());
+	d->pasteAction = KStandardAction::paste(d->crontabWidget, SLOT(paste()), actionCollection());
+	togglePasteAction(false);
+	
 
 	d->newTaskAction = actionCollection()->addAction("edit_new_task");
 	d->newTaskAction->setIcon(KIcon("document-new"));
@@ -206,6 +207,12 @@ void KCron::prepareTasksWidgetContextualMenu() {
 
 	d->crontabWidget->tasksWidget()->treeWidget()->addAction(createSeparator());
 
+	d->crontabWidget->tasksWidget()->treeWidget()->addAction(d->cutAction);
+	d->crontabWidget->tasksWidget()->treeWidget()->addAction(d->copyAction);
+	d->crontabWidget->tasksWidget()->treeWidget()->addAction(d->pasteAction);
+
+	d->crontabWidget->tasksWidget()->treeWidget()->addAction(createSeparator());
+
 	d->crontabWidget->tasksWidget()->treeWidget()->addAction(d->runNowAction);
 }
 
@@ -217,6 +224,12 @@ void KCron::prepareVariablesWidgetContextualMenu() {
 
 	d->crontabWidget->variablesWidget()->treeWidget()->addAction(d->modifyAction);
 	d->crontabWidget->variablesWidget()->treeWidget()->addAction(d->deleteAction);
+
+	d->crontabWidget->variablesWidget()->treeWidget()->addAction(createSeparator());
+
+	d->crontabWidget->variablesWidget()->treeWidget()->addAction(d->cutAction);
+	d->crontabWidget->variablesWidget()->treeWidget()->addAction(d->copyAction);
+	d->crontabWidget->variablesWidget()->treeWidget()->addAction(d->pasteAction);
 
 }
 
@@ -289,27 +302,9 @@ void KCron::slotSave() {
 	}
 }
 
-void KCron::slotPrint() {
-	slotStatusMessage(i18n("Printing..."));
-	d->crontabWidget->print();
-	slotStatusMessage(i18nc("Ready for user input", "Ready."));
-}
-
 void KCron::slotQuit() {
 	saveOptions();
 	close();
-}
-
-void KCron::slotCopy() {
-	slotStatusMessage(i18n("Copying to clipboard..."));
-	d->crontabWidget->copy();
-	slotStatusMessage(i18nc("Ready for user input", "Ready."));
-}
-
-void KCron::slotPaste() {
-	slotStatusMessage(i18n("Pasting from clipboard..."));
-	d->crontabWidget->paste();
-	slotStatusMessage(i18nc("Ready for user input", "Ready."));
 }
 
 void KCron::slotStatusMessage(const QString & text) {
@@ -341,18 +336,16 @@ void KCron::displayActionInformation(QAction* action) {
 }
 
 void KCron::toggleModificationActions(bool state) {
-	/*
-	actionCollection()->addAction("edit_cut")->setEnabled(state);
-	actionCollection()->addAction("edit_copy")->setEnabled(state);
-	*/
-	
+	d->cutAction->setEnabled(state);
+	d->copyAction->setEnabled(state);
 	d->modifyAction->setEnabled(state);
 	d->deleteAction->setEnabled(state);
 
 }
 
-void KCron::togglePasteAction(bool /*state*/) {
-	//actionCollection()->addAction("edit_paste")->setEnabled(state);
+void KCron::togglePasteAction(bool state) {
+	logDebug() << "Set paste enabled " << state << endl;
+	d->pasteAction->setEnabled(state);
 }
 
 void KCron::toggleRunNowActions(bool state) {

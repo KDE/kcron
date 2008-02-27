@@ -192,8 +192,6 @@ void CrontabPrinter::drawMainTitle() {
 }
 
 void CrontabPrinter::drawTitle(const QString& title) {
-	
-	
 
 	QFont originalFont = d->painter->font();
 	QFont titleFont(originalFont);
@@ -305,6 +303,7 @@ bool CrontabPrinter::isAllUsers() const {
 
 
 void CrontabPrinter::drawTable(const QList<int>& columnWidths) {
+	d->painter->translate(0, - d->currentRowPosition + computeMargin());
 	
 	int columnWidthsTotal = 0;
 	foreach(int columnWidth, columnWidths) {
@@ -324,23 +323,25 @@ void CrontabPrinter::drawTable(const QList<int>& columnWidths) {
 
 	
 	//First horizontal line
-	d->painter->drawLine(QPoint(margin, -10), QPoint(margin + columnWidthsTotal, -10));
+	d->painter->drawLine(QPoint(margin, 0), QPoint(margin + columnWidthsTotal, 0));
 	
 	//Second horizontal line
-	d->painter->drawLine(QPoint(margin, -10+computeStringHeight(" ")), QPoint(margin + columnWidthsTotal, -10+computeStringHeight(" ")));
+	d->painter->drawLine(QPoint(margin, 0+computeStringHeight(" ")), QPoint(margin + columnWidthsTotal, 0+computeStringHeight(" ")));
 
 	//First vertical line
-	d->painter->drawLine(QPoint(linePositionX, -10), QPoint(linePositionX, d->currentRowPosition));
+	d->painter->drawLine(QPoint(linePositionX, 0), QPoint(linePositionX, d->currentRowPosition));
 	
 	foreach(int columnWidth, columnWidths) {
 		linePositionX += columnWidth;
-		d->painter->drawLine(QPoint(linePositionX, -10), QPoint(linePositionX, d->currentRowPosition));
+		d->painter->drawLine(QPoint(linePositionX, 0), QPoint(linePositionX, d->currentRowPosition));
 	}
 
 	//Last horizontal line
 	d->painter->drawLine(QPoint(margin, d->currentRowPosition), QPoint(margin + columnWidthsTotal, d->currentRowPosition));
 
 	d->painter->setPen(originalPen);
+	
+	d->painter->translate(0, d->currentRowPosition - computeMargin());
 }
 
 QList<int> CrontabPrinter::findMaxWidths(const QList<QStringList>& contents, int columnCount) {

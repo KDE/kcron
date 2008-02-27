@@ -1,3 +1,6 @@
+nicolas.ternisien@gmail.com February 27, 1999
+ Major rewrite of KCron.
+ 
 gary@meyer.net September 6, 1999
 
   Fixed bug.  Program didn't exit after editing.  KDE2 only.

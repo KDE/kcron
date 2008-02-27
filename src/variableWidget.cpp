@@ -57,11 +57,6 @@ void VariableWidget::refresh() {
 	setIcon(0, QIcon(qpIcon));
 }
 
-void VariableWidget::modify() {
-	VariableEditorDialog(ctVariable, i18n("Modify Variable")).exec();
-	refresh();
-}
-
 void VariableWidget::toggleEnable() {
 	ctVariable->enabled = ! ctVariable->enabled;
 	refresh();

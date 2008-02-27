@@ -15,6 +15,7 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QGroupBox>
+#include <QComboBox>
 
 #include <kdialog.h>
 #include <kicon.h>
@@ -26,6 +27,7 @@ class QCheckBox;
 
 class KUrlRequester;
 
+class CTHost;
 class CTTask;
 
 class SetOrClearAllButton : public QPushButton {
@@ -78,7 +80,7 @@ public:
 	/**
 	 * Initialize from CTTask.
 	 */
-	explicit TaskEditorDialog(CTTask* _cttask = NULL, const QString &_caption="");
+	explicit TaskEditorDialog(CTTask* _cttask, const QString &_caption, CTHost* ctHost);
 
 	/**
 	 * Destroy.
@@ -196,7 +198,7 @@ private:
 
 	KTitleWidget* titleWidget;
 
-	QLineEdit* leUser;
+	QComboBox* leUser;
 
 	QLineEdit* leComment;
 

@@ -41,6 +41,8 @@
 
 #include "logging.h"
 #include "cttask.h"
+#include "ctcron.h"
+#include "cthost.h"
 
 #include "kcronIcons.h"
 
@@ -120,7 +122,7 @@ void KTPushButton::paintEvent(QPaintEvent*) {
  * KTTask class implementation
  */
 
-TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption) :
+TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption, CTHost* ctHost) :
 	KDialog() {
 
 	setModal(true);
@@ -164,13 +166,29 @@ TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption) :
 	QLabel* labUser = new QLabel( i18n("&Run as:"), main);
 	commandConfigurationLayout->addWidget(labUser, 1, 0);
 
-	leUser = new KLineEdit(main);
+	leUser = new QComboBox(main);
+	
 	labUser->setBuddy(leUser);
 	commandConfigurationLayout->addWidget(leUser, 1, 1);
 
 	if (ctTask->isSystemCrontab()) {
-		leUser->setText(ctTask->user);
-	} else {
+		int userComboIndex = 0;
+		foreach(CTCron* ctCron, ctHost->cron) {
+			if (ctCron->isSystemCron())
+				continue;
+			
+			leUser->addItem(ctCron->userLogin());
+			
+			//Select the actual user
+			if (ctCron->userLogin() == ctTask->user) {
+				leUser->setCurrentIndex(userComboIndex);
+			}
+
+			userComboIndex++;
+		}
+
+	}
+	else {
 		labUser->hide();
 		leUser->hide();
 	}
@@ -648,7 +666,7 @@ void TaskEditorDialog::slotOK() {
 
 	// save work in process
 	if (!ctTask->user.isEmpty()) {
-		ctTask->user = QFile::encodeName(leUser->text());
+		ctTask->user = QFile::encodeName(leUser->currentText());
 	} else {
 		ctTask->user = "";
 	}

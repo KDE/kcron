@@ -113,6 +113,16 @@ bool CTHost::allowDeny(char *name) {
 }
 
 void CTHost::save() {
+	if (isRootUser() == false) {
+		CTCron* ctCron = findCurrentUserCron();
+		ctCron->save();
+		if (ctCron->isError()) {
+			error = ctCron->errorMessage();
+			return;
+		}
+		return;
+	}
+	
 	foreach(CTCron* ctCron, cron) {
 		ctCron->save();
 		if (ctCron->isError()) {

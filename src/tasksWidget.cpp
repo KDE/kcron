@@ -37,23 +37,9 @@
  * Construct tasks folder from branch.
  */
 TasksWidget::TasksWidget(CrontabWidget* crontabWidget) :
-	GenericListWidget(crontabWidget, i18n("<b>Tasks</b>"), KCronIcons::task(KCronIcons::Small)) {
+	GenericListWidget(crontabWidget, i18n("<b>Scheduled Tasks</b>"), KCronIcons::task(KCronIcons::Small)) {
 	
-	QStringList headerLabels;
-	
-	/*
-	if (crontabWidget()->isAllUsersSelected()) {
-		headerLabels << i18n("Users");
-	}
-	*/
-
-	headerLabels << i18n("Scheduling");
-	headerLabels << i18n("Command");
-	headerLabels << i18n("Status");
-	headerLabels << i18n("Description");
-	headerLabels << i18n("Scheduling Details");
-
-	treeWidget()->setHeaderLabels(headerLabels);
+	refreshHeaders();
 
 	treeWidget()->sortItems(1, Qt::AscendingOrder);
 
@@ -98,7 +84,8 @@ void TasksWidget::modifySelection(QTreeWidgetItem* item, int position) {
 			taskWidget->toggleEnable();
 		}
 		else {
-			taskWidget->modify();
+			TaskEditorDialog(taskWidget->getCTTask(), i18n("Modify Task"), crontabWidget()->ctHost()).exec();
+			taskWidget->refresh();
 		}
 
 	}
@@ -108,7 +95,8 @@ void TasksWidget::modifySelection(QTreeWidgetItem* item, int position) {
 }
 
 void TasksWidget::deleteSelection() {
-
+	logDebug() << "Selection deleting..." << endl;
+	
 	QList<QTreeWidgetItem*> tasksItems = treeWidget()->selectedItems();
 	foreach(QTreeWidgetItem* item, tasksItems) {
 		TaskWidget* taskWidget = static_cast<TaskWidget*>(item);
@@ -124,6 +112,9 @@ void TasksWidget::deleteSelection() {
 }
 
 int TasksWidget::statusColumnIndex() {
+	if (crontabWidget()->currentCron()->isSystemCron()) {
+		return 3;
+	}
 	/*
 	if (crontabWidget()->isAllUsersSelected())
 		return 3;
@@ -172,21 +163,32 @@ void TasksWidget::runTaskNow() const {
 void TasksWidget::createTask() {
 	CTTask* task = new CTTask("", "", crontabWidget()->currentCron()->isSystemCron());
 
-	TaskEditorDialog taskEditorDialog(task, i18n("New Task"));
+	TaskEditorDialog taskEditorDialog(task, i18n("New Task"), crontabWidget()->ctHost());
 	taskEditorDialog.exec();
 
 	if (task->dirty()) {
-		crontabWidget()->currentCron()->addTask(task);
-		new TaskWidget(this, task);
-	} else {
+		addTask(task);
+	}
+	else {
 		delete task;
 	}
 }
 
+void TasksWidget::addTask(CTTask* task) {
+	CTCron* cron = crontabWidget()->currentCron();
+	if (cron->isSystemCron()) {
+		task->user = "root";
+	}
+	
+	cron->addTask(task);
+	new TaskWidget(this, task);
+}
 
 void TasksWidget::refreshTasks(CTCron* cron) {
 	//Remove previous items
 	removeAll();
+	
+	refreshHeaders();
 	
 	//Add new items
 	foreach(CTTask* ctTask, cron->tasks()) {
@@ -194,5 +196,34 @@ void TasksWidget::refreshTasks(CTCron* cron) {
 	}
 	
 	resizeColumnContents();
+
+}
+
+void TasksWidget::refreshHeaders() {
+	QStringList headerLabels;
+	
+	/*
+	if (crontabWidget()->isAllUsersSelected()) {
+		headerLabels << i18n("Users");
+	}
+	*/
+
+	headerLabels << i18n("Scheduling");
+	
+	if (crontabWidget()->currentCron()->isSystemCron()) {
+		headerLabels << i18n("User");
+	}
+	
+	headerLabels << i18n("Command");
+	headerLabels << i18n("Status");
+	headerLabels << i18n("Description");
+	headerLabels << i18n("Scheduling Details");
+
+	treeWidget()->setHeaderLabels(headerLabels);
+	
+	if (crontabWidget()->currentCron()->isSystemCron())
+		treeWidget()->setColumnCount(6);
+	else
+		treeWidget()->setColumnCount(5);
 
 }
