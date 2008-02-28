@@ -1,0 +1,12 @@
+[Desktop Entry]
+Exec=kcmshell4 kcm_cron
+Icon=preferences-system-power-management
+X-DocPath=kdeadmin/kcron/index.html
+Type=Service
+X-KDE-ServiceTypes=KCModule
+X-KDE-Library=kcm_cron
+X-KDE-ParentApp=kcontrol
+
+X-KDE-System-Settings-Parent-Category=notifications
+
+Categories=Qt;KDE;X-KDE-settings-sound;

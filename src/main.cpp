@@ -17,10 +17,9 @@
 #include <kaboutdata.h>
 
 int main(int argc, char* argv[]) {
-	static const char description[]= I18N_NOOP("KDE Task Scheduler");
 
 	KAboutData aboutData("kcron", 0, ki18n("KCron"), 
-	KDE_VERSION_STRING, ki18n(description), KAboutData::License_GPL, ki18n("(c) 2008, Nicolas Ternisien\n(c) 1999-2000, Gary Meyer"));
+	KDE_VERSION_STRING, ki18n("KDE Task Scheduler"), KAboutData::License_GPL, ki18n("(c) 2008, Nicolas Ternisien\n(c) 1999-2000, Gary Meyer"));
 
 	aboutData.addAuthor(ki18n("Nicolas Ternisien"), KLocalizedString(), "nicolas.ternisien@gmail.com");
 	aboutData.addAuthor(ki18n("Gary Meyer"), KLocalizedString(), "gary@meyer.net");
