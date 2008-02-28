@@ -19,29 +19,43 @@
 #include "kcronIcons.h"
 #include "taskEditorDialog.h"
 
-VariableWidget::VariableWidget(VariablesWidget* variablesWidget, CTVariable* _ctVariable) :
-	QTreeWidgetItem(variablesWidget->treeWidget()) {
+VariableWidget::VariableWidget(VariablesWidget* _variablesWidget, CTVariable* _ctVariable) :
+	QTreeWidgetItem(_variablesWidget->treeWidget()) {
 
 	ctVariable = _ctVariable;
+	variablesWidget = _variablesWidget;
 
 	refresh();
 }
 
 void VariableWidget::refresh() {
-	setText(0, ctVariable->variable);
-	setText(1, ctVariable->value);
-
-	if (ctVariable->enabled) {
-		setText(2, i18n("Enabled"));
-		setIcon(2, SmallIcon("ok"));
-	}
-	else {
-		setText(2, i18n("Disabled"));
-		setIcon(2, SmallIcon("no"));
+	int column = 0;
+	
+	if (variablesWidget->needUserColumn()) {
+		setText(column++, ctVariable->userLogin);
 	}
 	
-	setText(3, ctVariable->comment);
+	setText(column, ctVariable->variable);
+	setIcon(column++, findIcon());
 
+	setText(column++, ctVariable->value);
+
+	if (ctVariable->enabled) {
+		setText(column, i18n("Enabled"));
+		setIcon(column++, SmallIcon("ok"));
+	}
+	else {
+		setText(column, i18n("Disabled"));
+		setIcon(column++, SmallIcon("no"));
+	}
+	
+	setText(column++, ctVariable->comment);
+
+			
+}
+
+QIcon VariableWidget::findIcon() const {
+	
 	QPixmap qpIcon;
 	if (ctVariable->variable == "MAILTO")
 		qpIcon = KCronIcons::mail(KCronIcons::Small);
@@ -54,7 +68,7 @@ void VariableWidget::refresh() {
 	else
 		qpIcon = KCronIcons::variable(KCronIcons::Small);
 
-	setIcon(0, QIcon(qpIcon));
+	return QIcon(qpIcon);
 }
 
 void VariableWidget::toggleEnable() {

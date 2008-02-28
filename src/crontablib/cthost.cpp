@@ -221,6 +221,18 @@ CTCron* CTHost::findCronContaining(CTTask* ctTask) const {
 
 }
 
+CTCron* CTHost::findCronContaining(CTVariable* ctVariable) const {
+	foreach(CTCron* ctCron, crons) {
+		if (ctCron->variables().contains(ctVariable) == true) {
+			return ctCron;
+		}
+	}
+	
+	logDebug() << "Unable to find the cron of this variable. Please report this bug and your crontab config to the developers" << endl;
+	return NULL;
+
+}
+
 bool CTHost::isRootUser() const {
 	return (getuid() == 0);
 }

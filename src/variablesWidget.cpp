@@ -55,7 +55,7 @@ void VariablesWidget::modifySelection(QTreeWidgetItem* item, int position) {
 		}
 		else {
 			CTVariable* variable = variableWidget->getCTVariable();
-			VariableEditorDialog variableEditorDialog(variable, i18n("Modify Variable"));
+			VariableEditorDialog variableEditorDialog(variable, i18n("Modify Variable"), crontabWidget());
 			variableEditorDialog.exec();
 			
 			crontabWidget()->currentCron()->modifyVariable(variable);
@@ -101,11 +101,17 @@ void VariablesWidget::deleteSelection() {
 
 }
 
+bool VariablesWidget::needUserColumn() {
+	CTCron* currentCron = crontabWidget()->currentCron();
+	if (currentCron->isMultiUserCron()==true && currentCron->isSystemCron()==false)
+		return true;
+	
+	return false;
+}
+
 int VariablesWidget::statusColumnIndex() {
-	/*
-	if (crontabWidget()->isAllUsersSelected())
+	if (needUserColumn() == true)
 		return 3;
-	*/
 
 	return 2;
 }
@@ -114,7 +120,7 @@ int VariablesWidget::statusColumnIndex() {
 void VariablesWidget::createVariable() {
 	CTVariable* variable = new CTVariable("", "", crontabWidget()->currentCron()->userLogin());
 
-	VariableEditorDialog variableEditorDialog(variable, i18n("New Variable"));
+	VariableEditorDialog variableEditorDialog(variable, i18n("New Variable"), crontabWidget());
 	variableEditorDialog.exec();
 
 	if (variable->dirty()) {
@@ -146,11 +152,9 @@ void VariablesWidget::refreshVariables(CTCron* cron) {
 void VariablesWidget::refreshHeaders() {
 	QStringList headerLabels;
 
-	/*
-	if (crontabWidget()->isAllUsersSelected()) {
+	if (needUserColumn()) {
 		headerLabels << i18n("User");
 	}
-	*/
 
 	headerLabels << i18n("Variable");
 	headerLabels << i18n("Value");
@@ -158,6 +162,10 @@ void VariablesWidget::refreshHeaders() {
 	headerLabels << i18n("Comment");
 
 	treeWidget()->setHeaderLabels(headerLabels);
-	treeWidget()->setColumnCount(4);
+	
+	if (needUserColumn())
+		treeWidget()->setColumnCount(5);
+	else
+		treeWidget()->setColumnCount(4);
 
 }

@@ -23,6 +23,7 @@
 #include <ktitlewidget.h>
 
 class CTVariable;
+class CrontabWidget;
 
 /**
  * Environment variable editor window.
@@ -35,7 +36,7 @@ public:
 	/**
 	 * Initialize from CTVariable.
 	 */
-	explicit VariableEditorDialog(CTVariable* _ctvar = 0, const QString &_caption="");
+	explicit VariableEditorDialog(CTVariable* _ctVariable, const QString &_caption, CrontabWidget* crontabWidget);
 
 	/**
 	 * Destroy.
@@ -69,10 +70,11 @@ private:
 	/**
 	 * Environment variable.
 	 */
-	CTVariable* ctvar;
+	CTVariable* ctVariable;
 
+	CrontabWidget* crontabWidget;
+	
 	// Widgets.
-
 	KTitleWidget* titleWidget;
 
 	QComboBox* cmbVariable;
@@ -85,6 +87,8 @@ private:
 	QLineEdit* teComment;
 
 	QCheckBox* chkEnabled;
+	
+	QComboBox* userCombo;
 };
 
 #endif // VARIABLE_EDITOR_DIALOG_H

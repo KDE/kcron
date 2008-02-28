@@ -22,10 +22,19 @@
 #include <ktitlewidget.h>
 
 #include "ctvariable.h"
-#include "kcronIcons.h"
+#include "cthost.h"
+#include "ctcron.h"
 
-VariableEditorDialog::VariableEditorDialog(CTVariable* _ctvar, const QString &_caption) :
-	KDialog(), ctvar(_ctvar) {
+#include "crontabWidget.h"
+
+#include "kcronIcons.h"
+#include "kcronHelper.h"
+
+VariableEditorDialog::VariableEditorDialog(CTVariable* _ctVariable, const QString &_caption, CrontabWidget* _crontabWidget) :
+	KDialog() {
+	
+	ctVariable = _ctVariable;
+	crontabWidget = _crontabWidget;
 
 	setModal(true);
 	setCaption(_caption);
@@ -37,7 +46,6 @@ VariableEditorDialog::VariableEditorDialog(CTVariable* _ctvar, const QString &_c
 	page->setLayout(layout);
 
 	layout->setMargin(0);
-	layout->setSpacing(spacingHint() );
 	layout->setColumnMinimumWidth(1, 270);
 	layout->setRowStretch(3, 1);
 	layout->setColumnStretch(1, 1);
@@ -90,6 +98,24 @@ VariableEditorDialog::VariableEditorDialog(CTVariable* _ctvar, const QString &_c
 	leValue->setMaxLength(255);
 	labValue->setBuddy(leValue);
 
+	// User Combo
+	QLabel* userLabel = new QLabel( i18n("&Run as:"), this);
+	layout->addWidget(userLabel, ++layoutPosition, 0);
+
+	userCombo = new QComboBox(this);
+	
+	userLabel->setBuddy(userCombo);
+	layout->addWidget(userCombo, layoutPosition, 1);
+
+	if (crontabWidget->variablesWidget()->needUserColumn()) {
+		KCronHelper::initUserCombo(userCombo, crontabWidget, ctVariable->userLogin);
+
+	}
+	else {
+		userLabel->hide();
+		userCombo->hide();
+	}
+
 	// comment
 	QLabel* labComment = new QLabel(i18n("Co&mment:"), this);
 	layout->addWidget(labComment, ++layoutPosition, 0, Qt::AlignLeft);
@@ -99,14 +125,14 @@ VariableEditorDialog::VariableEditorDialog(CTVariable* _ctvar, const QString &_c
 	labComment->setBuddy(teComment);
 
 	// enabled
-	chkEnabled = new QCheckBox(i18n("&Enable this environment variable"), this);
+	chkEnabled = new QCheckBox(i18n("&Enable this variable"), this);
 	layout->addWidget(chkEnabled, ++layoutPosition, 0, 1, 2);
 
 	// set starting field values
-	cmbVariable->setEditText(ctvar->variable);
-	leValue->setText(ctvar->value);
-	teComment->setText(ctvar->comment);
-	chkEnabled->setChecked(ctvar->enabled);
+	cmbVariable->setEditText(ctVariable->variable);
+	leValue->setText(ctVariable->value);
+	teComment->setText(ctVariable->comment);
+	chkEnabled->setChecked(ctVariable->enabled);
 	cmbVariable->setFocus();
 
 	slotEnabled();
@@ -143,13 +169,20 @@ void VariableEditorDialog::slotEnabled() {
 	cmbVariable->setEnabled(enabled);
 	leValue->setEnabled(enabled);
 	teComment->setEnabled(enabled);
+	userCombo->setEnabled(enabled);
 }
 
 void VariableEditorDialog::slotOk() {
-	ctvar->variable = cmbVariable->currentText();
-	ctvar->value = leValue->text();
-	ctvar->comment = teComment->text().replace('\n',' ').replace('\r',' ');
-	ctvar->enabled = chkEnabled->isChecked();
+	ctVariable->variable = cmbVariable->currentText();
+	ctVariable->value = leValue->text();
+	ctVariable->comment = teComment->text().replace('\n',' ').replace('\r',' ');
+	ctVariable->enabled = chkEnabled->isChecked();
+	
+	// save work in process
+	if (crontabWidget->variablesWidget()->needUserColumn()) {
+		ctVariable->userLogin = userCombo->currentText();
+	}
+	
 	close();
 }
 

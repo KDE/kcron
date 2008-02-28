@@ -47,90 +47,23 @@
 #include "crontabWidget.h"
 
 #include "kcronIcons.h"
+#include "kcronHelper.h"
+
+
 
 /**
- * SetOrClearAllButton class implementation
+ * TaskEditorDialog class implementation
  */
 
-SetOrClearAllButton::SetOrClearAllButton(QWidget * parent, SetOrClearAllButton::Status status) :
-	QPushButton(parent) {
-
-	setStatus(status);
-}
-
-void SetOrClearAllButton::setStatus(SetOrClearAllButton::Status status) {
-	currentStatus = status;
-
-	if (currentStatus == SetOrClearAllButton::SET_ALL)
-		setText(i18n("Set All"));
-	else
-		setText(i18n("Clear All"));
-
-}
-
-bool SetOrClearAllButton::isSetAll() {
-	return currentStatus == SetOrClearAllButton::SET_ALL;
-}
-
-bool SetOrClearAllButton::isClearAll() {
-	return currentStatus == SetOrClearAllButton::CLEAR_ALL;
-}
-
-/**
- * KTPushButton class implementation
- */
-
-KTPushButton::KTPushButton(QWidget * parent) :
-	QPushButton(parent), isDirty(false) {
-	updatePalette();
-}
-
-void KTPushButton::updatePalette() {
-	palNormal = ((QWidget *)parent())->palette();
-	palSelected = palNormal;
-	for (int cg = (int) QPalette::Active; cg < (int) QPalette::NColorGroups; cg++) {
-		palSelected.setColor( (QPalette::ColorGroup)cg, QPalette::Button, palSelected.color((QPalette::ColorGroup)cg, QPalette::Highlight));
-		palSelected.setColor( (QPalette::ColorGroup)cg, QPalette::ButtonText, palSelected.color((QPalette::ColorGroup)cg, QPalette::HighlightedText));
-	}
-	isDirty = true;
-}
-
-bool KTPushButton::event(QEvent *e) {
-	if (e->type() == QEvent::PaletteChange) {
-		updatePalette();
-		update();
-	}
-	return QPushButton::event(e);
-}
-
-void KTPushButton::paintEvent(QPaintEvent*) {
-	QStylePainter p(this);
-	QStyleOptionButton option;
-	initStyleOption(&option);
-
-	if (isDirty || isChecked()) {
-		isDirty = false;
-		if (isChecked()) {
-			option.palette = palSelected;
-			QFont f=p.font();
-			f.setBold(true);
-			p.setFont(f);
-		}
-	}
-	p.drawControl(QStyle::CE_PushButton, option);
-}
-
-/**
- * KTTask class implementation
- */
-
-TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption, CrontabWidget* crontabWidget) :
+TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption, CrontabWidget* _crontabWidget) :
 	KDialog() {
 
 	setModal(true);
 
 	ctTask = _ctTask;
-	QWidget *main = new QWidget(this);
+	crontabWidget = _crontabWidget;
+	
+	QWidget* main = new QWidget(this);
 	setMainWidget(main);
 
 	bool everyDay = isEveryDay();
@@ -161,38 +94,27 @@ TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption, Cro
 
 	command->setMode(KFile::File | KFile::ExistingOnly | KFile::LocalOnly);
 	command->setPath(ctTask->command);
+	
+	//Initialize special valid commands
+	specialValidCommands << "cd";
 
 	commandConfigurationLayout->addLayout(commandLayout, 0, 1);
 
-	// user
-	QLabel* labUser = new QLabel( i18n("&Run as:"), main);
-	commandConfigurationLayout->addWidget(labUser, 1, 0);
+	// User Combo
+	QLabel* userLabel = new QLabel( i18n("&Run as:"), main);
+	commandConfigurationLayout->addWidget(userLabel, 1, 0);
 
-	leUser = new QComboBox(main);
+	userCombo = new QComboBox(main);
 	
-	labUser->setBuddy(leUser);
-	commandConfigurationLayout->addWidget(leUser, 1, 1);
+	userLabel->setBuddy(userCombo);
+	commandConfigurationLayout->addWidget(userCombo, 1, 1);
 
-	if (crontabWidget->currentCron()->isMultiUserCron()) {
-		int userComboIndex = 0;
-		foreach(CTCron* ctCron, crontabWidget->ctHost()->crons) {
-			if (ctCron->isMultiUserCron())
-				continue;
-			
-			leUser->addItem(ctCron->userLogin());
-			
-			//Select the actual user
-			if (ctCron->userLogin() == ctTask->userLogin) {
-				leUser->setCurrentIndex(userComboIndex);
-			}
-
-			userComboIndex++;
-		}
-
+	if (crontabWidget->tasksWidget()->needUserColumn()) {
+		KCronHelper::initUserCombo(userCombo, crontabWidget, ctTask->userLogin);
 	}
 	else {
-		labUser->hide();
-		leUser->hide();
+		userLabel->hide();
+		userCombo->hide();
 	}
 
 	// comment
@@ -209,7 +131,7 @@ TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption, Cro
 	ml->addLayout(h3a);
 
 	// enabled
-	chkEnabled = new QCheckBox(i18n("&Enabled"), main);
+	chkEnabled = new QCheckBox(i18n("&Enable this task"), main);
 	chkEnabled->setChecked(ctTask->enabled);
 	h3a->addWidget(chkEnabled);
 
@@ -262,12 +184,7 @@ TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption, Cro
 	setWindowIcon(KCronIcons::application(KCronIcons::Small));
 	setCaption(_caption);
 
-	// set focus to first widget
-	if (ctTask->isSystemCrontab()) {
-		leUser->setFocus();
-	} else {
-		command->setFocus();
-	}
+	command->setFocus();
 
 	// connect them up
 	connect(command, SIGNAL(textChanged(const QString&)), SLOT(slotWizard()));
@@ -567,7 +484,7 @@ void TaskEditorDialog::setupTitleWidget(const QString& comment, KTitleWidget::Me
 
 void TaskEditorDialog::slotEnabledChanged() {
 	bool enabled = chkEnabled->isChecked();
-	leUser->setEnabled(enabled);
+	userCombo->setEnabled(enabled);
 	leComment->setEnabled(enabled);
 	command->setEnabled(enabled);
 	chkReboot->setEnabled(enabled);
@@ -659,10 +576,8 @@ void TaskEditorDialog::slotOK() {
 	}
 
 	// save work in process
-	if (!ctTask->userLogin.isEmpty()) {
-		ctTask->userLogin = QFile::encodeName(leUser->currentText());
-	} else {
-		ctTask->userLogin = "";
+	if (crontabWidget->tasksWidget()->needUserColumn()) {
+		ctTask->userLogin = userCombo->currentText();
 	}
 
 	ctTask->comment = leComment->text();
@@ -737,9 +652,9 @@ void TaskEditorDialog::slotWizard() {
 
 	bool found = false;
 	bool exec = false;
-	if (KStandardDirs::findExe(cmdstr, pathstr, KStandardDirs::IgnoreExecBit) != "")
+	if (KStandardDirs::findExe(cmdstr, pathstr, KStandardDirs::IgnoreExecBit) != "" || specialValidCommands.contains(cmdstr))
 		found = true;
-	if (KStandardDirs::findExe(cmdstr, pathstr) != "")
+	if (KStandardDirs::findExe(cmdstr, pathstr) != "" || specialValidCommands.contains(cmdstr))
 		exec = true;
 
 	if (found && !exec && !error) {
@@ -975,6 +890,79 @@ void TaskEditorDialog::slotMinuteChanged() {
 	} else {
 		pbAllMinutes->setStatus(SetOrClearAllButton::CLEAR_ALL);
 	}
+}
+
+
+/**
+ * SetOrClearAllButton class implementation
+ */
+
+SetOrClearAllButton::SetOrClearAllButton(QWidget * parent, SetOrClearAllButton::Status status) :
+	QPushButton(parent) {
+
+	setStatus(status);
+}
+
+void SetOrClearAllButton::setStatus(SetOrClearAllButton::Status status) {
+	currentStatus = status;
+
+	if (currentStatus == SetOrClearAllButton::SET_ALL)
+		setText(i18n("Set All"));
+	else
+		setText(i18n("Clear All"));
+
+}
+
+bool SetOrClearAllButton::isSetAll() {
+	return currentStatus == SetOrClearAllButton::SET_ALL;
+}
+
+bool SetOrClearAllButton::isClearAll() {
+	return currentStatus == SetOrClearAllButton::CLEAR_ALL;
+}
+
+/**
+ * KTPushButton class implementation
+ */
+
+KTPushButton::KTPushButton(QWidget * parent) :
+	QPushButton(parent), isDirty(false) {
+	updatePalette();
+}
+
+void KTPushButton::updatePalette() {
+	palNormal = ((QWidget *)parent())->palette();
+	palSelected = palNormal;
+	for (int cg = (int) QPalette::Active; cg < (int) QPalette::NColorGroups; cg++) {
+		palSelected.setColor( (QPalette::ColorGroup)cg, QPalette::Button, palSelected.color((QPalette::ColorGroup)cg, QPalette::Highlight));
+		palSelected.setColor( (QPalette::ColorGroup)cg, QPalette::ButtonText, palSelected.color((QPalette::ColorGroup)cg, QPalette::HighlightedText));
+	}
+	isDirty = true;
+}
+
+bool KTPushButton::event(QEvent *e) {
+	if (e->type() == QEvent::PaletteChange) {
+		updatePalette();
+		update();
+	}
+	return QPushButton::event(e);
+}
+
+void KTPushButton::paintEvent(QPaintEvent*) {
+	QStylePainter p(this);
+	QStyleOptionButton option;
+	initStyleOption(&option);
+
+	if (isDirty || isChecked()) {
+		isDirty = false;
+		if (isChecked()) {
+			option.palette = palSelected;
+			QFont f=p.font();
+			f.setBold(true);
+			p.setFont(f);
+		}
+	}
+	p.drawControl(QStyle::CE_PushButton, option);
 }
 
 #include "taskEditorDialog.moc"

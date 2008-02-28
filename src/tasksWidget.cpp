@@ -72,7 +72,7 @@ TaskWidget* TasksWidget::firstSelectedTaskWidget() const {
 }
 
 int TasksWidget::statusColumnIndex() {
-	if (crontabWidget()->currentCron()->isMultiUserCron()) {
+	if (needUserColumn()) {
 		return 3;
 	}
 
@@ -198,17 +198,11 @@ void TasksWidget::refreshTasks(CTCron* cron) {
 void TasksWidget::refreshHeaders() {
 	QStringList headerLabels;
 	
-	/*
-	if (crontabWidget()->isAllUsersSelected()) {
-		headerLabels << i18n("Users");
-	}
-	*/
-
-	headerLabels << i18n("Scheduling");
-	
-	if (crontabWidget()->currentCron()->isMultiUserCron()) {
+	if (needUserColumn()) {
 		headerLabels << i18n("User");
 	}
+
+	headerLabels << i18n("Scheduling");
 	
 	headerLabels << i18n("Command");
 	headerLabels << i18n("Status");
@@ -217,9 +211,18 @@ void TasksWidget::refreshHeaders() {
 
 	treeWidget()->setHeaderLabels(headerLabels);
 	
-	if (crontabWidget()->currentCron()->isMultiUserCron())
+	if (needUserColumn())
 		treeWidget()->setColumnCount(6);
 	else
 		treeWidget()->setColumnCount(5);
 
+}
+
+bool TasksWidget::needUserColumn() const {
+	if (crontabWidget()->currentCron()->isMultiUserCron()) {
+		return true;
+	}
+	
+	return false;
+	
 }

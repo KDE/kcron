@@ -21,6 +21,7 @@ set(kcron_SRCS
    crontabWidget.cpp 
 
    kcronIcons.cpp
+   kcronHelper.cpp
 
    kcron.cpp 
     

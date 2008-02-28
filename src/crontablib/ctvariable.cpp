@@ -16,7 +16,7 @@
 CTVariable::CTVariable(const QString& tokenString, const QString& _comment, const QString& _userLogin) {
 
 	QString tokStr = tokenString;
-	
+
 	if (tokStr.mid(0, 2) == "#\\") {
 		tokStr = tokStr.mid(2, tokStr.length() - 2);
 		enabled = false;
@@ -32,17 +32,17 @@ CTVariable::CTVariable(const QString& tokenString, const QString& _comment, cons
 	comment = _comment;
 
 	userLogin = _userLogin;
-	
+
 	initialVariable = variable;
 	initialValue = value;
 	initialComment = comment;
 	initialUserLogin = userLogin;
 	initialEnabled = enabled;
-	
+
 }
 
 CTVariable::CTVariable(const CTVariable &source) :
-	variable(source.variable), value(source.value), comment(source.comment), enabled(source.enabled), initialVariable(""), initialValue(""), initialComment(""), initialEnabled(true) {
+	variable(source.variable), value(source.value), comment(source.comment), userLogin(source.userLogin), enabled(source.enabled), initialVariable(""), initialValue(""), initialComment(""), initialUserLogin(""), initialEnabled(true) {
 }
 
 void CTVariable::operator = (const CTVariable& source) {
@@ -51,7 +51,7 @@ void CTVariable::operator = (const CTVariable& source) {
 	comment = source.comment;
 	userLogin = source.userLogin;
 	enabled = source.enabled;
-	
+
 	initialVariable = "";
 	initialValue = "";
 	initialComment = "";
@@ -62,7 +62,7 @@ void CTVariable::operator = (const CTVariable& source) {
 
 QString CTVariable::exportVariable() {
 	QString exportVariable;
-	
+
 	if (comment.isEmpty() == false)
 		exportVariable += "# " + comment + "\n";
 
@@ -79,7 +79,7 @@ void CTVariable::apply() {
 	initialValue = value;
 	initialComment = comment;
 	initialUserLogin = userLogin;
-	
+
 	initialEnabled = enabled;
 }
 

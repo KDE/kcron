@@ -16,6 +16,7 @@
 #include <QPushButton>
 #include <QGroupBox>
 #include <QComboBox>
+#include <QStringList>
 
 #include <kdialog.h>
 #include <kicon.h>
@@ -89,6 +90,8 @@ public:
 	 */
 	~TaskEditorDialog();
 
+	
+	
 private slots:
 
 
@@ -195,12 +198,14 @@ private:
 	 * Task.
 	 */
 	CTTask* ctTask;
+	
+	CrontabWidget* crontabWidget;
 
 	// Widgets.
 
 	KTitleWidget* titleWidget;
 
-	QComboBox* leUser;
+	QComboBox* userCombo;
 
 	QLineEdit* leComment;
 
@@ -232,6 +237,8 @@ private:
 	QGroupBox* bgMinute;
 	QPushButton* pbMinute[61];
 	SetOrClearAllButton* pbAllMinutes;
+	
+	QStringList specialValidCommands;
 
 };
 

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   KT list view item task header.                                        *
+ *   KT icons.                                                             *
  *   --------------------------------------------------------------------  *
  *   Copyright (C) 1999, Gary Meyer <gary@meyer.net>                       *
  *   --------------------------------------------------------------------  *
@@ -9,50 +9,21 @@
  *   (at your option) any later version.                                   * 
  ***************************************************************************/
 
-#ifndef TASK_WIDGET_H
-#define TASK_WIDGET_H
+#ifndef KCRON_HELPER_H
+#define KCRON_HELPER_H
 
-#include <QTreeWidgetItem>
+#include <QPixmap>
+#include <QString>
 
-class CTTask;
-class TasksWidget;
+class QComboBox;
 
-/**
- * QTreeWidgetItem with a CTTask.
- */
-class TaskWidget : public QTreeWidgetItem {
+class CrontabWidget;
+
+
+class KCronHelper {
+
 public:
-
-	/**
-	 * Initialize the list view item and task.
-	 */
-	TaskWidget(TasksWidget* tasksWidget, CTTask* _cttask);
-
-	/*
-	 * Change the status of this task
-	 */
-	void toggleEnable();
-
-	/**
-	 * Get the task.
-	 */
-	CTTask* getCTTask() const;
-
-	/**
-	 * Refresh from underlying task.
-	 */
-	void refresh();
-
-private:
-
-	QIcon findIcon() const;
-	
-	/**
-	 * Task.
-	 */
-	CTTask* ctTask;
-	
-	TasksWidget* tasksWidget;
+	static void initUserCombo(QComboBox* userCombo, CrontabWidget* crontabWidget, const QString& selectedUserLogin);
 };
 
-#endif // TASK_WIDGET_H
+#endif // KCRON_HELPER_H

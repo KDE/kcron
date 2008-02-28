@@ -228,7 +228,7 @@ bool CTCron::initializeFromUserInfos(const struct passwd* userInfos) {
 }
 
 void CTCron::operator = (const CTCron& source) {
-	if (source.isMultiUserCron() == true) {
+	if (source.isSystemCron() == true) {
 		logDebug() << "Trying to affect the system cron" << endl;
 	}
 
@@ -335,7 +335,7 @@ void CTCron::saveToFile(const QString& fileName) {
 	if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
 		return;
 
-	logDebug() << exportCron() << endl;
+	//logDebug() << exportCron() << endl;
 	QTextStream out(&file);
 	out << exportCron();
 
@@ -436,21 +436,28 @@ QList<CTVariable*> CTCron::variables() const {
 }
 
 void CTCron::addTask(CTTask* task) {
-	if (isMultiUserCron()) {
-		task->userLogin = "root";
+	if (isSystemCron()) {
 		task->setSystemCrontab(true);
 	}
 	else {
+		task->userLogin = d->userLogin;
 		task->setSystemCrontab(false);
 	}
+	
+	logDebug() << "Adding task" << task->comment << " user : "<< task->userLogin << endl;
 
 	d->task.append(task);
 }
-void CTCron::addVariable(CTVariable* variable) {
-	if (isMultiUserCron()) {
-		variable->userLogin = "root";
-	}
 
+void CTCron::addVariable(CTVariable* variable) {
+	if (isSystemCron())
+		variable->userLogin = "root";
+	else
+		variable->userLogin = d->userLogin;
+
+
+	logDebug() << "Adding variable" << variable->variable << " user : "<< variable->userLogin << endl;
+	
 	d->variable.append(variable);
 }
 
@@ -460,7 +467,7 @@ void CTCron::modifyTask(CTTask* /*task*/) {
 }
 
 void CTCron::modifyVariable(CTVariable* /*variable*/) {
-	//Nothing to do specifically when modifying a task
+	//Nothing to do specifically when modifying a variable
 }
 
 void CTCron::removeTask(CTTask* task) {

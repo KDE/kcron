@@ -163,14 +163,15 @@ QHBoxLayout* CrontabWidget::createCronSelector() {
 			if (ctCron->isCurrentUserCron())
 				continue;
 			
-			if (ctCron->isMultiUserCron())
+			if (ctCron->isSystemCron())
 				continue;
 			
-			d->otherUsers->addItem(ctCron->userLogin());
-
+			users.append(ctCron->userLogin());
 		}
 
-		d->otherUsers->addItem(KIcon("users"), i18n("Show all users"));
+		users.sort();
+		d->otherUsers->addItems(users);
+		d->otherUsers->addItem(KIcon("users"), i18n("Show All Personal Crons"));
 	} else {
 		d->otherUserCronRadio->hide();
 		d->otherUsers->hide();

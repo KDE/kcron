@@ -36,14 +36,14 @@ TaskWidget::TaskWidget(TasksWidget* _tasksWidget, CTTask* _cttask) :
 void TaskWidget::refresh() {
 	int column = 0;
 	
-	setText(column++, ctTask->schedulingCronFormat());
-	
-	if (tasksWidget->crontabWidget()->currentCron()->isMultiUserCron()) {
+	if (tasksWidget->needUserColumn()) {
 		setText(column++, ctTask->userLogin);
 	}
 	
-	logDebug() << "Command" << ctTask->command << endl;
-	setText(column++, ctTask->command);
+	setText(column++, ctTask->schedulingCronFormat());
+	
+	setText(column, ctTask->command);
+	setIcon(column++, findIcon());
 
 	if (ctTask->enabled) {
 		setText(column, i18n("Enabled"));
@@ -55,6 +55,10 @@ void TaskWidget::refresh() {
 
 	setText(column++, ctTask->comment);
 	setText(column++, ctTask->describe());
+
+}
+
+QIcon TaskWidget::findIcon() const {
 
 	QString qsCommand = ctTask->command;
 
@@ -70,7 +74,7 @@ void TaskWidget::refresh() {
 	if (qpIcon.isNull())
 		qpIcon = KCronIcons::task(KCronIcons::Small);
 
-	setIcon(0, QIcon(qpIcon));
+	return QIcon(qpIcon);
 }
 
 void TaskWidget::toggleEnable() {

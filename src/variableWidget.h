@@ -12,6 +12,8 @@
 #ifndef VARIABLE_WIDGET_H
 #define VARIABLE_WIDGET_H
 
+#include <QIcon>
+
 #include "variablesWidget.h"
 
 
@@ -45,10 +47,14 @@ public:
 
 private:
 
+	QIcon findIcon() const;
+	
 	/**
 	 * Variable
 	 */
 	CTVariable* ctVariable;
+	
+	VariablesWidget* variablesWidget;
 };
 
 #endif // VARIABLE_WIDGET_H

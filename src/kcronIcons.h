@@ -9,8 +9,8 @@
  *   (at your option) any later version.                                   * 
  ***************************************************************************/
 
-#ifndef KTICON_H
-#define KTICON_H
+#ifndef KCRON_ICONS_H
+#define KCRON_ICONS_H
 
 #include <QPixmap>
 
@@ -37,9 +37,9 @@ public:
 	static QPixmap information(KCronIcons::IconSize size);
 	static QPixmap error(KCronIcons::IconSize size);
 
-	static QPixmap getIcon(const QString&name, KCronIcons::IconSize size);
 private:
+	static QPixmap getIcon(const QString&name, KCronIcons::IconSize size);
 
 };
 
-#endif // KTICON_H
+#endif // KCRON_ICONS_H

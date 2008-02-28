@@ -87,6 +87,7 @@ public:
 	CTCron* findUserCron(const QString& userLogin) const;
 	
 	CTCron* findCronContaining(CTTask* ctTask) const;
+	CTCron* findCronContaining(CTVariable* ctVariable) const;
 
 	/**
 	 * User(s). 

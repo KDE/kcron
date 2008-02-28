@@ -42,7 +42,7 @@ QList<CTTask*> CTGlobalCron::tasks() const {
 	QList<CTTask*> tasks;
 	
 	foreach(CTCron* cron, ctHost->crons) {
-		if (cron->isMultiUserCron())
+		if (cron->isSystemCron())
 			continue;
 		
 		foreach(CTTask* task, cron->tasks()) {
@@ -57,7 +57,7 @@ QList<CTVariable*> CTGlobalCron::variables() const {
 	QList<CTVariable*> variables;
 	
 	foreach(CTCron* cron, ctHost->crons) {
-		if (cron->isMultiUserCron())
+		if (cron->isSystemCron())
 			continue;
 		
 		foreach(CTVariable* variable, cron->variables()) {
@@ -75,15 +75,11 @@ void CTGlobalCron::addTask(CTTask* task) {
 	actualCron->addTask(task);
 }
 
-void CTGlobalCron::addVariable(CTVariable* /*variable*/) {
+void CTGlobalCron::addVariable(CTVariable* variable) {
 	logDebug() << "Global Cron addVariable" << endl;
-	/*
-	if (isMultiUserCron()) {
-		variable->userLogin = "root";
-	}
 
-	d->variable.append(variable);
-	*/
+	CTCron* actualCron = ctHost->findUserCron(variable->userLogin);
+	actualCron->addVariable(variable);
 }
 
 
@@ -106,9 +102,23 @@ void CTGlobalCron::modifyTask(CTTask* task) {
 	}
 }
 
-void CTGlobalCron::modifyVariable(CTVariable* /*variable*/) {
+void CTGlobalCron::modifyVariable(CTVariable* variable) {
 	logDebug() << "Global Cron modifyVariable" << endl;
-	//Nothing to do specifically when modifying a task
+	
+	CTCron* actualCron = ctHost->findCronContaining(variable);
+	
+	/*
+	 * actualCron could be NULL is the task came from clipboard because those tasks are never
+	 * linked to an existing CTCron* object
+	 */ 
+	if (actualCron == NULL || actualCron->userLogin() != variable->userLogin) {
+		if (actualCron!=NULL) {
+			actualCron->removeVariable(variable);
+		}
+		
+		CTCron* newCron = ctHost->findUserCron(variable->userLogin);
+		newCron->addVariable(variable);
+	}
 }
 
 void CTGlobalCron::removeTask(CTTask* task) {
@@ -118,8 +128,10 @@ void CTGlobalCron::removeTask(CTTask* task) {
 	actualCron->removeTask(task);
 }
 
-void CTGlobalCron::removeVariable(CTVariable* /*variable*/) {
+void CTGlobalCron::removeVariable(CTVariable* variable) {
 	logDebug() << "Global Cron removeVariable" << endl;
-	//d->variable.removeAll(variable);
+	
+	CTCron* actualCron = ctHost->findCronContaining(variable);
+	actualCron->removeVariable(variable);
 }
 

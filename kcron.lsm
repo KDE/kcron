@@ -1,13 +1,13 @@
 Begin3
 Title:          KCron 
-Version:        1.0
+Version:        2.0
 Entered-date:   1 September 1999
 Description:    KDE Task Scheduler
 Keywords:       KDE, X11, Qt 
-Author:         Gary Meyer <gary@meyer.net> Robert Berry <rjmber@ntlworld.com>
-Maintained-by:  Gary Meyer <gary@meyer.net> 
+Author:         Nicolas Ternisien <nicolas.ternisien@gmail.com> Gary Meyer <gary@meyer.net> Robert Berry <rjmber@ntlworld.com>
+Maintained-by:  Nicolas Ternisien <nicolas.ternisien@gmail.com> 
 Primary-site:   	        
-Home-page:      http://gary.meyer.net/
+Home-page:      http://www.forum-software.org/
 Original-site:  
 Platform:       Linux and other Unices, needs Qt, KDE, and cron
 Copying-policy: GNU Public License

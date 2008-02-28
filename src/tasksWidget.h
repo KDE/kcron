@@ -39,6 +39,8 @@ public:
 	QList<TaskWidget*> selectedTasksWidget() const;
 	
 	void refreshTasks(CTCron* cron);
+	
+	bool needUserColumn() const;
 
 public slots:
 	void modifySelection();

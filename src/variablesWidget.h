@@ -38,6 +38,8 @@ public:
 	VariableWidget* firstSelectedVariableWidget() const;
 	
 	void refreshVariables(CTCron* cron);
+	
+	bool needUserColumn();
 
 public slots:
 	void modifySelection();

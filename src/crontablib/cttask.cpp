@@ -16,8 +16,8 @@
 #include <time.h>     // tm, strftime()
 #include "logging.h"
 
-CTTask::CTTask(const QString& tokenString, const QString& _comment, const QString& _userLogin, bool _syscron) :
-	systemCrontab(_syscron) {
+CTTask::CTTask(const QString& tokenString, const QString& _comment, const QString& _userLogin, bool _systemCrontab) :
+	systemCrontab(_systemCrontab) {
 
 	QString tokStr = tokenString;
 	if (tokStr.mid(0, 2) == "#\\") {
