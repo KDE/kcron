@@ -9,4 +9,7 @@ X-KDE-ParentApp=kcontrol
 
 X-KDE-System-Settings-Parent-Category=notifications
 
+Name=Cron
+Comment=Cron Comment
+X-KDE-Keywords=Cron,devices,viewer,control
 Categories=Qt;KDE;X-KDE-settings-sound;
