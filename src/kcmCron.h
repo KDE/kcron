@@ -26,7 +26,7 @@ class KActionCollection;
 class CrontabWidget;
 class CTHost;
 
-class KCronPrivate;
+class KCMCronPrivate;
 
 class KCMCron : public KCModule {
 	Q_OBJECT
@@ -49,33 +49,10 @@ public:
 	/**
 	 * Returns a reference to the CTHost.
 	 */
-	CTHost* getCTHost() const;
-
-protected:
-
-	/** Called on window close event.  Asks the document if it is dirty
-	 * and if so, prompts the user for saving before exiting..
-	 */
-	virtual bool queryClose();
-
-	/** Called when the last window of the application is going to be
-	 * closed.  Saves options.
-	 */
-	virtual bool queryExit();
-
+	CTHost* ctHost() const;
+	
 public slots:
 
-	/**
-	 * Save document.
-	 */
-	void slotSave();
-
-	/**
-	 * Close all open windows then quits the application.  If queryClose()
-	 * returns false because the user canceled the saveModified() dialog, the
-	 * closing breaks.
-	 */
-	void slotQuit();
 
 	/**
 	 * Changes the status bar contents for the standard label permanently;
@@ -109,42 +86,22 @@ public slots:
 
 private:
 	
-	KActionCollection* actionCollection();
-
 	/**
-	 * Get application caption.
+	 * TODO Replace this if possible
 	 */
-	QString caption();
+	KActionCollection* actionCollection();
 
 	/**
 	 * Initialize actions.
 	 */
 	void setupActions();
-
-	/**
-	 * Initialize status bar.
-	 */
-	void initStatusBar();
-
-	/**
-	 * Read general options again and initialize all variables like the
-	 * geometry.
-	 */
-	void readOptions();
-
-	/**
-	 * Save general options like all bar positions and status as well as the
-	 * geometry to the configuration file.
-	 */
-	void saveOptions();
 	
 	void prepareTasksWidgetContextualMenu();
 	void prepareVariablesWidgetContextualMenu();
 	
 	QAction* createSeparator();
 
-
-	KCronPrivate* const d;
+	KCMCronPrivate* const d;
 };
 
 #endif // KCM_CRON_H

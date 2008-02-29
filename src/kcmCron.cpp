@@ -53,13 +53,8 @@
 typedef KGenericFactory<KCMCron, QWidget> KCMCronFactory;
 K_EXPORT_COMPONENT_FACTORY( kcm_cron, KCMCronFactory("kcron.po") )
 
-class KCronPrivate {
+class KCMCronPrivate {
 public:
-
-	/**
-	 * Configuration object of the application.
-	 */
-	KSharedConfigPtr config;
 
 	/**
 	 * Main GUI view/working area.
@@ -72,11 +67,6 @@ public:
 	 * Document object, here crotab enries.
 	 */
 	CTHost* ctHost;
-
-	/**
-	 * Path to the crontab binary
-	 */
-	QString crontab;
 
 	QAction* cutAction;
 	QAction* copyAction;
@@ -97,9 +87,10 @@ public:
 
 KCMCron::KCMCron(QWidget* parent, const QStringList& /*args*/) : 
 	KCModule(KCMCronFactory::componentData(), parent),
-	d(new KCronPrivate()) {
+	d(new KCMCronPrivate()) {
 
 	logDebug() << "KCMCRON CONSTRUCTOR !!!!!!!!!!!!!" << endl;
+	// TODO : MASSIVE TASK : add emit changed(true) when something changes!
 	
 	KAboutData* aboutData = new KAboutData("kcm_cron", 0, ki18n("Task Scheduler"),
 			KDE_VERSION_STRING, ki18n("KDE Task Scheduler"), KAboutData::License_GPL, ki18n("(c) 2008, Nicolas Ternisien\n(c) 1999-2000, Gary Meyer"));
@@ -114,18 +105,18 @@ KCMCron::KCMCron(QWidget* parent, const QStringList& /*args*/) :
 
 	d->actionCollection = new KActionCollection(this, KCMCronFactory::componentData());
 	
-	d->config = KGlobal::config();
-
 	//setWindowIcon(KCronIcons::application(KCronIcons::Small));
 
 	//setCaption(i18n("Task Scheduler"));
 
-	// Read options.
-	readOptions();
-	
+	/**
+	 * Path to the crontab binary
+	 * TODO: Change this to an header or something really easy to modify
+	 */
+	const QString CRONTAB_BINARY = "crontab";
 
 	// Initialize document.
-	d->ctHost = new CTHost(d->crontab);
+	d->ctHost = new CTHost(CRONTAB_BINARY);
 	d->crontabWidget = new CrontabWidget(this, d->ctHost);
 	
 	logDebug() << "Crontab Widget initialized" << endl;
@@ -138,7 +129,6 @@ KCMCron::KCMCron(QWidget* parent, const QStringList& /*args*/) :
 
 	// Call inits to invoke all other construction parts.
 	setupActions();
-	initStatusBar();
 
 	// Initialize view.
 	QVBoxLayout* layout = new QVBoxLayout(this);
@@ -152,7 +142,8 @@ KCMCron::KCMCron(QWidget* parent, const QStringList& /*args*/) :
 
 KCMCron::~KCMCron() {
 	logDebug() << "KCMCRON DESTRUCTOR !!!!!!!!!!!!!" << endl;
-	
+
+
 	delete d->crontabWidget;
 	delete d->ctHost;
 
@@ -162,16 +153,24 @@ KCMCron::~KCMCron() {
 void KCMCron::load() {
 	logDebug() << "KCMCRON load !!!!!!!!!!!!!" << endl;
 
+	d->ctHost->cancel();
 }
 
 void KCMCron::save() {
 	logDebug() << "KCMCRON save !!!!!!!!!!!!!" << endl;
-		
+	slotStatusMessage(i18nc("Saving the file to the hard drive", "Saving..."));
+	d->ctHost->save();
+	slotStatusMessage(i18nc("Ready for user input", "Ready."));
+	if (d->ctHost->isError()) {
+		KMessageBox::error(this, d->ctHost->errorMessage());
+	}
+
 }
 
 void KCMCron::defaults() {
 	logDebug() << "KCMCRON defaults !!!!!!!!!!!!!" << endl;
 	
+	d->ctHost->cancel();
 }
 
 
@@ -196,6 +195,7 @@ bool KCMCron::init() {
 
 		if (taskCount == 0) {
 			show();
+			//TODO Add this as a passive popup/message/something else
 			KMessageBox::information(this, i18n("You can use this application to schedule programs to run in the background.\nTo schedule a new task now, click on the Tasks folder and select Edit/New from the menu."), i18n("Welcome to the Task Scheduler"), "welcome");
 		}
 	}
@@ -203,17 +203,15 @@ bool KCMCron::init() {
 	return true;
 }
 
-CTHost* KCMCron::getCTHost() const {
+CTHost* KCMCron::ctHost() const {
 	return d->ctHost;
-}
-
-QString KCMCron::caption() {
-	return KGlobal::caption();
 }
 
 void KCMCron::setupActions() {
 	logDebug() << "Setup actions" << endl;
 
+	//TODO Convert those actions into right buttons
+	
 	/**
 
 <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
@@ -249,8 +247,6 @@ void KCMCron::setupActions() {
 	*/
 	
 	//File Menu
-	KStandardAction::save(this, SLOT(slotSave()), actionCollection());
-	KStandardAction::quit(this, SLOT(slotQuit()), actionCollection());
 	KStandardAction::print(d->crontabWidget, SLOT(print()), actionCollection());
 
 	//Edit menu
@@ -340,74 +336,6 @@ QAction* KCMCron::createSeparator() {
 	return action;
 }
 
-void KCMCron::initStatusBar() {
-	/*
-	QLabel* defaultMessage = new QLabel(i18nc("Ready for user input", " Ready."));
-	defaultMessage->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
-	statusBar()->addWidget(defaultMessage);
-	*/
-}
-
-void KCMCron::saveOptions() {
-	KConfigGroup group(d->config, "General Options");
-	group.writeEntry(QString("Path to crontab"), d->crontab);
-}
-
-void KCMCron::readOptions() {
-	KConfigGroup group(d->config, "General Options");
-
-	// get the path to the crontab binary
-	d->crontab = group.readEntry(QString("Path to crontab"), QString("crontab"));
-}
-
-bool KCMCron::queryClose() {
-	if (d->ctHost->isDirty()) {
-		int retVal = KMessageBox::warningYesNoCancel(this, i18n("Scheduled tasks have been modified.\nDo you want to save changes?"), QString(), KStandardGuiItem::save(), KStandardGuiItem::discard() );
-
-		switch (retVal) {
-		case KMessageBox::Yes:
-			d->ctHost->save();
-			if (d->ctHost->isError()) {
-				KMessageBox::error(this, d->ctHost->errorMessage());
-				return false;
-			}
-			return true;
-			break;
-		case KMessageBox::No:
-			return true;
-			break;
-		case KMessageBox::Cancel:
-			return false;
-			break;
-		default:
-			return false;
-			break;
-		}
-	} else {
-		return true;
-	}
-
-}
-
-bool KCMCron::queryExit() {
-	saveOptions();
-	return true;
-}
-
-void KCMCron::slotSave() {
-	slotStatusMessage(i18nc("Saving the file to the hard drive", "Saving..."));
-	d->ctHost->save();
-	slotStatusMessage(i18nc("Ready for user input", "Ready."));
-	if (d->ctHost->isError()) {
-		KMessageBox::error(this, d->ctHost->errorMessage());
-	}
-}
-
-void KCMCron::slotQuit() {
-	saveOptions();
-	close();
-}
-
 void KCMCron::slotStatusMessage(const QString& /*text*/) {
 	//statusBar()->showMessage(text);
 	//setCaption(i18n("Task Scheduler"), d->ctHost->isDirty());
@@ -419,6 +347,9 @@ void KCMCron::slotStatusHelpMessage(const QString& /*text*/) {
 
 void KCMCron::displayActionInformation(QAction* action) {
 	
+	/**
+	 * TODO Convert this to setTooltip and setWhatThis()
+	 */
 	if (action == d->newTaskAction) {
 		slotStatusHelpMessage(i18n("Create a new task."));
 	}

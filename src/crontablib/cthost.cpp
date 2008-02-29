@@ -139,7 +139,7 @@ void CTHost::cancel() {
 }
 
 bool CTHost::isDirty() {
-	bool isDirty(false);
+	bool isDirty = false;
 
 	foreach(CTCron* ctCron, crons) {
 		if (ctCron->isDirty()) {
