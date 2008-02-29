@@ -1,15 +1,17 @@
 [Desktop Entry]
 Exec=kcmshell4 kcm_cron
-Icon=preferences-system-power-management
-X-DocPath=kdeadmin/kcron/index.html
+Icon=preferences-system-cron
+
+X-DocPath=kcron/index.html
+
 Type=Service
 X-KDE-ServiceTypes=KCModule
 X-KDE-Library=kcm_cron
 X-KDE-ParentApp=kcontrol
 
-X-KDE-System-Settings-Parent-Category=notifications
+X-KDE-System-Settings-Parent-Category=system
 
-Name=Cron
-Comment=Cron Comment
-X-KDE-Keywords=Cron,devices,viewer,control
-Categories=Qt;KDE;X-KDE-settings-sound;
+Name=Task Scheduler
+Comment=Configure and schedule tasks
+X-KDE-Keywords=cron,crontab,scheduled,tasks,task,schedule,vixie
+Categories=Qt;KDE;X-KDE-settings-system;

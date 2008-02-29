@@ -44,7 +44,7 @@
 #include "variableWidget.h"
 #include "variableWidget.h"
 
-#include "kcron.h"
+#include "kcmCron.h"
 #include "crontabPrinter.h"
 
 #include "logging.h"
