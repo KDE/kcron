@@ -12,6 +12,12 @@ X-KDE-ParentApp=kcontrol
 X-KDE-System-Settings-Parent-Category=system
 
 Name=Task Scheduler
+Name[ga]=Sceidealóir na dTascanna
+Name[pt]=Escalonador de Tarefas
+Name[pt_BR]=Escalonador de Tarefas
 Comment=Configure and schedule tasks
+Comment[ga]=Cumraigh agus sceideal tascanna
+Comment[pt]=Configurar e agendar tarefas
+Comment[pt_BR]=Configurar e agendar tarefas
 X-KDE-Keywords=cron,crontab,scheduled,tasks,task,schedule,vixie
 Categories=Qt;KDE;X-KDE-settings-system;
