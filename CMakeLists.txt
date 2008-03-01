@@ -16,7 +16,6 @@ endif(CMAKE_COMPILER_IS_GNUCXX)
 # cmake -D CMAKE_VERBOSE_MAKEFILE=true .
 ##
 
-add_subdirectory(src/crontablib)
 add_subdirectory(src) 
 
 

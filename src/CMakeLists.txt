@@ -8,7 +8,23 @@ include_directories(
 
 ########## KCM Module ###############
 
-set(kcm_cron_SRCS
+set(kcron_crontablib_SRCS
+   crontablib/cthost.cpp
+   crontablib/ctcron.cpp
+   crontablib/ctmonth.cpp
+   crontablib/ctminute.cpp
+   crontablib/cthour.cpp
+   crontablib/ctdom.cpp
+   crontablib/ctdow.cpp
+   crontablib/cttask.cpp
+   crontablib/ctunit.cpp
+   crontablib/ctvariable.cpp
+   crontablib/ctGlobalCron.cpp
+)
+
+
+set(kcm_cron_SRCS 
+   ${kcron_crontablib_SRCS}
    genericListWidget.cpp
     
    tasksWidget.cpp
@@ -36,7 +52,6 @@ kde4_add_plugin(kcm_cron ${kcm_cron_SRCS})
 target_link_libraries(kcm_cron 
     ${KDE4_KIO_LIBS}
     ${QT_QT3SUPPORT_LIBRARY}
-    kcron_crontablib
 )
 
 install(TARGETS  kcm_cron  DESTINATION ${PLUGIN_INSTALL_DIR} )
