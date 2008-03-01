@@ -23,7 +23,6 @@
 
 class KActionCollection;
 
-class CrontabWidget;
 class CTHost;
 
 class KCMCronPrivate;

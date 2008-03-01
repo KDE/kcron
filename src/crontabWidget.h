@@ -17,19 +17,12 @@
 #include "tasksWidget.h"
 #include "variablesWidget.h"
 
-class QString;
 class QHBoxLayout;
-class QAbstractButton;
 
 
 class CTHost;
 class CTCron;
-class CTVariable;
-class CTTask;
 
-class CrontabPrinter;
-class TaskWidget;
-class VariableWidget;
 
 class CrontabWidgetPrivate;
 

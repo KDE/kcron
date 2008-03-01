@@ -18,12 +18,9 @@
 
 #include "crontabPrinterWidget.h"
 
-class QPainter;
 class QString;
-class QFont;
 
 class CrontabWidget;
-class CTTask;
 
 class CrontabPrinterPrivate;
 

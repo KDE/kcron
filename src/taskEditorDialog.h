@@ -28,7 +28,6 @@ class QCheckBox;
 
 class KUrlRequester;
 
-class CTHost;
 class CTTask;
 
 class CrontabWidget;
