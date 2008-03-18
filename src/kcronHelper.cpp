@@ -11,12 +11,13 @@
 
 #include "kcronHelper.h"
 
+#include <QFontMetrics>
 #include <QImage>
 #include <QPixmap>
+#include <QTextEdit>
+#include <QComboBox>
 
 #include <kglobal.h>
-
-#include <QComboBox>
 
 #include "cttask.h"
 #include "ctcron.h"
@@ -48,4 +49,16 @@ void KCronHelper::initUserCombo(QComboBox* userCombo, CrontabWidget* crontabWidg
 	
 	userCombo->addItems(users);
 	userCombo->setCurrentIndex(selectedIndex);
+}
+
+QTextEdit* KCronHelper::createCommentEdit(QWidget* parent) {
+	QTextEdit* edit = new QTextEdit(parent);
+	edit->setAcceptRichText(false);
+	edit->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum));
+	edit->setTabChangesFocus(true);
+
+	QFontMetrics fontMetrics(edit->currentFont());
+	edit->setMaximumHeight(fontMetrics.lineSpacing() * 3); //TODO Choose a smarter value
+	
+	return edit;
 }

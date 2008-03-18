@@ -13,6 +13,13 @@
 
 #include <QRegExp>
 
+#include <klocale.h>
+#include <kiconloader.h>
+
+#include "kcronIcons.h"
+
+#include "ctHelper.h"
+
 CTVariable::CTVariable(const QString& tokenString, const QString& _comment, const QString& _userLogin) {
 
 	QString tokStr = tokenString;
@@ -45,7 +52,10 @@ CTVariable::CTVariable(const CTVariable &source) :
 	variable(source.variable), value(source.value), comment(source.comment), userLogin(source.userLogin), enabled(source.enabled), initialVariable(""), initialValue(""), initialComment(""), initialUserLogin(""), initialEnabled(true) {
 }
 
-void CTVariable::operator = (const CTVariable& source) {
+CTVariable& CTVariable::operator = (const CTVariable& source) {
+	if (this == &source)
+		return *this;
+
 	variable = source.variable;
 	value = source.value;
 	comment = source.comment;
@@ -57,14 +67,13 @@ void CTVariable::operator = (const CTVariable& source) {
 	initialComment = "";
 	initialUserLogin = "";
 	initialEnabled = true;
-	return;
+	return *this;
 }
 
 QString CTVariable::exportVariable() {
 	QString exportVariable;
 
-	if (comment.isEmpty() == false)
-		exportVariable += "# " + comment + "\n";
+	exportVariable += CTHelper::exportComment(comment);
 
 	if (enabled == false)
 		exportVariable += "#\\";
@@ -93,4 +102,42 @@ void CTVariable::cancel() {
 
 bool CTVariable::dirty() const {
 	return ((variable != initialVariable) || (value != initialValue) || (comment != initialComment) || (userLogin != initialUserLogin) || (enabled != initialEnabled));
+}
+
+QPixmap CTVariable::variableIcon() const {
+	if (variable == "MAILTO")
+		return SmallIcon("mail-message");
+	else if (variable == "SHELL")
+		return SmallIcon("utilities-terminal");
+	else if (variable == "HOME")
+		return SmallIcon("go-home");
+	else if (variable == "PATH")
+		return SmallIcon("folder");
+	else if (variable == "LD_CONFIG_PATH")
+		return SmallIcon("application-x-sharedlib");
+
+	return KCronIcons::variable(KCronIcons::Small);
+
+}
+
+QString CTVariable::information() const {
+
+	if (variable == "HOME") {
+		return i18n("Override default home folder.");
+	}
+	else if (variable == "MAILTO") {
+		return i18n("Email output to specified account.");
+	}
+	else if (variable == "SHELL") {
+		return i18n("Override default shell.");
+	}
+	else if (variable == "PATH") {
+		return i18n("Folders to search for program files.");
+	}
+	else if (variable == "LD_CONFIG_PATH") {
+		return i18n("Dynamic libraries location.");
+	}
+	
+	return i18n("Local Variable");
+	
 }

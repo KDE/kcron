@@ -1,5 +1,5 @@
 /***************************************************************************
- *   CT Month Implementation                                               *
+ *   CT Hour Header                                                        *
  *   --------------------------------------------------------------------  *
  *   Copyright (C) 1999, Gary Meyer <gary@meyer.net>                       *
  *   --------------------------------------------------------------------  *
@@ -9,33 +9,44 @@
  *   (at your option) any later version.                                   * 
  ***************************************************************************/
 
-#include "ctminute.h"
+#ifndef CT_SAVE_STATUS
+#define CT_SAVE_STATUS
 
-#include <klocale.h>
+#include <QString>
 
-/**
- * Constructs from a tokenized string.
- */
-CTMinute::CTMinute(const QString& tokStr) :
-	CTUnit(0, 59, tokStr) {
-}
-
-CTMinute::CTMinute() :
-	CTUnit(0, 59, "") {
+class CTSaveStatus {
+public:
 	
-}
-
-int CTMinute::findPeriod() const {
-	QList<int> periods;
-	periods << 1 << 2 << 5 << 10 << 15 << 20 << 30;
+	CTSaveStatus() {
+		this->errorStatus = false;
+	}
 	
-	return CTUnit::findPeriod(periods);
-}
-
-QString CTMinute::exportUnit() const {
-	int period = findPeriod();
-	if (period!=0 && period!=1)
-		return QString("*/%1").arg(QString::number(period));
+	CTSaveStatus(const QString& errorMessage, const QString& detailErrorMessage) {
+		this->errorStatus = true;
+		this->error = errorMessage;
+		this->detailError = detailErrorMessage;
+	}
 	
-	return CTUnit::exportUnit();
-}
+	QString errorMessage() {
+		return error;
+	}
+
+	QString detailErrorMessage() {
+		return detailError;
+	}
+	
+	bool isError() {
+		return errorStatus;
+	}
+	
+private:
+	bool errorStatus;
+	
+	QString error;
+	
+	QString detailError;
+
+};
+
+
+#endif // CT_SAVE_STATUS

@@ -44,8 +44,6 @@ public:
 	void refresh();
 
 private:
-
-	QIcon findIcon() const;
 	
 	/**
 	 * Task.

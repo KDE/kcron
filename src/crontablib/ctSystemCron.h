@@ -1,5 +1,5 @@
 /***************************************************************************
- *   KT icons.                                                             *
+ *   CT Cron Header                                                        *
  *   --------------------------------------------------------------------  *
  *   Copyright (C) 1999, Gary Meyer <gary@meyer.net>                       *
  *   --------------------------------------------------------------------  *
@@ -9,56 +9,41 @@
  *   (at your option) any later version.                                   * 
  ***************************************************************************/
 
-#ifndef KCM_CRON_H
-#define KCM_CRON_H
+#ifndef CT_SYSTEM_CRON_H
+#define CT_SYSTEM_CRON_H
 
-/**
- * Crontab binary executable location
- * The $PATH variable could be used
- */
-#define CRONTAB_BINARY "crontab"
-
-#include <QPixmap>
 #include <QString>
-#include <QWidget>
-#include <QVariantList>
+#include <QList>
 #include <QStringList>
+#include <QProcess>
 
-#include <kcmodule.h>
-#include <ksharedconfig.h>
+#include "ctcron.h"
 
+class CTTask;
+class CTVariable;
 class CTHost;
 
-class KCMCronPrivate;
 
-class KCMCron : public KCModule {
-	Q_OBJECT
-
+class CTSystemCron : public CTCron {
 public:
-	//, const QVariantList& arguments
-	KCMCron(QWidget* parent, const QStringList& args);
 
-	~KCMCron();
-
-	virtual void load();
-	virtual void save();
-	virtual void defaults();
-	
-	/**
-	 * Additional init
-	 */
-	bool init();
 
 	/**
-	 * Returns a reference to the CTHost.
+	 * Constructs the scheduled tasks, environment variables from crontab
+	 * files and obtains some information about the user from the system.
+	 *
+	 * Default is to construct from the user's crontab.  Can also be called,
+	 * passing TRUE, to construct from the system crontab.  Throws an
+	 * exception if the crontab file can not be found, read, or parsed.
 	 */
-	CTHost* ctHost() const;
-	
-	QString findCrontabBinary();
-	
-private:
+	explicit CTSystemCron(const QString& cronBinary);
 
-	KCMCronPrivate* const d;
+
+	/**
+	 * Destructor.
+	 */
+	virtual ~CTSystemCron();
+
 };
 
-#endif // KCM_CRON_H
+#endif // CT_SYSTEM_CRON_H

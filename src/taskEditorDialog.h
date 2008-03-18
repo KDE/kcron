@@ -17,14 +17,19 @@
 #include <QGroupBox>
 #include <QComboBox>
 #include <QStringList>
+#include <QTextEdit>
+#include <QPair>
 
 #include <kdialog.h>
 #include <kicon.h>
 #include <ktitlewidget.h>
+#include <kmimetype.h>
 
 class QLabel;
 class QLineEdit;
 class QCheckBox;
+class QGridLayout;
+class QHBoxLayout;
 
 class KUrlRequester;
 
@@ -55,10 +60,10 @@ private:
 	
 };
 
-class KTPushButton : public QPushButton {
+class NumberPushButton : public QPushButton {
 public:
 	
-	KTPushButton(QWidget * parent);
+	NumberPushButton(QWidget * parent);
 	
 	void updatePalette();
 	
@@ -169,27 +174,36 @@ private slots:
 	 */
 	void slotHourChanged();
 
-	/**
-	 * Set or clear all minute checkboxes
-	 */
-	void slotAllMinutes();
-
+	void slotMinutesPreselection(int index);
+	
 	/**
 	 * A minute checkbox has changed
 	 */
 	void slotMinuteChanged();
 
 private:
+	NumberPushButton* createHourButton(QGroupBox* hoursGroup, int hour);
 	QGroupBox* createHoursGroup(QWidget* mainWidget);
-	QGroupBox* createMinutesGroup(QWidget* mainWidget);
 	
+	NumberPushButton* createMinuteButton(int minuteIndex);
+	void createMinutesGroup(QWidget* mainWidget);
+	
+	/**
+	 * Returns true if there is no checked minute in the hidden minuteButton
+	 */
+	bool canReduceMinutesGroup();
+	void emptyMinutesGroup();
+	void reduceMinutesGroup();
+	void increaseMinutesGroup();
+
 	QGroupBox* createMonthsGroup(QWidget* mainWidget);
 	
 	QGroupBox* createDaysOfMonthGroup(QWidget* mainWidget);
 	QGroupBox* createDaysOfWeekGroup(QWidget* mainWidget);
 	
+	bool checkCommand();
+	
 	void defineCommandIcon();
-
 	
 	bool isEveryDay();
 	
@@ -206,7 +220,7 @@ private:
 
 	QComboBox* userCombo;
 
-	QLineEdit* leComment;
+	QTextEdit* leComment;
 
 	QLabel* commandIcon;
 	KUrlRequester* command;
@@ -216,26 +230,35 @@ private:
 	QCheckBox* cbEveryDay;
 
 	QGroupBox* bgMonth;
-	KTPushButton* cbMonth[13];
-	SetOrClearAllButton* pbAllMonths;
+	NumberPushButton* monthButtons[13]; // The index 0 is not used
+	SetOrClearAllButton* allMonths;
 
 	QGroupBox* bgDayOfMonth;
-	KTPushButton* pbDayOfMonth[32];
-	SetOrClearAllButton* pbAllDaysOfMonth;
+	NumberPushButton* dayOfMonthButtons[32]; // The index 0 is not used
+	SetOrClearAllButton* allDaysOfMonth;
 
 	QGroupBox* bgDayOfWeek;
-	KTPushButton* cbDayOfWeek[8];
-	SetOrClearAllButton* pbAllDaysOfWeek;
+	NumberPushButton* dayOfWeekButtons[8]; // The index 0 is not used
+	SetOrClearAllButton* allDaysOfWeek;
 
-	QGroupBox* bgHour;
-	QLabel* labAM;
-	QLabel* labPM;
-	QPushButton* pbHour[25];
-	SetOrClearAllButton* pbAllHours;
+	QGroupBox* hoursGroup;
+	QLabel* morningLabel;
+	QLabel* afternoonLabel;
+	QPushButton* hourButtons[24];
+	SetOrClearAllButton* allHours;
 
-	QGroupBox* bgMinute;
-	QPushButton* pbMinute[61];
-	SetOrClearAllButton* pbAllMinutes;
+	QGroupBox* minutesGroup;
+	QGridLayout* minutesLayout;
+	QPushButton* minuteButtons[60];
+	
+	QHBoxLayout* minutesPreselectionLayout;
+	QComboBox* minutesPreselection;
+	
+	static const int minuteTotal = 59; // or 55 or 59
+	
+	static const int minutePerColumn = 12; // or 30 or 12
+	
+	static const int reducedMinuteStep = 5;
 	
 	QStringList specialValidCommands;
 

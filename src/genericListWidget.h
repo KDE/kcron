@@ -13,11 +13,14 @@
 #define GENERIC_LIST_WIDGET_H
 
 #include <QTreeWidget>
+#include <QList>
 
 #include "cthost.h"
 
 class GenericListWidgetPrivate;
 class QKeyEvent;
+class QAction;
+
 class CrontabWidget;
 
 /**
@@ -51,6 +54,14 @@ protected:
 	
 	QTreeWidgetItem* firstSelected() const;
 	
+	QAction* createSeparator();
+	
+	void addRightAction(QAction* action, const QObject* receiver, const char* member);
+	void addRightStretch();
+	
+	void setActionEnabled(QAction* action, bool enabled);
+
+private:
 	GenericListWidgetPrivate* const d;
 	
 };

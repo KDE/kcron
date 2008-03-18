@@ -1,5 +1,5 @@
 /***************************************************************************
- *   CT Month Implementation                                               *
+ *   CT Hour Header                                                        *
  *   --------------------------------------------------------------------  *
  *   Copyright (C) 1999, Gary Meyer <gary@meyer.net>                       *
  *   --------------------------------------------------------------------  *
@@ -9,33 +9,33 @@
  *   (at your option) any later version.                                   * 
  ***************************************************************************/
 
-#include "ctminute.h"
+#ifndef CT_INITIALIZATION_ERROR
+#define CT_INITIALIZATION_ERROR
 
-#include <klocale.h>
+#include <QString>
 
-/**
- * Constructs from a tokenized string.
- */
-CTMinute::CTMinute(const QString& tokStr) :
-	CTUnit(0, 59, tokStr) {
-}
-
-CTMinute::CTMinute() :
-	CTUnit(0, 59, "") {
+class CTInitializationError {
+public:
 	
-}
-
-int CTMinute::findPeriod() const {
-	QList<int> periods;
-	periods << 1 << 2 << 5 << 10 << 15 << 20 << 30;
+	QString errorMessage() {
+		return error;
+	}
 	
-	return CTUnit::findPeriod(periods);
-}
-
-QString CTMinute::exportUnit() const {
-	int period = findPeriod();
-	if (period!=0 && period!=1)
-		return QString("*/%1").arg(QString::number(period));
+	void setErrorMessage(const QString& errorMessage) {
+		this->error = errorMessage;
+	}
 	
-	return CTUnit::exportUnit();
-}
+	bool hasErrorMessage() {
+		if (error.isEmpty() == true)
+			return false;
+		
+		return true;
+	}
+	
+private:	
+	QString error;
+
+};
+
+
+#endif // CT_INITIALIZATION_ERROR

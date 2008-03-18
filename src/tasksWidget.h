@@ -19,6 +19,8 @@
 
 class TaskWidget;
 
+class TasksWidgetPrivate;
+
 /**
  * QTreeWidget of a "tasks" folder.
  */
@@ -42,6 +44,29 @@ public:
 	
 	bool needUserColumn() const;
 
+	/** 
+	 * Enables/disables modification buttons
+	 */
+	void toggleModificationActions(bool enabled);
+	
+	/** 
+	 * Enables/disables new entry actions
+	 */
+	void toggleNewEntryAction(bool enabled);
+
+	/** 
+	 * Enables/disables "Run now"
+	 */
+	void toggleRunNowAction(bool enabled);
+
+	/** 
+	 * Enables/disables Print Action
+	 */
+	void togglePrintAction(bool enabled);
+
+signals:
+	void taskModified(bool);
+
 public slots:
 	void modifySelection();
 	
@@ -59,15 +84,21 @@ public slots:
 	
 	void addTask(CTTask* task);
 
+	void changeCurrentSelection();
+
 protected slots:
 	void modifySelection(QTreeWidgetItem* item, int position);
-	
+
 private:
 	void refreshHeaders();
 	
 	int statusColumnIndex();
 
+	void setupActions(CrontabWidget* crontabWidget);
+	void prepareContextualMenu();
 	
+
+	TasksWidgetPrivate* const d;
 };
 
 #endif // TASKS_WIDGET_H

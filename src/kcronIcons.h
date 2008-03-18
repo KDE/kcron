@@ -25,13 +25,8 @@ public:
 	enum IconSize {Small,Normal,Large};
 
 	static QPixmap application(KCronIcons::IconSize size);
-	static QPixmap system(KCronIcons::IconSize size);
-	static QPixmap user(KCronIcons::IconSize size);
+
 	static QPixmap variable(KCronIcons::IconSize size);
-	static QPixmap mail(KCronIcons::IconSize size);
-	static QPixmap shell(KCronIcons::IconSize size);
-	static QPixmap home(KCronIcons::IconSize size);
-	static QPixmap path(KCronIcons::IconSize size);
 	static QPixmap task(KCronIcons::IconSize size);
 	
 	static QPixmap information(KCronIcons::IconSize size);

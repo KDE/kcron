@@ -16,6 +16,7 @@
 #include <QVBoxLayout>
 #include <QPixmap>
 #include <QKeyEvent>
+#include <QAction>
 
 #include <klocale.h>
 #include <kglobalsettings.h>
@@ -37,6 +38,8 @@ public:
 	QTreeWidget* treeWidget;
 	
 	CrontabWidget* crontabWidget;
+	
+	QVBoxLayout* actionsLayout;
 
 };
 
@@ -46,11 +49,12 @@ public:
 GenericListWidget::GenericListWidget(CrontabWidget* crontabWidget, const QString& label, const QPixmap& icon) :
 	QWidget(crontabWidget), d(new GenericListWidgetPrivate()) {
 
-	QVBoxLayout* layout = new QVBoxLayout(this);
-	layout->setContentsMargins(0, 0, 0, 0);
+	QVBoxLayout* mainLayout = new QVBoxLayout(this);
+	mainLayout->setContentsMargins(0, 0, 0, 0);
 
 	d->crontabWidget = crontabWidget;
 
+	// Label layout
 	QHBoxLayout* labelLayout = new QHBoxLayout();
 
 	QLabel* tasksIcon = new QLabel(this);
@@ -60,10 +64,13 @@ GenericListWidget::GenericListWidget(CrontabWidget* crontabWidget, const QString
 	QLabel* tasksLabel = new QLabel(label, this);
 	labelLayout->addWidget(tasksLabel, 1, Qt::AlignLeft);
 
-	layout->addLayout(labelLayout);
+	mainLayout->addLayout(labelLayout);
 
+	
+	// Tree layout
+	QHBoxLayout* treeLayout = new QHBoxLayout();
+	
 	d->treeWidget = new QTreeWidget(this);
-	layout->addWidget(d->treeWidget);
 
 	d->treeWidget->setRootIsDecorated(true);
 	d->treeWidget->setAllColumnsShowFocus(true);
@@ -83,6 +90,14 @@ GenericListWidget::GenericListWidget(CrontabWidget* crontabWidget, const QString
 
 	d->treeWidget->setSelectionMode(QAbstractItemView::ExtendedSelection);
 	d->treeWidget->setContextMenuPolicy(Qt::ActionsContextMenu);
+
+	treeLayout->addWidget(d->treeWidget);
+	
+	d->actionsLayout = new QVBoxLayout();
+	
+	treeLayout->addLayout(d->actionsLayout);
+
+	mainLayout->addLayout(treeLayout);
 
 	logDebug() << "Generic list created" << endl;
 	connect(treeWidget(), SIGNAL(itemActivated(QTreeWidgetItem*, int)), SLOT(modifySelection(QTreeWidgetItem*, int)));
@@ -136,4 +151,42 @@ void GenericListWidget::removeAll() {
 		delete treeWidget()->takeTopLevelItem(i);
 		
 	}
+}
+
+QAction* GenericListWidget::createSeparator() {
+	QAction* action = new QAction(this);
+	action->setSeparator(true);
+
+	return action;
+}
+
+void GenericListWidget::addRightAction(QAction* action, const QObject* receiver, const char* member) {
+	QPushButton* button = new QPushButton(action->text(), this);
+	button->setIcon(action->icon());
+	button->setWhatsThis(action->whatsThis());
+	button->setToolTip(action->toolTip());
+
+	d->actionsLayout->addWidget(button);
+	
+	button->addAction(action);
+	
+	connect(button, SIGNAL(clicked(bool)), receiver, member);
+	connect(action, SIGNAL(triggered(bool)), receiver, member);
+}
+
+void GenericListWidget::addRightStretch() {
+	d->actionsLayout->addStretch(1);
+}
+
+void GenericListWidget::setActionEnabled(QAction* action, bool enabled) {
+	foreach(QWidget* widget, action->associatedWidgets()) {
+		
+		//Only change status of associated Buttons
+		QPushButton* button = dynamic_cast<QPushButton*>(widget);
+		if (button!=NULL) {
+			button->setEnabled(enabled);
+		}
+	}
+	
+	action->setEnabled(enabled);
 }

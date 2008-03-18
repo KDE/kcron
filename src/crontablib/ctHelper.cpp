@@ -9,33 +9,25 @@
  *   (at your option) any later version.                                   * 
  ***************************************************************************/
 
-#include "ctminute.h"
+#include "ctHelper.h"
+
+#include <QStringList>
 
 #include <klocale.h>
 
-/**
- * Constructs from a tokenized string.
- */
-CTMinute::CTMinute(const QString& tokStr) :
-	CTUnit(0, 59, tokStr) {
-}
-
-CTMinute::CTMinute() :
-	CTUnit(0, 59, "") {
+QString CTHelper::exportComment(const QString& comment) {
+	QString exportComment;
 	
-}
+	if (comment.isEmpty()) {
+		QString noComment = i18n("No comment");
+		exportComment += "#" + noComment + "\n";
+		return exportComment;
+	}
 
-int CTMinute::findPeriod() const {
-	QList<int> periods;
-	periods << 1 << 2 << 5 << 10 << 15 << 20 << 30;
-	
-	return CTUnit::findPeriod(periods);
-}
+	QStringList lines = comment.split("\n");
+	foreach(QString line, lines) {
+		exportComment += "#" + line + "\n";
+	}
 
-QString CTMinute::exportUnit() const {
-	int period = findPeriod();
-	if (period!=0 && period!=1)
-		return QString("*/%1").arg(QString::number(period));
-	
-	return CTUnit::exportUnit();
+	return exportComment;
 }

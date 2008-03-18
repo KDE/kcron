@@ -20,6 +20,10 @@ set(kcron_crontablib_SRCS
    crontablib/ctunit.cpp
    crontablib/ctvariable.cpp
    crontablib/ctGlobalCron.cpp
+   crontablib/ctSystemCron.cpp
+   crontablib/ctInitializationError.cpp
+   crontablib/ctSaveStatus.cpp
+   crontablib/ctHelper.cpp
 )
 
 

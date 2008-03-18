@@ -17,15 +17,18 @@
 #include <pwd.h>
 
 #include <QFile>
-
 #include <QTextStream>
 
-#include "ctcron.h"
 #include <klocale.h>
+
+#include "ctcron.h"
+#include "ctSystemCron.h"
+#include "ctInitializationError.h"
+
 
 #include "logging.h"
 
-CTHost::CTHost(const QString& cronBinary) {
+CTHost::CTHost(const QString& cronBinary, CTInitializationError& ctInitializationError) {
 	struct passwd* userInfos = NULL;
 
 	this->crontabBinary = cronBinary;
@@ -36,7 +39,11 @@ CTHost::CTHost(const QString& cronBinary) {
 		setpwent(); // restart
 		while ((userInfos=getpwent())) {
 			if (allowDeny(userInfos->pw_name)) {
-				createCTCron(userInfos);
+				QString errorMessage = createCTCron(userInfos);
+				if (errorMessage.isEmpty()==false) {
+					ctInitializationError.setErrorMessage(errorMessage);
+					return;
+				}
 			}
 			//delete userInfos;
 		}
@@ -50,9 +57,11 @@ CTHost::CTHost(const QString& cronBinary) {
 		setpwent(); // restart
 		while ((userInfos=getpwent())) {
 			if ((userInfos->pw_uid == uid) && (!allowDeny(userInfos->pw_name))) {
-				error = i18n("You have been blocked from using KCron\
-                      by either the /etc/cron.allow file or the /etc/cron.deny file.\
-                      \n\nCheck the crontab man page for further details.");
+				ctInitializationError.setErrorMessage(i18n("You have been blocked from using KCron\
+	                      by either the /etc/cron.allow file or the /etc/cron.deny file.\
+	                      \n\nCheck the crontab man page for further details.")
+				);
+
 				return;
 			}
 			//delete userInfos;
@@ -61,7 +70,13 @@ CTHost::CTHost(const QString& cronBinary) {
 		setpwent(); // restart again for others
 		
 		passwd* currentUserPassword = getpwuid(uid);
-		createCTCron(currentUserPassword);
+
+		QString errorMessage = createCTCron(currentUserPassword);
+		if (errorMessage.isEmpty()==false) {
+			ctInitializationError.setErrorMessage(errorMessage);
+			return;
+		}
+		
 		//delete currentUserPassword;
 	}
 	
@@ -112,24 +127,23 @@ bool CTHost::allowDeny(char *name) {
 	}
 }
 
-void CTHost::save() {
+CTSaveStatus CTHost::save() {
 	if (isRootUser() == false) {
+		logDebug() << "Save current user cron" << endl;
 		CTCron* ctCron = findCurrentUserCron();
-		ctCron->save();
-		if (ctCron->isError()) {
-			error = ctCron->errorMessage();
-			return;
-		}
-		return;
+
+		return ctCron->save();
 	}
 	
 	foreach(CTCron* ctCron, crons) {
-		ctCron->save();
-		if (ctCron->isError()) {
-			error = ctCron->errorMessage();
-			return;
+		CTSaveStatus ctSaveStatus = ctCron->save();
+		
+		if (ctSaveStatus.isError() == true) {
+			return CTSaveStatus(i18nc("User login: errorMessage", "User %1: %2", ctCron->userLogin(), ctSaveStatus.errorMessage()), ctSaveStatus.detailErrorMessage());
 		}
 	}
+	
+	return CTSaveStatus();
 }
 
 void CTHost::cancel() {
@@ -151,12 +165,7 @@ bool CTHost::isDirty() {
 }
 
 CTCron* CTHost::createSystemCron() {
-	CTCron* p = new CTCron(crontabBinary, true);
-	if (p->isError()) {
-		error = p->errorMessage();
-		delete p;
-		return 0;
-	}
+	CTCron* p = new CTSystemCron(crontabBinary);
 
 	crons.append(p);
 
@@ -164,19 +173,21 @@ CTCron* CTHost::createSystemCron() {
 }
 
 
-CTCron* CTHost::createCTCron(const struct passwd* userInfos) {
+QString CTHost::createCTCron(const struct passwd* userInfos) {
 	bool currentUserCron = false;
 	if (userInfos->pw_uid == getuid())
 		currentUserCron = true;
 
-	CTCron* p = new CTCron(crontabBinary, userInfos, currentUserCron);
-	if (p->isError()) {
-		error = p->errorMessage();
+	CTInitializationError ctInitializationError;
+	CTCron* p = new CTCron(crontabBinary, userInfos, currentUserCron, ctInitializationError);
+	if (ctInitializationError.hasErrorMessage()) {
 		delete p;
-		return 0;
+		return ctInitializationError.errorMessage();
 	}
+	
 	crons.append(p);
-	return p;
+	
+	return QString();
 }
 
 CTCron* CTHost::findCurrentUserCron() const {

@@ -45,7 +45,7 @@ public:
 	/**
 	 * Copy enabled intervals.
 	 */
-	void operator =(const CTUnit& unit);
+	CTUnit& operator =(const CTUnit& unit);
 
 	/**
 	 * Tokenizes unit into string such as
@@ -53,18 +53,11 @@ public:
 	 */
 	virtual QString exportUnit() const;
 
-	
 	/**
 	 * Parses unit such as "0-3,5,6,10-30/5".
 	 * And initialize array of enabled intervals.
 	 */
 	void initialize(const QString& tokStr = "");
-
-	/**
-	 * Parses unit such as "0-3,5,6,10-30/5".
-	 * Does not initialize array of enabled intervals.
-	 */
-	void parse(const QString& tokenString = "");
 
 	/**
 	 * Lower bound.
@@ -111,6 +104,14 @@ public:
 	 * If no period has been found, return 0
 	 */
 	int findPeriod(const QList<int>& periods) const;
+
+protected:	
+
+	/**
+	 * Parses unit such as "0-3,5,6,10-30/5".
+	 * Does not initialize array of enabled intervals.
+	 */
+	void parse(const QString& tokenString = "");
 	
 private:
 	int min;

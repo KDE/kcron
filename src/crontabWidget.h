@@ -19,6 +19,7 @@
 
 class QHBoxLayout;
 
+class KActionCollection;
 
 class CTHost;
 class CTCron;
@@ -49,13 +50,13 @@ public:
 	VariablesWidget* variablesWidget() const;
 	
 	CTHost* ctHost() const;
-
-public slots:
 	
-	/**
-	 * Print crontab.
-	 */
-	void print();
+	CTCron* currentCron() const;
+
+	QList<QAction*> cutCopyPasteActions();
+	QAction* printAction();
+	
+public slots:
 	
 	/**
 	 * Copies variables and/or tasks.
@@ -69,42 +70,38 @@ public slots:
 	 */
 	void paste();
 	
-	CTCron* currentCron() const;
-
-signals:
-
-	/** Enables/disables modification 
-	 * buttons depending
-	 * on if a task is selected
-	 */
-	void modificationActionsToggled(bool enabled);
-
-	/** 
-	 * Enables/disables "Run now" depending
-	 * on the task settings
-	 */
-	void runNowActionToggled(bool enabled);
-	
 	/**
-	 * Toggle new entries
+	 * Print crontab.
 	 */
-	void newEntryActionsToggled(bool enabled);
-
-	/** 
-	 * Enables/disables paste button depending
-	 * on clipboard contents
-	 */
-	void pasteActionToggled(bool enabled);
+	void print();
 
 protected slots:
-
-	void slotSetCurrentItem();
 
 	void refreshCron();
 
 	void checkOtherUsers();
 	
 private:
+
+	/** 
+	 * Enables/disables paste button
+	 */
+	void togglePasteAction(bool enabled);
+
+	/** 
+	 * Enables/disables modification buttons
+	 */
+	void toggleModificationActions(bool enabled);
+	
+	/** 
+	 * Enables/disables new entry actions
+	 */
+	void toggleNewEntryActions(bool enabled);
+	
+	/**
+	 * Initialize actions.
+	 */
+	void setupActions();
 
 	/**
 	 * Initialize view from underlying objects.

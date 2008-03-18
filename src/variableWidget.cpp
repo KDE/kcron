@@ -36,7 +36,7 @@ void VariableWidget::refresh() {
 	}
 	
 	setText(column, ctVariable->variable);
-	setIcon(column++, findIcon());
+	setIcon(column++, ctVariable->variableIcon());
 
 	setText(column++, ctVariable->value);
 
@@ -54,22 +54,6 @@ void VariableWidget::refresh() {
 			
 }
 
-QIcon VariableWidget::findIcon() const {
-	
-	QPixmap qpIcon;
-	if (ctVariable->variable == "MAILTO")
-		qpIcon = KCronIcons::mail(KCronIcons::Small);
-	else if (ctVariable->variable == "SHELL")
-		qpIcon = KCronIcons::shell(KCronIcons::Small);
-	else if (ctVariable->variable == "HOME")
-		qpIcon = KCronIcons::home(KCronIcons::Small);
-	else if (ctVariable->variable == "PATH")
-		qpIcon = KCronIcons::path(KCronIcons::Small);
-	else
-		qpIcon = KCronIcons::variable(KCronIcons::Small);
-
-	return QIcon(qpIcon);
-}
 
 void VariableWidget::toggleEnable() {
 	ctVariable->enabled = ! ctVariable->enabled;

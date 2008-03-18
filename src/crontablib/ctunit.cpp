@@ -39,7 +39,10 @@ CTUnit::CTUnit(const CTUnit& source) {
 CTUnit::~CTUnit() {
 }
 
-void CTUnit::operator = (const CTUnit& unit) {
+CTUnit& CTUnit::operator = (const CTUnit& unit) {
+	if (this == &unit)
+		return *this;
+
 	min = unit.min;
 	max = unit.max;
 
@@ -48,7 +51,8 @@ void CTUnit::operator = (const CTUnit& unit) {
 		enabled.append(unit.enabled[i]);
 	}
 	dirty = true;
-	return;
+	
+	return *this;
 }
 
 void CTUnit::initialize(const QString& tokStr) {
@@ -58,16 +62,14 @@ void CTUnit::initialize(const QString& tokStr) {
 		initialEnabled.append(false);
 	}
 
-	parse(tokStr);
-
 	for (int i = min; i <= max; i++) {
 		initialEnabled[i] = enabled[i];
 	}
 
+	parse(tokStr);
 	initialTokStr = tokStr;
 	dirty = false;
 
-	return;
 }
 
 void CTUnit::parse(const QString& tokenString) {

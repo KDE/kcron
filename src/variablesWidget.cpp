@@ -14,6 +14,8 @@
 #include <QHeaderView>
 #include <QVBoxLayout>
 #include <QTreeWidgetItemIterator>
+#include <QAction>
+#include <QList>
 
 #include <klocale.h>
 #include <kglobalsettings.h>
@@ -29,16 +31,38 @@
 
 #include "logging.h"
 
+class VariablesWidgetPrivate {
+public:
+
+	QAction* newVariableAction;
+
+	QAction* modifyAction;
+
+	QAction* deleteAction;
+
+};
 /**
  * Construct tasks folder from branch.
  */
 VariablesWidget::VariablesWidget(CrontabWidget* crontabWidget) :
-	GenericListWidget(crontabWidget, i18n("<b>Environment Variables</b>"), KCronIcons::variable(KCronIcons::Small)) {
+	GenericListWidget(crontabWidget, i18n("<b>Environment Variables</b>"), KCronIcons::variable(KCronIcons::Small)),
+	d(new VariablesWidgetPrivate()) {
 	
 	refreshHeaders();
 	
 	treeWidget()->sortItems(0, Qt::AscendingOrder);
 
+	setupActions();
+	prepareContextualMenu();
+
+	connect(treeWidget(), SIGNAL(itemSelectionChanged()), this, SLOT(changeCurrentSelection()));
+
+	logDebug() << "Variables list created" << endl;
+
+}
+
+VariablesWidget::~VariablesWidget() {
+	delete d;
 }
 
 void VariablesWidget::modifySelection() {
@@ -52,14 +76,19 @@ void VariablesWidget::modifySelection(QTreeWidgetItem* item, int position) {
 		
 		if (position == statusColumnIndex()) {
 			variableWidget->toggleEnable();
+			emit variableModified(true);
 		}
 		else {
 			CTVariable* variable = variableWidget->getCTVariable();
 			VariableEditorDialog variableEditorDialog(variable, i18n("Modify Variable"), crontabWidget());
-			variableEditorDialog.exec();
+			int result = variableEditorDialog.exec();
 			
-			crontabWidget()->currentCron()->modifyVariable(variable);
-			variableWidget->refresh();
+			if (result == QDialog::Accepted) {
+				crontabWidget()->currentCron()->modifyVariable(variable);
+				variableWidget->refresh();
+			
+				emit variableModified(true);
+			}
 		}
 	}
 		
@@ -89,6 +118,8 @@ VariableWidget* VariablesWidget::firstSelectedVariableWidget() const {
 
 void VariablesWidget::deleteSelection() {
 	QList<QTreeWidgetItem*> variablesItems = treeWidget()->selectedItems();
+	bool deleteSomething = ! (variablesItems.isEmpty());
+
 	foreach(QTreeWidgetItem* item, variablesItems) {
 		VariableWidget* variableWidget = static_cast<VariableWidget*>(item);
 
@@ -97,6 +128,11 @@ void VariablesWidget::deleteSelection() {
 		treeWidget()->takeTopLevelItem( treeWidget()->indexOfTopLevelItem(variableWidget) );
 		delete variableWidget;
 		
+	}
+
+	if (deleteSomething) {
+		emit variableModified(true);
+		changeCurrentSelection();
 	}
 
 }
@@ -121,11 +157,14 @@ void VariablesWidget::createVariable() {
 	CTVariable* variable = new CTVariable("", "", crontabWidget()->currentCron()->userLogin());
 
 	VariableEditorDialog variableEditorDialog(variable, i18n("New Variable"), crontabWidget());
-	variableEditorDialog.exec();
+	int result = variableEditorDialog.exec();
 
-	if (variable->dirty()) {
+	if (result == QDialog::Accepted) {
 		addVariable(variable);
-	} else {
+		emit variableModified(true);
+		changeCurrentSelection();
+	}
+	else {
 		delete variable;
 	}
 }
@@ -134,6 +173,8 @@ void VariablesWidget::addVariable(CTVariable* variable) {
 	logDebug() << "Add a new variable" << endl;
 	crontabWidget()->currentCron()->addVariable(variable);
 	new VariableWidget(this, variable);
+
+	changeCurrentSelection();
 }
 
 void VariablesWidget::refreshVariables(CTCron* cron) {
@@ -168,4 +209,66 @@ void VariablesWidget::refreshHeaders() {
 	else
 		treeWidget()->setColumnCount(4);
 
+}
+
+void VariablesWidget::setupActions() {
+
+	d->newVariableAction = new QAction(this);
+	d->newVariableAction->setIcon(KIcon("document-new"));
+	d->newVariableAction->setText(i18nc("Adds a new variable", "New &Variable...") );
+	d->newVariableAction->setToolTip(i18n("Create a new variable."));
+	addRightAction(d->newVariableAction, this, SLOT(createVariable()));
+
+	d->modifyAction = new QAction(this);
+	d->modifyAction->setText(i18n("M&odify...") );
+	d->modifyAction->setIcon(KIcon("document-open") );
+	d->modifyAction->setToolTip(i18n("Modify the selected variable."));
+	addRightAction(d->modifyAction, this, SLOT(modifySelection()));
+
+	d->deleteAction = new QAction(this);
+	d->deleteAction->setText(i18n("&Delete") );
+	d->deleteAction->setIcon(KIcon("edit-delete") );
+	d->deleteAction->setToolTip(i18n("Delete the selected variable."));
+	addRightAction(d->deleteAction, this, SLOT(deleteSelection()));
+
+	addRightStretch();
+}
+
+
+void VariablesWidget::prepareContextualMenu() {
+
+	treeWidget()->addAction(d->newVariableAction);
+
+	treeWidget()->addAction(createSeparator());
+
+	treeWidget()->addAction(d->modifyAction);
+	treeWidget()->addAction(d->deleteAction);
+
+	treeWidget()->addAction(createSeparator());
+
+	foreach(QAction* action, crontabWidget()->cutCopyPasteActions()) {
+		treeWidget()->addAction(action);
+	}
+
+}
+
+void VariablesWidget::toggleModificationActions(bool state) {
+	setActionEnabled(d->modifyAction, state);
+	setActionEnabled(d->deleteAction, state);
+}
+
+void VariablesWidget::toggleNewEntryAction(bool state) {
+	setActionEnabled(d->newVariableAction, state);
+}
+
+void VariablesWidget::changeCurrentSelection() {
+	logDebug() << "Change selection..." << endl;
+	
+	bool enabled;
+	if (treeWidget()->selectedItems().isEmpty())
+		enabled = false;
+	else
+		enabled = true;
+	
+	toggleModificationActions(enabled);
 }

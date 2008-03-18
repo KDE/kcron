@@ -13,6 +13,7 @@
 #define CTVARIABLE_H
 
 #include <QString>
+#include <QPixmap>
 
 /**
  * An environment variable (encapsulation of crontab environment variable
@@ -34,7 +35,7 @@ public:
 	/**
 	 * Assignment operator.
 	 */
-	void operator =(const CTVariable& source);
+	CTVariable& operator =(const CTVariable& source);
 
 	/**
 	 * Tokenizes environment variable to crontab format.
@@ -55,6 +56,10 @@ public:
 	 * Indicates whether or not the environment variable has been modified.
 	 */
 	bool dirty() const;
+	
+	QPixmap variableIcon() const;
+	
+	QString information() const;
 
 	QString variable;
 	QString value;

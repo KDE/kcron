@@ -12,8 +12,12 @@
 #include "cttask.h"
 
 #include <klocale.h>
+#include <kiconloader.h>
+#include <kmimetype.h>
 
-#include <time.h>     // tm, strftime()
+#include "ctHelper.h"
+
+#include "kcronIcons.h"
 #include "logging.h"
 
 CTTask::CTTask(const QString& tokenString, const QString& _comment, const QString& _userLogin, bool _systemCrontab) :
@@ -57,7 +61,7 @@ CTTask::CTTask(const QString& tokenString, const QString& _comment, const QStrin
 	// If reboot bypass initialize functions so no keys selected in modify task
 	if (reboot == false) {
 
-		logDebug() << "Line : " << tokStr << endl;
+		//logDebug() << "Line : " << tokStr << endl;
 		minute.initialize(tokStr.mid(0, spacePos));
 
 		while (isSpace(tokStr, spacePos+1))
@@ -114,7 +118,10 @@ CTTask::CTTask(const CTTask &source) :
 			initialComment(""), initialEnabled(true), initialReboot(false) {
 }
 
-void CTTask::operator = (const CTTask& source) {
+CTTask& CTTask::operator = (const CTTask& source) {
+	if (this == &source)
+		return *this;
+
 	month = source.month;
 	dayOfMonth = source.dayOfMonth;
 	dayOfWeek = source.dayOfWeek;
@@ -130,15 +137,15 @@ void CTTask::operator = (const CTTask& source) {
 	initialComment = "";
 	initialEnabled = true;
 	initialReboot = false;
-	return;
+	
+	return *this;
 }
 
 QString CTTask::exportTask() {
 	QString exportTask;
 
-	//  if (task.comment != string(""))
-	exportTask += "#" + comment + "\n";
-
+	exportTask += CTHelper::exportComment(comment);
+		
 	if (enabled == false)
 		exportTask += "#\\";
 
@@ -341,4 +348,117 @@ bool CTTask::isSystemCrontab() const {
 
 void CTTask::setSystemCrontab(bool _systemCrontab) {
 	systemCrontab = _systemCrontab;
+}
+
+
+QPixmap CTTask::commandIcon() const {
+	KUrl commandPath(completeCommandPath());
+	
+	KMimeType::Ptr mimeType = KMimeType::findByUrl(commandPath);
+	//logDebug() << mimeType->name() << endl;
+	if (mimeType->name() == "application/x-executable" || mimeType->name() == "application/octet-stream") {
+		
+		//The next line is identical as SmallIcon(commandPath.fileName()), but is able to return a isNull() QPixmap
+		QPixmap icon = KIconLoader::global()->loadIcon(commandPath.fileName(), KIconLoader::Small, 0, KIconLoader::DefaultState, QStringList(), 0L, true);
+		if (icon.isNull()) {
+			return KCronIcons::task(KCronIcons::Small);
+		}
+		
+		return icon;
+	}
+	
+	QPixmap icon = SmallIcon(KMimeType::iconNameForUrl(commandPath));
+	
+	return icon;
+
+}
+
+QPair<QString, bool> CTTask::unQuoteCommand() const {
+	QString fullCommand = command;
+	fullCommand = fullCommand.trimmed();
+
+	QStringList quotes;
+	quotes << "\"" << "'";
+	
+	foreach(QString quote, quotes) {
+		if (fullCommand.indexOf(quote) == 0) {
+			int nextQuote = fullCommand.indexOf(quote, 1);
+			if (nextQuote == -1)
+				return QPair<QString, bool>("", false);
+			
+			return QPair<QString, bool>(fullCommand.mid(1, nextQuote-1), true);
+		}
+		
+	}
+	
+	return QPair<QString, bool>(fullCommand, false);
+	
+}
+
+QString CTTask::decryptBinaryCommand(const QString& command) const {
+	QString fullCommand;
+	
+	bool found = false;
+	for (int i=0; i<command.length(); ++i) {
+		if (command.at(i) == ' ' && command.at(i-1) != '\\') {
+			fullCommand = command.left(i);
+			found = true;
+			break;
+		}
+	}
+	
+	if (found == false)
+		fullCommand = command;
+	
+	fullCommand = fullCommand.remove('\\');
+
+	return fullCommand;
+}
+
+QStringList CTTask::separatePathCommand(const QString& command, bool quoted) const {
+	QStringList pathCommand;
+
+	if (command.at(0) == '/') {
+		QString fullCommand;
+		if (quoted == true)
+			fullCommand = command;
+		else
+			fullCommand = decryptBinaryCommand(command);
+
+		if (fullCommand.isEmpty()) {
+			return QStringList();
+		}
+
+		QString path = fullCommand.section('/', 0, -2);
+		QString commandBinary = fullCommand.section('/', -1);
+
+		pathCommand << path << commandBinary;
+		
+	}
+	else {
+		QString fullCommand;
+		if (quoted == true)
+			fullCommand = command;
+		else
+			fullCommand = decryptBinaryCommand(command);
+
+		// relying on $PATH
+		pathCommand << QString() << fullCommand;
+
+	}
+	
+	return pathCommand;
+}
+
+QString CTTask::completeCommandPath() const {
+	QPair<QString, bool> commandQuoted = unQuoteCommand();
+	if (commandQuoted.first.isEmpty())
+		return "";
+	
+	QStringList pathCommand = separatePathCommand(commandQuoted.first, commandQuoted.second);
+	if (pathCommand.isEmpty()) {
+		return "";
+	}
+	
+	return pathCommand.join("/");
 }

@@ -73,6 +73,7 @@ VariableEditorDialog::VariableEditorDialog(CTVariable* _ctVariable, const QStrin
 	cmbVariable->addItem("MAILTO");
 	cmbVariable->addItem("PATH");
 	cmbVariable->addItem("SHELL");
+	cmbVariable->addItem("LD_CONFIG_PATH");
 
 	labVariable->setBuddy(cmbVariable);
 	
@@ -120,7 +121,7 @@ VariableEditorDialog::VariableEditorDialog(CTVariable* _ctVariable, const QStrin
 	QLabel* labComment = new QLabel(i18n("Co&mment:"), this);
 	layout->addWidget(labComment, ++layoutPosition, 0, Qt::AlignLeft);
 
-	teComment = new QLineEdit(this);
+	teComment = KCronHelper::createCommentEdit(this);
 	layout->addWidget(teComment, layoutPosition, 1);
 	labComment->setBuddy(teComment);
 
@@ -175,7 +176,7 @@ void VariableEditorDialog::slotEnabled() {
 void VariableEditorDialog::slotOk() {
 	ctVariable->variable = cmbVariable->currentText();
 	ctVariable->value = leValue->text();
-	ctVariable->comment = teComment->text().replace('\n',' ').replace('\r',' ');
+	ctVariable->comment = teComment->toPlainText();
 	ctVariable->enabled = chkEnabled->isChecked();
 	
 	// save work in process
@@ -187,27 +188,11 @@ void VariableEditorDialog::slotOk() {
 }
 
 void VariableEditorDialog::slotWizard() {
-	QString variable = cmbVariable->currentText();
-	if (variable == "HOME") {
-		detailsIcon->setPixmap(KCronIcons::home(KCronIcons::Small));
-		details->setText(i18n("Override default home folder."));
-	}
-	else if (variable == "MAILTO") {
-		detailsIcon->setPixmap(KCronIcons::mail(KCronIcons::Small));
-		details->setText(i18n("Email output to specified account."));
-	}
-	else if (variable == "SHELL") {
-		detailsIcon->setPixmap(KCronIcons::shell(KCronIcons::Small));
-		details->setText(i18n("Override default shell."));
-	}
-	else if (variable == "PATH") {
-		detailsIcon->setPixmap(KCronIcons::path(KCronIcons::Small));
-		details->setText(i18n("Folders to search for program files."));
-	}
-	else {
-		detailsIcon->setPixmap(KCronIcons::variable(KCronIcons::Small));
-		details->setText(i18n("Local Variable"));
-	}
+	CTVariable tempVariable(*ctVariable);
+	tempVariable.variable = cmbVariable->currentText();
+	
+	detailsIcon->setPixmap(tempVariable.variableIcon());
+	details->setText(tempVariable.information());
 
 	bool error = false;
 

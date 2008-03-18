@@ -20,6 +20,8 @@
 class VariableWidget;
 class CTVariable;
 
+class VariablesWidgetPrivate;
+
 /**
  * QListViewItem of a "tasks" folder.
  */
@@ -32,6 +34,8 @@ public:
 	 * Construct tasks folder from branch.
 	 */
 	VariablesWidget(CrontabWidget* crontabWidget);
+	
+	virtual ~VariablesWidget();
 
 	QList<VariableWidget*> selectedVariablesWidget() const;
 	
@@ -41,6 +45,19 @@ public:
 	
 	bool needUserColumn();
 
+	/** 
+	 * Enables/disables modification buttons
+	 */
+	void toggleModificationActions(bool enabled);
+	
+	/** 
+	 * Enables/disables new entry actions
+	 */
+	void toggleNewEntryAction(bool enabled);
+
+signals:
+	void variableModified(bool);
+	
 public slots:
 	void modifySelection();
 	
@@ -53,14 +70,21 @@ public slots:
 	
 	void addVariable(CTVariable* variable);
 
+	void changeCurrentSelection();
+
 protected slots:
 	void modifySelection(QTreeWidgetItem* item, int position);
-	
+
 private:
 	void refreshHeaders();
 	
 	int statusColumnIndex();
+	
+	void setupActions();
+	
+	void prepareContextualMenu();
 
+	VariablesWidgetPrivate* const d;
 };
 
 #endif // VARIABLES_WIDGET_H

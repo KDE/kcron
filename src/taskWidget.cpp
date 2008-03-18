@@ -43,7 +43,7 @@ void TaskWidget::refresh() {
 	setText(column++, ctTask->schedulingCronFormat());
 	
 	setText(column, ctTask->command);
-	setIcon(column++, findIcon());
+	setIcon(column++, ctTask->commandIcon());
 
 	if (ctTask->enabled) {
 		setText(column, i18n("Enabled"));
@@ -56,25 +56,6 @@ void TaskWidget::refresh() {
 	setText(column++, ctTask->comment);
 	setText(column++, ctTask->describe());
 
-}
-
-QIcon TaskWidget::findIcon() const {
-
-	QString qsCommand = ctTask->command;
-
-	// qsCommand broken down this way to split off qsCommand attributes
-	int firstSpace(qsCommand.indexOf(" "));
-	if (firstSpace > 0)
-		qsCommand = qsCommand.left(firstSpace);
-	int lastSlash(qsCommand.lastIndexOf("/"));
-	if (lastSlash > 0)
-		qsCommand = qsCommand.right(qsCommand.size() - lastSlash - 1);
-
-	QPixmap qpIcon = SmallIcon(qsCommand);
-	if (qpIcon.isNull())
-		qpIcon = KCronIcons::task(KCronIcons::Small);
-
-	return QIcon(qpIcon);
 }
 
 void TaskWidget::toggleEnable() {

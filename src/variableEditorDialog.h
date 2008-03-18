@@ -84,7 +84,7 @@ private:
 	
 	QLineEdit* leValue;
 
-	QLineEdit* teComment;
+	QTextEdit* teComment;
 
 	QCheckBox* chkEnabled;
 	

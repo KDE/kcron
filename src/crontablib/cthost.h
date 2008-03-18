@@ -15,9 +15,13 @@
 #include <QString>
 #include <QList>
 
+#include "ctSaveStatus.h"
+
 class CTTask;
 class CTVariable;
 class CTCron;
+class CTInitializationError;
+
 struct passwd;
 
 /**
@@ -37,7 +41,7 @@ public:
 	 * Constructs the user(s), scheduled tasks, and environment variables
 	 * from crontab files.
 	 */
-	CTHost(const QString& cronBinary);
+	CTHost(const QString& cronBinary, CTInitializationError& ctInitializationError);
 
 	/**
 	 * Destroys the user(s), scheduled tasks, and environment variable
@@ -48,8 +52,9 @@ public:
 
 	/**
 	 * Apply changes.
+	 * return an empty string if no problem
 	 */
-	void save();
+	CTSaveStatus save();
 
 	/**
 	 * Cancel changes.
@@ -60,22 +65,6 @@ public:
 	 * Indicates whether or not dirty.
 	 */
 	bool isDirty();
-
-	/**
-	 * Indicates an error has occurred.
-	 */
-	bool isError() {
-		return !error.isEmpty();
-	}
-
-	/**
-	 * Error message
-	 */
-	QString errorMessage() {
-		QString r = error;
-		error = QString();
-		return r;
-	}
 	
 	/**
 	 * Indicates whether or not the user is the root user.
@@ -110,21 +99,19 @@ private:
 	/**
 	 * Assignment not allowed
 	 */
-	void operator =(const CTHost& source);
+	CTHost& operator =(const CTHost& source);
 
 	/**
 	 * Factory create a cron table.  Appends to the end of cron.
 	 */
 	CTCron* createSystemCron();
 	CTCron* createCurrentUserCron();
-	CTCron* createCTCron(const struct passwd* password);
+	QString createCTCron(const struct passwd* password);
 
 	/**
 	 * Check /etc/cron.allow, /etc/cron.deny
 	 */
 	bool allowDeny(char *name);
-
-	QString error;
 
 	QString crontabBinary;
 };

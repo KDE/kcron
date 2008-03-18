@@ -28,8 +28,16 @@
 #include "logging.h"
 
 CTGlobalCron::CTGlobalCron(CTHost* _ctHost) :
-	CTCron(i18n("All users")) {
+	CTCron() {
+		
+	logDebug() << "Initializing CTGlobalCron" << endl;
 	
+	d->multiUserCron = true;
+	d->systemCron = false;
+	d->currentUserCron = false;
+
+	d->userLogin = i18n("All users");
+		
 	ctHost = _ctHost;
 }
 

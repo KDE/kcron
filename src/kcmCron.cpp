@@ -28,12 +28,9 @@
 #include <kmessagebox.h>
 #include <kconfig.h>
 #include <klocale.h>
-#include <kstandardaction.h>
-#include <kaction.h>
 #include <kiconloader.h>
 #include <kmenu.h>
 #include <kstatusbar.h>
-#include <kactioncollection.h>
 #include <ktoggleaction.h>
 #include <kxmlguifactory.h>
 #include <kglobal.h>
@@ -47,7 +44,7 @@
 #include "cttask.h"
 #include "ctcron.h"
 #include "cthost.h"
-
+#include "ctInitializationError.h"
 #include "logging.h"
 
 typedef KGenericFactory<KCMCron, QWidget> KCMCronFactory;
@@ -60,27 +57,12 @@ public:
 	 * Main GUI view/working area.
 	 */
 	CrontabWidget* crontabWidget;
-
-	KActionCollection* actionCollection;
 	
 	/**
 	 * Document object, here crotab enries.
 	 */
 	CTHost* ctHost;
 
-	QAction* cutAction;
-	QAction* copyAction;
-	QAction* pasteAction;
-
-	QAction* newTaskAction;
-
-	QAction* newVariableAction;
-
-	QAction* modifyAction;
-
-	QAction* deleteAction;
-
-	QAction* runNowAction;
 };
 
 
@@ -89,9 +71,7 @@ KCMCron::KCMCron(QWidget* parent, const QStringList& /*args*/) :
 	KCModule(KCMCronFactory::componentData(), parent),
 	d(new KCMCronPrivate()) {
 
-	logDebug() << "KCMCRON CONSTRUCTOR !!!!!!!!!!!!!" << endl;
-	// TODO : MASSIVE TASK : add emit changed(true) when something changes!
-	
+
 	KAboutData* aboutData = new KAboutData("kcm_cron", 0, ki18n("Task Scheduler"),
 			KDE_VERSION_STRING, ki18n("KDE Task Scheduler"), KAboutData::License_GPL, ki18n("(c) 2008, Nicolas Ternisien\n(c) 1999-2000, Gary Meyer"));
 
@@ -103,36 +83,24 @@ KCMCron::KCMCron(QWidget* parent, const QStringList& /*args*/) :
 
 	setAboutData(aboutData);
 
-	d->actionCollection = new KActionCollection(this, KCMCronFactory::componentData());
-	
-	//setWindowIcon(KCronIcons::application(KCronIcons::Small));
-
-	//setCaption(i18n("Task Scheduler"));
-
-	/**
-	 * Path to the crontab binary
-	 * TODO: Change this to an header or something really easy to modify
-	 */
-	const QString CRONTAB_BINARY = "crontab";
 
 	// Initialize document.
-	d->ctHost = new CTHost(CRONTAB_BINARY);
+	CTInitializationError ctInitializationError;
+	d->ctHost = new CTHost(findCrontabBinary(), ctInitializationError);
+	if (ctInitializationError.hasErrorMessage()) {
+		KMessageBox::error(this, i18n("The following error occurred while initializing KCron:"
+			"\n\n%1\n\nKCron will now exit.\n", ctInitializationError.errorMessage()));
+	}
+	
 	d->crontabWidget = new CrontabWidget(this, d->ctHost);
 	
 	logDebug() << "Crontab Widget initialized" << endl;
-
-	connect(d->crontabWidget, SIGNAL(modificationActionsToggled(bool)), this, SLOT(toggleModificationActions(bool)));
-	connect(d->crontabWidget, SIGNAL(pasteActionToggled(bool)), this, SLOT(togglePasteAction(bool)));
-	connect(d->crontabWidget, SIGNAL(runNowActionToggled(bool)), this, SLOT(toggleRunNowActions(bool)));
-	connect(d->crontabWidget, SIGNAL(newEntryActionsToggled(bool)), this, SLOT(toggleNewEntryActions(bool)));
 	
-
-	// Call inits to invoke all other construction parts.
-	setupActions();
-
+	connect(d->crontabWidget->tasksWidget(), SIGNAL(taskModified(bool)), this, SIGNAL(changed(bool)));
+	connect(d->crontabWidget->variablesWidget(), SIGNAL(variableModified(bool)), this, SIGNAL(changed(bool)));
+	
 	// Initialize view.
 	QVBoxLayout* layout = new QVBoxLayout(this);
-	this->setLayout(layout);
 	
 	layout->addWidget(d->crontabWidget);
 	
@@ -140,10 +108,11 @@ KCMCron::KCMCron(QWidget* parent, const QStringList& /*args*/) :
 
 }
 
+QString KCMCron::findCrontabBinary() {
+	return CRONTAB_BINARY;
+}
+
 KCMCron::~KCMCron() {
-	logDebug() << "KCMCRON DESTRUCTOR !!!!!!!!!!!!!" << endl;
-
-
 	delete d->crontabWidget;
 	delete d->ctHost;
 
@@ -151,39 +120,29 @@ KCMCron::~KCMCron() {
 }
 
 void KCMCron::load() {
-	logDebug() << "KCMCRON load !!!!!!!!!!!!!" << endl;
+	logDebug() << "Calling load" << endl;
 
 	d->ctHost->cancel();
 }
 
 void KCMCron::save() {
-	logDebug() << "KCMCRON save !!!!!!!!!!!!!" << endl;
-	slotStatusMessage(i18nc("Saving the file to the hard drive", "Saving..."));
-	d->ctHost->save();
-	slotStatusMessage(i18nc("Ready for user input", "Ready."));
-	if (d->ctHost->isError()) {
-		KMessageBox::error(this, d->ctHost->errorMessage());
+	logDebug() << "Saving crontab..." << endl;
+	
+	CTSaveStatus saveStatus = d->ctHost->save();
+	if (saveStatus.isError() == true) {
+		KMessageBox::detailedError(this, saveStatus.errorMessage(), saveStatus.detailErrorMessage());
 	}
 
 }
 
 void KCMCron::defaults() {
-	logDebug() << "KCMCRON defaults !!!!!!!!!!!!!" << endl;
+	logDebug() << "Loading defaults" << endl;
 	
 	d->ctHost->cancel();
 }
 
 
-KActionCollection* KCMCron::actionCollection() {
-	return d->actionCollection;
-}
-
 bool KCMCron::init() {
-	if (d->ctHost->isError()) {
-		KMessageBox::error(this, i18n("The following error occurred while initializing KCron:"
-			"\n\n%1\n\nKCron will now exit.\n", d->ctHost->errorMessage()));
-		return false;
-	}
 
 	// Display greeting screen.
 	// if there currently are no scheduled tasks...
@@ -205,188 +164,6 @@ bool KCMCron::init() {
 
 CTHost* KCMCron::ctHost() const {
 	return d->ctHost;
-}
-
-void KCMCron::setupActions() {
-	logDebug() << "Setup actions" << endl;
-
-	//TODO Convert those actions into right buttons
-	
-	/**
-
-<!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
-<kpartgui name="kcron" version="1">
-<MenuBar>
-  <Menu name="edit">
-    <Separator/>
-    <Action name="edit_new_task" />
-    <Action name="edit_new_variable" />
-    <Separator/>
-    <Action name="edit_modify" />
-    <Action name="edit_delete" />
-    <Separator/>
-    <Action name="edit_run" />
-  </Menu>
-  <Menu name="settings">
-    <Action name="show_toolbar" />
-    <Action name="show_statusbar" />
-  </Menu>
-</MenuBar>
-
-<ToolBar name="mainToolBar">
-  <Action name="edit_new_task" />
-  <Action name="edit_new_variable" />
-  <Separator/>
-  <Action name="edit_modify" />
-  <Action name="edit_delete" />
-</ToolBar>
-
-</kpartgui>
-
-
-	*/
-	
-	//File Menu
-	KStandardAction::print(d->crontabWidget, SLOT(print()), actionCollection());
-
-	//Edit menu
-	d->cutAction = KStandardAction::cut(d->crontabWidget, SLOT(cut()), actionCollection());
-	d->copyAction = KStandardAction::copy(d->crontabWidget, SLOT(copy()), actionCollection());
-	d->pasteAction = KStandardAction::paste(d->crontabWidget, SLOT(paste()), actionCollection());
-	togglePasteAction(false);
-
-	d->newTaskAction = actionCollection()->addAction("edit_new_task");
-	d->newTaskAction->setIcon(KIcon("document-new"));
-	d->newTaskAction->setText(i18nc("Adds a new task", "New &Task...") );
-	connect(d->newTaskAction, SIGNAL(triggered(bool)), d->crontabWidget->tasksWidget(), SLOT(createTask()));
-
-	d->newVariableAction = actionCollection()->addAction("edit_new_variable");
-	d->newVariableAction->setIcon(KIcon("document-new"));
-	d->newVariableAction->setText(i18nc("Adds a new variable", "New &Variable...") );
-	connect(d->newVariableAction, SIGNAL(triggered(bool)), d->crontabWidget->variablesWidget(), SLOT(createVariable()));
-
-	d->modifyAction = actionCollection()->addAction("edit_modify");
-	d->modifyAction->setText(i18n("M&odify...") );
-	d->modifyAction->setIcon(KIcon("document-open") );
-	connect(d->modifyAction, SIGNAL(triggered(bool)), d->crontabWidget->tasksWidget(), SLOT(modifySelection()));
-	connect(d->modifyAction, SIGNAL(triggered(bool)), d->crontabWidget->variablesWidget(), SLOT(modifySelection()));
-
-	d->deleteAction = actionCollection()->addAction("edit_delete");
-	d->deleteAction->setText(i18n("&Delete") );
-	d->deleteAction->setIcon(KIcon("edit-delete") );
-	connect(d->deleteAction, SIGNAL(triggered(bool)), d->crontabWidget->tasksWidget(), SLOT(deleteSelection()));
-	connect(d->deleteAction, SIGNAL(triggered(bool)), d->crontabWidget->variablesWidget(), SLOT(deleteSelection()));
-
-	d->runNowAction = actionCollection()->addAction("edit_run");
-	d->runNowAction->setText(i18n("&Run Now") );
-	d->runNowAction->setIcon(KIcon("system-run"));
-	connect(d->runNowAction, SIGNAL(triggered(bool)), d->crontabWidget->tasksWidget(), SLOT(runTaskNow()));
-
-	//TODO Enable this when the bug in actionHighlighted of KActionCollection will be fixed.
-	//connect(actionCollection(), SIGNAL(actionHighlighted(QAction*)), this, SLOT(displayActionInformation(QAction*)));
-	
-	prepareTasksWidgetContextualMenu();
-	prepareVariablesWidgetContextualMenu();
-	
-	logDebug() << "Actions initialized" << endl;
-
-}
-
-void KCMCron::prepareTasksWidgetContextualMenu() {
-
-	d->crontabWidget->tasksWidget()->treeWidget()->addAction(d->newTaskAction);
-
-	d->crontabWidget->tasksWidget()->treeWidget()->addAction(createSeparator());
-
-	d->crontabWidget->tasksWidget()->treeWidget()->addAction(d->modifyAction);
-	d->crontabWidget->tasksWidget()->treeWidget()->addAction(d->deleteAction);
-
-	d->crontabWidget->tasksWidget()->treeWidget()->addAction(createSeparator());
-
-	d->crontabWidget->tasksWidget()->treeWidget()->addAction(d->cutAction);
-	d->crontabWidget->tasksWidget()->treeWidget()->addAction(d->copyAction);
-	d->crontabWidget->tasksWidget()->treeWidget()->addAction(d->pasteAction);
-
-	d->crontabWidget->tasksWidget()->treeWidget()->addAction(createSeparator());
-
-	d->crontabWidget->tasksWidget()->treeWidget()->addAction(d->runNowAction);
-}
-
-void KCMCron::prepareVariablesWidgetContextualMenu() {
-
-	d->crontabWidget->variablesWidget()->treeWidget()->addAction(d->newVariableAction);
-
-	d->crontabWidget->variablesWidget()->treeWidget()->addAction(createSeparator());
-
-	d->crontabWidget->variablesWidget()->treeWidget()->addAction(d->modifyAction);
-	d->crontabWidget->variablesWidget()->treeWidget()->addAction(d->deleteAction);
-
-	d->crontabWidget->variablesWidget()->treeWidget()->addAction(createSeparator());
-
-	d->crontabWidget->variablesWidget()->treeWidget()->addAction(d->cutAction);
-	d->crontabWidget->variablesWidget()->treeWidget()->addAction(d->copyAction);
-	d->crontabWidget->variablesWidget()->treeWidget()->addAction(d->pasteAction);
-
-}
-
-QAction* KCMCron::createSeparator() {
-	QAction* action = new QAction(this);
-	action->setSeparator(true);
-
-	return action;
-}
-
-void KCMCron::slotStatusMessage(const QString& /*text*/) {
-	//statusBar()->showMessage(text);
-	//setCaption(i18n("Task Scheduler"), d->ctHost->isDirty());
-}
-
-void KCMCron::slotStatusHelpMessage(const QString& /*text*/) {
-	//statusBar()->showMessage(text, 2000);
-}
-
-void KCMCron::displayActionInformation(QAction* action) {
-	
-	/**
-	 * TODO Convert this to setTooltip and setWhatThis()
-	 */
-	if (action == d->newTaskAction) {
-		slotStatusHelpMessage(i18n("Create a new task."));
-	}
-	else if (action == d->newVariableAction) {
-		slotStatusHelpMessage(i18n("Create a new variable."));
-	}
-	else if (action == d->modifyAction) {
-		slotStatusHelpMessage(i18n("Edit the selected task or variable."));
-	}
-	else if (action == d->deleteAction) {
-		slotStatusHelpMessage(i18n("Delete the selected task or variable."));
-	}
-	else if (action == d->runNowAction) {
-		slotStatusHelpMessage(i18n("Run the selected task now."));
-	}
-}
-
-void KCMCron::toggleModificationActions(bool state) {
-	d->cutAction->setEnabled(state);
-	d->copyAction->setEnabled(state);
-	d->modifyAction->setEnabled(state);
-	d->deleteAction->setEnabled(state);
-
-}
-
-void KCMCron::togglePasteAction(bool state) {
-	logDebug() << "Set paste enabled " << state << endl;
-	d->pasteAction->setEnabled(state);
-}
-
-void KCMCron::toggleRunNowActions(bool state) {
-	d->runNowAction->setEnabled(state);
-}
-
-void KCMCron::toggleNewEntryActions(bool state) {
-	d->newTaskAction->setEnabled(state);
-	d->newVariableAction->setEnabled(state);
 }
 
 #include "kcmCron.moc"

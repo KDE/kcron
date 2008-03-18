@@ -30,6 +30,9 @@
 #include <kglobal.h>
 #include <kicon.h>
 #include <kiconloader.h>
+#include <kaction.h>
+#include <kstandardaction.h>
+#include <kactioncollection.h>
 
 #include "cthost.h"
 #include "ctcron.h"
@@ -37,6 +40,7 @@
 #include "cttask.h"
 #include "ctGlobalCron.h"
 
+#include "crontabPrinter.h"
 #include "kcronIcons.h"
 #include "tasksWidget.h"
 #include "taskWidget.h"
@@ -45,7 +49,6 @@
 #include "variableWidget.h"
 
 #include "kcmCron.h"
-#include "crontabPrinter.h"
 
 #include "logging.h"
 
@@ -68,6 +71,10 @@ public:
 	 * Tree view of the crontab tasks.
 	 */
 	VariablesWidget* variablesWidget;
+	
+	QAction* cutAction;
+	QAction* copyAction;
+	QAction* pasteAction;
 
 	/**
 	 * Clipboard tasks.
@@ -90,6 +97,7 @@ public:
 	 */ 
 	CTGlobalCron* ctGlobalCron;
 
+
 };
 
 CrontabWidget::CrontabWidget(QWidget* parent, CTHost* ctHost) :
@@ -99,13 +107,19 @@ CrontabWidget::CrontabWidget(QWidget* parent, CTHost* ctHost) :
 	d->variablesWidget = NULL;
 
 	d->ctHost = ctHost;
-	d->ctGlobalCron = new CTGlobalCron(d->ctHost);
+	
+	if (d->ctHost->isRootUser()) {
+		d->ctGlobalCron = new CTGlobalCron(d->ctHost);
+	}
+	else {
+		d->ctGlobalCron = NULL;
+	}
+
+	setupActions();
 
 	initialize();
-
+	
 	logDebug() << "Clipboard Status " << hasClipboardContent() << endl;
-	emit modificationActionsToggled(false);
-	emit runNowActionToggled(false);
 	
 	d->tasksWidget->setFocus();
 
@@ -115,6 +129,18 @@ CrontabWidget::CrontabWidget(QWidget* parent, CTHost* ctHost) :
 		item->setSelected(true);
 	}
 
+	d->tasksWidget->changeCurrentSelection();
+	d->variablesWidget->changeCurrentSelection();
+
+}
+
+CrontabWidget::~CrontabWidget() {
+	delete d->tasksWidget;
+	delete d->variablesWidget;
+
+	delete d->ctGlobalCron;
+	
+	delete d;
 }
 
 bool CrontabWidget::hasClipboardContent() {
@@ -128,7 +154,7 @@ bool CrontabWidget::hasClipboardContent() {
 }
 
 QHBoxLayout* CrontabWidget::createCronSelector() {
-	QHBoxLayout* layout = new QHBoxLayout(this);
+	QHBoxLayout* layout = new QHBoxLayout();
 	layout->setSpacing(4);
 
 	QLabel* cronSelectorIcon = new QLabel(this);
@@ -207,22 +233,8 @@ void CrontabWidget::initialize() {
 	splitter->addWidget(d->variablesWidget);
 	splitter->setStretchFactor(1, 1);
 
-	logDebug() << "Variables list created" << endl;
-
-	connect(d->tasksWidget->treeWidget(), SIGNAL(itemSelectionChanged()), this, SLOT(slotSetCurrentItem()));
-	connect(d->variablesWidget->treeWidget(), SIGNAL(itemSelectionChanged()), this, SLOT(slotSetCurrentItem()));
-
-	logDebug() << "View initialized" << endl;
-
 	refreshCron();
 
-}
-
-CrontabWidget::~CrontabWidget() {
-	delete d->tasksWidget;
-	delete d->variablesWidget;
-
-	delete d;
 }
 
 void CrontabWidget::refreshCron() {
@@ -233,66 +245,27 @@ void CrontabWidget::refreshCron() {
 	d->variablesWidget->refreshVariables(ctCron);
 
 	if (ctCron->isMultiUserCron() && ctHost()->isRootUser()==false) {
-		d->tasksWidget->setEnabled(false);
-		d->variablesWidget->setEnabled(false);
+		logDebug() << "Disabling view..." << endl;
+		
+		d->tasksWidget->treeWidget()->setEnabled(false);
+		d->variablesWidget->treeWidget()->setEnabled(false);
 
-		emit newEntryActionsToggled(false);
-		emit modificationActionsToggled(false);
-		emit runNowActionToggled(false);
-		emit pasteActionToggled(false);
+		toggleNewEntryActions(false);
+		toggleModificationActions(false);
+		togglePasteAction(false);
+		d->tasksWidget->toggleRunNowAction(false);
 	}
 	else {
-		d->tasksWidget->setEnabled(true);
-		d->variablesWidget->setEnabled(true);
+		logDebug() << "Enabling view..." << endl;
+		
+		d->tasksWidget->treeWidget()->setEnabled(true);
+		d->variablesWidget->treeWidget()->setEnabled(true);
 
-		emit newEntryActionsToggled(true);
-		emit pasteActionToggled(hasClipboardContent());
+		toggleNewEntryActions(true);
+		togglePasteAction(hasClipboardContent());
 	}
 }
 
-void CrontabWidget::slotSetCurrentItem() {
-	if (d->tasksWidget->treeWidget()->hasFocus()) {
-		QList<QTreeWidgetItem*> variablesItems = d->variablesWidget->treeWidget()->selectedItems();
-		foreach(QTreeWidgetItem* item, variablesItems) {
-			item->setSelected(false);
-		}
-
-	} else {
-		QList<QTreeWidgetItem*> tasksItems = d->tasksWidget->treeWidget()->selectedItems();
-		foreach(QTreeWidgetItem* item, tasksItems) {
-			item->setSelected(false);
-		}
-
-	}
-
-	TaskWidget* taskWidget = d->tasksWidget->firstSelectedTaskWidget();
-	VariableWidget* variableWidget = d->variablesWidget->firstSelectedVariableWidget();
-
-	if (taskWidget!=NULL || variableWidget!=NULL) {
-		emit modificationActionsToggled(true);
-	}
-
-	if (taskWidget==NULL)
-		emit runNowActionToggled(false);
-	else
-		emit runNowActionToggled(true);
-
-}
-
-void CrontabWidget::print() {
-
-	CrontabPrinter printer(this);
-
-	if (printer.start() == false) {
-		logDebug() << "Unable to start printer" << endl;
-		return;
-	}
-	printer.printTasks();
-	printer.printVariables();
-
-	printer.finish();
-
-}
 
 void CrontabWidget::copy() {
 	foreach(CTTask* task, d->clipboardTasks) {
@@ -335,7 +308,7 @@ void CrontabWidget::copy() {
 	QApplication::clipboard()->setText(clipboardText, QClipboard::Selection);
 
 	logDebug() << "Clipboard Status " << hasClipboardContent() << endl;
-	emit pasteActionToggled(hasClipboardContent());
+	togglePasteAction(hasClipboardContent());
 }
 
 void CrontabWidget::cut() {
@@ -402,6 +375,61 @@ void CrontabWidget::checkOtherUsers() {
 	d->otherUserCronRadio->setChecked(true);
 
 	refreshCron();
+}
+
+void CrontabWidget::setupActions() {
+	logDebug() << "Setup actions" << endl;
+
+	//Edit menu
+	d->cutAction = KStandardAction::cut(this, SLOT(cut()), this);
+	d->copyAction = KStandardAction::copy(this, SLOT(copy()), this);
+	d->pasteAction = KStandardAction::paste(this, SLOT(paste()), this);
+	togglePasteAction(false);
+
+	logDebug() << "Actions initialized" << endl;
+
+}
+
+
+QList<QAction*> CrontabWidget::cutCopyPasteActions() {
+	QList<QAction*> actions;
+	actions.append(d->cutAction);
+	actions.append(d->copyAction);
+	actions.append(d->pasteAction);
+	
+	return actions;
+}
+
+void CrontabWidget::togglePasteAction(bool state) {
+	d->pasteAction->setEnabled(state);
+}
+
+void CrontabWidget::toggleModificationActions(bool state) {
+	d->cutAction->setEnabled(state);
+	d->copyAction->setEnabled(state);
+
+	d->tasksWidget->toggleModificationActions(state);
+	d->variablesWidget->toggleModificationActions(state);
+}
+
+void CrontabWidget::toggleNewEntryActions(bool state) {
+	d->tasksWidget->toggleNewEntryAction(state);
+	d->variablesWidget->toggleNewEntryAction(state);
+}
+
+void CrontabWidget::print() {
+
+	CrontabPrinter printer(this);
+
+	if (printer.start() == false) {
+		logDebug() << "Unable to start printer" << endl;
+		return;
+	}
+	printer.printTasks();
+	printer.printVariables();
+
+	printer.finish();
+
 }
 
 #include "crontabWidget.moc"

@@ -13,6 +13,9 @@
 #define CTTASK_H
 
 #include <QString>
+#include <QPair>
+#include <QStringList>
+#include <QPixmap>
 
 #include "ctmonth.h"
 #include "ctdom.h"
@@ -40,7 +43,7 @@ public:
 	/**
 	 * Assignment operator.
 	 */
-	void operator =(const CTTask& source);
+	CTTask& operator =(const CTTask& source);
 
 	/**
 	 * Tokenizes scheduled task to crontab format.
@@ -78,6 +81,18 @@ public:
 	bool isSystemCrontab() const;
 	
 	void setSystemCrontab(bool systemCrontab);
+
+	QPixmap commandIcon() const;
+	
+	/**
+	 * Internal methods
+	 */
+	QPair<QString, bool> unQuoteCommand() const;
+	QStringList separatePathCommand(const QString& command, bool quoted) const;
+	QString decryptBinaryCommand(const QString& command) const;
+	
+	QString completeCommandPath() const;
+
 
 	CTMonth month;
 	CTDayOfMonth dayOfMonth;

@@ -30,32 +30,8 @@ QPixmap KCronIcons::application(KCronIcons::IconSize size) {
 	return getIcon("kcron", size);
 }
 
-QPixmap KCronIcons::system(KCronIcons::IconSize size) {
-	return getIcon("utilities-terminal", size);
-}
-
-QPixmap KCronIcons::user(KCronIcons::IconSize size) {
-	return getIcon("user-identity", size);
-}
-
 QPixmap KCronIcons::variable(KCronIcons::IconSize size) {
 	return getIcon("text", size);
-}
-
-QPixmap KCronIcons::mail(KCronIcons::IconSize size) {
-	return getIcon("mail-message", size);
-}
-
-QPixmap KCronIcons::shell(KCronIcons::IconSize size) {
-	return getIcon("utilities-terminal", size);
-}
-
-QPixmap KCronIcons::home(KCronIcons::IconSize size) {
-	return getIcon("go-home", size);
-}
-
-QPixmap KCronIcons::path(KCronIcons::IconSize size) {
-	return getIcon("folder", size);
 }
 
 QPixmap KCronIcons::task(KCronIcons::IconSize size) {
