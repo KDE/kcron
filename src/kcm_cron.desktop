@@ -12,6 +12,7 @@ X-KDE-ParentApp=kcontrol
 X-KDE-System-Settings-Parent-Category=system
 
 Name=Task Scheduler
+Name[ca]=Planificador de tasques
 Name[da]=Opgaveskemalægger
 Name[ga]=Sceidealóir na dTascanna
 Name[pt]=Escalonador de Tarefas
@@ -22,6 +23,7 @@ Name[x-test]=xxTask Schedulerxx
 Name[zh_CN]=任务调度程序
 Name[zh_TW]=工作排程器
 Comment=Configure and schedule tasks
+Comment[ca]=Configura i planifica les tasques
 Comment[da]=Indstil og skemalæg opgaver
 Comment[ga]=Cumraigh agus sceideal tascanna
 Comment[pt]=Configurar e agendar tarefas
