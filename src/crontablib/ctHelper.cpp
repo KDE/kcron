@@ -25,7 +25,7 @@ QString CTHelper::exportComment(const QString& comment) {
 	}
 
 	QStringList lines = comment.split("\n");
-	foreach(QString line, lines) {
+	foreach(const QString &line, lines) {
 		exportComment += "#" + line + "\n";
 	}
 
