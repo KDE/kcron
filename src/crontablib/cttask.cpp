@@ -334,7 +334,7 @@ QString CTTask::createTimeFormat() const {
 	if (hour.isAllEnabled()) {
 		int minutePeriod = minute.findPeriod();
 		if (minutePeriod == 1)
-			return i18n("Every minutes");
+			return i18n("Every minute");
 		else if (minutePeriod != 0)
 			return i18n("Every %1 minutes", minutePeriod);
 	}
