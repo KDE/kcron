@@ -78,7 +78,9 @@ CrontabPrinter::~CrontabPrinter() {
 bool CrontabPrinter::start() {
 	logDebug() << "Printing selection..." << endl;
 
-	d->printer = new QPrinter();
+        if (d->printer == NULL) {
+            d->printer = new QPrinter();
+        }
 
 	// do some printer initialization
 	d->printer->setFullPage( true);
@@ -89,12 +91,15 @@ bool CrontabPrinter::start() {
 	*/
 
 	// initialize the printer using the print dialog
-	QPrintDialog printDialog(d->printer, d->crontabWidget);
-	printDialog.setEnabledOptions(QAbstractPrintDialog::PrintToFile);
-	if (printDialog.exec() == QDialog::Rejected) {
+	QPrintDialog *printDialog = KdePrint::createPrintDialog(d->printer, d->crontabWidget);
+	printDialog->setEnabledOptions(QAbstractPrintDialog::PrintToFile);
+	if (printDialog->exec() == QDialog::Rejected) {
 		logDebug() << "Printing canceled" << endl;
+		delete printDialog;
 		return false;
 	}
+
+	delete printDialog;
 
 	// create a painter to paint on the printer object
 	d->painter = new QPainter();
