@@ -31,7 +31,7 @@
 #include "kcronHelper.h"
 
 VariableEditorDialog::VariableEditorDialog(CTVariable* _ctVariable, const QString &_caption, CrontabWidget* _crontabWidget) :
-	KDialog() {
+	KDialog(_crontabWidget) {
 	
 	ctVariable = _ctVariable;
 	crontabWidget = _crontabWidget;

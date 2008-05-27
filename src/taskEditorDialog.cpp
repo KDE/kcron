@@ -55,7 +55,7 @@
  */
 
 TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption, CrontabWidget* _crontabWidget) :
-	KDialog() {
+	KDialog(_crontabWidget) {
 
 	setModal(true);
 
