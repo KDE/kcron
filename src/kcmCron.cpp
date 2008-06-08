@@ -48,7 +48,7 @@
 #include "logging.h"
 
 typedef KGenericFactory<KCMCron, QWidget> KCMCronFactory;
-K_EXPORT_COMPONENT_FACTORY( kcm_cron, KCMCronFactory("kcron.po") )
+K_EXPORT_COMPONENT_FACTORY( kcm_cron, KCMCronFactory("kcron") )
 
 class KCMCronPrivate {
 public:
