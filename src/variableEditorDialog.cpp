@@ -29,10 +29,9 @@
 
 #include "kcronIcons.h"
 #include "kcronHelper.h"
-
+#include <KDebug>
 VariableEditorDialog::VariableEditorDialog(CTVariable* _ctVariable, const QString &_caption, CrontabWidget* _crontabWidget) :
-	KDialog(_crontabWidget) {
-	
+    KDialog(_crontabWidget) {
 	ctVariable = _ctVariable;
 	crontabWidget = _crontabWidget;
 
@@ -41,8 +40,8 @@ VariableEditorDialog::VariableEditorDialog(CTVariable* _ctVariable, const QStrin
 	setButtons(Ok|Cancel);
 	setDefaultButton(Ok);
 
-	QWidget* page = new QWidget(this);
-	QGridLayout* layout = new QGridLayout();
+	QWidget* page = new QWidget;
+	QGridLayout* layout = new QGridLayout;
 	page->setLayout(layout);
 
 	layout->setMargin(0);
@@ -61,7 +60,7 @@ VariableEditorDialog::VariableEditorDialog(CTVariable* _ctVariable, const QStrin
 	titleWidget->setText(i18n("Add or modify a variable"));
 	layout->addWidget(titleWidget, layoutPosition, 0, 1, 2);
 
-	// variable
+        // variable
 	QLabel* labVariable = new QLabel(i18nc("The environmental variable name ie HOME, MAILTO etc", "&Variable:"), this);
 	layout->addWidget(labVariable, ++layoutPosition, 0, Qt::AlignLeft);
 
@@ -76,20 +75,20 @@ VariableEditorDialog::VariableEditorDialog(CTVariable* _ctVariable, const QStrin
 	cmbVariable->addItem("LD_CONFIG_PATH");
 
 	labVariable->setBuddy(cmbVariable);
-	
+
 	// details
 	QLabel* labDetails = new QLabel("", this);
 	layout->addWidget(labDetails, ++layoutPosition, 0, Qt::AlignLeft);
 
-	QHBoxLayout* detailsLayout = new QHBoxLayout(this);
+	QHBoxLayout* detailsLayout = new QHBoxLayout;
 	detailsIcon = new QLabel(this);
 	detailsLayout->addWidget(detailsIcon);
 
 	details = new QLabel(this);
 	detailsLayout->addWidget(details);
-	
+
 	layout->addLayout(detailsLayout, layoutPosition, 1, Qt::AlignLeft);
-	
+
 	// value
 	QLabel* labValue = new QLabel(i18n("Va&lue:"), this);
 	layout->addWidget(labValue, ++layoutPosition, 0, Qt::AlignLeft);
@@ -104,7 +103,7 @@ VariableEditorDialog::VariableEditorDialog(CTVariable* _ctVariable, const QStrin
 	layout->addWidget(userLabel, ++layoutPosition, 0);
 
 	userCombo = new QComboBox(this);
-	
+
 	userLabel->setBuddy(userCombo);
 	layout->addWidget(userCombo, layoutPosition, 1);
 
@@ -145,6 +144,7 @@ VariableEditorDialog::VariableEditorDialog(CTVariable* _ctVariable, const QStrin
 	connect(leValue, SIGNAL(textEdited(const QString&)), SLOT(slotWizard()));
 	connect(this, SIGNAL(okClicked()), this, SLOT(slotOk()));
 	connect(chkEnabled, SIGNAL(clicked()), SLOT(slotEnabled()));
+
 }
 
 VariableEditorDialog::~VariableEditorDialog() {
@@ -178,19 +178,19 @@ void VariableEditorDialog::slotOk() {
 	ctVariable->value = leValue->text();
 	ctVariable->comment = teComment->toPlainText();
 	ctVariable->enabled = chkEnabled->isChecked();
-	
+
 	// save work in process
 	if (crontabWidget->variablesWidget()->needUserColumn()) {
 		ctVariable->userLogin = userCombo->currentText();
 	}
-	
+
 	close();
 }
 
 void VariableEditorDialog::slotWizard() {
 	CTVariable tempVariable(*ctVariable);
 	tempVariable.variable = cmbVariable->currentText();
-	
+
 	detailsIcon->setPixmap(tempVariable.variableIcon());
 	details->setText(tempVariable.information());
 
