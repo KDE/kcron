@@ -140,7 +140,7 @@ void CrontabPrinter::printTasks() {
 	taskHeaders << i18n("Scheduling") << i18n("Command") << i18n("Description");
 	drawHeader(tasksColumnWidths, taskHeaders);
 	
-	foreach(QStringList contents, tasksContent) {
+	foreach(const QStringList& contents, tasksContent) {
 		
 		drawContentRow(tasksColumnWidths, contents);
 
@@ -237,7 +237,7 @@ void CrontabPrinter::drawContentRow(const QList<int>& columnWidths, const QStrin
 	
 	int totalWidths = 0;
 	int index=0;
-	foreach(QString content, contents) {
+	foreach(const QString& content, contents) {
 		if (index==0)
 			firstColumn = content;
 		
@@ -357,7 +357,7 @@ QList<int> CrontabPrinter::findMaxWidths(const QList<QStringList>& contents, int
 		columnWidths.append(0);
 	}
 	
-	foreach(QStringList content, contents) {
+	foreach(const QStringList& content, contents) {
 		
 		int columnIndex = 0;
 		while (columnIndex < columnWidths.count()) {
