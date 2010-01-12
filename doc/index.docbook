@@ -1,20 +1,15 @@
 <?xml version="1.0" ?>
-<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" 
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" 
 "dtd/kdex.dtd" [
-  <!ENTITY kappname "&kcron;">
-  <!ENTITY package "kdeadmin">
   <!ENTITY % English "INCLUDE" > <!-- change language only here -->
   <!ENTITY % addindex "IGNORE">
 ]>
 
-<book lang="&language;">
+<article lang="&language;">
+<title>Task Scheduler</title>
 
-<bookinfo>
-
-<title>The &kcron; Handbook</title>
-
+<articleinfo>
 <authorgroup>
-
 <author>
 <firstname>Morgan</firstname>
 <othername>N.</othername>
@@ -48,98 +43,92 @@
 <holder>&Morgan.N.Sandquist;</holder>
 </copyright>
 
-<legalnotice>&FDLNotice;</legalnotice>
-
-<date>2003-09-16</date>
-<releaseinfo>3.1.91</releaseinfo>
-
-<abstract><para>&kcron; is an application that schedules programs to be
-run.</para></abstract>
+<date>2010-01-11</date>
+<releaseinfo>&kde; 4.4</releaseinfo>
 
 <keywordset>
 <keyword>KDE</keyword>
-<keyword>kdeadmin</keyword>
-<keyword>KCron</keyword>
 <keyword>cron</keyword>
 <keyword>crontab</keyword>
 <keyword>scheduler</keyword>
 </keywordset>
 
+</articleinfo>
 
-</bookinfo>
-
-<chapter id="introduction">
+<sect1 id="introduction">
 <title>Introduction</title>
 
-<para>&kcron; is an application for scheduling programs to run in the
+<para>This is a module for scheduling programs to run in the
 background. It is a graphical user interface to <command>cron</command>,
 the &UNIX; system scheduler.</para>
 
-</chapter>
-
-<chapter id="using-kcron">
-<title>Using &kcron;</title>
-
 <important><para>Don't forget to tell your system to start the
-<filename>crond</filename> cron daemon first, or &kcron; won't
-work.</para></important>
+<filename>crond</filename> cron daemon first, or the settings in this 
+module will not work.</para></important>
 
-<sect1 id="kcron-start-up">
-<title>&kcron; Start Up</title>
+<sect2 id="kcron-start-up">
+<title>Start Up</title>
 
-<para>When &kcron; starts you will see a summarized view of existing
+<para>When you start this module you will see a summarized view of existing
 scheduled tasks and associated environment variables. If you are running
 as the root user, you will see these items for all users on the computer
-as well as the system scheduled tasks. Each of the folders can be
-expanded and contracted.</para>
-
+as well as the system scheduled tasks.</para>
+<!--admin mode-->
 <screenshot>
-<screeninfo>&kcron; at start up.</screeninfo>
+<screeninfo>start up</screeninfo>
 <mediaobject>
 <imageobject>
 <imagedata fileref="kcronstart.png" format="PNG"/></imageobject>
-<textobject><phrase>&kcron; at start up.</phrase></textobject>
+<textobject><phrase>start up</phrase></textobject>
 </mediaobject>
 </screenshot>
 
-<sect2>
+<sect3>
 <title>Scheduled Tasks</title>
 
 <para>Scheduled tasks appear under a <guilabel>Tasks</guilabel>
-folder. For each scheduled task, the following are displayed:</para>
+list. For each scheduled task, the following items are displayed:</para>
 
 <variablelist>
 
+<!-- system cron first column User=root-->
 <varlistentry>
-<term><guilabel>Name</guilabel></term>
-<listitem><para>Name to identify the scheduled task.</para></listitem>
+<term><guilabel>Scheduling</guilabel></term>
+<listitem><para>In this column either "@reboot" for task schedules at boot or
+the crontab entry is displayed.</para></listitem>
 </varlistentry>
 <varlistentry>
-<term><guilabel>Value</guilabel></term>
+<term><guilabel>Command</guilabel></term>
 <listitem><para>Program file and parameters.</para></listitem>
 </varlistentry>
 <varlistentry> 
+<term><guilabel>Status</guilabel></term>
+<listitem><para>Enabled or Disabled.</para></listitem>
+</varlistentry> 
+<varlistentry> 
 <term><guilabel>Description</guilabel></term>
+<listitem><para>A description for the task, such as its
+purpose.</para></listitem>
+</varlistentry> 
+<varlistentry>
+<term><guilabel>Scheduling Details</guilabel></term>
 <listitem><para>Natural language description of scheduled
 task.</para></listitem>
-</varlistentry> 
+</varlistentry>
 </variablelist>
 
-<para>If a task has been disabled, no program file and parameters will
-appear, and the description will be disabled.</para>
+</sect3>
 
-</sect2>
-
-<sect2>
+<sect3>
 <title>Environment Variables</title>
 
-<para>Environment variables appear under a
-<guilabel>Variables</guilabel> folder. For each environment variable,
+<para>Environment variables appear in the
+<guilabel>Environment Variables</guilabel> list. For each environment variable,
 the following are displayed: </para>
 
 <variablelist>
 <varlistentry>
-<term><guilabel>Name</guilabel></term>
+<term><guilabel>Variable</guilabel></term>
 <listitem><para>Variable name.</para></listitem>
 </varlistentry>
 <varlistentry>
@@ -147,41 +136,29 @@ the following are displayed: </para>
 <listitem><para>Variable value.</para></listitem>
 </varlistentry>
 <varlistentry>
-<term><guilabel>Description</guilabel></term>
+<term><guilabel>Status</guilabel></term>
+<listitem><para>Enabled or Disabled.</para></listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>Comment</guilabel></term>
 <listitem><para>Natural language description of variable.</para></listitem>
 </varlistentry>
 </variablelist>
 
 <para>Environment variables appearing here will override any existing
-environment variable for all scheduled tasks. If an environment variable
-has been disabled, no value will appear and the description will be
-disabled.</para>
+environment variable for all scheduled tasks.</para>
 
-<screenshot>
-<screeninfo>&kcron; main window</screeninfo>
-<mediaobject>
-<imageobject>
-<imagedata fileref="kcron.png" format="PNG"/></imageobject>
-<textobject><phrase>&kcron; main window</phrase></textobject>
-</mediaobject>
-</screenshot>
-
+</sect3>
 </sect2>
-</sect1>
 
-<sect1 id="new-task">
+<sect2 id="new-task">
 <title>Adding Scheduled Tasks</title>
 
-<para>To create a new scheduled task, first select the
-<guilabel>Tasks</guilabel> folder. Then select
-<menuchoice><guimenu>Edit</guimenu> <guimenuitem>New...</guimenuitem>
-</menuchoice>. Alternatively, you can use the
-<mousebutton>right</mousebutton> mouse button menu and choose
-<menuchoice><guimenuitem>New...</guimenuitem></menuchoice>, or simply
-press <keycombo
-action="simul">&Ctrl;<keycap>N</keycap></keycombo>.</para>
+<para>To create a new scheduled task, click the <guibutton>New Task...</guibutton>
+button. Alternatively, you can select this action from the
+<mousebutton>right</mousebutton> mouse button context menu.</para>
 
-<sect2>
+<sect3>
 <title>The <guilabel>Edit Task</guilabel> Dialog</title>
 
 <screenshot>
@@ -194,30 +171,35 @@ action="simul">&Ctrl;<keycap>N</keycap></keycombo>.</para>
 
 <variablelist>
 <varlistentry>
+<term><guilabel>Command</guilabel></term>
+<listitem><para>Enter the name of the program. You can specify either a
+relative path or absolute path. If you want to look up the program, click
+<guiicon>Browse</guiicon> icon.</para>
+</listitem> 
+</varlistentry>
+<varlistentry>
 <term><guilabel>Comment</guilabel></term>
 <listitem><para>Enter a description of the task to schedule.</para>
 </listitem> 
 </varlistentry>
 <varlistentry>
-<term><guilabel>Program</guilabel></term>
-<listitem><para>Enter the name of the program. You can specify either a
-relative path or absolute path. If you want to look up the program, click
-<guibutton>Browse...</guibutton>.</para>
-</listitem> 
-</varlistentry>
-<varlistentry>
-<term><guibutton>Enabled</guibutton></term>
+<term><guibutton>Enable this task</guibutton></term>
 <listitem><para>To enable or disable the task, select or de-select
-<guilabel>Enabled</guilabel>.</para>
+this button.</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term><guilabel>Silent</guilabel></term>
+<term><guibutton>Run at system bootup</guibutton></term>
 <listitem>
-<para>
-Turns off logging of the command and the output from the command.
-</para>
+<para>Check this button to run the task at system bootup.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guibutton>Run every day</guibutton></term>
+<listitem>
+<para>If you want to schedule the task to run daily, select this button.</para>
 </listitem>
 </varlistentry>
 
@@ -240,19 +222,13 @@ scheduled.</para>
 </listitem> 
 </varlistentry>
 <varlistentry>
-<term><guilabel>Daily</guilabel></term>
-<listitem><para>If you want to schedule the task to run daily, select
-<guibutton>Run every day</guibutton>.</para>
-</listitem> 
-</varlistentry>
-<varlistentry>
 <term><guilabel>Hours</guilabel></term>
 <listitem><para>Select the hours on which the task is to be
 scheduled.</para></listitem>
 </varlistentry>
 <varlistentry>
 <term><guilabel>Minutes</guilabel></term>
-<listitem><para>Select the minute at which the task is to be scheduled. &kcron;
+<listitem><para>Select the minute at which the task is to be scheduled. <command>cron</command>
 does not support scheduling tasks at smaller than five minute intervals.</para>
 </listitem>
 </varlistentry>
@@ -278,137 +254,32 @@ month).</para>
 <para>The scheduled task is not actually set up until the
 <filename>crontab</filename> has been saved.</para>
 
+</sect3>
 </sect2>
-</sect1>
 
-<sect1 id="manage-tasks">
+<sect2 id="manage-tasks">
 <title>Managing Scheduled Tasks</title>
 
 <para>As with creating new tasks, changes to tasks will not actually be
 made until the <filename>crontab</filename> is saved.</para>
 
-<sect2>
-<title>Cutting Scheduled Tasks</title>
-
-<para>To cut a scheduled task, first select the task to be cut. Then
-select <menuchoice><guimenu>Edit</guimenu>
-<guimenuitem>Cut</guimenuitem></menuchoice>.</para> <para>Alternatively,
-you can use the <mousebutton>right</mousebutton> mouse button menu and
-choose <menuchoice><guimenuitem>Cut</guimenuitem></menuchoice>, or
-simply press <keycombo
-action="simul">&Ctrl;<keycap>X</keycap></keycombo>.</para>
+<para>Use the buttons at the right of the task list to modify, delete, 
+print or run a selected task now. You reach all these actions from the
+context menu as well. Additionally the context menu provides actions to 
+cut, copy and paste tasks.</para>
 
 </sect2>
 
-<sect2>
-<title>Copying Scheduled Tasks</title>
-
-<para>To copy a scheduled task, first select the task to be copied. Then
-select
-<menuchoice><guimenu>Edit</guimenu><guimenuitem>Copy</guimenuitem></menuchoice>
-.</para>
-
-<para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse
-button menu and choose <menuchoice><guimenuitem>Copy</guimenuitem></menuchoice>,
-or simply press <keycombo
-action="simul">&Ctrl;<keycap>C</keycap></keycombo>.</para>
-
-</sect2>
-
-<sect2>
-<title>Pasting Scheduled Tasks</title>
-
-<para>To paste a scheduled task, first a scheduled task must have
-already been cut or copied to the clipboard. Once a scheduled task has
-been cut or copied, paste will be enabled. Then select the
-<guilabel>Tasks</guilabel> folder. Finally, select <menuchoice>
-<guimenu>Edit</guimenu> <guimenuitem>Paste</guimenuitem>
-</menuchoice>.</para>
-
-<para> Alternatively, you can use the <mousebutton>right</mousebutton> mouse
-button menu and choose
-<menuchoice><guimenuitem>Paste</guimenuitem></menuchoice>, or simply press
-<keycombo
-action="simul">&Ctrl;<keycap>V</keycap></keycombo>.</para>
-
-</sect2>
-
-<sect2>
-<title>Modifying Scheduled Tasks</title>
-
-<para>To modify a scheduled task, first select the task to be
-modified. Then select
-<menuchoice>
-<guimenu>Edit</guimenu> <guimenuitem>Modify...</guimenuitem>
-</menuchoice>.</para>
-
-<para>Alternatively, you can use the <mousebutton>right</mousebutton>
-mouse button menu and choose
-<menuchoice><guimenuitem>Modify...</guimenuitem></menuchoice>, or simply
-press <keycombo
-action="simul">&Ctrl;<keycap>O</keycap></keycombo>.  You
-will see the <guilabel>Edit Task</guilabel> dialog, with which you would
-modify the task as described <link linkend="new-task">above</link>.</para>
-
-</sect2>
-
-<sect2>
-<title>Deleting Scheduled Tasks</title>
-
-<para>To delete a scheduled task, first select the task to be
-deleted. Then select <menuchoice> <guimenu>Edit</guimenu>
-<guimenuitem>Delete</guimenuitem> </menuchoice>.</para>
-
-<para>Alternatively, you can use the <mousebutton>right</mousebutton>
-mouse button menu and choose <guimenuitem>Delete</guimenuitem>.</para>
-
-</sect2>
-
-<sect2>
-<title>Enabling/Disabling Scheduled Tasks</title>
-
-<para>To enable or disable a scheduled task, first select the disabled
-task. Disabled tasks will have <guilabel>Disabled</guilabel> in their
-descriptions. Then select <menuchoice> <guimenu>Edit</guimenu>
-<guimenuitem>Enabled</guimenuitem> </menuchoice>.</para>
-
-<para>Alternatively, you can use the <mousebutton>right</mousebutton>
-mouse button menu and choose
-<menuchoice><guimenuitem>Enabled</guimenuitem></menuchoice>.  Confirm
-that the scheduled task's program name, parameters, and description are
-correctly displayed.</para>
-
-</sect2>
-
-<sect2>
-<title>Running Scheduled Tasks</title>
-
-<para>To run a scheduled task immediately, first select the task.  Then
-select <menuchoice> <guimenu>Edit</guimenu> <guimenuitem>Run
-Now</guimenuitem> </menuchoice>.</para>
-
-<para>Alternatively, you can use the <mousebutton>right</mousebutton>
-mouse button menu and choose <menuchoice><guimenuitem>Run
-Now</guimenuitem></menuchoice>.</para>
-
-</sect2>
-</sect1>
-
-<sect1 id="new-variable">
+<sect2 id="new-variable">
 <title>Adding Environment Variables</title>
 
-<para>To create a new environment variable, first select the
-<guilabel>Variables</guilabel> folder. Then select <menuchoice>
-<guimenu>Edit</guimenu><guimenuitem>New...</guimenuitem>
-</menuchoice>.</para>
+<para>To create a new environment variable, click the
+<guibutton>New Variable...</guibutton>.</para>
 
 <para>Alternatively, you can use the <mousebutton>right</mousebutton>
-mouse button menu and choose
-<menuchoice><guimenuitem>New...</guimenuitem></menuchoice>, or simply
-press <keycombo
-action="simul">&Ctrl;<keycap>N</keycap></keycombo>.</para>
+mouse button menu to choose this action.</para>
 
-<sect2>
+<sect3>
 <title>The <guilabel>Edit Variable</guilabel> dialog</title>
 
 <screenshot>
@@ -423,7 +294,7 @@ dialog.</phrase></textobject>
 <variablelist>
 <varlistentry>
 <term><guilabel>Variable</guilabel></term> 
-<listitem><para>Enter the environment variable name. You can use the drop-down
+<listitem><para>Enter the environment variable name. You can use the drop down
 list box to select from the most common environment variables used by scheduled
 tasks. Those include:</para>
 
@@ -465,10 +336,10 @@ value.</para></listitem>
 purpose.</para></listitem>
 </varlistentry>
 <varlistentry>
-<term><guilabel>Enabled</guilabel></term>
+<term><guilabel>Enable this variable</guilabel></term>
 <listitem>
 <para>To enable or disable the variable, select or de-select
-<guibutton>Enabled</guibutton>.</para>
+this button.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
@@ -488,108 +359,24 @@ purpose.</para></listitem>
 <para>The environment variable is not actually set up until the
 <filename>crontab</filename> has been saved.</para>
 
+</sect3>
 </sect2>
-</sect1>
 
-<sect1 id="manage-variables">
+<sect2 id="manage-variables">
 <title>Managing Environment Variables</title>
 
 <note><para>As with creating new variables, changes to variables will
 not actually be made until the <filename>crontab</filename> is
 saved.</para></note>
 
-<sect2>
-<title>Cutting Environment Variables</title>
-
-<para>To cut an environment variable, first select the variable to be
-cut. Then select <menuchoice><guimenu>Edit</guimenu>
-<guimenuitem>Cut</guimenuitem> </menuchoice>.</para>
-
-<para>Alternatively, you can use the <mousebutton>right</mousebutton>
-mouse button menu and choose
-<menuchoice><guimenuitem>Cut</guimenuitem></menuchoice>, or simply press
-<keycombo
-action="simul">&Ctrl;<keycap>X</keycap></keycombo>.</para>
+<para>Use the buttons at the right of the variable list to modify or delete 
+a selected variable. You reach all these actions from the
+context menu as well. Additionally the context menu provides actions to 
+cut, copy and paste variables.</para>
 
 </sect2>
-
-<sect2>
-<title>Copying Environment Variables</title>
-
-<para>To copy an environment variable, first select the variable to be
-copied. Then select <menuchoice> <guimenu>Edit</guimenu>
-<guimenuitem>Copy</guimenuitem> </menuchoice>.</para>
-
-<para>Alternatively, you can use the <mousebutton>right</mousebutton>
-mouse button menu and choose <guimenuitem>Copy</guimenuitem>, or simply
-press <keycombo
-action="simul">&Ctrl;<keycap>C</keycap></keycombo>.</para>
-
-</sect2>
-
-<sect2>
-<title>Pasting Environment Variables</title>
-
-<para>To paste an environment variable, first an environment variable
-must have already been cut or copied to the clipboard. Once an
-environment variable has been cut or copied, paste will be enabled. Then
-select the <guilabel>Variables</guilabel> folder. Finally, select
-<menuchoice><guimenu>Edit</guimenu> <guimenuitem>Paste</guimenuitem>
-</menuchoice>.</para>
-
-<para>Alternatively, you can use the <mousebutton>right</mousebutton>
-mouse button menu and choose
-<menuchoice><guimenuitem>Paste</guimenuitem></menuchoice>, or simply
-press <keycombo
-action="simul">&Ctrl;<keycap>V</keycap></keycombo>.</para>
-</sect2>
-
-<sect2>
-<title>Modifying Environment Variables</title>
-
-<para>To modify an environment variable, first select the variable to be
-modified. Then select <menuchoice> <guimenu>Edit</guimenu>
-<guimenuitem>Modify...</guimenuitem> </menuchoice>.  Alternatively, you
-can use the <mousebutton>right</mousebutton> mouse button menu and
-choose <guimenuitem>Modify...</guimenuitem>, or simply press <keycombo
-action="simul">&Ctrl;<keycap>O</keycap></keycombo>.  You
-will see the <guilabel>Edit Variable</guilabel> dialog, in which you would
-modify the variable as described <link linkend="new-variable">above</link>.</para>
-
-</sect2>
-
-<sect2>
-<title>Deleting Environment Variables</title>
-
-<para>To delete an environment variable, first select the variable to be
-deleted. Then select
-<menuchoice><guimenu>Edit</guimenu><guimenuitem>Delete</guimenuitem>
-</menuchoice></para>
-
-<para>Alternatively, you can use the <mousebutton>right</mousebutton> mouse
-button menu and choose <guimenuitem>Delete</guimenuitem>.</para>
-
-</sect2>
-
-<sect2>
-<title>Enabling/Disabling Environment Variables</title>
-
-<para>To enable or disabled an environment variable, first select the
-disabled variable. Disabled variables will have
-<guilabel>Disabled</guilabel> in their descriptions. Then select
-<menuchoice>
-<guimenu>Edit</guimenu> <guimenuitem>Enabled</guimenuitem> </menuchoice>.</para>
-
-<para>Alternatively, you can use the <mousebutton>right</mousebutton>
-mouse button menu and choose
-<menuchoice><guimenuitem>Enabled</guimenuitem></menuchoice>.  Confirm
-that the environment variable's name and value are correctly
-displayed.</para>
-
-</sect2>
-</sect1>
-
-<sect1 id="saving-crontab">
+<!--
+<sect2 id="saving-crontab">
 <title>Saving the <filename>crontab</filename></title>
 
 <para>Once all scheduled tasks and environment variables have been
@@ -602,26 +389,14 @@ by selecting
 action="simul">&Ctrl;<keycap>S</keycap></keycombo>. Additions or changes
 will not actually be made until this is done.</para>
 
-</sect1>
+</sect2>
 
-<sect1 id="printing-crontab">
+<sect2 id="printing-crontab">
 <title>Printing the <filename>crontab</filename></title>
 
 <para>To print the <filename>crontab</filename> as it has been saved,
 select <menuchoice> <guimenu>File</guimenu>
 <guimenuitem>Print</guimenuitem> </menuchoice>.</para>
-
-
-<!-- FIXME: New screenshot of expanded print dialog -->
-
-<screenshot>
-<screeninfo>Printing the <filename>crontab</filename>.</screeninfo>
-<mediaobject>
-<imageobject><imagedata fileref="print.png" format="PNG"/></imageobject>
-<textobject><phrase>Printing the
-<filename>crontab</filename>.</phrase></textobject>
-</mediaobject>
-</screenshot>
 
 <para>The standard &kde; printer dialog will display.  If you select
 <guilabel>Expand</guilabel> you will see that there are two extra
@@ -645,66 +420,10 @@ enabled only for users with super-user privileges.</para>
 
 </variablelist>
 
+</sect2>
+-->
 </sect1>
-</chapter>
-
-<chapter id="credits">
-
-<title>Credits and License</title>
-
-<para>&kcron;</para>
-
-<para>Program copyright 2000 &Gary.Meyer; &Gary.Meyer.mail;</para>
-
-<para>Documentation copyright 2000 &Morgan.N.Sandquist; 
-&Morgan.N.Sandquist.mail;</para>
-<!-- TRANS:CREDIT_FOR_TRANSLATORS -->
-
-&underFDL;
-
-&underGPL;
-
-</chapter>
-
-<appendix id="installation">
-<title>Installation</title>
-
-<sect1 id="getting-kcron">
-<title>How to obtain &kcron;</title>
-
-&install.intro.documentation;
-
-</sect1>
-
-<sect1 id="requirements">
-<title>Requirements</title>
-
-<para>In order to successfully compile &kcron;, you need the following
-libraries:</para>
-
-<itemizedlist>
-<listitem><para><command>cron</command>, such as
-<command>vixie-cron</command>.  &kcron; uses the
-<filename>crontab</filename> command to modify user's scheduled
-tasks.</para></listitem>
-<listitem><para>POSIX-compliant &UNIX;, such as provided by
-glibc. &kcron; uses some standard &UNIX; system calls for localization of
-dates and times</para></listitem> 
-</itemizedlist>
-
-</sect1>
-
-<sect1 id="compilation">
-<title>Compilation and Installation</title>
-
-&install.compile.documentation;
-
-</sect1>
-
-</appendix>
-
-&documentation.index; 
-</book>
+</article>
 
 <!--
 Local Variables:
