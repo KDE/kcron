@@ -229,7 +229,7 @@ scheduled.</para></listitem>
 <varlistentry>
 <term><guilabel>Minutes</guilabel></term>
 <listitem><para>Select the minute at which the task is to be scheduled. <command>cron</command>
-does not support scheduling tasks at smaller than five minute intervals.</para>
+does not support scheduling tasks at smaller than one minute intervals.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
