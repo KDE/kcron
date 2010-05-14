@@ -9,7 +9,7 @@ X-KDE-ServiceTypes=KCModule
 X-KDE-Library=kcm_cron
 X-KDE-ParentApp=kcontrol
 
-X-KDE-System-Settings-Parent-Category=system
+X-KDE-System-Settings-Parent-Category=system-administration
 
 Name=Task Scheduler
 Name[ast]=Organizador de xeres
