@@ -28,11 +28,11 @@ CrontabPrinterWidget::CrontabPrinterWidget(bool root) :
 	main_->setSpacing(KDialog::spacingHint());
 
 	chkPrintCrontab = new QCheckBox(i18n("Print cron&tab"), this);
-	chkPrintCrontab->setObjectName("chkPrintCrontab");
+	chkPrintCrontab->setObjectName( QLatin1String("chkPrintCrontab" ));
 	main_->addWidget(chkPrintCrontab);
 
 	chkPrintAllUsers = new QCheckBox(i18n("Print &all users"), this);
-	chkPrintAllUsers->setObjectName("chkPrintAllUsers");
+	chkPrintAllUsers->setObjectName( QLatin1String("chkPrintAllUsers" ));
 	main_->addWidget(chkPrintAllUsers);
 
 	if (!root) {
