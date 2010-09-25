@@ -33,29 +33,29 @@
 
 CommandLineStatus CommandLine::execute() {
 	QProcess process;
-	
+
 	if (standardOutputFile.isEmpty() == false)
 		process.setStandardOutputFile(standardOutputFile);
-	
+
 	process.start(commandLine, parameters);
 	process.waitForFinished(-1);
 
 	CommandLineStatus commandLineStatus;
-	
-	commandLineStatus.commandLine = commandLine + " " + parameters.join(" ");
+
+	commandLineStatus.commandLine = commandLine + QLatin1String( " " ) + parameters.join(QLatin1String( " " ));
 	if (standardOutputFile.isEmpty() == false)
-		commandLineStatus.commandLine += " > " + standardOutputFile;
-	
-	commandLineStatus.standardOutput = process.readAllStandardOutput();
-	commandLineStatus.standardError = process.readAllStandardError();
+		commandLineStatus.commandLine += QLatin1String( " > " ) + standardOutputFile;
+
+	commandLineStatus.standardOutput = QLatin1String( process.readAllStandardOutput() );
+	commandLineStatus.standardError = QLatin1String( process.readAllStandardError() );
 	commandLineStatus.exitStatus = process.exitStatus();
-	
+
 	return commandLineStatus;
 }
 
 CTCron::CTCron(const QString& crontabBinary, const struct passwd* userInfos, bool currentUserCron, CTInitializationError& ctInitializationError) :
 	d(new CTCronPrivate()) {
-	
+
 	Q_ASSERT(userInfos != NULL);
 
 	d->multiUserCron = false;
@@ -69,11 +69,11 @@ CTCron::CTCron(const QString& crontabBinary, const struct passwd* userInfos, boo
 	d->tmpFileName = tmp.fileName();
 
 	CommandLine readCommandLine;
-	
+
 	// regular user, so provide user's own crontab
 	if (currentUserCron == true) {
 		readCommandLine.commandLine = d->crontabBinary;
-		readCommandLine.parameters << "-l";
+		readCommandLine.parameters << QLatin1String( "-l" );
 		readCommandLine.standardOutputFile = d->tmpFileName;
 
 		d->writeCommandLine.commandLine = d->crontabBinary;
@@ -83,17 +83,17 @@ CTCron::CTCron(const QString& crontabBinary, const struct passwd* userInfos, boo
 	else {
 
 		readCommandLine.commandLine = d->crontabBinary;
-		readCommandLine.parameters << "-u" << QString(userInfos->pw_name) << "-l";
+		readCommandLine.parameters << QLatin1String( "-u" ) << QLatin1String(userInfos->pw_name) << QLatin1String( "-l" );
 		readCommandLine.standardOutputFile = d->tmpFileName;
-	
+
 		d->writeCommandLine.commandLine = d->crontabBinary;
-		d->writeCommandLine.parameters << "-u" << QString(userInfos->pw_name) << d->tmpFileName;
+		d->writeCommandLine.parameters << QLatin1String( "-u" ) << QLatin1String(userInfos->pw_name) << d->tmpFileName;
 	}
 
 
 	d->initialTaskCount = 0;
 	d->initialVariableCount = 0;
-	
+
 	if (initializeFromUserInfos(userInfos) == false) {
 		ctInitializationError.setErrorMessage(i18n("No password entry found for uid '%1'", getuid()));
 		logDebug() << "Error in crontab creation of" << userInfos->pw_name << endl;
@@ -117,15 +117,15 @@ CTCron::CTCron(const QString& crontabBinary, const struct passwd* userInfos, boo
 
 CTCron::CTCron() :
 	d(new CTCronPrivate()) {
-	
+
 }
 
 bool CTCron::initializeFromUserInfos(const struct passwd* userInfos) {
 	if (userInfos == 0) {
 		return false;
 	} else {
-		d->userLogin = userInfos->pw_name;
-		d->userRealName = userInfos->pw_gecos;
+		d->userLogin = QLatin1String( userInfos->pw_name );
+		d->userRealName = QLatin1String( userInfos->pw_gecos );
 		return true;
 	}
 }
@@ -133,7 +133,7 @@ bool CTCron::initializeFromUserInfos(const struct passwd* userInfos) {
 CTCron& CTCron::operator = (const CTCron& source) {
 	if (this == &source)
 		return *this;
-	
+
 	if (source.isSystemCron() == true) {
 		logDebug() << "Affect the system cron" << endl;
 	}
@@ -149,7 +149,7 @@ CTCron& CTCron::operator = (const CTCron& source) {
 		CTTask* tmp = new CTTask(*ctTask);
 		d->task.append(tmp);
 	}
-	
+
 	return *this;
 }
 
@@ -159,16 +159,16 @@ void CTCron::parseFile(const QString& fileName) {
 	if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
 		return;
 
-	QString comment = "";
+	QString comment;
 
 	QTextStream in(&file);
 	while (in.atEnd() == false) {
 		QString line = in.readLine();
 
 		// search for comments "#" but not disabled tasks "#\"
-		if ( line.indexOf("#") == 0 && line.indexOf("\\") != 1 ) {
+		if ( line.indexOf(QLatin1String( "#" )) == 0 && line.indexOf(QLatin1String( "\\" )) != 1 ) {
 			// If the first 10 characters don't contain a character, it's probably a disabled entry.
-			int firstText = line.indexOf(QRegExp("[a-zA-Z]"));
+			int firstText = line.indexOf(QRegExp(QLatin1String( "[a-zA-Z]" )));
 			if (firstText < 0)
 				continue;
 
@@ -178,14 +178,14 @@ void CTCron::parseFile(const QString& fileName) {
 				if (comment.isEmpty())
 					comment = line.trimmed();
 				else
-					comment += "\n" + line.trimmed();
+					comment += QLatin1String( "\n" ) + line.trimmed();
 				continue;
 			}
 		}
 
 		// either a task or a variable
-		int firstWhiteSpace(line.indexOf(QRegExp("[ \t]")));
-		int firstEquals(line.indexOf("="));
+		int firstWhiteSpace(line.indexOf(QRegExp(QLatin1String( "[ \t]" ))));
+		int firstEquals(line.indexOf(QLatin1String( "=" )));
 
 		// if there is an equals sign and either there is no
 		// whitespace or the first whitespace is after the equals
@@ -194,17 +194,17 @@ void CTCron::parseFile(const QString& fileName) {
 			// create variable
 			CTVariable* tmp = new CTVariable(line, comment, d->userLogin);
 			d->variable.append(tmp);
-			comment = "";
+			comment.clear();
 		}
 		// must be a task, either enabled or disabled
 		else {
 			if (firstWhiteSpace > 0) {
 				CTTask* tmp = new CTTask(line, comment, d->userLogin, d->multiUserCron);
 				d->task.append(tmp);
-				comment = "";
+				comment.clear();
 			}
 		}
-		
+
 
 
 	}
@@ -214,20 +214,20 @@ void CTCron::parseFile(const QString& fileName) {
 QString CTCron::exportCron() const {
 	QString exportCron;
 
-	
+
 	foreach(CTVariable* ctVariable, d->variable) {
 		exportCron += ctVariable->exportVariable();
-		exportCron += "\n";
+		exportCron += QLatin1String( "\n" );
 	}
 
 	foreach(CTTask* ctTask, d->task) {
 		exportCron += ctTask->exportTask();
-		exportCron += "\n";
+		exportCron += QLatin1String( "\n" );
 	}
 
-	exportCron += "\n";
+	exportCron += QLatin1String( "\n" );
 	QString exportInfo = i18nc("Generation Message + current date", "File generated by KCron the %1.", KGlobal::locale()->formatDateTime(QDateTime::currentDateTime(), KLocale::LongDate));
-	exportCron += "# " + exportInfo + "\n";
+	exportCron += QLatin1String( "# " ) + exportInfo + QLatin1String( "\n" );
 
 	return exportCron;
 }
@@ -240,7 +240,7 @@ CTCron::~CTCron() {
 	foreach(CTVariable* ctVariable, d->variable) {
 		delete ctVariable;
 	}
-	
+
 	delete d;
 }
 
@@ -257,7 +257,7 @@ bool CTCron::saveToFile(const QString& fileName) {
 
 	out.flush();
 	file.close();
-	
+
 	return true;
 }
 
@@ -275,7 +275,7 @@ CTSaveStatus CTCron::prepareSaveStatusError(const CommandLineStatus& commandLine
 		standardError = commandLineStatus.standardError;
 
 	QString detailError = i18n("<p><strong>Command:</strong> %1</p><strong>Standard Output :</strong><pre>%2</pre><strong>Error Output :</strong><pre>%3</pre>", commandLineStatus.commandLine, standardOutput, standardError);
-	
+
 	return CTSaveStatus(i18n("An error occurred while updating crontab."), detailError);
 }
 
@@ -309,7 +309,7 @@ CTSaveStatus CTCron::save() {
 
 	d->initialTaskCount = d->task.size();
 	d->initialVariableCount = d->variable.size();
-	
+
 	return CTSaveStatus();
 }
 
@@ -348,7 +348,7 @@ QString CTCron::path() const {
 	QString path;
 
 	foreach(CTVariable* ctVariable, d->variable) {
-		if (ctVariable->variable == "PATH") {
+		if (ctVariable->variable == QLatin1String( "PATH" )) {
 			path = ctVariable->value;
 		}
 	}
@@ -373,7 +373,7 @@ void CTCron::addTask(CTTask* task) {
 		task->userLogin = d->userLogin;
 		task->setSystemCrontab(false);
 	}
-	
+
 	logDebug() << "Adding task" << task->comment << " user : "<< task->userLogin << endl;
 
 	d->task.append(task);
@@ -381,13 +381,13 @@ void CTCron::addTask(CTTask* task) {
 
 void CTCron::addVariable(CTVariable* variable) {
 	if (isSystemCron())
-		variable->userLogin = "root";
+		variable->userLogin = QLatin1String( "root" );
 	else
 		variable->userLogin = d->userLogin;
 
 
 	logDebug() << "Adding variable" << variable->variable << " user : "<< variable->userLogin << endl;
-	
+
 	d->variable.append(variable);
 }
 

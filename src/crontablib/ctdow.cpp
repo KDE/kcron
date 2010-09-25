@@ -6,7 +6,7 @@
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   * 
+ *   (at your option) any later version.                                   *
  ***************************************************************************/
 
 #include "ctdow.h"
@@ -53,9 +53,9 @@ QString CTDayOfWeek::getName(const int ndx, const bool format) {
 
 void CTDayOfWeek::initializeNames() {
 	if (shortName.isEmpty()) {
-		shortName << "" << i18n("Mon") << i18n("Tue") << i18n("Wed") << i18n("Thu") << i18n("Fri") << i18n("Sat") << i18n("Sun");
+		shortName << QLatin1String( "" ) << i18n("Mon") << i18n("Tue") << i18n("Wed") << i18n("Thu") << i18n("Fri") << i18n("Sat") << i18n("Sun");
 
-		longName << "" << i18n("Monday") << i18n("Tuesday") << i18n("Wednesday") << i18n("Thursday") << i18n("Friday") << i18n("Saturday") << i18n("Sunday");
+		longName << QLatin1String( "" ) << i18n("Monday") << i18n("Tuesday") << i18n("Wednesday") << i18n("Thursday") << i18n("Friday") << i18n("Saturday") << i18n("Sunday");
 
 	}
 }

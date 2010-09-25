@@ -6,7 +6,7 @@
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   * 
+ *   (at your option) any later version.                                   *
  ***************************************************************************/
 
 #include "ctminute.h"
@@ -21,21 +21,21 @@ CTMinute::CTMinute(const QString& tokStr) :
 }
 
 CTMinute::CTMinute() :
-	CTUnit(0, 59, "") {
-	
+	CTUnit(0, 59, QLatin1String( "" )) {
+
 }
 
 int CTMinute::findPeriod() const {
 	QList<int> periods;
 	periods << 1 << 2 << 5 << 10 << 15 << 20 << 30;
-	
+
 	return CTUnit::findPeriod(periods);
 }
 
 QString CTMinute::exportUnit() const {
 	int period = findPeriod();
 	if (period!=0 && period!=1)
-		return QString("*/%1").arg(QString::number(period));
-	
+		return QString(QLatin1String( "*/%1" )).arg(QString::number(period));
+
 	return CTUnit::exportUnit();
 }

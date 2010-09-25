@@ -32,7 +32,7 @@ CTUnit::CTUnit(const CTUnit& source) {
 		enabled.append(source.enabled.at(i));
 	}
 
-	initialTokStr = "";
+	initialTokStr = QLatin1String( "" );
 	dirty = true;
 }
 
@@ -51,7 +51,7 @@ CTUnit& CTUnit::operator = (const CTUnit& unit) {
 		enabled.append(unit.enabled[i]);
 	}
 	dirty = true;
-	
+
 	return *this;
 }
 
@@ -82,12 +82,12 @@ void CTUnit::parse(const QString& tokenString) {
 	int beginat, endat, step;
 
 	// loop through each subelement
-	tokStr += ',';
-	while ((commapos = tokStr.indexOf(",")) > 0) {
+	tokStr += QLatin1Char( ',' );
+	while ((commapos = tokStr.indexOf(QLatin1String( "," ))) > 0) {
 		subelement = tokStr.mid(0, commapos);
 
 		// find "/" to determine step
-		slashpos = subelement.indexOf("/");
+		slashpos = subelement.indexOf(QLatin1String( "/" ));
 		if (slashpos == -1) {
 			step = 1;
 			slashpos = subelement.length();
@@ -98,10 +98,10 @@ void CTUnit::parse(const QString& tokenString) {
 		}
 
 		// find "=" to determine range
-		dashpos = subelement.indexOf("-");
+		dashpos = subelement.indexOf(QLatin1String( "-" ));
 		if (dashpos == -1) {
 			// deal with "*"
-			if (subelement.mid(0, slashpos) == "*") {
+			if (subelement.mid(0, slashpos) == QLatin1String( "*" )) {
 				beginat = min;
 				endat = max;
 			} else {
@@ -136,7 +136,7 @@ QString CTUnit::exportUnit() const {
 	}
 
 	if (isAllEnabled())
-		return "*";
+		return QLatin1String( "*" );
 
 	int total = enabledCount();
 	int count = 0;
@@ -146,9 +146,9 @@ QString CTUnit::exportUnit() const {
 		if (enabled[num]) {
 			tokenizeUnit += QString::number(num);
 			count++;
-			
+
 			if (count < total)
-				tokenizeUnit += ',';
+				tokenizeUnit += QLatin1Char( ',' );
 		}
 	}
 
@@ -199,7 +199,7 @@ bool CTUnit::isAllEnabled() const {
 			return false;
 		}
 	}
-	
+
 	return true;
 }
 
@@ -240,7 +240,7 @@ int CTUnit::fieldToValue(const QString& entry) const {
 
 	// check for days
 	QList<QString> days;
-	days << "sun" << "mon" << "tue" << "wed" << "thu" << "fri" << "sat";
+	days << QLatin1String( "sun" ) << QLatin1String( "mon" ) << QLatin1String( "tue" ) << QLatin1String( "wed" ) << QLatin1String( "thu" ) << QLatin1String( "fri" ) << QLatin1String( "sat" );
 
 	int day = days.indexOf(lower);
 	if (day != -1) {
@@ -249,7 +249,7 @@ int CTUnit::fieldToValue(const QString& entry) const {
 
 	// check for months
 	QList<QString> months;
-	months << "" << "jan" << "feb" << "mar" << "apr" << "may" << "jun" << "jul" << "aug" << "sep" << "oct" << "nov" << "dec";
+	months << QLatin1String( "" ) << QLatin1String( "jan" ) << QLatin1String( "feb" ) << QLatin1String( "mar" ) << QLatin1String( "apr" ) << QLatin1String( "may" ) << QLatin1String( "jun" ) << QLatin1String( "jul" ) << QLatin1String( "aug" ) << QLatin1String( "sep" ) << QLatin1String( "oct" ) << QLatin1String( "nov" ) << QLatin1String( "dec" );
 
 	int month = months.indexOf(lower);
 	if (month != -1) {
@@ -267,24 +267,24 @@ int CTUnit::fieldToValue(const QString& entry) const {
 int CTUnit::findPeriod(const QList<int>& periods) const {
 	foreach(int period, periods) {
 		bool validPeriod = true;
-		
+
 		for (int i = minimum(); i <= maximum(); i++) {
 			bool periodTesting;
 			if ( (double)i/(double)period == i/period)
 				periodTesting = true;
 			else
 				periodTesting = false;
-			
+
 			if (isEnabled(i) != periodTesting) {
 				validPeriod = false;
 				break;
 			}
 		}
-		
+
 		if (validPeriod) {
 			return period;
 		}
 	}
-		
+
 	return 0;
 }

@@ -24,40 +24,40 @@ CTTask::CTTask(const QString& tokenString, const QString& _comment, const QStrin
 	systemCrontab(_systemCrontab) {
 
 	QString tokStr = tokenString;
-	if (tokStr.mid(0, 2) == "#\\") {
+	if (tokStr.mid(0, 2) == QLatin1String( "#\\" )) {
 		tokStr = tokStr.mid(2, tokStr.length() - 2);
 		enabled = false;
-	} else if (tokStr.mid(0, 1) == "#") {
+	} else if (tokStr.mid(0, 1) == QLatin1String( "#" )) {
 		tokStr = tokStr.mid(1, tokStr.length() - 1);
 		enabled = false;
 	} else
 		enabled = true;
 
 	// Skip over 'silence' if found... old option in vixie cron
-	if (tokStr.mid(0, 1) == "-")
+	if (tokStr.mid(0, 1) == QLatin1String( "-" ))
 		tokStr = tokStr.mid(1, tokStr.length() - 1);
 
 	reboot = false;
-	if (tokStr.mid(0, 1) == "@") {
-		if (tokStr.mid(1, 6) == "yearly") {
-			tokStr = "0 0 1 1 *"+tokStr.mid(7, tokStr.length()-1);
-		} else if (tokStr.mid(1, 8) == "annually") {
-			tokStr = "0 0 1 1 *"+tokStr.mid(9, tokStr.length()-1);
-		} else if (tokStr.mid(1, 7) == "monthly") {
-			tokStr = "0 0 1 * *"+tokStr.mid(8, tokStr.length()-1);
-		} else if (tokStr.mid(1, 6) == "weekly") {
-			tokStr = "0 0 * * 0"+tokStr.mid(7, tokStr.length()-1);
-		} else if (tokStr.mid(1, 5) == "daily") {
-			tokStr = "0 0 * * *"+tokStr.mid(6, tokStr.length()-1);
-		} else if (tokStr.mid(1, 6) == "hourly") {
-			tokStr = "0 * * * *"+tokStr.mid(7, tokStr.length()-1);
-		} else if (tokStr.mid(1, 6) == "reboot") {
+	if (tokStr.mid(0, 1) == QLatin1String( "@" )) {
+		if (tokStr.mid(1, 6) == QLatin1String( "yearly" )) {
+			tokStr = QLatin1String( "0 0 1 1 *" )+tokStr.mid(7, tokStr.length()-1);
+		} else if (tokStr.mid(1, 8) == QLatin1String( "annually" )) {
+			tokStr = QLatin1String( "0 0 1 1 *" )+tokStr.mid(9, tokStr.length()-1);
+		} else if (tokStr.mid(1, 7) == QLatin1String( "monthly" )) {
+			tokStr = QLatin1String( "0 0 1 * *" )+tokStr.mid(8, tokStr.length()-1);
+		} else if (tokStr.mid(1, 6) == QLatin1String( "weekly" )) {
+			tokStr = QLatin1String( "0 0 * * 0" )+tokStr.mid(7, tokStr.length()-1);
+		} else if (tokStr.mid(1, 5) == QLatin1String( "daily" )) {
+			tokStr = QLatin1String( "0 0 * * *" )+tokStr.mid(6, tokStr.length()-1);
+		} else if (tokStr.mid(1, 6) == QLatin1String( "hourly" )) {
+			tokStr = QLatin1String( "0 * * * *" )+tokStr.mid(7, tokStr.length()-1);
+		} else if (tokStr.mid(1, 6) == QLatin1String( "reboot" )) {
 			tokStr = tokStr.mid(7, tokStr.length()-1);
 			reboot = true;
 		}
 	}
 
-	int spacePos(tokStr.indexOf(QRegExp("[ \t]")));
+	int spacePos(tokStr.indexOf(QRegExp(QLatin1String( "[ \t]" ))));
 	// If reboot bypass initialize functions so no keys selected in modify task
 	if (reboot == false) {
 
@@ -67,25 +67,25 @@ CTTask::CTTask(const QString& tokenString, const QString& _comment, const QStrin
 		while (isSpace(tokStr, spacePos+1))
 			spacePos++;
 		tokStr = tokStr.mid(spacePos+1, tokStr.length()-1);
-		spacePos = tokStr.indexOf(QRegExp("[ \t]"));
+		spacePos = tokStr.indexOf(QRegExp(QLatin1String( "[ \t]" )));
 		hour.initialize(tokStr.mid(0, spacePos));
 
 		while (isSpace(tokStr, spacePos+1))
 			spacePos++;
 		tokStr = tokStr.mid(spacePos+1, tokStr.length()-1);
-		spacePos = tokStr.indexOf(QRegExp("[ \t]"));
+		spacePos = tokStr.indexOf(QRegExp(QLatin1String( "[ \t]" )));
 		dayOfMonth.initialize(tokStr.mid(0, spacePos));
 
 		while (isSpace(tokStr, spacePos+1))
 			spacePos++;
 		tokStr = tokStr.mid(spacePos+1, tokStr.length()-1);
-		spacePos = tokStr.indexOf(QRegExp("[ \t]"));
+		spacePos = tokStr.indexOf(QRegExp(QLatin1String( "[ \t]" )));
 		month.initialize(tokStr.mid(0, spacePos));
 
 		while (isSpace(tokStr, spacePos+1))
 			spacePos++;
 		tokStr = tokStr.mid(spacePos+1, tokStr.length()-1);
-		spacePos = tokStr.indexOf(QRegExp("[ \t]"));
+		spacePos = tokStr.indexOf(QRegExp(QLatin1String( "[ \t]" )));
 		dayOfWeek.initialize(tokStr.mid(0, spacePos));
 	}
 
@@ -93,7 +93,7 @@ CTTask::CTTask(const QString& tokenString, const QString& _comment, const QStrin
 		while (isSpace(tokStr, spacePos+1))
 			spacePos++;
 		tokStr = tokStr.mid(spacePos+1, tokStr.length()-1);
-		spacePos = tokStr.indexOf(QRegExp("[ \t]"));
+		spacePos = tokStr.indexOf(QRegExp(QLatin1String( "[ \t]" )));
 		userLogin = tokStr.mid(0, spacePos);
 	}
 	else {
@@ -102,7 +102,7 @@ CTTask::CTTask(const QString& tokenString, const QString& _comment, const QStrin
 
 	command = tokStr.mid(spacePos+1, tokStr.length()-1);
 	// remove leading whitespace
-	while (command.indexOf(QRegExp("[ \t]")) == 0)
+	while (command.indexOf(QRegExp(QLatin1String( "[ \t]" ))) == 0)
 		command = command.mid(1, command.length()-1);
 	comment = _comment;
 
@@ -114,8 +114,8 @@ CTTask::CTTask(const QString& tokenString, const QString& _comment, const QStrin
 }
 
 CTTask::CTTask(const CTTask &source) :
-	month(source.month), dayOfMonth(source.dayOfMonth), dayOfWeek(source.dayOfWeek), hour(source.hour), minute(source.minute), userLogin(source.userLogin), command(source.command), comment(source.comment), enabled(source.enabled), reboot(source.reboot), initialUserLogin(""), initialCommand(""),
-			initialComment(""), initialEnabled(true), initialReboot(false) {
+	month(source.month), dayOfMonth(source.dayOfMonth), dayOfWeek(source.dayOfWeek), hour(source.hour), minute(source.minute), userLogin(source.userLogin), command(source.command), comment(source.comment), enabled(source.enabled), reboot(source.reboot), initialUserLogin(QLatin1String( "" )), initialCommand(QLatin1String( "" )),
+			initialComment(QLatin1String( "" )), initialEnabled(true), initialReboot(false) {
 }
 
 CTTask& CTTask::operator = (const CTTask& source) {
@@ -132,12 +132,12 @@ CTTask& CTTask::operator = (const CTTask& source) {
 	comment = source.comment;
 	enabled = source.enabled;
 	reboot = source.reboot;
-	initialUserLogin = "";
-	initialCommand = "";
-	initialComment = "";
+	initialUserLogin = QLatin1String( "" );
+	initialCommand = QLatin1String( "" );
+	initialComment = QLatin1String( "" );
 	initialEnabled = true;
 	initialReboot = false;
-	
+
 	return *this;
 }
 
@@ -145,17 +145,17 @@ QString CTTask::exportTask() {
 	QString exportTask;
 
 	exportTask += CTHelper::exportComment(comment);
-		
+
 	if (enabled == false)
-		exportTask += "#\\";
+		exportTask += QLatin1String( "#\\" );
 
 	exportTask += schedulingCronFormat();
-	exportTask += "\t";
+	exportTask += QLatin1String( "\t" );
 
 	if (isSystemCrontab() == true)
-		exportTask += userLogin + "\t";
+		exportTask += userLogin + QLatin1String( "\t" );
 
-	exportTask += command + "\n";
+	exportTask += command + QLatin1String( "\n" );
 
 	return exportTask;
 }
@@ -194,15 +194,15 @@ bool CTTask::dirty() const {
 
 QString CTTask::schedulingCronFormat() const {
 	if (reboot) {
-		return "@reboot";
+		return QLatin1String( "@reboot" );
 	}
 
 	QString scheduling;
 
-	scheduling += minute.exportUnit() + " ";
-	scheduling += hour.exportUnit() + " ";
-	scheduling += dayOfMonth.exportUnit() + " ";
-	scheduling += month.exportUnit() + " ";
+	scheduling += minute.exportUnit() + QLatin1String( " " );
+	scheduling += hour.exportUnit() + QLatin1String( " " );
+	scheduling += dayOfMonth.exportUnit() + QLatin1String( " " );
+	scheduling += month.exportUnit() + QLatin1String( " " );
 	scheduling += dayOfWeek.exportUnit();
 
 	return scheduling;
@@ -211,28 +211,28 @@ QString CTTask::schedulingCronFormat() const {
 
 /**
  * Of the whole program, this method is probably the trickiest.
- * 
+ *
  * This method creates the natural language description, such as
  * "At 1:00am, every Sun".
- * 
+ *
  * First, I declare some strings for holding what can be internationalized.
  * Note the tokens such as "MONTHS".  Translators should reuse these
  * tokens in their translations.  See README.translators for more
  * information.
- * 
+ *
  * Second, I get the descriptions from the component parts such as
  * days of the month.
- * 
+ *
  * Third, I get hour/minute time combinations.  Although a little bit
  * awkward, I use the tm struct and strftime from <time.h>.  This
  * way this code is portable across all Unixes.
- * 
+ *
  * Fourth, I know that "every day of the week" and "every day of the
  * month" simply makes "every day".
- * 
+ *
  * Fifth and finally I do tag substitution to create the natural language
  * description.
- * 
+ *
  */
 QString CTTask::describe() const {
 
@@ -276,16 +276,16 @@ QString CTTask::createDateFormat() const {
 	else {
 		dateFormat = i18nc("1:Day of month, 2:Day of week", "%1 as well as %2", describeDayOfMonth(), describeDayOfWeek());
 	}
-	
+
 	return dateFormat;
-	
+
 }
 
 QString CTTask::describeDateAndHours() const {
 	// Create time description.
 	int total = minute.enabledCount() * hour.enabledCount();
 
-	QString timeDesc = "";
+	QString timeDesc;
 	int count = 0;
 
 	for (int h = 0; h <= 23; h++) {
@@ -294,13 +294,13 @@ QString CTTask::describeDateAndHours() const {
 				if (minute.isEnabled(m) == true) {
 					QString hourString;
 					if (h<10)
-						hourString = "0" + QString::number(h);
+						hourString = QLatin1String( "0" ) + QString::number(h);
 					else
 						hourString = QString::number(h);
 
 					QString minuteString;
 					if (m<10)
-						minuteString = "0" + QString::number(m);
+						minuteString = QLatin1String( "0" ) + QString::number(m);
 					else
 						minuteString = QString::number(m);
 
@@ -324,10 +324,10 @@ QString CTTask::describeDateAndHours() const {
 			}
 		}
 	}
-	
-	
+
+
 	return i18nc("Hour::Minute list", "At %1", timeDesc);
-	
+
 }
 
 QString CTTask::createTimeFormat() const {
@@ -336,7 +336,7 @@ QString CTTask::createTimeFormat() const {
 		if (minutePeriod != 0)
 			return i18np("Every minute", "Every %1 minutes", minutePeriod);
 	}
-	
+
 	return describeDateAndHours();
 }
 
@@ -351,22 +351,22 @@ void CTTask::setSystemCrontab(bool _systemCrontab) {
 
 QPixmap CTTask::commandIcon() const {
 	KUrl commandPath(completeCommandPath());
-	
+
 	KMimeType::Ptr mimeType = KMimeType::findByUrl(commandPath);
 	//logDebug() << mimeType->name() << endl;
-	if (mimeType->name() == "application/x-executable" || mimeType->name() == "application/octet-stream") {
-		
+	if (mimeType->name() == QLatin1String( "application/x-executable" ) || mimeType->name() == QLatin1String( "application/octet-stream" )) {
+
 		//The next line is identical as SmallIcon(commandPath.fileName()), but is able to return a isNull() QPixmap
 		QPixmap icon = KIconLoader::global()->loadIcon(commandPath.fileName(), KIconLoader::Small, 0, KIconLoader::DefaultState, QStringList(), 0L, true);
 		if (icon.isNull()) {
 			return KCronIcons::task(KCronIcons::Small);
 		}
-		
+
 		return icon;
 	}
-	
+
 	QPixmap icon = SmallIcon(KMimeType::iconNameForUrl(commandPath));
-	
+
 	return icon;
 
 }
@@ -376,39 +376,39 @@ QPair<QString, bool> CTTask::unQuoteCommand() const {
 	fullCommand = fullCommand.trimmed();
 
 	QStringList quotes;
-	quotes << "\"" << "'";
-	
+	quotes << QLatin1String( "\"" ) << QLatin1String( "'" );
+
 	foreach(const QString &quote, quotes) {
 		if (fullCommand.indexOf(quote) == 0) {
 			int nextQuote = fullCommand.indexOf(quote, 1);
 			if (nextQuote == -1)
-				return QPair<QString, bool>("", false);
-			
+				return QPair<QString, bool>(QLatin1String( "" ), false);
+
 			return QPair<QString, bool>(fullCommand.mid(1, nextQuote-1), true);
 		}
-		
+
 	}
-	
+
 	return QPair<QString, bool>(fullCommand, false);
-	
+
 }
 
 QString CTTask::decryptBinaryCommand(const QString& command) const {
 	QString fullCommand;
-	
+
 	bool found = false;
 	for (int i=0; i<command.length(); ++i) {
-		if (command.at(i) == ' ' && command.at(i-1) != '\\') {
+		if (command.at(i) == QLatin1Char( ' ' ) && command.at(i-1) != QLatin1Char( '\\' )) {
 			fullCommand = command.left(i);
 			found = true;
 			break;
 		}
 	}
-	
+
 	if (found == false)
 		fullCommand = command;
-	
-	fullCommand = fullCommand.remove('\\');
+
+	fullCommand = fullCommand.remove(QLatin1Char( '\\' ));
 
 	return fullCommand;
 }
@@ -416,7 +416,7 @@ QString CTTask::decryptBinaryCommand(const QString& command) const {
 QStringList CTTask::separatePathCommand(const QString& command, bool quoted) const {
 	QStringList pathCommand;
 
-	if (command.at(0) == '/') {
+	if (command.at(0) == QLatin1Char( '/' )) {
 		QString fullCommand;
 		if (quoted == true)
 			fullCommand = command;
@@ -427,11 +427,11 @@ QStringList CTTask::separatePathCommand(const QString& command, bool quoted) con
 			return QStringList();
 		}
 
-		QString path = fullCommand.section('/', 0, -2);
-		QString commandBinary = fullCommand.section('/', -1);
+		QString path = fullCommand.section(QLatin1Char( '/' ), 0, -2);
+		QString commandBinary = fullCommand.section(QLatin1Char( '/' ), -1);
 
 		pathCommand << path << commandBinary;
-		
+
 	}
 	else {
 		QString fullCommand;
@@ -444,19 +444,19 @@ QStringList CTTask::separatePathCommand(const QString& command, bool quoted) con
 		pathCommand << QString() << fullCommand;
 
 	}
-	
+
 	return pathCommand;
 }
 
 QString CTTask::completeCommandPath() const {
 	QPair<QString, bool> commandQuoted = unQuoteCommand();
 	if (commandQuoted.first.isEmpty())
-		return "";
-	
+		return QLatin1String( "" );
+
 	QStringList pathCommand = separatePathCommand(commandQuoted.first, commandQuoted.second);
 	if (pathCommand.isEmpty()) {
-		return "";
+		return QLatin1String( "" );
 	}
-	
-	return pathCommand.join("/");
+
+	return pathCommand.join(QLatin1String( "/" ));
 }

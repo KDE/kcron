@@ -66,9 +66,9 @@ CTHost::CTHost(const QString& cronBinary, CTInitializationError& ctInitializatio
 			}
 			//delete userInfos;
 		}
-		
+
 		setpwent(); // restart again for others
-		
+
 		passwd* currentUserPassword = getpwuid(uid);
 
 		QString errorMessage = createCTCron(currentUserPassword);
@@ -76,10 +76,10 @@ CTHost::CTHost(const QString& cronBinary, CTInitializationError& ctInitializatio
 			ctInitializationError.setErrorMessage(errorMessage);
 			return;
 		}
-		
+
 		//delete currentUserPassword;
 	}
-	
+
 	// Create the system cron table.
 	createSystemCron();
 
@@ -92,13 +92,13 @@ CTHost::~CTHost() {
 }
 
 bool CTHost::allowDeny(char *name) {
-	QFile allow("/etc/cron.allow");
+	QFile allow(QLatin1String( "/etc/cron.allow" ));
 
 	// if cron.allow exists make sure user is listed
 	if (allow.open(QFile::ReadOnly)) {
 		QTextStream stream(&allow);
 		while (!stream.atEnd()) {
-			if (stream.readLine() == name) {
+			if (stream.readLine() == QLatin1String( name )) {
 				allow.close();
 				return true;
 			}
@@ -107,13 +107,13 @@ bool CTHost::allowDeny(char *name) {
 		return false;
 	} else {
 		allow.close();
-		QFile deny("/etc/cron.deny");
+		QFile deny(QLatin1String( "/etc/cron.deny" ));
 
 		// else if cron.deny exists make sure user is not listed
 		if (deny.open(QFile::ReadOnly)) {
 			QTextStream stream(&deny);
 			while (!stream.atEnd()) {
-				if (stream.readLine() == name) {
+				if (stream.readLine() == QLatin1String( name )) {
 					deny.close();
 					return false;
 				}
@@ -134,15 +134,15 @@ CTSaveStatus CTHost::save() {
 
 		return ctCron->save();
 	}
-	
+
 	foreach(CTCron* ctCron, crons) {
 		CTSaveStatus ctSaveStatus = ctCron->save();
-		
+
 		if (ctSaveStatus.isError() == true) {
 			return CTSaveStatus(i18nc("User login: errorMessage", "User %1: %2", ctCron->userLogin(), ctSaveStatus.errorMessage()), ctSaveStatus.detailErrorMessage());
 		}
 	}
-	
+
 	return CTSaveStatus();
 }
 
@@ -184,9 +184,9 @@ QString CTHost::createCTCron(const struct passwd* userInfos) {
 		delete p;
 		return ctInitializationError.errorMessage();
 	}
-	
+
 	crons.append(p);
-	
+
 	return QString();
 }
 
@@ -195,7 +195,7 @@ CTCron* CTHost::findCurrentUserCron() const {
 		if (ctCron->isCurrentUserCron())
 			return ctCron;
 	}
-	
+
 	logDebug() << "Unable to find the current user Cron. Please report this bug and your crontab config to the developers" << endl;
 	return NULL;
 }
@@ -205,7 +205,7 @@ CTCron* CTHost::findSystemCron() const {
 		if (ctCron->isMultiUserCron())
 			return ctCron;
 	}
-	
+
 	logDebug() << "Unable to find the system Cron. Please report this bug and your crontab config to the developers" << endl;
 	return NULL;
 }
@@ -215,7 +215,7 @@ CTCron* CTHost::findUserCron(const QString& userLogin) const {
 		if (ctCron->userLogin() == userLogin)
 			return ctCron;
 	}
-	
+
 	logDebug() << "Unable to find the user Cron " << userLogin << ". Please report this bug and your crontab config to the developers" << endl;
 	return NULL;
 }
@@ -226,7 +226,7 @@ CTCron* CTHost::findCronContaining(CTTask* ctTask) const {
 			return ctCron;
 		}
 	}
-	
+
 	logDebug() << "Unable to find the cron of this task. Please report this bug and your crontab config to the developers" << endl;
 	return NULL;
 
@@ -238,7 +238,7 @@ CTCron* CTHost::findCronContaining(CTVariable* ctVariable) const {
 			return ctCron;
 		}
 	}
-	
+
 	logDebug() << "Unable to find the cron of this variable. Please report this bug and your crontab config to the developers" << endl;
 	return NULL;
 
