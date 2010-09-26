@@ -38,7 +38,7 @@
 #include <kstandarddirs.h>
 #include <ktitlewidget.h>
 #include <kiconloader.h>
-#include <kurlrequester.h> 
+#include <kurlrequester.h>
 
 #include "logging.h"
 #include "cttask.h"
@@ -75,10 +75,10 @@ TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption, Cro
 	titleWidget = new KTitleWidget(main);
 	titleWidget->setText(i18n("Add or modify a scheduled task"));
 	setupTitleWidget(i18n("<i>This task will be executed at the specified intervals.</i>"));
-	
+
 	mainLayout->addWidget(titleWidget);
 
-	
+
 	QGridLayout* commandConfigurationLayout = new QGridLayout(main);
 	mainLayout->addLayout(commandConfigurationLayout);
 
@@ -98,7 +98,7 @@ TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption, Cro
 	command->setPath(ctTask->command);
 
 	//Initialize special valid commands
-	specialValidCommands << "cd";
+	specialValidCommands << QLatin1String( "cd" );
 
 	commandConfigurationLayout->addLayout(commandLayout, 0, 1);
 
@@ -181,7 +181,7 @@ TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption, Cro
 	v2->addWidget(minutesGroup);
 
 	v2->addStretch(1);
-	
+
 	//schedulingLayout->addStretch(1);
 
 	command->setFocus();
@@ -262,17 +262,17 @@ QGroupBox* TaskEditorDialog::createDaysOfMonthGroup(QWidget* main) {
 			connect(dayOfMonthButtons[dm], SIGNAL(clicked()), SLOT(slotDayOfMonthChanged()));
 			connect(dayOfMonthButtons[dm], SIGNAL(clicked()), SLOT(slotWizard()));
 
-			daysOfMonthLayout->addWidget(day, row, column); 
-			
+			daysOfMonthLayout->addWidget(day, row, column);
+
 			if (dm==CTDayOfMonth::MAXIMUM) {
 				break;
 				break;
 			}
-			
+
 			dm++;
 		}
 	}
-	
+
 
 	allDaysOfMonth = new SetOrClearAllButton(daysOfMonthGroup, SetOrClearAllButton::SET_ALL);
 	daysOfMonthLayout->addWidget(allDaysOfMonth, 4, 3, 1, 4);
@@ -363,38 +363,38 @@ bool TaskEditorDialog::canReduceMinutesGroup() {
 				return false;
 			}
 		}
-			
+
 	}
-	
+
 	return true;
 }
 
 void TaskEditorDialog::emptyMinutesGroup() {
-	
+
 	logDebug() << "Empty minutes layout" << endl;
-	
+
 	for (int minuteIndex = 0; minuteIndex<=minuteTotal; ++minuteIndex ) {
 		minutesLayout->removeWidget(minuteButtons[minuteIndex]);
 		minuteButtons[minuteIndex]->hide();
 		logDebug() << "Layout count" << minutesLayout->count() << endl;
 	}
-	
+
 	minutesLayout->removeItem(minutesPreselectionLayout);
-}	
+}
 
 void TaskEditorDialog::increaseMinutesGroup() {
 	/*
 	 * Test if the increase is already done. If this is the case, no need to redo it
-	 * 
+	 *
 	 * We test :
 	 * minutesButtons[1] will be hidden because 1%reducedMinuteStep != 0
-	 */ 
+	 */
 	/*
 	if (minuteButtons[1]->isHidden() == false)
 		return;
 	*/
 	emptyMinutesGroup();
-	
+
 	logDebug() << "Show all minutes" << endl;
 
 	int minuteIndex = 0;
@@ -405,23 +405,23 @@ void TaskEditorDialog::increaseMinutesGroup() {
 			minuteIndex++;
 		}
 	}
-	
+
 	minutesLayout->addLayout(minutesPreselectionLayout, ((minuteTotal+1)/minutePerColumn), 0, 1, minutePerColumn);
 }
-	
+
 void TaskEditorDialog::reduceMinutesGroup() {
 	logDebug() << "Reducing view" << endl;
-	
+
 	emptyMinutesGroup();
-	
+
 	int nextRow = 0;
 	int nextColumn = 0;
-	
+
 	for (int minuteIndex = 0; minuteIndex <= minuteTotal; ++minuteIndex) {
 		if (minuteIndex % reducedMinuteStep == 0) {
 			minutesLayout->addWidget(minuteButtons[minuteIndex], nextRow, nextColumn);
 			minuteButtons[minuteIndex]->show();
-			
+
 			nextColumn++;
 			if (nextColumn==6) {
 				nextColumn = 0;
@@ -432,13 +432,13 @@ void TaskEditorDialog::reduceMinutesGroup() {
 			logDebug() << "Reducing id" << minuteIndex << endl;
 			ctTask->minute.setEnabled(minuteIndex, false);
 			minuteButtons[minuteIndex]->setChecked(false);
-			
+
 		}
 	}
-	
+
 	minutesLayout->addLayout(minutesPreselectionLayout, 2, 0, 1, 6);
 	this->resize(sizeHint());
-	
+
 }
 
 NumberPushButton* TaskEditorDialog::createMinuteButton(int minuteIndex) {
@@ -451,7 +451,7 @@ NumberPushButton* TaskEditorDialog::createMinuteButton(int minuteIndex) {
 
 	connect(minuteButton, SIGNAL(clicked()), SLOT(slotMinuteChanged()));
 	connect(minuteButton, SIGNAL(clicked()), SLOT(slotWizard()));
-	
+
 	return minuteButton;
 }
 
@@ -459,7 +459,7 @@ void TaskEditorDialog::createMinutesGroup(QWidget* main) {
 	logDebug() << "Creating minutes group" << endl;
 
 	minutesGroup = new QGroupBox( i18n("Minutes"), main);
-	
+
 	minutesLayout = new QGridLayout(minutesGroup);
 
 	for (int minuteIndex = 0; minuteIndex<=minuteTotal; ++minuteIndex ) {
@@ -467,24 +467,24 @@ void TaskEditorDialog::createMinutesGroup(QWidget* main) {
 	}
 
 	minutesPreselectionLayout = new QHBoxLayout();
-	
+
 	QLabel* minutesPreselectionLabel = new QLabel(i18n("Preselection:"));
 	minutesPreselectionLayout->addWidget(minutesPreselectionLabel);
-	
+
 	minutesPreselection = new QComboBox(this);
-	
+
 	minutesPreselectionLabel->setBuddy(minutesPreselection);
-	
-	minutesPreselection->addItem(SmallIcon("edit-clear-locationbar-ltr"), i18n("Clear selection"), -1);
-	minutesPreselection->addItem(SmallIcon("edit-rename"),i18n("Custom selection"), 0);
-	minutesPreselection->addItem(SmallIcon("view-calendar-month"), i18n("Each minute"), 1);
-	minutesPreselection->addItem(SmallIcon("view-calendar-week"), i18n("Every 2 minutes"), 2);
-	minutesPreselection->addItem(SmallIcon("view-calendar-workweek"), i18n("Every 5 minutes"), 5);
-	minutesPreselection->addItem(SmallIcon("view-calendar-upcoming-days"), i18n("Every 10 minutes"), 10);
-	minutesPreselection->addItem(SmallIcon("view-calendar-upcoming-days"), i18n("Every 15 minutes"), 15);
-	minutesPreselection->addItem(SmallIcon("view-calendar-day"), i18n("Every 20 minutes"), 20);
-	minutesPreselection->addItem(SmallIcon("view-calendar-day"), i18n("Every 30 minutes"), 30);
-	
+
+	minutesPreselection->addItem(SmallIcon(QLatin1String( "edit-clear-locationbar-ltr" )), i18n("Clear selection"), -1);
+	minutesPreselection->addItem(SmallIcon(QLatin1String( "edit-rename" )),i18n("Custom selection"), 0);
+	minutesPreselection->addItem(SmallIcon(QLatin1String( "view-calendar-month" )), i18n("Each minute"), 1);
+	minutesPreselection->addItem(SmallIcon(QLatin1String( "view-calendar-week" )), i18n("Every 2 minutes"), 2);
+	minutesPreselection->addItem(SmallIcon(QLatin1String( "view-calendar-workweek" )), i18n("Every 5 minutes"), 5);
+	minutesPreselection->addItem(SmallIcon(QLatin1String( "view-calendar-upcoming-days" )), i18n("Every 10 minutes"), 10);
+	minutesPreselection->addItem(SmallIcon(QLatin1String( "view-calendar-upcoming-days" )), i18n("Every 15 minutes"), 15);
+	minutesPreselection->addItem(SmallIcon(QLatin1String( "view-calendar-day" )), i18n("Every 20 minutes"), 20);
+	minutesPreselection->addItem(SmallIcon(QLatin1String( "view-calendar-day" )), i18n("Every 30 minutes"), 30);
+
 	minutesPreselectionLayout->addWidget(minutesPreselection);
 
 	connect(minutesPreselection, SIGNAL(activated(int)), SLOT(slotMinutesPreselection(int)));
@@ -492,11 +492,11 @@ void TaskEditorDialog::createMinutesGroup(QWidget* main) {
 
 	//First mandatory increase
 	increaseMinutesGroup();
-	
+
 	if (canReduceMinutesGroup()==true) {
 		reduceMinutesGroup();
 	}
-	
+
 	logDebug() << "Minutes group created" << endl;
 }
 
@@ -510,7 +510,7 @@ NumberPushButton* TaskEditorDialog::createHourButton(QGroupBox* hoursGroup, int 
 
 	connect(hourButton, SIGNAL(clicked()), SLOT(slotHourChanged()));
 	connect(hourButton, SIGNAL(clicked()), SLOT(slotWizard()));
-	
+
 	return hourButton;
 }
 
@@ -527,15 +527,15 @@ QGroupBox* TaskEditorDialog::createHoursGroup(QWidget* main) {
 	hoursLayout->addWidget(morningLabel, 0, 0, Qt::AlignLeft | Qt::AlignVCenter);
 
 	int hourCount = 0;
-	for (int column = 0; column <= 3 ; ++column) { 
-	
+	for (int column = 0; column <= 3 ; ++column) {
+
 		for (int hour = 0; hour <= 5; ++hour) {
 			NumberPushButton* hourButton = createHourButton(hoursGroup, hourCount);
 			hourButtons[hourCount] = hourButton;
 			hoursLayout->addWidget(hourButton, column, hour+1);
 			hourCount++;
 		}
-		
+
 	}
 
 	afternoonLabel = new QLabel( i18n("PM:"), this);
@@ -548,7 +548,7 @@ QGroupBox* TaskEditorDialog::createHoursGroup(QWidget* main) {
 
 	connect(allHours, SIGNAL(clicked()), SLOT(slotAllHours()));
 	connect(allHours, SIGNAL(clicked()), SLOT(slotWizard()));
-	
+
 	logDebug() << "Create hours group" << endl;
 	return hoursGroup;
 }
@@ -684,7 +684,7 @@ void TaskEditorDialog::slotOK() {
 	for (int mi = 0; mi <= minuteTotal; ++mi) {
 		ctTask->minute.setEnabled(mi, minuteButtons[mi]->isChecked());
 	}
-	
+
 	close();
 }
 
@@ -692,7 +692,7 @@ void TaskEditorDialog::slotOK() {
 void TaskEditorDialog::defineCommandIcon() {
 	CTTask tempTask(*ctTask);
 	tempTask.command = command->url().path();
-	
+
 	commandIcon->setPixmap(tempTask.commandIcon());
 }
 
@@ -700,30 +700,30 @@ void TaskEditorDialog::defineCommandIcon() {
 bool TaskEditorDialog::checkCommand() {
 	CTTask tempTask(*ctTask);
 	tempTask.command = command->url().path();
-	
+
 	QPair<QString, bool> commandQuoted = tempTask.unQuoteCommand();
-	
+
 	if (commandQuoted.first.isEmpty()) {
 		setupTitleWidget(i18n("<i>Please type a valid command line...</i>"), KTitleWidget::ErrorMessage);
 		KDialog::enableButtonOk(false);
 		command->setFocus();
-		commandIcon->setPixmap(SmallIcon("image-missing"));
+		commandIcon->setPixmap(SmallIcon(QLatin1String( "image-missing" )));
 
 		return false;
 	}
-	
+
 
 	QStringList pathCommand = tempTask.separatePathCommand(commandQuoted.first, commandQuoted.second);
 	if (pathCommand.isEmpty()) {
 		setupTitleWidget(i18n("<i>Please type a valid command line...</i>"), KTitleWidget::ErrorMessage);
 		KDialog::enableButtonOk(false);
 		command->setFocus();
-		commandIcon->setPixmap(SmallIcon("image-missing"));
+		commandIcon->setPixmap(SmallIcon(QLatin1String( "image-missing" )));
 
 		return false;
 	}
 
-	
+
 	QString path = pathCommand.at(0);
 	QString binaryCommand = pathCommand.at(1);
 
@@ -731,16 +731,16 @@ bool TaskEditorDialog::checkCommand() {
 
 	bool found = false;
 	bool exec = false;
-	if (KStandardDirs::findExe(binaryCommand, path, KStandardDirs::IgnoreExecBit) != "" || specialValidCommands.contains(binaryCommand))
+	if (!KStandardDirs::findExe(binaryCommand, path, KStandardDirs::IgnoreExecBit).isEmpty() || specialValidCommands.contains(binaryCommand))
 		found = true;
-	if (KStandardDirs::findExe(binaryCommand, path) != "" || specialValidCommands.contains(binaryCommand))
+	if (!KStandardDirs::findExe(binaryCommand, path).isEmpty() || specialValidCommands.contains(binaryCommand))
 		exec = true;
 
 	if (found && !exec) {
 		setupTitleWidget(i18n("<i>Please select an executable program...</i>"), KTitleWidget::ErrorMessage);
 		KDialog::enableButtonOk(false);
 		command->setFocus();
-		commandIcon->setPixmap(SmallIcon("image-missing"));
+		commandIcon->setPixmap(SmallIcon(QLatin1String( "image-missing" )));
 		return false;
 	}
 
@@ -748,11 +748,11 @@ bool TaskEditorDialog::checkCommand() {
 		setupTitleWidget(i18n("<i>Please browse for a program to execute...</i>"), KTitleWidget::ErrorMessage);
 		KDialog::enableButtonOk(false);
 		command->setFocus();
-		commandIcon->setPixmap(SmallIcon("image-missing"));
+		commandIcon->setPixmap(SmallIcon(QLatin1String( "image-missing" )));
 		return false;
 	}
 
-	
+
 	return true;
 }
 
@@ -774,7 +774,7 @@ void TaskEditorDialog::slotWizard() {
 		setupTitleWidget(i18n("<i>Please browse for a program to execute...</i>"), KTitleWidget::ErrorMessage);
 		KDialog::enableButtonOk(false);
 		command->setFocus();
-		commandIcon->setPixmap(SmallIcon("image-missing"));
+		commandIcon->setPixmap(SmallIcon(QLatin1String( "image-missing" )));
 		return;
 	}
 
@@ -844,7 +844,7 @@ void TaskEditorDialog::slotWizard() {
 
 	defineCommandIcon();
 	setupTitleWidget(i18n("<i>This task will be executed at the specified intervals.</i>"));
-	
+
 	enableButtonOk(true);
 
 }
@@ -964,7 +964,7 @@ void TaskEditorDialog::slotHourChanged() {
 			allChecked = false;
 		}
 	}
-	
+
 	if (allCleared) {
 		allHours->setStatus(SetOrClearAllButton::SET_ALL);
 	} else {
@@ -976,13 +976,13 @@ void TaskEditorDialog::slotMinutesPreselection(int index) {
 	QVariant itemData = minutesPreselection->itemData(index);
 	int step = itemData.toInt();
 	logDebug() << "Selected step " << step << endl;
-	
+
 	if (step == -1) {
 		//Unselect everything
 		for (int mi = 0; mi <= minuteTotal; ++mi) {
 			minuteButtons[mi]->setChecked(false);
 		}
-	
+
 		//Select Custom selection in the combo box
 		for (int index=0; index < minutesPreselection->count(); ++index) {
 			if (minutesPreselection->itemData(index).toInt() == 0) {
@@ -1010,15 +1010,15 @@ void TaskEditorDialog::slotMinutesPreselection(int index) {
 }
 
 void TaskEditorDialog::slotMinuteChanged() {
-	
+
 	CTMinute minutes;
-	
+
 	for(int index=0; index<=minuteTotal; ++index) {
 		minutes.setEnabled(index, minuteButtons[index]->isChecked());
 	}
-	
+
 	int period = minutes.findPeriod();
-	
+
 	for(int index=0; index<minutesPreselection->count(); ++index) {
 		if (minutesPreselection->itemData(index).toInt() == period) {
 			minutesPreselection->setCurrentIndex(index);

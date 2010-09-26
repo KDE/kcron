@@ -47,9 +47,9 @@ public:
 VariablesWidget::VariablesWidget(CrontabWidget* crontabWidget) :
 	GenericListWidget(crontabWidget, i18n("<b>Environment Variables</b>"), KCronIcons::variable(KCronIcons::Small)),
 	d(new VariablesWidgetPrivate()) {
-	
+
 	refreshHeaders();
-	
+
 	treeWidget()->sortItems(0, Qt::AscendingOrder);
 
 	setupActions();
@@ -71,9 +71,9 @@ void VariablesWidget::modifySelection() {
 
 void VariablesWidget::modifySelection(QTreeWidgetItem* item, int position) {
 	VariableWidget* variableWidget = static_cast<VariableWidget*>(item);
-	
+
 	if (variableWidget!=NULL) {
-		
+
 		if (position == statusColumnIndex()) {
 			variableWidget->toggleEnable();
 			emit variableModified(true);
@@ -82,27 +82,27 @@ void VariablesWidget::modifySelection(QTreeWidgetItem* item, int position) {
 			CTVariable* variable = variableWidget->getCTVariable();
 			VariableEditorDialog variableEditorDialog(variable, i18n("Modify Variable"), crontabWidget());
 			int result = variableEditorDialog.exec();
-			
+
 			if (result == QDialog::Accepted) {
 				crontabWidget()->currentCron()->modifyVariable(variable);
 				variableWidget->refresh();
-			
+
 				emit variableModified(true);
 			}
 		}
 	}
-		
+
 }
 
 QList<VariableWidget*> VariablesWidget::selectedVariablesWidget() const {
 	QList<VariableWidget*> variablesWidget;
-	
+
 	QList<QTreeWidgetItem*> variablesItems = treeWidget()->selectedItems();
 	foreach(QTreeWidgetItem* item, variablesItems) {
 		VariableWidget* variableWidget = static_cast<VariableWidget*>(item);
 		variablesWidget.append(variableWidget);
 	}
-	
+
 	return variablesWidget;
 }
 
@@ -111,7 +111,7 @@ VariableWidget* VariablesWidget::firstSelectedVariableWidget() const {
 	QTreeWidgetItem* item = firstSelected();
 	if (item==NULL)
 		return NULL;
-	
+
 	return static_cast<VariableWidget*>(item);
 
 }
@@ -127,7 +127,7 @@ void VariablesWidget::deleteSelection() {
 		delete variableWidget->getCTVariable();
 		treeWidget()->takeTopLevelItem( treeWidget()->indexOfTopLevelItem(variableWidget) );
 		delete variableWidget;
-		
+
 	}
 
 	if (deleteSomething) {
@@ -141,7 +141,7 @@ bool VariablesWidget::needUserColumn() {
 	CTCron* currentCron = crontabWidget()->currentCron();
 	if (currentCron->isMultiUserCron()==true && currentCron->isSystemCron()==false)
 		return true;
-	
+
 	return false;
 }
 
@@ -154,7 +154,7 @@ int VariablesWidget::statusColumnIndex() {
 
 
 void VariablesWidget::createVariable() {
-	CTVariable* variable = new CTVariable("", "", crontabWidget()->currentCron()->userLogin());
+	CTVariable* variable = new CTVariable(QLatin1String( "" ), QLatin1String( "" ), crontabWidget()->currentCron()->userLogin());
 
 	VariableEditorDialog variableEditorDialog(variable, i18n("New Variable"), crontabWidget());
 	int result = variableEditorDialog.exec();
@@ -180,13 +180,13 @@ void VariablesWidget::addVariable(CTVariable* variable) {
 void VariablesWidget::refreshVariables(CTCron* cron) {
 	//Remove previous items
 	removeAll();
-	
+
 	refreshHeaders();
 
 	foreach(CTVariable* ctVariable, cron->variables()) {
 		new VariableWidget(this, ctVariable);
 	}
-	
+
 	resizeColumnContents();
 }
 
@@ -203,7 +203,7 @@ void VariablesWidget::refreshHeaders() {
 	headerLabels << i18n("Comment");
 
 	treeWidget()->setHeaderLabels(headerLabels);
-	
+
 	if (needUserColumn())
 		treeWidget()->setColumnCount(5);
 	else
@@ -263,12 +263,12 @@ void VariablesWidget::toggleNewEntryAction(bool state) {
 
 void VariablesWidget::changeCurrentSelection() {
 	logDebug() << "Change selection..." << endl;
-	
+
 	bool enabled;
 	if (treeWidget()->selectedItems().isEmpty())
 		enabled = false;
 	else
 		enabled = true;
-	
+
 	toggleModificationActions(enabled);
 }

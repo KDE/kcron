@@ -24,7 +24,7 @@ CTVariable::CTVariable(const QString& tokenString, const QString& _comment, cons
 
 	QString tokStr = tokenString;
 
-	if (tokStr.mid(0, 2) == "#\\") {
+	if (tokStr.mid(0, 2) == QLatin1String( "#\\" )) {
 		tokStr = tokStr.mid(2, tokStr.length() - 2);
 		enabled = false;
 	} else
@@ -32,7 +32,7 @@ CTVariable::CTVariable(const QString& tokenString, const QString& _comment, cons
 
 	int spacepos(0);
 
-	spacepos = tokStr.indexOf(QRegExp("[ =]"));
+	spacepos = tokStr.indexOf(QRegExp(QLatin1String( "[ =]" )));
 	variable = tokStr.mid(0, spacepos);
 
 	value = tokStr.mid(spacepos+1, tokStr.length()-spacepos-1);
@@ -49,7 +49,7 @@ CTVariable::CTVariable(const QString& tokenString, const QString& _comment, cons
 }
 
 CTVariable::CTVariable(const CTVariable &source) :
-	variable(source.variable), value(source.value), comment(source.comment), userLogin(source.userLogin), enabled(source.enabled), initialVariable(""), initialValue(""), initialComment(""), initialUserLogin(""), initialEnabled(true) {
+	variable(source.variable), value(source.value), comment(source.comment), userLogin(source.userLogin), enabled(source.enabled), initialVariable(QLatin1String( "" )), initialValue(QLatin1String( "" )), initialComment(QLatin1String( "" )), initialUserLogin(QLatin1String( "" )), initialEnabled(true) {
 }
 
 CTVariable& CTVariable::operator = (const CTVariable& source) {
@@ -62,10 +62,10 @@ CTVariable& CTVariable::operator = (const CTVariable& source) {
 	userLogin = source.userLogin;
 	enabled = source.enabled;
 
-	initialVariable = "";
-	initialValue = "";
-	initialComment = "";
-	initialUserLogin = "";
+	initialVariable = QLatin1String( "" );
+	initialValue = QLatin1String( "" );
+	initialComment = QLatin1String( "" );
+	initialUserLogin = QLatin1String( "" );
 	initialEnabled = true;
 	return *this;
 }
@@ -76,9 +76,9 @@ QString CTVariable::exportVariable() {
 	exportVariable += CTHelper::exportComment(comment);
 
 	if (enabled == false)
-		exportVariable += "#\\";
+		exportVariable += QLatin1String( "#\\" );
 
-	exportVariable += variable + "=" + value + "\n";
+	exportVariable += variable + QLatin1String( "=" ) + value + QLatin1String( "\n" );
 
 	return exportVariable;
 }
@@ -105,16 +105,16 @@ bool CTVariable::dirty() const {
 }
 
 QPixmap CTVariable::variableIcon() const {
-	if (variable == "MAILTO")
-		return SmallIcon("mail-message");
-	else if (variable == "SHELL")
-		return SmallIcon("utilities-terminal");
-	else if (variable == "HOME")
-		return SmallIcon("go-home");
-	else if (variable == "PATH")
-		return SmallIcon("folder");
-	else if (variable == "LD_CONFIG_PATH")
-		return SmallIcon("application-x-sharedlib");
+	if (variable == QLatin1String( "MAILTO" ))
+		return SmallIcon(QLatin1String( "mail-message" ));
+	else if (variable == QLatin1String( "SHELL" ))
+		return SmallIcon(QLatin1String( "utilities-terminal" ));
+	else if (variable == QLatin1String( "HOME" ))
+		return SmallIcon(QLatin1String( "go-home" ));
+	else if (variable == QLatin1String( "PATH" ))
+		return SmallIcon(QLatin1String( "folder" ));
+	else if (variable == QLatin1String( "LD_CONFIG_PATH" ))
+		return SmallIcon(QLatin1String( "application-x-sharedlib" ));
 
 	return KCronIcons::variable(KCronIcons::Small);
 
@@ -122,22 +122,22 @@ QPixmap CTVariable::variableIcon() const {
 
 QString CTVariable::information() const {
 
-	if (variable == "HOME") {
+	if (variable == QLatin1String( "HOME" )) {
 		return i18n("Override default home folder.");
 	}
-	else if (variable == "MAILTO") {
+	else if (variable == QLatin1String( "MAILTO" )) {
 		return i18n("Email output to specified account.");
 	}
-	else if (variable == "SHELL") {
+	else if (variable == QLatin1String( "SHELL" )) {
 		return i18n("Override default shell.");
 	}
-	else if (variable == "PATH") {
+	else if (variable == QLatin1String( "PATH" )) {
 		return i18n("Folders to search for program files.");
 	}
-	else if (variable == "LD_CONFIG_PATH") {
+	else if (variable == QLatin1String( "LD_CONFIG_PATH" )) {
 		return i18n("Dynamic libraries location.");
 	}
-	
+
 	return i18n("Local Variable");
-	
+
 }

@@ -29,11 +29,11 @@
 
 CTSystemCron::CTSystemCron(const QString& crontabBinary) :
 	CTCron() {
-	
+
 	d->systemCron = true;
 	d->multiUserCron = true;
 	d->currentUserCron = false;
-	
+
 	d->crontabBinary = crontabBinary;
 
 	KTemporaryFile tmp;
@@ -42,20 +42,20 @@ CTSystemCron::CTSystemCron(const QString& crontabBinary) :
 
 	CommandLine readCommandLine;
 
-	readCommandLine.commandLine = "cat";
-	readCommandLine.parameters << "/etc/crontab";
+	readCommandLine.commandLine = QLatin1String( "cat" );
+	readCommandLine.parameters << QLatin1String( "/etc/crontab" );
 	readCommandLine.standardOutputFile = d->tmpFileName;
 
-	d->writeCommandLine.commandLine = "cat";
+	d->writeCommandLine.commandLine = QLatin1String( "cat" );
 	d->writeCommandLine.parameters << d->tmpFileName;
-	d->writeCommandLine.standardOutputFile = "/etc/crontab";
+	d->writeCommandLine.standardOutputFile = QLatin1String( "/etc/crontab" );
 
 	d->userLogin = i18n("System Crontab");
 	d->userRealName = d->userLogin;
 
 	d->initialTaskCount = 0;
 	d->initialVariableCount = 0;
-	
+
 	// Don't set error if it can't be read, it means the user
 	// doesn't have a crontab.
 	if (readCommandLine.execute().exitStatus == QProcess::NormalExit) {

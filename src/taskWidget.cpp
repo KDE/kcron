@@ -35,22 +35,22 @@ TaskWidget::TaskWidget(TasksWidget* _tasksWidget, CTTask* _cttask) :
 
 void TaskWidget::refresh() {
 	int column = 0;
-	
+
 	if (tasksWidget->needUserColumn()) {
 		setText(column++, ctTask->userLogin);
 	}
-	
+
 	setText(column++, ctTask->schedulingCronFormat());
-	
+
 	setText(column, ctTask->command);
 	setIcon(column++, ctTask->commandIcon());
 
 	if (ctTask->enabled) {
 		setText(column, i18n("Enabled"));
-		setIcon(column++, SmallIcon("ok"));
+		setIcon(column++, SmallIcon(QLatin1String( "ok" )));
 	} else {
 		setText(column, i18n("Disabled"));
-		setIcon(column++, SmallIcon("no"));
+		setIcon(column++, SmallIcon(QLatin1String( "no" )));
 	}
 
 	setText(column++, ctTask->comment);

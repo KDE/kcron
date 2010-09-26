@@ -30,11 +30,11 @@ VariableWidget::VariableWidget(VariablesWidget* _variablesWidget, CTVariable* _c
 
 void VariableWidget::refresh() {
 	int column = 0;
-	
+
 	if (variablesWidget->needUserColumn()) {
 		setText(column++, ctVariable->userLogin);
 	}
-	
+
 	setText(column, ctVariable->variable);
 	setIcon(column++, ctVariable->variableIcon());
 
@@ -42,16 +42,16 @@ void VariableWidget::refresh() {
 
 	if (ctVariable->enabled) {
 		setText(column, i18n("Enabled"));
-		setIcon(column++, SmallIcon("ok"));
+		setIcon(column++, SmallIcon(QLatin1String( "ok" )));
 	}
 	else {
 		setText(column, i18n("Disabled"));
-		setIcon(column++, SmallIcon("no"));
+		setIcon(column++, SmallIcon(QLatin1String( "no" )));
 	}
-	
+
 	setText(column++, ctVariable->comment);
 
-			
+
 }
 
 

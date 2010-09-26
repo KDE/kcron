@@ -6,7 +6,7 @@
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   * 
+ *   (at your option) any later version.                                   *
  ***************************************************************************/
 
 #include "kcronIcons.h"
@@ -22,26 +22,26 @@ QPixmap KCronIcons::getIcon(const QString&name, KCronIcons::IconSize size) {
 		return SmallIcon(name);
 	else if (size == KCronIcons::Normal)
 		return BarIcon(name);
-	
+
 	return DesktopIcon(name);
 }
 
 QPixmap KCronIcons::application(KCronIcons::IconSize size) {
-	return getIcon("kcron", size);
+	return getIcon(QLatin1String( "kcron" ), size);
 }
 
 QPixmap KCronIcons::variable(KCronIcons::IconSize size) {
-	return getIcon("text", size);
+	return getIcon(QLatin1String( "text" ), size);
 }
 
 QPixmap KCronIcons::task(KCronIcons::IconSize size) {
-	return getIcon("system-run", size);
+	return getIcon(QLatin1String( "system-run" ), size);
 }
 
 QPixmap KCronIcons::information(KCronIcons::IconSize size) {
-	return getIcon("dialog-information", size);
+	return getIcon(QLatin1String( "dialog-information" ), size);
 }
 
 QPixmap KCronIcons::error(KCronIcons::IconSize size) {
-	return getIcon("dialog-error", size);
+	return getIcon(QLatin1String( "dialog-error" ), size);
 }

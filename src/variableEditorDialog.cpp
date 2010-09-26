@@ -68,16 +68,16 @@ VariableEditorDialog::VariableEditorDialog(CTVariable* _ctVariable, const QStrin
 	cmbVariable->setEditable(true);
 	layout->addWidget(cmbVariable, layoutPosition, 1);
 
-	cmbVariable->addItem("HOME");
-	cmbVariable->addItem("MAILTO");
-	cmbVariable->addItem("PATH");
-	cmbVariable->addItem("SHELL");
-	cmbVariable->addItem("LD_CONFIG_PATH");
+	cmbVariable->addItem(QLatin1String( "HOME" ));
+	cmbVariable->addItem(QLatin1String( "MAILTO" ));
+	cmbVariable->addItem(QLatin1String( "PATH" ));
+	cmbVariable->addItem(QLatin1String( "SHELL" ));
+	cmbVariable->addItem(QLatin1String( "LD_CONFIG_PATH" ));
 
 	labVariable->setBuddy(cmbVariable);
 
 	// details
-	QLabel* labDetails = new QLabel("", this);
+	QLabel* labDetails = new QLabel(QLatin1String( "" ), this);
 	layout->addWidget(labDetails, ++layoutPosition, 0, Qt::AlignLeft);
 
 	QHBoxLayout* detailsLayout = new QHBoxLayout;

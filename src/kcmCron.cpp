@@ -6,7 +6,7 @@
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   * 
+ *   (at your option) any later version.                                   *
  ***************************************************************************/
 
 #include "kcmCron.h"
@@ -57,7 +57,7 @@ public:
 	 * Main GUI view/working area.
 	 */
 	CrontabWidget* crontabWidget;
-	
+
 	/**
 	 * Document object, here crotab enries.
 	 */
@@ -67,7 +67,7 @@ public:
 
 
 
-KCMCron::KCMCron(QWidget* parent, const QStringList& /*args*/) : 
+KCMCron::KCMCron(QWidget* parent, const QStringList& /*args*/) :
 	KCModule(KCMCronFactory::componentData(), parent),
 	d(new KCMCronPrivate()) {
 
@@ -91,25 +91,25 @@ KCMCron::KCMCron(QWidget* parent, const QStringList& /*args*/) :
 		KMessageBox::error(this, i18n("The following error occurred while initializing KCron:"
 			"\n\n%1\n\nKCron will now exit.\n", ctInitializationError.errorMessage()));
 	}
-	
+
 	d->crontabWidget = new CrontabWidget(this, d->ctHost);
-	
+
 	logDebug() << "Crontab Widget initialized" << endl;
-	
+
 	connect(d->crontabWidget->tasksWidget(), SIGNAL(taskModified(bool)), this, SIGNAL(changed(bool)));
 	connect(d->crontabWidget->variablesWidget(), SIGNAL(variableModified(bool)), this, SIGNAL(changed(bool)));
-	
+
 	// Initialize view.
 	QVBoxLayout* layout = new QVBoxLayout(this);
-	
+
 	layout->addWidget(d->crontabWidget);
-	
+
 	init();
 
 }
 
 QString KCMCron::findCrontabBinary() {
-	return CRONTAB_BINARY;
+	return QLatin1String( CRONTAB_BINARY );
 }
 
 KCMCron::~KCMCron() {
@@ -127,7 +127,7 @@ void KCMCron::load() {
 
 void KCMCron::save() {
 	logDebug() << "Saving crontab..." << endl;
-	
+
 	CTSaveStatus saveStatus = d->ctHost->save();
 	if (saveStatus.isError() == true) {
 		KMessageBox::detailedError(this, saveStatus.errorMessage(), saveStatus.detailErrorMessage());
@@ -137,7 +137,7 @@ void KCMCron::save() {
 
 void KCMCron::defaults() {
 	logDebug() << "Loading defaults" << endl;
-	
+
 	d->ctHost->cancel();
 }
 
@@ -155,10 +155,10 @@ bool KCMCron::init() {
 		if (taskCount == 0) {
 			show();
 			//TODO Add this as a passive popup/message/something else
-			KMessageBox::information(this, i18n("You can use this application to schedule programs to run in the background.\nTo schedule a new task now, click on the Tasks folder and select Edit/New from the menu."), i18n("Welcome to the Task Scheduler"), "welcome");
+			KMessageBox::information(this, i18n("You can use this application to schedule programs to run in the background.\nTo schedule a new task now, click on the Tasks folder and select Edit/New from the menu."), i18n("Welcome to the Task Scheduler"), QLatin1String( "welcome" ));
 		}
 	}
-	
+
 	return true;
 }
 

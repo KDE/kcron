@@ -6,7 +6,7 @@
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   * 
+ *   (at your option) any later version.                                   *
  ***************************************************************************/
 
 #include "ctHelper.h"
@@ -17,16 +17,16 @@
 
 QString CTHelper::exportComment(const QString& comment) {
 	QString exportComment;
-	
+
 	if (comment.isEmpty()) {
 		QString noComment = i18n("No comment");
-		exportComment += "#" + noComment + "\n";
+		exportComment += QLatin1String( "#" ) + noComment + QLatin1String( "\n" );
 		return exportComment;
 	}
 
-	QStringList lines = comment.split("\n");
+	QStringList lines = comment.split(QLatin1String( "\n" ));
 	foreach(const QString &line, lines) {
-		exportComment += "#" + line + "\n";
+		exportComment += QLatin1String( "#" ) + line + QLatin1String( "\n" );
 	}
 
 	return exportComment;

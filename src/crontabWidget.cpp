@@ -71,7 +71,7 @@ public:
 	 * Tree view of the crontab tasks.
 	 */
 	VariablesWidget* variablesWidget;
-	
+
 	QAction* cutAction;
 	QAction* copyAction;
 	QAction* pasteAction;
@@ -91,10 +91,10 @@ public:
 	QRadioButton* otherUserCronRadio;
 
 	QComboBox* otherUsers;
-	
+
 	/**
 	 * Pointer to the pseudo Global Cron object
-	 */ 
+	 */
 	CTGlobalCron* ctGlobalCron;
 
 
@@ -107,7 +107,7 @@ CrontabWidget::CrontabWidget(QWidget* parent, CTHost* ctHost) :
 	d->variablesWidget = NULL;
 
 	d->ctHost = ctHost;
-	
+
 	if (d->ctHost->isRootUser()) {
 		d->ctGlobalCron = new CTGlobalCron(d->ctHost);
 	}
@@ -118,9 +118,9 @@ CrontabWidget::CrontabWidget(QWidget* parent, CTHost* ctHost) :
 	setupActions();
 
 	initialize();
-	
+
 	logDebug() << "Clipboard Status " << hasClipboardContent() << endl;
-	
+
 	d->tasksWidget->setFocus();
 
 	QTreeWidgetItem* item = d->tasksWidget->treeWidget()->topLevelItem(0);
@@ -139,7 +139,7 @@ CrontabWidget::~CrontabWidget() {
 	delete d->variablesWidget;
 
 	delete d->ctGlobalCron;
-	
+
 	delete d;
 }
 
@@ -158,7 +158,7 @@ QHBoxLayout* CrontabWidget::createCronSelector() {
 	layout->setSpacing(4);
 
 	QLabel* cronSelectorIcon = new QLabel(this);
-	cronSelectorIcon->setPixmap(SmallIcon("table"));
+	cronSelectorIcon->setPixmap(SmallIcon(QLatin1String( "table" )));
 	layout->addWidget(cronSelectorIcon);
 
 	layout->addWidget(new QLabel(i18n("Show the following Cron:"), this));
@@ -188,10 +188,10 @@ QHBoxLayout* CrontabWidget::createCronSelector() {
 		foreach(CTCron* ctCron, ctHost()->crons) {
 			if (ctCron->isCurrentUserCron())
 				continue;
-			
+
 			if (ctCron->isSystemCron())
 				continue;
-			
+
 			users.append(ctCron->userLogin());
 		}
 
@@ -246,7 +246,7 @@ void CrontabWidget::refreshCron() {
 
 	if (ctCron->isMultiUserCron() && ctHost()->isRootUser()==false) {
 		logDebug() << "Disabling view..." << endl;
-		
+
 		d->tasksWidget->treeWidget()->setEnabled(false);
 		d->variablesWidget->treeWidget()->setEnabled(false);
 
@@ -257,7 +257,7 @@ void CrontabWidget::refreshCron() {
 	}
 	else {
 		logDebug() << "Enabling view..." << endl;
-		
+
 		d->tasksWidget->treeWidget()->setEnabled(true);
 		d->variablesWidget->treeWidget()->setEnabled(true);
 
@@ -279,31 +279,31 @@ void CrontabWidget::copy() {
 	d->clipboardVariables.clear();
 
 	QString clipboardText;
-	
+
 	if (d->tasksWidget->treeWidget()->hasFocus()) {
 		logDebug() << "Tasks copying" << endl;
-		
+
 		QList<TaskWidget*> tasksWidget = d->tasksWidget->selectedTasksWidget();
 		foreach(TaskWidget* taskWidget, tasksWidget) {
 			CTTask* task = new CTTask( *(taskWidget->getCTTask()) );
 			d->clipboardTasks.append(task);
-			
-			clipboardText += task->exportTask() + "\n";
+
+			clipboardText += task->exportTask() + QLatin1String( "\n" );
 		}
 	}
 
 	if (d->variablesWidget->treeWidget()->hasFocus()) {
 		logDebug() << "Variables copying" << endl;
-		
+
 		QList<VariableWidget*> variablesWidget = d->variablesWidget->selectedVariablesWidget();
 		foreach(VariableWidget* variableWidget, variablesWidget) {
 			CTVariable* variable = new CTVariable( *(variableWidget->getCTVariable()) );
 			d->clipboardVariables.append(variable);
-			
-			clipboardText += variable->exportVariable() + "\n";
+
+			clipboardText += variable->exportVariable() + QLatin1String( "\n" );
 		}
 	}
-	
+
 	QApplication::clipboard()->setText(clipboardText, QClipboard::Clipboard);
 	QApplication::clipboard()->setText(clipboardText, QClipboard::Selection);
 
@@ -313,14 +313,14 @@ void CrontabWidget::copy() {
 
 void CrontabWidget::cut() {
 	logDebug() << "Cut content" << endl;
-	
+
 	copy();
 
 	if (d->tasksWidget->treeWidget()->hasFocus()) {
 		logDebug() << "Tasks cutting" << endl;
 		d->tasksWidget->deleteSelection();
 	}
-	
+
 	if (d->variablesWidget->treeWidget()->hasFocus()) {
 		logDebug() << "Variables cutting" << endl;
 		d->variablesWidget->deleteSelection();
@@ -329,13 +329,13 @@ void CrontabWidget::cut() {
 
 void CrontabWidget::paste() {
 	logDebug() << "Paste content" << endl;
-	
+
 	if (d->tasksWidget->treeWidget()->hasFocus()) {
 		foreach(CTTask* task, d->clipboardTasks) {
 			d->tasksWidget->addTask(new CTTask(*task));
 		}
 	}
-	
+
 	if (d->variablesWidget->treeWidget()->hasFocus()) {
 		foreach(CTVariable* variable, d->clipboardVariables) {
 			d->variablesWidget->addVariable(new CTVariable(*variable));
@@ -354,7 +354,7 @@ CTCron* CrontabWidget::currentCron() const {
 		logDebug() << "Using Global Cron" << endl;
 		return d->ctGlobalCron;
 	}
-	
+
 	QString currentUserLogin = d->otherUsers->currentText();
 	return d->ctHost->findUserCron(currentUserLogin);
 }
@@ -396,7 +396,7 @@ QList<QAction*> CrontabWidget::cutCopyPasteActions() {
 	actions.append(d->cutAction);
 	actions.append(d->copyAction);
 	actions.append(d->pasteAction);
-	
+
 	return actions;
 }
 
