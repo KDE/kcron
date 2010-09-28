@@ -48,7 +48,7 @@ private slots:
 	/**
 	 * Setup title widget
 	 */
-	void setupTitleWidget(const QString& comment = "", KTitleWidget::MessageType = KTitleWidget::PlainMessage);
+	void setupTitleWidget(const QString& comment = QLatin1String(""), KTitleWidget::MessageType = KTitleWidget::PlainMessage);
 
 	/**
 	 * Enable / disable variable

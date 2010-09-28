@@ -7,9 +7,7 @@ endif(CMAKE_COMPILER_IS_GNUCC)
 if(CMAKE_COMPILER_IS_GNUCXX)
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fmessage-length=0")
 endif(CMAKE_COMPILER_IS_GNUCXX)
-# Laurent there is still a link problem, don't know why. Remove it to try to fix it
-remove_definitions( -DQT_NO_CAST_FROM_ASCII )
-remove_definitions( -DQT_NO_CAST_TO_ASCII )
+#
 
 
 ##

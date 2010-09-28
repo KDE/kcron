@@ -23,7 +23,7 @@ public:
 	/**
 	 * Constructs from a tokenized string.
 	 */
-	CTHour(const QString& tokStr = "");
+	CTHour(const QString& tokStr = QLatin1String(""));
 	
 	int findPeriod() const;
 	

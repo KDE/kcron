@@ -25,13 +25,13 @@ public:
 	/**
 	 * Constructs from a tokenized string.
 	 */
-	CTDayOfWeek(const QString& tokStr = "");
+	CTDayOfWeek(const QString& tokStr = QLatin1String(""));
 
 	/**
 	 * Override initialize to support crontab using both 0 and 7 for
 	 * Sunday.
 	 */
-	void initialize(const QString& tokStr = "");
+	void initialize(const QString& tokStr = QLatin1String(""));
 
 	/**
 	 * Get natural language description.

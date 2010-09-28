@@ -23,7 +23,7 @@
 class CTUnit {
 	
 protected:
-	CTUnit(int min, int max, const QString& tokStr = "");
+	CTUnit(int min, int max, const QString& tokStr = QLatin1String(""));
 
 	/**
 	 * Get default natural language description.
@@ -57,7 +57,7 @@ public:
 	 * Parses unit such as "0-3,5,6,10-30/5".
 	 * And initialize array of enabled intervals.
 	 */
-	void initialize(const QString& tokStr = "");
+	void initialize(const QString& tokStr = QLatin1String(""));
 
 	/**
 	 * Lower bound.
@@ -111,7 +111,7 @@ protected:
 	 * Parses unit such as "0-3,5,6,10-30/5".
 	 * Does not initialize array of enabled intervals.
 	 */
-	void parse(const QString& tokenString = "");
+	void parse(const QString& tokenString = QLatin1String(""));
 	
 private:
 	int min;

@@ -102,7 +102,7 @@ private slots:
 	/**
 	 * Control the task title bar.
 	 */
-	void setupTitleWidget(const QString& comment="", KTitleWidget::MessageType = KTitleWidget::PlainMessage);
+	void setupTitleWidget(const QString& comment=QLatin1String(""), KTitleWidget::MessageType = KTitleWidget::PlainMessage);
 
 	/**
 	 * Enable checkbox has changed
