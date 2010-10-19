@@ -42,11 +42,11 @@ void VariableWidget::refresh() {
 
 	if (ctVariable->enabled) {
 		setText(column, i18n("Enabled"));
-		setIcon(column++, SmallIcon(QLatin1String( "ok" )));
+		setIcon(column++, SmallIcon(QLatin1String( "dialog-ok-apply" )));
 	}
 	else {
 		setText(column, i18n("Disabled"));
-		setIcon(column++, SmallIcon(QLatin1String( "no" )));
+		setIcon(column++, SmallIcon(QLatin1String( "dialog-cancel" )));
 	}
 
 	setText(column++, ctVariable->comment);
