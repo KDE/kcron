@@ -55,7 +55,6 @@ kde4_add_plugin(kcm_cron ${kcm_cron_SRCS})
 
 target_link_libraries(kcm_cron 
     ${KDE4_KIO_LIBS}
-    ${QT_QT3SUPPORT_LIBRARY}
 )
 
 install(TARGETS  kcm_cron  DESTINATION ${PLUGIN_INSTALL_DIR} )
