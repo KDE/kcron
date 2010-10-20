@@ -48,7 +48,7 @@ CommandLineStatus CommandLine::execute() {
 
 	commandLineStatus.standardOutput = QLatin1String( process.readAllStandardOutput() );
 	commandLineStatus.standardError = QLatin1String( process.readAllStandardError() );
-	commandLineStatus.exitStatus = process.exitStatus();
+	commandLineStatus.exitCode = process.exitCode();
 
 	return commandLineStatus;
 }
@@ -102,7 +102,7 @@ CTCron::CTCron(const QString& crontabBinary, const struct passwd* userInfos, boo
 
 	// Don't set error if it can't be read, it means the user doesn't have a crontab.
 	CommandLineStatus commandLineStatus = readCommandLine.execute();
-	if (commandLineStatus.exitStatus == QProcess::NormalExit) {
+	if (commandLineStatus.exitCode == 0) {
 		this->parseFile(d->tmpFileName);
 	}
 	else {
@@ -294,7 +294,7 @@ CTSaveStatus CTCron::save() {
 
 	CommandLineStatus commandLineStatus = d->writeCommandLine.execute();
 	// install temp file into crontab
-	if (commandLineStatus.exitStatus == QProcess::CrashExit) {
+	if (commandLineStatus.exitCode != 0) {
 		QFile::remove(d->tmpFileName);
 		return prepareSaveStatusError(commandLineStatus);
 	}

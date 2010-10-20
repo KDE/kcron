@@ -27,7 +27,7 @@ struct passwd;
 
 class CommandLineStatus {
 public:
-	QProcess::ExitStatus exitStatus;
+	int exitCode;
 	
 	QString commandLine;
 	
