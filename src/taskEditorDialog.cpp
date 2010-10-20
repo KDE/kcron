@@ -79,14 +79,14 @@ TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption, Cro
 	mainLayout->addWidget(titleWidget);
 
 
-	QGridLayout* commandConfigurationLayout = new QGridLayout(main);
+	QGridLayout* commandConfigurationLayout = new QGridLayout();
 	mainLayout->addLayout(commandConfigurationLayout);
 
 	// command
 	QLabel* labCommand = new QLabel( i18n("&Command:"), main );
 	commandConfigurationLayout->addWidget(labCommand, 0, 0);
 
-	QHBoxLayout* commandLayout = new QHBoxLayout(main);
+	QHBoxLayout* commandLayout = new QHBoxLayout();
 	commandIcon = new QLabel(main);
 	commandLayout->addWidget(commandIcon);
 
@@ -251,9 +251,8 @@ QGroupBox* TaskEditorDialog::createDaysOfMonthGroup(QWidget* main) {
 	int dm = CTDayOfMonth::MINIMUM;
 	for (int row = 0; row < 5; ++row) {
 		for (int column = 0; column < 7; ++column) {
-			NumberPushButton* day = new NumberPushButton(daysOfMonthGroup);
+			NumberPushButton* day = new NumberPushButton(true, daysOfMonthGroup);
 			KAcceleratorManager::setNoAccel(day);
-			day->setFixedSize(25, 25);
 			day->setText(QString::number(dm));
 			day->setCheckable(true);
 			day->setChecked(ctTask->dayOfMonth.isEnabled(dm));
@@ -446,12 +445,11 @@ void TaskEditorDialog::reduceMinutesGroup() {
 }
 
 NumberPushButton* TaskEditorDialog::createMinuteButton(int minuteIndex) {
-	NumberPushButton* minuteButton = new NumberPushButton(minutesGroup);
+	NumberPushButton* minuteButton = new NumberPushButton(true, minutesGroup);
 	KAcceleratorManager::setNoAccel(minuteButton);
 	minuteButton->setText(QString::number(minuteIndex));
 	minuteButton->setCheckable(true);
 	minuteButton->setChecked(ctTask->minute.isEnabled(minuteIndex));
-	minuteButton->setFixedSize(25, 25);
 
 	connect(minuteButton, SIGNAL(clicked()), SLOT(slotMinuteChanged()));
 	connect(minuteButton, SIGNAL(clicked()), SLOT(slotWizard()));
@@ -505,12 +503,11 @@ void TaskEditorDialog::createMinutesGroup(QWidget* main) {
 }
 
 NumberPushButton* TaskEditorDialog::createHourButton(QGroupBox* hoursGroup, int hour) {
-	NumberPushButton* hourButton = new NumberPushButton(hoursGroup);
+	NumberPushButton* hourButton = new NumberPushButton(true, hoursGroup);
 	KAcceleratorManager::setNoAccel(hourButton);
 	hourButton->setText(QString::number(hour));
 	hourButton->setCheckable(true);
 	hourButton->setChecked(ctTask->hour.isEnabled(hour));
-	hourButton->setFixedSize(25, 25);
 
 	connect(hourButton, SIGNAL(clicked()), SLOT(slotHourChanged()));
 	connect(hourButton, SIGNAL(clicked()), SLOT(slotWizard()));
@@ -1070,6 +1067,13 @@ bool SetOrClearAllButton::isClearAll() {
 
 NumberPushButton::NumberPushButton(QWidget * parent) :
 	QPushButton(parent), isDirty(false) {
+	updatePalette();
+}
+
+NumberPushButton::NumberPushButton(bool digitMode, QWidget * parent) :
+	QPushButton(parent), isDirty(false) {
+	if (digitMode)
+		setFixedWidth(12 + fontMetrics().width(QLatin1String( "44" )));
 	updatePalette();
 }
 

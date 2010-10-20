@@ -100,7 +100,7 @@ GenericListWidget::GenericListWidget(CrontabWidget* crontabWidget, const QString
 	mainLayout->addLayout(treeLayout);
 
 	logDebug() << "Generic list created" << endl;
-	connect(treeWidget(), SIGNAL(itemActivated(QTreeWidgetItem*, int)), SLOT(modifySelection(QTreeWidgetItem*, int)));
+	connect(treeWidget(), SIGNAL(itemDoubleClicked(QTreeWidgetItem*, int)), SLOT(modifySelection(QTreeWidgetItem*, int)));
 
 }
 
@@ -182,7 +182,7 @@ void GenericListWidget::setActionEnabled(QAction* action, bool enabled) {
 	foreach(QWidget* widget, action->associatedWidgets()) {
 		
 		//Only change status of associated Buttons
-		QPushButton* button = dynamic_cast<QPushButton*>(widget);
+		QPushButton* button = qobject_cast<QPushButton*>(widget);
 		if (button!=NULL) {
 			button->setEnabled(enabled);
 		}
