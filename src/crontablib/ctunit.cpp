@@ -121,7 +121,7 @@ void CTUnit::parse(const QString& tokenString) {
 
 		// setup enabled
 		for (int i = beginat; i <= endat; i+=step) {
-			enabled[i] = true;
+			initialEnabled[i] = enabled[i] = true;
 		}
 
 		tokStr = tokStr.mid(commapos+1, tokStr.length()-commapos-1);
