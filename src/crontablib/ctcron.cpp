@@ -37,8 +37,14 @@ CommandLineStatus CommandLine::execute() {
 	if (standardOutputFile.isEmpty() == false)
 		process.setStandardOutputFile(standardOutputFile);
 
+	int exitCode;
 	process.start(commandLine, parameters);
-	process.waitForFinished(-1);
+	if (!process.waitForStarted()) {
+		exitCode = 127;
+	} else {
+		process.waitForFinished(-1);
+		exitCode = process.exitCode();
+	}
 
 	CommandLineStatus commandLineStatus;
 
@@ -48,7 +54,7 @@ CommandLineStatus CommandLine::execute() {
 
 	commandLineStatus.standardOutput = QLatin1String( process.readAllStandardOutput() );
 	commandLineStatus.standardError = QLatin1String( process.readAllStandardError() );
-	commandLineStatus.exitCode = process.exitCode();
+	commandLineStatus.exitCode = exitCode;
 
 	return commandLineStatus;
 }
@@ -280,7 +286,11 @@ CTSaveStatus CTCron::prepareSaveStatusError(const CommandLineStatus& commandLine
 	else
 		standardError = commandLineStatus.standardError;
 
-	QString detailError = i18n("<p><strong>Command:</strong> %1</p><strong>Standard Output :</strong><pre>%2</pre><strong>Error Output :</strong><pre>%3</pre>", commandLineStatus.commandLine, standardOutput, standardError);
+	QString detailError;
+	if (commandLineStatus.exitCode == 127)
+		detailError = i18n("<p><strong>Command:</strong> %1</p><strong>Command could not be started</strong>", commandLineStatus.commandLine);
+	else
+		detailError = i18n("<p><strong>Command:</strong> %1</p><strong>Standard Output :</strong><pre>%2</pre><strong>Error Output :</strong><pre>%3</pre>", commandLineStatus.commandLine, standardOutput, standardError);
 
 	return CTSaveStatus(i18n("An error occurred while updating crontab."), detailError);
 }
