@@ -796,7 +796,8 @@ void TaskEditorDialog::slotWizard() {
 	if (!valid) {
 		setupTitleWidget(i18n("<i>Please select from the 'Months' section...</i>"), KTitleWidget::ErrorMessage);
 		KDialog::enableButtonOk(false);
-		monthButtons[1]->setFocus();
+		if (!command->hasFocus())
+			monthButtons[1]->setFocus();
 		return;
 	}
 
@@ -814,7 +815,8 @@ void TaskEditorDialog::slotWizard() {
 	if (!valid) {
 		setupTitleWidget(i18n("<i>Please select from either the 'Days of Month' or the 'Days of Week' section...</i>"), KTitleWidget::ErrorMessage);
 		KDialog::enableButtonOk(false);
-		dayOfMonthButtons[1]->setFocus();
+		if (!command->hasFocus())
+			dayOfMonthButtons[1]->setFocus();
 		return;
 	}
 
@@ -828,7 +830,8 @@ void TaskEditorDialog::slotWizard() {
 	if (!valid) {
 		setupTitleWidget(i18n("<i>Please select from the 'Hours' section...</i>"), KTitleWidget::ErrorMessage);
 		KDialog::enableButtonOk(false);
-		hourButtons[0]->setFocus();
+		if (!command->hasFocus())
+			hourButtons[0]->setFocus();
 		return;
 	}
 
@@ -842,7 +845,8 @@ void TaskEditorDialog::slotWizard() {
 	if (!valid) {
 		setupTitleWidget(i18n("<i>Please select from the 'Minutes' section...</i>"), KTitleWidget::ErrorMessage);
 		KDialog::enableButtonOk(false);
-		minuteButtons[0]->setFocus();
+		if (!command->hasFocus())
+			minuteButtons[0]->setFocus();
 		return;
 	}
 
