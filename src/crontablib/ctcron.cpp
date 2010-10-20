@@ -160,6 +160,7 @@ void CTCron::parseFile(const QString& fileName) {
 		return;
 
 	QString comment;
+	bool leadingComment = true;
 
 	QTextStream in(&file);
 	while (in.atEnd() == false) {
@@ -167,6 +168,11 @@ void CTCron::parseFile(const QString& fileName) {
 
 		// search for comments "#" but not disabled tasks "#\"
 		if ( line.indexOf(QLatin1String( "#" )) == 0 && line.indexOf(QLatin1String( "\\" )) != 1 ) {
+			// Skip leading comments with leading spaces, those are not written by KCron
+			if ( leadingComment && line.startsWith(QLatin1String( "# " ))) {
+				continue;
+			}
+			leadingComment = false;
 			// If the first 10 characters don't contain a character, it's probably a disabled entry.
 			int firstText = line.indexOf(QRegExp(QLatin1String( "[a-zA-Z]" )));
 			if (firstText < 0)
