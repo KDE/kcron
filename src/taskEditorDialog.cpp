@@ -407,6 +407,9 @@ void TaskEditorDialog::increaseMinutesGroup() {
 	}
 
 	minutesLayout->addLayout(minutesPreselectionLayout, ((minuteTotal+1)/minutePerColumn), 0, 1, minutePerColumn);
+	minutesLayout->invalidate();
+	this->resize(sizeHint());
+
 }
 
 void TaskEditorDialog::reduceMinutesGroup() {
@@ -437,6 +440,7 @@ void TaskEditorDialog::reduceMinutesGroup() {
 	}
 
 	minutesLayout->addLayout(minutesPreselectionLayout, 2, 0, 1, 6);
+	minutesLayout->invalidate();
 	this->resize(sizeHint());
 
 }
@@ -1000,7 +1004,7 @@ void TaskEditorDialog::slotMinutesPreselection(int index) {
 		}
 	}
 
-	if (step<reducedMinuteStep) {
+	if (step<reducedMinuteStep && index != 0) {
 		increaseMinutesGroup();
 	}
 	else {
