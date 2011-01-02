@@ -27,15 +27,15 @@ public:
 		this->detailError = detailErrorMessage;
 	}
 	
-	QString errorMessage() {
+	QString errorMessage() const {
 		return error;
 	}
 
-	QString detailErrorMessage() {
+	QString detailErrorMessage() const {
 		return detailError;
 	}
 	
-	bool isError() {
+	bool isError() const {
 		return errorStatus;
 	}
 	

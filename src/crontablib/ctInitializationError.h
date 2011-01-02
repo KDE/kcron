@@ -17,7 +17,7 @@
 class CTInitializationError {
 public:
 	
-	QString errorMessage() {
+	QString errorMessage() const {
 		return error;
 	}
 	
