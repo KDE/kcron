@@ -180,7 +180,7 @@ void CTCron::parseFile(const QString& fileName) {
 			}
 			leadingComment = false;
 			// If the first 10 characters don't contain a character, it's probably a disabled entry.
-			int firstText = line.indexOf(QRegExp(QLatin1String( "[a-zA-Z]" )));
+			int firstText = line.indexOf(QRegExp(QLatin1String( "\\w" )));
 			if (firstText < 0)
 				continue;
 
