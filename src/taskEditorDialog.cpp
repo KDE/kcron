@@ -95,7 +95,7 @@ TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption, Cro
 	commandLayout->addWidget(command);
 
 	command->setMode(KFile::File | KFile::ExistingOnly | KFile::LocalOnly);
-	command->setPath(ctTask->command);
+	command->setUrl(KUrl(ctTask->command));
 
 	//Initialize special valid commands
 	specialValidCommands << QLatin1String( "cd" );

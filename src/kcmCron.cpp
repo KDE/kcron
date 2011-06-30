@@ -20,7 +20,7 @@
 #include <QLabel>
 
 #include <kglobal.h>
-#include <kgenericfactory.h>
+#include <kpluginfactory.h>
 #include <kaboutdata.h>
 
 #include <kmenubar.h>
@@ -47,8 +47,8 @@
 #include "ctInitializationError.h"
 #include "logging.h"
 
-typedef KGenericFactory<KCMCron, QWidget> KCMCronFactory;
-K_EXPORT_COMPONENT_FACTORY( kcm_cron, KCMCronFactory("kcron") )
+K_PLUGIN_FACTORY(KCMCronFactory, registerPlugin<KCMCron>();)
+K_EXPORT_PLUGIN(KCMCronFactory("kcron"))
 
 class KCMCronPrivate {
 public:
@@ -67,7 +67,7 @@ public:
 
 
 
-KCMCron::KCMCron(QWidget* parent, const QStringList& /*args*/) :
+KCMCron::KCMCron(QWidget* parent, const QVariantList& /*args*/) :
 	KCModule(KCMCronFactory::componentData(), parent),
 	d(new KCMCronPrivate()) {
 

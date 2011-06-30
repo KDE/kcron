@@ -36,7 +36,7 @@ class KCMCron : public KCModule {
 
 public:
 	//, const QVariantList& arguments
-	KCMCron(QWidget* parent, const QStringList& args);
+	KCMCron(QWidget* parent, const QVariantList& args);
 
 	~KCMCron();
 
