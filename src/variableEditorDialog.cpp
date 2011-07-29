@@ -140,8 +140,8 @@ VariableEditorDialog::VariableEditorDialog(CTVariable* _ctVariable, const QStrin
 	show();
 
 	// connect them up
-	connect(cmbVariable, SIGNAL(editTextChanged(const QString&)), SLOT(slotWizard()));
-	connect(leValue, SIGNAL(textEdited(const QString&)), SLOT(slotWizard()));
+	connect(cmbVariable, SIGNAL(editTextChanged(QString)), SLOT(slotWizard()));
+	connect(leValue, SIGNAL(textEdited(QString)), SLOT(slotWizard()));
 	connect(this, SIGNAL(okClicked()), this, SLOT(slotOk()));
 	connect(chkEnabled, SIGNAL(clicked()), SLOT(slotEnabled()));
 

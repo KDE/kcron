@@ -186,7 +186,7 @@ TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption, Cro
 
 	command->setFocus();
 
-	connect(command, SIGNAL(textChanged(const QString&)), SLOT(slotWizard()));
+	connect(command, SIGNAL(textChanged(QString)), SLOT(slotWizard()));
 
 	connect(chkEnabled, SIGNAL(clicked()), SLOT(slotEnabledChanged()));
 	connect(chkEnabled, SIGNAL(clicked()), SLOT(slotWizard()));
