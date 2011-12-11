@@ -136,4 +136,5 @@ X-KDE-Keywords[pt_BR]=cron,crontab,agendadas,tarefas,tarefa,agendar,vixie
 X-KDE-Keywords[sv]=cron,crontab,schemalagd,uppgifter,uppgift,schema,vixie
 X-KDE-Keywords[uk]=cron,crontab,scheduled,tasks,task,schedule,vixie,таблиця планування,список планування,завдання,план,запуск
 X-KDE-Keywords[x-test]=xxcron,crontab,scheduled,tasks,task,schedule,vixiexx
+X-KDE-Keywords[zh_TW]=cron,crontab,scheduled,tasks,task,schedule,vixie
 Categories=Qt;KDE;X-KDE-settings-system;
