@@ -210,13 +210,13 @@ scheduled.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><guilabel>Days of the Month</guilabel></term>
+<term><guilabel>Days of Month</guilabel></term>
 <listitem><para>Select the days of the month on which the task is to be
 scheduled.</para>
 </listitem> 
 </varlistentry>
 <varlistentry>
-<term><guilabel>Days of the Week</guilabel></term>
+<term><guilabel>Days of Week</guilabel></term>
 <listitem><para>Select the days of the week on which the task is to be
 scheduled.</para>
 </listitem> 
