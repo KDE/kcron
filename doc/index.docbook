@@ -5,7 +5,7 @@
   <!ENTITY % addindex "IGNORE">
 ]>
 
-<article lang="&language;">
+<article id="kcron" lang="&language;">
 <title>Task Scheduler</title>
 
 <articleinfo>
