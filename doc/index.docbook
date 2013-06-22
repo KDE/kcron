@@ -43,8 +43,8 @@
 <holder>&Morgan.N.Sandquist;</holder>
 </copyright>
 
-<date>2010-01-11</date>
-<releaseinfo>&kde; 4.4</releaseinfo>
+<date>2013-06-22</date>
+<releaseinfo>&kde; 4.11</releaseinfo>
 
 <keywordset>
 <keyword>KDE</keyword>
@@ -159,7 +159,7 @@ button. Alternatively, you can select this action from the
 <mousebutton>right</mousebutton> mouse button context menu.</para>
 
 <sect3>
-<title>The <guilabel>Edit Task</guilabel> Dialog</title>
+<title>The Edit Task Dialog</title>
 
 <screenshot>
 <screeninfo><guilabel>Edit Task</guilabel> dialog.</screeninfo>
@@ -274,13 +274,13 @@ cut, copy and paste tasks.</para>
 <title>Adding Environment Variables</title>
 
 <para>To create a new environment variable, click the
-<guibutton>New Variable...</guibutton>.</para>
+<guibutton>New Variable...</guibutton> button.</para>
 
 <para>Alternatively, you can use the <mousebutton>right</mousebutton>
 mouse button menu to choose this action.</para>
 
 <sect3>
-<title>The <guilabel>Edit Variable</guilabel> dialog</title>
+<title>The Edit Variable dialog</title>
 
 <screenshot>
 <screeninfo><guilabel>Edit Variable</guilabel> dialog.</screeninfo>
@@ -323,6 +323,13 @@ files.</para></listitem>
 <listitem><para>To be used instead of the user's default
 value.</para></listitem>
 </varlistentry>
+
+<varlistentry>
+<term><guimenuitem>LD_CONFIG_PATH</guimenuitem></term>
+<listitem><para>The location of dynamic libraries. This allows cron jobs to execute 
+applications which have libraries they need to run installed outside the system library path.</para></listitem>
+</varlistentry>
+
 </variablelist>
 </listitem>
 </varlistentry>
