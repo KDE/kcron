@@ -257,7 +257,8 @@ void TasksWidget::refreshHeaders() {
 }
 
 bool TasksWidget::needUserColumn() const {
-	if (crontabWidget()->currentCron()->isMultiUserCron()) {
+	CTCron* ctCron = crontabWidget()->currentCron();
+	if (ctCron && ctCron->isMultiUserCron()) {
 		return true;
 	}
 
