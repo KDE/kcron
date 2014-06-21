@@ -155,11 +155,6 @@ bool CrontabWidget::hasClipboardContent() {
 
 QHBoxLayout* CrontabWidget::createCronSelector() {
 	QHBoxLayout* layout = new QHBoxLayout();
-	layout->setSpacing(4);
-
-	QLabel* cronSelectorIcon = new QLabel(this);
-	cronSelectorIcon->setPixmap(SmallIcon(QLatin1String( "table" )));
-	layout->addWidget(cronSelectorIcon);
 
 	layout->addWidget(new QLabel(i18n("Show the following Cron:"), this));
 
