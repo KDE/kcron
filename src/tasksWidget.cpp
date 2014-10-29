@@ -46,7 +46,7 @@ public:
 
 	QAction* runNowAction;
 
-	KAction* printAction;
+	QAction* printAction;
 
 };
 

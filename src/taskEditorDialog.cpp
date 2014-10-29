@@ -16,7 +16,6 @@
 #include <QLayout>
 #include <QCheckBox>
 #include <QPalette>
-#include <QColorGroup>
 #include <QPainter>
 #include <QEvent>
 #include <QHBoxLayout>
@@ -38,6 +37,7 @@
 #include <kstandarddirs.h>
 #include <ktitlewidget.h>
 #include <kiconloader.h>
+#include <kurl.h>
 #include <kurlrequester.h>
 
 #include "logging.h"

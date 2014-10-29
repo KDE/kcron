@@ -16,6 +16,7 @@
 #include <QGridLayout>
 #include <QLineEdit>
 
+#include <kicon.h>
 #include <klineedit.h>
 #include <klocale.h>
 #include <kmessagebox.h>

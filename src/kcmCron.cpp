@@ -68,18 +68,18 @@ public:
 
 
 KCMCron::KCMCron(QWidget* parent, const QVariantList& /*args*/) :
-	KCModule(KCMCronFactory::componentData(), parent),
+	KCModule(parent),
 	d(new KCMCronPrivate()) {
 
 
-	KAboutData* aboutData = new KAboutData("kcm_cron", 0, ki18n("Task Scheduler"),
-			KDE_VERSION_STRING, ki18n("KDE Task Scheduler"), KAboutData::License_GPL, ki18n("(c) 2008, Nicolas Ternisien\n(c) 1999-2000, Gary Meyer"));
+	KAboutData* aboutData = new KAboutData("kcm_cron", i18n("Task Scheduler"),
+			"5.0", i18n("KDE Task Scheduler"), KAboutLicense::GPL, i18n("(c) 2008, Nicolas Ternisien\n(c) 1999-2000, Gary Meyer"));
 
-	aboutData->addAuthor(ki18n("Nicolas Ternisien"), KLocalizedString(), "nicolas.ternisien@gmail.com");
-	aboutData->addAuthor(ki18n("Gary Meyer"), KLocalizedString(), "gary@meyer.net");
-	aboutData->addAuthor(ki18n("Robert Berry"), KLocalizedString(), "rjmber@ntlworld.com");
-	aboutData->addAuthor(ki18n("James Ots"), KLocalizedString(), "code@jamesots.com");
-	aboutData->addAuthor(ki18n("Alberto G. Hierro"), KLocalizedString(), "alberto.hierro@kdemail.net");
+	aboutData->addAuthor(i18n("Nicolas Ternisien"), QString(), "nicolas.ternisien@gmail.com");
+	aboutData->addAuthor(i18n("Gary Meyer"), QString(), "gary@meyer.net");
+	aboutData->addAuthor(i18n("Robert Berry"), QString(), "rjmber@ntlworld.com");
+	aboutData->addAuthor(i18n("James Ots"), QString(), "code@jamesots.com");
+	aboutData->addAuthor(i18n("Alberto G. Hierro"), QString(), "alberto.hierro@kdemail.net");
 
 	setAboutData(aboutData);
 

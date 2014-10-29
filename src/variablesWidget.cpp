@@ -19,6 +19,7 @@
 
 #include <klocale.h>
 #include <kglobalsettings.h>
+#include <kicon.h>
 
 #include "ctcron.h"
 #include "cttask.h"
