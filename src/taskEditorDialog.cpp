@@ -184,19 +184,19 @@ TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption, Cro
 
 	command->setFocus();
 
-	connect(command, SIGNAL(textChanged(QString)), SLOT(slotWizard()));
+	connect(command, &KUrlRequester::textChanged, this, &TaskEditorDialog::slotWizard);
 
-	connect(chkEnabled, SIGNAL(clicked()), SLOT(slotEnabledChanged()));
-	connect(chkEnabled, SIGNAL(clicked()), SLOT(slotWizard()));
+	connect(chkEnabled, &QCheckBox::clicked, this, &TaskEditorDialog::slotEnabledChanged);
+	connect(chkEnabled, &QCheckBox::clicked, this, &TaskEditorDialog::slotWizard);
 
-	connect(chkReboot, SIGNAL(clicked()), SLOT(slotRebootChanged()));
-	connect(chkReboot, SIGNAL(clicked()), SLOT(slotWizard()));
+	connect(chkReboot, &QCheckBox::clicked, this, &TaskEditorDialog::slotRebootChanged);
+	connect(chkReboot, &QCheckBox::clicked, this, &TaskEditorDialog::slotWizard);
 
-	connect(cbEveryDay, SIGNAL(clicked()), SLOT(slotDailyChanged()));
-	connect(cbEveryDay, SIGNAL(clicked()), SLOT(slotWizard()));
+	connect(cbEveryDay, &QCheckBox::clicked, this, &TaskEditorDialog::slotDailyChanged);
+	connect(cbEveryDay, &QCheckBox::clicked, this, &TaskEditorDialog::slotWizard);
 
-	connect(this, SIGNAL(okClicked()), SLOT(slotOK()));
-	connect(this, SIGNAL(cancelClicked()), SLOT(slotCancel()));
+	connect(this, &TaskEditorDialog::okClicked, this, &TaskEditorDialog::slotOK);
+	connect(this, &TaskEditorDialog::cancelClicked, this, &TaskEditorDialog::slotCancel);
 
 	//main->layout()->setSizeConstraint(QLayout::SetFixedSize);
 	//show();
@@ -273,8 +273,8 @@ QGroupBox* TaskEditorDialog::createDaysOfMonthGroup(QWidget* main) {
 	allDaysOfMonth = new SetOrClearAllButton(daysOfMonthGroup, SetOrClearAllButton::SET_ALL);
 	daysOfMonthLayout->addWidget(allDaysOfMonth, 4, 3, 1, 4);
 
-	connect(allDaysOfMonth, SIGNAL(clicked()), SLOT(slotAllDaysOfMonth()));
-	connect(allDaysOfMonth, SIGNAL(clicked()), SLOT(slotWizard()));
+	connect(allDaysOfMonth, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotAllDaysOfMonth);
+	connect(allDaysOfMonth, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotWizard);
 
 	return daysOfMonthGroup;
 }
@@ -309,8 +309,8 @@ QGroupBox* TaskEditorDialog::createMonthsGroup(QWidget* main) {
 	allMonths = new SetOrClearAllButton(monthsGroup, SetOrClearAllButton::SET_ALL);
 	monthsLayout->addWidget(allMonths, row, 0, 1, 2);
 
-	connect(allMonths, SIGNAL(clicked()), SLOT(slotAllMonths()));
-	connect(allMonths, SIGNAL(clicked()), SLOT(slotWizard()));
+	connect(allMonths, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotAllMonths);
+	connect(allMonths, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotWizard);
 
 	return monthsGroup;
 
@@ -345,8 +345,8 @@ QGroupBox* TaskEditorDialog::createDaysOfWeekGroup(QWidget* main) {
 	allDaysOfWeek = new SetOrClearAllButton(daysOfWeekGroup, SetOrClearAllButton::SET_ALL);
 	daysOfWeekLayout->addWidget(allDaysOfWeek);
 
-	connect(allDaysOfWeek, SIGNAL(clicked()), SLOT(slotAllDaysOfWeek()));
-	connect(allDaysOfWeek, SIGNAL(clicked()), SLOT(slotWizard()));
+	connect(allDaysOfWeek, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotAllDaysOfWeek);
+	connect(allDaysOfWeek, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotWizard);
 
 	return daysOfWeekGroup;
 }
@@ -447,8 +447,8 @@ NumberPushButton* TaskEditorDialog::createMinuteButton(int minuteIndex) {
 	minuteButton->setCheckable(true);
 	minuteButton->setChecked(ctTask->minute.isEnabled(minuteIndex));
 
-	connect(minuteButton, SIGNAL(clicked()), SLOT(slotMinuteChanged()));
-	connect(minuteButton, SIGNAL(clicked()), SLOT(slotWizard()));
+	connect(minuteButton, &NumberPushButton::clicked, this, &TaskEditorDialog::slotMinuteChanged);
+	connect(minuteButton, &NumberPushButton::clicked, this, &TaskEditorDialog::slotWizard);
 
 	return minuteButton;
 }
@@ -485,8 +485,8 @@ void TaskEditorDialog::createMinutesGroup(QWidget* main) {
 
 	minutesPreselectionLayout->addWidget(minutesPreselection);
 
-	connect(minutesPreselection, SIGNAL(activated(int)), SLOT(slotMinutesPreselection(int)));
-	connect(minutesPreselection, SIGNAL(activated(int)), SLOT(slotWizard()));
+	connect(minutesPreselection, static_cast<void (QComboBox::*)(int)>(&QComboBox::activated), this, &TaskEditorDialog::slotMinutesPreselection);
+	connect(minutesPreselection, static_cast<void (QComboBox::*)(int)>(&QComboBox::activated), this, &TaskEditorDialog::slotWizard);
 
 	//First mandatory increase
 	increaseMinutesGroup();
@@ -504,8 +504,8 @@ NumberPushButton* TaskEditorDialog::createHourButton(QGroupBox* hoursGroup, int 
 	hourButton->setCheckable(true);
 	hourButton->setChecked(ctTask->hour.isEnabled(hour));
 
-	connect(hourButton, SIGNAL(clicked()), SLOT(slotHourChanged()));
-	connect(hourButton, SIGNAL(clicked()), SLOT(slotWizard()));
+	connect(hourButton, &NumberPushButton::clicked, this, &TaskEditorDialog::slotHourChanged);
+	connect(hourButton, &NumberPushButton::clicked, this, &TaskEditorDialog::slotWizard);
 
 	return hourButton;
 }
@@ -542,8 +542,8 @@ QGroupBox* TaskEditorDialog::createHoursGroup(QWidget* main) {
 	allHours = new SetOrClearAllButton(this, SetOrClearAllButton::SET_ALL);
 	hoursLayout->addWidget(allHours, 4, 0, 1, 7);
 
-	connect(allHours, SIGNAL(clicked()), SLOT(slotAllHours()));
-	connect(allHours, SIGNAL(clicked()), SLOT(slotWizard()));
+	connect(allHours, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotAllHours);
+	connect(allHours, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotWizard);
 
 	logDebug() << "Create hours group" << endl;
 	return hoursGroup;

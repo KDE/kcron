@@ -197,8 +197,8 @@ QHBoxLayout* CrontabWidget::createCronSelector() {
 		d->otherUsers->hide();
 	}
 
-	connect(group, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(refreshCron()));
-	connect(d->otherUsers, SIGNAL(currentIndexChanged(int)), this, SLOT(checkOtherUsers()));
+	connect(group, static_cast<void (QButtonGroup::*)(QAbstractButton *)>(&QButtonGroup::buttonClicked), this, &CrontabWidget::refreshCron);
+	connect(d->otherUsers, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &CrontabWidget::checkOtherUsers);
 
 	layout->addStretch(1);
 

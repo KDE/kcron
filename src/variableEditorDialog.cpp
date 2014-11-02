@@ -141,10 +141,10 @@ VariableEditorDialog::VariableEditorDialog(CTVariable* _ctVariable, const QStrin
 	show();
 
 	// connect them up
-	connect(cmbVariable, SIGNAL(editTextChanged(QString)), SLOT(slotWizard()));
-	connect(leValue, SIGNAL(textEdited(QString)), SLOT(slotWizard()));
-	connect(this, SIGNAL(okClicked()), this, SLOT(slotOk()));
-	connect(chkEnabled, SIGNAL(clicked()), SLOT(slotEnabled()));
+	connect(cmbVariable, &QComboBox::editTextChanged, this, &VariableEditorDialog::slotWizard);
+	connect(leValue, &QLineEdit::textEdited, this, &VariableEditorDialog::slotWizard);
+	connect(this, &VariableEditorDialog::okClicked, this, &VariableEditorDialog::slotOk);
+	connect(chkEnabled, &QCheckBox::clicked, this, &VariableEditorDialog::slotEnabled);
 
 }
 
