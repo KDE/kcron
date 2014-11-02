@@ -14,7 +14,6 @@
 #define KTPRINT_H
 
 #include <QList>
-#include <QPrinter>
 
 #include "crontabPrinterWidget.h"
 

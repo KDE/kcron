@@ -16,12 +16,10 @@
 #include <QLayout>
 #include <QCheckBox>
 #include <QPalette>
-#include <QPainter>
 #include <QEvent>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QGridLayout>
-#include <QFontMetrics>
 
 #include <QStyleOption>
 #include <QStylePainter>

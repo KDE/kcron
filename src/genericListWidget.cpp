@@ -12,7 +12,6 @@
 #include "genericListWidget.h"
 
 #include <QHeaderView>
-#include <QTreeWidgetItemIterator>
 #include <QVBoxLayout>
 #include <QPixmap>
 #include <QKeyEvent>

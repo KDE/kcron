@@ -13,7 +13,6 @@
 #define GENERIC_LIST_WIDGET_H
 
 #include <QTreeWidget>
-#include <QList>
 
 #include "cthost.h"
 

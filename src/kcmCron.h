@@ -18,11 +18,9 @@
  */
 #define CRONTAB_BINARY "crontab"
 
-#include <QPixmap>
 #include <QString>
 #include <QWidget>
 #include <QVariantList>
-#include <QStringList>
 
 #include <kcmodule.h>
 #include <ksharedconfig.h>

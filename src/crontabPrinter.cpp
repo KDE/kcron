@@ -14,6 +14,7 @@
 
 #include <QPainter>
 #include <QPrintDialog>
+#include <QPrinter>
 
 #include <kdeprintdialog.h>
 #include <klocale.h>

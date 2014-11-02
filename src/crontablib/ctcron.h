@@ -15,7 +15,6 @@
 #include <QString>
 #include <QList>
 #include <QStringList>
-#include <QProcess>
 
 class CTTask;
 class CTVariable;

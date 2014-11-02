@@ -12,8 +12,6 @@
 #include "kcronHelper.h"
 
 #include <QFontMetrics>
-#include <QImage>
-#include <QPixmap>
 #include <QTextEdit>
 #include <QComboBox>
 

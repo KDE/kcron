@@ -11,9 +11,6 @@
 
 #include "tasksWidget.h"
 
-#include <QHeaderView>
-#include <QTreeWidgetItemIterator>
-#include <QVBoxLayout>
 #include <QProcess>
 #include <QAction>
 #include <QList>

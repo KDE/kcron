@@ -11,10 +11,6 @@
 
 #include "ctSystemCron.h"
 
-#include <QRegExp>
-#include <QFile>
-#include <QTextStream>
-#include <QProcess>
 
 #include <kshell.h>
 #include <klocale.h>

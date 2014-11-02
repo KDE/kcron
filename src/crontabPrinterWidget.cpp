@@ -13,7 +13,6 @@
 #include "crontabPrinterWidget.h"
 
 #include <QCheckBox>
-#include <QLayout>
 #include <QVBoxLayout>
 
 #include <kdialog.h>

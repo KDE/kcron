@@ -11,9 +11,6 @@
 
 #include "variablesWidget.h"
 
-#include <QHeaderView>
-#include <QVBoxLayout>
-#include <QTreeWidgetItemIterator>
 #include <QAction>
 #include <QList>
 

@@ -11,18 +11,13 @@
 
 #include "kcmCron.h"
 
-#include <QImage>
-#include <QPixmap>
-#include <QLayout>
 
-#include <QComboBox>
 
-#include <QLabel>
 
 #include <kglobal.h>
 #include <kpluginfactory.h>
 #include <kaboutdata.h>
-
+#include <QVBoxLayout>
 #include <kmenubar.h>
 #include <kstandardshortcut.h>
 #include <kmessagebox.h>

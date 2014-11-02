@@ -16,7 +16,6 @@
 
 #include <QVBoxLayout>
 #include <QHBoxLayout>
-#include <QDateTime>
 #include <QLabel>
 #include <QSplitter>
 #include <QRadioButton>

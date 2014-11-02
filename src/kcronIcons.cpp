@@ -11,7 +11,6 @@
 
 #include "kcronIcons.h"
 
-#include <QImage>
 #include <QPixmap>
 
 #include <kglobal.h>

@@ -18,7 +18,6 @@
 #include <QComboBox>
 #include <QStringList>
 #include <QTextEdit>
-#include <QPair>
 
 #include <kdialog.h>
 #include <kicon.h>
