@@ -18,9 +18,9 @@
 #include <QDateTime>
 
 #include <kshell.h>
-#include <klocale.h>
+#include <KLocalizedString>
 #include <ktemporaryfile.h>
-#include <klocale.h>
+#include <KLocalizedString>
 
 #include "cttask.h"
 #include "ctvariable.h"

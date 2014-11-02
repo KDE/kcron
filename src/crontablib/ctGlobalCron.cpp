@@ -13,9 +13,9 @@
 
 
 #include <kshell.h>
-#include <klocale.h>
+#include <KLocalizedString>
 #include <ktemporaryfile.h>
-#include <klocale.h>
+#include <KLocalizedString>
 
 #include "cthost.h"
 #include "cttask.h"

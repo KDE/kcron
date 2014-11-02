@@ -11,7 +11,7 @@
 
 #include "cttask.h"
 
-#include <klocale.h>
+#include <KLocalizedString>
 #include <kiconloader.h>
 #include <kmimetype.h>
 #include <kurl.h>

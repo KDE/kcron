@@ -10,7 +10,7 @@
  ***************************************************************************/
 
 #include "ctdow.h"
-#include <klocale.h>
+#include <KLocalizedString>
 
 QList<QString> CTDayOfWeek::shortName;
 

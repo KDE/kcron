@@ -19,7 +19,7 @@
 #include <QFile>
 #include <QTextStream>
 
-#include <klocale.h>
+#include <KLocalizedString>
 
 #include "ctcron.h"
 #include "ctSystemCron.h"

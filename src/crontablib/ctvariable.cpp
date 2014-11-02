@@ -13,7 +13,7 @@
 
 #include <QRegExp>
 
-#include <klocale.h>
+#include <KLocalizedString>
 #include <kiconloader.h>
 
 #include "kcronIcons.h"
