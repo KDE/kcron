@@ -17,7 +17,7 @@
 #include <QKeyEvent>
 #include <QAction>
 
-#include <klocale.h>
+#include <KLocalizedString>
 #include <kglobalsettings.h>
 
 #include "ctcron.h"

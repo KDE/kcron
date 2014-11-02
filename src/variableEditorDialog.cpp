@@ -18,7 +18,7 @@
 
 #include <kicon.h>
 #include <klineedit.h>
-#include <klocale.h>
+#include <KLocalizedString>
 #include <kmessagebox.h>
 #include <ktitlewidget.h>
 

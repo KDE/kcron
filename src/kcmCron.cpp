@@ -22,7 +22,7 @@
 #include <kstandardshortcut.h>
 #include <kmessagebox.h>
 #include <kconfig.h>
-#include <klocale.h>
+#include <KLocalizedString>
 #include <kiconloader.h>
 #include <kmenu.h>
 #include <kstatusbar.h>

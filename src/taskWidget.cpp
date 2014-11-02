@@ -11,7 +11,7 @@
 
 #include "taskWidget.h"
 
-#include <klocale.h>
+#include <KLocalizedString>
 #include <kiconloader.h>
 
 #include "cttask.h"

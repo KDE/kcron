@@ -25,11 +25,11 @@
 #include <QClipboard>
 
 #include <kglobalsettings.h>
-#include <klocale.h>
+#include <KLocalizedString>
 #include <kglobal.h>
 #include <QIcon>
 #include <kiconloader.h>
-#include <kaction.h>
+#include <QAction>
 #include <kstandardaction.h>
 #include <kactioncollection.h>
 

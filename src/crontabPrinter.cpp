@@ -17,7 +17,7 @@
 #include <QPrinter>
 
 #include <kdeprintdialog.h>
-#include <klocale.h>
+#include <KLocalizedString>
 
 #include "crontabWidget.h"
 

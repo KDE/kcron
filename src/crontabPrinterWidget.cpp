@@ -16,7 +16,7 @@
 #include <QVBoxLayout>
 
 #include <kdialog.h>
-#include <klocale.h>
+#include <KLocalizedString>
 
 CrontabPrinterWidget::CrontabPrinterWidget(bool root) :
 	QWidget() {

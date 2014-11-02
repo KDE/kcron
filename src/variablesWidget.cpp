@@ -14,7 +14,7 @@
 #include <QAction>
 #include <QList>
 
-#include <klocale.h>
+#include <KLocalizedString>
 #include <kglobalsettings.h>
 #include <QIcon>
 

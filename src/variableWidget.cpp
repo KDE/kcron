@@ -11,7 +11,7 @@
 
 #include "variableWidget.h"
 
-#include <klocale.h>
+#include <KLocalizedString>
 #include <kiconloader.h>
 
 #include "ctvariable.h"

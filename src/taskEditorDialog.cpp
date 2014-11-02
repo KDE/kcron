@@ -25,7 +25,7 @@
 #include <QStylePainter>
 
 #include <kacceleratormanager.h>
-#include <klocale.h>
+#include <KLocalizedString>
 #include <klineedit.h>
 #include <kfiledialog.h>
 #include <kmessagebox.h>
