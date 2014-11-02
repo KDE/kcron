@@ -26,7 +26,6 @@
 #include <kmimetype.h>
 
 class QLabel;
-class QLineEdit;
 class QCheckBox;
 class QGridLayout;
 class QHBoxLayout;

@@ -19,9 +19,6 @@
 
 #include "ctcron.h"
 
-class CTTask;
-class CTVariable;
-class CTHost;
 
 
 class CTSystemCron : public CTCron {

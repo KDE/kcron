@@ -19,7 +19,6 @@
 
 class QHBoxLayout;
 
-class KActionCollection;
 
 class CTHost;
 class CTCron;
