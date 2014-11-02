@@ -223,4 +223,4 @@ void VariableEditorDialog::slotWizard() {
 	}
 }
 
-#include "variableEditorDialog.moc"
+

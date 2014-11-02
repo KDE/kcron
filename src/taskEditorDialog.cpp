@@ -1111,4 +1111,4 @@ void NumberPushButton::paintEvent(QPaintEvent*) {
 	p.drawControl(QStyle::CE_PushButton, option);
 }
 
-#include "taskEditorDialog.moc"
+
