@@ -30,7 +30,7 @@
 #include <kxmlguifactory.h>
 #include <kglobal.h>
 #include <ktoolbar.h>
-#include <kicon.h>
+#include <QIcon>
 #include <kconfiggroup.h>
 
 #include "kcronIcons.h"

@@ -27,7 +27,7 @@
 #include <kglobalsettings.h>
 #include <klocale.h>
 #include <kglobal.h>
-#include <kicon.h>
+#include <QIcon>
 #include <kiconloader.h>
 #include <kaction.h>
 #include <kstandardaction.h>
@@ -191,7 +191,7 @@ QHBoxLayout* CrontabWidget::createCronSelector() {
 
 		users.sort();
 		d->otherUsers->addItems(users);
-		d->otherUsers->addItem(KIcon( QLatin1String( "users") ), i18n("Show All Personal Crons"));
+		d->otherUsers->addItem(QIcon::fromTheme( QLatin1String( "users") ), i18n("Show All Personal Crons"));
 	} else {
 		d->otherUserCronRadio->hide();
 		d->otherUsers->hide();
