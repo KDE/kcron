@@ -554,9 +554,9 @@ void TaskEditorDialog::setupTitleWidget(const QString& comment, KTitleWidget::Me
 	titleWidget->setComment(comment, messageType);
 
 	if (messageType == KTitleWidget::ErrorMessage)
-		titleWidget->setPixmap(KIcon(KCronIcons::error(KCronIcons::Large)), KTitleWidget::ImageRight);
+		titleWidget->setPixmap(QIcon(KCronIcons::error(KCronIcons::Large)), KTitleWidget::ImageRight);
 	else
-		titleWidget->setPixmap(KIcon(KCronIcons::task(KCronIcons::Large)), KTitleWidget::ImageRight);
+		titleWidget->setPixmap(QIcon(KCronIcons::task(KCronIcons::Large)), KTitleWidget::ImageRight);
 
 }
 

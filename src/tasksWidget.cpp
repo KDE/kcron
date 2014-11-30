@@ -18,7 +18,6 @@
 #include <QAction>
 #include <kstandardaction.h>
 #include <KLocalizedString>
-#include <kglobalsettings.h>
 
 #include "ctcron.h"
 #include "cthost.h"

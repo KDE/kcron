@@ -24,9 +24,7 @@
 #include <QApplication>
 #include <QClipboard>
 
-#include <kglobalsettings.h>
 #include <KLocalizedString>
-#include <kglobal.h>
 #include <QIcon>
 #include <kiconloader.h>
 #include <QAction>

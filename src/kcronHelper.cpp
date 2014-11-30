@@ -15,7 +15,6 @@
 #include <QTextEdit>
 #include <QComboBox>
 
-#include <kglobal.h>
 
 #include "cttask.h"
 #include "ctcron.h"

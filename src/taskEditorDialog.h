@@ -20,7 +20,6 @@
 #include <QTextEdit>
 
 #include <kdialog.h>
-#include <kicon.h>
 #include <ktitlewidget.h>
 #include <kmimetype.h>
 

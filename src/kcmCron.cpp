@@ -25,7 +25,6 @@
 #include <KLocalizedString>
 #include <kiconloader.h>
 #include <kmenu.h>
-#include <kstatusbar.h>
 #include <ktoggleaction.h>
 #include <kxmlguifactory.h>
 #include <kglobal.h>
