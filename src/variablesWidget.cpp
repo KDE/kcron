@@ -15,7 +15,6 @@
 #include <QList>
 
 #include <KLocalizedString>
-#include <kglobalsettings.h>
 #include <QIcon>
 
 #include "ctcron.h"

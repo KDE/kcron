@@ -14,20 +14,16 @@
 
 
 
-#include <kglobal.h>
 #include <kpluginfactory.h>
 #include <kaboutdata.h>
 #include <QVBoxLayout>
-#include <kmenubar.h>
 #include <kstandardshortcut.h>
 #include <kmessagebox.h>
 #include <kconfig.h>
 #include <KLocalizedString>
 #include <kiconloader.h>
-#include <kmenu.h>
 #include <ktoggleaction.h>
 #include <kxmlguifactory.h>
-#include <kglobal.h>
 #include <ktoolbar.h>
 #include <QIcon>
 #include <kconfiggroup.h>

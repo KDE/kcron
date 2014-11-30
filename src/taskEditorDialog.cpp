@@ -29,7 +29,7 @@
 #include <klineedit.h>
 #include <kfiledialog.h>
 #include <kmessagebox.h>
-#include <kpushbutton.h>
+#include <qpushbutton.h>
 #include <kdialog.h>
 #include <kstandardshortcut.h>
 #include <kstandarddirs.h>

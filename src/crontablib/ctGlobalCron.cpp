@@ -14,7 +14,6 @@
 
 #include <kshell.h>
 #include <KLocalizedString>
-#include <ktemporaryfile.h>
 #include <KLocalizedString>
 
 #include "cthost.h"

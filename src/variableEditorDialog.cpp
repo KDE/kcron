@@ -16,7 +16,7 @@
 #include <QGridLayout>
 #include <QLineEdit>
 
-#include <kicon.h>
+#include <qicon.h>
 #include <klineedit.h>
 #include <KLocalizedString>
 #include <kmessagebox.h>
@@ -160,9 +160,9 @@ void VariableEditorDialog::setupTitleWidget(const QString& comment, KTitleWidget
 	else {
 		titleWidget->setComment(comment, messageType);
 		if (messageType == KTitleWidget::ErrorMessage)
-			titleWidget->setPixmap(KIcon(KCronIcons::error(KCronIcons::Large)), KTitleWidget::ImageRight);
+			titleWidget->setPixmap(QIcon(KCronIcons::error(KCronIcons::Large)), KTitleWidget::ImageRight);
 		else
-			titleWidget->setPixmap(KIcon(KCronIcons::information(KCronIcons::Large)), KTitleWidget::ImageRight);
+			titleWidget->setPixmap(QIcon(KCronIcons::information(KCronIcons::Large)), KTitleWidget::ImageRight);
 	}
 }
 

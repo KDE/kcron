@@ -13,7 +13,6 @@
 
 #include <QPixmap>
 
-#include <kglobal.h>
 #include <kiconloader.h>
 
 QPixmap KCronIcons::getIcon(const QString&name, KCronIcons::IconSize size) {
