@@ -13,8 +13,8 @@
 
 #include <KLocalizedString>
 #include <kiconloader.h>
-#include <kmimetype.h>
 
+#include <QMimeDatabase>
 #include <QUrl>
 
 #include "ctHelper.h"
@@ -353,9 +353,9 @@ void CTTask::setSystemCrontab(bool _systemCrontab) {
 QIcon CTTask::commandIcon() const {
 	QUrl commandPath = QUrl::fromLocalFile(completeCommandPath());
 
-	KMimeType::Ptr mimeType = KMimeType::findByUrl(commandPath);
+	QMimeType mimeType = QMimeDatabase().mimeTypeForUrl(commandPath);
 	//logDebug() << mimeType->name() << endl;
-	if (mimeType->name() == QLatin1String( "application/x-executable" ) || mimeType->name() == QLatin1String( "application/octet-stream" )) {
+	if (mimeType.name() == QLatin1String( "application/x-executable" ) || mimeType.name() == QLatin1String( "application/octet-stream" )) {
 
 		//The next line is identical as SmallIcon(commandPath.fileName()), but is able to return a isNull() QPixmap
 		QPixmap pixmap = KIconLoader::global()->loadIcon(commandPath.fileName(), KIconLoader::Small, 0, KIconLoader::DefaultState, QStringList(), 0L, true);
@@ -366,7 +366,7 @@ QIcon CTTask::commandIcon() const {
 		return QIcon(pixmap);
 	}
 
-	return QIcon::fromTheme(KMimeType::iconNameForUrl(commandPath));
+	return QIcon::fromTheme(mimeType.iconName());
 
 }
 
