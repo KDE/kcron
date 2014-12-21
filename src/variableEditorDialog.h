@@ -18,7 +18,6 @@
 #include <QCheckBox>
 #include <QTextEdit>
 
-#include <klineedit.h>
 #include <kdialog.h>
 #include <ktitlewidget.h>
 

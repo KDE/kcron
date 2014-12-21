@@ -17,7 +17,6 @@
 #include <QLineEdit>
 
 #include <qicon.h>
-#include <klineedit.h>
 #include <KLocalizedString>
 #include <kmessagebox.h>
 #include <ktitlewidget.h>

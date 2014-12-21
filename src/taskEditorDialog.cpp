@@ -26,7 +26,6 @@
 
 #include <kacceleratormanager.h>
 #include <KLocalizedString>
-#include <klineedit.h>
 #include <kfiledialog.h>
 #include <kmessagebox.h>
 #include <qpushbutton.h>
