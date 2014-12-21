@@ -35,7 +35,6 @@
 #include <kstandarddirs.h>
 #include <ktitlewidget.h>
 #include <kiconloader.h>
-#include <kurl.h>
 #include <kurlrequester.h>
 
 #include "logging.h"
@@ -93,7 +92,7 @@ TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption, Cro
 	commandLayout->addWidget(command);
 
 	command->setMode(KFile::File | KFile::ExistingOnly | KFile::LocalOnly);
-	command->setUrl(KUrl(ctTask->command));
+	command->setUrl(QUrl::fromLocalFile(ctTask->command));
 
 	//Initialize special valid commands
 	specialValidCommands << QLatin1String( "cd" );

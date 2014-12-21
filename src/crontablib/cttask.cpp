@@ -14,7 +14,8 @@
 #include <KLocalizedString>
 #include <kiconloader.h>
 #include <kmimetype.h>
-#include <kurl.h>
+
+#include <QUrl>
 
 #include "ctHelper.h"
 
@@ -351,7 +352,7 @@ void CTTask::setSystemCrontab(bool _systemCrontab) {
 
 
 QPixmap CTTask::commandIcon() const {
-	KUrl commandPath(completeCommandPath());
+	QUrl commandPath = QUrl::fromLocalFile(completeCommandPath());
 
 	KMimeType::Ptr mimeType = KMimeType::findByUrl(commandPath);
 	//logDebug() << mimeType->name() << endl;

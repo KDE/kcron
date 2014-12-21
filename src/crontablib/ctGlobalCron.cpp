@@ -14,7 +14,6 @@
 
 #include <kshell.h>
 #include <KLocalizedString>
-#include <KLocalizedString>
 
 #include "cthost.h"
 #include "cttask.h"

@@ -14,8 +14,8 @@
 
 #include <kshell.h>
 #include <KLocalizedString>
-#include <ktemporaryfile.h>
-#include <KLocalizedString>
+
+#include <QTemporaryFile>
 
 #include "cthost.h"
 #include "cttask.h"
@@ -32,7 +32,7 @@ CTSystemCron::CTSystemCron(const QString& crontabBinary) :
 
 	d->crontabBinary = crontabBinary;
 
-	KTemporaryFile tmp;
+	QTemporaryFile tmp;
 	tmp.open();
 	d->tmpFileName = tmp.fileName();
 
