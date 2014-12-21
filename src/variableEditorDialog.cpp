@@ -29,7 +29,6 @@
 #include "crontabWidget.h"
 
 #include "kcronHelper.h"
-#include <KDebug>
 
 VariableEditorDialog::VariableEditorDialog(CTVariable* _ctVariable, const QString &_caption, CrontabWidget* _crontabWidget) :
     QDialog(_crontabWidget) {

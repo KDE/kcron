@@ -73,7 +73,7 @@ GenericListWidget::GenericListWidget(CrontabWidget* crontabWidget, const QString
 
 	d->treeWidget->header()->setSortIndicatorShown(true);
 	d->treeWidget->header()->setStretchLastSection(true);
-	d->treeWidget->header()->setMovable(true);
+	d->treeWidget->header()->setSectionsMovable(true);
 
 	d->treeWidget->setSortingEnabled(true);
 	d->treeWidget->setAnimated(true);

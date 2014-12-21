@@ -21,7 +21,6 @@
 #include <QTextEdit>
 
 #include <ktitlewidget.h>
-#include <kmimetype.h>
 
 class QLabel;
 class QCheckBox;

@@ -15,10 +15,15 @@ include(KDECMakeSettings)
 find_package (Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     Core
     Widgets
+    PrintSupport
 )
 
 find_package(KF5 REQUIRED COMPONENTS
-    KDELibs4Support
+    DocTools
+    I18n
+    IconThemes
+    KIO
+    XmlGui
 )
 
 add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)

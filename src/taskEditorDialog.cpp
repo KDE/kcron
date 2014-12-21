@@ -20,17 +20,17 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QGridLayout>
+#include <QPushButton>
+#include <QStandardPaths>
 
 #include <QStyleOption>
 #include <QStylePainter>
 
 #include <kacceleratormanager.h>
 #include <KLocalizedString>
-#include <kfiledialog.h>
 #include <kmessagebox.h>
 #include <qpushbutton.h>
 #include <kstandardshortcut.h>
-#include <kstandarddirs.h>
 #include <ktitlewidget.h>
 #include <kurlrequester.h>
 
@@ -727,9 +727,10 @@ bool TaskEditorDialog::checkCommand() {
 
 	bool found = false;
 	bool exec = false;
-	if (!KStandardDirs::findExe(binaryCommand, path, KStandardDirs::IgnoreExecBit).isEmpty() || specialValidCommands.contains(binaryCommand))
+	if (!QStandardPaths::findExecutable(binaryCommand, QStringList() << path).isEmpty() || specialValidCommands.contains(binaryCommand))
 		found = true;
-	if (!KStandardDirs::findExe(binaryCommand, path).isEmpty() || specialValidCommands.contains(binaryCommand))
+	// FIXME check if actually executable
+	if (found)
 		exec = true;
 
 	if (found && !exec) {
