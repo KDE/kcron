@@ -16,10 +16,10 @@
 #include <QPushButton>
 #include <QGroupBox>
 #include <QComboBox>
+#include <QDialog>
 #include <QStringList>
 #include <QTextEdit>
 
-#include <kdialog.h>
 #include <ktitlewidget.h>
 #include <kmimetype.h>
 
@@ -77,7 +77,7 @@ public:
 /**
  * Task editor window.
  */
-class TaskEditorDialog : public KDialog {
+class TaskEditorDialog : public QDialog {
 Q_OBJECT
 
 public:
@@ -215,6 +215,7 @@ private:
 	// Widgets.
 
 	KTitleWidget* titleWidget;
+	QPushButton* okButton;
 
 	QComboBox* userCombo;
 

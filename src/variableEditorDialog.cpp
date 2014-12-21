@@ -15,6 +15,7 @@
 #include <QComboBox>
 #include <QGridLayout>
 #include <QLineEdit>
+#include <QPushButton>
 
 #include <qicon.h>
 #include <KLocalizedString>
@@ -31,25 +32,21 @@
 #include <KDebug>
 
 VariableEditorDialog::VariableEditorDialog(CTVariable* _ctVariable, const QString &_caption, CrontabWidget* _crontabWidget) :
-    KDialog(_crontabWidget) {
+    QDialog(_crontabWidget) {
 	ctVariable = _ctVariable;
 	crontabWidget = _crontabWidget;
 
 	setModal(true);
-	setCaption(_caption);
-	setButtons(Ok|Cancel);
-	setDefaultButton(Ok);
+	setWindowTitle(_caption);
+	QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
+	okButton = buttonBox->button(QDialogButtonBox::Ok);
 
-	QWidget* page = new QWidget;
 	QGridLayout* layout = new QGridLayout;
-	page->setLayout(layout);
+	setLayout(layout);
 
-	layout->setMargin(0);
 	layout->setColumnMinimumWidth(1, 270);
 	layout->setRowStretch(3, 1);
 	layout->setColumnStretch(1, 1);
-
-	setMainWidget(page);
 
 	setWindowIcon(QIcon::fromTheme(QLatin1String("kcron")));
 
@@ -128,6 +125,8 @@ VariableEditorDialog::VariableEditorDialog(CTVariable* _ctVariable, const QStrin
 	chkEnabled = new QCheckBox(i18n("&Enable this variable"), this);
 	layout->addWidget(chkEnabled, ++layoutPosition, 0, 1, 2);
 
+	layout->addWidget(buttonBox, ++layoutPosition, 0, 1, 2);
+
 	// set starting field values
 	cmbVariable->setEditText(ctVariable->variable);
 	leValue->setText(ctVariable->value);
@@ -142,7 +141,8 @@ VariableEditorDialog::VariableEditorDialog(CTVariable* _ctVariable, const QStrin
 	// connect them up
 	connect(cmbVariable, &QComboBox::editTextChanged, this, &VariableEditorDialog::slotWizard);
 	connect(leValue, &QLineEdit::textEdited, this, &VariableEditorDialog::slotWizard);
-	connect(this, &VariableEditorDialog::okClicked, this, &VariableEditorDialog::slotOk);
+	connect(buttonBox, &QDialogButtonBox::accepted, this, &VariableEditorDialog::slotOk);
+	connect(buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
 	connect(chkEnabled, &QCheckBox::clicked, this, &VariableEditorDialog::slotEnabled);
 
 }
@@ -199,26 +199,26 @@ void VariableEditorDialog::slotWizard() {
 	if (!chkEnabled->isChecked()) {
 		setupTitleWidget(i18n("<i>This variable is disabled.</i>"));
 		chkEnabled->setFocus();
-		KDialog::enableButtonOk(true);
+		okButton->setEnabled(true);
 		error = true;
 	}
 
 	if (cmbVariable->currentText().isEmpty() && !error) {
 		setupTitleWidget(i18n("<i>Please enter the variable name...</i>"), KTitleWidget::ErrorMessage);
 		cmbVariable->setFocus();
-		KDialog::enableButtonOk(false);
+		okButton->setEnabled(false);
 		error = true;
 	}
 
 	if (leValue->text().isEmpty() && !error) {
 		setupTitleWidget(i18n("<i>Please enter the variable value ...</i>"), KTitleWidget::ErrorMessage);
-		KDialog::enableButtonOk(false);
+		okButton->setEnabled(false);
 		error = true;
 	}
 
 	if (!error) {
 		setupTitleWidget();
-		KDialog::enableButtonOk(true);
+		okButton->setEnabled(true);
 	}
 }
 

@@ -29,7 +29,6 @@
 #include <kfiledialog.h>
 #include <kmessagebox.h>
 #include <qpushbutton.h>
-#include <kdialog.h>
 #include <kstandardshortcut.h>
 #include <kstandarddirs.h>
 #include <ktitlewidget.h>
@@ -49,21 +48,28 @@
  */
 
 TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption, CrontabWidget* _crontabWidget) :
-	KDialog(_crontabWidget) {
+	QDialog(_crontabWidget) {
 
 	setModal(true);
 
 	// window
 	setWindowIcon(QIcon::fromTheme(QLatin1String("kcron")));
-	setCaption(_caption);
+	setWindowTitle(_caption);
 
 	ctTask = _ctTask;
 	crontabWidget = _crontabWidget;
 
 	QWidget* main = new QWidget(this);
 	QVBoxLayout* mainLayout = new QVBoxLayout(main);
-	setMainWidget(main);
+	mainLayout->setMargin(0);
 
+	QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
+	okButton = buttonBox->button(QDialogButtonBox::Ok);
+
+	QVBoxLayout* dialogLayout = new QVBoxLayout();
+	dialogLayout->addWidget(main);
+	dialogLayout->addWidget(buttonBox);
+	setLayout(dialogLayout);
 
 	// top title widget
 	titleWidget = new KTitleWidget(main);
@@ -192,11 +198,8 @@ TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption, Cro
 	connect(cbEveryDay, &QCheckBox::clicked, this, &TaskEditorDialog::slotDailyChanged);
 	connect(cbEveryDay, &QCheckBox::clicked, this, &TaskEditorDialog::slotWizard);
 
-	connect(this, &TaskEditorDialog::okClicked, this, &TaskEditorDialog::slotOK);
-	connect(this, &TaskEditorDialog::cancelClicked, this, &TaskEditorDialog::slotCancel);
-
-	//main->layout()->setSizeConstraint(QLayout::SetFixedSize);
-	//show();
+	connect(buttonBox, &QDialogButtonBox::accepted, this, &TaskEditorDialog::slotOK);
+	connect(buttonBox, &QDialogButtonBox::rejected, this, &TaskEditorDialog::slotCancel);
 
 	if (!chkEnabled->isChecked())
 		slotEnabledChanged();
@@ -698,7 +701,7 @@ bool TaskEditorDialog::checkCommand() {
 
 	if (commandQuoted.first.isEmpty()) {
 		setupTitleWidget(i18n("<i>Please type a valid command line...</i>"), KTitleWidget::ErrorMessage);
-		KDialog::enableButtonOk(false);
+		okButton->setEnabled(false);
 		command->setFocus();
 		commandIcon->setPixmap(missingCommandPixmap);
 
@@ -709,7 +712,7 @@ bool TaskEditorDialog::checkCommand() {
 	QStringList pathCommand = tempTask.separatePathCommand(commandQuoted.first, commandQuoted.second);
 	if (pathCommand.isEmpty()) {
 		setupTitleWidget(i18n("<i>Please type a valid command line...</i>"), KTitleWidget::ErrorMessage);
-		KDialog::enableButtonOk(false);
+		okButton->setEnabled(false);
 		command->setFocus();
 		commandIcon->setPixmap(missingCommandPixmap);
 
@@ -731,7 +734,7 @@ bool TaskEditorDialog::checkCommand() {
 
 	if (found && !exec) {
 		setupTitleWidget(i18n("<i>Please select an executable program...</i>"), KTitleWidget::ErrorMessage);
-		KDialog::enableButtonOk(false);
+		okButton->setEnabled(false);
 		command->setFocus();
 		commandIcon->setPixmap(missingCommandPixmap);
 		return false;
@@ -739,7 +742,7 @@ bool TaskEditorDialog::checkCommand() {
 
 	if (!found) {
 		setupTitleWidget(i18n("<i>Please browse for a program to execute...</i>"), KTitleWidget::ErrorMessage);
-		KDialog::enableButtonOk(false);
+		okButton->setEnabled(false);
 		command->setFocus();
 		commandIcon->setPixmap(missingCommandPixmap);
 		return false;
@@ -752,20 +755,20 @@ bool TaskEditorDialog::checkCommand() {
 void TaskEditorDialog::slotWizard() {
 	if (!chkEnabled->isChecked()) {
 		setupTitleWidget(i18n("<i>This task is disabled.</i>"));
-		KDialog::enableButtonOk(true);
+		okButton->setEnabled(true);
 		chkEnabled->setFocus();
 		return;
 	}
 
 	if (chkReboot->isChecked()) {
 		setupTitleWidget(i18n("<i>This task will be run on system bootup.</i>"));
-		KDialog::enableButtonOk(true);
+		okButton->setEnabled(true);
 		return;
 	}
 
 	if (command->url().path().isEmpty()) {
 		setupTitleWidget(i18n("<i>Please browse for a program to execute...</i>"), KTitleWidget::ErrorMessage);
-		KDialog::enableButtonOk(false);
+		okButton->setEnabled(false);
 		command->setFocus();
 		commandIcon->setPixmap(missingCommandPixmap);
 		return;
@@ -784,7 +787,7 @@ void TaskEditorDialog::slotWizard() {
 
 	if (!valid) {
 		setupTitleWidget(i18n("<i>Please select from the 'Months' section...</i>"), KTitleWidget::ErrorMessage);
-		KDialog::enableButtonOk(false);
+		okButton->setEnabled(false);
 		if (!command->hasFocus())
 			monthButtons[1]->setFocus();
 		return;
@@ -803,7 +806,7 @@ void TaskEditorDialog::slotWizard() {
 
 	if (!valid) {
 		setupTitleWidget(i18n("<i>Please select from either the 'Days of Month' or the 'Days of Week' section...</i>"), KTitleWidget::ErrorMessage);
-		KDialog::enableButtonOk(false);
+		okButton->setEnabled(false);
 		if (!command->hasFocus())
 			dayOfMonthButtons[1]->setFocus();
 		return;
@@ -818,7 +821,7 @@ void TaskEditorDialog::slotWizard() {
 
 	if (!valid) {
 		setupTitleWidget(i18n("<i>Please select from the 'Hours' section...</i>"), KTitleWidget::ErrorMessage);
-		KDialog::enableButtonOk(false);
+		okButton->setEnabled(false);
 		if (!command->hasFocus())
 			hourButtons[0]->setFocus();
 		return;
@@ -833,7 +836,7 @@ void TaskEditorDialog::slotWizard() {
 
 	if (!valid) {
 		setupTitleWidget(i18n("<i>Please select from the 'Minutes' section...</i>"), KTitleWidget::ErrorMessage);
-		KDialog::enableButtonOk(false);
+		okButton->setEnabled(false);
 		if (!command->hasFocus())
 			minuteButtons[0]->setFocus();
 		return;
@@ -842,7 +845,7 @@ void TaskEditorDialog::slotWizard() {
 	defineCommandIcon();
 	setupTitleWidget(i18n("<i>This task will be executed at the specified intervals.</i>"));
 
-	enableButtonOk(true);
+	okButton->setEnabled(true);
 
 }
 

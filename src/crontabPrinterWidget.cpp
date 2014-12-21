@@ -15,7 +15,6 @@
 #include <QCheckBox>
 #include <QVBoxLayout>
 
-#include <kdialog.h>
 #include <KLocalizedString>
 
 CrontabPrinterWidget::CrontabPrinterWidget(bool root) :
@@ -23,8 +22,6 @@ CrontabPrinterWidget::CrontabPrinterWidget(bool root) :
 	setWindowTitle(i18n("Cron Options"));
 
 	QVBoxLayout *main_ = new QVBoxLayout(this);
-	main_->setMargin(KDialog::marginHint());
-	main_->setSpacing(KDialog::spacingHint());
 
 	chkPrintCrontab = new QCheckBox(i18n("Print cron&tab"), this);
 	chkPrintCrontab->setObjectName( QLatin1String("chkPrintCrontab" ));
