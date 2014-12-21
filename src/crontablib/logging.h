@@ -23,10 +23,8 @@
 #ifndef _KCRON_LOGGING_H_
 #define _KCRON_LOGGING_H_
 
-#include <kdebug.h>
+#include <QLoggingCategory>
 
-#define KCRON_KDEBUG_ID 87400
-
-#define logDebug() kDebug(KCRON_KDEBUG_ID)
+#define logDebug() qCDebug(QLoggingCategory("kcron"))
 
 #endif // _KCRON_LOGGING_H_
