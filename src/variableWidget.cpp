@@ -12,12 +12,10 @@
 #include "variableWidget.h"
 
 #include <KLocalizedString>
-#include <kiconloader.h>
 
 #include "ctvariable.h"
 
 #include "variableEditorDialog.h"
-#include "kcronIcons.h"
 #include "taskEditorDialog.h"
 
 VariableWidget::VariableWidget(VariablesWidget* _variablesWidget, CTVariable* _ctVariable) :
@@ -43,11 +41,11 @@ void VariableWidget::refresh() {
 
 	if (ctVariable->enabled) {
 		setText(column, i18n("Enabled"));
-		setIcon(column++, SmallIcon(QLatin1String( "dialog-ok-apply" )));
+		setIcon(column++, QIcon::fromTheme(QLatin1String( "dialog-ok-apply" )));
 	}
 	else {
 		setText(column, i18n("Disabled"));
-		setIcon(column++, SmallIcon(QLatin1String( "dialog-cancel" )));
+		setIcon(column++, QIcon::fromTheme(QLatin1String( "dialog-cancel" )));
 	}
 
 	setText(column++, ctVariable->comment);

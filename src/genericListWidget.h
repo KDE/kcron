@@ -29,7 +29,7 @@ class GenericListWidget : public QWidget {
 	Q_OBJECT
 public:
 
-	GenericListWidget(CrontabWidget* crontabWidget, const QString& label, const QPixmap& icon);
+	GenericListWidget(CrontabWidget* crontabWidget, const QString& label, const QIcon& icon);
 	
 	~GenericListWidget();
 

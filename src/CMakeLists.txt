@@ -42,7 +42,6 @@ set(kcm_cron_SRCS
 
    crontabWidget.cpp 
 
-   kcronIcons.cpp
    kcronHelper.cpp
     
    crontabPrinter.cpp 

@@ -14,9 +14,6 @@
 #include <QRegExp>
 
 #include <KLocalizedString>
-#include <kiconloader.h>
-
-#include "kcronIcons.h"
 
 #include "ctHelper.h"
 
@@ -104,19 +101,19 @@ bool CTVariable::dirty() const {
 	return ((variable != initialVariable) || (value != initialValue) || (comment != initialComment) || (userLogin != initialUserLogin) || (enabled != initialEnabled));
 }
 
-QPixmap CTVariable::variableIcon() const {
+QIcon CTVariable::variableIcon() const {
 	if (variable == QLatin1String( "MAILTO" ))
-		return SmallIcon(QLatin1String( "mail-message" ));
+		return QIcon::fromTheme(QLatin1String( "mail-message" ));
 	else if (variable == QLatin1String( "SHELL" ))
-		return SmallIcon(QLatin1String( "utilities-terminal" ));
+		return QIcon::fromTheme(QLatin1String( "utilities-terminal" ));
 	else if (variable == QLatin1String( "HOME" ))
-		return SmallIcon(QLatin1String( "go-home" ));
+		return QIcon::fromTheme(QLatin1String( "go-home" ));
 	else if (variable == QLatin1String( "PATH" ))
-		return SmallIcon(QLatin1String( "folder" ));
+		return QIcon::fromTheme(QLatin1String( "folder" ));
 	else if (variable == QLatin1String( "LD_CONFIG_PATH" ))
-		return SmallIcon(QLatin1String( "application-x-sharedlib" ));
+		return QIcon::fromTheme(QLatin1String( "application-x-sharedlib" ));
 
-	return KCronIcons::variable(KCronIcons::Small);
+	return QIcon::fromTheme(QLatin1String( "text-plain" ));
 
 }
 

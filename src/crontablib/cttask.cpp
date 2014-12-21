@@ -19,7 +19,6 @@
 
 #include "ctHelper.h"
 
-#include "kcronIcons.h"
 #include "logging.h"
 
 CTTask::CTTask(const QString& tokenString, const QString& _comment, const QString& _userLogin, bool _systemCrontab) :
@@ -351,7 +350,7 @@ void CTTask::setSystemCrontab(bool _systemCrontab) {
 }
 
 
-QPixmap CTTask::commandIcon() const {
+QIcon CTTask::commandIcon() const {
 	QUrl commandPath = QUrl::fromLocalFile(completeCommandPath());
 
 	KMimeType::Ptr mimeType = KMimeType::findByUrl(commandPath);
@@ -359,17 +358,15 @@ QPixmap CTTask::commandIcon() const {
 	if (mimeType->name() == QLatin1String( "application/x-executable" ) || mimeType->name() == QLatin1String( "application/octet-stream" )) {
 
 		//The next line is identical as SmallIcon(commandPath.fileName()), but is able to return a isNull() QPixmap
-		QPixmap icon = KIconLoader::global()->loadIcon(commandPath.fileName(), KIconLoader::Small, 0, KIconLoader::DefaultState, QStringList(), 0L, true);
-		if (icon.isNull()) {
-			return KCronIcons::task(KCronIcons::Small);
+		QPixmap pixmap = KIconLoader::global()->loadIcon(commandPath.fileName(), KIconLoader::Small, 0, KIconLoader::DefaultState, QStringList(), 0L, true);
+		if (pixmap.isNull()) {
+			return QIcon::fromTheme(QLatin1String("system-run"));
 		}
 
-		return icon;
+		return QIcon(pixmap);
 	}
 
-	QPixmap icon = SmallIcon(KMimeType::iconNameForUrl(commandPath));
-
-	return icon;
+	return QIcon::fromTheme(KMimeType::iconNameForUrl(commandPath));
 
 }
 

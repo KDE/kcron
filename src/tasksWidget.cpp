@@ -24,7 +24,6 @@
 #include "cttask.h"
 #include "ctvariable.h"
 
-#include "kcronIcons.h"
 #include "crontabWidget.h"
 #include "taskWidget.h"
 #include "taskEditorDialog.h"
@@ -50,7 +49,7 @@ public:
  * Construct tasks folder from branch.
  */
 TasksWidget::TasksWidget(CrontabWidget* crontabWidget) :
-	GenericListWidget(crontabWidget, i18n("<b>Scheduled Tasks</b>"), KCronIcons::task(KCronIcons::Small)),
+	GenericListWidget(crontabWidget, i18n("<b>Scheduled Tasks</b>"), QIcon::fromTheme(QLatin1String("system-run"))),
 	d(new TasksWidgetPrivate()) {
 
 	refreshHeaders();

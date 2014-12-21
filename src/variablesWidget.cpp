@@ -21,7 +21,6 @@
 #include "cttask.h"
 #include "ctvariable.h"
 
-#include "kcronIcons.h"
 #include "crontabWidget.h"
 #include "variableWidget.h"
 #include "variableEditorDialog.h"
@@ -42,7 +41,7 @@ public:
  * Construct tasks folder from branch.
  */
 VariablesWidget::VariablesWidget(CrontabWidget* crontabWidget) :
-	GenericListWidget(crontabWidget, i18n("<b>Environment Variables</b>"), KCronIcons::variable(KCronIcons::Small)),
+	GenericListWidget(crontabWidget, i18n("<b>Environment Variables</b>"), QIcon::fromTheme(QLatin1String("text-plain"))),
 	d(new VariablesWidgetPrivate()) {
 
 	refreshHeaders();

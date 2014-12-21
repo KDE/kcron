@@ -13,7 +13,7 @@
 #define CTVARIABLE_H
 
 #include <QString>
-#include <QPixmap>
+#include <QIcon>
 
 /**
  * An environment variable (encapsulation of crontab environment variable
@@ -57,7 +57,7 @@ public:
 	 */
 	bool dirty() const;
 	
-	QPixmap variableIcon() const;
+	QIcon variableIcon() const;
 	
 	QString information() const;
 

@@ -34,7 +34,6 @@
 #include <kstandardshortcut.h>
 #include <kstandarddirs.h>
 #include <ktitlewidget.h>
-#include <kiconloader.h>
 #include <kurlrequester.h>
 
 #include "logging.h"
@@ -44,7 +43,6 @@
 
 #include "crontabWidget.h"
 
-#include "kcronIcons.h"
 #include "kcronHelper.h"
 
 /**
@@ -57,7 +55,7 @@ TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption, Cro
 	setModal(true);
 
 	// window
-	setWindowIcon(KCronIcons::application(KCronIcons::Small));
+	setWindowIcon(QIcon::fromTheme(QLatin1String("kcron")));
 	setCaption(_caption);
 
 	ctTask = _ctTask;
@@ -85,6 +83,7 @@ TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption, Cro
 
 	QHBoxLayout* commandLayout = new QHBoxLayout();
 	commandIcon = new QLabel(main);
+	missingCommandPixmap = QIcon::fromTheme(QLatin1String("image-missing")).pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize, 0, this));
 	commandLayout->addWidget(commandIcon);
 
 	command = new KUrlRequester(main);
@@ -472,15 +471,15 @@ void TaskEditorDialog::createMinutesGroup(QWidget* main) {
 
 	minutesPreselectionLabel->setBuddy(minutesPreselection);
 
-	minutesPreselection->addItem(SmallIcon(QLatin1String( "edit-clear-locationbar-ltr" )), i18n("Clear selection"), -1);
-	minutesPreselection->addItem(SmallIcon(QLatin1String( "edit-rename" )),i18n("Custom selection"), 0);
-	minutesPreselection->addItem(SmallIcon(QLatin1String( "view-calendar-month" )), i18n("Each minute"), 1);
-	minutesPreselection->addItem(SmallIcon(QLatin1String( "view-calendar-week" )), i18n("Every 2 minutes"), 2);
-	minutesPreselection->addItem(SmallIcon(QLatin1String( "view-calendar-workweek" )), i18n("Every 5 minutes"), 5);
-	minutesPreselection->addItem(SmallIcon(QLatin1String( "view-calendar-upcoming-days" )), i18n("Every 10 minutes"), 10);
-	minutesPreselection->addItem(SmallIcon(QLatin1String( "view-calendar-upcoming-days" )), i18n("Every 15 minutes"), 15);
-	minutesPreselection->addItem(SmallIcon(QLatin1String( "view-calendar-day" )), i18n("Every 20 minutes"), 20);
-	minutesPreselection->addItem(SmallIcon(QLatin1String( "view-calendar-day" )), i18n("Every 30 minutes"), 30);
+	minutesPreselection->addItem(QIcon::fromTheme(QLatin1String( "edit-clear-locationbar-ltr" )), i18n("Clear selection"), -1);
+	minutesPreselection->addItem(QIcon::fromTheme(QLatin1String( "edit-rename" )),i18n("Custom selection"), 0);
+	minutesPreselection->addItem(QIcon::fromTheme(QLatin1String( "view-calendar-month" )), i18n("Each minute"), 1);
+	minutesPreselection->addItem(QIcon::fromTheme(QLatin1String( "view-calendar-week" )), i18n("Every 2 minutes"), 2);
+	minutesPreselection->addItem(QIcon::fromTheme(QLatin1String( "view-calendar-workweek" )), i18n("Every 5 minutes"), 5);
+	minutesPreselection->addItem(QIcon::fromTheme(QLatin1String( "view-calendar-upcoming-days" )), i18n("Every 10 minutes"), 10);
+	minutesPreselection->addItem(QIcon::fromTheme(QLatin1String( "view-calendar-upcoming-days" )), i18n("Every 15 minutes"), 15);
+	minutesPreselection->addItem(QIcon::fromTheme(QLatin1String( "view-calendar-day" )), i18n("Every 20 minutes"), 20);
+	minutesPreselection->addItem(QIcon::fromTheme(QLatin1String( "view-calendar-day" )), i18n("Every 30 minutes"), 30);
 
 	minutesPreselectionLayout->addWidget(minutesPreselection);
 
@@ -553,9 +552,9 @@ void TaskEditorDialog::setupTitleWidget(const QString& comment, KTitleWidget::Me
 	titleWidget->setComment(comment, messageType);
 
 	if (messageType == KTitleWidget::ErrorMessage)
-		titleWidget->setPixmap(QIcon(KCronIcons::error(KCronIcons::Large)), KTitleWidget::ImageRight);
+		titleWidget->setPixmap(QIcon::fromTheme(QLatin1String("dialog-error")), KTitleWidget::ImageRight);
 	else
-		titleWidget->setPixmap(QIcon(KCronIcons::task(KCronIcons::Large)), KTitleWidget::ImageRight);
+		titleWidget->setPixmap(QIcon::fromTheme(QLatin1String("system-run")), KTitleWidget::ImageRight);
 
 }
 
@@ -688,7 +687,7 @@ void TaskEditorDialog::defineCommandIcon() {
 	CTTask tempTask(*ctTask);
 	tempTask.command = command->url().path();
 
-	commandIcon->setPixmap(tempTask.commandIcon());
+	commandIcon->setPixmap(tempTask.commandIcon().pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize, 0, this)));
 }
 
 
@@ -702,7 +701,7 @@ bool TaskEditorDialog::checkCommand() {
 		setupTitleWidget(i18n("<i>Please type a valid command line...</i>"), KTitleWidget::ErrorMessage);
 		KDialog::enableButtonOk(false);
 		command->setFocus();
-		commandIcon->setPixmap(SmallIcon(QLatin1String( "image-missing" )));
+		commandIcon->setPixmap(missingCommandPixmap);
 
 		return false;
 	}
@@ -713,7 +712,7 @@ bool TaskEditorDialog::checkCommand() {
 		setupTitleWidget(i18n("<i>Please type a valid command line...</i>"), KTitleWidget::ErrorMessage);
 		KDialog::enableButtonOk(false);
 		command->setFocus();
-		commandIcon->setPixmap(SmallIcon(QLatin1String( "image-missing" )));
+		commandIcon->setPixmap(missingCommandPixmap);
 
 		return false;
 	}
@@ -735,7 +734,7 @@ bool TaskEditorDialog::checkCommand() {
 		setupTitleWidget(i18n("<i>Please select an executable program...</i>"), KTitleWidget::ErrorMessage);
 		KDialog::enableButtonOk(false);
 		command->setFocus();
-		commandIcon->setPixmap(SmallIcon(QLatin1String( "image-missing" )));
+		commandIcon->setPixmap(missingCommandPixmap);
 		return false;
 	}
 
@@ -743,7 +742,7 @@ bool TaskEditorDialog::checkCommand() {
 		setupTitleWidget(i18n("<i>Please browse for a program to execute...</i>"), KTitleWidget::ErrorMessage);
 		KDialog::enableButtonOk(false);
 		command->setFocus();
-		commandIcon->setPixmap(SmallIcon(QLatin1String( "image-missing" )));
+		commandIcon->setPixmap(missingCommandPixmap);
 		return false;
 	}
 
@@ -769,7 +768,7 @@ void TaskEditorDialog::slotWizard() {
 		setupTitleWidget(i18n("<i>Please browse for a program to execute...</i>"), KTitleWidget::ErrorMessage);
 		KDialog::enableButtonOk(false);
 		command->setFocus();
-		commandIcon->setPixmap(SmallIcon(QLatin1String( "image-missing" )));
+		commandIcon->setPixmap(missingCommandPixmap);
 		return;
 	}
 

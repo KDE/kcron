@@ -13,7 +13,6 @@
 
 #include <QHeaderView>
 #include <QVBoxLayout>
-#include <QPixmap>
 #include <QKeyEvent>
 #include <QAction>
 
@@ -25,7 +24,6 @@
 #include "crontabWidget.h"
 #include "taskWidget.h"
 #include "taskEditorDialog.h"
-#include "kcronIcons.h"
 
 #include "logging.h"
 
@@ -44,7 +42,7 @@ public:
 /**
  * Construct tasks folder from branch.
  */
-GenericListWidget::GenericListWidget(CrontabWidget* crontabWidget, const QString& label, const QPixmap& icon) :
+GenericListWidget::GenericListWidget(CrontabWidget* crontabWidget, const QString& label, const QIcon& icon) :
 	QWidget(crontabWidget), d(new GenericListWidgetPrivate()) {
 
 	QVBoxLayout* mainLayout = new QVBoxLayout(this);
@@ -56,7 +54,7 @@ GenericListWidget::GenericListWidget(CrontabWidget* crontabWidget, const QString
 	QHBoxLayout* labelLayout = new QHBoxLayout();
 
 	QLabel* tasksIcon = new QLabel(this);
-	tasksIcon->setPixmap(icon);
+	tasksIcon->setPixmap(icon.pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize, 0, this)));
 	labelLayout->addWidget(tasksIcon);
 
 	QLabel* tasksLabel = new QLabel(label, this);

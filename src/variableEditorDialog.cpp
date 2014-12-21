@@ -28,9 +28,9 @@
 
 #include "crontabWidget.h"
 
-#include "kcronIcons.h"
 #include "kcronHelper.h"
 #include <KDebug>
+
 VariableEditorDialog::VariableEditorDialog(CTVariable* _ctVariable, const QString &_caption, CrontabWidget* _crontabWidget) :
     KDialog(_crontabWidget) {
 	ctVariable = _ctVariable;
@@ -52,7 +52,7 @@ VariableEditorDialog::VariableEditorDialog(CTVariable* _ctVariable, const QStrin
 
 	setMainWidget(page);
 
-	setWindowIcon(KCronIcons::application(KCronIcons::Small));
+	setWindowIcon(QIcon::fromTheme(QLatin1String("kcron")));
 
 	int layoutPosition = 0;
 
@@ -155,14 +155,14 @@ void VariableEditorDialog::setupTitleWidget(const QString& comment, KTitleWidget
 	//krazy:exclude=doublequote_chars
 	if (comment.isEmpty()) {
 		titleWidget->setComment(i18n("<i>This variable will be used by scheduled tasks.</i>"));
-		titleWidget->setPixmap(KCronIcons::variable(KCronIcons::Large), KTitleWidget::ImageRight);
+		titleWidget->setPixmap(QIcon::fromTheme(QLatin1String("text-plain")), KTitleWidget::ImageRight);
 	}
 	else {
 		titleWidget->setComment(comment, messageType);
 		if (messageType == KTitleWidget::ErrorMessage)
-			titleWidget->setPixmap(QIcon(KCronIcons::error(KCronIcons::Large)), KTitleWidget::ImageRight);
+			titleWidget->setPixmap(QIcon::fromTheme(QLatin1String("dialog-error")), KTitleWidget::ImageRight);
 		else
-			titleWidget->setPixmap(QIcon(KCronIcons::information(KCronIcons::Large)), KTitleWidget::ImageRight);
+			titleWidget->setPixmap(QIcon::fromTheme(QLatin1String("dialog-information")), KTitleWidget::ImageRight);
 	}
 }
 
@@ -192,7 +192,7 @@ void VariableEditorDialog::slotWizard() {
 	CTVariable tempVariable(*ctVariable);
 	tempVariable.variable = cmbVariable->currentText();
 
-	detailsIcon->setPixmap(tempVariable.variableIcon());
+	detailsIcon->setPixmap(tempVariable.variableIcon().pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize, 0, this)));
 	details->setText(tempVariable.information());
 
 	bool error = false;

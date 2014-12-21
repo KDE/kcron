@@ -21,14 +21,12 @@
 #include <kmessagebox.h>
 #include <kconfig.h>
 #include <KLocalizedString>
-#include <kiconloader.h>
 #include <ktoggleaction.h>
 #include <kxmlguifactory.h>
 #include <ktoolbar.h>
 #include <QIcon>
 #include <kconfiggroup.h>
 
-#include "kcronIcons.h"
 #include "crontabWidget.h"
 
 #include "cttask.h"

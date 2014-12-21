@@ -221,6 +221,7 @@ private:
 	QTextEdit* leComment;
 
 	QLabel* commandIcon;
+	QPixmap missingCommandPixmap;
 	KUrlRequester* command;
 
 	QCheckBox* chkEnabled;

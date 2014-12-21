@@ -26,7 +26,6 @@
 
 #include <KLocalizedString>
 #include <QIcon>
-#include <kiconloader.h>
 #include <QAction>
 #include <kstandardaction.h>
 #include <kactioncollection.h>
@@ -38,7 +37,6 @@
 #include "ctGlobalCron.h"
 
 #include "crontabPrinter.h"
-#include "kcronIcons.h"
 #include "tasksWidget.h"
 #include "taskWidget.h"
 
