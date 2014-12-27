@@ -199,7 +199,7 @@ TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption, Cro
 	connect(cbEveryDay, &QCheckBox::clicked, this, &TaskEditorDialog::slotWizard);
 
 	connect(buttonBox, &QDialogButtonBox::accepted, this, &TaskEditorDialog::slotOK);
-	connect(buttonBox, &QDialogButtonBox::rejected, this, &TaskEditorDialog::slotCancel);
+	connect(buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
 
 	if (!chkEnabled->isChecked())
 		slotEnabledChanged();
@@ -681,7 +681,7 @@ void TaskEditorDialog::slotOK() {
 		ctTask->minute.setEnabled(mi, minuteButtons[mi]->isChecked());
 	}
 
-	close();
+	accept();
 }
 
 
@@ -848,10 +848,6 @@ void TaskEditorDialog::slotWizard() {
 
 	okButton->setEnabled(true);
 
-}
-
-void TaskEditorDialog::slotCancel() {
-	close();
 }
 
 void TaskEditorDialog::slotAllMonths() {

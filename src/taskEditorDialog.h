@@ -127,11 +127,6 @@ private slots:
 	void slotWizard();
 
 	/**
-	 * Cancel and close.
-	 */
-	void slotCancel();
-
-	/**
 	 * Set or clear all month checkboxes
 	 */
 	void slotAllMonths();

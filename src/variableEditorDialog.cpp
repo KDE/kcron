@@ -183,7 +183,7 @@ void VariableEditorDialog::slotOk() {
 		ctVariable->userLogin = userCombo->currentText();
 	}
 
-	close();
+	accept();
 }
 
 void VariableEditorDialog::slotWizard() {
