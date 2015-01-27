@@ -16,10 +16,9 @@
 #include <QLineEdit>
 #include <QComboBox>
 #include <QCheckBox>
+#include <QDialog>
 #include <QTextEdit>
 
-#include <klineedit.h>
-#include <kdialog.h>
 #include <ktitlewidget.h>
 
 class CTVariable;
@@ -28,7 +27,7 @@ class CrontabWidget;
 /**
  * Environment variable editor window.
  */
-class VariableEditorDialog : public KDialog {
+class VariableEditorDialog : public QDialog {
 Q_OBJECT
 
 public:
@@ -76,6 +75,7 @@ private:
 	
 	// Widgets.
 	KTitleWidget* titleWidget;
+	QPushButton* okButton;
 
 	QComboBox* cmbVariable;
 

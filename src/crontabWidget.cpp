@@ -16,7 +16,6 @@
 
 #include <QVBoxLayout>
 #include <QHBoxLayout>
-#include <QDateTime>
 #include <QLabel>
 #include <QSplitter>
 #include <QRadioButton>
@@ -25,12 +24,9 @@
 #include <QApplication>
 #include <QClipboard>
 
-#include <kglobalsettings.h>
-#include <klocale.h>
-#include <kglobal.h>
-#include <kicon.h>
-#include <kiconloader.h>
-#include <kaction.h>
+#include <KLocalizedString>
+#include <QIcon>
+#include <QAction>
 #include <kstandardaction.h>
 #include <kactioncollection.h>
 
@@ -41,7 +37,6 @@
 #include "ctGlobalCron.h"
 
 #include "crontabPrinter.h"
-#include "kcronIcons.h"
 #include "tasksWidget.h"
 #include "taskWidget.h"
 
@@ -192,14 +187,14 @@ QHBoxLayout* CrontabWidget::createCronSelector() {
 
 		users.sort();
 		d->otherUsers->addItems(users);
-		d->otherUsers->addItem(KIcon( QLatin1String( "users") ), i18n("Show All Personal Crons"));
+		d->otherUsers->addItem(QIcon::fromTheme( QLatin1String( "users") ), i18n("Show All Personal Crons"));
 	} else {
 		d->otherUserCronRadio->hide();
 		d->otherUsers->hide();
 	}
 
-	connect(group, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(refreshCron()));
-	connect(d->otherUsers, SIGNAL(currentIndexChanged(int)), this, SLOT(checkOtherUsers()));
+	connect(group, static_cast<void (QButtonGroup::*)(QAbstractButton *)>(&QButtonGroup::buttonClicked), this, &CrontabWidget::refreshCron);
+	connect(d->otherUsers, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &CrontabWidget::checkOtherUsers);
 
 	layout->addStretch(1);
 
@@ -427,4 +422,4 @@ void CrontabWidget::print() {
 
 }
 
-#include "crontabWidget.moc"
+

@@ -11,15 +11,11 @@
 
 #include "ctSystemCron.h"
 
-#include <QRegExp>
-#include <QFile>
-#include <QTextStream>
-#include <QProcess>
 
 #include <kshell.h>
-#include <klocale.h>
-#include <ktemporaryfile.h>
-#include <klocale.h>
+#include <KLocalizedString>
+
+#include <QTemporaryFile>
 
 #include "cthost.h"
 #include "cttask.h"
@@ -36,7 +32,7 @@ CTSystemCron::CTSystemCron(const QString& crontabBinary) :
 
 	d->crontabBinary = crontabBinary;
 
-	KTemporaryFile tmp;
+	QTemporaryFile tmp;
 	tmp.open();
 	d->tmpFileName = tmp.fileName();
 

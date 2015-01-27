@@ -14,9 +14,9 @@
 
 #include <QPainter>
 #include <QPrintDialog>
+#include <QPrinter>
 
-#include <kdeprintdialog.h>
-#include <klocale.h>
+#include <KLocalizedString>
 
 #include "crontabWidget.h"
 
@@ -91,7 +91,8 @@ bool CrontabPrinter::start() {
 	*/
 
 	// initialize the printer using the print dialog
-	QPrintDialog *printDialog = KdePrint::createPrintDialog(d->printer, d->crontabWidget);
+	QPrintDialog *printDialog = new QPrintDialog(d->printer, 0);
+	printDialog->setOptionTabs(QList<QWidget *>() << d->crontabWidget);
 	printDialog->setEnabledOptions(QAbstractPrintDialog::PrintToFile);
 	if (printDialog->exec() == QDialog::Rejected) {
 		logDebug() << "Printing canceled" << endl;

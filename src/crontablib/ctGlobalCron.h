@@ -14,8 +14,6 @@
 
 #include <QString>
 #include <QList>
-#include <QStringList>
-#include <QProcess>
 
 #include "ctcron.h"
 

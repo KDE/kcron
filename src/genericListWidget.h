@@ -13,7 +13,6 @@
 #define GENERIC_LIST_WIDGET_H
 
 #include <QTreeWidget>
-#include <QList>
 
 #include "cthost.h"
 
@@ -30,7 +29,7 @@ class GenericListWidget : public QWidget {
 	Q_OBJECT
 public:
 
-	GenericListWidget(CrontabWidget* crontabWidget, const QString& label, const QPixmap& icon);
+	GenericListWidget(CrontabWidget* crontabWidget, const QString& label, const QIcon& icon);
 	
 	~GenericListWidget();
 

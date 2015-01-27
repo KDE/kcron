@@ -16,28 +16,22 @@
 #include <QLayout>
 #include <QCheckBox>
 #include <QPalette>
-#include <QColorGroup>
-#include <QPainter>
 #include <QEvent>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QGridLayout>
-#include <QFontMetrics>
+#include <QPushButton>
+#include <QStandardPaths>
 
 #include <QStyleOption>
 #include <QStylePainter>
 
 #include <kacceleratormanager.h>
-#include <klocale.h>
-#include <klineedit.h>
-#include <kfiledialog.h>
+#include <KLocalizedString>
 #include <kmessagebox.h>
-#include <kpushbutton.h>
-#include <kdialog.h>
+#include <qpushbutton.h>
 #include <kstandardshortcut.h>
-#include <kstandarddirs.h>
 #include <ktitlewidget.h>
-#include <kiconloader.h>
 #include <kurlrequester.h>
 
 #include "logging.h"
@@ -47,7 +41,6 @@
 
 #include "crontabWidget.h"
 
-#include "kcronIcons.h"
 #include "kcronHelper.h"
 
 /**
@@ -55,21 +48,28 @@
  */
 
 TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption, CrontabWidget* _crontabWidget) :
-	KDialog(_crontabWidget) {
+	QDialog(_crontabWidget) {
 
 	setModal(true);
 
 	// window
-	setWindowIcon(KCronIcons::application(KCronIcons::Small));
-	setCaption(_caption);
+	setWindowIcon(QIcon::fromTheme(QLatin1String("kcron")));
+	setWindowTitle(_caption);
 
 	ctTask = _ctTask;
 	crontabWidget = _crontabWidget;
 
 	QWidget* main = new QWidget(this);
 	QVBoxLayout* mainLayout = new QVBoxLayout(main);
-	setMainWidget(main);
+	mainLayout->setMargin(0);
 
+	QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
+	okButton = buttonBox->button(QDialogButtonBox::Ok);
+
+	QVBoxLayout* dialogLayout = new QVBoxLayout();
+	dialogLayout->addWidget(main);
+	dialogLayout->addWidget(buttonBox);
+	setLayout(dialogLayout);
 
 	// top title widget
 	titleWidget = new KTitleWidget(main);
@@ -88,6 +88,7 @@ TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption, Cro
 
 	QHBoxLayout* commandLayout = new QHBoxLayout();
 	commandIcon = new QLabel(main);
+	missingCommandPixmap = QIcon::fromTheme(QLatin1String("image-missing")).pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize, 0, this));
 	commandLayout->addWidget(commandIcon);
 
 	command = new KUrlRequester(main);
@@ -95,7 +96,7 @@ TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption, Cro
 	commandLayout->addWidget(command);
 
 	command->setMode(KFile::File | KFile::ExistingOnly | KFile::LocalOnly);
-	command->setUrl(KUrl(ctTask->command));
+	command->setUrl(QUrl::fromLocalFile(ctTask->command));
 
 	//Initialize special valid commands
 	specialValidCommands << QLatin1String( "cd" );
@@ -186,22 +187,19 @@ TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption, Cro
 
 	command->setFocus();
 
-	connect(command, SIGNAL(textChanged(QString)), SLOT(slotWizard()));
+	connect(command, &KUrlRequester::textChanged, this, &TaskEditorDialog::slotWizard);
 
-	connect(chkEnabled, SIGNAL(clicked()), SLOT(slotEnabledChanged()));
-	connect(chkEnabled, SIGNAL(clicked()), SLOT(slotWizard()));
+	connect(chkEnabled, &QCheckBox::clicked, this, &TaskEditorDialog::slotEnabledChanged);
+	connect(chkEnabled, &QCheckBox::clicked, this, &TaskEditorDialog::slotWizard);
 
-	connect(chkReboot, SIGNAL(clicked()), SLOT(slotRebootChanged()));
-	connect(chkReboot, SIGNAL(clicked()), SLOT(slotWizard()));
+	connect(chkReboot, &QCheckBox::clicked, this, &TaskEditorDialog::slotRebootChanged);
+	connect(chkReboot, &QCheckBox::clicked, this, &TaskEditorDialog::slotWizard);
 
-	connect(cbEveryDay, SIGNAL(clicked()), SLOT(slotDailyChanged()));
-	connect(cbEveryDay, SIGNAL(clicked()), SLOT(slotWizard()));
+	connect(cbEveryDay, &QCheckBox::clicked, this, &TaskEditorDialog::slotDailyChanged);
+	connect(cbEveryDay, &QCheckBox::clicked, this, &TaskEditorDialog::slotWizard);
 
-	connect(this, SIGNAL(okClicked()), SLOT(slotOK()));
-	connect(this, SIGNAL(cancelClicked()), SLOT(slotCancel()));
-
-	//main->layout()->setSizeConstraint(QLayout::SetFixedSize);
-	//show();
+	connect(buttonBox, &QDialogButtonBox::accepted, this, &TaskEditorDialog::slotOK);
+	connect(buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
 
 	if (!chkEnabled->isChecked())
 		slotEnabledChanged();
@@ -275,8 +273,8 @@ QGroupBox* TaskEditorDialog::createDaysOfMonthGroup(QWidget* main) {
 	allDaysOfMonth = new SetOrClearAllButton(daysOfMonthGroup, SetOrClearAllButton::SET_ALL);
 	daysOfMonthLayout->addWidget(allDaysOfMonth, 4, 3, 1, 4);
 
-	connect(allDaysOfMonth, SIGNAL(clicked()), SLOT(slotAllDaysOfMonth()));
-	connect(allDaysOfMonth, SIGNAL(clicked()), SLOT(slotWizard()));
+	connect(allDaysOfMonth, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotAllDaysOfMonth);
+	connect(allDaysOfMonth, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotWizard);
 
 	return daysOfMonthGroup;
 }
@@ -311,8 +309,8 @@ QGroupBox* TaskEditorDialog::createMonthsGroup(QWidget* main) {
 	allMonths = new SetOrClearAllButton(monthsGroup, SetOrClearAllButton::SET_ALL);
 	monthsLayout->addWidget(allMonths, row, 0, 1, 2);
 
-	connect(allMonths, SIGNAL(clicked()), SLOT(slotAllMonths()));
-	connect(allMonths, SIGNAL(clicked()), SLOT(slotWizard()));
+	connect(allMonths, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotAllMonths);
+	connect(allMonths, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotWizard);
 
 	return monthsGroup;
 
@@ -347,8 +345,8 @@ QGroupBox* TaskEditorDialog::createDaysOfWeekGroup(QWidget* main) {
 	allDaysOfWeek = new SetOrClearAllButton(daysOfWeekGroup, SetOrClearAllButton::SET_ALL);
 	daysOfWeekLayout->addWidget(allDaysOfWeek);
 
-	connect(allDaysOfWeek, SIGNAL(clicked()), SLOT(slotAllDaysOfWeek()));
-	connect(allDaysOfWeek, SIGNAL(clicked()), SLOT(slotWizard()));
+	connect(allDaysOfWeek, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotAllDaysOfWeek);
+	connect(allDaysOfWeek, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotWizard);
 
 	return daysOfWeekGroup;
 }
@@ -449,8 +447,8 @@ NumberPushButton* TaskEditorDialog::createMinuteButton(int minuteIndex) {
 	minuteButton->setCheckable(true);
 	minuteButton->setChecked(ctTask->minute.isEnabled(minuteIndex));
 
-	connect(minuteButton, SIGNAL(clicked()), SLOT(slotMinuteChanged()));
-	connect(minuteButton, SIGNAL(clicked()), SLOT(slotWizard()));
+	connect(minuteButton, &NumberPushButton::clicked, this, &TaskEditorDialog::slotMinuteChanged);
+	connect(minuteButton, &NumberPushButton::clicked, this, &TaskEditorDialog::slotWizard);
 
 	return minuteButton;
 }
@@ -475,20 +473,20 @@ void TaskEditorDialog::createMinutesGroup(QWidget* main) {
 
 	minutesPreselectionLabel->setBuddy(minutesPreselection);
 
-	minutesPreselection->addItem(SmallIcon(QLatin1String( "edit-clear-locationbar-ltr" )), i18n("Clear selection"), -1);
-	minutesPreselection->addItem(SmallIcon(QLatin1String( "edit-rename" )),i18n("Custom selection"), 0);
-	minutesPreselection->addItem(SmallIcon(QLatin1String( "view-calendar-month" )), i18n("Each minute"), 1);
-	minutesPreselection->addItem(SmallIcon(QLatin1String( "view-calendar-week" )), i18n("Every 2 minutes"), 2);
-	minutesPreselection->addItem(SmallIcon(QLatin1String( "view-calendar-workweek" )), i18n("Every 5 minutes"), 5);
-	minutesPreselection->addItem(SmallIcon(QLatin1String( "view-calendar-upcoming-days" )), i18n("Every 10 minutes"), 10);
-	minutesPreselection->addItem(SmallIcon(QLatin1String( "view-calendar-upcoming-days" )), i18n("Every 15 minutes"), 15);
-	minutesPreselection->addItem(SmallIcon(QLatin1String( "view-calendar-day" )), i18n("Every 20 minutes"), 20);
-	minutesPreselection->addItem(SmallIcon(QLatin1String( "view-calendar-day" )), i18n("Every 30 minutes"), 30);
+	minutesPreselection->addItem(QIcon::fromTheme(QLatin1String( "edit-clear-locationbar-ltr" )), i18n("Clear selection"), -1);
+	minutesPreselection->addItem(QIcon::fromTheme(QLatin1String( "edit-rename" )),i18n("Custom selection"), 0);
+	minutesPreselection->addItem(QIcon::fromTheme(QLatin1String( "view-calendar-month" )), i18n("Each minute"), 1);
+	minutesPreselection->addItem(QIcon::fromTheme(QLatin1String( "view-calendar-week" )), i18n("Every 2 minutes"), 2);
+	minutesPreselection->addItem(QIcon::fromTheme(QLatin1String( "view-calendar-workweek" )), i18n("Every 5 minutes"), 5);
+	minutesPreselection->addItem(QIcon::fromTheme(QLatin1String( "view-calendar-upcoming-days" )), i18n("Every 10 minutes"), 10);
+	minutesPreselection->addItem(QIcon::fromTheme(QLatin1String( "view-calendar-upcoming-days" )), i18n("Every 15 minutes"), 15);
+	minutesPreselection->addItem(QIcon::fromTheme(QLatin1String( "view-calendar-day" )), i18n("Every 20 minutes"), 20);
+	minutesPreselection->addItem(QIcon::fromTheme(QLatin1String( "view-calendar-day" )), i18n("Every 30 minutes"), 30);
 
 	minutesPreselectionLayout->addWidget(minutesPreselection);
 
-	connect(minutesPreselection, SIGNAL(activated(int)), SLOT(slotMinutesPreselection(int)));
-	connect(minutesPreselection, SIGNAL(activated(int)), SLOT(slotWizard()));
+	connect(minutesPreselection, static_cast<void (QComboBox::*)(int)>(&QComboBox::activated), this, &TaskEditorDialog::slotMinutesPreselection);
+	connect(minutesPreselection, static_cast<void (QComboBox::*)(int)>(&QComboBox::activated), this, &TaskEditorDialog::slotWizard);
 
 	//First mandatory increase
 	increaseMinutesGroup();
@@ -506,8 +504,8 @@ NumberPushButton* TaskEditorDialog::createHourButton(QGroupBox* hoursGroup, int 
 	hourButton->setCheckable(true);
 	hourButton->setChecked(ctTask->hour.isEnabled(hour));
 
-	connect(hourButton, SIGNAL(clicked()), SLOT(slotHourChanged()));
-	connect(hourButton, SIGNAL(clicked()), SLOT(slotWizard()));
+	connect(hourButton, &NumberPushButton::clicked, this, &TaskEditorDialog::slotHourChanged);
+	connect(hourButton, &NumberPushButton::clicked, this, &TaskEditorDialog::slotWizard);
 
 	return hourButton;
 }
@@ -544,8 +542,8 @@ QGroupBox* TaskEditorDialog::createHoursGroup(QWidget* main) {
 	allHours = new SetOrClearAllButton(this, SetOrClearAllButton::SET_ALL);
 	hoursLayout->addWidget(allHours, 4, 0, 1, 7);
 
-	connect(allHours, SIGNAL(clicked()), SLOT(slotAllHours()));
-	connect(allHours, SIGNAL(clicked()), SLOT(slotWizard()));
+	connect(allHours, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotAllHours);
+	connect(allHours, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotWizard);
 
 	logDebug() << "Create hours group" << endl;
 	return hoursGroup;
@@ -556,9 +554,9 @@ void TaskEditorDialog::setupTitleWidget(const QString& comment, KTitleWidget::Me
 	titleWidget->setComment(comment, messageType);
 
 	if (messageType == KTitleWidget::ErrorMessage)
-		titleWidget->setPixmap(KIcon(KCronIcons::error(KCronIcons::Large)), KTitleWidget::ImageRight);
+		titleWidget->setPixmap(QIcon::fromTheme(QLatin1String("dialog-error")), KTitleWidget::ImageRight);
 	else
-		titleWidget->setPixmap(KIcon(KCronIcons::task(KCronIcons::Large)), KTitleWidget::ImageRight);
+		titleWidget->setPixmap(QIcon::fromTheme(QLatin1String("system-run")), KTitleWidget::ImageRight);
 
 }
 
@@ -683,7 +681,7 @@ void TaskEditorDialog::slotOK() {
 		ctTask->minute.setEnabled(mi, minuteButtons[mi]->isChecked());
 	}
 
-	close();
+	accept();
 }
 
 
@@ -691,7 +689,7 @@ void TaskEditorDialog::defineCommandIcon() {
 	CTTask tempTask(*ctTask);
 	tempTask.command = command->url().path();
 
-	commandIcon->setPixmap(tempTask.commandIcon());
+	commandIcon->setPixmap(tempTask.commandIcon().pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize, 0, this)));
 }
 
 
@@ -703,9 +701,9 @@ bool TaskEditorDialog::checkCommand() {
 
 	if (commandQuoted.first.isEmpty()) {
 		setupTitleWidget(i18n("<i>Please type a valid command line...</i>"), KTitleWidget::ErrorMessage);
-		KDialog::enableButtonOk(false);
+		okButton->setEnabled(false);
 		command->setFocus();
-		commandIcon->setPixmap(SmallIcon(QLatin1String( "image-missing" )));
+		commandIcon->setPixmap(missingCommandPixmap);
 
 		return false;
 	}
@@ -714,9 +712,9 @@ bool TaskEditorDialog::checkCommand() {
 	QStringList pathCommand = tempTask.separatePathCommand(commandQuoted.first, commandQuoted.second);
 	if (pathCommand.isEmpty()) {
 		setupTitleWidget(i18n("<i>Please type a valid command line...</i>"), KTitleWidget::ErrorMessage);
-		KDialog::enableButtonOk(false);
+		okButton->setEnabled(false);
 		command->setFocus();
-		commandIcon->setPixmap(SmallIcon(QLatin1String( "image-missing" )));
+		commandIcon->setPixmap(missingCommandPixmap);
 
 		return false;
 	}
@@ -729,24 +727,25 @@ bool TaskEditorDialog::checkCommand() {
 
 	bool found = false;
 	bool exec = false;
-	if (!KStandardDirs::findExe(binaryCommand, path, KStandardDirs::IgnoreExecBit).isEmpty() || specialValidCommands.contains(binaryCommand))
+	if (!QStandardPaths::findExecutable(binaryCommand, QStringList() << path).isEmpty() || specialValidCommands.contains(binaryCommand))
 		found = true;
-	if (!KStandardDirs::findExe(binaryCommand, path).isEmpty() || specialValidCommands.contains(binaryCommand))
+	// FIXME check if actually executable
+	if (found)
 		exec = true;
 
 	if (found && !exec) {
 		setupTitleWidget(i18n("<i>Please select an executable program...</i>"), KTitleWidget::ErrorMessage);
-		KDialog::enableButtonOk(false);
+		okButton->setEnabled(false);
 		command->setFocus();
-		commandIcon->setPixmap(SmallIcon(QLatin1String( "image-missing" )));
+		commandIcon->setPixmap(missingCommandPixmap);
 		return false;
 	}
 
 	if (!found) {
 		setupTitleWidget(i18n("<i>Please browse for a program to execute...</i>"), KTitleWidget::ErrorMessage);
-		KDialog::enableButtonOk(false);
+		okButton->setEnabled(false);
 		command->setFocus();
-		commandIcon->setPixmap(SmallIcon(QLatin1String( "image-missing" )));
+		commandIcon->setPixmap(missingCommandPixmap);
 		return false;
 	}
 
@@ -757,22 +756,22 @@ bool TaskEditorDialog::checkCommand() {
 void TaskEditorDialog::slotWizard() {
 	if (!chkEnabled->isChecked()) {
 		setupTitleWidget(i18n("<i>This task is disabled.</i>"));
-		KDialog::enableButtonOk(true);
+		okButton->setEnabled(true);
 		chkEnabled->setFocus();
 		return;
 	}
 
 	if (chkReboot->isChecked()) {
 		setupTitleWidget(i18n("<i>This task will be run on system bootup.</i>"));
-		KDialog::enableButtonOk(true);
+		okButton->setEnabled(true);
 		return;
 	}
 
 	if (command->url().path().isEmpty()) {
 		setupTitleWidget(i18n("<i>Please browse for a program to execute...</i>"), KTitleWidget::ErrorMessage);
-		KDialog::enableButtonOk(false);
+		okButton->setEnabled(false);
 		command->setFocus();
-		commandIcon->setPixmap(SmallIcon(QLatin1String( "image-missing" )));
+		commandIcon->setPixmap(missingCommandPixmap);
 		return;
 	}
 
@@ -789,7 +788,7 @@ void TaskEditorDialog::slotWizard() {
 
 	if (!valid) {
 		setupTitleWidget(i18n("<i>Please select from the 'Months' section...</i>"), KTitleWidget::ErrorMessage);
-		KDialog::enableButtonOk(false);
+		okButton->setEnabled(false);
 		if (!command->hasFocus())
 			monthButtons[1]->setFocus();
 		return;
@@ -808,7 +807,7 @@ void TaskEditorDialog::slotWizard() {
 
 	if (!valid) {
 		setupTitleWidget(i18n("<i>Please select from either the 'Days of Month' or the 'Days of Week' section...</i>"), KTitleWidget::ErrorMessage);
-		KDialog::enableButtonOk(false);
+		okButton->setEnabled(false);
 		if (!command->hasFocus())
 			dayOfMonthButtons[1]->setFocus();
 		return;
@@ -823,7 +822,7 @@ void TaskEditorDialog::slotWizard() {
 
 	if (!valid) {
 		setupTitleWidget(i18n("<i>Please select from the 'Hours' section...</i>"), KTitleWidget::ErrorMessage);
-		KDialog::enableButtonOk(false);
+		okButton->setEnabled(false);
 		if (!command->hasFocus())
 			hourButtons[0]->setFocus();
 		return;
@@ -838,7 +837,7 @@ void TaskEditorDialog::slotWizard() {
 
 	if (!valid) {
 		setupTitleWidget(i18n("<i>Please select from the 'Minutes' section...</i>"), KTitleWidget::ErrorMessage);
-		KDialog::enableButtonOk(false);
+		okButton->setEnabled(false);
 		if (!command->hasFocus())
 			minuteButtons[0]->setFocus();
 		return;
@@ -847,12 +846,8 @@ void TaskEditorDialog::slotWizard() {
 	defineCommandIcon();
 	setupTitleWidget(i18n("<i>This task will be executed at the specified intervals.</i>"));
 
-	enableButtonOk(true);
+	okButton->setEnabled(true);
 
-}
-
-void TaskEditorDialog::slotCancel() {
-	close();
 }
 
 void TaskEditorDialog::slotAllMonths() {
@@ -1111,4 +1106,4 @@ void NumberPushButton::paintEvent(QPaintEvent*) {
 	p.drawControl(QStyle::CE_PushButton, option);
 }
 
-#include "taskEditorDialog.moc"
+

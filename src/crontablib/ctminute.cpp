@@ -11,7 +11,7 @@
 
 #include "ctminute.h"
 
-#include <klocale.h>
+#include <KLocalizedString>
 
 /**
  * Constructs from a tokenized string.

@@ -11,7 +11,7 @@
 
 #include "ctunit.h"
 
-#include <klocale.h>
+#include <KLocalizedString>
 
 #include "logging.h"
 

@@ -15,7 +15,7 @@
 #include <QString>
 #include <QPair>
 #include <QStringList>
-#include <QPixmap>
+#include <QIcon>
 
 #include "ctmonth.h"
 #include "ctdom.h"
@@ -82,7 +82,7 @@ public:
 
 	void setSystemCrontab(bool systemCrontab);
 
-	QPixmap commandIcon() const;
+	QIcon commandIcon() const;
 
 	/**
 	 * Internal methods

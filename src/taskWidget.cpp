@@ -11,15 +11,13 @@
 
 #include "taskWidget.h"
 
-#include <klocale.h>
-#include <kiconloader.h>
+#include <KLocalizedString>
 
 #include "cttask.h"
 #include "ctcron.h"
 
 #include "tasksWidget.h"
 #include "crontabWidget.h"
-#include "kcronIcons.h"
 #include "taskEditorDialog.h"
 
 #include "logging.h"
@@ -47,10 +45,10 @@ void TaskWidget::refresh() {
 
 	if (ctTask->enabled) {
 		setText(column, i18n("Enabled"));
-		setIcon(column++, SmallIcon(QLatin1String( "dialog-ok-apply" )));
+		setIcon(column++, QIcon::fromTheme(QLatin1String( "dialog-ok-apply" )));
 	} else {
 		setText(column, i18n("Disabled"));
-		setIcon(column++, SmallIcon(QLatin1String( "dialog-cancel" )));
+		setIcon(column++, QIcon::fromTheme(QLatin1String( "dialog-cancel" )));
 	}
 
 	setText(column++, ctTask->comment);

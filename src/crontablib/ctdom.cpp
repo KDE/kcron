@@ -10,7 +10,7 @@
  ***************************************************************************/
 
 #include "ctdom.h"
-#include <klocale.h>
+#include <KLocalizedString>
 
 QList<QString> CTDayOfMonth::shortName;
 

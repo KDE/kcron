@@ -10,7 +10,7 @@
  ***************************************************************************/
 
 #include "ctmonth.h"
-#include <klocale.h>
+#include <KLocalizedString>
 
 QList<QString> CTMonth::shortName;
 

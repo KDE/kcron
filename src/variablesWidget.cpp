@@ -11,20 +11,16 @@
 
 #include "variablesWidget.h"
 
-#include <QHeaderView>
-#include <QVBoxLayout>
-#include <QTreeWidgetItemIterator>
 #include <QAction>
 #include <QList>
 
-#include <klocale.h>
-#include <kglobalsettings.h>
+#include <KLocalizedString>
+#include <QIcon>
 
 #include "ctcron.h"
 #include "cttask.h"
 #include "ctvariable.h"
 
-#include "kcronIcons.h"
 #include "crontabWidget.h"
 #include "variableWidget.h"
 #include "variableEditorDialog.h"
@@ -45,7 +41,7 @@ public:
  * Construct tasks folder from branch.
  */
 VariablesWidget::VariablesWidget(CrontabWidget* crontabWidget) :
-	GenericListWidget(crontabWidget, i18n("<b>Environment Variables</b>"), KCronIcons::variable(KCronIcons::Small)),
+	GenericListWidget(crontabWidget, i18n("<b>Environment Variables</b>"), QIcon::fromTheme(QLatin1String("text-plain"))),
 	d(new VariablesWidgetPrivate()) {
 
 	refreshHeaders();
@@ -214,20 +210,20 @@ void VariablesWidget::refreshHeaders() {
 void VariablesWidget::setupActions() {
 
 	d->newVariableAction = new QAction(this);
-	d->newVariableAction->setIcon(KIcon( QLatin1String( "document-new" )));
+	d->newVariableAction->setIcon(QIcon::fromTheme( QLatin1String( "document-new" )));
 	d->newVariableAction->setText(i18nc("Adds a new variable", "New &Variable...") );
 	d->newVariableAction->setToolTip(i18n("Create a new variable."));
 	addRightAction(d->newVariableAction, this, SLOT(createVariable()));
 
 	d->modifyAction = new QAction(this);
 	d->modifyAction->setText(i18n("M&odify...") );
-	d->modifyAction->setIcon(KIcon( QLatin1String( "document-open" )) );
+	d->modifyAction->setIcon(QIcon::fromTheme( QLatin1String( "document-open" )) );
 	d->modifyAction->setToolTip(i18n("Modify the selected variable."));
 	addRightAction(d->modifyAction, this, SLOT(modifySelection()));
 
 	d->deleteAction = new QAction(this);
 	d->deleteAction->setText(i18n("&Delete") );
-	d->deleteAction->setIcon(KIcon( QLatin1String( "edit-delete" )) );
+	d->deleteAction->setIcon(QIcon::fromTheme( QLatin1String( "edit-delete" )) );
 	d->deleteAction->setToolTip(i18n("Delete the selected variable."));
 	addRightAction(d->deleteAction, this, SLOT(deleteSelection()));
 

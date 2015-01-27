@@ -11,24 +11,19 @@
 
 #include "tasksWidget.h"
 
-#include <QHeaderView>
-#include <QTreeWidgetItemIterator>
-#include <QVBoxLayout>
 #include <QProcess>
 #include <QAction>
 #include <QList>
 
-#include <kaction.h>
+#include <QAction>
 #include <kstandardaction.h>
-#include <klocale.h>
-#include <kglobalsettings.h>
+#include <KLocalizedString>
 
 #include "ctcron.h"
 #include "cthost.h"
 #include "cttask.h"
 #include "ctvariable.h"
 
-#include "kcronIcons.h"
 #include "crontabWidget.h"
 #include "taskWidget.h"
 #include "taskEditorDialog.h"
@@ -46,7 +41,7 @@ public:
 
 	QAction* runNowAction;
 
-	KAction* printAction;
+	QAction* printAction;
 
 };
 
@@ -54,7 +49,7 @@ public:
  * Construct tasks folder from branch.
  */
 TasksWidget::TasksWidget(CrontabWidget* crontabWidget) :
-	GenericListWidget(crontabWidget, i18n("<b>Scheduled Tasks</b>"), KCronIcons::task(KCronIcons::Small)),
+	GenericListWidget(crontabWidget, i18n("<b>Scheduled Tasks</b>"), QIcon::fromTheme(QLatin1String("system-run"))),
 	d(new TasksWidgetPrivate()) {
 
 	refreshHeaders();
@@ -269,26 +264,26 @@ bool TasksWidget::needUserColumn() const {
 void TasksWidget::setupActions(CrontabWidget* crontabWidget) {
 
 	d->newTaskAction = new QAction(this);
-	d->newTaskAction->setIcon(KIcon( QLatin1String( "document-new" )));
+	d->newTaskAction->setIcon(QIcon::fromTheme( QLatin1String( "document-new" )));
 	d->newTaskAction->setText(i18nc("Adds a new task", "New &Task...") );
 	d->newTaskAction->setToolTip(i18n("Create a new task."));
 	addRightAction(d->newTaskAction, this, SLOT(createTask()));
 
 	d->modifyAction = new QAction(this);
 	d->modifyAction->setText(i18n("M&odify...") );
-	d->modifyAction->setIcon(KIcon( QLatin1String( "document-open" )) );
+	d->modifyAction->setIcon(QIcon::fromTheme( QLatin1String( "document-open" )) );
 	d->modifyAction->setToolTip(i18n("Modify the selected task."));
 	addRightAction(d->modifyAction, this, SLOT(modifySelection()));
 
 	d->deleteAction = new QAction(this);
 	d->deleteAction->setText(i18n("&Delete") );
-	d->deleteAction->setIcon(KIcon( QLatin1String( "edit-delete" )) );
+	d->deleteAction->setIcon(QIcon::fromTheme( QLatin1String( "edit-delete" )) );
 	d->deleteAction->setToolTip(i18n("Delete the selected task."));
 	addRightAction(d->deleteAction, this, SLOT(deleteSelection()));
 
 	d->runNowAction = new QAction(this);
 	d->runNowAction->setText(i18n("&Run Now") );
-	d->runNowAction->setIcon(KIcon( QLatin1String( "system-run" )));
+	d->runNowAction->setIcon(QIcon::fromTheme( QLatin1String( "system-run" )));
 	d->runNowAction->setToolTip(i18n("Run the selected task now."));
 	addRightAction(d->runNowAction, this, SLOT(runTaskNow()));
 

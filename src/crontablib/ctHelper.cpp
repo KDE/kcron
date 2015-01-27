@@ -13,7 +13,7 @@
 
 #include <QStringList>
 
-#include <klocale.h>
+#include <KLocalizedString>
 
 QString CTHelper::exportComment(const QString& comment) {
 	QString exportComment;

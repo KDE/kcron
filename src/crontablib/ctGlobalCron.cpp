@@ -11,15 +11,9 @@
 
 #include "ctGlobalCron.h"
 
-#include <QRegExp>
-#include <QFile>
-#include <QTextStream>
-#include <QProcess>
 
 #include <kshell.h>
-#include <klocale.h>
-#include <ktemporaryfile.h>
-#include <klocale.h>
+#include <KLocalizedString>
 
 #include "cthost.h"
 #include "cttask.h"

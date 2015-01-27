@@ -16,17 +16,13 @@
 #include <QPushButton>
 #include <QGroupBox>
 #include <QComboBox>
+#include <QDialog>
 #include <QStringList>
 #include <QTextEdit>
-#include <QPair>
 
-#include <kdialog.h>
-#include <kicon.h>
 #include <ktitlewidget.h>
-#include <kmimetype.h>
 
 class QLabel;
-class QLineEdit;
 class QCheckBox;
 class QGridLayout;
 class QHBoxLayout;
@@ -80,7 +76,7 @@ public:
 /**
  * Task editor window.
  */
-class TaskEditorDialog : public KDialog {
+class TaskEditorDialog : public QDialog {
 Q_OBJECT
 
 public:
@@ -129,11 +125,6 @@ private slots:
 	 * Run the wizard.
 	 */
 	void slotWizard();
-
-	/**
-	 * Cancel and close.
-	 */
-	void slotCancel();
 
 	/**
 	 * Set or clear all month checkboxes
@@ -218,12 +209,14 @@ private:
 	// Widgets.
 
 	KTitleWidget* titleWidget;
+	QPushButton* okButton;
 
 	QComboBox* userCombo;
 
 	QTextEdit* leComment;
 
 	QLabel* commandIcon;
+	QPixmap missingCommandPixmap;
 	KUrlRequester* command;
 
 	QCheckBox* chkEnabled;
