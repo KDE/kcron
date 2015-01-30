@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=kcmshell4 kcm_cron
+Exec=kcmshell5 kcm_cron
 Icon=preferences-system-cron
 
 X-DocPath=kcron/index.html
