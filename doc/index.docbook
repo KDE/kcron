@@ -42,8 +42,8 @@
 <holder>&Morgan.N.Sandquist;</holder>
 </copyright>
 
-<date>2013-06-22</date>
-<releaseinfo>&kde; 4.11</releaseinfo>
+<date>2015-05-27</date>
+<releaseinfo>Plasma 5.3</releaseinfo>
 
 <keywordset>
 <keyword>KDE</keyword>
@@ -381,53 +381,6 @@ context menu as well. Additionally the context menu provides actions to
 cut, copy and paste variables.</para>
 
 </sect2>
-<!--
-<sect2 id="saving-crontab">
-<title>Saving the <filename>crontab</filename></title>
-
-<para>Once all scheduled tasks and environment variables have been
-created and/or properly modified, save the <filename>crontab</filename>
-by selecting
-<menuchoice>
-<guimenu>File</guimenu> <guimenuitem>Save</guimenuitem> </menuchoice>.</para>
-
-<para>Alternatively, you can simply press <keycombo
-action="simul">&Ctrl;<keycap>S</keycap></keycombo>. Additions or changes
-will not actually be made until this is done.</para>
-
-</sect2>
-
-<sect2 id="printing-crontab">
-<title>Printing the <filename>crontab</filename></title>
-
-<para>To print the <filename>crontab</filename> as it has been saved,
-select <menuchoice> <guimenu>File</guimenu>
-<guimenuitem>Print</guimenuitem> </menuchoice>.</para>
-
-<para>The standard &kde; printer dialog will display.  If you select
-<guilabel>Expand</guilabel> you will see that there are two extra
-&kcron; specific options in the Print Dialog box.</para>
-
-<variablelist>
-<varlistentry>
-<term><guilabel>Print Crontab</guilabel></term>
-<listitem>
-<para>Prints the <filename>crontab</filename> for the current user.</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><guilabel>Print All Users</guilabel></term>
-<listitem>
-<para>Prints the <filename>crontab</filename>s for all users.  This option is
-enabled only for users with super-user privileges.</para>
-</listitem>
-</varlistentry>
-
-</variablelist>
-
-</sect2>
--->
 </sect1>
 </article>
 
