@@ -22,8 +22,6 @@
 #include <kconfig.h>
 #include <KLocalizedString>
 #include <ktoggleaction.h>
-#include <kxmlguifactory.h>
-#include <ktoolbar.h>
 #include <QIcon>
 #include <kconfiggroup.h>
 

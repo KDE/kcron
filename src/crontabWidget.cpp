@@ -28,7 +28,6 @@
 #include <QIcon>
 #include <QAction>
 #include <kstandardaction.h>
-#include <kactioncollection.h>
 
 #include "cthost.h"
 #include "ctcron.h"
