@@ -2,14 +2,14 @@
 Exec=kcmshell5 kcm_cron
 Icon=preferences-system-cron
 
-X-DocPath=kcron/index.html
+X-DocPath=kcontrol/kcron/index.html
 
 Type=Service
 X-KDE-ServiceTypes=KCModule
 X-KDE-Library=kcm_cron
 X-KDE-ParentApp=kcontrol
 
-X-KDE-System-Settings-Parent-Category=system-administration
+X-KDE-System-Settings-Parent-Category=session
 
 Name=Task Scheduler
 Name[ar]=مجدول المهامّ
