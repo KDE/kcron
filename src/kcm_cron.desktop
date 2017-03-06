@@ -2,7 +2,7 @@
 Exec=kcmshell5 kcm_cron
 Icon=preferences-system-cron
 
-X-DocPath=kcontrol/kcron/index.html
+X-DocPath=kcontrol5/kcron/index.html
 
 Type=Service
 X-KDE-ServiceTypes=KCModule
