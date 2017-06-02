@@ -41,7 +41,7 @@ public:
 	
 	void resizeColumnContents();
 	
-	virtual void keyPressEvent(QKeyEvent *e);
+	void keyPressEvent(QKeyEvent *e) Q_DECL_OVERRIDE;
 
 protected slots:
 	virtual void modifySelection(QTreeWidgetItem* item, int position) = 0;

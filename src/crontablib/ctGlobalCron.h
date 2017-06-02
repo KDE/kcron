@@ -37,18 +37,18 @@ public:
 	 */
 	virtual ~CTGlobalCron();
 
-	virtual QList<CTTask*> tasks() const;
+	QList<CTTask*> tasks() const Q_DECL_OVERRIDE;
 	
-	virtual QList<CTVariable*> variables() const;
+	QList<CTVariable*> variables() const Q_DECL_OVERRIDE;
 	
-	virtual void addTask(CTTask* task);
-	virtual void addVariable(CTVariable* variable);
+	void addTask(CTTask* task) Q_DECL_OVERRIDE;
+	void addVariable(CTVariable* variable) Q_DECL_OVERRIDE;
 	
-	virtual void modifyTask(CTTask* task);
-	virtual void modifyVariable(CTVariable* variable);
+	void modifyTask(CTTask* task) Q_DECL_OVERRIDE;
+	void modifyVariable(CTVariable* variable) Q_DECL_OVERRIDE;
 		
-	virtual void removeVariable(CTVariable* variable);
-	virtual void removeTask(CTTask* task);
+	void removeVariable(CTVariable* variable) Q_DECL_OVERRIDE;
+	void removeTask(CTTask* task) Q_DECL_OVERRIDE;
 
 private:
 	CTHost* ctHost;

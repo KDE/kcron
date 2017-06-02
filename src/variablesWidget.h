@@ -61,7 +61,7 @@ signals:
 public slots:
 	void modifySelection();
 	
-	void deleteSelection();
+	void deleteSelection() Q_DECL_OVERRIDE;
 
 	/**
 	 * Create a new variable.  Default is which type is most recently selected.
@@ -73,7 +73,7 @@ public slots:
 	void changeCurrentSelection();
 
 protected slots:
-	void modifySelection(QTreeWidgetItem* item, int position);
+	void modifySelection(QTreeWidgetItem* item, int position) Q_DECL_OVERRIDE;
 
 private:
 	void refreshHeaders();

@@ -38,9 +38,9 @@ public:
 
 	~KCMCron();
 
-	virtual void load();
-	virtual void save();
-	virtual void defaults();
+	void load() Q_DECL_OVERRIDE;
+	void save() Q_DECL_OVERRIDE;
+	void defaults() Q_DECL_OVERRIDE;
 	
 	/**
 	 * Additional init
