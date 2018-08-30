@@ -9,8 +9,8 @@
  *   (at your option) any later version.                                   * 
  ***************************************************************************/
 
-#ifndef KTVIEW_H
-#define KTVIEW_H
+#ifndef CRONTABWIDGET_H
+#define CRONTABWIDGET_H
 
 #include <QWidget>
 
@@ -115,4 +115,4 @@ private:
 	
 };
 
-#endif // KTVIEW_H
+#endif // CRONTABWIDGET_H

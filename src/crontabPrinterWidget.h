@@ -10,8 +10,8 @@
  *   (at your option) any later version.                                   *
  ***************************************************************************/
 
-#ifndef KTPRINTOPT_H
-#define KTPRINTOPT_H
+#ifndef CRONTABPRINTERWIDGET_H
+#define CRONTABPRINTERWIDGET_H
 
 #include <QWidget>
 

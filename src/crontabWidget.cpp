@@ -40,7 +40,6 @@
 #include "taskWidget.h"
 
 #include "variableWidget.h"
-#include "variableWidget.h"
 
 #include "kcmCron.h"
 

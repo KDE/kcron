@@ -10,8 +10,8 @@
  *   (at your option) any later version.                                   *
  ***************************************************************************/
 
-#ifndef KTPRINT_H
-#define KTPRINT_H
+#ifndef CRONTABPRINTER_H
+#define CRONTABPRINTER_H
 
 #include <QList>
 
@@ -32,7 +32,7 @@ public:
 	/**
 	 * Contructor
 	 */
-	CrontabPrinter(CrontabWidget* crontabWidget);
+	explicit CrontabPrinter(CrontabWidget* crontabWidget);
 
 	/**
 	 * Destructor

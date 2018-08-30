@@ -16,7 +16,6 @@
 #include "cttask.h"
 #include "ctcron.h"
 
-#include "tasksWidget.h"
 #include "crontabWidget.h"
 #include "taskEditorDialog.h"
 
