@@ -33,7 +33,7 @@ public:
 	/**
 	 * Construct tasks folder from branch.
 	 */
-	VariablesWidget(CrontabWidget* crontabWidget);
+	explicit VariablesWidget(CrontabWidget* crontabWidget);
 	
 	virtual ~VariablesWidget();
 

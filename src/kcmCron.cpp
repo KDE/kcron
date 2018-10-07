@@ -45,7 +45,7 @@ public:
 	CrontabWidget* crontabWidget;
 
 	/**
-	 * Document object, here crotab enries.
+	 * Document object, here crotab entries.
 	 */
 	CTHost* ctHost;
 

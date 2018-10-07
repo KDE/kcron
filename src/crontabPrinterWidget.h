@@ -29,7 +29,7 @@ public:
 	/**
 	 * Constructs the dialog, if root is true the print all users is not disabled
 	 */
-	CrontabPrinterWidget(bool root = false);
+	explicit CrontabPrinterWidget(bool root = false);
 
 	~CrontabPrinterWidget();
 

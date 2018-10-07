@@ -589,7 +589,7 @@ void TaskEditorDialog::slotRebootChanged() {
 	minutesGroup->setEnabled(reboot);
 
 	// if cbEveryDay is already checked, bgMonth, bgDayOfMonth, bgDayOfWeek are already setEnable(flase)
-	// so don't overide them ! ...
+	// so don't override them ! ...
 	if (!cbEveryDay->isChecked()) {
 		bgMonth->setEnabled(reboot);
 		bgDayOfMonth->setEnabled(reboot);

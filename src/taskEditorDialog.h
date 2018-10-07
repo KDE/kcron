@@ -59,7 +59,7 @@ private:
 class NumberPushButton : public QPushButton {
 public:
 	
-	NumberPushButton(QWidget * parent);
+	explicit NumberPushButton(QWidget * parent);
 	NumberPushButton(bool digitMode, QWidget * parent);
 	
 	void updatePalette();

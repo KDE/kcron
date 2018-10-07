@@ -15,7 +15,6 @@
 #include <QAction>
 #include <QList>
 
-#include <QAction>
 #include <kstandardaction.h>
 #include <KLocalizedString>
 

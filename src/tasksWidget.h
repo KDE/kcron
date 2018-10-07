@@ -32,7 +32,7 @@ public:
 	/**
 	 * Construct tasks folder from branch.
 	 */
-	TasksWidget(CrontabWidget* crontabWidget);
+	explicit TasksWidget(CrontabWidget* crontabWidget);
 	
 	~TasksWidget();
 

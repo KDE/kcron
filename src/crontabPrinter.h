@@ -30,7 +30,7 @@ class CrontabPrinter {
 public:
 
 	/**
-	 * Contructor
+	 * Constructor
 	 */
 	explicit CrontabPrinter(CrontabWidget* crontabWidget);
 

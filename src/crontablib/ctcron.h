@@ -118,7 +118,7 @@ public:
 	virtual ~CTCron();
 
 	/**
-	 * Copy one user's tasks and environement variables to another user.
+	 * Copy one user's tasks and environment variables to another user.
 	 */
 	CTCron& operator =(const CTCron& source);
 	
