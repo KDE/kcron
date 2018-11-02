@@ -58,14 +58,14 @@ KCMCron::KCMCron(QWidget* parent, const QVariantList& /*args*/) :
 	d(new KCMCronPrivate()) {
 
 
-	KAboutData* aboutData = new KAboutData("kcm_cron", i18n("Task Scheduler"),
-			"5.0", i18n("KDE Task Scheduler"), KAboutLicense::GPL, i18n("(c) 2008, Nicolas Ternisien\n(c) 1999-2000, Gary Meyer"));
+        KAboutData* aboutData = new KAboutData(QStringLiteral("kcm_cron"), i18n("Task Scheduler"),
+                        QStringLiteral("5.0"), i18n("KDE Task Scheduler"), KAboutLicense::GPL, i18n("(c) 2008, Nicolas Ternisien\n(c) 1999-2000, Gary Meyer"));
 
-	aboutData->addAuthor(i18n("Nicolas Ternisien"), QString(), "nicolas.ternisien@gmail.com");
-	aboutData->addAuthor(i18n("Gary Meyer"), QString(), "gary@meyer.net");
-	aboutData->addAuthor(i18n("Robert Berry"), QString(), "rjmber@ntlworld.com");
-	aboutData->addAuthor(i18n("James Ots"), QString(), "code@jamesots.com");
-	aboutData->addAuthor(i18n("Alberto G. Hierro"), QString(), "alberto.hierro@kdemail.net");
+        aboutData->addAuthor(i18n("Nicolas Ternisien"), QString(), QStringLiteral("nicolas.ternisien@gmail.com"));
+        aboutData->addAuthor(i18n("Gary Meyer"), QString(), QStringLiteral("gary@meyer.net"));
+        aboutData->addAuthor(i18n("Robert Berry"), QString(), QStringLiteral("rjmber@ntlworld.com"));
+        aboutData->addAuthor(i18n("James Ots"), QString(), QStringLiteral("code@jamesots.com"));
+        aboutData->addAuthor(i18n("Alberto G. Hierro"), QString(), QStringLiteral("alberto.hierro@kdemail.net"));
 
 	setAboutData(aboutData);
 

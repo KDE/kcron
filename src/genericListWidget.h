@@ -43,7 +43,7 @@ public:
 	
 	void keyPressEvent(QKeyEvent *e) Q_DECL_OVERRIDE;
 
-protected slots:
+protected Q_SLOTS:
 	virtual void modifySelection(QTreeWidgetItem* item, int position) = 0;
 	
 	virtual void deleteSelection() = 0;

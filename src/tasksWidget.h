@@ -64,10 +64,10 @@ public:
 	 */
 	void togglePrintAction(bool enabled);
 
-signals:
+Q_SIGNALS:
 	void taskModified(bool);
 
-public slots:
+public Q_SLOTS:
 	void modifySelection();
 	
 	void deleteSelection() Q_DECL_OVERRIDE;
@@ -86,7 +86,7 @@ public slots:
 
 	void changeCurrentSelection();
 
-protected slots:
+protected Q_SLOTS:
 	void modifySelection(QTreeWidgetItem* item, int position) Q_DECL_OVERRIDE;
 
 private:

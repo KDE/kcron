@@ -42,7 +42,7 @@ public:
 	 */
 	~VariableEditorDialog();
 
-private slots:
+private Q_SLOTS:
 
 	/**
 	 * Setup title widget

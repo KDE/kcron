@@ -1,16 +1,18 @@
 project(kcron)
 
 cmake_minimum_required (VERSION 2.8.12 FATAL_ERROR)
-set (QT_MIN_VERSION "5.2.0")
+set (QT_MIN_VERSION "5.7.0")
+set (KF5_MIN_VERSION "5.30.0")
 
-find_package (ECM 1.3.0 REQUIRED NO_MODULE)
+find_package (ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 set (CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
 add_definitions(-DTRANSLATION_DOMAIN="kcron")
 
 include(KDEInstallDirs)
-include(KDECompilerSettings)
+include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
+include(ECMQtDeclareLoggingCategory)
 
 find_package (Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     Core
@@ -26,10 +28,9 @@ find_package(KF5 REQUIRED COMPONENTS
     KIO
 )
 
-add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
-
 add_subdirectory(src) 
 add_subdirectory(doc)
 
+install( FILES kcron.categories DESTINATION ${KDE_INSTALL_CONFDIR} )
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)

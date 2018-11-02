@@ -55,7 +55,7 @@ public:
 	QList<QAction*> cutCopyPasteActions();
 	QAction* printAction();
 	
-public slots:
+public Q_SLOTS:
 	
 	/**
 	 * Copies variables and/or tasks.
@@ -74,7 +74,7 @@ public slots:
 	 */
 	void print();
 
-protected slots:
+protected Q_SLOTS:
 
 	void refreshCron();
 
