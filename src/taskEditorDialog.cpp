@@ -61,7 +61,7 @@ TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption, Cro
 
 	QWidget* main = new QWidget(this);
 	QVBoxLayout* mainLayout = new QVBoxLayout(main);
-	mainLayout->setMargin(0);
+	mainLayout->setContentsMargins(0, 0, 0, 0);
 
 	QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
 	okButton = buttonBox->button(QDialogButtonBox::Ok);
