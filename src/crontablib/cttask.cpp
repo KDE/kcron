@@ -195,7 +195,7 @@ bool CTTask::dirty() const {
 
 QString CTTask::schedulingCronFormat() const {
 	if (reboot) {
-		return QLatin1String( "@reboot" );
+		return QStringLiteral( "@reboot" );
 	}
 
 	QString scheduling;
@@ -358,7 +358,7 @@ QIcon CTTask::commandIcon() const {
 	if (mimeType.name() == QLatin1String( "application/x-executable" ) || mimeType.name() == QLatin1String( "application/octet-stream" )) {
 
 		//The next line is identical as SmallIcon(commandPath.fileName()), but is able to return a isNull() QPixmap
-		QPixmap pixmap = KIconLoader::global()->loadIcon(commandPath.fileName(), KIconLoader::Small, 0, KIconLoader::DefaultState, QStringList(), 0L, true);
+		QPixmap pixmap = KIconLoader::global()->loadIcon(commandPath.fileName(), KIconLoader::Small, 0, KIconLoader::DefaultState, QStringList(), nullptr, true);
 		if (pixmap.isNull()) {
 			return QIcon::fromTheme(QLatin1String("system-run"));
 		}
@@ -375,7 +375,7 @@ QPair<QString, bool> CTTask::unQuoteCommand() const {
 	fullCommand = fullCommand.trimmed();
 
 	QStringList quotes;
-	quotes << QLatin1String( "\"" ) << QLatin1String( "'" );
+	quotes << QStringLiteral( "\"" ) << QStringLiteral( "'" );
 
 	foreach(const QString &quote, quotes) {
 		if (fullCommand.indexOf(quote) == 0) {

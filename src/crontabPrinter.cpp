@@ -54,12 +54,12 @@ public:
 CrontabPrinter::CrontabPrinter(CrontabWidget* crontabWidget) :
 	d(new CrontabPrinterPrivate()) {
 
-	d->crontabPrinterWidget = NULL;
+	d->crontabPrinterWidget = nullptr;
 	d->crontabWidget = crontabWidget;
 
-	d->painter = NULL;
-	d->printer = NULL;
-	d->printView = NULL;
+	d->painter = nullptr;
+	d->printer = nullptr;
+	d->printView = nullptr;
 
 	d->page = 0;
 	d->currentRowPosition = 0;
@@ -78,7 +78,7 @@ CrontabPrinter::~CrontabPrinter() {
 bool CrontabPrinter::start() {
 	logDebug() << "Printing selection..." << endl;
 
-        if (d->printer == NULL) {
+        if (d->printer == nullptr) {
             d->printer = new QPrinter();
         }
 
@@ -91,7 +91,7 @@ bool CrontabPrinter::start() {
 	*/
 
 	// initialize the printer using the print dialog
-	QPrintDialog *printDialog = new QPrintDialog(d->printer, 0);
+	QPrintDialog *printDialog = new QPrintDialog(d->printer, nullptr);
 	printDialog->setOptionTabs(QList<QWidget *>() << d->crontabWidget);
 	printDialog->setEnabledOptions(QAbstractPrintDialog::PrintToFile);
 	if (printDialog->exec() == QDialog::Rejected) {
@@ -334,7 +334,7 @@ void CrontabPrinter::drawTable(const QList<int>& columnWidths) {
 	d->painter->drawLine(QPoint(margin, 0), QPoint(margin + columnWidthsTotal, 0));
 
 	//Second horizontal line
-	d->painter->drawLine(QPoint(margin, 0+computeStringHeight(QLatin1String( " " ))), QPoint(margin + columnWidthsTotal, 0+computeStringHeight(QLatin1String( " " ))));
+	d->painter->drawLine(QPoint(margin, 0+computeStringHeight(QStringLiteral( " " ))), QPoint(margin + columnWidthsTotal, 0+computeStringHeight(QStringLiteral( " " ))));
 
 	//First vertical line
 	d->painter->drawLine(QPoint(linePositionX, 0), QPoint(linePositionX, d->currentRowPosition));

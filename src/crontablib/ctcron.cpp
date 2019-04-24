@@ -78,7 +78,7 @@ CTCron::CTCron(const QString& crontabBinary, const struct passwd* userInfos, boo
 	// regular user, so provide user's own crontab
 	if (currentUserCron == true) {
 		readCommandLine.commandLine = d->crontabBinary;
-		readCommandLine.parameters << QLatin1String( "-l" );
+		readCommandLine.parameters << QStringLiteral( "-l" );
 		readCommandLine.standardOutputFile = d->tmpFileName;
 
 		d->writeCommandLine.commandLine = d->crontabBinary;
@@ -88,11 +88,11 @@ CTCron::CTCron(const QString& crontabBinary, const struct passwd* userInfos, boo
 	else {
 
 		readCommandLine.commandLine = d->crontabBinary;
-		readCommandLine.parameters << QLatin1String( "-u" ) << QLatin1String(userInfos->pw_name) << QLatin1String( "-l" );
+		readCommandLine.parameters << QStringLiteral( "-u" ) << QLatin1String(userInfos->pw_name) << QStringLiteral( "-l" );
 		readCommandLine.standardOutputFile = d->tmpFileName;
 
 		d->writeCommandLine.commandLine = d->crontabBinary;
-		d->writeCommandLine.parameters << QLatin1String( "-u" ) << QLatin1String(userInfos->pw_name) << d->tmpFileName;
+		d->writeCommandLine.parameters << QStringLiteral( "-u" ) << QLatin1String(userInfos->pw_name) << d->tmpFileName;
 	}
 
 
@@ -126,7 +126,7 @@ CTCron::CTCron() :
 }
 
 bool CTCron::initializeFromUserInfos(const struct passwd* userInfos) {
-	if (userInfos == 0) {
+	if (userInfos == nullptr) {
 		return false;
 	} else {
 		d->userLogin = QLatin1String( userInfos->pw_name );
@@ -396,7 +396,7 @@ void CTCron::addTask(CTTask* task) {
 
 void CTCron::addVariable(CTVariable* variable) {
 	if (isSystemCron())
-		variable->userLogin = QLatin1String( "root" );
+		variable->userLogin = QStringLiteral( "root" );
 	else
 		variable->userLogin = d->userLogin;
 

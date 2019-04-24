@@ -95,7 +95,7 @@ KCMCron::KCMCron(QWidget* parent, const QVariantList& /*args*/) :
 }
 
 QString KCMCron::findCrontabBinary() {
-	return QLatin1String( CRONTAB_BINARY );
+	return QStringLiteral( CRONTAB_BINARY );
 }
 
 KCMCron::~KCMCron() {
@@ -141,7 +141,7 @@ bool KCMCron::init() {
 		if (taskCount == 0) {
 			show();
 			//TODO Add this as a passive popup/message/something else
-			KMessageBox::information(this, i18n("You can use this application to schedule programs to run in the background.\nTo schedule a new task now, click on the Tasks folder and select Edit/New from the menu."), i18n("Welcome to the Task Scheduler"), QLatin1String( "welcome" ));
+			KMessageBox::information(this, i18n("You can use this application to schedule programs to run in the background.\nTo schedule a new task now, click on the Tasks folder and select Edit/New from the menu."), i18n("Welcome to the Task Scheduler"), QStringLiteral( "welcome" ));
 		}
 	}
 

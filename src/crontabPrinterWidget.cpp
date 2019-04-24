@@ -24,11 +24,11 @@ CrontabPrinterWidget::CrontabPrinterWidget(bool root) :
 	QVBoxLayout *main_ = new QVBoxLayout(this);
 
 	chkPrintCrontab = new QCheckBox(i18n("Print cron&tab"), this);
-	chkPrintCrontab->setObjectName( QLatin1String("chkPrintCrontab" ));
+	chkPrintCrontab->setObjectName( QStringLiteral("chkPrintCrontab" ));
 	main_->addWidget(chkPrintCrontab);
 
 	chkPrintAllUsers = new QCheckBox(i18n("Print &all users"), this);
-	chkPrintAllUsers->setObjectName( QLatin1String("chkPrintAllUsers" ));
+	chkPrintAllUsers->setObjectName( QStringLiteral("chkPrintAllUsers" ));
 	main_->addWidget(chkPrintAllUsers);
 
 	if (!root) {

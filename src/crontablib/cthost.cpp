@@ -29,7 +29,7 @@
 #include "logging.h"
 
 CTHost::CTHost(const QString& cronBinary, CTInitializationError& ctInitializationError) {
-	struct passwd* userInfos = NULL;
+	struct passwd* userInfos = nullptr;
 
 	this->crontabBinary = cronBinary;
 
@@ -92,7 +92,7 @@ CTHost::~CTHost() {
 }
 
 bool CTHost::allowDeny(char *name) {
-	QFile allow(QLatin1String( "/etc/cron.allow" ));
+	QFile allow(QStringLiteral( "/etc/cron.allow" ));
 
 	// if cron.allow exists make sure user is listed
 	if (allow.open(QFile::ReadOnly)) {
@@ -107,7 +107,7 @@ bool CTHost::allowDeny(char *name) {
 		return false;
 	} else {
 		allow.close();
-		QFile deny(QLatin1String( "/etc/cron.deny" ));
+		QFile deny(QStringLiteral( "/etc/cron.deny" ));
 
 		// else if cron.deny exists make sure user is not listed
 		if (deny.open(QFile::ReadOnly)) {
@@ -197,7 +197,7 @@ CTCron* CTHost::findCurrentUserCron() const {
 	}
 
 	logDebug() << "Unable to find the current user Cron. Please report this bug and your crontab config to the developers" << endl;
-	return NULL;
+	return nullptr;
 }
 
 CTCron* CTHost::findSystemCron() const {
@@ -207,7 +207,7 @@ CTCron* CTHost::findSystemCron() const {
 	}
 
 	logDebug() << "Unable to find the system Cron. Please report this bug and your crontab config to the developers" << endl;
-	return NULL;
+	return nullptr;
 }
 
 CTCron* CTHost::findUserCron(const QString& userLogin) const {
@@ -217,7 +217,7 @@ CTCron* CTHost::findUserCron(const QString& userLogin) const {
 	}
 
 	logDebug() << "Unable to find the user Cron " << userLogin << ". Please report this bug and your crontab config to the developers" << endl;
-	return NULL;
+	return nullptr;
 }
 
 CTCron* CTHost::findCronContaining(CTTask* ctTask) const {
@@ -228,7 +228,7 @@ CTCron* CTHost::findCronContaining(CTTask* ctTask) const {
 	}
 
 	logDebug() << "Unable to find the cron of this task. Please report this bug and your crontab config to the developers" << endl;
-	return NULL;
+	return nullptr;
 
 }
 
@@ -240,7 +240,7 @@ CTCron* CTHost::findCronContaining(CTVariable* ctVariable) const {
 	}
 
 	logDebug() << "Unable to find the cron of this variable. Please report this bug and your crontab config to the developers" << endl;
-	return NULL;
+	return nullptr;
 
 }
 

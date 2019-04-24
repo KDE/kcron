@@ -54,7 +54,7 @@ GenericListWidget::GenericListWidget(CrontabWidget* crontabWidget, const QString
 	QHBoxLayout* labelLayout = new QHBoxLayout();
 
 	QLabel* tasksIcon = new QLabel(this);
-	tasksIcon->setPixmap(icon.pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize, 0, this)));
+	tasksIcon->setPixmap(icon.pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize, nullptr, this)));
 	labelLayout->addWidget(tasksIcon);
 
 	QLabel* tasksLabel = new QLabel(label, this);
@@ -96,7 +96,7 @@ GenericListWidget::GenericListWidget(CrontabWidget* crontabWidget, const QString
 	mainLayout->addLayout(treeLayout);
 
 	logDebug() << "Generic list created" << endl;
-	connect(treeWidget(), SIGNAL(itemDoubleClicked(QTreeWidgetItem*,int)), SLOT(modifySelection(QTreeWidgetItem*,int)));
+	connect(treeWidget(), &QTreeWidget::itemDoubleClicked, this, &GenericListWidget::modifySelection);
 
 }
 
@@ -128,7 +128,7 @@ void GenericListWidget::resizeColumnContents() {
 QTreeWidgetItem* GenericListWidget::firstSelected() const {
 	QList<QTreeWidgetItem*> tasksItems = treeWidget()->selectedItems();
 	if (tasksItems.isEmpty()) {
-		return NULL;
+		return nullptr;
 	}
 
 	return tasksItems.first();
@@ -179,7 +179,7 @@ void GenericListWidget::setActionEnabled(QAction* action, bool enabled) {
 		
 		//Only change status of associated Buttons
 		QPushButton* button = qobject_cast<QPushButton*>(widget);
-		if (button!=NULL) {
+		if (button!=nullptr) {
 			button->setEnabled(enabled);
 		}
 	}

@@ -136,7 +136,7 @@ QString CTUnit::exportUnit() const {
 	}
 
 	if (isAllEnabled())
-		return QLatin1String( "*" );
+		return QStringLiteral( "*" );
 
 	int total = enabledCount();
 	int count = 0;
@@ -240,7 +240,7 @@ int CTUnit::fieldToValue(const QString& entry) const {
 
 	// check for days
 	QList<QString> days;
-	days << QLatin1String( "sun" ) << QLatin1String( "mon" ) << QLatin1String( "tue" ) << QLatin1String( "wed" ) << QLatin1String( "thu" ) << QLatin1String( "fri" ) << QLatin1String( "sat" );
+	days << QStringLiteral( "sun" ) << QStringLiteral( "mon" ) << QStringLiteral( "tue" ) << QStringLiteral( "wed" ) << QStringLiteral( "thu" ) << QStringLiteral( "fri" ) << QStringLiteral( "sat" );
 
 	int day = days.indexOf(lower);
 	if (day != -1) {
@@ -249,7 +249,7 @@ int CTUnit::fieldToValue(const QString& entry) const {
 
 	// check for months
 	QList<QString> months;
-	months << QLatin1String( "" ) << QLatin1String( "jan" ) << QLatin1String( "feb" ) << QLatin1String( "mar" ) << QLatin1String( "apr" ) << QLatin1String( "may" ) << QLatin1String( "jun" ) << QLatin1String( "jul" ) << QLatin1String( "aug" ) << QLatin1String( "sep" ) << QLatin1String( "oct" ) << QLatin1String( "nov" ) << QLatin1String( "dec" );
+	months << QLatin1String( "" ) << QStringLiteral( "jan" ) << QStringLiteral( "feb" ) << QStringLiteral( "mar" ) << QStringLiteral( "apr" ) << QStringLiteral( "may" ) << QStringLiteral( "jun" ) << QStringLiteral( "jul" ) << QStringLiteral( "aug" ) << QStringLiteral( "sep" ) << QStringLiteral( "oct" ) << QStringLiteral( "nov" ) << QStringLiteral( "dec" );
 
 	int month = months.indexOf(lower);
 	if (month != -1) {

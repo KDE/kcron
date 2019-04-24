@@ -35,7 +35,7 @@ int CTMinute::findPeriod() const {
 QString CTMinute::exportUnit() const {
 	int period = findPeriod();
 	if (period!=0 && period!=1)
-		return QString(QLatin1String( "*/%1" )).arg(QString::number(period));
+		return QStringLiteral( "*/%1" ).arg(QString::number(period));
 
 	return CTUnit::exportUnit();
 }

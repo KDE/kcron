@@ -38,13 +38,13 @@ CTSystemCron::CTSystemCron(const QString& crontabBinary) :
 
 	CommandLine readCommandLine;
 
-	readCommandLine.commandLine = QLatin1String( "cat" );
-	readCommandLine.parameters << QLatin1String( "/etc/crontab" );
+	readCommandLine.commandLine = QStringLiteral( "cat" );
+	readCommandLine.parameters << QStringLiteral( "/etc/crontab" );
 	readCommandLine.standardOutputFile = d->tmpFileName;
 
-	d->writeCommandLine.commandLine = QLatin1String( "cat" );
+	d->writeCommandLine.commandLine = QStringLiteral( "cat" );
 	d->writeCommandLine.parameters << d->tmpFileName;
-	d->writeCommandLine.standardOutputFile = QLatin1String( "/etc/crontab" );
+	d->writeCommandLine.standardOutputFile = QStringLiteral( "/etc/crontab" );
 
 	d->userLogin = i18n("System Crontab");
 	d->userRealName = d->userLogin;

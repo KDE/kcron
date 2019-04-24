@@ -47,7 +47,7 @@ VariableEditorDialog::VariableEditorDialog(CTVariable* _ctVariable, const QStrin
 	layout->setRowStretch(3, 1);
 	layout->setColumnStretch(1, 1);
 
-	setWindowIcon(QIcon::fromTheme(QLatin1String("kcron")));
+	setWindowIcon(QIcon::fromTheme(QStringLiteral("kcron")));
 
 	int layoutPosition = 0;
 
@@ -64,11 +64,11 @@ VariableEditorDialog::VariableEditorDialog(CTVariable* _ctVariable, const QStrin
 	cmbVariable->setEditable(true);
 	layout->addWidget(cmbVariable, layoutPosition, 1);
 
-	cmbVariable->addItem(QLatin1String( "HOME" ));
-	cmbVariable->addItem(QLatin1String( "MAILTO" ));
-	cmbVariable->addItem(QLatin1String( "PATH" ));
-	cmbVariable->addItem(QLatin1String( "SHELL" ));
-	cmbVariable->addItem(QLatin1String( "LD_CONFIG_PATH" ));
+	cmbVariable->addItem(QStringLiteral( "HOME" ));
+	cmbVariable->addItem(QStringLiteral( "MAILTO" ));
+	cmbVariable->addItem(QStringLiteral( "PATH" ));
+	cmbVariable->addItem(QStringLiteral( "SHELL" ));
+	cmbVariable->addItem(QStringLiteral( "LD_CONFIG_PATH" ));
 
 	labVariable->setBuddy(cmbVariable);
 
@@ -153,14 +153,14 @@ void VariableEditorDialog::setupTitleWidget(const QString& comment, KTitleWidget
 	//krazy:exclude=doublequote_chars
 	if (comment.isEmpty()) {
 		titleWidget->setComment(i18n("<i>This variable will be used by scheduled tasks.</i>"));
-		titleWidget->setPixmap(QIcon::fromTheme(QLatin1String("text-plain")), KTitleWidget::ImageRight);
+		titleWidget->setPixmap(QIcon::fromTheme(QStringLiteral("text-plain")), KTitleWidget::ImageRight);
 	}
 	else {
 		titleWidget->setComment(comment, messageType);
 		if (messageType == KTitleWidget::ErrorMessage)
-			titleWidget->setPixmap(QIcon::fromTheme(QLatin1String("dialog-error")), KTitleWidget::ImageRight);
+			titleWidget->setPixmap(QIcon::fromTheme(QStringLiteral("dialog-error")), KTitleWidget::ImageRight);
 		else
-			titleWidget->setPixmap(QIcon::fromTheme(QLatin1String("dialog-information")), KTitleWidget::ImageRight);
+			titleWidget->setPixmap(QIcon::fromTheme(QStringLiteral("dialog-information")), KTitleWidget::ImageRight);
 	}
 }
 
@@ -190,7 +190,7 @@ void VariableEditorDialog::slotWizard() {
 	CTVariable tempVariable(*ctVariable);
 	tempVariable.variable = cmbVariable->currentText();
 
-	detailsIcon->setPixmap(tempVariable.variableIcon().pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize, 0, this)));
+	detailsIcon->setPixmap(tempVariable.variableIcon().pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize, nullptr, this)));
 	details->setText(tempVariable.information());
 
 	bool error = false;

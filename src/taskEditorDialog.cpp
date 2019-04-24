@@ -53,7 +53,7 @@ TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption, Cro
 	setModal(true);
 
 	// window
-	setWindowIcon(QIcon::fromTheme(QLatin1String("kcron")));
+	setWindowIcon(QIcon::fromTheme(QStringLiteral("kcron")));
 	setWindowTitle(_caption);
 
 	ctTask = _ctTask;
@@ -88,7 +88,7 @@ TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption, Cro
 
 	QHBoxLayout* commandLayout = new QHBoxLayout();
 	commandIcon = new QLabel(main);
-	missingCommandPixmap = QIcon::fromTheme(QLatin1String("image-missing")).pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize, 0, this));
+	missingCommandPixmap = QIcon::fromTheme(QStringLiteral("image-missing")).pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize, nullptr, this));
 	commandLayout->addWidget(commandIcon);
 
 	command = new KUrlRequester(main);
@@ -99,7 +99,7 @@ TaskEditorDialog::TaskEditorDialog(CTTask* _ctTask, const QString& _caption, Cro
 	command->setUrl(QUrl::fromLocalFile(ctTask->command));
 
 	//Initialize special valid commands
-	specialValidCommands << QLatin1String( "cd" );
+	specialValidCommands << QStringLiteral( "cd" );
 
 	commandConfigurationLayout->addLayout(commandLayout, 0, 1);
 
@@ -255,8 +255,8 @@ QGroupBox* TaskEditorDialog::createDaysOfMonthGroup(QWidget* main) {
 			day->setChecked(ctTask->dayOfMonth.isEnabled(dm));
 			dayOfMonthButtons[dm] = day;
 
-			connect(dayOfMonthButtons[dm], SIGNAL(clicked()), SLOT(slotDayOfMonthChanged()));
-			connect(dayOfMonthButtons[dm], SIGNAL(clicked()), SLOT(slotWizard()));
+			connect(dayOfMonthButtons[dm], &QAbstractButton::clicked, this, &TaskEditorDialog::slotDayOfMonthChanged);
+			connect(dayOfMonthButtons[dm], &QAbstractButton::clicked, this, &TaskEditorDialog::slotWizard);
 
 			daysOfMonthLayout->addWidget(day, row, column);
 
@@ -295,8 +295,8 @@ QGroupBox* TaskEditorDialog::createMonthsGroup(QWidget* main) {
 
 		monthsLayout->addWidget(monthButtons[mo], row, column);
 
-		connect(monthButtons[mo], SIGNAL(clicked()), SLOT(slotMonthChanged()));
-		connect(monthButtons[mo], SIGNAL(clicked()), SLOT(slotWizard()));
+		connect(monthButtons[mo], &QAbstractButton::clicked, this, &TaskEditorDialog::slotMonthChanged);
+		connect(monthButtons[mo], &QAbstractButton::clicked, this, &TaskEditorDialog::slotWizard);
 
 		if (column == 1) {
 			column = 0;
@@ -330,8 +330,8 @@ QGroupBox* TaskEditorDialog::createDaysOfWeekGroup(QWidget* main) {
 		dayOfWeekButtons[dw]->setChecked(ctTask->dayOfWeek.isEnabled(dw));
 		daysOfWeekLayout->addWidget(dayOfWeekButtons[dw], row, column);
 
-		connect(dayOfWeekButtons[dw], SIGNAL(clicked()), SLOT(slotDayOfWeekChanged()));
-		connect(dayOfWeekButtons[dw], SIGNAL(clicked()), SLOT(slotWizard()));
+		connect(dayOfWeekButtons[dw], &QAbstractButton::clicked, this, &TaskEditorDialog::slotDayOfWeekChanged);
+		connect(dayOfWeekButtons[dw], &QAbstractButton::clicked, this, &TaskEditorDialog::slotWizard);
 
 		if (column == 1) {
 			column = 0;
@@ -473,15 +473,15 @@ void TaskEditorDialog::createMinutesGroup(QWidget* main) {
 
 	minutesPreselectionLabel->setBuddy(minutesPreselection);
 
-	minutesPreselection->addItem(QIcon::fromTheme(QLatin1String( "edit-clear-locationbar-ltr" )), i18n("Clear selection"), -1);
-	minutesPreselection->addItem(QIcon::fromTheme(QLatin1String( "edit-rename" )),i18n("Custom selection"), 0);
-	minutesPreselection->addItem(QIcon::fromTheme(QLatin1String( "view-calendar-month" )), i18n("Each minute"), 1);
-	minutesPreselection->addItem(QIcon::fromTheme(QLatin1String( "view-calendar-week" )), i18n("Every 2 minutes"), 2);
-	minutesPreselection->addItem(QIcon::fromTheme(QLatin1String( "view-calendar-workweek" )), i18n("Every 5 minutes"), 5);
-	minutesPreselection->addItem(QIcon::fromTheme(QLatin1String( "view-calendar-upcoming-days" )), i18n("Every 10 minutes"), 10);
-	minutesPreselection->addItem(QIcon::fromTheme(QLatin1String( "view-calendar-upcoming-days" )), i18n("Every 15 minutes"), 15);
-	minutesPreselection->addItem(QIcon::fromTheme(QLatin1String( "view-calendar-day" )), i18n("Every 20 minutes"), 20);
-	minutesPreselection->addItem(QIcon::fromTheme(QLatin1String( "view-calendar-day" )), i18n("Every 30 minutes"), 30);
+	minutesPreselection->addItem(QIcon::fromTheme(QStringLiteral( "edit-clear-locationbar-ltr" )), i18n("Clear selection"), -1);
+	minutesPreselection->addItem(QIcon::fromTheme(QStringLiteral( "edit-rename" )),i18n("Custom selection"), 0);
+	minutesPreselection->addItem(QIcon::fromTheme(QStringLiteral( "view-calendar-month" )), i18n("Each minute"), 1);
+	minutesPreselection->addItem(QIcon::fromTheme(QStringLiteral( "view-calendar-week" )), i18n("Every 2 minutes"), 2);
+	minutesPreselection->addItem(QIcon::fromTheme(QStringLiteral( "view-calendar-workweek" )), i18n("Every 5 minutes"), 5);
+	minutesPreselection->addItem(QIcon::fromTheme(QStringLiteral( "view-calendar-upcoming-days" )), i18n("Every 10 minutes"), 10);
+	minutesPreselection->addItem(QIcon::fromTheme(QStringLiteral( "view-calendar-upcoming-days" )), i18n("Every 15 minutes"), 15);
+	minutesPreselection->addItem(QIcon::fromTheme(QStringLiteral( "view-calendar-day" )), i18n("Every 20 minutes"), 20);
+	minutesPreselection->addItem(QIcon::fromTheme(QStringLiteral( "view-calendar-day" )), i18n("Every 30 minutes"), 30);
 
 	minutesPreselectionLayout->addWidget(minutesPreselection);
 
@@ -554,9 +554,9 @@ void TaskEditorDialog::setupTitleWidget(const QString& comment, KTitleWidget::Me
 	titleWidget->setComment(comment, messageType);
 
 	if (messageType == KTitleWidget::ErrorMessage)
-		titleWidget->setPixmap(QIcon::fromTheme(QLatin1String("dialog-error")), KTitleWidget::ImageRight);
+		titleWidget->setPixmap(QIcon::fromTheme(QStringLiteral("dialog-error")), KTitleWidget::ImageRight);
 	else
-		titleWidget->setPixmap(QIcon::fromTheme(QLatin1String("system-run")), KTitleWidget::ImageRight);
+		titleWidget->setPixmap(QIcon::fromTheme(QStringLiteral("system-run")), KTitleWidget::ImageRight);
 
 }
 
@@ -689,7 +689,7 @@ void TaskEditorDialog::defineCommandIcon() {
 	CTTask tempTask(*ctTask);
 	tempTask.command = command->url().path();
 
-	commandIcon->setPixmap(tempTask.commandIcon().pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize, 0, this)));
+	commandIcon->setPixmap(tempTask.commandIcon().pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize, nullptr, this)));
 }
 
 
@@ -1065,7 +1065,7 @@ NumberPushButton::NumberPushButton(QWidget * parent) :
 NumberPushButton::NumberPushButton(bool digitMode, QWidget * parent) :
 	QPushButton(parent), isDirty(false) {
 	if (digitMode) {
-		setFixedWidth(12 + fontMetrics().width(QLatin1String( "44" )));
+		setFixedWidth(12 + fontMetrics().width(QStringLiteral( "44" )));
 		KAcceleratorManager::setNoAccel(this);
 	}
 	updatePalette();

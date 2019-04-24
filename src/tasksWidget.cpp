@@ -48,7 +48,7 @@ public:
  * Construct tasks folder from branch.
  */
 TasksWidget::TasksWidget(CrontabWidget* crontabWidget) :
-	GenericListWidget(crontabWidget, i18n("<b>Scheduled Tasks</b>"), QIcon::fromTheme(QLatin1String("system-run"))),
+	GenericListWidget(crontabWidget, i18n("<b>Scheduled Tasks</b>"), QIcon::fromTheme(QStringLiteral("system-run"))),
 	d(new TasksWidgetPrivate()) {
 
 	refreshHeaders();
@@ -58,7 +58,7 @@ TasksWidget::TasksWidget(CrontabWidget* crontabWidget) :
 	setupActions(crontabWidget);
 	prepareContextualMenu();
 
-	connect(treeWidget(), SIGNAL(itemSelectionChanged()), this, SLOT(changeCurrentSelection()));
+	connect(treeWidget(), &QTreeWidget::itemSelectionChanged, this, &TasksWidget::changeCurrentSelection);
 
 	logDebug() << "Tasks list created" << endl;
 }
@@ -81,8 +81,8 @@ QList<TaskWidget*> TasksWidget::selectedTasksWidget() const {
 
 TaskWidget* TasksWidget::firstSelectedTaskWidget() const {
 	QTreeWidgetItem* item = firstSelected();
-	if (item==NULL)
-		return NULL;
+	if (item==nullptr)
+		return nullptr;
 
 	return static_cast<TaskWidget*>(item);
 }
@@ -97,7 +97,7 @@ int TasksWidget::statusColumnIndex() {
 
 void TasksWidget::runTaskNow() const {
 	TaskWidget* taskWidget = firstSelectedTaskWidget();
-	if (taskWidget == NULL)
+	if (taskWidget == nullptr)
 		return;
 	QString taskCommand = taskWidget->getCTTask()->command;
 
@@ -105,7 +105,7 @@ void TasksWidget::runTaskNow() const {
 	QString echoMessage = i18nc("Do not use any quote characters (') in this string", "End of script execution. Type Enter or Ctrl+C to exit.");
 
 	CTCron* ctCron = crontabWidget()->currentCron();
-	if (ctCron == NULL) {
+	if (ctCron == nullptr) {
 		logDebug() << "Unable to find the related CtCron, please report this bug to KCron developer" << endl;
 		return;
 	}
@@ -114,21 +114,21 @@ void TasksWidget::runTaskNow() const {
 	QStringList commandList;
 
 	foreach(CTVariable* variable, ctCron->variables()) {
-            commandList << QString::fromLatin1("export %1=\"%2\"").arg(variable->variable, variable->value);
+            commandList << QStringLiteral("export %1=\"%2\"").arg(variable->variable, variable->value);
 	}
 
 	commandList << taskCommand;
-	commandList << QLatin1String( "echo '-------------------------------------------------------------------------'" );
+	commandList << QStringLiteral( "echo '-------------------------------------------------------------------------'" );
 	commandList << QLatin1String( "echo " ) + echoMessage;
-	commandList << QLatin1String( "echo '-------------------------------------------------------------------------'" );
-	commandList << QLatin1String( "read" );
+	commandList << QStringLiteral( "echo '-------------------------------------------------------------------------'" );
+	commandList << QStringLiteral( "read" );
 
 	QStringList parameters;
-	parameters << QLatin1String( "-e" ) << QLatin1String( "bash" ) << QLatin1String( "-c" );
+	parameters << QStringLiteral( "-e" ) << QStringLiteral( "bash" ) << QStringLiteral( "-c" );
 	parameters << commandList.join(QLatin1String( ";" ));
 
 	QProcess process;
-	process.startDetached(QLatin1String( "konsole" ), parameters);
+	process.startDetached(QStringLiteral( "konsole" ), parameters);
 
 }
 
@@ -163,7 +163,7 @@ void TasksWidget::modifySelection() {
 
 void TasksWidget::modifySelection(QTreeWidgetItem* item, int position) {
 	TaskWidget* taskWidget = static_cast<TaskWidget*>(item);
-	if (taskWidget!=NULL) {
+	if (taskWidget!=nullptr) {
 
 		if (position == statusColumnIndex()) {
 			taskWidget->toggleEnable();
@@ -263,26 +263,26 @@ bool TasksWidget::needUserColumn() const {
 void TasksWidget::setupActions(CrontabWidget* crontabWidget) {
 
 	d->newTaskAction = new QAction(this);
-	d->newTaskAction->setIcon(QIcon::fromTheme( QLatin1String( "document-new" )));
+	d->newTaskAction->setIcon(QIcon::fromTheme( QStringLiteral( "document-new" )));
 	d->newTaskAction->setText(i18nc("Adds a new task", "New &Task...") );
 	d->newTaskAction->setToolTip(i18n("Create a new task."));
 	addRightAction(d->newTaskAction, this, SLOT(createTask()));
 
 	d->modifyAction = new QAction(this);
 	d->modifyAction->setText(i18n("M&odify...") );
-	d->modifyAction->setIcon(QIcon::fromTheme( QLatin1String( "document-open" )) );
+	d->modifyAction->setIcon(QIcon::fromTheme( QStringLiteral( "document-open" )) );
 	d->modifyAction->setToolTip(i18n("Modify the selected task."));
 	addRightAction(d->modifyAction, this, SLOT(modifySelection()));
 
 	d->deleteAction = new QAction(this);
 	d->deleteAction->setText(i18n("&Delete") );
-	d->deleteAction->setIcon(QIcon::fromTheme( QLatin1String( "edit-delete" )) );
+	d->deleteAction->setIcon(QIcon::fromTheme( QStringLiteral( "edit-delete" )) );
 	d->deleteAction->setToolTip(i18n("Delete the selected task."));
 	addRightAction(d->deleteAction, this, SLOT(deleteSelection()));
 
 	d->runNowAction = new QAction(this);
 	d->runNowAction->setText(i18n("&Run Now") );
-	d->runNowAction->setIcon(QIcon::fromTheme( QLatin1String( "system-run" )));
+	d->runNowAction->setIcon(QIcon::fromTheme( QStringLiteral( "system-run" )));
 	d->runNowAction->setToolTip(i18n("Run the selected task now."));
 	addRightAction(d->runNowAction, this, SLOT(runTaskNow()));
 

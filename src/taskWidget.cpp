@@ -44,10 +44,10 @@ void TaskWidget::refresh() {
 
 	if (ctTask->enabled) {
 		setText(column, i18n("Enabled"));
-		setIcon(column++, QIcon::fromTheme(QLatin1String( "dialog-ok-apply" )));
+		setIcon(column++, QIcon::fromTheme(QStringLiteral( "dialog-ok-apply" )));
 	} else {
 		setText(column, i18n("Disabled"));
-		setIcon(column++, QIcon::fromTheme(QLatin1String( "dialog-cancel" )));
+		setIcon(column++, QIcon::fromTheme(QStringLiteral( "dialog-cancel" )));
 	}
 
 	setText(column++, ctTask->comment);

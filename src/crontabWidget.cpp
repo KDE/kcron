@@ -96,8 +96,8 @@ public:
 CrontabWidget::CrontabWidget(QWidget* parent, CTHost* ctHost) :
 	QWidget(parent), d(new CrontabWidgetPrivate()) {
 
-	d->tasksWidget = NULL;
-	d->variablesWidget = NULL;
+	d->tasksWidget = nullptr;
+	d->variablesWidget = nullptr;
 
 	d->ctHost = ctHost;
 
@@ -105,7 +105,7 @@ CrontabWidget::CrontabWidget(QWidget* parent, CTHost* ctHost) :
 		d->ctGlobalCron = new CTGlobalCron(d->ctHost);
 	}
 	else {
-		d->ctGlobalCron = NULL;
+		d->ctGlobalCron = nullptr;
 	}
 
 	setupActions();
@@ -117,7 +117,7 @@ CrontabWidget::CrontabWidget(QWidget* parent, CTHost* ctHost) :
 	d->tasksWidget->setFocus();
 
 	QTreeWidgetItem* item = d->tasksWidget->treeWidget()->topLevelItem(0);
-	if (item != NULL) {
+	if (item != nullptr) {
 		logDebug() << "First item found" << d->tasksWidget->treeWidget()->topLevelItemCount() << endl;
 		item->setSelected(true);
 	}
@@ -185,7 +185,7 @@ QHBoxLayout* CrontabWidget::createCronSelector() {
 
 		users.sort();
 		d->otherUsers->addItems(users);
-		d->otherUsers->addItem(QIcon::fromTheme( QLatin1String( "users") ), i18n("Show All Personal Crons"));
+		d->otherUsers->addItem(QIcon::fromTheme( QStringLiteral( "users") ), i18n("Show All Personal Crons"));
 	} else {
 		d->otherUserCronRadio->hide();
 		d->otherUsers->hide();
