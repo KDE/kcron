@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component type="addon">
+  <id>org.kde.kcron</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0-or-later</project_license>
+  <name>KCron</name>
+  <summary>Task Scheduler</summary>
+  <description>
+    <p>Task Scheduler is a graphical front end to the standard "cron" utility. With it, commands (or "tasks") can be run at specific times, on a certain day or date, or at specific intervals (time between execution). </p>
+  </description>
+  <url type="homepage">https://www.kde.org</url>
+  <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kcron</url>
+  <url type="help">https://docs.kde.org/trunk5/en/kdeadmin/kcontrol5/kcron/index.html</url>
+  <screenshots>
+    <screenshot type="default">
+      <image type="source">https://cdn.kde.org/screenshots/kcron/kcron.png</image>
+    </screenshot>
+  </screenshots>
+  <project_group>KDE</project_group>
+  <categories>
+    <category>Utility</category>
+  </categories>
+  <icon type="stock">preferences-system-cron</icon>
+</component>

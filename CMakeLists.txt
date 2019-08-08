@@ -31,6 +31,8 @@ find_package(KF5 REQUIRED COMPONENTS
 add_subdirectory(src) 
 add_subdirectory(doc)
 
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/org.kde.kcron.metainfo.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
+
 if (${ECM_VERSION} STRGREATER "5.58.0")
     install(FILES kcron.categories  DESTINATION  ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
 else()
