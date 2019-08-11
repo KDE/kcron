@@ -5,9 +5,18 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0-or-later</project_license>
   <name>KCron</name>
+  <name xml:lang="ca">KCron</name>
+  <name xml:lang="uk">KCron</name>
+  <name xml:lang="x-test">xxKCronxx</name>
   <summary>Task Scheduler</summary>
+  <summary xml:lang="ca">Planificador de tasques</summary>
+  <summary xml:lang="uk">Планувальник завдань</summary>
+  <summary xml:lang="x-test">xxTask Schedulerxx</summary>
   <description>
     <p>Task Scheduler is a graphical front end to the standard "cron" utility. With it, commands (or "tasks") can be run at specific times, on a certain day or date, or at specific intervals (time between execution). </p>
+    <p xml:lang="ca">El planificador de tasques és un frontal gràfic per a la utilitat estàndard «cron». Amb ella, les ordres (o «tasques») es podran executar en moments específics, en un dia o data determinats, o en intervals específics (temps entre les execucions).</p>
+    <p xml:lang="uk">Планувальник завдань є графічною оболонкою до стандартної програми «cron». За його допомогою можна віддавати команди (або виконувати «завдання») у певні моменти часу, у певні дні або дати або з певним інтервалом (часом між послідовними виконаннями).</p>
+    <p xml:lang="x-test">xxTask Scheduler is a graphical front end to the standard "cron" utility. With it, commands (or "tasks") can be run at specific times, on a certain day or date, or at specific intervals (time between execution).xx</p>
   </description>
   <url type="homepage">https://www.kde.org</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kcron</url>
