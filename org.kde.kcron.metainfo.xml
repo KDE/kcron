@@ -6,15 +6,33 @@
   <project_license>GPL-2.0-or-later</project_license>
   <name>KCron</name>
   <name xml:lang="ca">KCron</name>
+  <name xml:lang="en-GB">KCron</name>
+  <name xml:lang="eu">KCron</name>
+  <name xml:lang="nl">KCron</name>
+  <name xml:lang="pl">KCron</name>
+  <name xml:lang="pt">KCron</name>
+  <name xml:lang="sv">Kcron</name>
   <name xml:lang="uk">KCron</name>
   <name xml:lang="x-test">xxKCronxx</name>
   <summary>Task Scheduler</summary>
   <summary xml:lang="ca">Planificador de tasques</summary>
+  <summary xml:lang="en-GB">Task Scheduler</summary>
+  <summary xml:lang="eu">Ataza antolatzailea</summary>
+  <summary xml:lang="nl">Takenplanner</summary>
+  <summary xml:lang="pl">Harmonogram zadań</summary>
+  <summary xml:lang="pt">Escalonador de Tarefas</summary>
+  <summary xml:lang="sv">Jobbschemaläggare</summary>
   <summary xml:lang="uk">Планувальник завдань</summary>
   <summary xml:lang="x-test">xxTask Schedulerxx</summary>
   <description>
     <p>Task Scheduler is a graphical front end to the standard "cron" utility. With it, commands (or "tasks") can be run at specific times, on a certain day or date, or at specific intervals (time between execution). </p>
     <p xml:lang="ca">El planificador de tasques és un frontal gràfic per a la utilitat estàndard «cron». Amb ella, les ordres (o «tasques») es podran executar en moments específics, en un dia o data determinats, o en intervals específics (temps entre les execucions).</p>
+    <p xml:lang="en-GB">Task Scheduler is a graphical front end to the standard "cron" utility. With it, commands (or "tasks") can be run at specific times, on a certain day or date, or at specific intervals (time between execution).</p>
+    <p xml:lang="eu">Ataza antolatzailea "cron" estandarrerako bitarteko grafiko bat da. Berari esker, komandoak (edo "atazak") ordu zehatzetan exekutatu daitezke, egun edo data jakin batean, edo bitarte jakinetan (exekuzio arteko denbora).</p>
+    <p xml:lang="nl">Takenplanner is een grafische front-end voor het standaard hulpmiddel "cron". Hiermee kunt u commando's (of "takens") laten uitvoeren op specifieke tijden, op een bepaalde dag of datum of op specifieke intervallen (tijd tussen uitvoeren).</p>
+    <p xml:lang="pl">Harmonogram zadań jest graficzną nakładką na podstawowe narzędzie "cron". Dzięki niemu, polecenia (lub "zadania") można wykonywać o danym czasie, o danym dniu lub dacie, lub w danych odstępach czasowych.</p>
+    <p xml:lang="pt">O Escalonador de Tarefas é uma interface gráfica para o utilitário-padrão "cron". Com ele, os comandos (ou "tarefas") poderão ser executados em horas específicas, num dado dia ou data ou com intervalos específicos (períodos de tempo entre execuções).</p>
+    <p xml:lang="sv">Jobbschemaläggare är ett grafiskt gränssnitt för det vanliga verktyget "cron". Med det kan kommandon (eller "aktiviteter") köras vid specifika tider, en viss dag eller ett visst datum, eller med specifika intervall (tid mellan körningar).</p>
     <p xml:lang="uk">Планувальник завдань є графічною оболонкою до стандартної програми «cron». За його допомогою можна віддавати команди (або виконувати «завдання») у певні моменти часу, у певні дні або дати або з певним інтервалом (часом між послідовними виконаннями).</p>
     <p xml:lang="x-test">xxTask Scheduler is a graphical front end to the standard "cron" utility. With it, commands (or "tasks") can be run at specific times, on a certain day or date, or at specific intervals (time between execution).xx</p>
   </description>
