@@ -11,7 +11,9 @@
   <name xml:lang="en-GB">KCron</name>
   <name xml:lang="es">KCron</name>
   <name xml:lang="eu">KCron</name>
+  <name xml:lang="it">KCron</name>
   <name xml:lang="nl">KCron</name>
+  <name xml:lang="nn">KCron</name>
   <name xml:lang="pl">KCron</name>
   <name xml:lang="pt">KCron</name>
   <name xml:lang="pt-BR">KCron</name>
@@ -25,7 +27,9 @@
   <summary xml:lang="en-GB">Task Scheduler</summary>
   <summary xml:lang="es">Planificador de tareas</summary>
   <summary xml:lang="eu">Ataza antolatzailea</summary>
+  <summary xml:lang="it">Pianificatore di operazioni</summary>
   <summary xml:lang="nl">Takenplanner</summary>
+  <summary xml:lang="nn">Oppgåveplanleggjar</summary>
   <summary xml:lang="pl">Harmonogram zadań</summary>
   <summary xml:lang="pt">Escalonador de Tarefas</summary>
   <summary xml:lang="pt-BR">Agendador de Tarefas</summary>
@@ -40,6 +44,7 @@
     <p xml:lang="en-GB">Task Scheduler is a graphical front end to the standard "cron" utility. With it, commands (or "tasks") can be run at specific times, on a certain day or date, or at specific intervals (time between execution).</p>
     <p xml:lang="es">El planificador de tareas es una interfaz gráfica para la utilidad estándar «cron». Mediante ella, puede ejecutar órdenes (o «tareas») a una hora determinada, en un día o a una hora determinada, o a intervalos específicos (tiempo entre ejecuciones).</p>
     <p xml:lang="eu">Ataza antolatzailea "cron" estandarrerako bitarteko grafiko bat da. Berari esker, komandoak (edo "atazak") ordu zehatzetan exekutatu daitezke, egun edo data jakin batean, edo bitarte jakinetan (exekuzio arteko denbora).</p>
+    <p xml:lang="it">Il pianificatore di operazioni è un'interfaccia grafica al programma «cron». Con esso i comandi (o «processi») possono essere avviati ad orari specifici, in certi giorni o in certe date, oppure ad intervalli specifici (tempo tra le esecuzioni).</p>
     <p xml:lang="nl">Takenplanner is een grafische front-end voor het standaard hulpmiddel "cron". Hiermee kunt u commando's (of "takens") laten uitvoeren op specifieke tijden, op een bepaalde dag of datum of op specifieke intervallen (tijd tussen uitvoeren).</p>
     <p xml:lang="pl">Harmonogram zadań jest graficzną nakładką na podstawowe narzędzie "cron". Dzięki niemu, polecenia (lub "zadania") można wykonywać o danym czasie, o danym dniu lub dacie, lub w danych odstępach czasowych.</p>
     <p xml:lang="pt">O Escalonador de Tarefas é uma interface gráfica para o utilitário-padrão "cron". Com ele, os comandos (ou "tarefas") poderão ser executados em horas específicas, num dado dia ou data ou com intervalos específicos (períodos de tempo entre execuções).</p>
