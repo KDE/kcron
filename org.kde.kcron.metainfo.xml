@@ -6,6 +6,7 @@
   <project_license>GPL-2.0-or-later</project_license>
   <name>KCron</name>
   <name xml:lang="ca">KCron</name>
+  <name xml:lang="cs">KCron</name>
   <name xml:lang="de">KCron</name>
   <name xml:lang="el">KCron</name>
   <name xml:lang="en-GB">KCron</name>
@@ -23,6 +24,7 @@
   <name xml:lang="x-test">xxKCronxx</name>
   <summary>Task Scheduler</summary>
   <summary xml:lang="ca">Planificador de tasques</summary>
+  <summary xml:lang="cs">Plánovač úloh</summary>
   <summary xml:lang="de">Auftragsplaner</summary>
   <summary xml:lang="el">Χρονοπρογραμματιστής εργασιών</summary>
   <summary xml:lang="en-GB">Task Scheduler</summary>
