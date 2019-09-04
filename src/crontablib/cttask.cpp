@@ -407,7 +407,7 @@ QString CTTask::decryptBinaryCommand(const QString& command) const {
 	if (found == false)
 		fullCommand = command;
 
-	fullCommand = fullCommand.remove(QLatin1Char( '\\' ));
+	fullCommand.remove(QLatin1Char( '\\' ));
 
 	return fullCommand;
 }
