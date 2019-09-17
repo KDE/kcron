@@ -1065,7 +1065,7 @@ NumberPushButton::NumberPushButton(QWidget * parent) :
 NumberPushButton::NumberPushButton(bool digitMode, QWidget * parent) :
 	QPushButton(parent), isDirty(false) {
 	if (digitMode) {
-		setFixedWidth(12 + fontMetrics().width(QStringLiteral( "44" )));
+	        setFixedWidth(12 + fontMetrics().boundingRect(QStringLiteral( "44" )).width());
 		KAcceleratorManager::setNoAccel(this);
 	}
 	updatePalette();

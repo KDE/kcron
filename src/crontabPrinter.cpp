@@ -270,7 +270,7 @@ void CrontabPrinter::printPageNumber() {
 	d->painter->translate(0, - d->currentRowPosition);
 	d->printView->moveTo(QPoint(0, d->printView->height()) );
 	d->painter->translate( 0, - d->printView->height() );
-	d->painter->drawText(d->printView->right() - d->painter->fontMetrics().width(QString::number(d->page) ), d->printView->bottom()+ d->painter->fontMetrics().ascent() + 5, QString::number(d->page) );
+	d->painter->drawText(d->printView->right() - d->painter->fontMetrics().boundingRect(QString::number(d->page) ).width(), d->printView->bottom()+ d->painter->fontMetrics().ascent() + 5, QString::number(d->page) );
 
 }
 
@@ -289,7 +289,7 @@ int CrontabPrinter::computeMargin() const {
 int CrontabPrinter::computeStringHeight(const QString& text) const {
 
 	int fontHeight = d->painter->fontMetrics().height();
-	int lines = d->painter->fontMetrics().width(text) / d->printView->width() + 1;
+	int lines = d->painter->fontMetrics().boundingRect(text).width() / d->printView->width() + 1;
 	int moveBy = (fontHeight + 2) * lines;
 
 	return moveBy;
@@ -363,7 +363,7 @@ QList<int> CrontabPrinter::findMaxWidths(const QList<QStringList>& contents, int
 		int columnIndex = 0;
 		while (columnIndex < columnWidths.count()) {
 
-			int valueWidth = d->painter->fontMetrics().width(content.at(columnIndex));
+		        const int valueWidth = d->painter->fontMetrics().boundingRect(content.at(columnIndex)).width();
 			if (columnWidths[columnIndex] < valueWidth) {
 				columnWidths[columnIndex] = valueWidth;
 			}
