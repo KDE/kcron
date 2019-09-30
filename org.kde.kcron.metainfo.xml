@@ -24,6 +24,7 @@
   <name xml:lang="sv">Kcron</name>
   <name xml:lang="uk">KCron</name>
   <name xml:lang="x-test">xxKCronxx</name>
+  <name xml:lang="zh-TW">KCron</name>
   <summary>Task Scheduler</summary>
   <summary xml:lang="ca">Planificador de tasques</summary>
   <summary xml:lang="cs">Plánovač úloh</summary>
@@ -44,6 +45,7 @@
   <summary xml:lang="sv">Jobbschemaläggare</summary>
   <summary xml:lang="uk">Планувальник завдань</summary>
   <summary xml:lang="x-test">xxTask Schedulerxx</summary>
+  <summary xml:lang="zh-TW">工作排程工具</summary>
   <description>
     <p>Task Scheduler is a graphical front end to the standard "cron" utility. With it, commands (or "tasks") can be run at specific times, on a certain day or date, or at specific intervals (time between execution). </p>
     <p xml:lang="ca">El planificador de tasques és un frontal gràfic per a la utilitat estàndard «cron». Amb ella, les ordres (o «tasques») es podran executar en moments específics, en un dia o data determinats, o en intervals específics (temps entre les execucions).</p>
