@@ -24,6 +24,7 @@
   <name xml:lang="sv">Kcron</name>
   <name xml:lang="uk">KCron</name>
   <name xml:lang="x-test">xxKCronxx</name>
+  <name xml:lang="zh-CN">KCron</name>
   <name xml:lang="zh-TW">KCron</name>
   <summary>Task Scheduler</summary>
   <summary xml:lang="ca">Planificador de tasques</summary>
@@ -45,6 +46,7 @@
   <summary xml:lang="sv">Jobbschemaläggare</summary>
   <summary xml:lang="uk">Планувальник завдань</summary>
   <summary xml:lang="x-test">xxTask Schedulerxx</summary>
+  <summary xml:lang="zh-CN">任务调度器</summary>
   <summary xml:lang="zh-TW">工作排程工具</summary>
   <description>
     <p>Task Scheduler is a graphical front end to the standard "cron" utility. With it, commands (or "tasks") can be run at specific times, on a certain day or date, or at specific intervals (time between execution). </p>
@@ -66,6 +68,7 @@
     <p xml:lang="sv">Jobbschemaläggare är ett grafiskt gränssnitt för det vanliga verktyget "cron". Med det kan kommandon (eller "aktiviteter") köras vid specifika tider, en viss dag eller ett visst datum, eller med specifika intervall (tid mellan körningar).</p>
     <p xml:lang="uk">Планувальник завдань є графічною оболонкою до стандартної програми «cron». За його допомогою можна віддавати команди (або виконувати «завдання») у певні моменти часу, у певні дні або дати або з певним інтервалом (часом між послідовними виконаннями).</p>
     <p xml:lang="x-test">xxTask Scheduler is a graphical front end to the standard "cron" utility. With it, commands (or "tasks") can be run at specific times, on a certain day or date, or at specific intervals (time between execution).xx</p>
+    <p xml:lang="zh-CN">任务调度器是标准“cron”工具的图形化前端。利用它，您可以在特定时间，一周中的某天，特定日期，或者按照某个周期 (运行之间的间隔) 运行命令 (或者“任务”)。</p>
   </description>
   <url type="homepage">https://www.kde.org</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kcron</url>
