@@ -34,7 +34,6 @@
 #include "logging.h"
 
 K_PLUGIN_FACTORY(KCMCronFactory, registerPlugin<KCMCron>();)
-K_EXPORT_PLUGIN(KCMCronFactory("kcron"))
 
 class KCMCronPrivate {
 public:
