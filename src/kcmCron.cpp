@@ -79,7 +79,7 @@ KCMCron::KCMCron(QWidget* parent, const QVariantList& /*args*/) :
 
 	d->crontabWidget = new CrontabWidget(this, d->ctHost);
 
-	logDebug() << "Crontab Widget initialized" << endl;
+    logDebug() << "Crontab Widget initialized";
 
 	connect(d->crontabWidget->tasksWidget(), SIGNAL(taskModified(bool)), this, SIGNAL(changed(bool)));
 	connect(d->crontabWidget->variablesWidget(), SIGNAL(variableModified(bool)), this, SIGNAL(changed(bool)));
@@ -105,13 +105,13 @@ KCMCron::~KCMCron() {
 }
 
 void KCMCron::load() {
-	logDebug() << "Calling load" << endl;
+    logDebug() << "Calling load";
 
 	d->ctHost->cancel();
 }
 
 void KCMCron::save() {
-	logDebug() << "Saving crontab..." << endl;
+    logDebug() << "Saving crontab...";
 
 	CTSaveStatus saveStatus = d->ctHost->save();
 	if (saveStatus.isError() == true) {
@@ -121,7 +121,7 @@ void KCMCron::save() {
 }
 
 void KCMCron::defaults() {
-	logDebug() << "Loading defaults" << endl;
+    logDebug() << "Loading defaults";
 
 	d->ctHost->cancel();
 }

@@ -60,7 +60,7 @@ TasksWidget::TasksWidget(CrontabWidget* crontabWidget) :
 
 	connect(treeWidget(), &QTreeWidget::itemSelectionChanged, this, &TasksWidget::changeCurrentSelection);
 
-	logDebug() << "Tasks list created" << endl;
+	logDebug() << "Tasks list created";
 }
 
 TasksWidget::~TasksWidget() {
@@ -106,7 +106,7 @@ void TasksWidget::runTaskNow() const {
 
 	CTCron* ctCron = crontabWidget()->currentCron();
 	if (ctCron == nullptr) {
-		logDebug() << "Unable to find the related CtCron, please report this bug to KCron developer" << endl;
+		logDebug() << "Unable to find the related CtCron, please report this bug to KCron developer";
 		return;
 	}
 
@@ -183,12 +183,12 @@ void TasksWidget::modifySelection(QTreeWidgetItem* item, int position) {
 
 	}
 
-	logDebug() << "End of modification" << endl;
+	logDebug() << "End of modification";
 
 }
 
 void TasksWidget::deleteSelection() {
-	logDebug() << "Selection deleting..." << endl;
+	logDebug() << "Selection deleting...";
 
 	QList<QTreeWidgetItem*> tasksItems = treeWidget()->selectedItems();
 
@@ -209,7 +209,7 @@ void TasksWidget::deleteSelection() {
 		changeCurrentSelection();
 	}
 
-	logDebug() << "End of deletion" << endl;
+	logDebug() << "End of deletion";
 }
 
 void TasksWidget::refreshTasks(CTCron* cron) {
@@ -331,7 +331,7 @@ void TasksWidget::toggleNewEntryAction(bool state) {
 }
 
 void TasksWidget::changeCurrentSelection() {
-	//logDebug() << "Change selection..." << endl;
+	//logDebug() << "Change selection...";
 
 	if (treeWidget()->topLevelItemCount()==0) {
 		togglePrintAction(false);

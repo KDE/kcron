@@ -62,7 +62,7 @@ CTTask::CTTask(const QString& tokenString, const QString& _comment, const QStrin
 	// If reboot bypass initialize functions so no keys selected in modify task
 	if (reboot == false) {
 
-		//logDebug() << "Line : " << tokStr << endl;
+        //logDebug() << "Line : " << tokStr;
 		minute.initialize(tokStr.mid(0, spacePos));
 
 		while (isSpace(tokStr, spacePos+1))
@@ -354,7 +354,7 @@ QIcon CTTask::commandIcon() const {
 	QUrl commandPath = QUrl::fromLocalFile(completeCommandPath());
 
 	QMimeType mimeType = QMimeDatabase().mimeTypeForUrl(commandPath);
-	//logDebug() << mimeType->name() << endl;
+    //logDebug() << mimeType->name();
 	if (mimeType.name() == QLatin1String( "application/x-executable" ) || mimeType.name() == QLatin1String( "application/octet-stream" )) {
 
 		//The next line is identical as SmallIcon(commandPath.fileName()), but is able to return a isNull() QPixmap

@@ -53,7 +53,7 @@ VariablesWidget::VariablesWidget(CrontabWidget* crontabWidget) :
 
 	connect(treeWidget(), &QTreeWidget::itemSelectionChanged, this, &VariablesWidget::changeCurrentSelection);
 
-	logDebug() << "Variables list created" << endl;
+	logDebug() << "Variables list created";
 
 }
 
@@ -166,7 +166,7 @@ void VariablesWidget::createVariable() {
 }
 
 void VariablesWidget::addVariable(CTVariable* variable) {
-	logDebug() << "Add a new variable" << endl;
+	logDebug() << "Add a new variable";
 	crontabWidget()->currentCron()->addVariable(variable);
 	new VariableWidget(this, variable);
 
@@ -258,7 +258,7 @@ void VariablesWidget::toggleNewEntryAction(bool state) {
 }
 
 void VariablesWidget::changeCurrentSelection() {
-	logDebug() << "Change selection..." << endl;
+	logDebug() << "Change selection...";
 
 	bool enabled;
 	if (treeWidget()->selectedItems().isEmpty())

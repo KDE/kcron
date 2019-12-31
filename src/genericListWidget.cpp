@@ -95,7 +95,7 @@ GenericListWidget::GenericListWidget(CrontabWidget* crontabWidget, const QString
 
 	mainLayout->addLayout(treeLayout);
 
-	logDebug() << "Generic list created" << endl;
+	logDebug() << "Generic list created";
 	connect(treeWidget(), &QTreeWidget::itemDoubleClicked, this, &GenericListWidget::modifySelection);
 
 }
