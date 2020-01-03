@@ -16,6 +16,7 @@
   <name xml:lang="fr">KCron</name>
   <name xml:lang="it">KCron</name>
   <name xml:lang="ko">KCron</name>
+  <name xml:lang="lt">KCron</name>
   <name xml:lang="nl">KCron</name>
   <name xml:lang="nn">KCron</name>
   <name xml:lang="pl">KCron</name>
@@ -40,6 +41,7 @@
   <summary xml:lang="fr">Planificateur de tâches</summary>
   <summary xml:lang="it">Pianificatore di operazioni</summary>
   <summary xml:lang="ko">작업 스케줄러</summary>
+  <summary xml:lang="lt">Užduočių planuoklė</summary>
   <summary xml:lang="nl">Takenplanner</summary>
   <summary xml:lang="nn">Oppgåveplanleggjar</summary>
   <summary xml:lang="pl">Harmonogram zadań</summary>
@@ -64,6 +66,7 @@
     <p xml:lang="fr">Le planificateur de tâches est une interface graphique pour l'utilitaire standard « cron ». Grâce à lui, vous pouvez lancer des commandes (les « tâches ») à certains horaires spécifiques, à certaines dates ou jours de la semaine, ou à des intervalles spécifiques (entre deux exécutions).</p>
     <p xml:lang="it">Il pianificatore di operazioni è un'interfaccia grafica al programma «cron». Con esso i comandi (o «processi») possono essere avviati ad orari specifici, in certi giorni o in certe date, oppure ad intervalli specifici (tempo tra le esecuzioni).</p>
     <p xml:lang="ko">작업 스케줄러는 "cron" 유틸리티의 그래픽 프론트엔드입니다. 명령(혹은 "작업")을 지정한 시간, 지정한 요일이나 날짜, 또는 지정한 시간 간격마다 실행시킬 수 있습니다.</p>
+    <p xml:lang="lt">Užduočių planuoklė yra standartinės "cron" paslaugų programos grafinė naudotojo sąsaja. Naudojant ją, komandos (ar "užduotys") gali būti paleidžiamos tam tikru laiku, tam tikrą dieną ar datą, ar tam tikrais intervalais (laikais tarp paleidimo).</p>
     <p xml:lang="nl">Takenplanner is een grafische front-end voor het standaard hulpmiddel "cron". Hiermee kunt u commando's (of "takens") laten uitvoeren op specifieke tijden, op een bepaalde dag of datum of op specifieke intervallen (tijd tussen uitvoeren).</p>
     <p xml:lang="nn">Oppgåveplanleggjaren er eit grafisk grensesnitt til «cron»-verktøyet. Du kan bruka programmet til å køyra kommandoar («oppgåver») til faste klokkeslett, på faste vekedagar eller datoar, eller etter faste tidsintervall.</p>
     <p xml:lang="pl">Harmonogram zadań jest graficzną nakładką na podstawowe narzędzie "cron". Dzięki niemu, polecenia (lub "zadania") można wykonywać o danym czasie, o danym dniu lub dacie, lub w danych odstępach czasowych.</p>
