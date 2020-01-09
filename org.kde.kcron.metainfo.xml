@@ -13,6 +13,7 @@
   <name xml:lang="es">KCron</name>
   <name xml:lang="et">KCron</name>
   <name xml:lang="eu">KCron</name>
+  <name xml:lang="fi">KCron</name>
   <name xml:lang="fr">KCron</name>
   <name xml:lang="it">KCron</name>
   <name xml:lang="ko">KCron</name>
@@ -37,6 +38,7 @@
   <summary xml:lang="es">Planificador de tareas</summary>
   <summary xml:lang="et">Tegumihaldur</summary>
   <summary xml:lang="eu">Ataza antolatzailea</summary>
+  <summary xml:lang="fi">Tehtävien ajastus</summary>
   <summary xml:lang="fr">Planificateur de tâches</summary>
   <summary xml:lang="it">Pianificatore di operazioni</summary>
   <summary xml:lang="ko">작업 스케줄러</summary>
@@ -61,6 +63,7 @@
     <p xml:lang="es">El planificador de tareas es una interfaz gráfica para la utilidad estándar «cron». Mediante ella, puede ejecutar órdenes (o «tareas») a una hora determinada, en un día o a una hora determinada, o a intervalos específicos (tiempo entre ejecuciones).</p>
     <p xml:lang="et">Tegumihaldur on programmi "cron" graafiline kasutajaliides. Selle abil saab käske (ehk "tegumeid") panna käima kindlal kellaajal, kindlal päeval või kuupäeval või kindla intervalliga.</p>
     <p xml:lang="eu">Ataza antolatzailea "cron" estandarrerako bitarteko grafiko bat da. Berari esker, komandoak (edo "atazak") ordu zehatzetan exekutatu daitezke, egun edo data jakin batean, edo bitarte jakinetan (exekuzio arteko denbora).</p>
+    <p xml:lang="fi">Graafinen käyttöliittymä standardinmukaiseen ”cron”-työkaluun, jolla komennon (tai tehtävän) voi ajaa tiettyyn aikaan tai määräajoin.</p>
     <p xml:lang="fr">Le planificateur de tâches est une interface graphique pour l'utilitaire standard « cron ». Grâce à lui, vous pouvez lancer des commandes (les « tâches ») à certains horaires spécifiques, à certaines dates ou jours de la semaine, ou à des intervalles spécifiques (entre deux exécutions).</p>
     <p xml:lang="it">Il pianificatore di operazioni è un'interfaccia grafica al programma «cron». Con esso i comandi (o «processi») possono essere avviati ad orari specifici, in certi giorni o in certe date, oppure ad intervalli specifici (tempo tra le esecuzioni).</p>
     <p xml:lang="ko">작업 스케줄러는 "cron" 유틸리티의 그래픽 프론트엔드입니다. 명령(혹은 "작업")을 지정한 시간, 지정한 요일이나 날짜, 또는 지정한 시간 간격마다 실행시킬 수 있습니다.</p>
