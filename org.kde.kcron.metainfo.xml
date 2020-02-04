@@ -6,6 +6,7 @@
   <project_license>GPL-2.0-or-later</project_license>
   <name>KCron</name>
   <name xml:lang="ca">KCron</name>
+  <name xml:lang="ca-valencia">KCron</name>
   <name xml:lang="cs">KCron</name>
   <name xml:lang="de">KCron</name>
   <name xml:lang="el">KCron</name>
@@ -32,6 +33,7 @@
   <name xml:lang="zh-TW">KCron</name>
   <summary>Task Scheduler</summary>
   <summary xml:lang="ca">Planificador de tasques</summary>
+  <summary xml:lang="ca-valencia">Planificador de tasques</summary>
   <summary xml:lang="cs">Plánovač úloh</summary>
   <summary xml:lang="de">Auftragsplaner</summary>
   <summary xml:lang="el">Χρονοπρογραμματιστής εργασιών</summary>
@@ -59,6 +61,7 @@
   <description>
     <p>Task Scheduler is a graphical front end to the standard "cron" utility. With it, commands (or "tasks") can be run at specific times, on a certain day or date, or at specific intervals (time between execution). </p>
     <p xml:lang="ca">El planificador de tasques és un frontal gràfic per a la utilitat estàndard «cron». Amb ella, les ordres (o «tasques») es podran executar en moments específics, en un dia o data determinats, o en intervals específics (temps entre les execucions).</p>
+    <p xml:lang="ca-valencia">El planificador de tasques és un frontal gràfic per a la utilitat estàndard «cron». Amb ella, les ordres (o «tasques») es podran executar en moments específics, en un dia o data determinats, o en intervals específics (temps entre les execucions).</p>
     <p xml:lang="de">Der Aufgabenplaner ist eine grafische Benutzeroberfläche zum Standarddienstprogramm „cron“. Damit können Befehle oder „Aufgaben“ an bestimmten Tagen oder Zeiten oder in bestimmten Abständen zwischen der Ausführung ausgeführt werden.</p>
     <p xml:lang="el">Ο χρονοπρογραμματιστής εργασιών είναι ένα περιβάλλον χρήσης για το τυπικό εργαλείο «cron». Με αυτόοι εντολές (ή «εργασίες») μπορούν να εκτελούνται σε καθορισμένο χρόνο, σε ορισμένη ημέρα ή ημερομηνία ή σε ορισμένα χρονικά διαστήματα (χρόνος ανάμεσα στις εκτελέσει).</p>
     <p xml:lang="en-GB">Task Scheduler is a graphical front end to the standard "cron" utility. With it, commands (or "tasks") can be run at specific times, on a certain day or date, or at specific intervals (time between execution).</p>
