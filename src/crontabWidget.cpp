@@ -192,7 +192,11 @@ QHBoxLayout* CrontabWidget::createCronSelector() {
 	}
 
 	connect(group, static_cast<void (QButtonGroup::*)(QAbstractButton *)>(&QButtonGroup::buttonClicked), this, &CrontabWidget::refreshCron);
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
 	connect(d->otherUsers, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &CrontabWidget::checkOtherUsers);
+#else
+	connect(d->otherUsers, static_cast<void (QComboBox::*)(int, const QString &)>(&QComboBox::currentIndexChanged) , this, &CrontabWidget::checkOtherUsers);
+#endif
 
 	layout->addStretch(1);
 
