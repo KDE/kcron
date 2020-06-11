@@ -64,5 +64,5 @@ target_link_libraries(kcm_cron
 
 install(TARGETS  kcm_cron  DESTINATION ${PLUGIN_INSTALL_DIR}/kcms )
 
-install(FILES kcm_cron.desktop  DESTINATION  ${SERVICES_INSTALL_DIR} )
+install(FILES kcm_cron.desktop  DESTINATION  ${KDE_INSTALL_KSERVICES5DIR} )
 
