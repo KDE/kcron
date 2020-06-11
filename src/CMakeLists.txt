@@ -62,7 +62,6 @@ target_link_libraries(kcm_cron
     KF5::KIOWidgets
 )
 
-install(TARGETS  kcm_cron  DESTINATION ${PLUGIN_INSTALL_DIR}/kcms )
+install(TARGETS  kcm_cron  DESTINATION ${PLUGIN_INSTALL_DIR} )
 
 install(FILES kcm_cron.desktop  DESTINATION  ${KDE_INSTALL_KSERVICES5DIR} )
-
