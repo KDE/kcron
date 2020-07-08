@@ -12,7 +12,7 @@
 #include "cttask.h"
 
 #include <KLocalizedString>
-#include <kiconloader.h>
+#include <KIconLoader>
 
 #include <QMimeDatabase>
 #include <QUrl>

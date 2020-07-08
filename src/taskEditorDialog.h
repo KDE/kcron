@@ -20,7 +20,7 @@
 #include <QStringList>
 #include <QTextEdit>
 
-#include <ktitlewidget.h>
+#include <KTitleWidget>
 
 class QLabel;
 class QCheckBox;

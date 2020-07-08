@@ -22,8 +22,8 @@
 #include <QWidget>
 #include <QVariantList>
 
-#include <kcmodule.h>
-#include <ksharedconfig.h>
+#include <KCModule>
+#include <KSharedConfig>
 
 class CTHost;
 

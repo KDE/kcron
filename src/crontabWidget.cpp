@@ -27,7 +27,7 @@
 #include <KLocalizedString>
 #include <QIcon>
 #include <QAction>
-#include <kstandardaction.h>
+#include <KStandardAction>
 
 #include "cthost.h"
 #include "ctcron.h"

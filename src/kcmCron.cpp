@@ -14,16 +14,16 @@
 
 
 
-#include <kpluginfactory.h>
-#include <kaboutdata.h>
+#include <KPluginFactory>
+#include <KAboutData>
 #include <QVBoxLayout>
-#include <kstandardshortcut.h>
-#include <kmessagebox.h>
-#include <kconfig.h>
+#include <KStandardShortcut>
+#include <KMessageBox>
+#include <KConfig>
 #include <KLocalizedString>
-#include <ktoggleaction.h>
+#include <KToggleAction>
 #include <QIcon>
-#include <kconfiggroup.h>
+#include <KConfigGroup>
 
 #include "crontabWidget.h"
 

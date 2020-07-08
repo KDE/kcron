@@ -26,12 +26,12 @@
 #include <QStyleOption>
 #include <QStylePainter>
 
-#include <kacceleratormanager.h>
+#include <KAcceleratorManager>
 #include <KLocalizedString>
-#include <kmessagebox.h>
-#include <qpushbutton.h>
-#include <kstandardshortcut.h>
-#include <ktitlewidget.h>
+#include <KMessageBox>
+#include <QPushButton>
+#include <KStandardShortcut>
+#include <KTitleWidget>
 #include <kurlrequester.h>
 
 #include "logging.h"

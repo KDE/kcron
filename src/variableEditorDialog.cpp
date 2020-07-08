@@ -17,10 +17,10 @@
 #include <QLineEdit>
 #include <QPushButton>
 
-#include <qicon.h>
+#include <QIcon>
 #include <KLocalizedString>
-#include <kmessagebox.h>
-#include <ktitlewidget.h>
+#include <KMessageBox>
+#include <KTitleWidget>
 
 #include "ctvariable.h"
 #include "cthost.h"

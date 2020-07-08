@@ -19,7 +19,7 @@
 #include <QDialog>
 #include <QTextEdit>
 
-#include <ktitlewidget.h>
+#include <KTitleWidget>
 
 class CTVariable;
 class CrontabWidget;

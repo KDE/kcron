@@ -15,7 +15,7 @@
 #include <QAction>
 #include <QList>
 
-#include <kstandardaction.h>
+#include <KStandardAction>
 #include <KLocalizedString>
 
 #include "ctcron.h"
