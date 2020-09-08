@@ -26,6 +26,7 @@
   <name xml:lang="pl">KCron</name>
   <name xml:lang="pt">KCron</name>
   <name xml:lang="pt-BR">KCron</name>
+  <name xml:lang="ro">KCron</name>
   <name xml:lang="ru">KCron</name>
   <name xml:lang="sk">KCron</name>
   <name xml:lang="sl">KCron</name>
@@ -55,6 +56,7 @@
   <summary xml:lang="pl">Harmonogram zadań</summary>
   <summary xml:lang="pt">Escalonador de Tarefas</summary>
   <summary xml:lang="pt-BR">Agendador de Tarefas</summary>
+  <summary xml:lang="ro">Planificator de procese</summary>
   <summary xml:lang="ru">Планировщик заданий</summary>
   <summary xml:lang="sk">Plánovač úloh</summary>
   <summary xml:lang="sl">Razporejevalnik opravil (Task scheduler)</summary>
