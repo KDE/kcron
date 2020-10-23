@@ -11,16 +11,12 @@
 
 #include "variableEditorDialog.h"
 #include "kwidgetsaddons_version.h"
-#include <QLabel>
-#include <QComboBox>
 #include <QGridLayout>
-#include <QLineEdit>
 #include <QPushButton>
 
 #include <QIcon>
 #include <KLocalizedString>
 #include <KMessageBox>
-#include <KTitleWidget>
 
 #include "ctvariable.h"
 #include "cthost.h"

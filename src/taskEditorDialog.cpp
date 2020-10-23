@@ -11,7 +11,6 @@
 
 #include "taskEditorDialog.h"
 #include "kwidgetsaddons_version.h"
-#include <QLabel>
 
 #include <QLayout>
 #include <QCheckBox>
@@ -31,7 +30,6 @@
 #include <KMessageBox>
 #include <QPushButton>
 #include <KStandardShortcut>
-#include <KTitleWidget>
 #include <kurlrequester.h>
 
 #include "logging.h"

@@ -36,7 +36,6 @@
 #include "ctGlobalCron.h"
 
 #include "crontabPrinter.h"
-#include "tasksWidget.h"
 #include "taskWidget.h"
 
 #include "variableWidget.h"

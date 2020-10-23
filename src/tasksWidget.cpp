@@ -19,7 +19,6 @@
 #include <KLocalizedString>
 
 #include "ctcron.h"
-#include "cthost.h"
 #include "cttask.h"
 #include "ctvariable.h"
 
