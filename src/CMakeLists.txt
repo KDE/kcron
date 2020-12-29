@@ -26,8 +26,7 @@ set(kcron_crontablib_SRCS
    crontablib/ctHelper.cpp
 )
 
-ecm_qt_declare_logging_category(kcron_crontablib_SRCS HEADER kcm_cron_debug.h IDENTIFIER KCM_CRON_LOG CATEGORY_NAME org.kde.kcm.cron)
-
+ecm_qt_declare_logging_category(kcron_crontablib_SRCS HEADER kcm_cron_debug.h IDENTIFIER KCM_CRON_LOG CATEGORY_NAME org.kde.kcm.cron DESCRIPTION "kcm cron" EXPORT KCRON)
 
 set(kcm_cron_SRCS 
    ${kcron_crontablib_SRCS}
