@@ -61,9 +61,9 @@ public:
 	
 	void updatePalette();
 	
-	bool event(QEvent *e) Q_DECL_OVERRIDE;
+	bool event(QEvent *e) override;
 	
-	void paintEvent(QPaintEvent*) Q_DECL_OVERRIDE;
+	void paintEvent(QPaintEvent*) override;
 
 	bool isDirty;
 	QPalette palSelected;

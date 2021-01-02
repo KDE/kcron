@@ -67,7 +67,7 @@ Q_SIGNALS:
 public Q_SLOTS:
 	void modifySelection();
 	
-	void deleteSelection() Q_DECL_OVERRIDE;
+	void deleteSelection() override;
 
 	/**
 	 * Run task now.
@@ -84,7 +84,7 @@ public Q_SLOTS:
 	void changeCurrentSelection();
 
 protected Q_SLOTS:
-	void modifySelection(QTreeWidgetItem* item, int position) Q_DECL_OVERRIDE;
+	void modifySelection(QTreeWidgetItem* item, int position) override;
 
 private:
 	void refreshHeaders();

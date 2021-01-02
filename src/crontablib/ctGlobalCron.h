@@ -32,20 +32,20 @@ public:
 	/**
 	 * Destructor.
 	 */
-	virtual ~CTGlobalCron();
+    ~CTGlobalCron() override;
 
-	QList<CTTask*> tasks() const Q_DECL_OVERRIDE;
+    QList<CTTask*> tasks() const override;
 	
-	QList<CTVariable*> variables() const Q_DECL_OVERRIDE;
+    QList<CTVariable*> variables() const override;
 	
-	void addTask(CTTask* task) Q_DECL_OVERRIDE;
-	void addVariable(CTVariable* variable) Q_DECL_OVERRIDE;
+    void addTask(CTTask* task) override;
+    void addVariable(CTVariable* variable) override;
 	
-	void modifyTask(CTTask* task) Q_DECL_OVERRIDE;
-	void modifyVariable(CTVariable* variable) Q_DECL_OVERRIDE;
+    void modifyTask(CTTask* task) override;
+    void modifyVariable(CTVariable* variable) override;
 		
-	void removeVariable(CTVariable* variable) Q_DECL_OVERRIDE;
-	void removeTask(CTTask* task) Q_DECL_OVERRIDE;
+    void removeVariable(CTVariable* variable) override;
+    void removeTask(CTTask* task) override;
 
 private:
 	CTHost* ctHost;

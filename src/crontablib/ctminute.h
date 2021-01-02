@@ -26,7 +26,7 @@ public:
 	
 	int findPeriod() const;
 	
-	QString exportUnit() const Q_DECL_OVERRIDE;
+	QString exportUnit() const override;
 
 };
 
