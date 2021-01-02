@@ -32,7 +32,7 @@ public:
 	 */
 	explicit VariablesWidget(CrontabWidget* crontabWidget);
 	
-	virtual ~VariablesWidget();
+    ~VariablesWidget() override;
 
 	QList<VariableWidget*> selectedVariablesWidget() const;
 	

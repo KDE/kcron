@@ -28,7 +28,7 @@ public:
 	 */
 	explicit CrontabPrinterWidget(bool root = false);
 
-	~CrontabPrinterWidget();
+    ~CrontabPrinterWidget() override;
 
 	bool printCrontab();
 	void setPrintCrontab(bool setStatus);

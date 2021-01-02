@@ -33,7 +33,7 @@ public:
 	/**
 	 * Destructor.
 	 */
-	virtual ~CTSystemCron();
+    ~CTSystemCron() override;
 
 };
 

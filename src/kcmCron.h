@@ -33,7 +33,7 @@ public:
 	//, const QVariantList& arguments
 	KCMCron(QWidget* parent, const QVariantList& args);
 
-	~KCMCron();
+    ~KCMCron() override;
 
 	void load() override;
 	void save() override;

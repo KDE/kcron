@@ -25,7 +25,7 @@ public:
 	/**
 	 * Initialize the list view item and task.
 	 */
-	VariableWidget(VariablesWidget* variablesWidget, CTVariable* _ctVariable);
+    explicit VariableWidget(VariablesWidget* variablesWidget, CTVariable* _ctVariable);
 	
 	/**
 	 * Refresh from underlying task.

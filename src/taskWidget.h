@@ -23,7 +23,7 @@ public:
 	/**
 	 * Initialize the list view item and task.
 	 */
-	TaskWidget(TasksWidget* tasksWidget, CTTask* _cttask);
+    explicit TaskWidget(TasksWidget* tasksWidget, CTTask* _cttask);
 
 	/*
 	 * Change the status of this task

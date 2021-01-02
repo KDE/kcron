@@ -34,12 +34,12 @@ public:
 	/**
 	 * Initializes view.
 	 */
-	CrontabWidget(QWidget* parent, CTHost* ctHost);
+    explicit CrontabWidget(QWidget* parent, CTHost* ctHost);
 
 	/**
 	 * Destructor.
 	 */
-	~CrontabWidget();
+    ~CrontabWidget() override;
 	
 	TasksWidget* tasksWidget() const;
 	

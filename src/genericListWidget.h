@@ -26,9 +26,9 @@ class GenericListWidget : public QWidget {
 	Q_OBJECT
 public:
 
-	GenericListWidget(CrontabWidget* crontabWidget, const QString& label, const QIcon& icon);
+    explicit GenericListWidget(CrontabWidget* crontabWidget, const QString& label, const QIcon& icon);
 	
-	~GenericListWidget();
+    ~GenericListWidget() override;
 
 	QTreeWidget* treeWidget() const;
 	

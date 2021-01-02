@@ -31,7 +31,7 @@ public:
 	 */
 	explicit TasksWidget(CrontabWidget* crontabWidget);
 	
-	~TasksWidget();
+    ~TasksWidget() override;
 
 	TaskWidget* firstSelectedTaskWidget() const;
 	

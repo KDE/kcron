@@ -37,7 +37,7 @@ public:
 	/**
 	 * Destroy.
 	 */
-	~VariableEditorDialog();
+    ~VariableEditorDialog() override;
 
 private Q_SLOTS:
 
