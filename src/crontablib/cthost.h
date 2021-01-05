@@ -102,7 +102,6 @@ private:
 	 * Factory create a cron table.  Appends to the end of cron.
 	 */
 	CTCron* createSystemCron();
-	CTCron* createCurrentUserCron();
 	QString createCTCron(const struct passwd* password);
 
 	/**

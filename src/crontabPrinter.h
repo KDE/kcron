@@ -71,7 +71,6 @@ private:
 	void drawTable(const QList<int>& columnWidths);
 	
 	void needNewPage();
-	int maxWidth();
 
 	void changeRow(int x, int y);
 	int computeMargin() const;

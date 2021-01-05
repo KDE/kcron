@@ -44,8 +44,6 @@ public:
 
 private:
 
-	QIcon findIcon() const;
-	
 	/**
 	 * Variable
 	 */
