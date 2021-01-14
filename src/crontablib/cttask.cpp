@@ -19,7 +19,7 @@
 #include "logging.h"
 
 CTTask::CTTask(const QString &tokenString, const QString &_comment, const QString &_userLogin, bool _systemCrontab)
-    : systemCrontab(_systemCrontab)
+    : mSystemCrontab(_systemCrontab)
 {
     QString tokStr = tokenString;
     if (tokStr.mid(0, 2) == QLatin1String("#\\")) {
@@ -92,7 +92,7 @@ CTTask::CTTask(const QString &tokenString, const QString &_comment, const QStrin
         dayOfWeek.initialize(tokStr.mid(0, spacePos));
     }
 
-    if (systemCrontab) {
+    if (mSystemCrontab) {
         while (isSpace(tokStr, spacePos+1)) {
             spacePos++;
         }
@@ -110,11 +110,11 @@ CTTask::CTTask(const QString &tokenString, const QString &_comment, const QStrin
     }
     comment = _comment;
 
-    initialUserLogin = userLogin;
-    initialCommand = command;
-    initialComment = comment;
-    initialEnabled = enabled;
-    initialReboot = reboot;
+    mInitialUserLogin = userLogin;
+    mInitialCommand = command;
+    mInitialComment = comment;
+    mInitialEnabled = enabled;
+    mInitialReboot = reboot;
 }
 
 CTTask::CTTask(const CTTask &source)
@@ -128,11 +128,11 @@ CTTask::CTTask(const CTTask &source)
     , comment(source.comment)
     , enabled(source.enabled)
     , reboot(source.reboot)
-    , initialUserLogin(QLatin1String(""))
-    , initialCommand(QLatin1String(""))
-    , initialComment(QLatin1String(""))
-    , initialEnabled(true)
-    , initialReboot(false)
+    , mInitialUserLogin(QLatin1String(""))
+    , mInitialCommand(QLatin1String(""))
+    , mInitialComment(QLatin1String(""))
+    , mInitialEnabled(true)
+    , mInitialReboot(false)
 {
 }
 
@@ -152,11 +152,11 @@ CTTask &CTTask::operator =(const CTTask &source)
     comment = source.comment;
     enabled = source.enabled;
     reboot = source.reboot;
-    initialUserLogin = QLatin1String("");
-    initialCommand = QLatin1String("");
-    initialComment = QLatin1String("");
-    initialEnabled = true;
-    initialReboot = false;
+    mInitialUserLogin = QLatin1String("");
+    mInitialCommand = QLatin1String("");
+    mInitialComment = QLatin1String("");
+    mInitialEnabled = true;
+    mInitialReboot = false;
 
     return *this;
 }
@@ -191,11 +191,11 @@ void CTTask::apply()
     hour.apply();
     minute.apply();
 
-    initialUserLogin = userLogin;
-    initialCommand = command;
-    initialComment = comment;
-    initialEnabled = enabled;
-    initialReboot = reboot;
+    mInitialUserLogin = userLogin;
+    mInitialCommand = command;
+    mInitialComment = comment;
+    mInitialEnabled = enabled;
+    mInitialReboot = reboot;
 }
 
 void CTTask::cancel()
@@ -206,16 +206,16 @@ void CTTask::cancel()
     hour.cancel();
     minute.cancel();
 
-    userLogin = initialUserLogin;
-    command = initialCommand;
-    comment = initialComment;
-    enabled = initialEnabled;
-    reboot = initialReboot;
+    userLogin = mInitialUserLogin;
+    command = mInitialCommand;
+    comment = mInitialComment;
+    enabled = mInitialEnabled;
+    reboot = mInitialReboot;
 }
 
 bool CTTask::dirty() const
 {
-    return month.isDirty() || dayOfMonth.isDirty() || dayOfWeek.isDirty() || hour.isDirty() || minute.isDirty() || (userLogin != initialUserLogin) || (command != initialCommand) || (comment != initialComment) || (enabled != initialEnabled) || (reboot != initialReboot);
+    return month.isDirty() || dayOfMonth.isDirty() || dayOfWeek.isDirty() || hour.isDirty() || minute.isDirty() || (userLogin != mInitialUserLogin) || (command != mInitialCommand) || (comment != mInitialComment) || (enabled != mInitialEnabled) || (reboot != mInitialReboot);
 }
 
 QString CTTask::schedulingCronFormat() const
@@ -373,12 +373,12 @@ QString CTTask::createTimeFormat() const
 
 bool CTTask::isSystemCrontab() const
 {
-    return systemCrontab;
+    return mSystemCrontab;
 }
 
 void CTTask::setSystemCrontab(bool _systemCrontab)
 {
-    systemCrontab = _systemCrontab;
+    mSystemCrontab = _systemCrontab;
 }
 
 QIcon CTTask::commandIcon() const

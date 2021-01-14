@@ -14,25 +14,25 @@
 
 CTUnit::CTUnit(int _min, int _max, const QString &tokStr)
 {
-    min = _min;
-    max = _max;
+    mMin = _min;
+    mMax = _max;
     initialize(tokStr);
 }
 
 CTUnit::CTUnit(const CTUnit &source)
 {
-    min = source.min;
-    max = source.max;
+    mMin = source.mMin;
+    mMax = source.mMax;
 
-    initialEnabled.clear();
-    enabled.clear();
-    for (int i = 0; i <= max; i++) {
-        initialEnabled.append(false);
-        enabled.append(source.enabled.at(i));
+    mInitialEnabled.clear();
+    mEnabled.clear();
+    for (int i = 0; i <= mMax; i++) {
+        mInitialEnabled.append(false);
+        mEnabled.append(source.mEnabled.at(i));
     }
 
-    initialTokStr = QLatin1String("");
-    dirty = true;
+    mInitialTokStr = QLatin1String("");
+    mDirty = true;
 }
 
 CTUnit::~CTUnit()
@@ -45,33 +45,33 @@ CTUnit &CTUnit::operator =(const CTUnit &unit)
         return *this;
     }
 
-    min = unit.min;
-    max = unit.max;
+    mMin = unit.mMin;
+    mMax = unit.mMax;
 
-    enabled.clear();
-    for (int i = 0; i <= max; i++) {
-        enabled.append(unit.enabled[i]);
+    mEnabled.clear();
+    for (int i = 0; i <= mMax; i++) {
+        mEnabled.append(unit.mEnabled[i]);
     }
-    dirty = true;
+    mDirty = true;
 
     return *this;
 }
 
 void CTUnit::initialize(const QString &tokStr)
 {
-    enabled.clear();
-    for (int i = 0; i <= max; i++) {
-        enabled.append(false);
-        initialEnabled.append(false);
+    mEnabled.clear();
+    for (int i = 0; i <= mMax; i++) {
+        mEnabled.append(false);
+        mInitialEnabled.append(false);
     }
 
-    for (int i = min; i <= max; i++) {
-        initialEnabled[i] = enabled[i];
+    for (int i = mMin; i <= mMax; i++) {
+        mInitialEnabled[i] = mEnabled[i];
     }
 
     parse(tokStr);
-    initialTokStr = tokStr;
-    dirty = false;
+    mInitialTokStr = tokStr;
+    mDirty = false;
 }
 
 void CTUnit::parse(const QString &tokenString)
@@ -105,8 +105,8 @@ void CTUnit::parse(const QString &tokenString)
         if (dashpos == -1) {
             // deal with "*"
             if (subelement.mid(0, slashpos) == QLatin1String("*")) {
-                beginat = min;
-                endat = max;
+                beginat = mMin;
+                endat = mMax;
             } else {
                 beginat = fieldToValue(subelement.mid(0, slashpos));
                 endat = beginat;
@@ -120,13 +120,13 @@ void CTUnit::parse(const QString &tokenString)
         if (beginat < 0) {
             beginat = 0;
         }
-        if (endat > max) {
-            endat = max;
+        if (endat > mMax) {
+            endat = mMax;
         }
 
         // setup enabled
         for (int i = beginat; i <= endat; i += step) {
-            initialEnabled[i] = enabled[i] = true;
+            mInitialEnabled[i] = mEnabled[i] = true;
         }
 
         tokStr = tokStr.mid(commapos+1, tokStr.length()-commapos-1);
@@ -137,8 +137,8 @@ void CTUnit::parse(const QString &tokenString)
 
 QString CTUnit::exportUnit() const
 {
-    if (!dirty) {
-        return initialTokStr;
+    if (!mDirty) {
+        return mInitialTokStr;
     }
 
     if (isAllEnabled()) {
@@ -149,8 +149,8 @@ QString CTUnit::exportUnit() const
     int count = 0;
     QString tokenizeUnit;
 
-    for (int num = min; num <= max; num++) {
-        if (enabled[num]) {
+    for (int num = mMin; num <= mMax; num++) {
+        if (mEnabled[num]) {
             tokenizeUnit += QString::number(num);
             count++;
 
@@ -168,8 +168,8 @@ QString CTUnit::genericDescribe(const QList<QString> &label) const
     int total(enabledCount());
     int count(0);
     QString tmpStr;
-    for (int i = min; i <= max; i++) {
-        if (enabled[i]) {
+    for (int i = mMin; i <= mMax; i++) {
+        if (mEnabled[i]) {
             tmpStr += label.at(i);
             count++;
             switch (total - count) {
@@ -192,23 +192,23 @@ QString CTUnit::genericDescribe(const QList<QString> &label) const
 
 int CTUnit::minimum() const
 {
-    return min;
+    return mMin;
 }
 
 int CTUnit::maximum() const
 {
-    return max;
+    return mMax;
 }
 
 bool CTUnit::isEnabled(int pos) const
 {
-    return enabled.at(pos);
+    return mEnabled.at(pos);
 }
 
 bool CTUnit::isAllEnabled() const
 {
-    for (int i = min; i <= max; i++) {
-        if (enabled.at(i) == false) {
+    for (int i = mMin; i <= mMax; i++) {
+        if (mEnabled.at(i) == false) {
             return false;
         }
     }
@@ -218,41 +218,41 @@ bool CTUnit::isAllEnabled() const
 
 void CTUnit::setEnabled(int pos, bool value)
 {
-    enabled[pos] = value;
-    dirty = true;
+    mEnabled[pos] = value;
+    mDirty = true;
     return;
 }
 
 bool CTUnit::isDirty() const
 {
-    return dirty;
+    return mDirty;
 }
 
 int CTUnit::enabledCount() const
 {
     int total(0);
-    for (int i = min; i <= max; i++) {
-        total += (enabled[i] == true);
+    for (int i = mMin; i <= mMax; i++) {
+        total += (mEnabled[i] == true);
     }
     return total;
 }
 
 void CTUnit::apply()
 {
-    initialTokStr = exportUnit();
-    for (int i = min; i <= max; i++) {
-        initialEnabled[i] = enabled[i];
+    mInitialTokStr = exportUnit();
+    for (int i = mMin; i <= mMax; i++) {
+        mInitialEnabled[i] = mEnabled[i];
     }
-    dirty = false;
+    mDirty = false;
     return;
 }
 
 void CTUnit::cancel()
 {
-    for (int i = min; i <= max; i++) {
-        enabled[i] = initialEnabled[i];
+    for (int i = mMin; i <= mMax; i++) {
+        mEnabled[i] = mInitialEnabled[i];
     }
-    dirty = false;
+    mDirty = false;
     return;
 }
 

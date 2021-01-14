@@ -46,7 +46,7 @@ public:
     void removeTask(CTTask *task) override;
 
 private:
-    CTHost *ctHost;
+    CTHost *mCtHost = nullptr;
 };
 
 #endif // CT_GLOBAL_CRON_H

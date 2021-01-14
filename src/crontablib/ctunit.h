@@ -111,16 +111,16 @@ protected:
     void parse(const QString &tokenString = QLatin1String(""));
 
 private:
-    int min;
-    int max;
+    int mMin;
+    int mMax;
 
     int fieldToValue(const QString &entry) const;
-    bool dirty;
+    bool mDirty;
 
-    QList<bool> enabled;
-    QList<bool> initialEnabled;
+    QList<bool> mEnabled;
+    QList<bool> mInitialEnabled;
 
-    QString initialTokStr;
+    QString mInitialTokStr;
 
 public:
 

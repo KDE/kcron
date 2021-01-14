@@ -110,7 +110,7 @@ private:
      */
     bool allowDeny(char *name);
 
-    QString crontabBinary;
+    QString mCrontabBinary;
 };
 
 #endif // CTHOST_H

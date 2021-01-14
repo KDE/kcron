@@ -35,11 +35,11 @@ CTVariable::CTVariable(const QString &tokenString, const QString &_comment, cons
 
     userLogin = _userLogin;
 
-    initialVariable = variable;
-    initialValue = value;
-    initialComment = comment;
-    initialUserLogin = userLogin;
-    initialEnabled = enabled;
+    mInitialVariable = variable;
+    mInitialValue = value;
+    mInitialComment = comment;
+    mInitialUserLogin = userLogin;
+    mInitialEnabled = enabled;
 }
 
 CTVariable::CTVariable(const CTVariable &source)
@@ -48,11 +48,11 @@ CTVariable::CTVariable(const CTVariable &source)
     , comment(source.comment)
     , userLogin(source.userLogin)
     , enabled(source.enabled)
-    , initialVariable(QLatin1String(""))
-    , initialValue(QLatin1String(""))
-    , initialComment(QLatin1String(""))
-    , initialUserLogin(QLatin1String(""))
-    , initialEnabled(true)
+    , mInitialVariable(QLatin1String(""))
+    , mInitialValue(QLatin1String(""))
+    , mInitialComment(QLatin1String(""))
+    , mInitialUserLogin(QLatin1String(""))
+    , mInitialEnabled(true)
 {
 }
 
@@ -68,11 +68,11 @@ CTVariable &CTVariable::operator =(const CTVariable &source)
     userLogin = source.userLogin;
     enabled = source.enabled;
 
-    initialVariable = QLatin1String("");
-    initialValue = QLatin1String("");
-    initialComment = QLatin1String("");
-    initialUserLogin = QLatin1String("");
-    initialEnabled = true;
+    mInitialVariable = QLatin1String("");
+    mInitialValue = QLatin1String("");
+    mInitialComment = QLatin1String("");
+    mInitialUserLogin = QLatin1String("");
+    mInitialEnabled = true;
     return *this;
 }
 
@@ -93,26 +93,26 @@ QString CTVariable::exportVariable()
 
 void CTVariable::apply()
 {
-    initialVariable = variable;
-    initialValue = value;
-    initialComment = comment;
-    initialUserLogin = userLogin;
+    mInitialVariable = variable;
+    mInitialValue = value;
+    mInitialComment = comment;
+    mInitialUserLogin = userLogin;
 
-    initialEnabled = enabled;
+    mInitialEnabled = enabled;
 }
 
 void CTVariable::cancel()
 {
-    variable = initialVariable;
-    value = initialValue;
-    comment = initialComment;
-    userLogin = initialUserLogin;
-    enabled = initialEnabled;
+    variable = mInitialVariable;
+    value = mInitialValue;
+    comment = mInitialComment;
+    userLogin = mInitialUserLogin;
+    enabled = mInitialEnabled;
 }
 
 bool CTVariable::dirty() const
 {
-    return (variable != initialVariable) || (value != initialValue) || (comment != initialComment) || (userLogin != initialUserLogin) || (enabled != initialEnabled);
+    return (variable != mInitialVariable) || (value != mInitialValue) || (comment != mInitialComment) || (userLogin != mInitialUserLogin) || (enabled != mInitialEnabled);
 }
 
 QIcon CTVariable::variableIcon() const

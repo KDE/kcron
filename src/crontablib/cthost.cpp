@@ -28,7 +28,7 @@ CTHost::CTHost(const QString &cronBinary, CTInitializationError &ctInitializatio
 {
     struct passwd *userInfos = nullptr;
 
-    this->crontabBinary = cronBinary;
+    this->mCrontabBinary = cronBinary;
 
     // If it is the root user
     if (getuid() == 0) {
@@ -166,7 +166,7 @@ bool CTHost::isDirty()
 
 CTCron *CTHost::createSystemCron()
 {
-    CTCron *p = new CTSystemCron(crontabBinary);
+    CTCron *p = new CTSystemCron(mCrontabBinary);
 
     crons.append(p);
 
@@ -181,7 +181,7 @@ QString CTHost::createCTCron(const struct passwd *userInfos)
     }
 
     CTInitializationError ctInitializationError;
-    CTCron *p = new CTCron(crontabBinary, userInfos, currentUserCron, ctInitializationError);
+    CTCron *p = new CTCron(mCrontabBinary, userInfos, currentUserCron, ctInitializationError);
     if (ctInitializationError.hasErrorMessage()) {
         delete p;
         return ctInitializationError.errorMessage();

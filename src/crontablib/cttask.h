@@ -125,13 +125,13 @@ private:
     QString createTimeFormat() const;
     QString createDateFormat() const;
 
-    bool systemCrontab;
+    bool mSystemCrontab;
 
-    QString initialUserLogin;
-    QString initialCommand;
-    QString initialComment;
-    bool initialEnabled;
-    bool initialReboot;
+    QString mInitialUserLogin;
+    QString mInitialCommand;
+    QString mInitialComment;
+    bool mInitialEnabled;
+    bool mInitialReboot;
 };
 
 #endif // CTTASK_H

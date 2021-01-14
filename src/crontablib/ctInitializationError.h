@@ -17,17 +17,17 @@ public:
 
     QString errorMessage() const
     {
-        return error;
+        return mError;
     }
 
     void setErrorMessage(const QString &errorMessage)
     {
-        this->error = errorMessage;
+        this->mError = errorMessage;
     }
 
     bool hasErrorMessage()
     {
-        if (error.isEmpty() == true) {
+        if (mError.isEmpty() == true) {
             return false;
         }
 
@@ -35,7 +35,7 @@ public:
     }
 
 private:
-    QString error;
+    QString mError;
 };
 
 #endif // CT_INITIALIZATION_ERROR

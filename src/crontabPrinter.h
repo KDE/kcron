@@ -19,7 +19,7 @@ class QString;
 class CrontabWidget;
 
 class CrontabPrinterPrivate;
-
+class QPrinter;
 /**
  *Provides a wrapper for simple printing of text.
  */
@@ -81,7 +81,24 @@ private:
     QList<int> findMaxWidths(const QList<QStringList> &tasksContent, int columnCount);
     QList<int> findColumnWidths(const QList<QStringList> &tasksContent, int columnCount);
 
-    CrontabPrinterPrivate *const d;
+    /**
+     * Pointer a printer options object
+     */
+    CrontabPrinterWidget *mCrontabPrinterWidget = nullptr;
+
+    /**
+     * Pointer to parent widget
+     */
+    CrontabWidget *mCrontabWidget = nullptr;
+
+    QPainter *mPainter = nullptr;
+
+    QPrinter *mPrinter = nullptr;
+
+    QRect *mPrintView = nullptr;
+
+    int mPage = 0;
+    int mCurrentRowPosition = 0;
 };
 
 #endif

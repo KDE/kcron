@@ -67,11 +67,11 @@ public:
     bool enabled;
 
 private:
-    QString initialVariable;
-    QString initialValue;
-    QString initialComment;
-    QString initialUserLogin;
-    bool initialEnabled;
+    QString mInitialVariable;
+    QString mInitialValue;
+    QString mInitialComment;
+    QString mInitialUserLogin;
+    bool mInitialEnabled;
 };
 
 #endif // CTVARIABLE_H

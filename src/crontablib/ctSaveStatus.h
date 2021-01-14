@@ -17,37 +17,37 @@ public:
 
     CTSaveStatus()
     {
-        this->errorStatus = false;
+        this->mErrorStatus = false;
     }
 
     CTSaveStatus(const QString &errorMessage, const QString &detailErrorMessage)
     {
-        this->errorStatus = true;
-        this->error = errorMessage;
-        this->detailError = detailErrorMessage;
+        this->mErrorStatus = true;
+        this->mError = errorMessage;
+        this->mDetailError = detailErrorMessage;
     }
 
     QString errorMessage() const
     {
-        return error;
+        return mError;
     }
 
     QString detailErrorMessage() const
     {
-        return detailError;
+        return mDetailError;
     }
 
     bool isError() const
     {
-        return errorStatus;
+        return mErrorStatus;
     }
 
 private:
-    bool errorStatus;
+    bool mErrorStatus;
 
-    QString error;
+    QString mError;
 
-    QString detailError;
+    QString mDetailError;
 };
 
 #endif // CT_SAVE_STATUS
