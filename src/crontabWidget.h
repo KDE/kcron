@@ -50,7 +50,6 @@ public:
     CTCron *currentCron() const;
 
     QList<QAction *> cutCopyPasteActions();
-    QAction *printAction();
 
 public Q_SLOTS:
 
