@@ -49,21 +49,21 @@ public:
 	/**
 	 * The application.
 	 */
-	CTHost* ctHost;
+    CTHost* ctHost = nullptr;
 
 	/**
 	 * Tree view of the crontab tasks.
 	 */
-	TasksWidget* tasksWidget;
+    TasksWidget* tasksWidget = nullptr;
 
 	/**
 	 * Tree view of the crontab tasks.
 	 */
-	VariablesWidget* variablesWidget;
+    VariablesWidget* variablesWidget = nullptr;
 
-	QAction* cutAction;
-	QAction* copyAction;
-	QAction* pasteAction;
+    QAction* cutAction = nullptr;
+    QAction* copyAction = nullptr;
+    QAction* pasteAction = nullptr;
 
 	/**
 	 * Clipboard tasks.
@@ -75,25 +75,22 @@ public:
 	 */
 	QList<CTVariable*> clipboardVariables;
 
-	QRadioButton* currentUserCronRadio;
-	QRadioButton* systemCronRadio;
-	QRadioButton* otherUserCronRadio;
+    QRadioButton* currentUserCronRadio = nullptr;
+    QRadioButton* systemCronRadio = nullptr;
+    QRadioButton* otherUserCronRadio = nullptr;
 
-	QComboBox* otherUsers;
+    QComboBox* otherUsers = nullptr;
 
 	/**
 	 * Pointer to the pseudo Global Cron object
 	 */
-	CTGlobalCron* ctGlobalCron;
+    CTGlobalCron* ctGlobalCron = nullptr;
 
 
 };
 
 CrontabWidget::CrontabWidget(QWidget* parent, CTHost* ctHost) :
 	QWidget(parent), d(new CrontabWidgetPrivate()) {
-
-	d->tasksWidget = nullptr;
-	d->variablesWidget = nullptr;
 
 	d->ctHost = ctHost;
 
@@ -133,10 +130,10 @@ CrontabWidget::~CrontabWidget() {
 }
 
 bool CrontabWidget::hasClipboardContent() {
-	if (d->clipboardTasks.isEmpty() == false)
+    if (!d->clipboardTasks.isEmpty())
 		return true;
 
-	if (d->clipboardVariables.isEmpty() == false)
+    if (!d->clipboardVariables.isEmpty())
 		return true;
 
 	return false;
@@ -169,7 +166,8 @@ QHBoxLayout* CrontabWidget::createCronSelector() {
 	if (ctHost()->isRootUser()) {
 		QStringList users;
 
-		foreach(CTCron* ctCron, ctHost()->crons) {
+        const auto crons = ctHost()->crons;
+        for (CTCron* ctCron : crons) {
 			if (ctCron->isCurrentUserCron())
 				continue;
 
@@ -267,8 +265,8 @@ void CrontabWidget::copy() {
 	if (d->tasksWidget->treeWidget()->hasFocus()) {
 		logDebug() << "Tasks copying";
 
-		QList<TaskWidget*> tasksWidget = d->tasksWidget->selectedTasksWidget();
-		foreach(TaskWidget* taskWidget, tasksWidget) {
+        const QList<TaskWidget*> tasksWidget = d->tasksWidget->selectedTasksWidget();
+        for (TaskWidget* taskWidget : tasksWidget) {
 			CTTask* task = new CTTask( *(taskWidget->getCTTask()) );
 			d->clipboardTasks.append(task);
 

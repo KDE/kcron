@@ -30,36 +30,28 @@ public:
 	/**
 	 * Pointer a printer options object
 	 */
-	CrontabPrinterWidget* crontabPrinterWidget;
+    CrontabPrinterWidget* crontabPrinterWidget = nullptr;
 
 	/**
 	 * Pointer to parent widget
 	 */
-	CrontabWidget* crontabWidget;
+    CrontabWidget* crontabWidget = nullptr;
 
-	QPainter* painter;
+    QPainter* painter = nullptr;
 
-	QPrinter* printer;
+    QPrinter* printer = nullptr;
 
-	QRect* printView;
+    QRect* printView = nullptr;
 
-	int page;
-	int currentRowPosition;
+    int page = 0;
+    int currentRowPosition = 0;
 
 };
 
 CrontabPrinter::CrontabPrinter(CrontabWidget* crontabWidget) :
 	d(new CrontabPrinterPrivate()) {
 
-	d->crontabPrinterWidget = nullptr;
 	d->crontabWidget = crontabWidget;
-
-	d->painter = nullptr;
-	d->printer = nullptr;
-	d->printView = nullptr;
-
-	d->page = 0;
-	d->currentRowPosition = 0;
 }
 
 CrontabPrinter::~CrontabPrinter() {
@@ -75,7 +67,7 @@ CrontabPrinter::~CrontabPrinter() {
 bool CrontabPrinter::start() {
 	logDebug() << "Printing selection...";
 
-        if (d->printer == nullptr) {
+        if (!d->printer) {
             d->printer = new QPrinter();
         }
 
@@ -105,7 +97,7 @@ bool CrontabPrinter::start() {
 	// start painting
 	d->painter->begin(d->printer);
 
-	int margin = computeMargin();
+    const int margin = computeMargin();
 	d->printView = new QRect(margin, margin, d->painter->device()->width() - 2*margin, d->painter->device()->height() - 2*margin );
 
 	d->page = 1;
@@ -123,7 +115,9 @@ void CrontabPrinter::printTasks() {
 	drawTitle(i18n("Scheduled Tasks"));
 
 	QList<QStringList> tasksContent;
-	foreach(CTTask* task, cron->tasks()) {
+    tasksContent.reserve(cron->tasks().count());
+    const auto tasks = cron->tasks();
+    for (CTTask* task : tasks) {
 		QStringList values;
 		values << task->schedulingCronFormat();
 		values << task->command;
@@ -138,7 +132,7 @@ void CrontabPrinter::printTasks() {
 	taskHeaders << i18n("Scheduling") << i18n("Command") << i18n("Description");
 	drawHeader(tasksColumnWidths, taskHeaders);
 
-	foreach(const QStringList& contents, tasksContent) {
+    for (const QStringList& contents : qAsConst(tasksContent)) {
 
 		drawContentRow(tasksColumnWidths, contents);
 
@@ -162,10 +156,11 @@ void CrontabPrinter::printVariables() {
 	drawTitle(i18n("Environment Variables"));
 
 	//QList<QStringList> variablesContent;
-	foreach(CTVariable* variable, cron->variables()) {
+    const auto variables = cron->variables();
+    for (CTVariable* variable : variables) {
 		d->painter->drawText(*(d->printView), Qt::AlignLeft | Qt::TextWordWrap, variable->variable + QLatin1String( " = " ) + variable->value);
 
-		int moveBy = computeStringHeight(variable->variable);
+        const int moveBy = computeStringHeight(variable->variable);
 		d->painter->translate(0, moveBy);
 	}
 }
@@ -235,7 +230,7 @@ void CrontabPrinter::drawContentRow(const QList<int>& columnWidths, const QStrin
 
 	int totalWidths = 0;
 	int index=0;
-	foreach(const QString& content, contents) {
+    for (const QString& content : contents) {
 		if (index==0)
 			firstColumn = content;
 
@@ -277,17 +272,17 @@ void CrontabPrinter::changeRow(int x, int y) {
 }
 
 int CrontabPrinter::computeMargin() const {
-	int dpiy = d->painter->device()->logicalDpiY();
-	int margin = (int) ( (2/2.54)*dpiy ); // 2 cm margins
+    const int dpiy = d->painter->device()->logicalDpiY();
+    const int margin = (int) ( (2/2.54)*dpiy ); // 2 cm margins
 
 	return margin;
 }
 
 int CrontabPrinter::computeStringHeight(const QString& text) const {
 
-	int fontHeight = d->painter->fontMetrics().height();
-	int lines = d->painter->fontMetrics().boundingRect(text).width() / d->printView->width() + 1;
-	int moveBy = (fontHeight + 2) * lines;
+    const int fontHeight = d->painter->fontMetrics().height();
+    const int lines = d->painter->fontMetrics().boundingRect(text).width() / d->printView->width() + 1;
+    const int moveBy = (fontHeight + 2) * lines;
 
 	return moveBy;
 }
@@ -311,12 +306,12 @@ void CrontabPrinter::drawTable(const QList<int>& columnWidths) {
 	d->painter->translate(0, - d->currentRowPosition + computeMargin());
 
 	int columnWidthsTotal = 0;
-	foreach(int columnWidth, columnWidths) {
+    for (int columnWidth : columnWidths) {
 		columnWidthsTotal += columnWidth;
 	}
 
 
-	int margin = computeMargin();
+    const int margin = computeMargin();
 	int linePositionX = margin;
 
 	QPen originalPen = d->painter->pen();
@@ -336,7 +331,7 @@ void CrontabPrinter::drawTable(const QList<int>& columnWidths) {
 	//First vertical line
 	d->painter->drawLine(QPoint(linePositionX, 0), QPoint(linePositionX, d->currentRowPosition));
 
-	foreach(int columnWidth, columnWidths) {
+    for (int columnWidth : columnWidths) {
 		linePositionX += columnWidth;
 		d->painter->drawLine(QPoint(linePositionX, 0), QPoint(linePositionX, d->currentRowPosition));
 	}
@@ -355,7 +350,7 @@ QList<int> CrontabPrinter::findMaxWidths(const QList<QStringList>& contents, int
 		columnWidths.append(0);
 	}
 
-	foreach(const QStringList& content, contents) {
+    for (const QStringList& content : contents) {
 
 		int columnIndex = 0;
 		while (columnIndex < columnWidths.count()) {
@@ -375,13 +370,13 @@ QList<int> CrontabPrinter::findMaxWidths(const QList<QStringList>& contents, int
 }
 
 QList<int> CrontabPrinter::findColumnWidths(const QList<QStringList>& contents, int columnCount) {
-	QList<int> columnWidths = findMaxWidths(contents, columnCount);
+    QList<int> columnWidths = findMaxWidths(contents, columnCount);
 
 	int margin = computeMargin();
 	int pageWidth = d->painter->device()->width() - 2*margin;
 
 	int columnWidthSum = 0;
-	foreach(int width, columnWidths) {
+    for (int width : qAsConst(columnWidths)) {
 		logDebug() << "Column : " << width;
 		columnWidthSum += width;
 	}
@@ -407,7 +402,7 @@ QList<int> CrontabPrinter::findColumnWidths(const QList<QStringList>& contents, 
 
 
 void CrontabPrinter::needNewPage() {
-	int margin = computeMargin();
+    const int margin = computeMargin();
 	if (d->currentRowPosition + margin >= d->printView->height()) {
 		printPageNumber();
 		d->printer->newPage();

@@ -28,11 +28,11 @@ class GenericListWidgetPrivate {
 
 public:
 
-	QTreeWidget* treeWidget;
+    QTreeWidget* treeWidget = nullptr;
 	
-	CrontabWidget* crontabWidget;
+    CrontabWidget* crontabWidget = nullptr;
 	
-	QVBoxLayout* actionsLayout;
+    QVBoxLayout* actionsLayout = nullptr;
 
 };
 
@@ -123,12 +123,12 @@ void GenericListWidget::resizeColumnContents() {
 }
 
 QTreeWidgetItem* GenericListWidget::firstSelected() const {
-	QList<QTreeWidgetItem*> tasksItems = treeWidget()->selectedItems();
+    const QList<QTreeWidgetItem*> tasksItems = treeWidget()->selectedItems();
 	if (tasksItems.isEmpty()) {
 		return nullptr;
 	}
 
-	return tasksItems.first();
+    return tasksItems.constFirst();
 }
 
 void GenericListWidget::keyPressEvent(QKeyEvent *e) {
@@ -176,7 +176,7 @@ void GenericListWidget::setActionEnabled(QAction* action, bool enabled) {
 		
 		//Only change status of associated Buttons
 		QPushButton* button = qobject_cast<QPushButton*>(widget);
-		if (button!=nullptr) {
+        if (button) {
 			button->setEnabled(enabled);
 		}
 	}

@@ -27,11 +27,11 @@
 class VariablesWidgetPrivate {
 public:
 
-	QAction* newVariableAction;
+    QAction* newVariableAction = nullptr;
 
-	QAction* modifyAction;
+    QAction* modifyAction = nullptr;
 
-	QAction* deleteAction;
+    QAction* deleteAction = nullptr;
 
 };
 /**
@@ -90,8 +90,8 @@ void VariablesWidget::modifySelection(QTreeWidgetItem* item, int position) {
 QList<VariableWidget*> VariablesWidget::selectedVariablesWidget() const {
 	QList<VariableWidget*> variablesWidget;
 
-	QList<QTreeWidgetItem*> variablesItems = treeWidget()->selectedItems();
-	foreach(QTreeWidgetItem* item, variablesItems) {
+    const QList<QTreeWidgetItem*> variablesItems = treeWidget()->selectedItems();
+    for (QTreeWidgetItem* item : variablesItems) {
 		VariableWidget* variableWidget = static_cast<VariableWidget*>(item);
 		variablesWidget.append(variableWidget);
 	}
@@ -102,7 +102,7 @@ QList<VariableWidget*> VariablesWidget::selectedVariablesWidget() const {
 
 VariableWidget* VariablesWidget::firstSelectedVariableWidget() const {
 	QTreeWidgetItem* item = firstSelected();
-	if (item==nullptr)
+    if (!item)
 		return nullptr;
 
 	return static_cast<VariableWidget*>(item);

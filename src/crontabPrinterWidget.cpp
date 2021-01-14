@@ -32,8 +32,6 @@ CrontabPrinterWidget::CrontabPrinterWidget(bool root) :
 		chkPrintAllUsers->setChecked(false);
 		chkPrintAllUsers->setEnabled(false);
 	}
-
-	setLayout(main_);
 }
 
 CrontabPrinterWidget::~CrontabPrinterWidget() {

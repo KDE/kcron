@@ -38,12 +38,12 @@ public:
 	/**
 	 * Main GUI view/working area.
 	 */
-	CrontabWidget* crontabWidget;
+    CrontabWidget* crontabWidget = nullptr;
 
 	/**
 	 * Document object, here crotab entries.
 	 */
-	CTHost* ctHost;
+    CTHost* ctHost = nullptr;
 
 };
 
