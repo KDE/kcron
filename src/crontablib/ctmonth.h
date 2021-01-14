@@ -17,29 +17,30 @@
 /**
  * Scheduled task months.
  */
-class CTMonth : public CTUnit {
+class CTMonth : public CTUnit
+{
 public:
 
-	/**
-	 * Constructs from a tokenized string.
-	 */
-	explicit CTMonth(const QString& tokStr = QLatin1String(""));
+    /**
+     * Constructs from a tokenized string.
+     */
+    explicit CTMonth(const QString &tokStr = QLatin1String(""));
 
-	/**
-	 * Get natural language description.
-	 */
-	virtual QString describe() const;
+    /**
+     * Get natural language description.
+     */
+    virtual QString describe() const;
 
-	/**
-	 * Get month name.
-	 */
-	static QString getName(const int ndx);
+    /**
+     * Get month name.
+     */
+    static QString getName(const int ndx);
 
-	static const int MINIMUM = 1;
-	static const int MAXIMUM = 12;
+    static const int MINIMUM = 1;
+    static const int MAXIMUM = 12;
 private:
-	static void initializeNames();
-	static QList<QString> shortName;
+    static void initializeNames();
+    static QList<QString> shortName;
 };
 
 #endif // CTMONTH_H

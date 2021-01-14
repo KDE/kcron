@@ -17,28 +17,29 @@
 /**
  * Scheduled task days of month.
  */
-class CTDayOfMonth : public CTUnit {
+class CTDayOfMonth : public CTUnit
+{
 public:
-	/**
-	 * Constructs from a tokenized string.
-	 */
-	explicit CTDayOfMonth(const QString& tokStr = QLatin1String(""));
+    /**
+     * Constructs from a tokenized string.
+     */
+    explicit CTDayOfMonth(const QString &tokStr = QLatin1String(""));
 
-	/**
-	 * Get natural language description.
-	 */
-	virtual QString describe() const;
+    /**
+     * Get natural language description.
+     */
+    virtual QString describe() const;
 
-	/**
-	 * Get day of month name.
-	 */
-	static QString getName(const int ndx);
+    /**
+     * Get day of month name.
+     */
+    static QString getName(const int ndx);
 
-	static const int MINIMUM = 1;
-	static const int MAXIMUM = 31;
+    static const int MINIMUM = 1;
+    static const int MAXIMUM = 31;
 private:
-	static void initializeNames();
-	static QList<QString> shortName;
+    static void initializeNames();
+    static QList<QString> shortName;
 };
 
 #endif // CTDOM_H

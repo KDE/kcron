@@ -18,37 +18,36 @@ class CTTask;
 class CTVariable;
 class CTHost;
 
-
 /**
  * A user (encapsulation of a single crontab file).  Encapsulates
  * file i/o, parsing, tokenization, and natural language description.
  */
-class CTGlobalCron : public CTCron {
+class CTGlobalCron : public CTCron
+{
 public:
 
+    explicit CTGlobalCron(CTHost *ctHost);
 
-	explicit CTGlobalCron(CTHost* ctHost);
-
-	/**
-	 * Destructor.
-	 */
+    /**
+     * Destructor.
+     */
     ~CTGlobalCron() override;
 
-    QList<CTTask*> tasks() const override;
-	
-    QList<CTVariable*> variables() const override;
-	
-    void addTask(CTTask* task) override;
-    void addVariable(CTVariable* variable) override;
-	
-    void modifyTask(CTTask* task) override;
-    void modifyVariable(CTVariable* variable) override;
-		
-    void removeVariable(CTVariable* variable) override;
-    void removeTask(CTTask* task) override;
+    QList<CTTask *> tasks() const override;
+
+    QList<CTVariable *> variables() const override;
+
+    void addTask(CTTask *task) override;
+    void addVariable(CTVariable *variable) override;
+
+    void modifyTask(CTTask *task) override;
+    void modifyVariable(CTVariable *variable) override;
+
+    void removeVariable(CTVariable *variable) override;
+    void removeTask(CTTask *task) override;
 
 private:
-	CTHost* ctHost;
+    CTHost *ctHost;
 };
 
 #endif // CT_GLOBAL_CRON_H

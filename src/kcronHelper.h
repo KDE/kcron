@@ -17,13 +17,12 @@ class QTextEdit;
 
 class CrontabWidget;
 
-
-class KCronHelper {
-
+class KCronHelper
+{
 public:
-	static void initUserCombo(QComboBox* userCombo, CrontabWidget* crontabWidget, const QString& selectedUserLogin);
-	
-	static QTextEdit* createCommentEdit(QWidget* parent); 
+    static void initUserCombo(QComboBox *userCombo, CrontabWidget *crontabWidget, const QString &selectedUserLogin);
+
+    static QTextEdit *createCommentEdit(QWidget *parent);
 };
 
 #endif // KCRON_HELPER_H

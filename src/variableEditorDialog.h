@@ -24,68 +24,69 @@ class CrontabWidget;
 /**
  * Environment variable editor window.
  */
-class VariableEditorDialog : public QDialog {
-Q_OBJECT
+class VariableEditorDialog : public QDialog
+{
+    Q_OBJECT
 
 public:
 
-	/**
-	 * Initialize from CTVariable.
-	 */
-	explicit VariableEditorDialog(CTVariable* _ctVariable, const QString &_caption, CrontabWidget* crontabWidget);
+    /**
+     * Initialize from CTVariable.
+     */
+    explicit VariableEditorDialog(CTVariable *_ctVariable, const QString &_caption, CrontabWidget *crontabWidget);
 
-	/**
-	 * Destroy.
-	 */
+    /**
+     * Destroy.
+     */
     ~VariableEditorDialog() override;
 
 private Q_SLOTS:
 
-	/**
-	 * Setup title widget
-	 */
-	void setupTitleWidget(const QString& comment = QLatin1String(""), KTitleWidget::MessageType = KTitleWidget::PlainMessage);
+    /**
+     * Setup title widget
+     */
+    void setupTitleWidget(const QString &comment = QLatin1String(""), KTitleWidget::MessageType = KTitleWidget::PlainMessage);
 
-	/**
-	 * Enable / disable variable
-	 */
-	void slotEnabled();
+    /**
+     * Enable / disable variable
+     */
+    void slotEnabled();
 
-	/**
-	 * Apply changes and close.
-	 */
-	void slotOk();
+    /**
+     * Apply changes and close.
+     */
+    void slotOk();
 
-	/**
-	 * Run the wizard.
-	 */
-	void slotWizard();
+    /**
+     * Run the wizard.
+     */
+    void slotWizard();
 
 private:
 
-	/**
-	 * Environment variable.
-	 */
-	CTVariable* ctVariable;
+    /**
+     * Environment variable.
+     */
+    CTVariable *ctVariable;
 
-	CrontabWidget* crontabWidget;
-	
-	// Widgets.
-	KTitleWidget* titleWidget;
-	QPushButton* okButton;
+    CrontabWidget *crontabWidget;
 
-	QComboBox* cmbVariable;
+    // Widgets.
+    KTitleWidget *titleWidget;
+    QPushButton *okButton;
 
-	QLabel* detailsIcon;
-	QLabel* details;
-	
-	QLineEdit* leValue;
+    QComboBox *cmbVariable;
 
-	QTextEdit* teComment;
+    QLabel *detailsIcon;
+    QLabel *details;
 
-	QCheckBox* chkEnabled;
-	
-	QComboBox* userCombo;
+    QLineEdit *leValue;
+
+    QTextEdit *teComment;
+
+    QCheckBox *chkEnabled;
+
+    QComboBox *userCombo;
 };
 
 #endif // VARIABLE_EDITOR_DIALOG_H

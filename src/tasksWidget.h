@@ -21,81 +21,81 @@ class TasksWidgetPrivate;
 /**
  * QTreeWidget of a "tasks" folder.
  */
-class TasksWidget : public GenericListWidget {
-	Q_OBJECT
+class TasksWidget : public GenericListWidget
+{
+    Q_OBJECT
 
 public:
 
-	/**
-	 * Construct tasks folder from branch.
-	 */
-	explicit TasksWidget(CrontabWidget* crontabWidget);
-	
+    /**
+     * Construct tasks folder from branch.
+     */
+    explicit TasksWidget(CrontabWidget *crontabWidget);
+
     ~TasksWidget() override;
 
-	TaskWidget* firstSelectedTaskWidget() const;
-	
-	QList<TaskWidget*> selectedTasksWidget() const;
-	
-	void refreshTasks(CTCron* cron);
-	
-	bool needUserColumn() const;
+    TaskWidget *firstSelectedTaskWidget() const;
 
-	/** 
-	 * Enables/disables modification buttons
-	 */
-	void toggleModificationActions(bool enabled);
-	
-	/** 
-	 * Enables/disables new entry actions
-	 */
-	void toggleNewEntryAction(bool enabled);
+    QList<TaskWidget *> selectedTasksWidget() const;
 
-	/** 
-	 * Enables/disables "Run now"
-	 */
-	void toggleRunNowAction(bool enabled);
+    void refreshTasks(CTCron *cron);
 
-	/** 
-	 * Enables/disables Print Action
-	 */
-	void togglePrintAction(bool enabled);
+    bool needUserColumn() const;
+
+    /**
+     * Enables/disables modification buttons
+     */
+    void toggleModificationActions(bool enabled);
+
+    /**
+     * Enables/disables new entry actions
+     */
+    void toggleNewEntryAction(bool enabled);
+
+    /**
+     * Enables/disables "Run now"
+     */
+    void toggleRunNowAction(bool enabled);
+
+    /**
+     * Enables/disables Print Action
+     */
+    void togglePrintAction(bool enabled);
 
 Q_SIGNALS:
-	void taskModified(bool);
+    void taskModified(bool);
 
 public Q_SLOTS:
-	void modifySelection();
-	
-	void deleteSelection() override;
+    void modifySelection();
 
-	/**
-	 * Run task now.
-	 */
-	void runTaskNow() const;
+    void deleteSelection() override;
 
-	/**
-	 * Create a new task.  Default is which type is most recently selected.
-	 */
-	void createTask();
-	
-	void addTask(CTTask* task);
+    /**
+     * Run task now.
+     */
+    void runTaskNow() const;
 
-	void changeCurrentSelection();
+    /**
+     * Create a new task.  Default is which type is most recently selected.
+     */
+    void createTask();
+
+    void addTask(CTTask *task);
+
+    void changeCurrentSelection();
 
 protected Q_SLOTS:
-	void modifySelection(QTreeWidgetItem* item, int position) override;
+    void modifySelection(QTreeWidgetItem *item, int position) override;
 
 private:
-	void refreshHeaders();
-	
-	int statusColumnIndex();
+    void refreshHeaders();
 
-	void setupActions(CrontabWidget* crontabWidget);
-	void prepareContextualMenu();
-	
+    int statusColumnIndex();
 
-	TasksWidgetPrivate* const d;
+    void setupActions(CrontabWidget *crontabWidget);
+    void prepareContextualMenu();
+
+    TasksWidgetPrivate *const d;
 };
 
 #endif // TASKS_WIDGET_H

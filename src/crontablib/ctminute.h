@@ -14,20 +14,20 @@
 /**
  * Scheduled task minutes.
  */
-class CTMinute : public CTUnit {
+class CTMinute : public CTUnit
+{
 public:
 
-	/**
-	 * Constructs from a tokenized string.
-	 */
-	explicit CTMinute(const QString& tokStr);
+    /**
+     * Constructs from a tokenized string.
+     */
+    explicit CTMinute(const QString &tokStr);
 
-	CTMinute();
-	
-	int findPeriod() const;
-	
-	QString exportUnit() const override;
+    CTMinute();
 
+    int findPeriod() const;
+
+    QString exportUnit() const override;
 };
 
 #endif // CTMINUTE_H

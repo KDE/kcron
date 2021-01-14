@@ -11,11 +11,11 @@
 
 #include <QString>
 
-class CTHelper {
+class CTHelper
+{
 public:
 
-	static QString exportComment(const QString& comment);
+    static QString exportComment(const QString &comment);
 };
-
 
 #endif // CT_HELPER

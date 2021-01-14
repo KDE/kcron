@@ -13,43 +13,43 @@
 
 #include "variablesWidget.h"
 
-
 class CTVariable;
 
 /**
  * QTreeWidgetItem with a CTTask.
  */
-class VariableWidget : public QTreeWidgetItem {
+class VariableWidget : public QTreeWidgetItem
+{
 public:
 
-	/**
-	 * Initialize the list view item and task.
-	 */
-    explicit VariableWidget(VariablesWidget* variablesWidget, CTVariable* _ctVariable);
-	
-	/**
-	 * Refresh from underlying task.
-	 */
-	void refresh();
-	
-	/*
-	 * Change the status of this variable
-	 */
-	void toggleEnable();
+    /**
+     * Initialize the list view item and task.
+     */
+    explicit VariableWidget(VariablesWidget *variablesWidget, CTVariable *_ctVariable);
 
-	/**
-	 * Get the task.
-	 */
-	CTVariable* getCTVariable() const;
+    /**
+     * Refresh from underlying task.
+     */
+    void refresh();
+
+    /*
+     * Change the status of this variable
+     */
+    void toggleEnable();
+
+    /**
+     * Get the task.
+     */
+    CTVariable *getCTVariable() const;
 
 private:
 
-	/**
-	 * Variable
-	 */
-	CTVariable* ctVariable;
-	
-	VariablesWidget* variablesWidget;
+    /**
+     * Variable
+     */
+    CTVariable *ctVariable;
+
+    VariablesWidget *variablesWidget;
 };
 
 #endif // VARIABLE_WIDGET_H

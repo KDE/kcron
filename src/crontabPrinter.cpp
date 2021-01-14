@@ -25,388 +25,381 @@
 
 #include "logging.h"
 
-class CrontabPrinterPrivate {
+class CrontabPrinterPrivate
+{
 public:
-	/**
-	 * Pointer a printer options object
-	 */
-    CrontabPrinterWidget* crontabPrinterWidget = nullptr;
+    /**
+     * Pointer a printer options object
+     */
+    CrontabPrinterWidget *crontabPrinterWidget = nullptr;
 
-	/**
-	 * Pointer to parent widget
-	 */
-    CrontabWidget* crontabWidget = nullptr;
+    /**
+     * Pointer to parent widget
+     */
+    CrontabWidget *crontabWidget = nullptr;
 
-    QPainter* painter = nullptr;
+    QPainter *painter = nullptr;
 
-    QPrinter* printer = nullptr;
+    QPrinter *printer = nullptr;
 
-    QRect* printView = nullptr;
+    QRect *printView = nullptr;
 
     int page = 0;
     int currentRowPosition = 0;
-
 };
 
-CrontabPrinter::CrontabPrinter(CrontabWidget* crontabWidget) :
-	d(new CrontabPrinterPrivate()) {
-
-	d->crontabWidget = crontabWidget;
+CrontabPrinter::CrontabPrinter(CrontabWidget *crontabWidget)
+    : d(new CrontabPrinterPrivate())
+{
+    d->crontabWidget = crontabWidget;
 }
 
-CrontabPrinter::~CrontabPrinter() {
-	delete d->crontabPrinterWidget;
+CrontabPrinter::~CrontabPrinter()
+{
+    delete d->crontabPrinterWidget;
 
-	delete d->painter;
-	delete d->printer;
-	delete d->printView;
+    delete d->painter;
+    delete d->printer;
+    delete d->printView;
 
-	delete d;
+    delete d;
 }
 
-bool CrontabPrinter::start() {
-	logDebug() << "Printing selection...";
+bool CrontabPrinter::start()
+{
+    logDebug() << "Printing selection...";
 
-        if (!d->printer) {
-            d->printer = new QPrinter();
-        }
+    if (!d->printer) {
+        d->printer = new QPrinter();
+    }
 
-	// do some printer initialization
-	d->printer->setFullPage( true);
+    // do some printer initialization
+    d->printer->setFullPage(true);
 
-	/*
-	CrontabPrinterWidget* dialogPage = new CrontabPrinterWidget(d->crontabWidge);
-	d->printer->addDialogPage(dialogPage);
-	*/
+    /*
+    CrontabPrinterWidget* dialogPage = new CrontabPrinterWidget(d->crontabWidge);
+    d->printer->addDialogPage(dialogPage);
+    */
 
-	// initialize the printer using the print dialog
-	QPrintDialog *printDialog = new QPrintDialog(d->printer, nullptr);
-	printDialog->setOptionTabs(QList<QWidget *>() << d->crontabWidget);
-	printDialog->setEnabledOptions(QAbstractPrintDialog::PrintToFile);
-	if (printDialog->exec() == QDialog::Rejected) {
-		logDebug() << "Printing canceled";
-		delete printDialog;
-		return false;
-	}
+    // initialize the printer using the print dialog
+    QPrintDialog *printDialog = new QPrintDialog(d->printer, nullptr);
+    printDialog->setOptionTabs(QList<QWidget *>() << d->crontabWidget);
+    printDialog->setEnabledOptions(QAbstractPrintDialog::PrintToFile);
+    if (printDialog->exec() == QDialog::Rejected) {
+        logDebug() << "Printing canceled";
+        delete printDialog;
+        return false;
+    }
 
-	delete printDialog;
+    delete printDialog;
 
-	// create a painter to paint on the printer object
-	d->painter = new QPainter();
+    // create a painter to paint on the printer object
+    d->painter = new QPainter();
 
-	// start painting
-	d->painter->begin(d->printer);
+    // start painting
+    d->painter->begin(d->printer);
 
     const int margin = computeMargin();
-	d->printView = new QRect(margin, margin, d->painter->device()->width() - 2*margin, d->painter->device()->height() - 2*margin );
+    d->printView = new QRect(margin, margin, d->painter->device()->width() - 2*margin, d->painter->device()->height() - 2*margin);
 
-	d->page = 1;
-	d->currentRowPosition = 0;
+    d->page = 1;
+    d->currentRowPosition = 0;
 
-	drawMainTitle();
+    drawMainTitle();
 
-
-	return true;
+    return true;
 }
 
-void CrontabPrinter::printTasks() {
-	CTCron* cron = d->crontabWidget->currentCron();
+void CrontabPrinter::printTasks()
+{
+    CTCron *cron = d->crontabWidget->currentCron();
 
-	drawTitle(i18n("Scheduled Tasks"));
+    drawTitle(i18n("Scheduled Tasks"));
 
-	QList<QStringList> tasksContent;
+    QList<QStringList> tasksContent;
     tasksContent.reserve(cron->tasks().count());
     const auto tasks = cron->tasks();
-    for (CTTask* task : tasks) {
-		QStringList values;
-		values << task->schedulingCronFormat();
-		values << task->command;
-		values << task->comment;
+    for (CTTask *task : tasks) {
+        QStringList values;
+        values << task->schedulingCronFormat();
+        values << task->command;
+        values << task->comment;
 
-		tasksContent.append(values);
-	}
+        tasksContent.append(values);
+    }
 
-	QList<int> tasksColumnWidths = findColumnWidths(tasksContent, 3);
+    QList<int> tasksColumnWidths = findColumnWidths(tasksContent, 3);
 
-	QStringList taskHeaders;
-	taskHeaders << i18n("Scheduling") << i18n("Command") << i18n("Description");
-	drawHeader(tasksColumnWidths, taskHeaders);
+    QStringList taskHeaders;
+    taskHeaders << i18n("Scheduling") << i18n("Command") << i18n("Description");
+    drawHeader(tasksColumnWidths, taskHeaders);
 
-    for (const QStringList& contents : qAsConst(tasksContent)) {
+    for (const QStringList &contents : qAsConst(tasksContent)) {
+        drawContentRow(tasksColumnWidths, contents);
 
-		drawContentRow(tasksColumnWidths, contents);
+        needNewPage();
+    }
 
-		needNewPage();
-
-	}
-
-	drawTable(tasksColumnWidths);
-
-
+    drawTable(tasksColumnWidths);
 }
 
-void CrontabPrinter::printVariables() {
-	CTCron* cron = d->crontabWidget->currentCron();
+void CrontabPrinter::printVariables()
+{
+    CTCron *cron = d->crontabWidget->currentCron();
 
-	d->painter->translate(0, 20);
-	d->currentRowPosition = 0;
+    d->painter->translate(0, 20);
+    d->currentRowPosition = 0;
 
-	//Environment Variables
+    //Environment Variables
 
-	drawTitle(i18n("Environment Variables"));
+    drawTitle(i18n("Environment Variables"));
 
-	//QList<QStringList> variablesContent;
+    //QList<QStringList> variablesContent;
     const auto variables = cron->variables();
-    for (CTVariable* variable : variables) {
-		d->painter->drawText(*(d->printView), Qt::AlignLeft | Qt::TextWordWrap, variable->variable + QLatin1String( " = " ) + variable->value);
+    for (CTVariable *variable : variables) {
+        d->painter->drawText(*(d->printView), Qt::AlignLeft | Qt::TextWordWrap, variable->variable + QLatin1String(" = ") + variable->value);
 
         const int moveBy = computeStringHeight(variable->variable);
-		d->painter->translate(0, moveBy);
-	}
+        d->painter->translate(0, moveBy);
+    }
 }
 
-void CrontabPrinter::drawMainTitle() {
-	CTCron* cron = d->crontabWidget->currentCron();
+void CrontabPrinter::drawMainTitle()
+{
+    CTCron *cron = d->crontabWidget->currentCron();
 
-	QFont originalFont = d->painter->font();
-	QFont titleFont(originalFont);
-	titleFont.setPixelSize(20);
-	titleFont.setBold(true);
+    QFont originalFont = d->painter->font();
+    QFont titleFont(originalFont);
+    titleFont.setPixelSize(20);
+    titleFont.setBold(true);
 
-	d->painter->setFont(titleFont);
+    d->painter->setFont(titleFont);
 
-	QString mainTitle;
-	if (cron->isSystemCron())
-		mainTitle = i18n("System Crontab");
-	else if (cron->isMultiUserCron())
-		mainTitle = i18n("All Users Crontabs");
-	else
-		mainTitle = i18nc("Crontab of user login", "Crontab of user %1", cron->userLogin());
+    QString mainTitle;
+    if (cron->isSystemCron()) {
+        mainTitle = i18n("System Crontab");
+    } else if (cron->isMultiUserCron()) {
+        mainTitle = i18n("All Users Crontabs");
+    } else {
+        mainTitle = i18nc("Crontab of user login", "Crontab of user %1", cron->userLogin());
+    }
 
-	d->painter->drawText(*(d->printView), Qt::AlignHCenter | Qt::TextWordWrap, mainTitle);
+    d->painter->drawText(*(d->printView), Qt::AlignHCenter | Qt::TextWordWrap, mainTitle);
 
-	d->painter->translate(0, computeStringHeight(mainTitle));
+    d->painter->translate(0, computeStringHeight(mainTitle));
 
-	d->painter->setFont(originalFont);
-
+    d->painter->setFont(originalFont);
 }
 
-void CrontabPrinter::drawTitle(const QString& title) {
+void CrontabPrinter::drawTitle(const QString &title)
+{
+    QFont originalFont = d->painter->font();
+    QFont titleFont(originalFont);
+    titleFont.setPixelSize(16);
+    titleFont.setBold(true);
 
-	QFont originalFont = d->painter->font();
-	QFont titleFont(originalFont);
-	titleFont.setPixelSize(16);
-	titleFont.setBold(true);
+    d->painter->setFont(titleFont);
 
+    d->painter->drawText(*(d->printView), Qt::AlignLeft | Qt::TextWordWrap, title);
 
-	d->painter->setFont(titleFont);
+    d->painter->translate(0, computeStringHeight(title));
 
-	d->painter->drawText(*(d->printView), Qt::AlignLeft | Qt::TextWordWrap, title);
-
-
-	d->painter->translate(0, computeStringHeight(title));
-
-	d->painter->setFont(originalFont);
+    d->painter->setFont(originalFont);
 }
 
-void CrontabPrinter::drawHeader(const QList<int>& columnWidths, const QStringList& headers) {
+void CrontabPrinter::drawHeader(const QList<int> &columnWidths, const QStringList &headers)
+{
+    QFont originalFont = d->painter->font();
+    QFont titleFont(originalFont);
+    titleFont.setBold(true);
 
-	QFont originalFont = d->painter->font();
-	QFont titleFont(originalFont);
-	titleFont.setBold(true);
+    d->painter->setFont(titleFont);
 
-	d->painter->setFont(titleFont);
+    drawContentRow(columnWidths, headers);
 
-	drawContentRow(columnWidths, headers);
-
-	d->painter->setFont(originalFont);
+    d->painter->setFont(originalFont);
 }
 
+void CrontabPrinter::drawContentRow(const QList<int> &columnWidths, const QStringList &contents)
+{
+    QString firstColumn;
 
-void CrontabPrinter::drawContentRow(const QList<int>& columnWidths, const QStringList& contents) {
+    int totalWidths = 0;
+    int index = 0;
+    for (const QString &content : contents) {
+        if (index == 0) {
+            firstColumn = content;
+        }
 
+        d->painter->drawText(*(d->printView), Qt::AlignLeft | Qt::TextWordWrap, QLatin1String(" ") + content);
 
-	QString firstColumn;
+        d->painter->translate(columnWidths[index], 0);
 
-	int totalWidths = 0;
-	int index=0;
-    for (const QString& content : contents) {
-		if (index==0)
-			firstColumn = content;
+        totalWidths += columnWidths[index];
 
-		d->painter->drawText(*(d->printView), Qt::AlignLeft | Qt::TextWordWrap, QLatin1String( " " ) + content);
+        index++;
+    }
 
-		d->painter->translate(columnWidths[index], 0);
+    int moveBy = computeStringHeight(firstColumn);
 
-		totalWidths += columnWidths[index];
-
-		index++;
-	}
-
-	int moveBy = computeStringHeight(firstColumn);
-
-
-	changeRow( -totalWidths, moveBy);
+    changeRow(-totalWidths, moveBy);
 }
 
-
-void CrontabPrinter::finish() {
-	// stop painting, this will automatically send the print data to the printer
-	d->painter->end();
-
+void CrontabPrinter::finish()
+{
+    // stop painting, this will automatically send the print data to the printer
+    d->painter->end();
 }
 
-void CrontabPrinter::printPageNumber() {
-	logDebug() << "Printing page number...";
+void CrontabPrinter::printPageNumber()
+{
+    logDebug() << "Printing page number...";
 
-	d->painter->translate(0, - d->currentRowPosition);
-	d->printView->moveTo(QPoint(0, d->printView->height()) );
-	d->painter->translate( 0, - d->printView->height() );
-	d->painter->drawText(d->printView->right() - d->painter->fontMetrics().boundingRect(QString::number(d->page) ).width(), d->printView->bottom()+ d->painter->fontMetrics().ascent() + 5, QString::number(d->page) );
-
+    d->painter->translate(0, -d->currentRowPosition);
+    d->printView->moveTo(QPoint(0, d->printView->height()));
+    d->painter->translate(0, -d->printView->height());
+    d->painter->drawText(d->printView->right() - d->painter->fontMetrics().boundingRect(QString::number(d->page)).width(), d->printView->bottom()+ d->painter->fontMetrics().ascent() + 5, QString::number(d->page));
 }
 
-void CrontabPrinter::changeRow(int x, int y) {
-	d->painter->translate(x, y);
-	d->currentRowPosition = d->currentRowPosition + y;
+void CrontabPrinter::changeRow(int x, int y)
+{
+    d->painter->translate(x, y);
+    d->currentRowPosition = d->currentRowPosition + y;
 }
 
-int CrontabPrinter::computeMargin() const {
+int CrontabPrinter::computeMargin() const
+{
     const int dpiy = d->painter->device()->logicalDpiY();
-    const int margin = (int) ( (2/2.54)*dpiy ); // 2 cm margins
+    const int margin = (int)((2/2.54)*dpiy);    // 2 cm margins
 
-	return margin;
+    return margin;
 }
 
-int CrontabPrinter::computeStringHeight(const QString& text) const {
-
+int CrontabPrinter::computeStringHeight(const QString &text) const
+{
     const int fontHeight = d->painter->fontMetrics().height();
     const int lines = d->painter->fontMetrics().boundingRect(text).width() / d->printView->width() + 1;
     const int moveBy = (fontHeight + 2) * lines;
 
-	return moveBy;
+    return moveBy;
 }
 
 /**
  * Whether crontab should be printed
  */
-bool CrontabPrinter::isPrintCrontab() const {
-	return d->crontabPrinterWidget->printCrontab();
+bool CrontabPrinter::isPrintCrontab() const
+{
+    return d->crontabPrinterWidget->printCrontab();
 }
 
 /**
  * Whether all users should be printed (root only)
  */
-bool CrontabPrinter::isAllUsers() const {
-	return d->crontabPrinterWidget->printAllUsers();
+bool CrontabPrinter::isAllUsers() const
+{
+    return d->crontabPrinterWidget->printAllUsers();
 }
 
+void CrontabPrinter::drawTable(const QList<int> &columnWidths)
+{
+    d->painter->translate(0, -d->currentRowPosition + computeMargin());
 
-void CrontabPrinter::drawTable(const QList<int>& columnWidths) {
-	d->painter->translate(0, - d->currentRowPosition + computeMargin());
-
-	int columnWidthsTotal = 0;
+    int columnWidthsTotal = 0;
     for (int columnWidth : columnWidths) {
-		columnWidthsTotal += columnWidth;
-	}
-
+        columnWidthsTotal += columnWidth;
+    }
 
     const int margin = computeMargin();
-	int linePositionX = margin;
+    int linePositionX = margin;
 
-	QPen originalPen = d->painter->pen();
-	QPen pen(originalPen);
+    QPen originalPen = d->painter->pen();
+    QPen pen(originalPen);
 
-	pen.setWidth(1);
+    pen.setWidth(1);
 
-	d->painter->setPen(pen);
+    d->painter->setPen(pen);
 
+    //First horizontal line
+    d->painter->drawLine(QPoint(margin, 0), QPoint(margin + columnWidthsTotal, 0));
 
-	//First horizontal line
-	d->painter->drawLine(QPoint(margin, 0), QPoint(margin + columnWidthsTotal, 0));
+    //Second horizontal line
+    d->painter->drawLine(QPoint(margin, 0+computeStringHeight(QStringLiteral(" "))), QPoint(margin + columnWidthsTotal, 0+computeStringHeight(QStringLiteral(" "))));
 
-	//Second horizontal line
-	d->painter->drawLine(QPoint(margin, 0+computeStringHeight(QStringLiteral( " " ))), QPoint(margin + columnWidthsTotal, 0+computeStringHeight(QStringLiteral( " " ))));
-
-	//First vertical line
-	d->painter->drawLine(QPoint(linePositionX, 0), QPoint(linePositionX, d->currentRowPosition));
+    //First vertical line
+    d->painter->drawLine(QPoint(linePositionX, 0), QPoint(linePositionX, d->currentRowPosition));
 
     for (int columnWidth : columnWidths) {
-		linePositionX += columnWidth;
-		d->painter->drawLine(QPoint(linePositionX, 0), QPoint(linePositionX, d->currentRowPosition));
-	}
+        linePositionX += columnWidth;
+        d->painter->drawLine(QPoint(linePositionX, 0), QPoint(linePositionX, d->currentRowPosition));
+    }
 
-	//Last horizontal line
-	d->painter->drawLine(QPoint(margin, d->currentRowPosition), QPoint(margin + columnWidthsTotal, d->currentRowPosition));
+    //Last horizontal line
+    d->painter->drawLine(QPoint(margin, d->currentRowPosition), QPoint(margin + columnWidthsTotal, d->currentRowPosition));
 
-	d->painter->setPen(originalPen);
+    d->painter->setPen(originalPen);
 
-	d->painter->translate(0, d->currentRowPosition - computeMargin());
+    d->painter->translate(0, d->currentRowPosition - computeMargin());
 }
 
-QList<int> CrontabPrinter::findMaxWidths(const QList<QStringList>& contents, int columnCount) {
-	QList<int> columnWidths;
-	for (int i=0; i<columnCount; ++i) {
-		columnWidths.append(0);
-	}
+QList<int> CrontabPrinter::findMaxWidths(const QList<QStringList> &contents, int columnCount)
+{
+    QList<int> columnWidths;
+    for (int i = 0; i < columnCount; ++i) {
+        columnWidths.append(0);
+    }
 
-    for (const QStringList& content : contents) {
+    for (const QStringList &content : contents) {
+        int columnIndex = 0;
+        while (columnIndex < columnWidths.count()) {
+            const int valueWidth = d->painter->fontMetrics().boundingRect(content.at(columnIndex)).width();
+            if (columnWidths[columnIndex] < valueWidth) {
+                columnWidths[columnIndex] = valueWidth;
+            }
 
-		int columnIndex = 0;
-		while (columnIndex < columnWidths.count()) {
+            columnIndex++;
+        }
+    }
 
-		        const int valueWidth = d->painter->fontMetrics().boundingRect(content.at(columnIndex)).width();
-			if (columnWidths[columnIndex] < valueWidth) {
-				columnWidths[columnIndex] = valueWidth;
-			}
-
-			columnIndex++;
-		}
-
-
-	}
-
-	return columnWidths;
+    return columnWidths;
 }
 
-QList<int> CrontabPrinter::findColumnWidths(const QList<QStringList>& contents, int columnCount) {
+QList<int> CrontabPrinter::findColumnWidths(const QList<QStringList> &contents, int columnCount)
+{
     QList<int> columnWidths = findMaxWidths(contents, columnCount);
 
-	int margin = computeMargin();
-	int pageWidth = d->painter->device()->width() - 2*margin;
+    int margin = computeMargin();
+    int pageWidth = d->painter->device()->width() - 2*margin;
 
-	int columnWidthSum = 0;
+    int columnWidthSum = 0;
     for (int width : qAsConst(columnWidths)) {
-		logDebug() << "Column : " << width;
-		columnWidthSum += width;
-	}
+        logDebug() << "Column : " << width;
+        columnWidthSum += width;
+    }
 
-	if (columnWidthSum >= pageWidth) {
-		logDebug() << "The printing could be out of the page";
-		return columnWidths;
-	}
+    if (columnWidthSum >= pageWidth) {
+        logDebug() << "The printing could be out of the page";
+        return columnWidths;
+    }
 
-	int additionalSpace = (pageWidth - columnWidthSum) / columnWidths.count();
+    int additionalSpace = (pageWidth - columnWidthSum) / columnWidths.count();
 
+    int columnIndex = 0;
+    while (columnIndex < columnWidths.count()) {
+        columnWidths[columnIndex] = columnWidths[columnIndex] + additionalSpace;
 
-	int columnIndex = 0;
-	while (columnIndex < columnWidths.count()) {
-		columnWidths[columnIndex] = columnWidths[columnIndex] + additionalSpace;
+        columnIndex++;
+    }
 
-		columnIndex++;
-	}
-
-	return columnWidths;
+    return columnWidths;
 }
 
-
-
-void CrontabPrinter::needNewPage() {
+void CrontabPrinter::needNewPage()
+{
     const int margin = computeMargin();
-	if (d->currentRowPosition + margin >= d->printView->height()) {
-		printPageNumber();
-		d->printer->newPage();
-		d->page++;
-		d->currentRowPosition = 0;
-	}
+    if (d->currentRowPosition + margin >= d->printView->height()) {
+        printPageNumber();
+        d->printer->newPage();
+        d->page++;
+        d->currentRowPosition = 0;
+    }
 }

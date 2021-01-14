@@ -26,34 +26,35 @@ class CTHost;
 
 class KCMCronPrivate;
 
-class KCMCron : public KCModule {
-	Q_OBJECT
+class KCMCron : public KCModule
+{
+    Q_OBJECT
 
 public:
-	//, const QVariantList& arguments
-	KCMCron(QWidget* parent, const QVariantList& args);
+    //, const QVariantList& arguments
+    KCMCron(QWidget *parent, const QVariantList &args);
 
     ~KCMCron() override;
 
-	void load() override;
-	void save() override;
-	void defaults() override;
-	
-	/**
-	 * Additional init
-	 */
-	bool init();
+    void load() override;
+    void save() override;
+    void defaults() override;
 
-	/**
-	 * Returns a reference to the CTHost.
-	 */
-	CTHost* ctHost() const;
-	
-	QString findCrontabBinary();
-	
+    /**
+     * Additional init
+     */
+    bool init();
+
+    /**
+     * Returns a reference to the CTHost.
+     */
+    CTHost *ctHost() const;
+
+    QString findCrontabBinary();
+
 private:
 
-	KCMCronPrivate* const d;
+    KCMCronPrivate *const d;
 };
 
 #endif // KCM_CRON_H

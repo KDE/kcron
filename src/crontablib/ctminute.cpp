@@ -13,26 +13,30 @@
 /**
  * Constructs from a tokenized string.
  */
-CTMinute::CTMinute(const QString& tokStr) :
-	CTUnit(0, 59, tokStr) {
+CTMinute::CTMinute(const QString &tokStr)
+    : CTUnit(0, 59, tokStr)
+{
 }
 
-CTMinute::CTMinute() :
-	CTUnit(0, 59, QLatin1String( "" )) {
-
+CTMinute::CTMinute()
+    : CTUnit(0, 59, QLatin1String(""))
+{
 }
 
-int CTMinute::findPeriod() const {
-	QList<int> periods;
-	periods << 1 << 2 << 5 << 10 << 15 << 20 << 30;
+int CTMinute::findPeriod() const
+{
+    QList<int> periods;
+    periods << 1 << 2 << 5 << 10 << 15 << 20 << 30;
 
-	return CTUnit::findPeriod(periods);
+    return CTUnit::findPeriod(periods);
 }
 
-QString CTMinute::exportUnit() const {
-	int period = findPeriod();
-	if (period!=0 && period!=1)
-		return QStringLiteral( "*/%1" ).arg(QString::number(period));
+QString CTMinute::exportUnit() const
+{
+    int period = findPeriod();
+    if (period != 0 && period != 1) {
+        return QStringLiteral("*/%1").arg(QString::number(period));
+    }
 
-	return CTUnit::exportUnit();
+    return CTUnit::exportUnit();
 }

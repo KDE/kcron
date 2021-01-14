@@ -8,7 +8,6 @@
 
 #include "ctSystemCron.h"
 
-
 #include <KShell>
 #include <KLocalizedString>
 
@@ -20,46 +19,45 @@
 
 #include "logging.h"
 
-CTSystemCron::CTSystemCron(const QString& crontabBinary) :
-	CTCron() {
+CTSystemCron::CTSystemCron(const QString &crontabBinary)
+    : CTCron()
+{
+    d->systemCron = true;
+    d->multiUserCron = true;
+    d->currentUserCron = false;
 
-	d->systemCron = true;
-	d->multiUserCron = true;
-	d->currentUserCron = false;
+    d->crontabBinary = crontabBinary;
 
-	d->crontabBinary = crontabBinary;
+    QTemporaryFile tmp;
+    tmp.open();
+    d->tmpFileName = tmp.fileName();
 
-	QTemporaryFile tmp;
-	tmp.open();
-	d->tmpFileName = tmp.fileName();
+    CommandLine readCommandLine;
 
-	CommandLine readCommandLine;
+    readCommandLine.commandLine = QStringLiteral("cat");
+    readCommandLine.parameters << QStringLiteral("/etc/crontab");
+    readCommandLine.standardOutputFile = d->tmpFileName;
 
-	readCommandLine.commandLine = QStringLiteral( "cat" );
-	readCommandLine.parameters << QStringLiteral( "/etc/crontab" );
-	readCommandLine.standardOutputFile = d->tmpFileName;
+    d->writeCommandLine.commandLine = QStringLiteral("cat");
+    d->writeCommandLine.parameters << d->tmpFileName;
+    d->writeCommandLine.standardOutputFile = QStringLiteral("/etc/crontab");
 
-	d->writeCommandLine.commandLine = QStringLiteral( "cat" );
-	d->writeCommandLine.parameters << d->tmpFileName;
-	d->writeCommandLine.standardOutputFile = QStringLiteral( "/etc/crontab" );
+    d->userLogin = i18n("System Crontab");
+    d->userRealName = d->userLogin;
 
-	d->userLogin = i18n("System Crontab");
-	d->userRealName = d->userLogin;
+    d->initialTaskCount = 0;
+    d->initialVariableCount = 0;
 
-	d->initialTaskCount = 0;
-	d->initialVariableCount = 0;
+    // Don't set error if it can't be read, it means the user
+    // doesn't have a crontab.
+    if (readCommandLine.execute().exitCode == 0) {
+        this->parseFile(d->tmpFileName);
+    }
 
-	// Don't set error if it can't be read, it means the user
-	// doesn't have a crontab.
-	if (readCommandLine.execute().exitCode == 0) {
-		this->parseFile(d->tmpFileName);
-	}
-
-	d->initialTaskCount = d->task.size();
-	d->initialVariableCount = d->variable.size();
+    d->initialTaskCount = d->task.size();
+    d->initialVariableCount = d->variable.size();
 }
 
-
-CTSystemCron::~CTSystemCron() {
-
+CTSystemCron::~CTSystemCron()
+{
 }

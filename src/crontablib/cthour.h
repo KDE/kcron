@@ -14,17 +14,18 @@
 /**
  * Scheduled task hours.
  */
-class CTHour : public CTUnit {
+class CTHour : public CTUnit
+{
 public:
 
-	/**
-	 * Constructs from a tokenized string.
-	 */
-	explicit CTHour(const QString& tokStr = QLatin1String(""));
-	
-	int findPeriod() const;
-	
-	QString exportUnit() const override;
+    /**
+     * Constructs from a tokenized string.
+     */
+    explicit CTHour(const QString &tokStr = QLatin1String(""));
+
+    int findPeriod() const;
+
+    QString exportUnit() const override;
 };
 
 #endif // CTHOUR_H

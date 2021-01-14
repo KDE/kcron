@@ -25,324 +25,330 @@
 
 #include "logging.h"
 
-class TasksWidgetPrivate {
+class TasksWidgetPrivate
+{
 public:
 
-	QAction* newTaskAction;
+    QAction *newTaskAction;
 
-	QAction* modifyAction;
+    QAction *modifyAction;
 
-	QAction* deleteAction;
+    QAction *deleteAction;
 
-	QAction* runNowAction;
+    QAction *runNowAction;
 
-	QAction* printAction;
-
+    QAction *printAction;
 };
 
 /**
  * Construct tasks folder from branch.
  */
-TasksWidget::TasksWidget(CrontabWidget* crontabWidget) :
-	GenericListWidget(crontabWidget, i18n("<b>Scheduled Tasks</b>"), QIcon::fromTheme(QStringLiteral("system-run"))),
-	d(new TasksWidgetPrivate()) {
+TasksWidget::TasksWidget(CrontabWidget *crontabWidget)
+    : GenericListWidget(crontabWidget, i18n("<b>Scheduled Tasks</b>"), QIcon::fromTheme(QStringLiteral("system-run")))
+    , d(new TasksWidgetPrivate())
+{
+    refreshHeaders();
 
-	refreshHeaders();
+    treeWidget()->sortItems(1, Qt::AscendingOrder);
 
-	treeWidget()->sortItems(1, Qt::AscendingOrder);
+    setupActions(crontabWidget);
+    prepareContextualMenu();
 
-	setupActions(crontabWidget);
-	prepareContextualMenu();
+    connect(treeWidget(), &QTreeWidget::itemSelectionChanged, this, &TasksWidget::changeCurrentSelection);
 
-	connect(treeWidget(), &QTreeWidget::itemSelectionChanged, this, &TasksWidget::changeCurrentSelection);
-
-	logDebug() << "Tasks list created";
+    logDebug() << "Tasks list created";
 }
 
-TasksWidget::~TasksWidget() {
-	delete d;
+TasksWidget::~TasksWidget()
+{
+    delete d;
 }
 
-QList<TaskWidget*> TasksWidget::selectedTasksWidget() const {
-	QList<TaskWidget*> tasksWidget;
+QList<TaskWidget *> TasksWidget::selectedTasksWidget() const
+{
+    QList<TaskWidget *> tasksWidget;
 
-	QList<QTreeWidgetItem*> tasksItems = treeWidget()->selectedItems();
-	foreach(QTreeWidgetItem* item, tasksItems) {
-		TaskWidget* taskWidget = static_cast<TaskWidget*>(item);
-		tasksWidget.append(taskWidget);
-	}
+    QList<QTreeWidgetItem *> tasksItems = treeWidget()->selectedItems();
+    foreach (QTreeWidgetItem *item, tasksItems) {
+        TaskWidget *taskWidget = static_cast<TaskWidget *>(item);
+        tasksWidget.append(taskWidget);
+    }
 
-	return tasksWidget;
+    return tasksWidget;
 }
 
-TaskWidget* TasksWidget::firstSelectedTaskWidget() const {
-	QTreeWidgetItem* item = firstSelected();
-	if (item==nullptr)
-		return nullptr;
+TaskWidget *TasksWidget::firstSelectedTaskWidget() const
+{
+    QTreeWidgetItem *item = firstSelected();
+    if (item == nullptr) {
+        return nullptr;
+    }
 
-	return static_cast<TaskWidget*>(item);
+    return static_cast<TaskWidget *>(item);
 }
 
-int TasksWidget::statusColumnIndex() {
-	if (needUserColumn()) {
-		return 3;
-	}
+int TasksWidget::statusColumnIndex()
+{
+    if (needUserColumn()) {
+        return 3;
+    }
 
-	return 2;
+    return 2;
 }
 
-void TasksWidget::runTaskNow() const {
-	TaskWidget* taskWidget = firstSelectedTaskWidget();
-	if (taskWidget == nullptr)
-		return;
-	QString taskCommand = taskWidget->getCTTask()->command;
+void TasksWidget::runTaskNow() const
+{
+    TaskWidget *taskWidget = firstSelectedTaskWidget();
+    if (taskWidget == nullptr) {
+        return;
+    }
+    QString taskCommand = taskWidget->getCTTask()->command;
 
+    QString echoMessage = i18nc("Do not use any quote characters (') in this string", "End of script execution. Type Enter or Ctrl+C to exit.");
 
-	QString echoMessage = i18nc("Do not use any quote characters (') in this string", "End of script execution. Type Enter or Ctrl+C to exit.");
+    CTCron *ctCron = crontabWidget()->currentCron();
+    if (ctCron == nullptr) {
+        logDebug() << "Unable to find the related CtCron, please report this bug to KCron developer";
+        return;
+    }
 
-	CTCron* ctCron = crontabWidget()->currentCron();
-	if (ctCron == nullptr) {
-		logDebug() << "Unable to find the related CtCron, please report this bug to KCron developer";
-		return;
-	}
+    QStringList commandList;
 
+    foreach (CTVariable *variable, ctCron->variables()) {
+        commandList << QStringLiteral("export %1=\"%2\"").arg(variable->variable, variable->value);
+    }
 
-	QStringList commandList;
+    commandList << taskCommand;
+    commandList << QStringLiteral("echo '-------------------------------------------------------------------------'");
+    commandList << QLatin1String("echo ") + echoMessage;
+    commandList << QStringLiteral("echo '-------------------------------------------------------------------------'");
+    commandList << QStringLiteral("read");
 
-	foreach(CTVariable* variable, ctCron->variables()) {
-            commandList << QStringLiteral("export %1=\"%2\"").arg(variable->variable, variable->value);
-	}
+    QStringList parameters;
+    parameters << QStringLiteral("-e") << QStringLiteral("bash") << QStringLiteral("-c");
+    parameters << commandList.join(QLatin1String(";"));
 
-	commandList << taskCommand;
-	commandList << QStringLiteral( "echo '-------------------------------------------------------------------------'" );
-	commandList << QLatin1String( "echo " ) + echoMessage;
-	commandList << QStringLiteral( "echo '-------------------------------------------------------------------------'" );
-	commandList << QStringLiteral( "read" );
-
-	QStringList parameters;
-	parameters << QStringLiteral( "-e" ) << QStringLiteral( "bash" ) << QStringLiteral( "-c" );
-	parameters << commandList.join(QLatin1String( ";" ));
-
-	QProcess process;
-	process.startDetached(QStringLiteral( "konsole" ), parameters);
-
+    QProcess process;
+    process.startDetached(QStringLiteral("konsole"), parameters);
 }
 
-void TasksWidget::createTask() {
-	CTTask* task = new CTTask(QLatin1String( "" ), QLatin1String( "" ), crontabWidget()->currentCron()->userLogin(), crontabWidget()->currentCron()->isMultiUserCron());
+void TasksWidget::createTask()
+{
+    CTTask *task = new CTTask(QLatin1String(""), QLatin1String(""), crontabWidget()->currentCron()->userLogin(), crontabWidget()->currentCron()->isMultiUserCron());
 
-	TaskEditorDialog taskEditorDialog(task, i18n("New Task"), crontabWidget());
-	int result = taskEditorDialog.exec();
+    TaskEditorDialog taskEditorDialog(task, i18n("New Task"), crontabWidget());
+    int result = taskEditorDialog.exec();
 
-	if (result == QDialog::Accepted) {
-		addTask(task);
-		emit taskModified(true);
+    if (result == QDialog::Accepted) {
+        addTask(task);
+        emit taskModified(true);
 
-		changeCurrentSelection();
-	}
-	else {
-		delete task;
-	}
-
+        changeCurrentSelection();
+    } else {
+        delete task;
+    }
 }
 
-void TasksWidget::addTask(CTTask* task) {
-	CTCron* cron = crontabWidget()->currentCron();
+void TasksWidget::addTask(CTTask *task)
+{
+    CTCron *cron = crontabWidget()->currentCron();
 
-	cron->addTask(task);
-	new TaskWidget(this, task);
+    cron->addTask(task);
+    new TaskWidget(this, task);
 }
 
-void TasksWidget::modifySelection() {
-	modifySelection(firstSelectedTaskWidget(), -1);
+void TasksWidget::modifySelection()
+{
+    modifySelection(firstSelectedTaskWidget(), -1);
 }
 
-void TasksWidget::modifySelection(QTreeWidgetItem* item, int position) {
-	TaskWidget* taskWidget = static_cast<TaskWidget*>(item);
-	if (taskWidget!=nullptr) {
+void TasksWidget::modifySelection(QTreeWidgetItem *item, int position)
+{
+    TaskWidget *taskWidget = static_cast<TaskWidget *>(item);
+    if (taskWidget != nullptr) {
+        if (position == statusColumnIndex()) {
+            taskWidget->toggleEnable();
+            emit taskModified(true);
+        } else {
+            CTTask *task = taskWidget->getCTTask();
+            TaskEditorDialog taskEditorDialog(task, i18n("Modify Task"), crontabWidget());
+            int result = taskEditorDialog.exec();
 
-		if (position == statusColumnIndex()) {
-			taskWidget->toggleEnable();
-			emit taskModified(true);
-		}
-		else {
-			CTTask* task = taskWidget->getCTTask();
-			TaskEditorDialog taskEditorDialog(task, i18n("Modify Task"), crontabWidget());
-			int result = taskEditorDialog.exec();
+            if (result == QDialog::Accepted) {
+                crontabWidget()->currentCron()->modifyTask(task);
+                taskWidget->refresh();
+                emit taskModified(true);
+            }
+        }
+    }
 
-			if (result == QDialog::Accepted) {
-				crontabWidget()->currentCron()->modifyTask(task);
-				taskWidget->refresh();
-				emit taskModified(true);
-			}
-		}
-
-	}
-
-	logDebug() << "End of modification";
-
+    logDebug() << "End of modification";
 }
 
-void TasksWidget::deleteSelection() {
-	logDebug() << "Selection deleting...";
+void TasksWidget::deleteSelection()
+{
+    logDebug() << "Selection deleting...";
 
-	QList<QTreeWidgetItem*> tasksItems = treeWidget()->selectedItems();
+    QList<QTreeWidgetItem *> tasksItems = treeWidget()->selectedItems();
 
-	bool deleteSomething = ! (tasksItems.isEmpty());
+    bool deleteSomething = !(tasksItems.isEmpty());
 
-	foreach(QTreeWidgetItem* item, tasksItems) {
-		TaskWidget* taskWidget = static_cast<TaskWidget*>(item);
+    foreach (QTreeWidgetItem *item, tasksItems) {
+        TaskWidget *taskWidget = static_cast<TaskWidget *>(item);
 
-		crontabWidget()->currentCron()->removeTask(taskWidget->getCTTask());
-		delete taskWidget->getCTTask();
-		treeWidget()->takeTopLevelItem( treeWidget()->indexOfTopLevelItem(taskWidget) );
-		delete taskWidget;
+        crontabWidget()->currentCron()->removeTask(taskWidget->getCTTask());
+        delete taskWidget->getCTTask();
+        treeWidget()->takeTopLevelItem(treeWidget()->indexOfTopLevelItem(taskWidget));
+        delete taskWidget;
+    }
 
-	}
+    if (deleteSomething) {
+        emit taskModified(true);
+        changeCurrentSelection();
+    }
 
-	if (deleteSomething) {
-		emit taskModified(true);
-		changeCurrentSelection();
-	}
-
-	logDebug() << "End of deletion";
+    logDebug() << "End of deletion";
 }
 
-void TasksWidget::refreshTasks(CTCron* cron) {
-	//Remove previous items
-	removeAll();
+void TasksWidget::refreshTasks(CTCron *cron)
+{
+    //Remove previous items
+    removeAll();
 
-	refreshHeaders();
+    refreshHeaders();
 
-	//Add new items
-	foreach(CTTask* ctTask, cron->tasks()) {
-		new TaskWidget(this, ctTask);
-	}
+    //Add new items
+    foreach (CTTask *ctTask, cron->tasks()) {
+        new TaskWidget(this, ctTask);
+    }
 
-	resizeColumnContents();
-
+    resizeColumnContents();
 }
 
-void TasksWidget::refreshHeaders() {
-	QStringList headerLabels;
+void TasksWidget::refreshHeaders()
+{
+    QStringList headerLabels;
 
-	if (needUserColumn()) {
-		headerLabels << i18n("User");
-	}
+    if (needUserColumn()) {
+        headerLabels << i18n("User");
+    }
 
-	headerLabels << i18n("Scheduling");
+    headerLabels << i18n("Scheduling");
 
-	headerLabels << i18n("Command");
-	headerLabels << i18n("Status");
-	headerLabels << i18n("Description");
-	headerLabels << i18n("Scheduling Details");
+    headerLabels << i18n("Command");
+    headerLabels << i18n("Status");
+    headerLabels << i18n("Description");
+    headerLabels << i18n("Scheduling Details");
 
-	treeWidget()->setHeaderLabels(headerLabels);
+    treeWidget()->setHeaderLabels(headerLabels);
 
-	if (needUserColumn())
-		treeWidget()->setColumnCount(6);
-	else
-		treeWidget()->setColumnCount(5);
-
+    if (needUserColumn()) {
+        treeWidget()->setColumnCount(6);
+    } else {
+        treeWidget()->setColumnCount(5);
+    }
 }
 
-bool TasksWidget::needUserColumn() const {
-	CTCron* ctCron = crontabWidget()->currentCron();
-	if (ctCron && ctCron->isMultiUserCron()) {
-		return true;
-	}
+bool TasksWidget::needUserColumn() const
+{
+    CTCron *ctCron = crontabWidget()->currentCron();
+    if (ctCron && ctCron->isMultiUserCron()) {
+        return true;
+    }
 
-	return false;
-
+    return false;
 }
 
-void TasksWidget::setupActions(CrontabWidget* crontabWidget) {
+void TasksWidget::setupActions(CrontabWidget *crontabWidget)
+{
+    d->newTaskAction = new QAction(this);
+    d->newTaskAction->setIcon(QIcon::fromTheme(QStringLiteral("document-new")));
+    d->newTaskAction->setText(i18nc("Adds a new task", "New &Task..."));
+    d->newTaskAction->setToolTip(i18n("Create a new task."));
+    addRightAction(d->newTaskAction, this, SLOT(createTask()));
 
-	d->newTaskAction = new QAction(this);
-	d->newTaskAction->setIcon(QIcon::fromTheme( QStringLiteral( "document-new" )));
-	d->newTaskAction->setText(i18nc("Adds a new task", "New &Task...") );
-	d->newTaskAction->setToolTip(i18n("Create a new task."));
-	addRightAction(d->newTaskAction, this, SLOT(createTask()));
+    d->modifyAction = new QAction(this);
+    d->modifyAction->setText(i18n("M&odify..."));
+    d->modifyAction->setIcon(QIcon::fromTheme(QStringLiteral("document-open")));
+    d->modifyAction->setToolTip(i18n("Modify the selected task."));
+    addRightAction(d->modifyAction, this, SLOT(modifySelection()));
 
-	d->modifyAction = new QAction(this);
-	d->modifyAction->setText(i18n("M&odify...") );
-	d->modifyAction->setIcon(QIcon::fromTheme( QStringLiteral( "document-open" )) );
-	d->modifyAction->setToolTip(i18n("Modify the selected task."));
-	addRightAction(d->modifyAction, this, SLOT(modifySelection()));
+    d->deleteAction = new QAction(this);
+    d->deleteAction->setText(i18n("&Delete"));
+    d->deleteAction->setIcon(QIcon::fromTheme(QStringLiteral("edit-delete")));
+    d->deleteAction->setToolTip(i18n("Delete the selected task."));
+    addRightAction(d->deleteAction, this, SLOT(deleteSelection()));
 
-	d->deleteAction = new QAction(this);
-	d->deleteAction->setText(i18n("&Delete") );
-	d->deleteAction->setIcon(QIcon::fromTheme( QStringLiteral( "edit-delete" )) );
-	d->deleteAction->setToolTip(i18n("Delete the selected task."));
-	addRightAction(d->deleteAction, this, SLOT(deleteSelection()));
+    d->runNowAction = new QAction(this);
+    d->runNowAction->setText(i18n("&Run Now"));
+    d->runNowAction->setIcon(QIcon::fromTheme(QStringLiteral("system-run")));
+    d->runNowAction->setToolTip(i18n("Run the selected task now."));
+    addRightAction(d->runNowAction, this, SLOT(runTaskNow()));
 
-	d->runNowAction = new QAction(this);
-	d->runNowAction->setText(i18n("&Run Now") );
-	d->runNowAction->setIcon(QIcon::fromTheme( QStringLiteral( "system-run" )));
-	d->runNowAction->setToolTip(i18n("Run the selected task now."));
-	addRightAction(d->runNowAction, this, SLOT(runTaskNow()));
+    d->printAction = KStandardAction::print(crontabWidget, SLOT(print()), this);
+    addRightAction(d->printAction, crontabWidget, SLOT(print()));
 
-	d->printAction = KStandardAction::print(crontabWidget, SLOT(print()), this);
-	addRightAction(d->printAction, crontabWidget, SLOT(print()));
-
-	addRightStretch();
+    addRightStretch();
 }
 
-void TasksWidget::prepareContextualMenu() {
+void TasksWidget::prepareContextualMenu()
+{
+    treeWidget()->addAction(d->newTaskAction);
 
-	treeWidget()->addAction(d->newTaskAction);
+    treeWidget()->addAction(createSeparator());
 
-	treeWidget()->addAction(createSeparator());
+    treeWidget()->addAction(d->modifyAction);
+    treeWidget()->addAction(d->deleteAction);
 
-	treeWidget()->addAction(d->modifyAction);
-	treeWidget()->addAction(d->deleteAction);
+    treeWidget()->addAction(createSeparator());
 
-	treeWidget()->addAction(createSeparator());
+    foreach (QAction *action, crontabWidget()->cutCopyPasteActions()) {
+        treeWidget()->addAction(action);
+    }
 
-	foreach(QAction* action, crontabWidget()->cutCopyPasteActions()) {
-		treeWidget()->addAction(action);
-	}
+    treeWidget()->addAction(createSeparator());
 
-	treeWidget()->addAction(createSeparator());
-
-	treeWidget()->addAction(d->runNowAction);
-
+    treeWidget()->addAction(d->runNowAction);
 }
 
-void TasksWidget::toggleRunNowAction(bool state) {
-	setActionEnabled(d->runNowAction, state);
+void TasksWidget::toggleRunNowAction(bool state)
+{
+    setActionEnabled(d->runNowAction, state);
 }
 
-void TasksWidget::togglePrintAction(bool state) {
-	setActionEnabled(d->printAction, state);
+void TasksWidget::togglePrintAction(bool state)
+{
+    setActionEnabled(d->printAction, state);
 }
 
-void TasksWidget::toggleModificationActions(bool state) {
-	setActionEnabled(d->modifyAction, state);
-	setActionEnabled(d->deleteAction, state);
+void TasksWidget::toggleModificationActions(bool state)
+{
+    setActionEnabled(d->modifyAction, state);
+    setActionEnabled(d->deleteAction, state);
 }
 
-void TasksWidget::toggleNewEntryAction(bool state) {
-	setActionEnabled(d->newTaskAction, state);
+void TasksWidget::toggleNewEntryAction(bool state)
+{
+    setActionEnabled(d->newTaskAction, state);
 }
 
-void TasksWidget::changeCurrentSelection() {
-	//logDebug() << "Change selection...";
+void TasksWidget::changeCurrentSelection()
+{
+    //logDebug() << "Change selection...";
 
-	if (treeWidget()->topLevelItemCount()==0) {
-		togglePrintAction(false);
-	}
-	else {
-		togglePrintAction(true);
-	}
+    if (treeWidget()->topLevelItemCount() == 0) {
+        togglePrintAction(false);
+    } else {
+        togglePrintAction(true);
+    }
 
-	bool enabled;
-	if (treeWidget()->selectedItems().isEmpty())
-		enabled = false;
-	else
-		enabled = true;
+    bool enabled;
+    if (treeWidget()->selectedItems().isEmpty()) {
+        enabled = false;
+    } else {
+        enabled = true;
+    }
 
-	toggleModificationActions(enabled);
-	toggleRunNowAction(enabled);
-
+    toggleModificationActions(enabled);
+    toggleRunNowAction(enabled);
 }

@@ -23,64 +23,65 @@ class CrontabPrinterPrivate;
 /**
  *Provides a wrapper for simple printing of text.
  */
-class CrontabPrinter {
+class CrontabPrinter
+{
 public:
 
-	/**
-	 * Constructor
-	 */
-	explicit CrontabPrinter(CrontabWidget* crontabWidget);
+    /**
+     * Constructor
+     */
+    explicit CrontabPrinter(CrontabWidget *crontabWidget);
 
-	/**
-	 * Destructor
-	 */
-	~CrontabPrinter();
-	
-	bool start();
-	void finish();
-	void printTasks();
-	void printVariables();
+    /**
+     * Destructor
+     */
+    ~CrontabPrinter();
 
-	/**
-	 * Whether crontab should be printed
-	 */
-	bool isPrintCrontab() const;
-	
-	/**  
-	 * Whether all users should be printed (root only)
-	 */
-	bool isAllUsers() const;
-	
+    bool start();
+    void finish();
+    void printTasks();
+    void printVariables();
+
+    /**
+     * Whether crontab should be printed
+     */
+    bool isPrintCrontab() const;
+
+    /**
+     * Whether all users should be printed (root only)
+     */
+    bool isAllUsers() const;
+
 private:
 
-	/**
-	 *Disable the copy constructor and the assignment operator
-	 */
-	CrontabPrinter& operator=(const CrontabPrinter&) {
-		return *this;
-	}
-	
-	void printPageNumber();
-	
-	void drawMainTitle();
-	void drawTitle(const QString& title);
-	
-	void drawHeader(const QList<int>& columnWidths, const QStringList& headers);
-	void drawContentRow(const QList<int>& columnWidths, const QStringList& contents);
-	
-	void drawTable(const QList<int>& columnWidths);
-	
-	void needNewPage();
+    /**
+     *Disable the copy constructor and the assignment operator
+     */
+    CrontabPrinter &operator=(const CrontabPrinter &)
+    {
+        return *this;
+    }
 
-	void changeRow(int x, int y);
-	int computeMargin() const;
-	int computeStringHeight(const QString& text) const;
+    void printPageNumber();
 
-	QList<int> findMaxWidths(const QList<QStringList>& tasksContent, int columnCount);
-	QList<int> findColumnWidths(const QList<QStringList>& tasksContent, int columnCount);
-	
-	CrontabPrinterPrivate* const d;
+    void drawMainTitle();
+    void drawTitle(const QString &title);
 
+    void drawHeader(const QList<int> &columnWidths, const QStringList &headers);
+    void drawContentRow(const QList<int> &columnWidths, const QStringList &contents);
+
+    void drawTable(const QList<int> &columnWidths);
+
+    void needNewPage();
+
+    void changeRow(int x, int y);
+    int computeMargin() const;
+    int computeStringHeight(const QString &text) const;
+
+    QList<int> findMaxWidths(const QList<QStringList> &tasksContent, int columnCount);
+    QList<int> findColumnWidths(const QList<QStringList> &tasksContent, int columnCount);
+
+    CrontabPrinterPrivate *const d;
 };
 
 #endif

@@ -11,28 +11,31 @@
 
 #include <QString>
 
-class CTInitializationError {
+class CTInitializationError
+{
 public:
-	
-	QString errorMessage() const {
-		return error;
-	}
-	
-	void setErrorMessage(const QString& errorMessage) {
-		this->error = errorMessage;
-	}
-	
-	bool hasErrorMessage() {
-		if (error.isEmpty() == true)
-			return false;
-		
-		return true;
-	}
-	
-private:	
-	QString error;
 
+    QString errorMessage() const
+    {
+        return error;
+    }
+
+    void setErrorMessage(const QString &errorMessage)
+    {
+        this->error = errorMessage;
+    }
+
+    bool hasErrorMessage()
+    {
+        if (error.isEmpty() == true) {
+            return false;
+        }
+
+        return true;
+    }
+
+private:
+    QString error;
 };
-
 
 #endif // CT_INITIALIZATION_ERROR

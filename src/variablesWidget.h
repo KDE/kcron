@@ -22,66 +22,67 @@ class VariablesWidgetPrivate;
 /**
  * QListViewItem of a "tasks" folder.
  */
-class VariablesWidget : public GenericListWidget {
-	Q_OBJECT
+class VariablesWidget : public GenericListWidget
+{
+    Q_OBJECT
 
 public:
 
-	/**
-	 * Construct tasks folder from branch.
-	 */
-	explicit VariablesWidget(CrontabWidget* crontabWidget);
-	
+    /**
+     * Construct tasks folder from branch.
+     */
+    explicit VariablesWidget(CrontabWidget *crontabWidget);
+
     ~VariablesWidget() override;
 
-	QList<VariableWidget*> selectedVariablesWidget() const;
-	
-	VariableWidget* firstSelectedVariableWidget() const;
-	
-	void refreshVariables(CTCron* cron);
-	
-	bool needUserColumn();
+    QList<VariableWidget *> selectedVariablesWidget() const;
 
-	/** 
-	 * Enables/disables modification buttons
-	 */
-	void toggleModificationActions(bool enabled);
-	
-	/** 
-	 * Enables/disables new entry actions
-	 */
-	void toggleNewEntryAction(bool enabled);
+    VariableWidget *firstSelectedVariableWidget() const;
+
+    void refreshVariables(CTCron *cron);
+
+    bool needUserColumn();
+
+    /**
+     * Enables/disables modification buttons
+     */
+    void toggleModificationActions(bool enabled);
+
+    /**
+     * Enables/disables new entry actions
+     */
+    void toggleNewEntryAction(bool enabled);
 
 Q_SIGNALS:
-	void variableModified(bool);
-	
+    void variableModified(bool);
+
 public Q_SLOTS:
-	void modifySelection();
-	
-	void deleteSelection() override;
+    void modifySelection();
 
-	/**
-	 * Create a new variable.  Default is which type is most recently selected.
-	 */
-	void createVariable();
-	
-	void addVariable(CTVariable* variable);
+    void deleteSelection() override;
 
-	void changeCurrentSelection();
+    /**
+     * Create a new variable.  Default is which type is most recently selected.
+     */
+    void createVariable();
+
+    void addVariable(CTVariable *variable);
+
+    void changeCurrentSelection();
 
 protected Q_SLOTS:
-	void modifySelection(QTreeWidgetItem* item, int position) override;
+    void modifySelection(QTreeWidgetItem *item, int position) override;
 
 private:
-	void refreshHeaders();
-	
-	int statusColumnIndex();
-	
-	void setupActions();
-	
-	void prepareContextualMenu();
+    void refreshHeaders();
 
-	VariablesWidgetPrivate* const d;
+    int statusColumnIndex();
+
+    void setupActions();
+
+    void prepareContextualMenu();
+
+    VariablesWidgetPrivate *const d;
 };
 
 #endif // VARIABLES_WIDGET_H

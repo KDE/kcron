@@ -12,19 +12,20 @@
 
 #include <KLocalizedString>
 
-QString CTHelper::exportComment(const QString& comment) {
-	QString exportComment;
+QString CTHelper::exportComment(const QString &comment)
+{
+    QString exportComment;
 
-	if (comment.isEmpty()) {
-		QString noComment = i18n("No comment");
-		exportComment += QLatin1String( "#" ) + noComment + QLatin1String( "\n" );
-		return exportComment;
-	}
+    if (comment.isEmpty()) {
+        QString noComment = i18n("No comment");
+        exportComment += QLatin1String("#") + noComment + QLatin1String("\n");
+        return exportComment;
+    }
 
-	QStringList lines = comment.split(QStringLiteral( "\n" ));
-	foreach(const QString &line, lines) {
-		exportComment += QLatin1String( "#" ) + line + QLatin1String( "\n" );
-	}
+    QStringList lines = comment.split(QStringLiteral("\n"));
+    foreach (const QString &line, lines) {
+        exportComment += QLatin1String("#") + line + QLatin1String("\n");
+    }
 
-	return exportComment;
+    return exportComment;
 }

@@ -17,37 +17,38 @@ class TasksWidget;
 /**
  * QTreeWidgetItem with a CTTask.
  */
-class TaskWidget : public QTreeWidgetItem {
+class TaskWidget : public QTreeWidgetItem
+{
 public:
 
-	/**
-	 * Initialize the list view item and task.
-	 */
-    explicit TaskWidget(TasksWidget* tasksWidget, CTTask* _cttask);
+    /**
+     * Initialize the list view item and task.
+     */
+    explicit TaskWidget(TasksWidget *tasksWidget, CTTask *_cttask);
 
-	/*
-	 * Change the status of this task
-	 */
-	void toggleEnable();
+    /*
+     * Change the status of this task
+     */
+    void toggleEnable();
 
-	/**
-	 * Get the task.
-	 */
-	CTTask* getCTTask() const;
+    /**
+     * Get the task.
+     */
+    CTTask *getCTTask() const;
 
-	/**
-	 * Refresh from underlying task.
-	 */
-	void refresh();
+    /**
+     * Refresh from underlying task.
+     */
+    void refresh();
 
 private:
-	
-	/**
-	 * Task.
-	 */
-	CTTask* ctTask;
-	
-	TasksWidget* tasksWidget;
+
+    /**
+     * Task.
+     */
+    CTTask *ctTask;
+
+    TasksWidget *tasksWidget;
 };
 
 #endif // TASK_WIDGET_H

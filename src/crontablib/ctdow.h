@@ -17,36 +17,37 @@
 /**
  * Scheduled task days of week.
  */
-class CTDayOfWeek : public CTUnit {
+class CTDayOfWeek : public CTUnit
+{
 public:
-	/**
-	 * Constructs from a tokenized string.
-	 */
-	explicit CTDayOfWeek(const QString& tokStr = QLatin1String(""));
+    /**
+     * Constructs from a tokenized string.
+     */
+    explicit CTDayOfWeek(const QString &tokStr = QLatin1String(""));
 
-	/**
-	 * Override initialize to support crontab using both 0 and 7 for
-	 * Sunday.
-	 */
-	void initialize(const QString& tokStr = QLatin1String(""));
+    /**
+     * Override initialize to support crontab using both 0 and 7 for
+     * Sunday.
+     */
+    void initialize(const QString &tokStr = QLatin1String(""));
 
-	/**
-	 * Get natural language description.
-	 */
-	virtual QString describe() const;
+    /**
+     * Get natural language description.
+     */
+    virtual QString describe() const;
 
-	/**
-	 * Get day of week name.
-	 */
-	static QString getName(const int ndx, const bool format = CTDayOfWeek::longFormat);
+    /**
+     * Get day of week name.
+     */
+    static QString getName(const int ndx, const bool format = CTDayOfWeek::longFormat);
 
-	static const int MINIMUM = 1;
-	static const int MAXIMUM = 7;
-	
+    static const int MINIMUM = 1;
+    static const int MAXIMUM = 7;
+
 private:
-	static void initializeNames();
-	static QList<QString> shortName;
-	static QList<QString> longName;
+    static void initializeNames();
+    static QList<QString> shortName;
+    static QList<QString> longName;
 };
 
 #endif // CTDOW_H
