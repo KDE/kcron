@@ -12,7 +12,7 @@
 
 #include <QIcon>
 #include <KLocalizedString>
-#include <KMessageBox>
+#include <QDialogButtonBox>
 
 #include "ctvariable.h"
 #include "cthost.h"

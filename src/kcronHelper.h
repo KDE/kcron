@@ -9,8 +9,8 @@
 #ifndef KCRON_HELPER_H
 #define KCRON_HELPER_H
 
-#include <QPixmap>
 #include <QString>
+#include <QWidget>
 
 class QComboBox;
 class QTextEdit;

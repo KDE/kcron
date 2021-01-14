@@ -8,7 +8,6 @@
 
 #include "cthour.h"
 
-#include <KLocalizedString>
 
 /**
  * Constructs from a tokenized string.

@@ -8,7 +8,6 @@
 
 #include "taskEditorDialog.h"
 
-#include <QLayout>
 #include <QCheckBox>
 #include <QPalette>
 #include <QEvent>
@@ -23,9 +22,9 @@
 
 #include <KAcceleratorManager>
 #include <KLocalizedString>
-#include <KMessageBox>
 #include <QPushButton>
 #include <KStandardShortcut>
+#include <QDialogButtonBox>
 #include <kurlrequester.h>
 
 #include "logging.h"

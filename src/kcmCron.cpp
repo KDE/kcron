@@ -15,9 +15,6 @@
 #include <KMessageBox>
 #include <KConfig>
 #include <KLocalizedString>
-#include <KToggleAction>
-#include <QIcon>
-#include <KConfigGroup>
 
 #include "crontabWidget.h"
 

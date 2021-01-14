@@ -9,7 +9,6 @@
 #ifndef CT_GLOBAL_CRON_H
 #define CT_GLOBAL_CRON_H
 
-#include <QString>
 #include <QList>
 
 #include "ctcron.h"
