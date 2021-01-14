@@ -208,7 +208,7 @@ bool CTUnit::isEnabled(int pos) const
 bool CTUnit::isAllEnabled() const
 {
     for (int i = mMin; i <= mMax; i++) {
-        if (mEnabled.at(i) == false) {
+        if (!mEnabled.at(i)) {
             return false;
         }
     }

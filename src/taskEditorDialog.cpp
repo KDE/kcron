@@ -348,7 +348,7 @@ bool TaskEditorDialog::canReduceMinutesGroup()
 {
     for (int minuteIndex = 0; minuteIndex <= minuteTotal; ++minuteIndex) {
         if (minuteIndex % reducedMinuteStep != 0) {
-            if (mMinuteButtons[minuteIndex]->isChecked() == true) {
+            if (mMinuteButtons[minuteIndex]->isChecked()) {
                 return false;
             }
         }
@@ -483,7 +483,7 @@ void TaskEditorDialog::createMinutesGroup(QWidget *main)
     //First mandatory increase
     increaseMinutesGroup();
 
-    if (canReduceMinutesGroup() == true) {
+    if (canReduceMinutesGroup()) {
         reduceMinutesGroup();
     }
 
@@ -775,7 +775,7 @@ void TaskEditorDialog::slotWizard()
     }
 
     bool validCommand = checkCommand();
-    if (validCommand == false) {
+    if (!validCommand) {
         return;
     }
 

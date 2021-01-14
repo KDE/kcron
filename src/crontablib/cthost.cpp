@@ -36,8 +36,8 @@ CTHost::CTHost(const QString &cronBinary, CTInitializationError &ctInitializatio
         setpwent(); // restart
         while ((userInfos = getpwent())) {
             if (allowDeny(userInfos->pw_name)) {
-                QString errorMessage = createCTCron(userInfos);
-                if (errorMessage.isEmpty() == false) {
+                const QString errorMessage = createCTCron(userInfos);
+                if (!errorMessage.isEmpty()) {
                     ctInitializationError.setErrorMessage(errorMessage);
                     return;
                 }
@@ -67,8 +67,8 @@ CTHost::CTHost(const QString &cronBinary, CTInitializationError &ctInitializatio
 
         passwd *currentUserPassword = getpwuid(uid);
 
-        QString errorMessage = createCTCron(currentUserPassword);
-        if (errorMessage.isEmpty() == false) {
+        const QString errorMessage = createCTCron(currentUserPassword);
+        if (!errorMessage.isEmpty()) {
             ctInitializationError.setErrorMessage(errorMessage);
             return;
         }
@@ -126,7 +126,7 @@ bool CTHost::allowDeny(char *name)
 
 CTSaveStatus CTHost::save()
 {
-    if (isRootUser() == false) {
+    if (!isRootUser()) {
         logDebug() << "Save current user cron";
         CTCron *ctCron = findCurrentUserCron();
 
@@ -136,7 +136,7 @@ CTSaveStatus CTHost::save()
     foreach (CTCron *ctCron, crons) {
         CTSaveStatus ctSaveStatus = ctCron->save();
 
-        if (ctSaveStatus.isError() == true) {
+        if (ctSaveStatus.isError()) {
             return CTSaveStatus(i18nc("User login: errorMessage", "User %1: %2", ctCron->userLogin(), ctSaveStatus.errorMessage()), ctSaveStatus.detailErrorMessage());
         }
     }
@@ -231,7 +231,7 @@ CTCron *CTHost::findUserCron(const QString &userLogin) const
 CTCron *CTHost::findCronContaining(CTTask *ctTask) const
 {
     foreach (CTCron *ctCron, crons) {
-        if (ctCron->tasks().contains(ctTask) == true) {
+        if (ctCron->tasks().contains(ctTask)) {
             return ctCron;
         }
     }
@@ -243,7 +243,7 @@ CTCron *CTHost::findCronContaining(CTTask *ctTask) const
 CTCron *CTHost::findCronContaining(CTVariable *ctVariable) const
 {
     foreach (CTCron *ctCron, crons) {
-        if (ctCron->variables().contains(ctVariable) == true) {
+        if (ctCron->variables().contains(ctVariable)) {
             return ctCron;
         }
     }

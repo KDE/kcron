@@ -31,7 +31,7 @@ CommandLineStatus CommandLine::execute()
 {
     QProcess process;
 
-    if (standardOutputFile.isEmpty() == false) {
+    if (!standardOutputFile.isEmpty()) {
         process.setStandardOutputFile(standardOutputFile);
     }
 
@@ -47,7 +47,7 @@ CommandLineStatus CommandLine::execute()
     CommandLineStatus commandLineStatus;
 
     commandLineStatus.commandLine = commandLine + QLatin1String(" ") + parameters.join(QLatin1String(" "));
-    if (standardOutputFile.isEmpty() == false) {
+    if (!standardOutputFile.isEmpty()) {
         commandLineStatus.commandLine += QLatin1String(" > ") + standardOutputFile;
     }
 
@@ -76,7 +76,7 @@ CTCron::CTCron(const QString &crontabBinary, const struct passwd *userInfos, boo
     CommandLine readCommandLine;
 
     // regular user, so provide user's own crontab
-    if (currentUserCron == true) {
+    if (currentUserCron) {
         readCommandLine.commandLine = d->crontabBinary;
         readCommandLine.parameters << QStringLiteral("-l");
         readCommandLine.standardOutputFile = d->tmpFileName;
@@ -95,7 +95,7 @@ CTCron::CTCron(const QString &crontabBinary, const struct passwd *userInfos, boo
     d->initialTaskCount = 0;
     d->initialVariableCount = 0;
 
-    if (initializeFromUserInfos(userInfos) == false) {
+    if (!initializeFromUserInfos(userInfos)) {
         ctInitializationError.setErrorMessage(i18n("No password entry found for uid '%1'", getuid()));
         logDebug() << "Error in crontab creation of" << userInfos->pw_name;
         return;
@@ -137,7 +137,7 @@ CTCron &CTCron::operator =(const CTCron &source)
         return *this;
     }
 
-    if (source.isSystemCron() == true) {
+    if (source.isSystemCron()) {
         logDebug() << "Affect the system cron";
     }
 
@@ -167,7 +167,7 @@ void CTCron::parseFile(const QString &fileName)
     bool leadingComment = true;
 
     QTextStream in(&file);
-    while (in.atEnd() == false) {
+    while (!in.atEnd()) {
         QString line = in.readLine();
 
         // search for comments "#" but not disabled tasks "#\"
@@ -301,7 +301,7 @@ CTSaveStatus CTCron::save()
 {
     // write to temp file
     bool saveStatus = saveToFile(d->tmpFileName);
-    if (saveStatus == false) {
+    if (!saveStatus) {
         return CTSaveStatus(i18n("Unable to open crontab file for writing"), i18n("The file %1 could not be opened.", d->tmpFileName));
     }
 

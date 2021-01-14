@@ -27,7 +27,7 @@ public:
 
     bool hasErrorMessage()
     {
-        if (mError.isEmpty() == true) {
+        if (mError.isEmpty()) {
             return false;
         }
 

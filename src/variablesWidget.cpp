@@ -119,7 +119,7 @@ void VariablesWidget::deleteSelection()
 bool VariablesWidget::needUserColumn()
 {
     CTCron *currentCron = crontabWidget()->currentCron();
-    if (currentCron->isMultiUserCron() == true && currentCron->isSystemCron() == false) {
+    if (currentCron->isMultiUserCron() && !currentCron->isSystemCron()) {
         return true;
     }
 
@@ -128,7 +128,7 @@ bool VariablesWidget::needUserColumn()
 
 int VariablesWidget::statusColumnIndex()
 {
-    if (needUserColumn() == true) {
+    if (needUserColumn()) {
         return 3;
     }
 

@@ -59,7 +59,7 @@ CTTask::CTTask(const QString &tokenString, const QString &_comment, const QStrin
 
     int spacePos(tokStr.indexOf(QRegExp(QLatin1String("[ \t]"))));
     // If reboot bypass initialize functions so no keys selected in modify task
-    if (reboot == false) {
+    if (!reboot) {
         //logDebug() << "Line : " << tokStr;
         minute.initialize(tokStr.mid(0, spacePos));
 
@@ -167,14 +167,14 @@ QString CTTask::exportTask()
 
     exportTask += CTHelper::exportComment(comment);
 
-    if (enabled == false) {
+    if (!enabled) {
         exportTask += QLatin1String("#\\");
     }
 
     exportTask += schedulingCronFormat();
     exportTask += QLatin1String("\t");
 
-    if (isSystemCrontab() == true) {
+    if (isSystemCrontab()) {
         exportTask += userLogin + QLatin1String("\t");
     }
 
@@ -319,7 +319,7 @@ QString CTTask::describeDateAndHours() const
     for (int h = 0; h <= 23; h++) {
         if (hour.isEnabled(h)) {
             for (int m = 0; m <= 59; m++) {
-                if (minute.isEnabled(m) == true) {
+                if (minute.isEnabled(m)) {
                     QString hourString;
                     if (h < 10) {
                         hourString = QLatin1String("0") + QString::number(h);
@@ -435,7 +435,7 @@ QString CTTask::decryptBinaryCommand(const QString &command) const
         }
     }
 
-    if (found == false) {
+    if (!found) {
         fullCommand = command;
     }
 
@@ -450,7 +450,7 @@ QStringList CTTask::separatePathCommand(const QString &command, bool quoted) con
 
     if (command.at(0) == QLatin1Char('/')) {
         QString fullCommand;
-        if (quoted == true) {
+        if (quoted) {
             fullCommand = command;
         } else {
             fullCommand = decryptBinaryCommand(command);
@@ -466,7 +466,7 @@ QStringList CTTask::separatePathCommand(const QString &command, bool quoted) con
         pathCommand << path << commandBinary;
     } else {
         QString fullCommand;
-        if (quoted == true) {
+        if (quoted) {
             fullCommand = command;
         } else {
             fullCommand = decryptBinaryCommand(command);

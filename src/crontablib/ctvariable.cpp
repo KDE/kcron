@@ -78,11 +78,9 @@ CTVariable &CTVariable::operator =(const CTVariable &source)
 
 QString CTVariable::exportVariable()
 {
-    QString exportVariable;
+    QString exportVariable = CTHelper::exportComment(comment);
 
-    exportVariable += CTHelper::exportComment(comment);
-
-    if (enabled == false) {
+    if (!enabled) {
         exportVariable += QLatin1String("#\\");
     }
 

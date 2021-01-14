@@ -183,7 +183,7 @@ void CrontabWidget::refreshCron()
     mTasksWidget->refreshTasks(ctCron);
     mVariablesWidget->refreshVariables(ctCron);
 
-    if (ctCron->isMultiUserCron() && ctHost()->isRootUser() == false) {
+    if (ctCron->isMultiUserCron() && !ctHost()->isRootUser()) {
         logDebug() << "Disabling view...";
 
         mTasksWidget->treeWidget()->setEnabled(false);
@@ -369,7 +369,7 @@ void CrontabWidget::print()
 {
     CrontabPrinter printer(this);
 
-    if (printer.start() == false) {
+    if (!printer.start()) {
         logDebug() << "Unable to start printer";
         return;
     }

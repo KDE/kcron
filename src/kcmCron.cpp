@@ -88,7 +88,7 @@ void KCMCron::save()
     logDebug() << "Saving crontab...";
 
     CTSaveStatus saveStatus = mCtHost->save();
-    if (saveStatus.isError() == true) {
+    if (saveStatus.isError()) {
         KMessageBox::detailedError(this, saveStatus.errorMessage(), saveStatus.detailErrorMessage());
     }
 }
