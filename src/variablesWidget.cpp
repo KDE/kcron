@@ -57,7 +57,7 @@ void VariablesWidget::modifySelection(QTreeWidgetItem *item, int position)
     if (variableWidget != nullptr) {
         if (position == statusColumnIndex()) {
             variableWidget->toggleEnable();
-            emit variableModified(true);
+            Q_EMIT variableModified(true);
         } else {
             CTVariable *variable = variableWidget->getCTVariable();
             VariableEditorDialog variableEditorDialog(variable, i18n("Modify Variable"), crontabWidget());
@@ -67,7 +67,7 @@ void VariablesWidget::modifySelection(QTreeWidgetItem *item, int position)
                 crontabWidget()->currentCron()->modifyVariable(variable);
                 variableWidget->refresh();
 
-                emit variableModified(true);
+                Q_EMIT variableModified(true);
             }
         }
     }
@@ -111,7 +111,7 @@ void VariablesWidget::deleteSelection()
     }
 
     if (deleteSomething) {
-        emit variableModified(true);
+        Q_EMIT variableModified(true);
         changeCurrentSelection();
     }
 }
@@ -144,7 +144,7 @@ void VariablesWidget::createVariable()
 
     if (result == QDialog::Accepted) {
         addVariable(variable);
-        emit variableModified(true);
+        Q_EMIT variableModified(true);
         changeCurrentSelection();
     } else {
         delete variable;

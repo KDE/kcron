@@ -25,12 +25,6 @@
 
 #include "logging.h"
 
-class CrontabPrinterPrivate
-{
-public:
-
-};
-
 CrontabPrinter::CrontabPrinter(CrontabWidget *crontabWidget)
 {
     mCrontabWidget = crontabWidget;

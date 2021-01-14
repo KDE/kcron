@@ -104,7 +104,7 @@ CTHost *GenericListWidget::ctHost() const
 void GenericListWidget::resizeColumnContents()
 {
     //Resize all columns except the last one (which always take the last available space)
-    for (int i = 0; i < mTreeWidget->columnCount()-1; ++i) {
+    for (int i = 0, total = mTreeWidget->columnCount()-1; i < total; ++i) {
         mTreeWidget->resizeColumnToContents(i);
     }
 }

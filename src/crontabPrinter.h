@@ -18,7 +18,6 @@ class QString;
 
 class CrontabWidget;
 
-class CrontabPrinterPrivate;
 class QPrinter;
 /**
  *Provides a wrapper for simple printing of text.

@@ -233,7 +233,7 @@ void CrontabWidget::copy()
     if (mVariablesWidget->treeWidget()->hasFocus()) {
         logDebug() << "Variables copying";
 
-        QList<VariableWidget *> variablesWidget = mVariablesWidget->selectedVariablesWidget();
+        const QList<VariableWidget *> variablesWidget = mVariablesWidget->selectedVariablesWidget();
         foreach (VariableWidget *variableWidget, variablesWidget) {
             CTVariable *variable = new CTVariable(*(variableWidget->getCTVariable()));
             mClipboardVariables.append(variable);
@@ -271,13 +271,13 @@ void CrontabWidget::paste()
     logDebug() << "Paste content";
 
     if (mTasksWidget->treeWidget()->hasFocus()) {
-        foreach (CTTask *task, mClipboardTasks) {
+        for (CTTask *task : qAsConst(mClipboardTasks)) {
             mTasksWidget->addTask(new CTTask(*task));
         }
     }
 
     if (mVariablesWidget->treeWidget()->hasFocus()) {
-        foreach (CTVariable *variable, mClipboardVariables) {
+        for (CTVariable *variable : qAsConst(mClipboardVariables)) {
             mVariablesWidget->addVariable(new CTVariable(*variable));
         }
     }

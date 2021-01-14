@@ -51,8 +51,8 @@ QList<TaskWidget *> TasksWidget::selectedTasksWidget() const
 {
     QList<TaskWidget *> tasksWidget;
 
-    QList<QTreeWidgetItem *> tasksItems = treeWidget()->selectedItems();
-    foreach (QTreeWidgetItem *item, tasksItems) {
+    const QList<QTreeWidgetItem *> tasksItems = treeWidget()->selectedItems();
+    for (QTreeWidgetItem *item : tasksItems) {
         TaskWidget *taskWidget = static_cast<TaskWidget *>(item);
         tasksWidget.append(taskWidget);
     }
@@ -63,7 +63,7 @@ QList<TaskWidget *> TasksWidget::selectedTasksWidget() const
 TaskWidget *TasksWidget::firstSelectedTaskWidget() const
 {
     QTreeWidgetItem *item = firstSelected();
-    if (item == nullptr) {
+    if (!item) {
         return nullptr;
     }
 
@@ -90,14 +90,15 @@ void TasksWidget::runTaskNow() const
     QString echoMessage = i18nc("Do not use any quote characters (') in this string", "End of script execution. Type Enter or Ctrl+C to exit.");
 
     CTCron *ctCron = crontabWidget()->currentCron();
-    if (ctCron == nullptr) {
+    if (!ctCron) {
         logDebug() << "Unable to find the related CtCron, please report this bug to KCron developer";
         return;
     }
 
     QStringList commandList;
 
-    foreach (CTVariable *variable, ctCron->variables()) {
+    const auto variables = ctCron->variables();
+    for (CTVariable *variable : variables) {
         commandList << QStringLiteral("export %1=\"%2\"").arg(variable->variable, variable->value);
     }
 
@@ -124,7 +125,7 @@ void TasksWidget::createTask()
 
     if (result == QDialog::Accepted) {
         addTask(task);
-        emit taskModified(true);
+        Q_EMIT taskModified(true);
 
         changeCurrentSelection();
     } else {
@@ -151,7 +152,7 @@ void TasksWidget::modifySelection(QTreeWidgetItem *item, int position)
     if (taskWidget != nullptr) {
         if (position == statusColumnIndex()) {
             taskWidget->toggleEnable();
-            emit taskModified(true);
+            Q_EMIT taskModified(true);
         } else {
             CTTask *task = taskWidget->getCTTask();
             TaskEditorDialog taskEditorDialog(task, i18n("Modify Task"), crontabWidget());
@@ -160,7 +161,7 @@ void TasksWidget::modifySelection(QTreeWidgetItem *item, int position)
             if (result == QDialog::Accepted) {
                 crontabWidget()->currentCron()->modifyTask(task);
                 taskWidget->refresh();
-                emit taskModified(true);
+                Q_EMIT taskModified(true);
             }
         }
     }
@@ -186,7 +187,7 @@ void TasksWidget::deleteSelection()
     }
 
     if (deleteSomething) {
-        emit taskModified(true);
+        Q_EMIT taskModified(true);
         changeCurrentSelection();
     }
 

@@ -46,9 +46,9 @@ private:
     /**
      * Variable
      */
-    CTVariable *ctVariable;
+    CTVariable *ctVariable = nullptr;
 
-    VariablesWidget *variablesWidget;
+    VariablesWidget *variablesWidget = nullptr;
 };
 
 #endif // VARIABLE_WIDGET_H

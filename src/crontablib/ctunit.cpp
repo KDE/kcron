@@ -85,11 +85,11 @@ void CTUnit::parse(const QString &tokenString)
 
     // loop through each subelement
     tokStr += QLatin1Char(',');
-    while ((commapos = tokStr.indexOf(QLatin1String(","))) > 0) {
+    while ((commapos = tokStr.indexOf(QLatin1Char(','))) > 0) {
         subelement = tokStr.mid(0, commapos);
 
         // find "/" to determine step
-        slashpos = subelement.indexOf(QLatin1String("/"));
+        slashpos = subelement.indexOf(QLatin1Char('/'));
         if (slashpos == -1) {
             step = 1;
             slashpos = subelement.length();
@@ -101,10 +101,10 @@ void CTUnit::parse(const QString &tokenString)
         }
 
         // find "=" to determine range
-        dashpos = subelement.indexOf(QLatin1String("-"));
+        dashpos = subelement.indexOf(QLatin1Char('-'));
         if (dashpos == -1) {
             // deal with "*"
-            if (subelement.mid(0, slashpos) == QLatin1String("*")) {
+            if (subelement.mid(0, slashpos) == QLatin1Char('*')) {
                 beginat = mMin;
                 endat = mMax;
             } else {
