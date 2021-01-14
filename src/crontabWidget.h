@@ -18,8 +18,9 @@ class QHBoxLayout;
 
 class CTHost;
 class CTCron;
-
-class CrontabWidgetPrivate;
+class QRadioButton;
+class QComboBox;
+class CTGlobalCron;
 
 /**
  * Main GUI view of the crontab entries.
@@ -107,7 +108,46 @@ private:
 
     bool hasClipboardContent();
 
-    CrontabWidgetPrivate *const d;
+
+    /**
+     * The application.
+     */
+    CTHost *mCtHost = nullptr;
+
+    /**
+     * Tree view of the crontab tasks.
+     */
+    TasksWidget *mTasksWidget = nullptr;
+
+    /**
+     * Tree view of the crontab tasks.
+     */
+    VariablesWidget *mVariablesWidget = nullptr;
+
+    QAction *mCutAction = nullptr;
+    QAction *mCopyAction = nullptr;
+    QAction *mPasteAction = nullptr;
+
+    /**
+     * Clipboard tasks.
+     */
+    QList<CTTask *> mClipboardTasks;
+
+    /**
+     * Clipboard variable.
+     */
+    QList<CTVariable *> mClipboardVariables;
+
+    QRadioButton *mCurrentUserCronRadio = nullptr;
+    QRadioButton *mSystemCronRadio = nullptr;
+    QRadioButton *mOtherUserCronRadio = nullptr;
+
+    QComboBox *mOtherUsers = nullptr;
+
+    /**
+     * Pointer to the pseudo Global Cron object
+     */
+    CTGlobalCron *mCtGlobalCron = nullptr;
 };
 
 #endif // CRONTABWIDGET_H

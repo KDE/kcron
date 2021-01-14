@@ -38,8 +38,8 @@ public:
     void setPrintAllUsers(bool setStatus);
 
 private:
-    QCheckBox *chkPrintCrontab;
-    QCheckBox *chkPrintAllUsers;
+    QCheckBox *mChkPrintCrontab = nullptr;
+    QCheckBox *mChkPrintAllUsers = nullptr;
 };
 
 #endif

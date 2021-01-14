@@ -16,6 +16,7 @@
 class GenericListWidgetPrivate;
 class QKeyEvent;
 class QAction;
+class QVBoxLayout;
 
 class CrontabWidget;
 
@@ -59,7 +60,11 @@ protected:
     void setActionEnabled(QAction *action, bool enabled);
 
 private:
-    GenericListWidgetPrivate *const d;
+    QTreeWidget *mTreeWidget = nullptr;
+
+    CrontabWidget *mCrontabWidget = nullptr;
+
+    QVBoxLayout *mActionsLayout = nullptr;
 };
 
 #endif // GENERIC_LIST_WIDGET_H

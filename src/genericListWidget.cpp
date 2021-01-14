@@ -24,28 +24,16 @@
 
 #include "logging.h"
 
-class GenericListWidgetPrivate
-{
-public:
-
-    QTreeWidget *treeWidget = nullptr;
-
-    CrontabWidget *crontabWidget = nullptr;
-
-    QVBoxLayout *actionsLayout = nullptr;
-};
-
 /**
  * Construct tasks folder from branch.
  */
 GenericListWidget::GenericListWidget(CrontabWidget *crontabWidget, const QString &label, const QIcon &icon)
     : QWidget(crontabWidget)
-    , d(new GenericListWidgetPrivate())
 {
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->setContentsMargins(0, 0, 0, 0);
 
-    d->crontabWidget = crontabWidget;
+    mCrontabWidget = crontabWidget;
 
     // Label layout
     QHBoxLayout *labelLayout = new QHBoxLayout();
@@ -62,32 +50,32 @@ GenericListWidget::GenericListWidget(CrontabWidget *crontabWidget, const QString
     // Tree layout
     QHBoxLayout *treeLayout = new QHBoxLayout();
 
-    d->treeWidget = new QTreeWidget(this);
+    mTreeWidget = new QTreeWidget(this);
 
-    d->treeWidget->setRootIsDecorated(true);
-    d->treeWidget->setAllColumnsShowFocus(true);
+    mTreeWidget->setRootIsDecorated(true);
+    mTreeWidget->setAllColumnsShowFocus(true);
 
-    d->treeWidget->header()->setSortIndicatorShown(true);
-    d->treeWidget->header()->setStretchLastSection(true);
-    d->treeWidget->header()->setSectionsMovable(true);
+    mTreeWidget->header()->setSortIndicatorShown(true);
+    mTreeWidget->header()->setStretchLastSection(true);
+    mTreeWidget->header()->setSectionsMovable(true);
 
-    d->treeWidget->setSortingEnabled(true);
-    d->treeWidget->setAnimated(true);
+    mTreeWidget->setSortingEnabled(true);
+    mTreeWidget->setAnimated(true);
 
-    d->treeWidget->setRootIsDecorated(false);
+    mTreeWidget->setRootIsDecorated(false);
 
-    d->treeWidget->setAllColumnsShowFocus(true);
+    mTreeWidget->setAllColumnsShowFocus(true);
 
-    d->treeWidget->setAlternatingRowColors(true);
+    mTreeWidget->setAlternatingRowColors(true);
 
-    d->treeWidget->setSelectionMode(QAbstractItemView::ExtendedSelection);
-    d->treeWidget->setContextMenuPolicy(Qt::ActionsContextMenu);
+    mTreeWidget->setSelectionMode(QAbstractItemView::ExtendedSelection);
+    mTreeWidget->setContextMenuPolicy(Qt::ActionsContextMenu);
 
-    treeLayout->addWidget(d->treeWidget);
+    treeLayout->addWidget(mTreeWidget);
 
-    d->actionsLayout = new QVBoxLayout();
+    mActionsLayout = new QVBoxLayout();
 
-    treeLayout->addLayout(d->actionsLayout);
+    treeLayout->addLayout(mActionsLayout);
 
     mainLayout->addLayout(treeLayout);
 
@@ -97,29 +85,28 @@ GenericListWidget::GenericListWidget(CrontabWidget *crontabWidget, const QString
 
 GenericListWidget::~GenericListWidget()
 {
-    delete d;
 }
 
 QTreeWidget *GenericListWidget::treeWidget() const
 {
-    return d->treeWidget;
+    return mTreeWidget;
 }
 
 CrontabWidget *GenericListWidget::crontabWidget() const
 {
-    return d->crontabWidget;
+    return mCrontabWidget;
 }
 
 CTHost *GenericListWidget::ctHost() const
 {
-    return d->crontabWidget->ctHost();
+    return mCrontabWidget->ctHost();
 }
 
 void GenericListWidget::resizeColumnContents()
 {
     //Resize all columns except the last one (which always take the last available space)
-    for (int i = 0; i < d->treeWidget->columnCount()-1; ++i) {
-        d->treeWidget->resizeColumnToContents(i);
+    for (int i = 0; i < mTreeWidget->columnCount()-1; ++i) {
+        mTreeWidget->resizeColumnToContents(i);
     }
 }
 
@@ -163,7 +150,7 @@ void GenericListWidget::addRightAction(QAction *action, const QObject *receiver,
     button->setWhatsThis(action->whatsThis());
     button->setToolTip(action->toolTip());
 
-    d->actionsLayout->addWidget(button);
+    mActionsLayout->addWidget(button);
 
     button->addAction(action);
 
@@ -173,12 +160,13 @@ void GenericListWidget::addRightAction(QAction *action, const QObject *receiver,
 
 void GenericListWidget::addRightStretch()
 {
-    d->actionsLayout->addStretch(1);
+    mActionsLayout->addStretch(1);
 }
 
 void GenericListWidget::setActionEnabled(QAction *action, bool enabled)
 {
-    foreach (QWidget *widget, action->associatedWidgets()) {
+    const auto associatedWidgets = action->associatedWidgets();
+    for (QWidget *widget : associatedWidgets) {
         //Only change status of associated Buttons
         QPushButton *button = qobject_cast<QPushButton *>(widget);
         if (button) {

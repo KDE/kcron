@@ -21,17 +21,17 @@ CrontabPrinterWidget::CrontabPrinterWidget(bool root)
 
     QVBoxLayout *main_ = new QVBoxLayout(this);
 
-    chkPrintCrontab = new QCheckBox(i18n("Print cron&tab"), this);
-    chkPrintCrontab->setObjectName(QStringLiteral("chkPrintCrontab"));
-    main_->addWidget(chkPrintCrontab);
+    mChkPrintCrontab = new QCheckBox(i18n("Print cron&tab"), this);
+    mChkPrintCrontab->setObjectName(QStringLiteral("chkPrintCrontab"));
+    main_->addWidget(mChkPrintCrontab);
 
-    chkPrintAllUsers = new QCheckBox(i18n("Print &all users"), this);
-    chkPrintAllUsers->setObjectName(QStringLiteral("chkPrintAllUsers"));
-    main_->addWidget(chkPrintAllUsers);
+    mChkPrintAllUsers = new QCheckBox(i18n("Print &all users"), this);
+    mChkPrintAllUsers->setObjectName(QStringLiteral("chkPrintAllUsers"));
+    main_->addWidget(mChkPrintAllUsers);
 
     if (!root) {
-        chkPrintAllUsers->setChecked(false);
-        chkPrintAllUsers->setEnabled(false);
+        mChkPrintAllUsers->setChecked(false);
+        mChkPrintAllUsers->setEnabled(false);
     }
 }
 
@@ -41,20 +41,20 @@ CrontabPrinterWidget::~CrontabPrinterWidget()
 
 bool CrontabPrinterWidget::printCrontab()
 {
-    return chkPrintCrontab->isChecked();
+    return mChkPrintCrontab->isChecked();
 }
 
 void CrontabPrinterWidget::setPrintCrontab(bool setStatus)
 {
-    chkPrintCrontab->setChecked(setStatus);
+    mChkPrintCrontab->setChecked(setStatus);
 }
 
 bool CrontabPrinterWidget::printAllUsers()
 {
-    return chkPrintAllUsers->isChecked();
+    return mChkPrintAllUsers->isChecked();
 }
 
 void CrontabPrinterWidget::setPrintAllUsers(bool setStatus)
 {
-    chkPrintAllUsers->setChecked(setStatus);
+    mChkPrintAllUsers->setChecked(setStatus);
 }
