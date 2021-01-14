@@ -7,7 +7,6 @@
 */
 
 #include "taskEditorDialog.h"
-#include "kwidgetsaddons_version.h"
 
 #include <QLayout>
 #include <QCheckBox>
@@ -545,19 +544,11 @@ QGroupBox *TaskEditorDialog::createHoursGroup(QWidget *main)
 void TaskEditorDialog::setupTitleWidget(const QString &comment, KTitleWidget::MessageType messageType)
 {
     titleWidget->setComment(comment, messageType);
-#if KWIDGETSADDONS_VERSION < QT_VERSION_CHECK(5, 63, 0)
-    if (messageType == KTitleWidget::ErrorMessage) {
-        titleWidget->setPixmap(QIcon::fromTheme(QStringLiteral("dialog-error")), KTitleWidget::ImageRight);
-    } else {
-        titleWidget->setPixmap(QIcon::fromTheme(QStringLiteral("system-run")), KTitleWidget::ImageRight);
-    }
-#else
     if (messageType == KTitleWidget::ErrorMessage) {
         titleWidget->setIcon(QIcon::fromTheme(QStringLiteral("dialog-error")), KTitleWidget::ImageRight);
     } else {
         titleWidget->setIcon(QIcon::fromTheme(QStringLiteral("system-run")), KTitleWidget::ImageRight);
     }
-#endif
 }
 
 void TaskEditorDialog::slotEnabledChanged()

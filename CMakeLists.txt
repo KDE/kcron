@@ -2,7 +2,7 @@ cmake_minimum_required (VERSION 3.5.0 FATAL_ERROR)
 project(kcron)
 
 set (QT_MIN_VERSION "5.12.0")
-set (KF5_MIN_VERSION "5.58.0")
+set (KF5_MIN_VERSION "5.68.0")
 
 find_package (ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 set (CMAKE_MODULE_PATH ${ECM_MODULE_PATH})

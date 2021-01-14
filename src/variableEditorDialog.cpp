@@ -7,7 +7,6 @@
 */
 
 #include "variableEditorDialog.h"
-#include "kwidgetsaddons_version.h"
 #include <QGridLayout>
 #include <QPushButton>
 
@@ -146,26 +145,14 @@ void VariableEditorDialog::setupTitleWidget(const QString &comment, KTitleWidget
     //krazy:exclude=doublequote_chars
     if (comment.isEmpty()) {
         titleWidget->setComment(i18n("<i>This variable will be used by scheduled tasks.</i>"));
-#if KWIDGETSADDONS_VERSION < QT_VERSION_CHECK(5, 63, 0)
-        titleWidget->setPixmap(QIcon::fromTheme(QStringLiteral("text-plain")), KTitleWidget::ImageRight);
-#else
         titleWidget->setIcon(QIcon::fromTheme(QStringLiteral("text-plain")), KTitleWidget::ImageRight);
-#endif
     } else {
         titleWidget->setComment(comment, messageType);
-#if KWIDGETSADDONS_VERSION < QT_VERSION_CHECK(5, 63, 0)
-        if (messageType == KTitleWidget::ErrorMessage) {
-            titleWidget->setPixmap(QIcon::fromTheme(QStringLiteral("dialog-error")), KTitleWidget::ImageRight);
-        } else {
-            titleWidget->setPixmap(QIcon::fromTheme(QStringLiteral("dialog-information")), KTitleWidget::ImageRight);
-        }
-#else
         if (messageType == KTitleWidget::ErrorMessage) {
             titleWidget->setIcon(QIcon::fromTheme(QStringLiteral("dialog-error")), KTitleWidget::ImageRight);
         } else {
             titleWidget->setIcon(QIcon::fromTheme(QStringLiteral("dialog-information")), KTitleWidget::ImageRight);
         }
-#endif
     }
 }
 
