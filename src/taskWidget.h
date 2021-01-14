@@ -46,9 +46,9 @@ private:
     /**
      * Task.
      */
-    CTTask *ctTask;
+    CTTask *mCtTask = nullptr;
 
-    TasksWidget *tasksWidget;
+    TasksWidget *mTasksWidget = nullptr;
 };
 
 #endif // TASK_WIDGET_H

@@ -25,27 +25,11 @@
 
 #include "logging.h"
 
-class TasksWidgetPrivate
-{
-public:
-
-    QAction *newTaskAction;
-
-    QAction *modifyAction;
-
-    QAction *deleteAction;
-
-    QAction *runNowAction;
-
-    QAction *printAction;
-};
-
 /**
  * Construct tasks folder from branch.
  */
 TasksWidget::TasksWidget(CrontabWidget *crontabWidget)
     : GenericListWidget(crontabWidget, i18n("<b>Scheduled Tasks</b>"), QIcon::fromTheme(QStringLiteral("system-run")))
-    , d(new TasksWidgetPrivate())
 {
     refreshHeaders();
 
@@ -61,7 +45,6 @@ TasksWidget::TasksWidget(CrontabWidget *crontabWidget)
 
 TasksWidget::~TasksWidget()
 {
-    delete d;
 }
 
 QList<TaskWidget *> TasksWidget::selectedTasksWidget() const
@@ -261,44 +244,44 @@ bool TasksWidget::needUserColumn() const
 
 void TasksWidget::setupActions(CrontabWidget *crontabWidget)
 {
-    d->newTaskAction = new QAction(this);
-    d->newTaskAction->setIcon(QIcon::fromTheme(QStringLiteral("document-new")));
-    d->newTaskAction->setText(i18nc("Adds a new task", "New &Task..."));
-    d->newTaskAction->setToolTip(i18n("Create a new task."));
-    addRightAction(d->newTaskAction, this, SLOT(createTask()));
+    mNewTaskAction = new QAction(this);
+    mNewTaskAction->setIcon(QIcon::fromTheme(QStringLiteral("document-new")));
+    mNewTaskAction->setText(i18nc("Adds a new task", "New &Task..."));
+    mNewTaskAction->setToolTip(i18n("Create a new task."));
+    addRightAction(mNewTaskAction, this, SLOT(createTask()));
 
-    d->modifyAction = new QAction(this);
-    d->modifyAction->setText(i18n("M&odify..."));
-    d->modifyAction->setIcon(QIcon::fromTheme(QStringLiteral("document-open")));
-    d->modifyAction->setToolTip(i18n("Modify the selected task."));
-    addRightAction(d->modifyAction, this, SLOT(modifySelection()));
+    mModifyAction = new QAction(this);
+    mModifyAction->setText(i18n("M&odify..."));
+    mModifyAction->setIcon(QIcon::fromTheme(QStringLiteral("document-open")));
+    mModifyAction->setToolTip(i18n("Modify the selected task."));
+    addRightAction(mModifyAction, this, SLOT(modifySelection()));
 
-    d->deleteAction = new QAction(this);
-    d->deleteAction->setText(i18n("&Delete"));
-    d->deleteAction->setIcon(QIcon::fromTheme(QStringLiteral("edit-delete")));
-    d->deleteAction->setToolTip(i18n("Delete the selected task."));
-    addRightAction(d->deleteAction, this, SLOT(deleteSelection()));
+    mDeleteAction = new QAction(this);
+    mDeleteAction->setText(i18n("&Delete"));
+    mDeleteAction->setIcon(QIcon::fromTheme(QStringLiteral("edit-delete")));
+    mDeleteAction->setToolTip(i18n("Delete the selected task."));
+    addRightAction(mDeleteAction, this, SLOT(deleteSelection()));
 
-    d->runNowAction = new QAction(this);
-    d->runNowAction->setText(i18n("&Run Now"));
-    d->runNowAction->setIcon(QIcon::fromTheme(QStringLiteral("system-run")));
-    d->runNowAction->setToolTip(i18n("Run the selected task now."));
-    addRightAction(d->runNowAction, this, SLOT(runTaskNow()));
+    mRunNowAction = new QAction(this);
+    mRunNowAction->setText(i18n("&Run Now"));
+    mRunNowAction->setIcon(QIcon::fromTheme(QStringLiteral("system-run")));
+    mRunNowAction->setToolTip(i18n("Run the selected task now."));
+    addRightAction(mRunNowAction, this, SLOT(runTaskNow()));
 
-    d->printAction = KStandardAction::print(crontabWidget, SLOT(print()), this);
-    addRightAction(d->printAction, crontabWidget, SLOT(print()));
+    mPrintAction = KStandardAction::print(crontabWidget, SLOT(print()), this);
+    addRightAction(mPrintAction, crontabWidget, SLOT(print()));
 
     addRightStretch();
 }
 
 void TasksWidget::prepareContextualMenu()
 {
-    treeWidget()->addAction(d->newTaskAction);
+    treeWidget()->addAction(mNewTaskAction);
 
     treeWidget()->addAction(createSeparator());
 
-    treeWidget()->addAction(d->modifyAction);
-    treeWidget()->addAction(d->deleteAction);
+    treeWidget()->addAction(mModifyAction);
+    treeWidget()->addAction(mDeleteAction);
 
     treeWidget()->addAction(createSeparator());
 
@@ -308,28 +291,28 @@ void TasksWidget::prepareContextualMenu()
 
     treeWidget()->addAction(createSeparator());
 
-    treeWidget()->addAction(d->runNowAction);
+    treeWidget()->addAction(mRunNowAction);
 }
 
 void TasksWidget::toggleRunNowAction(bool state)
 {
-    setActionEnabled(d->runNowAction, state);
+    setActionEnabled(mRunNowAction, state);
 }
 
 void TasksWidget::togglePrintAction(bool state)
 {
-    setActionEnabled(d->printAction, state);
+    setActionEnabled(mPrintAction, state);
 }
 
 void TasksWidget::toggleModificationActions(bool state)
 {
-    setActionEnabled(d->modifyAction, state);
-    setActionEnabled(d->deleteAction, state);
+    setActionEnabled(mModifyAction, state);
+    setActionEnabled(mDeleteAction, state);
 }
 
 void TasksWidget::toggleNewEntryAction(bool state)
 {
-    setActionEnabled(d->newTaskAction, state);
+    setActionEnabled(mNewTaskAction, state);
 }
 
 void TasksWidget::changeCurrentSelection()

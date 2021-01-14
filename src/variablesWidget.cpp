@@ -23,23 +23,11 @@
 #include "variableEditorDialog.h"
 
 #include "logging.h"
-
-class VariablesWidgetPrivate
-{
-public:
-
-    QAction *newVariableAction = nullptr;
-
-    QAction *modifyAction = nullptr;
-
-    QAction *deleteAction = nullptr;
-};
 /**
  * Construct tasks folder from branch.
  */
 VariablesWidget::VariablesWidget(CrontabWidget *crontabWidget)
     : GenericListWidget(crontabWidget, i18n("<b>Environment Variables</b>"), QIcon::fromTheme(QStringLiteral("text-plain")))
-    , d(new VariablesWidgetPrivate())
 {
     refreshHeaders();
 
@@ -55,7 +43,6 @@ VariablesWidget::VariablesWidget(CrontabWidget *crontabWidget)
 
 VariablesWidget::~VariablesWidget()
 {
-    delete d;
 }
 
 void VariablesWidget::modifySelection()
@@ -211,35 +198,35 @@ void VariablesWidget::refreshHeaders()
 
 void VariablesWidget::setupActions()
 {
-    d->newVariableAction = new QAction(this);
-    d->newVariableAction->setIcon(QIcon::fromTheme(QStringLiteral("document-new")));
-    d->newVariableAction->setText(i18nc("Adds a new variable", "New &Variable..."));
-    d->newVariableAction->setToolTip(i18n("Create a new variable."));
-    addRightAction(d->newVariableAction, this, SLOT(createVariable()));
+    mNewVariableAction = new QAction(this);
+    mNewVariableAction->setIcon(QIcon::fromTheme(QStringLiteral("document-new")));
+    mNewVariableAction->setText(i18nc("Adds a new variable", "New &Variable..."));
+    mNewVariableAction->setToolTip(i18n("Create a new variable."));
+    addRightAction(mNewVariableAction, this, SLOT(createVariable()));
 
-    d->modifyAction = new QAction(this);
-    d->modifyAction->setText(i18n("M&odify..."));
-    d->modifyAction->setIcon(QIcon::fromTheme(QStringLiteral("document-open")));
-    d->modifyAction->setToolTip(i18n("Modify the selected variable."));
-    addRightAction(d->modifyAction, this, SLOT(modifySelection()));
+    mModifyAction = new QAction(this);
+    mModifyAction->setText(i18n("M&odify..."));
+    mModifyAction->setIcon(QIcon::fromTheme(QStringLiteral("document-open")));
+    mModifyAction->setToolTip(i18n("Modify the selected variable."));
+    addRightAction(mModifyAction, this, SLOT(modifySelection()));
 
-    d->deleteAction = new QAction(this);
-    d->deleteAction->setText(i18n("&Delete"));
-    d->deleteAction->setIcon(QIcon::fromTheme(QStringLiteral("edit-delete")));
-    d->deleteAction->setToolTip(i18n("Delete the selected variable."));
-    addRightAction(d->deleteAction, this, SLOT(deleteSelection()));
+    mDeleteAction = new QAction(this);
+    mDeleteAction->setText(i18n("&Delete"));
+    mDeleteAction->setIcon(QIcon::fromTheme(QStringLiteral("edit-delete")));
+    mDeleteAction->setToolTip(i18n("Delete the selected variable."));
+    addRightAction(mDeleteAction, this, SLOT(deleteSelection()));
 
     addRightStretch();
 }
 
 void VariablesWidget::prepareContextualMenu()
 {
-    treeWidget()->addAction(d->newVariableAction);
+    treeWidget()->addAction(mNewVariableAction);
 
     treeWidget()->addAction(createSeparator());
 
-    treeWidget()->addAction(d->modifyAction);
-    treeWidget()->addAction(d->deleteAction);
+    treeWidget()->addAction(mModifyAction);
+    treeWidget()->addAction(mDeleteAction);
 
     treeWidget()->addAction(createSeparator());
 
@@ -250,13 +237,13 @@ void VariablesWidget::prepareContextualMenu()
 
 void VariablesWidget::toggleModificationActions(bool state)
 {
-    setActionEnabled(d->modifyAction, state);
-    setActionEnabled(d->deleteAction, state);
+    setActionEnabled(mModifyAction, state);
+    setActionEnabled(mDeleteAction, state);
 }
 
 void VariablesWidget::toggleNewEntryAction(bool state)
 {
-    setActionEnabled(d->newVariableAction, state);
+    setActionEnabled(mNewVariableAction, state);
 }
 
 void VariablesWidget::changeCurrentSelection()

@@ -50,15 +50,15 @@ TaskEditorDialog::TaskEditorDialog(CTTask *_ctTask, const QString &_caption, Cro
     setWindowIcon(QIcon::fromTheme(QStringLiteral("kcron")));
     setWindowTitle(_caption);
 
-    ctTask = _ctTask;
-    crontabWidget = _crontabWidget;
+    mCtTask = _ctTask;
+    mCrontabWidget = _crontabWidget;
 
     QWidget *main = new QWidget(this);
     QVBoxLayout *mainLayout = new QVBoxLayout(main);
     mainLayout->setContentsMargins(0, 0, 0, 0);
 
     QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
-    okButton = buttonBox->button(QDialogButtonBox::Ok);
+    mOkButton = buttonBox->button(QDialogButtonBox::Ok);
 
     QVBoxLayout *dialogLayout = new QVBoxLayout();
     dialogLayout->addWidget(main);
@@ -66,11 +66,11 @@ TaskEditorDialog::TaskEditorDialog(CTTask *_ctTask, const QString &_caption, Cro
     setLayout(dialogLayout);
 
     // top title widget
-    titleWidget = new KTitleWidget(main);
-    titleWidget->setText(i18n("Add or modify a scheduled task"));
+    mTitleWidget = new KTitleWidget(main);
+    mTitleWidget->setText(i18n("Add or modify a scheduled task"));
     setupTitleWidget(i18n("<i>This task will be executed at the specified intervals.</i>"));
 
-    mainLayout->addWidget(titleWidget);
+    mainLayout->addWidget(mTitleWidget);
 
     QGridLayout *commandConfigurationLayout = new QGridLayout();
     mainLayout->addLayout(commandConfigurationLayout);
@@ -80,19 +80,19 @@ TaskEditorDialog::TaskEditorDialog(CTTask *_ctTask, const QString &_caption, Cro
     commandConfigurationLayout->addWidget(labCommand, 0, 0);
 
     QHBoxLayout *commandLayout = new QHBoxLayout();
-    commandIcon = new QLabel(main);
-    missingCommandPixmap = QIcon::fromTheme(QStringLiteral("image-missing")).pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize, nullptr, this));
-    commandLayout->addWidget(commandIcon);
+    mCommandIcon = new QLabel(main);
+    mMissingCommandPixmap = QIcon::fromTheme(QStringLiteral("image-missing")).pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize, nullptr, this));
+    commandLayout->addWidget(mCommandIcon);
 
-    command = new KUrlRequester(main);
-    labCommand->setBuddy(command);
-    commandLayout->addWidget(command);
+    mCommand = new KUrlRequester(main);
+    labCommand->setBuddy(mCommand);
+    commandLayout->addWidget(mCommand);
 
-    command->setMode(KFile::File | KFile::ExistingOnly | KFile::LocalOnly);
-    command->setUrl(QUrl::fromLocalFile(ctTask->command));
+    mCommand->setMode(KFile::File | KFile::ExistingOnly | KFile::LocalOnly);
+    mCommand->setUrl(QUrl::fromLocalFile(mCtTask->command));
 
     //Initialize special valid commands
-    specialValidCommands << QStringLiteral("cd");
+    mSpecialValidCommands << QStringLiteral("cd");
 
     commandConfigurationLayout->addLayout(commandLayout, 0, 1);
 
@@ -100,46 +100,46 @@ TaskEditorDialog::TaskEditorDialog(CTTask *_ctTask, const QString &_caption, Cro
     QLabel *userLabel = new QLabel(i18n("&Run as:"), main);
     commandConfigurationLayout->addWidget(userLabel, 1, 0);
 
-    userCombo = new QComboBox(main);
+    mUserCombo = new QComboBox(main);
 
-    userLabel->setBuddy(userCombo);
-    commandConfigurationLayout->addWidget(userCombo, 1, 1);
+    userLabel->setBuddy(mUserCombo);
+    commandConfigurationLayout->addWidget(mUserCombo, 1, 1);
 
-    if (crontabWidget->tasksWidget()->needUserColumn()) {
-        KCronHelper::initUserCombo(userCombo, crontabWidget, ctTask->userLogin);
+    if (mCrontabWidget->tasksWidget()->needUserColumn()) {
+        KCronHelper::initUserCombo(mUserCombo, mCrontabWidget, mCtTask->userLogin);
     } else {
         userLabel->hide();
-        userCombo->hide();
+        mUserCombo->hide();
     }
 
     // comment
     QLabel *labComment = new QLabel(i18n("Co&mment:"), main);
     commandConfigurationLayout->addWidget(labComment, 2, 0, Qt::AlignTop);
 
-    leComment = KCronHelper::createCommentEdit(main);
-    labComment->setBuddy(leComment);
-    commandConfigurationLayout->addWidget(leComment, 2, 1);
+    mLeComment = KCronHelper::createCommentEdit(main);
+    labComment->setBuddy(mLeComment);
+    commandConfigurationLayout->addWidget(mLeComment, 2, 1);
 
-    leComment->setText(ctTask->comment);
+    mLeComment->setText(mCtTask->comment);
 
     QHBoxLayout *checkboxesLayout = new QHBoxLayout();
     mainLayout->addLayout(checkboxesLayout);
 
     // enabled
-    chkEnabled = new QCheckBox(i18n("&Enable this task"), main);
-    chkEnabled->setChecked(ctTask->enabled);
-    checkboxesLayout->addWidget(chkEnabled);
+    mChkEnabled = new QCheckBox(i18n("&Enable this task"), main);
+    mChkEnabled->setChecked(mCtTask->enabled);
+    checkboxesLayout->addWidget(mChkEnabled);
 
     // @reboot
-    chkReboot = new QCheckBox(i18n("Run at system &bootup"), main);
-    chkReboot->setChecked(ctTask->reboot);
-    checkboxesLayout->addWidget(chkReboot);
+    mChkReboot = new QCheckBox(i18n("Run at system &bootup"), main);
+    mChkReboot->setChecked(mCtTask->reboot);
+    checkboxesLayout->addWidget(mChkReboot);
 
     // Every day
     bool everyDay = isEveryDay();
-    cbEveryDay = new QCheckBox(i18n("Run &every day"), main);
-    cbEveryDay->setChecked(everyDay);
-    checkboxesLayout->addWidget(cbEveryDay);
+    mCbEveryDay = new QCheckBox(i18n("Run &every day"), main);
+    mCbEveryDay->setChecked(everyDay);
+    checkboxesLayout->addWidget(mCbEveryDay);
 
     QHBoxLayout *schedulingLayout = new QHBoxLayout();
     mainLayout->addLayout(schedulingLayout);
@@ -148,57 +148,57 @@ TaskEditorDialog::TaskEditorDialog(CTTask *_ctTask, const QString &_caption, Cro
     schedulingLayout->addLayout(monthLayout);
 
     // months
-    bgMonth = createMonthsGroup(main);
-    monthLayout->addWidget(bgMonth);
+    mBgMonth = createMonthsGroup(main);
+    monthLayout->addWidget(mBgMonth);
     monthLayout->addStretch(1);
 
     QVBoxLayout *v1 = new QVBoxLayout();
     schedulingLayout->addLayout(v1);
 
     // days of the month
-    bgDayOfMonth = createDaysOfMonthGroup(main);
-    v1->addWidget(bgDayOfMonth);
+    mBgDayOfMonth = createDaysOfMonthGroup(main);
+    v1->addWidget(mBgDayOfMonth);
 
     // days of the week
-    bgDayOfWeek = createDaysOfWeekGroup(main);
-    v1->addWidget(bgDayOfWeek);
+    mBgDayOfWeek = createDaysOfWeekGroup(main);
+    v1->addWidget(mBgDayOfWeek);
 
     v1->addStretch(1);
 
     QVBoxLayout *v2 = new QVBoxLayout();
     schedulingLayout->addLayout(v2);
 
-    hoursGroup = createHoursGroup(main);
-    v2->addWidget(hoursGroup);
+    mHoursGroup = createHoursGroup(main);
+    v2->addWidget(mHoursGroup);
 
     createMinutesGroup(main);
-    v2->addWidget(minutesGroup);
+    v2->addWidget(mMinutesGroup);
 
     v2->addStretch(1);
 
     //schedulingLayout->addStretch(1);
 
-    command->setFocus();
+    mCommand->setFocus();
 
-    connect(command, &KUrlRequester::textChanged, this, &TaskEditorDialog::slotWizard);
+    connect(mCommand, &KUrlRequester::textChanged, this, &TaskEditorDialog::slotWizard);
 
-    connect(chkEnabled, &QCheckBox::clicked, this, &TaskEditorDialog::slotEnabledChanged);
-    connect(chkEnabled, &QCheckBox::clicked, this, &TaskEditorDialog::slotWizard);
+    connect(mChkEnabled, &QCheckBox::clicked, this, &TaskEditorDialog::slotEnabledChanged);
+    connect(mChkEnabled, &QCheckBox::clicked, this, &TaskEditorDialog::slotWizard);
 
-    connect(chkReboot, &QCheckBox::clicked, this, &TaskEditorDialog::slotRebootChanged);
-    connect(chkReboot, &QCheckBox::clicked, this, &TaskEditorDialog::slotWizard);
+    connect(mChkReboot, &QCheckBox::clicked, this, &TaskEditorDialog::slotRebootChanged);
+    connect(mChkReboot, &QCheckBox::clicked, this, &TaskEditorDialog::slotWizard);
 
-    connect(cbEveryDay, &QCheckBox::clicked, this, &TaskEditorDialog::slotDailyChanged);
-    connect(cbEveryDay, &QCheckBox::clicked, this, &TaskEditorDialog::slotWizard);
+    connect(mCbEveryDay, &QCheckBox::clicked, this, &TaskEditorDialog::slotDailyChanged);
+    connect(mCbEveryDay, &QCheckBox::clicked, this, &TaskEditorDialog::slotWizard);
 
     connect(buttonBox, &QDialogButtonBox::accepted, this, &TaskEditorDialog::slotOK);
     connect(buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
 
-    if (!chkEnabled->isChecked()) {
+    if (!mChkEnabled->isChecked()) {
         slotEnabledChanged();
-    } else if (chkReboot->isChecked()) {
+    } else if (mChkReboot->isChecked()) {
         slotRebootChanged();
-    } else if (cbEveryDay->isChecked()) {
+    } else if (mCbEveryDay->isChecked()) {
         slotDailyChanged();
     }
 
@@ -218,19 +218,19 @@ TaskEditorDialog::~TaskEditorDialog()
 bool TaskEditorDialog::isEveryDay()
 {
     for (int dw = CTDayOfWeek::MINIMUM; dw <= CTDayOfWeek::MAXIMUM; dw++) {
-        if (!ctTask->dayOfWeek.isEnabled(dw)) {
+        if (!mCtTask->dayOfWeek.isEnabled(dw)) {
             return false;
         }
     }
 
-    for (int mo = ctTask->month.minimum(); mo <= ctTask->month.maximum(); mo++) {
-        if (!ctTask->month.isEnabled(mo)) {
+    for (int mo = mCtTask->month.minimum(); mo <= mCtTask->month.maximum(); mo++) {
+        if (!mCtTask->month.isEnabled(mo)) {
             return false;
         }
     }
 
     for (int dm = CTDayOfMonth::MINIMUM; dm <= CTDayOfMonth::MAXIMUM; dm++) {
-        if (!ctTask->dayOfMonth.isEnabled(dm)) {
+        if (!mCtTask->dayOfMonth.isEnabled(dm)) {
             return false;
         }
     }
@@ -249,11 +249,11 @@ QGroupBox *TaskEditorDialog::createDaysOfMonthGroup(QWidget *main)
             NumberPushButton *day = new NumberPushButton(true, daysOfMonthGroup);
             day->setText(QString::number(dm));
             day->setCheckable(true);
-            day->setChecked(ctTask->dayOfMonth.isEnabled(dm));
-            dayOfMonthButtons[dm] = day;
+            day->setChecked(mCtTask->dayOfMonth.isEnabled(dm));
+            mDayOfMonthButtons[dm] = day;
 
-            connect(dayOfMonthButtons[dm], &QAbstractButton::clicked, this, &TaskEditorDialog::slotDayOfMonthChanged);
-            connect(dayOfMonthButtons[dm], &QAbstractButton::clicked, this, &TaskEditorDialog::slotWizard);
+            connect(mDayOfMonthButtons[dm], &QAbstractButton::clicked, this, &TaskEditorDialog::slotDayOfMonthChanged);
+            connect(mDayOfMonthButtons[dm], &QAbstractButton::clicked, this, &TaskEditorDialog::slotWizard);
 
             daysOfMonthLayout->addWidget(day, row, column);
 
@@ -266,11 +266,11 @@ QGroupBox *TaskEditorDialog::createDaysOfMonthGroup(QWidget *main)
         }
     }
 
-    allDaysOfMonth = new SetOrClearAllButton(daysOfMonthGroup, SetOrClearAllButton::SET_ALL);
-    daysOfMonthLayout->addWidget(allDaysOfMonth, 4, 3, 1, 4);
+    mAllDaysOfMonth = new SetOrClearAllButton(daysOfMonthGroup, SetOrClearAllButton::SET_ALL);
+    daysOfMonthLayout->addWidget(mAllDaysOfMonth, 4, 3, 1, 4);
 
-    connect(allDaysOfMonth, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotAllDaysOfMonth);
-    connect(allDaysOfMonth, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotWizard);
+    connect(mAllDaysOfMonth, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotAllDaysOfMonth);
+    connect(mAllDaysOfMonth, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotWizard);
 
     return daysOfMonthGroup;
 }
@@ -284,15 +284,15 @@ QGroupBox *TaskEditorDialog::createMonthsGroup(QWidget *main)
     int row = 0;
 
     for (int mo = CTMonth::MINIMUM; mo <= CTMonth::MAXIMUM; mo++) {
-        monthButtons[mo] = new NumberPushButton(monthsGroup);
-        monthButtons[mo]->setText(ctTask->month.getName(mo));
-        monthButtons[mo]->setCheckable(true);
-        monthButtons[mo]->setChecked(ctTask->month.isEnabled(mo));
+        mMonthButtons[mo] = new NumberPushButton(monthsGroup);
+        mMonthButtons[mo]->setText(mCtTask->month.getName(mo));
+        mMonthButtons[mo]->setCheckable(true);
+        mMonthButtons[mo]->setChecked(mCtTask->month.isEnabled(mo));
 
-        monthsLayout->addWidget(monthButtons[mo], row, column);
+        monthsLayout->addWidget(mMonthButtons[mo], row, column);
 
-        connect(monthButtons[mo], &QAbstractButton::clicked, this, &TaskEditorDialog::slotMonthChanged);
-        connect(monthButtons[mo], &QAbstractButton::clicked, this, &TaskEditorDialog::slotWizard);
+        connect(mMonthButtons[mo], &QAbstractButton::clicked, this, &TaskEditorDialog::slotMonthChanged);
+        connect(mMonthButtons[mo], &QAbstractButton::clicked, this, &TaskEditorDialog::slotWizard);
 
         if (column == 1) {
             column = 0;
@@ -302,11 +302,11 @@ QGroupBox *TaskEditorDialog::createMonthsGroup(QWidget *main)
         }
     }
 
-    allMonths = new SetOrClearAllButton(monthsGroup, SetOrClearAllButton::SET_ALL);
-    monthsLayout->addWidget(allMonths, row, 0, 1, 2);
+    mAllMonths = new SetOrClearAllButton(monthsGroup, SetOrClearAllButton::SET_ALL);
+    monthsLayout->addWidget(mAllMonths, row, 0, 1, 2);
 
-    connect(allMonths, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotAllMonths);
-    connect(allMonths, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotWizard);
+    connect(mAllMonths, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotAllMonths);
+    connect(mAllMonths, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotWizard);
 
     return monthsGroup;
 }
@@ -319,14 +319,14 @@ QGroupBox *TaskEditorDialog::createDaysOfWeekGroup(QWidget *main)
     int column = 0;
     int row = 0;
     for (int dw = CTDayOfWeek::MINIMUM; dw <= CTDayOfWeek::MAXIMUM; dw++) {
-        dayOfWeekButtons[dw] = new NumberPushButton(daysOfWeekGroup);
-        dayOfWeekButtons[dw]->setText(ctTask->dayOfWeek.getName(dw));
-        dayOfWeekButtons[dw]->setCheckable(true);
-        dayOfWeekButtons[dw]->setChecked(ctTask->dayOfWeek.isEnabled(dw));
-        daysOfWeekLayout->addWidget(dayOfWeekButtons[dw], row, column);
+        mDayOfWeekButtons[dw] = new NumberPushButton(daysOfWeekGroup);
+        mDayOfWeekButtons[dw]->setText(mCtTask->dayOfWeek.getName(dw));
+        mDayOfWeekButtons[dw]->setCheckable(true);
+        mDayOfWeekButtons[dw]->setChecked(mCtTask->dayOfWeek.isEnabled(dw));
+        daysOfWeekLayout->addWidget(mDayOfWeekButtons[dw], row, column);
 
-        connect(dayOfWeekButtons[dw], &QAbstractButton::clicked, this, &TaskEditorDialog::slotDayOfWeekChanged);
-        connect(dayOfWeekButtons[dw], &QAbstractButton::clicked, this, &TaskEditorDialog::slotWizard);
+        connect(mDayOfWeekButtons[dw], &QAbstractButton::clicked, this, &TaskEditorDialog::slotDayOfWeekChanged);
+        connect(mDayOfWeekButtons[dw], &QAbstractButton::clicked, this, &TaskEditorDialog::slotWizard);
 
         if (column == 1) {
             column = 0;
@@ -336,11 +336,11 @@ QGroupBox *TaskEditorDialog::createDaysOfWeekGroup(QWidget *main)
         }
     }
 
-    allDaysOfWeek = new SetOrClearAllButton(daysOfWeekGroup, SetOrClearAllButton::SET_ALL);
-    daysOfWeekLayout->addWidget(allDaysOfWeek);
+    mAllDaysOfWeek = new SetOrClearAllButton(daysOfWeekGroup, SetOrClearAllButton::SET_ALL);
+    daysOfWeekLayout->addWidget(mAllDaysOfWeek);
 
-    connect(allDaysOfWeek, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotAllDaysOfWeek);
-    connect(allDaysOfWeek, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotWizard);
+    connect(mAllDaysOfWeek, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotAllDaysOfWeek);
+    connect(mAllDaysOfWeek, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotWizard);
 
     return daysOfWeekGroup;
 }
@@ -349,7 +349,7 @@ bool TaskEditorDialog::canReduceMinutesGroup()
 {
     for (int minuteIndex = 0; minuteIndex <= minuteTotal; ++minuteIndex) {
         if (minuteIndex % reducedMinuteStep != 0) {
-            if (minuteButtons[minuteIndex]->isChecked() == true) {
+            if (mMinuteButtons[minuteIndex]->isChecked() == true) {
                 return false;
             }
         }
@@ -363,12 +363,12 @@ void TaskEditorDialog::emptyMinutesGroup()
     logDebug() << "Empty minutes layout";
 
     for (int minuteIndex = 0; minuteIndex <= minuteTotal; ++minuteIndex) {
-        minutesLayout->removeWidget(minuteButtons[minuteIndex]);
-        minuteButtons[minuteIndex]->hide();
-        logDebug() << "Layout count" << minutesLayout->count();
+        mMinutesLayout->removeWidget(mMinuteButtons[minuteIndex]);
+        mMinuteButtons[minuteIndex]->hide();
+        logDebug() << "Layout count" << mMinutesLayout->count();
     }
 
-    minutesLayout->removeItem(minutesPreselectionLayout);
+    mMinutesLayout->removeItem(mMinutesPreselectionLayout);
 }
 
 void TaskEditorDialog::increaseMinutesGroup()
@@ -390,14 +390,14 @@ void TaskEditorDialog::increaseMinutesGroup()
     int minuteIndex = 0;
     for (int row = 0; row < (minuteTotal+1)/minutePerColumn; ++row) {
         for (int column = 0; column < minutePerColumn; ++column) {
-            minutesLayout->addWidget(minuteButtons[minuteIndex], row, column);
-            minuteButtons[minuteIndex]->show();
+            mMinutesLayout->addWidget(mMinuteButtons[minuteIndex], row, column);
+            mMinuteButtons[minuteIndex]->show();
             minuteIndex++;
         }
     }
 
-    minutesLayout->addLayout(minutesPreselectionLayout, ((minuteTotal+1)/minutePerColumn), 0, 1, minutePerColumn);
-    minutesLayout->invalidate();
+    mMinutesLayout->addLayout(mMinutesPreselectionLayout, ((minuteTotal+1)/minutePerColumn), 0, 1, minutePerColumn);
+    mMinutesLayout->invalidate();
     this->resize(sizeHint());
 }
 
@@ -412,8 +412,8 @@ void TaskEditorDialog::reduceMinutesGroup()
 
     for (int minuteIndex = 0; minuteIndex <= minuteTotal; ++minuteIndex) {
         if (minuteIndex % reducedMinuteStep == 0) {
-            minutesLayout->addWidget(minuteButtons[minuteIndex], nextRow, nextColumn);
-            minuteButtons[minuteIndex]->show();
+            mMinutesLayout->addWidget(mMinuteButtons[minuteIndex], nextRow, nextColumn);
+            mMinuteButtons[minuteIndex]->show();
 
             nextColumn++;
             if (nextColumn == 6) {
@@ -422,22 +422,22 @@ void TaskEditorDialog::reduceMinutesGroup()
             }
         } else {
             logDebug() << "Reducing id" << minuteIndex;
-            ctTask->minute.setEnabled(minuteIndex, false);
-            minuteButtons[minuteIndex]->setChecked(false);
+            mCtTask->minute.setEnabled(minuteIndex, false);
+            mMinuteButtons[minuteIndex]->setChecked(false);
         }
     }
 
-    minutesLayout->addLayout(minutesPreselectionLayout, 2, 0, 1, 6);
-    minutesLayout->invalidate();
+    mMinutesLayout->addLayout(mMinutesPreselectionLayout, 2, 0, 1, 6);
+    mMinutesLayout->invalidate();
     this->resize(sizeHint());
 }
 
 NumberPushButton *TaskEditorDialog::createMinuteButton(int minuteIndex)
 {
-    NumberPushButton *minuteButton = new NumberPushButton(true, minutesGroup);
+    NumberPushButton *minuteButton = new NumberPushButton(true, mMinutesGroup);
     minuteButton->setText(QString::number(minuteIndex));
     minuteButton->setCheckable(true);
-    minuteButton->setChecked(ctTask->minute.isEnabled(minuteIndex));
+    minuteButton->setChecked(mCtTask->minute.isEnabled(minuteIndex));
 
     connect(minuteButton, &NumberPushButton::clicked, this, &TaskEditorDialog::slotMinuteChanged);
     connect(minuteButton, &NumberPushButton::clicked, this, &TaskEditorDialog::slotWizard);
@@ -449,37 +449,37 @@ void TaskEditorDialog::createMinutesGroup(QWidget *main)
 {
     logDebug() << "Creating minutes group";
 
-    minutesGroup = new QGroupBox(i18n("Minutes"), main);
+    mMinutesGroup = new QGroupBox(i18n("Minutes"), main);
 
-    minutesLayout = new QGridLayout(minutesGroup);
+    mMinutesLayout = new QGridLayout(mMinutesGroup);
 
     for (int minuteIndex = 0; minuteIndex <= minuteTotal; ++minuteIndex) {
-        minuteButtons[minuteIndex] = createMinuteButton(minuteIndex);
+        mMinuteButtons[minuteIndex] = createMinuteButton(minuteIndex);
     }
 
-    minutesPreselectionLayout = new QHBoxLayout();
+    mMinutesPreselectionLayout = new QHBoxLayout();
 
     QLabel *minutesPreselectionLabel = new QLabel(i18n("Preselection:"));
-    minutesPreselectionLayout->addWidget(minutesPreselectionLabel);
+    mMinutesPreselectionLayout->addWidget(minutesPreselectionLabel);
 
-    minutesPreselection = new QComboBox(this);
+    mMinutesPreselection = new QComboBox(this);
 
-    minutesPreselectionLabel->setBuddy(minutesPreselection);
+    minutesPreselectionLabel->setBuddy(mMinutesPreselection);
 
-    minutesPreselection->addItem(QIcon::fromTheme(QStringLiteral("edit-clear-locationbar-ltr")), i18n("Clear selection"), -1);
-    minutesPreselection->addItem(QIcon::fromTheme(QStringLiteral("edit-rename")), i18n("Custom selection"), 0);
-    minutesPreselection->addItem(QIcon::fromTheme(QStringLiteral("view-calendar-month")), i18n("Each minute"), 1);
-    minutesPreselection->addItem(QIcon::fromTheme(QStringLiteral("view-calendar-week")), i18n("Every 2 minutes"), 2);
-    minutesPreselection->addItem(QIcon::fromTheme(QStringLiteral("view-calendar-workweek")), i18n("Every 5 minutes"), 5);
-    minutesPreselection->addItem(QIcon::fromTheme(QStringLiteral("view-calendar-upcoming-days")), i18n("Every 10 minutes"), 10);
-    minutesPreselection->addItem(QIcon::fromTheme(QStringLiteral("view-calendar-upcoming-days")), i18n("Every 15 minutes"), 15);
-    minutesPreselection->addItem(QIcon::fromTheme(QStringLiteral("view-calendar-day")), i18n("Every 20 minutes"), 20);
-    minutesPreselection->addItem(QIcon::fromTheme(QStringLiteral("view-calendar-day")), i18n("Every 30 minutes"), 30);
+    mMinutesPreselection->addItem(QIcon::fromTheme(QStringLiteral("edit-clear-locationbar-ltr")), i18n("Clear selection"), -1);
+    mMinutesPreselection->addItem(QIcon::fromTheme(QStringLiteral("edit-rename")), i18n("Custom selection"), 0);
+    mMinutesPreselection->addItem(QIcon::fromTheme(QStringLiteral("view-calendar-month")), i18n("Each minute"), 1);
+    mMinutesPreselection->addItem(QIcon::fromTheme(QStringLiteral("view-calendar-week")), i18n("Every 2 minutes"), 2);
+    mMinutesPreselection->addItem(QIcon::fromTheme(QStringLiteral("view-calendar-workweek")), i18n("Every 5 minutes"), 5);
+    mMinutesPreselection->addItem(QIcon::fromTheme(QStringLiteral("view-calendar-upcoming-days")), i18n("Every 10 minutes"), 10);
+    mMinutesPreselection->addItem(QIcon::fromTheme(QStringLiteral("view-calendar-upcoming-days")), i18n("Every 15 minutes"), 15);
+    mMinutesPreselection->addItem(QIcon::fromTheme(QStringLiteral("view-calendar-day")), i18n("Every 20 minutes"), 20);
+    mMinutesPreselection->addItem(QIcon::fromTheme(QStringLiteral("view-calendar-day")), i18n("Every 30 minutes"), 30);
 
-    minutesPreselectionLayout->addWidget(minutesPreselection);
+    mMinutesPreselectionLayout->addWidget(mMinutesPreselection);
 
-    connect(minutesPreselection, static_cast<void (QComboBox::*)(int)>(&QComboBox::activated), this, &TaskEditorDialog::slotMinutesPreselection);
-    connect(minutesPreselection, static_cast<void (QComboBox::*)(int)>(&QComboBox::activated), this, &TaskEditorDialog::slotWizard);
+    connect(mMinutesPreselection, static_cast<void (QComboBox::*)(int)>(&QComboBox::activated), this, &TaskEditorDialog::slotMinutesPreselection);
+    connect(mMinutesPreselection, static_cast<void (QComboBox::*)(int)>(&QComboBox::activated), this, &TaskEditorDialog::slotWizard);
 
     //First mandatory increase
     increaseMinutesGroup();
@@ -496,7 +496,7 @@ NumberPushButton *TaskEditorDialog::createHourButton(QGroupBox *hoursGroup, int 
     NumberPushButton *hourButton = new NumberPushButton(true, hoursGroup);
     hourButton->setText(QString::number(hour));
     hourButton->setCheckable(true);
-    hourButton->setChecked(ctTask->hour.isEnabled(hour));
+    hourButton->setChecked(mCtTask->hour.isEnabled(hour));
 
     connect(hourButton, &NumberPushButton::clicked, this, &TaskEditorDialog::slotHourChanged);
     connect(hourButton, &NumberPushButton::clicked, this, &TaskEditorDialog::slotWizard);
@@ -511,31 +511,31 @@ QGroupBox *TaskEditorDialog::createHoursGroup(QWidget *main)
 
     QGridLayout *hoursLayout = new QGridLayout(hoursGroup); //5 x 7
 
-    morningLabel = new QLabel(i18n("AM:"), this);
-    morningLabel->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
-    morningLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Minimum);
-    hoursLayout->addWidget(morningLabel, 0, 0, Qt::AlignLeft | Qt::AlignVCenter);
+    mMorningLabel = new QLabel(i18n("AM:"), this);
+    mMorningLabel->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+    mMorningLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Minimum);
+    hoursLayout->addWidget(mMorningLabel, 0, 0, Qt::AlignLeft | Qt::AlignVCenter);
 
     int hourCount = 0;
     for (int column = 0; column <= 3; ++column) {
         for (int hour = 0; hour <= 5; ++hour) {
             NumberPushButton *hourButton = createHourButton(hoursGroup, hourCount);
-            hourButtons[hourCount] = hourButton;
+            mHourButtons[hourCount] = hourButton;
             hoursLayout->addWidget(hourButton, column, hour+1);
             hourCount++;
         }
     }
 
-    afternoonLabel = new QLabel(i18n("PM:"), this);
-    afternoonLabel->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
-    afternoonLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Minimum);
-    hoursLayout->addWidget(afternoonLabel, 2, 0, Qt::AlignLeft | Qt::AlignVCenter);
+    mAfternoonLabel = new QLabel(i18n("PM:"), this);
+    mAfternoonLabel->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+    mAfternoonLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Minimum);
+    hoursLayout->addWidget(mAfternoonLabel, 2, 0, Qt::AlignLeft | Qt::AlignVCenter);
 
-    allHours = new SetOrClearAllButton(this, SetOrClearAllButton::SET_ALL);
-    hoursLayout->addWidget(allHours, 4, 0, 1, 7);
+    mAllHours = new SetOrClearAllButton(this, SetOrClearAllButton::SET_ALL);
+    hoursLayout->addWidget(mAllHours, 4, 0, 1, 7);
 
-    connect(allHours, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotAllHours);
-    connect(allHours, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotWizard);
+    connect(mAllHours, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotAllHours);
+    connect(mAllHours, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotWizard);
 
     logDebug() << "Create hours group";
     return hoursGroup;
@@ -543,78 +543,78 @@ QGroupBox *TaskEditorDialog::createHoursGroup(QWidget *main)
 
 void TaskEditorDialog::setupTitleWidget(const QString &comment, KTitleWidget::MessageType messageType)
 {
-    titleWidget->setComment(comment, messageType);
+    mTitleWidget->setComment(comment, messageType);
     if (messageType == KTitleWidget::ErrorMessage) {
-        titleWidget->setIcon(QIcon::fromTheme(QStringLiteral("dialog-error")), KTitleWidget::ImageRight);
+        mTitleWidget->setIcon(QIcon::fromTheme(QStringLiteral("dialog-error")), KTitleWidget::ImageRight);
     } else {
-        titleWidget->setIcon(QIcon::fromTheme(QStringLiteral("system-run")), KTitleWidget::ImageRight);
+        mTitleWidget->setIcon(QIcon::fromTheme(QStringLiteral("system-run")), KTitleWidget::ImageRight);
     }
 }
 
 void TaskEditorDialog::slotEnabledChanged()
 {
-    bool enabled = chkEnabled->isChecked();
-    userCombo->setEnabled(enabled);
-    leComment->setEnabled(enabled);
-    command->setEnabled(enabled);
-    chkReboot->setEnabled(enabled);
+    bool enabled = mChkEnabled->isChecked();
+    mUserCombo->setEnabled(enabled);
+    mLeComment->setEnabled(enabled);
+    mCommand->setEnabled(enabled);
+    mChkReboot->setEnabled(enabled);
 
     // if chkReboot is already checked, allow setEnabled(false) but not setEnable(true) ...
-    if (!chkReboot->isChecked() || !enabled) {
-        cbEveryDay->setEnabled(enabled);
-        hoursGroup->setEnabled(enabled);
-        minutesGroup->setEnabled(enabled);
+    if (!mChkReboot->isChecked() || !enabled) {
+        mCbEveryDay->setEnabled(enabled);
+        mHoursGroup->setEnabled(enabled);
+        mMinutesGroup->setEnabled(enabled);
     }
 
     // if cbEveryDay is already checked, allow setEnabled(false) but not setEnable(true) ...
-    if ((!chkReboot->isChecked() && !cbEveryDay->isChecked()) || !enabled) {
-        bgMonth->setEnabled(enabled);
-        bgDayOfMonth->setEnabled(enabled);
-        bgDayOfWeek->setEnabled(enabled);
+    if ((!mChkReboot->isChecked() && !mCbEveryDay->isChecked()) || !enabled) {
+        mBgMonth->setEnabled(enabled);
+        mBgDayOfMonth->setEnabled(enabled);
+        mBgDayOfWeek->setEnabled(enabled);
     }
 }
 
 void TaskEditorDialog::slotRebootChanged()
 {
-    bool reboot = !chkReboot->isChecked();
-    cbEveryDay->setEnabled(reboot);
-    hoursGroup->setEnabled(reboot);
-    minutesGroup->setEnabled(reboot);
+    bool reboot = !mChkReboot->isChecked();
+    mCbEveryDay->setEnabled(reboot);
+    mHoursGroup->setEnabled(reboot);
+    mMinutesGroup->setEnabled(reboot);
 
     // if cbEveryDay is already checked, bgMonth, bgDayOfMonth, bgDayOfWeek are already setEnable(flase)
     // so don't override them ! ...
-    if (!cbEveryDay->isChecked()) {
-        bgMonth->setEnabled(reboot);
-        bgDayOfMonth->setEnabled(reboot);
-        bgDayOfWeek->setEnabled(reboot);
+    if (!mCbEveryDay->isChecked()) {
+        mBgMonth->setEnabled(reboot);
+        mBgDayOfMonth->setEnabled(reboot);
+        mBgDayOfWeek->setEnabled(reboot);
     }
 }
 
 void TaskEditorDialog::slotDailyChanged()
 {
-    if (cbEveryDay->isChecked()) {
+    if (mCbEveryDay->isChecked()) {
         for (int mo = 1; mo <= 12; mo++) {
-            monthButtons[mo]->setChecked(true);
+            mMonthButtons[mo]->setChecked(true);
         }
         for (int dm = 1; dm <= 31; dm++) {
-            dayOfMonthButtons[dm]->setChecked(true);
+            mDayOfMonthButtons[dm]->setChecked(true);
         }
         for (int dw = 1; dw <= 7; dw++) {
-            dayOfWeekButtons[dw]->setChecked(true);
+            mDayOfWeekButtons[dw]->setChecked(true);
         }
-        bgMonth->setEnabled(false);
-        bgDayOfMonth->setEnabled(false);
-        bgDayOfWeek->setEnabled(false);
-        allMonths->setEnabled(false);
-        allDaysOfMonth->setEnabled(false);
-        allDaysOfWeek->setEnabled(false);
+        mBgMonth->setEnabled(false);
+        mBgDayOfMonth->setEnabled(false);
+        mBgDayOfWeek->setEnabled(false);
+        mAllMonths->setEnabled(false);
+        mAllDaysOfMonth->setEnabled(false);
+        mAllDaysOfWeek->setEnabled(false);
     } else {
-        bgMonth->setEnabled(true);
-        bgDayOfMonth->setEnabled(true);
-        bgDayOfWeek->setEnabled(true);
-        allMonths->setEnabled(true);
-        allDaysOfMonth->setEnabled(true);
-        allDaysOfWeek->setEnabled(true);
+        mBgMonth->setEnabled(true);
+        mBgDayOfMonth->setEnabled(true);
+        mBgDayOfWeek->setEnabled(true);
+        mAllMonths->setEnabled(true);
+        mAllDaysOfMonth->setEnabled(true);
+        mAllDaysOfWeek->setEnabled(true);
     }
 
     slotMonthChanged();
@@ -629,56 +629,56 @@ void TaskEditorDialog::slotOK()
 
     int monthDaysSelected(0);
     for (int dm = 1; dm <= 31; dm++) {
-        if (dayOfMonthButtons[dm]->isChecked()) {
+        if (mDayOfMonthButtons[dm]->isChecked()) {
             monthDaysSelected++;
         }
     }
 
     int weekDaysSelected(0);
     for (int dw = 1; dw <= 7; dw++) {
-        if (dayOfWeekButtons[dw]->isChecked()) {
+        if (mDayOfWeekButtons[dw]->isChecked()) {
             weekDaysSelected++;
         }
     }
 
     if ((monthDaysSelected == 0) && (weekDaysSelected > 0)) {
         for (int dm = 1; dm <= 31; dm++) {
-            dayOfMonthButtons[dm]->setChecked(true);
+            mDayOfMonthButtons[dm]->setChecked(true);
         }
     }
 
     if ((weekDaysSelected == 0) && (monthDaysSelected > 0)) {
         for (int dw = 1; dw <= 7; dw++) {
-            dayOfWeekButtons[dw]->setChecked(1);
+            mDayOfWeekButtons[dw]->setChecked(1);
         }
     }
 
     // save work in process
-    if (crontabWidget->tasksWidget()->needUserColumn()) {
-        ctTask->userLogin = userCombo->currentText();
+    if (mCrontabWidget->tasksWidget()->needUserColumn()) {
+        mCtTask->userLogin = mUserCombo->currentText();
     }
 
-    ctTask->comment = leComment->toPlainText();
-    ctTask->command = command->url().path();
-    ctTask->enabled = chkEnabled->isChecked();
-    ctTask->reboot = chkReboot->isChecked();
+    mCtTask->comment = mLeComment->toPlainText();
+    mCtTask->command = mCommand->url().path();
+    mCtTask->enabled = mChkEnabled->isChecked();
+    mCtTask->reboot = mChkReboot->isChecked();
 
     for (int mo = CTMonth::MINIMUM; mo <= CTMonth::MAXIMUM; mo++) {
-        ctTask->month.setEnabled(mo, monthButtons[mo]->isChecked());
+        mCtTask->month.setEnabled(mo, mMonthButtons[mo]->isChecked());
     }
 
     for (int dm = 1; dm <= 31; dm++) {
-        ctTask->dayOfMonth.setEnabled(dm, dayOfMonthButtons[dm]->isChecked());
+        mCtTask->dayOfMonth.setEnabled(dm, mDayOfMonthButtons[dm]->isChecked());
     }
     for (int dw = 1; dw <= 7; dw++) {
-        ctTask->dayOfWeek.setEnabled(dw, dayOfWeekButtons[dw]->isChecked());
+        mCtTask->dayOfWeek.setEnabled(dw, mDayOfWeekButtons[dw]->isChecked());
     }
     for (int ho = 0; ho <= 23; ho++) {
-        ctTask->hour.setEnabled(ho, hourButtons[ho]->isChecked());
+        mCtTask->hour.setEnabled(ho, mHourButtons[ho]->isChecked());
     }
 
     for (int mi = 0; mi <= minuteTotal; ++mi) {
-        ctTask->minute.setEnabled(mi, minuteButtons[mi]->isChecked());
+        mCtTask->minute.setEnabled(mi, mMinuteButtons[mi]->isChecked());
     }
 
     accept();
@@ -686,24 +686,24 @@ void TaskEditorDialog::slotOK()
 
 void TaskEditorDialog::defineCommandIcon()
 {
-    CTTask tempTask(*ctTask);
-    tempTask.command = command->url().path();
+    CTTask tempTask(*mCtTask);
+    tempTask.command = mCommand->url().path();
 
-    commandIcon->setPixmap(tempTask.commandIcon().pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize, nullptr, this)));
+    mCommandIcon->setPixmap(tempTask.commandIcon().pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize, nullptr, this)));
 }
 
 bool TaskEditorDialog::checkCommand()
 {
-    CTTask tempTask(*ctTask);
-    tempTask.command = command->url().path();
+    CTTask tempTask(*mCtTask);
+    tempTask.command = mCommand->url().path();
 
     QPair<QString, bool> commandQuoted = tempTask.unQuoteCommand();
 
     if (commandQuoted.first.isEmpty()) {
         setupTitleWidget(i18n("<i>Please type a valid command line...</i>"), KTitleWidget::ErrorMessage);
-        okButton->setEnabled(false);
-        command->setFocus();
-        commandIcon->setPixmap(missingCommandPixmap);
+        mOkButton->setEnabled(false);
+        mCommand->setFocus();
+        mCommandIcon->setPixmap(mMissingCommandPixmap);
 
         return false;
     }
@@ -711,9 +711,9 @@ bool TaskEditorDialog::checkCommand()
     QStringList pathCommand = tempTask.separatePathCommand(commandQuoted.first, commandQuoted.second);
     if (pathCommand.isEmpty()) {
         setupTitleWidget(i18n("<i>Please type a valid command line...</i>"), KTitleWidget::ErrorMessage);
-        okButton->setEnabled(false);
-        command->setFocus();
-        commandIcon->setPixmap(missingCommandPixmap);
+        mOkButton->setEnabled(false);
+        mCommand->setFocus();
+        mCommandIcon->setPixmap(mMissingCommandPixmap);
 
         return false;
     }
@@ -725,7 +725,7 @@ bool TaskEditorDialog::checkCommand()
 
     bool found = false;
     bool exec = false;
-    if (!QStandardPaths::findExecutable(binaryCommand, QStringList() << path).isEmpty() || specialValidCommands.contains(binaryCommand)) {
+    if (!QStandardPaths::findExecutable(binaryCommand, QStringList() << path).isEmpty() || mSpecialValidCommands.contains(binaryCommand)) {
         found = true;
     }
     // FIXME check if actually executable
@@ -735,17 +735,17 @@ bool TaskEditorDialog::checkCommand()
 
     if (found && !exec) {
         setupTitleWidget(i18n("<i>Please select an executable program...</i>"), KTitleWidget::ErrorMessage);
-        okButton->setEnabled(false);
-        command->setFocus();
-        commandIcon->setPixmap(missingCommandPixmap);
+        mOkButton->setEnabled(false);
+        mCommand->setFocus();
+        mCommandIcon->setPixmap(mMissingCommandPixmap);
         return false;
     }
 
     if (!found) {
         setupTitleWidget(i18n("<i>Please browse for a program to execute...</i>"), KTitleWidget::ErrorMessage);
-        okButton->setEnabled(false);
-        command->setFocus();
-        commandIcon->setPixmap(missingCommandPixmap);
+        mOkButton->setEnabled(false);
+        mCommand->setFocus();
+        mCommandIcon->setPixmap(mMissingCommandPixmap);
         return false;
     }
 
@@ -754,24 +754,24 @@ bool TaskEditorDialog::checkCommand()
 
 void TaskEditorDialog::slotWizard()
 {
-    if (!chkEnabled->isChecked()) {
+    if (!mChkEnabled->isChecked()) {
         setupTitleWidget(i18n("<i>This task is disabled.</i>"));
-        okButton->setEnabled(true);
-        chkEnabled->setFocus();
+        mOkButton->setEnabled(true);
+        mChkEnabled->setFocus();
         return;
     }
 
-    if (chkReboot->isChecked()) {
+    if (mChkReboot->isChecked()) {
         setupTitleWidget(i18n("<i>This task will be run on system bootup.</i>"));
-        okButton->setEnabled(true);
+        mOkButton->setEnabled(true);
         return;
     }
 
-    if (command->url().path().isEmpty()) {
+    if (mCommand->url().path().isEmpty()) {
         setupTitleWidget(i18n("<i>Please browse for a program to execute...</i>"), KTitleWidget::ErrorMessage);
-        okButton->setEnabled(false);
-        command->setFocus();
-        commandIcon->setPixmap(missingCommandPixmap);
+        mOkButton->setEnabled(false);
+        mCommand->setFocus();
+        mCommandIcon->setPixmap(mMissingCommandPixmap);
         return;
     }
 
@@ -783,16 +783,16 @@ void TaskEditorDialog::slotWizard()
     // the months
     bool valid(false);
     for (int mo = CTMonth::MINIMUM; mo <= CTMonth::MAXIMUM; mo++) {
-        if (monthButtons[mo]->isChecked()) {
+        if (mMonthButtons[mo]->isChecked()) {
             valid = true;
         }
     }
 
     if (!valid) {
         setupTitleWidget(i18n("<i>Please select from the 'Months' section...</i>"), KTitleWidget::ErrorMessage);
-        okButton->setEnabled(false);
-        if (!command->hasFocus()) {
-            monthButtons[1]->setFocus();
+        mOkButton->setEnabled(false);
+        if (!mCommand->hasFocus()) {
+            mMonthButtons[1]->setFocus();
         }
         return;
     }
@@ -800,21 +800,21 @@ void TaskEditorDialog::slotWizard()
     // the days
     valid = false;
     for (int dm = CTDayOfMonth::MINIMUM; dm <= CTDayOfMonth::MAXIMUM; dm++) {
-        if (dayOfMonthButtons[dm]->isChecked()) {
+        if (mDayOfMonthButtons[dm]->isChecked()) {
             valid = true;
         }
     }
     for (int dw = CTDayOfWeek::MINIMUM; dw <= CTDayOfWeek::MAXIMUM; dw++) {
-        if (dayOfWeekButtons[dw]->isChecked()) {
+        if (mDayOfWeekButtons[dw]->isChecked()) {
             valid = true;
         }
     }
 
     if (!valid) {
         setupTitleWidget(i18n("<i>Please select from either the 'Days of Month' or the 'Days of Week' section...</i>"), KTitleWidget::ErrorMessage);
-        okButton->setEnabled(false);
-        if (!command->hasFocus()) {
-            dayOfMonthButtons[1]->setFocus();
+        mOkButton->setEnabled(false);
+        if (!mCommand->hasFocus()) {
+            mDayOfMonthButtons[1]->setFocus();
         }
         return;
     }
@@ -822,16 +822,16 @@ void TaskEditorDialog::slotWizard()
     // the hours
     valid = false;
     for (int ho = 0; ho <= 23; ho++) {
-        if (hourButtons[ho]->isChecked()) {
+        if (mHourButtons[ho]->isChecked()) {
             valid = true;
         }
     }
 
     if (!valid) {
         setupTitleWidget(i18n("<i>Please select from the 'Hours' section...</i>"), KTitleWidget::ErrorMessage);
-        okButton->setEnabled(false);
-        if (!command->hasFocus()) {
-            hourButtons[0]->setFocus();
+        mOkButton->setEnabled(false);
+        if (!mCommand->hasFocus()) {
+            mHourButtons[0]->setFocus();
         }
         return;
     }
@@ -839,16 +839,16 @@ void TaskEditorDialog::slotWizard()
     // the mins
     valid = false;
     for (int mi = 0; mi <= minuteTotal; ++mi) {
-        if (minuteButtons[mi]->isChecked()) {
+        if (mMinuteButtons[mi]->isChecked()) {
             valid = true;
         }
     }
 
     if (!valid) {
         setupTitleWidget(i18n("<i>Please select from the 'Minutes' section...</i>"), KTitleWidget::ErrorMessage);
-        okButton->setEnabled(false);
-        if (!command->hasFocus()) {
-            minuteButtons[0]->setFocus();
+        mOkButton->setEnabled(false);
+        if (!mCommand->hasFocus()) {
+            mMinuteButtons[0]->setFocus();
         }
         return;
     }
@@ -856,18 +856,18 @@ void TaskEditorDialog::slotWizard()
     defineCommandIcon();
     setupTitleWidget(i18n("<i>This task will be executed at the specified intervals.</i>"));
 
-    okButton->setEnabled(true);
+    mOkButton->setEnabled(true);
 }
 
 void TaskEditorDialog::slotAllMonths()
 {
     bool checked = false;
-    if (allMonths->isSetAll()) {
+    if (mAllMonths->isSetAll()) {
         checked = true;
     }
 
     for (int mo = CTMonth::MINIMUM; mo <= CTMonth::MAXIMUM; mo++) {
-        monthButtons[mo]->setChecked(checked);
+        mMonthButtons[mo]->setChecked(checked);
     }
 
     slotMonthChanged();
@@ -877,28 +877,28 @@ void TaskEditorDialog::slotMonthChanged()
 {
     bool allCleared = true;
     for (int mo = CTMonth::MINIMUM; mo <= CTMonth::MAXIMUM; mo++) {
-        if (monthButtons[mo]->isChecked()) {
+        if (mMonthButtons[mo]->isChecked()) {
             allCleared = false;
             break;
         }
     }
 
     if (allCleared) {
-        allMonths->setStatus(SetOrClearAllButton::SET_ALL);
+        mAllMonths->setStatus(SetOrClearAllButton::SET_ALL);
     } else {
-        allMonths->setStatus(SetOrClearAllButton::CLEAR_ALL);
+        mAllMonths->setStatus(SetOrClearAllButton::CLEAR_ALL);
     }
 }
 
 void TaskEditorDialog::slotAllDaysOfMonth()
 {
     bool checked = false;
-    if (allDaysOfMonth->isSetAll()) {
+    if (mAllDaysOfMonth->isSetAll()) {
         checked = true;
     }
 
     for (int dm = CTDayOfMonth::MINIMUM; dm <= CTDayOfMonth::MAXIMUM; dm++) {
-        dayOfMonthButtons[dm]->setChecked(checked);
+        mDayOfMonthButtons[dm]->setChecked(checked);
     }
 
     slotDayOfMonthChanged();
@@ -908,28 +908,28 @@ void TaskEditorDialog::slotDayOfMonthChanged()
 {
     bool allCleared = true;
     for (int dm = CTDayOfMonth::MINIMUM; dm <= CTDayOfMonth::MAXIMUM; dm++) {
-        if (dayOfMonthButtons[dm]->isChecked()) {
+        if (mDayOfMonthButtons[dm]->isChecked()) {
             allCleared = false;
             break;
         }
     }
 
     if (allCleared) {
-        allDaysOfMonth->setStatus(SetOrClearAllButton::SET_ALL);
+        mAllDaysOfMonth->setStatus(SetOrClearAllButton::SET_ALL);
     } else {
-        allDaysOfMonth->setStatus(SetOrClearAllButton::CLEAR_ALL);
+        mAllDaysOfMonth->setStatus(SetOrClearAllButton::CLEAR_ALL);
     }
 }
 
 void TaskEditorDialog::slotAllDaysOfWeek()
 {
-    if (allDaysOfWeek->isSetAll()) {
+    if (mAllDaysOfWeek->isSetAll()) {
         for (int dw = 1; dw <= 7; dw++) {
-            dayOfWeekButtons[dw]->setChecked(true);
+            mDayOfWeekButtons[dw]->setChecked(true);
         }
     } else {
         for (int dw = 1; dw <= 7; dw++) {
-            dayOfWeekButtons[dw]->setChecked(false);
+            mDayOfWeekButtons[dw]->setChecked(false);
         }
     }
     slotDayOfWeekChanged();
@@ -940,28 +940,28 @@ void TaskEditorDialog::slotDayOfWeekChanged()
     bool allChecked = true;
     bool allCleared = true;
     for (int dw = 1; dw <= 7; dw++) {
-        if (dayOfWeekButtons[dw]->isChecked()) {
+        if (mDayOfWeekButtons[dw]->isChecked()) {
             allCleared = false;
         } else {
             allChecked = false;
         }
     }
     if (allCleared) {
-        allDaysOfWeek->setStatus(SetOrClearAllButton::SET_ALL);
+        mAllDaysOfWeek->setStatus(SetOrClearAllButton::SET_ALL);
     } else {
-        allDaysOfWeek->setStatus(SetOrClearAllButton::CLEAR_ALL);
+        mAllDaysOfWeek->setStatus(SetOrClearAllButton::CLEAR_ALL);
     }
 }
 
 void TaskEditorDialog::slotAllHours()
 {
-    if (allHours->isSetAll()) {
+    if (mAllHours->isSetAll()) {
         for (int ho = 0; ho <= 23; ho++) {
-            hourButtons[ho]->setChecked(true);
+            mHourButtons[ho]->setChecked(true);
         }
     } else {
         for (int ho = 0; ho <= 23; ho++) {
-            hourButtons[ho]->setChecked(false);
+            mHourButtons[ho]->setChecked(false);
         }
     }
     slotHourChanged();
@@ -972,7 +972,7 @@ void TaskEditorDialog::slotHourChanged()
     bool allChecked = true;
     bool allCleared = true;
     for (int ho = 0; ho <= 23; ho++) {
-        if (hourButtons[ho]->isChecked()) {
+        if (mHourButtons[ho]->isChecked()) {
             allCleared = false;
         } else {
             allChecked = false;
@@ -980,37 +980,37 @@ void TaskEditorDialog::slotHourChanged()
     }
 
     if (allCleared) {
-        allHours->setStatus(SetOrClearAllButton::SET_ALL);
+        mAllHours->setStatus(SetOrClearAllButton::SET_ALL);
     } else {
-        allHours->setStatus(SetOrClearAllButton::CLEAR_ALL);
+        mAllHours->setStatus(SetOrClearAllButton::CLEAR_ALL);
     }
 }
 
 void TaskEditorDialog::slotMinutesPreselection(int index)
 {
-    QVariant itemData = minutesPreselection->itemData(index);
+    QVariant itemData = mMinutesPreselection->itemData(index);
     int step = itemData.toInt();
     logDebug() << "Selected step " << step;
 
     if (step == -1) {
         //Unselect everything
         for (int mi = 0; mi <= minuteTotal; ++mi) {
-            minuteButtons[mi]->setChecked(false);
+            mMinuteButtons[mi]->setChecked(false);
         }
 
         //Select Custom selection in the combo box
-        for (int index = 0; index < minutesPreselection->count(); ++index) {
-            if (minutesPreselection->itemData(index).toInt() == 0) {
-                minutesPreselection->setCurrentIndex(index);
+        for (int index = 0; index < mMinutesPreselection->count(); ++index) {
+            if (mMinutesPreselection->itemData(index).toInt() == 0) {
+                mMinutesPreselection->setCurrentIndex(index);
                 break;
             }
         }
     } else if (step != 0) {
         for (int mi = 0; mi <= minuteTotal; ++mi) {
             if (mi % step == 0) {
-                minuteButtons[mi]->setChecked(true);
+                mMinuteButtons[mi]->setChecked(true);
             } else {
-                minuteButtons[mi]->setChecked(false);
+                mMinuteButtons[mi]->setChecked(false);
             }
         }
     }
@@ -1027,14 +1027,14 @@ void TaskEditorDialog::slotMinuteChanged()
     CTMinute minutes;
 
     for (int index = 0; index <= minuteTotal; ++index) {
-        minutes.setEnabled(index, minuteButtons[index]->isChecked());
+        minutes.setEnabled(index, mMinuteButtons[index]->isChecked());
     }
 
     int period = minutes.findPeriod();
 
-    for (int index = 0; index < minutesPreselection->count(); ++index) {
-        if (minutesPreselection->itemData(index).toInt() == period) {
-            minutesPreselection->setCurrentIndex(index);
+    for (int index = 0; index < mMinutesPreselection->count(); ++index) {
+        if (mMinutesPreselection->itemData(index).toInt() == period) {
+            mMinutesPreselection->setCurrentIndex(index);
             break;
         }
     }
@@ -1077,14 +1077,14 @@ bool SetOrClearAllButton::isClearAll()
 
 NumberPushButton::NumberPushButton(QWidget *parent)
     : QPushButton(parent)
-    , isDirty(false)
+    , mIsDirty(false)
 {
     updatePalette();
 }
 
 NumberPushButton::NumberPushButton(bool digitMode, QWidget *parent)
     : QPushButton(parent)
-    , isDirty(false)
+    , mIsDirty(false)
 {
     if (digitMode) {
         setFixedWidth(12 + fontMetrics().boundingRect(QStringLiteral("44")).width());
@@ -1095,13 +1095,13 @@ NumberPushButton::NumberPushButton(bool digitMode, QWidget *parent)
 
 void NumberPushButton::updatePalette()
 {
-    palNormal = ((QWidget *)parent())->palette();
-    palSelected = palNormal;
+    mPalNormal = ((QWidget *)parent())->palette();
+    mPalSelected = mPalNormal;
     for (int cg = (int)QPalette::Active; cg < (int)QPalette::NColorGroups; cg++) {
-        palSelected.setColor((QPalette::ColorGroup)cg, QPalette::Button, palSelected.color((QPalette::ColorGroup)cg, QPalette::Highlight));
-        palSelected.setColor((QPalette::ColorGroup)cg, QPalette::ButtonText, palSelected.color((QPalette::ColorGroup)cg, QPalette::HighlightedText));
+        mPalSelected.setColor((QPalette::ColorGroup)cg, QPalette::Button, mPalSelected.color((QPalette::ColorGroup)cg, QPalette::Highlight));
+        mPalSelected.setColor((QPalette::ColorGroup)cg, QPalette::ButtonText, mPalSelected.color((QPalette::ColorGroup)cg, QPalette::HighlightedText));
     }
-    isDirty = true;
+    mIsDirty = true;
 }
 
 bool NumberPushButton::event(QEvent *e)
@@ -1119,10 +1119,10 @@ void NumberPushButton::paintEvent(QPaintEvent *)
     QStyleOptionButton option;
     initStyleOption(&option);
 
-    if (isDirty || isChecked()) {
-        isDirty = false;
+    if (mIsDirty || isChecked()) {
+        mIsDirty = false;
         if (isChecked()) {
-            option.palette = palSelected;
+            option.palette = mPalSelected;
             QFont f = p.font();
             f.setBold(true);
             p.setFont(f);

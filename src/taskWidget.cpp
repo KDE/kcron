@@ -21,8 +21,8 @@
 TaskWidget::TaskWidget(TasksWidget *_tasksWidget, CTTask *_cttask)
     : QTreeWidgetItem(_tasksWidget->treeWidget())
 {
-    ctTask = _cttask;
-    tasksWidget = _tasksWidget;
+    mCtTask = _cttask;
+    mTasksWidget = _tasksWidget;
 
     refresh();
 }
@@ -31,16 +31,16 @@ void TaskWidget::refresh()
 {
     int column = 0;
 
-    if (tasksWidget->needUserColumn()) {
-        setText(column++, ctTask->userLogin);
+    if (mTasksWidget->needUserColumn()) {
+        setText(column++, mCtTask->userLogin);
     }
 
-    setText(column++, ctTask->schedulingCronFormat());
+    setText(column++, mCtTask->schedulingCronFormat());
 
-    setText(column, ctTask->command);
-    setIcon(column++, ctTask->commandIcon());
+    setText(column, mCtTask->command);
+    setIcon(column++, mCtTask->commandIcon());
 
-    if (ctTask->enabled) {
+    if (mCtTask->enabled) {
         setText(column, i18n("Enabled"));
         setIcon(column++, QIcon::fromTheme(QStringLiteral("dialog-ok-apply")));
     } else {
@@ -48,17 +48,17 @@ void TaskWidget::refresh()
         setIcon(column++, QIcon::fromTheme(QStringLiteral("dialog-cancel")));
     }
 
-    setText(column++, ctTask->comment);
-    setText(column++, ctTask->describe());
+    setText(column++, mCtTask->comment);
+    setText(column++, mCtTask->describe());
 }
 
 void TaskWidget::toggleEnable()
 {
-    ctTask->enabled = !ctTask->enabled;
+    mCtTask->enabled = !mCtTask->enabled;
     refresh();
 }
 
 CTTask *TaskWidget::getCTTask() const
 {
-    return ctTask;
+    return mCtTask;
 }

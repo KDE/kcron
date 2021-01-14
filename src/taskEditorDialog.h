@@ -65,9 +65,9 @@ public:
 
     void paintEvent(QPaintEvent *) override;
 
-    bool isDirty;
-    QPalette palSelected;
-    QPalette palNormal;
+    bool mIsDirty;
+    QPalette mPalSelected;
+    QPalette mPalNormal;
 };
 
 /**
@@ -197,51 +197,51 @@ private:
     /**
      * Task.
      */
-    CTTask *ctTask;
+    CTTask *mCtTask = nullptr;
 
-    CrontabWidget *crontabWidget;
+    CrontabWidget *mCrontabWidget = nullptr;
 
     // Widgets.
 
-    KTitleWidget *titleWidget;
-    QPushButton *okButton;
+    KTitleWidget *mTitleWidget = nullptr;
+    QPushButton *mOkButton = nullptr;
 
-    QComboBox *userCombo;
+    QComboBox *mUserCombo = nullptr;
 
-    QTextEdit *leComment;
+    QTextEdit *mLeComment = nullptr;
 
-    QLabel *commandIcon;
-    QPixmap missingCommandPixmap;
-    KUrlRequester *command;
+    QLabel *mCommandIcon = nullptr;
+    QPixmap mMissingCommandPixmap;
+    KUrlRequester *mCommand = nullptr;
 
-    QCheckBox *chkEnabled;
-    QCheckBox *chkReboot;
-    QCheckBox *cbEveryDay;
+    QCheckBox *mChkEnabled = nullptr;
+    QCheckBox *mChkReboot = nullptr;
+    QCheckBox *mCbEveryDay = nullptr;
 
-    QGroupBox *bgMonth;
-    NumberPushButton *monthButtons[13]; // The index 0 is not used
-    SetOrClearAllButton *allMonths;
+    QGroupBox *mBgMonth = nullptr;
+    NumberPushButton *mMonthButtons[13]; // The index 0 is not used
+    SetOrClearAllButton *mAllMonths = nullptr;
 
-    QGroupBox *bgDayOfMonth;
-    NumberPushButton *dayOfMonthButtons[32]; // The index 0 is not used
-    SetOrClearAllButton *allDaysOfMonth;
+    QGroupBox *mBgDayOfMonth;
+    NumberPushButton *mDayOfMonthButtons[32]; // The index 0 is not used
+    SetOrClearAllButton *mAllDaysOfMonth = nullptr;
 
-    QGroupBox *bgDayOfWeek;
-    NumberPushButton *dayOfWeekButtons[8]; // The index 0 is not used
-    SetOrClearAllButton *allDaysOfWeek;
+    QGroupBox *mBgDayOfWeek = nullptr;
+    NumberPushButton *mDayOfWeekButtons[8]; // The index 0 is not used
+    SetOrClearAllButton *mAllDaysOfWeek = nullptr;
 
-    QGroupBox *hoursGroup;
-    QLabel *morningLabel;
-    QLabel *afternoonLabel;
-    QPushButton *hourButtons[24];
-    SetOrClearAllButton *allHours;
+    QGroupBox *mHoursGroup = nullptr;
+    QLabel *mMorningLabel = nullptr;
+    QLabel *mAfternoonLabel = nullptr;
+    QPushButton *mHourButtons[24];
+    SetOrClearAllButton *mAllHours = nullptr;
 
-    QGroupBox *minutesGroup;
-    QGridLayout *minutesLayout;
-    QPushButton *minuteButtons[60];
+    QGroupBox *mMinutesGroup = nullptr;
+    QGridLayout *mMinutesLayout = nullptr;
+    QPushButton *mMinuteButtons[60];
 
-    QHBoxLayout *minutesPreselectionLayout;
-    QComboBox *minutesPreselection;
+    QHBoxLayout *mMinutesPreselectionLayout = nullptr;
+    QComboBox *mMinutesPreselection = nullptr;
 
     static const int minuteTotal = 59; // or 55 or 59
 
@@ -249,7 +249,7 @@ private:
 
     static const int reducedMinuteStep = 5;
 
-    QStringList specialValidCommands;
+    QStringList mSpecialValidCommands;
 };
 
 #endif // TASK_EDITOR_DIALOG_H

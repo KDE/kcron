@@ -82,7 +82,11 @@ private:
 
     void prepareContextualMenu();
 
-    VariablesWidgetPrivate *const d;
+    QAction *mNewVariableAction = nullptr;
+
+    QAction *mModifyAction = nullptr;
+
+    QAction *mDeleteAction = nullptr;
 };
 
 #endif // VARIABLES_WIDGET_H

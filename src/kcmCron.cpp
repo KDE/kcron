@@ -30,24 +30,8 @@
 K_PLUGIN_FACTORY(KCMCronFactory, registerPlugin<KCMCron>();
                  )
 
-class KCMCronPrivate
-{
-public:
-
-    /**
-     * Main GUI view/working area.
-     */
-    CrontabWidget *crontabWidget = nullptr;
-
-    /**
-     * Document object, here crotab entries.
-     */
-    CTHost *ctHost = nullptr;
-};
-
 KCMCron::KCMCron(QWidget *parent, const QVariantList & /*args*/)
     : KCModule(parent)
-    , d(new KCMCronPrivate())
 {
     KAboutData *aboutData = new KAboutData(QStringLiteral("kcm_cron"), i18n("Task Scheduler"),
                                            QStringLiteral("5.0"), i18n("KDE Task Scheduler"), KAboutLicense::GPL, i18n("(c) 2008, Nicolas Ternisien\n(c) 1999-2000, Gary Meyer"));
@@ -62,23 +46,23 @@ KCMCron::KCMCron(QWidget *parent, const QVariantList & /*args*/)
 
     // Initialize document.
     CTInitializationError ctInitializationError;
-    d->ctHost = new CTHost(findCrontabBinary(), ctInitializationError);
+    mCtHost = new CTHost(findCrontabBinary(), ctInitializationError);
     if (ctInitializationError.hasErrorMessage()) {
         KMessageBox::error(this, i18n("The following error occurred while initializing KCron:"
                                       "\n\n%1\n\nKCron will now exit.\n", ctInitializationError.errorMessage()));
     }
 
-    d->crontabWidget = new CrontabWidget(this, d->ctHost);
+    mCrontabWidget = new CrontabWidget(this, mCtHost);
 
     logDebug() << "Crontab Widget initialized";
 
-    connect(d->crontabWidget->tasksWidget(), SIGNAL(taskModified(bool)), this, SIGNAL(changed(bool)));
-    connect(d->crontabWidget->variablesWidget(), SIGNAL(variableModified(bool)), this, SIGNAL(changed(bool)));
+    connect(mCrontabWidget->tasksWidget(), SIGNAL(taskModified(bool)), this, SIGNAL(changed(bool)));
+    connect(mCrontabWidget->variablesWidget(), SIGNAL(variableModified(bool)), this, SIGNAL(changed(bool)));
 
     // Initialize view.
     QVBoxLayout *layout = new QVBoxLayout(this);
 
-    layout->addWidget(d->crontabWidget);
+    layout->addWidget(mCrontabWidget);
 
     init();
 }
@@ -90,24 +74,23 @@ QString KCMCron::findCrontabBinary()
 
 KCMCron::~KCMCron()
 {
-    delete d->crontabWidget;
-    delete d->ctHost;
+    delete mCrontabWidget;
+    delete mCtHost;
 
-    delete d;
 }
 
 void KCMCron::load()
 {
     logDebug() << "Calling load";
 
-    d->ctHost->cancel();
+    mCtHost->cancel();
 }
 
 void KCMCron::save()
 {
     logDebug() << "Saving crontab...";
 
-    CTSaveStatus saveStatus = d->ctHost->save();
+    CTSaveStatus saveStatus = mCtHost->save();
     if (saveStatus.isError() == true) {
         KMessageBox::detailedError(this, saveStatus.errorMessage(), saveStatus.detailErrorMessage());
     }
@@ -117,16 +100,16 @@ void KCMCron::defaults()
 {
     logDebug() << "Loading defaults";
 
-    d->ctHost->cancel();
+    mCtHost->cancel();
 }
 
 bool KCMCron::init()
 {
     // Display greeting screen.
     // if there currently are no scheduled tasks...
-    if (!d->ctHost->isRootUser()) {
+    if (!mCtHost->isRootUser()) {
         int taskCount = 0;
-        foreach (CTCron *ctCron, d->ctHost->crons) {
+        foreach (CTCron *ctCron, mCtHost->crons) {
             taskCount += ctCron->tasks().count();
         }
 
@@ -142,7 +125,7 @@ bool KCMCron::init()
 
 CTHost *KCMCron::ctHost() const
 {
-    return d->ctHost;
+    return mCtHost;
 }
 
 #include "kcmCron.moc"

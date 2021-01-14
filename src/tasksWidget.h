@@ -16,8 +16,6 @@
 
 class TaskWidget;
 
-class TasksWidgetPrivate;
-
 /**
  * QTreeWidget of a "tasks" folder.
  */
@@ -95,7 +93,15 @@ private:
     void setupActions(CrontabWidget *crontabWidget);
     void prepareContextualMenu();
 
-    TasksWidgetPrivate *const d;
+    QAction *mNewTaskAction = nullptr;
+
+    QAction *mModifyAction = nullptr;
+
+    QAction *mDeleteAction = nullptr;
+
+    QAction *mRunNowAction = nullptr;
+
+    QAction *mPrintAction = nullptr;
 };
 
 #endif // TASKS_WIDGET_H

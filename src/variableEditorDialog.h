@@ -67,26 +67,26 @@ private:
     /**
      * Environment variable.
      */
-    CTVariable *ctVariable;
+    CTVariable *mCtVariable = nullptr;
 
-    CrontabWidget *crontabWidget;
+    CrontabWidget *mCrontabWidget = nullptr;
 
     // Widgets.
-    KTitleWidget *titleWidget;
-    QPushButton *okButton;
+    KTitleWidget *mTitleWidget = nullptr;
+    QPushButton *mOkButton = nullptr;
 
-    QComboBox *cmbVariable;
+    QComboBox *mCmbVariable = nullptr;
 
-    QLabel *detailsIcon;
-    QLabel *details;
+    QLabel *mDetailsIcon = nullptr;
+    QLabel *mDetails = nullptr;
 
-    QLineEdit *leValue;
+    QLineEdit *mLeValue = nullptr;
 
-    QTextEdit *teComment;
+    QTextEdit *mTeComment = nullptr;
 
-    QCheckBox *chkEnabled;
+    QCheckBox *mChkEnabled = nullptr;
 
-    QComboBox *userCombo;
+    QComboBox *mUserCombo = nullptr;
 };
 
 #endif // VARIABLE_EDITOR_DIALOG_H

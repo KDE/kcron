@@ -23,8 +23,7 @@
 #include <KSharedConfig>
 
 class CTHost;
-
-class KCMCronPrivate;
+class CrontabWidget;
 
 class KCMCron : public KCModule
 {
@@ -53,8 +52,15 @@ public:
     QString findCrontabBinary();
 
 private:
+    /**
+     * Main GUI view/working area.
+     */
+    CrontabWidget *mCrontabWidget = nullptr;
 
-    KCMCronPrivate *const d;
+    /**
+     * Document object, here crotab entries.
+     */
+    CTHost *mCtHost = nullptr;
 };
 
 #endif // KCM_CRON_H
