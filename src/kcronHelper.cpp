@@ -24,7 +24,8 @@ void KCronHelper::initUserCombo(QComboBox *userCombo, CrontabWidget *crontabWidg
 
     QStringList users;
     int selectedIndex = 0;
-    foreach (CTCron *ctCron, crontabWidget->ctHost()->crons) {
+    const auto crons = crontabWidget->ctHost()->crons;
+    for (CTCron *ctCron : crons) {
         if (ctCron->isSystemCron()) {
             continue;
         }
@@ -52,7 +53,7 @@ QTextEdit *KCronHelper::createCommentEdit(QWidget *parent)
     edit->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum));
     edit->setTabChangesFocus(true);
 
-    QFontMetrics fontMetrics(edit->currentFont());
+    const QFontMetrics fontMetrics(edit->currentFont());
     edit->setMaximumHeight(fontMetrics.lineSpacing() * 3); //TODO Choose a smarter value
 
     return edit;

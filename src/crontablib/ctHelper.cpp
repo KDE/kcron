@@ -17,7 +17,7 @@ QString CTHelper::exportComment(const QString &comment)
     QString exportComment;
 
     if (comment.isEmpty()) {
-        QString noComment = i18n("No comment");
+        const QString noComment = i18n("No comment");
         exportComment += QLatin1String("#") + noComment + QLatin1String("\n");
         return exportComment;
     }

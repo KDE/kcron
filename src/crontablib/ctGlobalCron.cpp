@@ -40,12 +40,15 @@ QList<CTTask *> CTGlobalCron::tasks() const
     logDebug() << "Global Cron Tasks";
     QList<CTTask *> tasks;
 
-    foreach (CTCron *cron, mCtHost->crons) {
+    const auto crons = mCtHost->crons;
+    for (CTCron *cron : crons) {
         if (cron->isSystemCron()) {
             continue;
         }
 
-        foreach (CTTask *task, cron->tasks()) {
+        const auto ctasks = cron->tasks();
+
+        for (CTTask *task : ctasks) {
             tasks.append(task);
         }
     }
@@ -57,12 +60,13 @@ QList<CTVariable *> CTGlobalCron::variables() const
     logDebug() << "Global Cron Variables";
     QList<CTVariable *> variables;
 
-    foreach (CTCron *cron, mCtHost->crons) {
+    const auto crons = mCtHost->crons;
+    for (CTCron *cron : crons) {
         if (cron->isSystemCron()) {
             continue;
         }
-
-        foreach (CTVariable *variable, cron->variables()) {
+        const auto cvariables = cron->variables();
+        for (CTVariable *variable : cvariables) {
             variables.append(variable);
         }
     }
@@ -96,8 +100,8 @@ void CTGlobalCron::modifyTask(CTTask *task)
      * actualCron could be NULL is the task came from clipboard because those tasks are never
      * linked to an existing CTCron* object
      */
-    if (actualCron == nullptr || actualCron->userLogin() != task->userLogin) {
-        if (actualCron != nullptr) {
+    if (!actualCron || actualCron->userLogin() != task->userLogin) {
+        if (actualCron) {
             actualCron->removeTask(task);
         }
 
@@ -116,8 +120,8 @@ void CTGlobalCron::modifyVariable(CTVariable *variable)
      * actualCron could be NULL is the task came from clipboard because those tasks are never
      * linked to an existing CTCron* object
      */
-    if (actualCron == nullptr || actualCron->userLogin() != variable->userLogin) {
-        if (actualCron != nullptr) {
+    if (!actualCron || actualCron->userLogin() != variable->userLogin) {
+        if (actualCron) {
             actualCron->removeVariable(variable);
         }
 

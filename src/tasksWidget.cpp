@@ -110,7 +110,7 @@ void TasksWidget::runTaskNow() const
 
     QStringList parameters;
     parameters << QStringLiteral("-e") << QStringLiteral("bash") << QStringLiteral("-c");
-    parameters << commandList.join(QLatin1String(";"));
+    parameters << commandList.join(QLatin1Char(';'));
 
     QProcess process;
     process.startDetached(QStringLiteral("konsole"), parameters);
@@ -149,7 +149,7 @@ void TasksWidget::modifySelection()
 void TasksWidget::modifySelection(QTreeWidgetItem *item, int position)
 {
     TaskWidget *taskWidget = static_cast<TaskWidget *>(item);
-    if (taskWidget != nullptr) {
+    if (taskWidget) {
         if (position == statusColumnIndex()) {
             taskWidget->toggleEnable();
             Q_EMIT taskModified(true);
@@ -202,7 +202,8 @@ void TasksWidget::refreshTasks(CTCron *cron)
     refreshHeaders();
 
     //Add new items
-    foreach (CTTask *ctTask, cron->tasks()) {
+    const auto tasks = cron->tasks();
+    for (CTTask *ctTask : tasks) {
         new TaskWidget(this, ctTask);
     }
 
@@ -285,8 +286,9 @@ void TasksWidget::prepareContextualMenu()
     treeWidget()->addAction(mDeleteAction);
 
     treeWidget()->addAction(createSeparator());
+    const auto cutCopyPasteActions = crontabWidget()->cutCopyPasteActions();
 
-    foreach (QAction *action, crontabWidget()->cutCopyPasteActions()) {
+    for (QAction *action : cutCopyPasteActions) {
         treeWidget()->addAction(action);
     }
 

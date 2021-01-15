@@ -27,7 +27,7 @@ int CTHour::findPeriod() const
 
 QString CTHour::exportUnit() const
 {
-    int period = findPeriod();
+    const int period = findPeriod();
     if (period != 0 && period != 1) {
         return QStringLiteral("*/%1").arg(QString::number(period));
     }

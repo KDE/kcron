@@ -15,24 +15,11 @@ class CTInitializationError
 {
 public:
 
-    QString errorMessage() const
-    {
-        return mError;
-    }
+    QString errorMessage() const;
 
-    void setErrorMessage(const QString &errorMessage)
-    {
-        this->mError = errorMessage;
-    }
+    void setErrorMessage(const QString &errorMessage);
 
-    bool hasErrorMessage()
-    {
-        if (mError.isEmpty()) {
-            return false;
-        }
-
-        return true;
-    }
+    bool hasErrorMessage() const;
 
 private:
     QString mError;
