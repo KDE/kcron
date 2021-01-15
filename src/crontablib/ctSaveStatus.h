@@ -15,32 +15,15 @@ class CTSaveStatus
 {
 public:
 
-    CTSaveStatus()
-    {
-        this->mErrorStatus = false;
-    }
+    CTSaveStatus();
 
-    CTSaveStatus(const QString &errorMessage, const QString &detailErrorMessage)
-    {
-        this->mErrorStatus = true;
-        this->mError = errorMessage;
-        this->mDetailError = detailErrorMessage;
-    }
+    CTSaveStatus(const QString &errorMessage, const QString &detailErrorMessage);
 
-    QString errorMessage() const
-    {
-        return mError;
-    }
+    QString errorMessage() const;
 
-    QString detailErrorMessage() const
-    {
-        return mDetailError;
-    }
+    QString detailErrorMessage() const;
 
-    bool isError() const
-    {
-        return mErrorStatus;
-    }
+    bool isError() const;
 
 private:
     bool mErrorStatus;

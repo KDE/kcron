@@ -54,7 +54,7 @@ void VariablesWidget::modifySelection(QTreeWidgetItem *item, int position)
 {
     VariableWidget *variableWidget = static_cast<VariableWidget *>(item);
 
-    if (variableWidget != nullptr) {
+    if (variableWidget) {
         if (position == statusColumnIndex()) {
             variableWidget->toggleEnable();
             Q_EMIT variableModified(true);

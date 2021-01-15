@@ -7,3 +7,30 @@
 */
 
 #include "ctSaveStatus.h"
+
+CTSaveStatus::CTSaveStatus()
+{
+    mErrorStatus = false;
+}
+
+CTSaveStatus::CTSaveStatus(const QString &errorMessage, const QString &detailErrorMessage)
+{
+    mErrorStatus = true;
+    mError = errorMessage;
+    mDetailError = detailErrorMessage;
+}
+
+QString CTSaveStatus::errorMessage() const
+{
+    return mError;
+}
+
+QString CTSaveStatus::detailErrorMessage() const
+{
+    return mDetailError;
+}
+
+bool CTSaveStatus::isError() const
+{
+    return mErrorStatus;
+}

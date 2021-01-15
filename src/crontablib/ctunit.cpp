@@ -131,8 +131,6 @@ void CTUnit::parse(const QString &tokenString)
 
         tokStr = tokStr.mid(commapos+1, tokStr.length()-commapos-1);
     }
-
-    return;
 }
 
 QString CTUnit::exportUnit() const
@@ -244,7 +242,6 @@ void CTUnit::apply()
         mInitialEnabled[i] = mEnabled[i];
     }
     mDirty = false;
-    return;
 }
 
 void CTUnit::cancel()
@@ -253,7 +250,6 @@ void CTUnit::cancel()
         mEnabled[i] = mInitialEnabled[i];
     }
     mDirty = false;
-    return;
 }
 
 int CTUnit::fieldToValue(const QString &entry) const

@@ -85,9 +85,6 @@ void TasksWidget::runTaskNow() const
     if (taskWidget == nullptr) {
         return;
     }
-    QString taskCommand = taskWidget->getCTTask()->command;
-
-    QString echoMessage = i18nc("Do not use any quote characters (') in this string", "End of script execution. Type Enter or Ctrl+C to exit.");
 
     CTCron *ctCron = crontabWidget()->currentCron();
     if (!ctCron) {
@@ -95,6 +92,9 @@ void TasksWidget::runTaskNow() const
         return;
     }
 
+    const QString taskCommand = taskWidget->getCTTask()->command;
+
+    const QString echoMessage = i18nc("Do not use any quote characters (') in this string", "End of script execution. Type Enter or Ctrl+C to exit.");
     QStringList commandList;
 
     const auto variables = ctCron->variables();
@@ -121,7 +121,7 @@ void TasksWidget::createTask()
     CTTask *task = new CTTask(QLatin1String(""), QLatin1String(""), crontabWidget()->currentCron()->userLogin(), crontabWidget()->currentCron()->isMultiUserCron());
 
     TaskEditorDialog taskEditorDialog(task, i18n("New Task"), crontabWidget());
-    int result = taskEditorDialog.exec();
+    const int result = taskEditorDialog.exec();
 
     if (result == QDialog::Accepted) {
         addTask(task);

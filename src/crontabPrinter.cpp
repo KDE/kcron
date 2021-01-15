@@ -102,7 +102,7 @@ void CrontabPrinter::printTasks()
         tasksContent.append(values);
     }
 
-    QList<int> tasksColumnWidths = findColumnWidths(tasksContent, 3);
+    const QList<int> tasksColumnWidths = findColumnWidths(tasksContent, 3);
 
     QStringList taskHeaders;
     taskHeaders << i18n("Scheduling") << i18n("Command") << i18n("Description");
