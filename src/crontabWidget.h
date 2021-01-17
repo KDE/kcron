@@ -107,7 +107,6 @@ private:
 
     bool hasClipboardContent();
 
-
     /**
      * The application.
      */

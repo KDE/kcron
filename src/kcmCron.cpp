@@ -73,7 +73,6 @@ KCMCron::~KCMCron()
 {
     delete mCrontabWidget;
     delete mCtHost;
-
 }
 
 void KCMCron::load()

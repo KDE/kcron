@@ -21,7 +21,6 @@
 
 #include "kcm_cron_debug.h"
 
-
 #define logDebug() qCDebug(KCM_CRON_LOG)
 
 #endif // KCRON_LOGGING_H_

@@ -8,7 +8,6 @@
 
 #include "cthour.h"
 
-
 /**
  * Constructs from a tokenized string.
  */

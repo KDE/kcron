@@ -8,7 +8,6 @@
 
 #include "ctminute.h"
 
-
 /**
  * Constructs from a tokenized string.
  */

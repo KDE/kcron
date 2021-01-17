@@ -9,7 +9,6 @@
 #ifndef VARIABLE_WIDGET_H
 #define VARIABLE_WIDGET_H
 
-
 #include "variablesWidget.h"
 
 class CTVariable;

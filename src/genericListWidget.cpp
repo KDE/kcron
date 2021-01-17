@@ -13,7 +13,6 @@
 #include <QKeyEvent>
 #include <QAction>
 
-
 #include "ctcron.h"
 #include "cttask.h"
 
