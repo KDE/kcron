@@ -25,9 +25,7 @@ CTVariable::CTVariable(const QString &tokenString, const QString &_comment, cons
         enabled = true;
     }
 
-    int spacepos(0);
-
-    spacepos = tokStr.indexOf(QRegExp(QLatin1String("[ =]")));
+    const int spacepos = tokStr.indexOf(QRegExp(QLatin1String("[ =]")));
     variable = tokStr.mid(0, spacepos);
 
     value = tokStr.mid(spacepos+1, tokStr.length()-spacepos-1);

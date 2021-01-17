@@ -224,12 +224,10 @@ QString CTTask::schedulingCronFormat() const
         return QStringLiteral("@reboot");
     }
 
-    QString scheduling;
-
-    scheduling += minute.exportUnit() + QLatin1String(" ");
-    scheduling += hour.exportUnit() + QLatin1String(" ");
-    scheduling += dayOfMonth.exportUnit() + QLatin1String(" ");
-    scheduling += month.exportUnit() + QLatin1String(" ");
+    QString scheduling = minute.exportUnit() + QLatin1Char(' ');
+    scheduling += hour.exportUnit() + QLatin1Char(' ');
+    scheduling += dayOfMonth.exportUnit() + QLatin1Char(' ');
+    scheduling += month.exportUnit() + QLatin1Char(' ');
     scheduling += dayOfWeek.exportUnit();
 
     return scheduling;

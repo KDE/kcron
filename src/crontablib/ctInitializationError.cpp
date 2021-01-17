@@ -15,7 +15,7 @@ QString CTInitializationError::errorMessage() const
 
 void CTInitializationError::setErrorMessage(const QString &errorMessage)
 {
-    this->mError = errorMessage;
+    mError = errorMessage;
 }
 
 bool CTInitializationError::hasErrorMessage() const

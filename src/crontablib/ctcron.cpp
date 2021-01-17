@@ -320,7 +320,7 @@ CTSaveStatus CTCron::save()
         ctTask->apply();
     }
 
-    foreach (CTVariable *ctVariable, d->variable) {
+    for (CTVariable *ctVariable : qAsConst(d->variable)) {
         ctVariable->apply();
     }
 
@@ -359,7 +359,7 @@ bool CTCron::isDirty() const
         }
     }
 
-    foreach (CTVariable *ctVariable, d->variable) {
+    for (CTVariable *ctVariable : qAsConst(d->variable)) {
         if (ctVariable->dirty()) {
             return true;
         }
@@ -372,7 +372,7 @@ QString CTCron::path() const
 {
     QString path;
 
-    foreach (CTVariable *ctVariable, d->variable) {
+    for (CTVariable *ctVariable : qAsConst(d->variable)) {
         if (ctVariable->variable == QLatin1String("PATH")) {
             path = ctVariable->value;
         }

@@ -18,8 +18,7 @@ CTHour::CTHour(const QString &tokStr)
 
 int CTHour::findPeriod() const
 {
-    QList<int> periods;
-    periods << 2 << 3 << 4 << 6 << 8;
+    const QList<int> periods{2, 3, 4, 6, 8};
 
     return CTUnit::findPeriod(periods);
 }
