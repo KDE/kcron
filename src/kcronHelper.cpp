@@ -24,7 +24,7 @@ void KCronHelper::initUserCombo(QComboBox *userCombo, CrontabWidget *crontabWidg
 
     QStringList users;
     int selectedIndex = 0;
-    const auto crons = crontabWidget->ctHost()->crons;
+    const auto crons = crontabWidget->ctHost()->mCrons;
     for (CTCron *ctCron : crons) {
         if (ctCron->isSystemCron()) {
             continue;

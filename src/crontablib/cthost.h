@@ -85,7 +85,7 @@ public:
      * If the user is a non-root user, there will be only one member in the
      * cron vector.
      */
-    QList<CTCron *> crons;
+    QList<CTCron *> mCrons;
 
 private:
 

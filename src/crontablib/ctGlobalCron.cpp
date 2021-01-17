@@ -40,7 +40,7 @@ QList<CTTask *> CTGlobalCron::tasks() const
     logDebug() << "Global Cron Tasks";
     QList<CTTask *> tasks;
 
-    const auto crons = mCtHost->crons;
+    const auto crons = mCtHost->mCrons;
     for (CTCron *cron : crons) {
         if (cron->isSystemCron()) {
             continue;
@@ -60,7 +60,7 @@ QList<CTVariable *> CTGlobalCron::variables() const
     logDebug() << "Global Cron Variables";
     QList<CTVariable *> variables;
 
-    const auto crons = mCtHost->crons;
+    const auto crons = mCtHost->mCrons;
     for (CTCron *cron : crons) {
         if (cron->isSystemCron()) {
             continue;

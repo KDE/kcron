@@ -61,7 +61,7 @@ CommandLineStatus CommandLine::execute()
 CTCron::CTCron(const QString &crontabBinary, const struct passwd *userInfos, bool currentUserCron, CTInitializationError &ctInitializationError)
     : d(new CTCronPrivate())
 {
-    Q_ASSERT(userInfos != NULL);
+    Q_ASSERT(userInfos);
 
     d->multiUserCron = false;
     d->systemCron = false;
@@ -332,11 +332,13 @@ CTSaveStatus CTCron::save()
 
 void CTCron::cancel()
 {
-    foreach (CTTask *ctTask, d->task) {
+    const auto tasks = d->task;
+    for (CTTask *ctTask : tasks) {
         ctTask->cancel();
     }
 
-    foreach (CTVariable *ctVariable, d->variable) {
+    const auto variables = d->variable;
+    for (CTVariable *ctVariable : variables) {
         ctVariable->cancel();
     }
 }

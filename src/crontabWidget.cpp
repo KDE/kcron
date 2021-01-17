@@ -121,7 +121,7 @@ QHBoxLayout *CrontabWidget::createCronSelector()
     if (ctHost()->isRootUser()) {
         QStringList users;
 
-        const auto crons = ctHost()->crons;
+        const auto crons = ctHost()->mCrons;
         for (CTCron *ctCron : crons) {
             if (ctCron->isCurrentUserCron()) {
                 continue;

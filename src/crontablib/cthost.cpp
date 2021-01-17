@@ -28,7 +28,7 @@ CTHost::CTHost(const QString &cronBinary, CTInitializationError &ctInitializatio
 {
     struct passwd *userInfos = nullptr;
 
-    this->mCrontabBinary = cronBinary;
+    mCrontabBinary = cronBinary;
 
     // If it is the root user
     if (getuid() == 0) {
@@ -82,7 +82,7 @@ CTHost::CTHost(const QString &cronBinary, CTInitializationError &ctInitializatio
 
 CTHost::~CTHost()
 {
-    foreach (CTCron *ctCron, crons) {
+    foreach (CTCron *ctCron, mCrons) {
         delete ctCron;
     }
 }
@@ -133,8 +133,8 @@ CTSaveStatus CTHost::save()
         return ctCron->save();
     }
 
-    foreach (CTCron *ctCron, crons) {
-        CTSaveStatus ctSaveStatus = ctCron->save();
+    for (CTCron *ctCron : qAsConst(mCrons)) {
+        const CTSaveStatus ctSaveStatus = ctCron->save();
 
         if (ctSaveStatus.isError()) {
             return CTSaveStatus(i18nc("User login: errorMessage", "User %1: %2", ctCron->userLogin(), ctSaveStatus.errorMessage()), ctSaveStatus.detailErrorMessage());
@@ -146,7 +146,7 @@ CTSaveStatus CTHost::save()
 
 void CTHost::cancel()
 {
-    foreach (CTCron *ctCron, crons) {
+    for (CTCron *ctCron : qAsConst(mCrons)) {
         ctCron->cancel();
     }
 }
@@ -155,7 +155,7 @@ bool CTHost::isDirty()
 {
     bool isDirty = false;
 
-    foreach (CTCron *ctCron, crons) {
+    for (CTCron *ctCron : qAsConst(mCrons)) {
         if (ctCron->isDirty()) {
             isDirty = true;
         }
@@ -168,7 +168,7 @@ CTCron *CTHost::createSystemCron()
 {
     CTCron *p = new CTSystemCron(mCrontabBinary);
 
-    crons.append(p);
+    mCrons.append(p);
 
     return p;
 }
@@ -187,14 +187,14 @@ QString CTHost::createCTCron(const struct passwd *userInfos)
         return ctInitializationError.errorMessage();
     }
 
-    crons.append(p);
+    mCrons.append(p);
 
     return QString();
 }
 
 CTCron *CTHost::findCurrentUserCron() const
 {
-    foreach (CTCron *ctCron, crons) {
+    for (CTCron *ctCron : qAsConst(mCrons)) {
         if (ctCron->isCurrentUserCron()) {
             return ctCron;
         }
@@ -206,7 +206,7 @@ CTCron *CTHost::findCurrentUserCron() const
 
 CTCron *CTHost::findSystemCron() const
 {
-    foreach (CTCron *ctCron, crons) {
+    for (CTCron *ctCron : qAsConst(mCrons)) {
         if (ctCron->isMultiUserCron()) {
             return ctCron;
         }
@@ -218,7 +218,7 @@ CTCron *CTHost::findSystemCron() const
 
 CTCron *CTHost::findUserCron(const QString &userLogin) const
 {
-    foreach (CTCron *ctCron, crons) {
+    for (CTCron *ctCron : qAsConst(mCrons)) {
         if (ctCron->userLogin() == userLogin) {
             return ctCron;
         }
@@ -230,7 +230,7 @@ CTCron *CTHost::findUserCron(const QString &userLogin) const
 
 CTCron *CTHost::findCronContaining(CTTask *ctTask) const
 {
-    foreach (CTCron *ctCron, crons) {
+    for (CTCron *ctCron : qAsConst(mCrons)) {
         if (ctCron->tasks().contains(ctTask)) {
             return ctCron;
         }
@@ -242,7 +242,7 @@ CTCron *CTHost::findCronContaining(CTTask *ctTask) const
 
 CTCron *CTHost::findCronContaining(CTVariable *ctVariable) const
 {
-    foreach (CTCron *ctCron, crons) {
+    for (CTCron *ctCron : qAsConst(mCrons)) {
         if (ctCron->variables().contains(ctVariable)) {
             return ctCron;
         }
