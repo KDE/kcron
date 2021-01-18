@@ -403,10 +403,9 @@ QPair<QString, bool> CTTask::unQuoteCommand() const
     QString fullCommand = command;
     fullCommand = fullCommand.trimmed();
 
-    QStringList quotes;
-    quotes << QStringLiteral("\"") << QStringLiteral("'");
+    const QStringList quotes{QStringLiteral("\""), QStringLiteral("'")};
 
-    foreach (const QString &quote, quotes) {
+    for (const QString &quote : quotes) {
         if (fullCommand.indexOf(quote) == 0) {
             int nextQuote = fullCommand.indexOf(quote, 1);
             if (nextQuote == -1) {

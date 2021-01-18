@@ -142,13 +142,15 @@ CTCron &CTCron::operator =(const CTCron &source)
     }
 
     d->variable.clear();
-    foreach (CTVariable *ctVariable, source.variables()) {
+    const auto variables = source.variables();
+    for (CTVariable *ctVariable : variables) {
         CTVariable *tmp = new CTVariable(*ctVariable);
         d->variable.append(tmp);
     }
 
     d->task.clear();
-    foreach (CTTask *ctTask, source.tasks()) {
+    const auto tasks = source.tasks();
+    for (CTTask *ctTask : tasks) {
         CTTask *tmp = new CTTask(*ctTask);
         d->task.append(tmp);
     }
@@ -223,12 +225,12 @@ QString CTCron::exportCron() const
 {
     QString exportCron;
 
-    foreach (CTVariable *ctVariable, d->variable) {
+    for (CTVariable *ctVariable : qAsConst(d->variable)) {
         exportCron += ctVariable->exportVariable();
         exportCron += QLatin1String("\n");
     }
 
-    foreach (CTTask *ctTask, d->task) {
+    for (CTTask *ctTask : qAsConst(d->task)) {
         exportCron += ctTask->exportTask();
         exportCron += QLatin1String("\n");
     }
@@ -316,7 +318,7 @@ CTSaveStatus CTCron::save()
     }
 
     //Mark as applied
-    foreach (CTTask *ctTask, d->task) {
+    for (CTTask *ctTask : qAsConst(d->task)) {
         ctTask->apply();
     }
 
@@ -353,7 +355,7 @@ bool CTCron::isDirty() const
         return true;
     }
 
-    foreach (CTTask *ctTask, d->task) {
+    for (CTTask *ctTask : qAsConst(d->task)) {
         if (ctTask->dirty()) {
             return true;
         }

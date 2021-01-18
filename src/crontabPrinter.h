@@ -88,7 +88,7 @@ private:
     /**
      * Pointer to parent widget
      */
-    CrontabWidget *mCrontabWidget = nullptr;
+    CrontabWidget *const mCrontabWidget;
 
     QPainter *mPainter = nullptr;
 

@@ -26,8 +26,8 @@
 #include "logging.h"
 
 CrontabPrinter::CrontabPrinter(CrontabWidget *crontabWidget)
+    : mCrontabWidget(crontabWidget)
 {
-    mCrontabWidget = crontabWidget;
 }
 
 CrontabPrinter::~CrontabPrinter()

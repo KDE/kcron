@@ -234,7 +234,7 @@ void CrontabWidget::copy()
         logDebug() << "Variables copying";
 
         const QList<VariableWidget *> variablesWidget = mVariablesWidget->selectedVariablesWidget();
-        foreach (VariableWidget *variableWidget, variablesWidget) {
+        for (VariableWidget *variableWidget : variablesWidget) {
             CTVariable *variable = new CTVariable(*(variableWidget->getCTVariable()));
             mClipboardVariables.append(variable);
 

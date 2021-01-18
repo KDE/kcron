@@ -285,7 +285,7 @@ int CTUnit::fieldToValue(const QString &entry) const
  */
 int CTUnit::findPeriod(const QList<int> &periods) const
 {
-    foreach (int period, periods) {
+    for (int period : periods) {
         bool validPeriod = true;
 
         for (int i = minimum(); i <= maximum(); i++) {

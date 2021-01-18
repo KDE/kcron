@@ -167,7 +167,8 @@ void VariablesWidget::refreshVariables(CTCron *cron)
 
     refreshHeaders();
 
-    foreach (CTVariable *ctVariable, cron->variables()) {
+    const auto variables = cron->variables();
+    for (CTVariable *ctVariable : variables) {
         new VariableWidget(this, ctVariable);
     }
 
@@ -230,7 +231,8 @@ void VariablesWidget::prepareContextualMenu()
 
     treeWidget()->addAction(createSeparator());
 
-    foreach (QAction *action, crontabWidget()->cutCopyPasteActions()) {
+    const auto cutCopyPasteActions = crontabWidget()->cutCopyPasteActions();
+    for (QAction *action : cutCopyPasteActions) {
         treeWidget()->addAction(action);
     }
 }
