@@ -30,7 +30,6 @@ class CrontabWidget : public QWidget
     Q_OBJECT
 
 public:
-
     /**
      * Initializes view.
      */
@@ -77,7 +76,6 @@ protected Q_SLOTS:
     void checkOtherUsers();
 
 private:
-
     /**
      * Enables/disables paste button
      */

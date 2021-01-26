@@ -24,7 +24,6 @@ class CTHost;
 class CTGlobalCron : public CTCron
 {
 public:
-
     explicit CTGlobalCron(CTHost *ctHost);
 
     /**

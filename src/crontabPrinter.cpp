@@ -74,7 +74,7 @@ bool CrontabPrinter::start()
     mPainter->begin(mPrinter);
 
     const int margin = computeMargin();
-    mPrintView = new QRect(margin, margin, mPainter->device()->width() - 2*margin, mPainter->device()->height() - 2*margin);
+    mPrintView = new QRect(margin, margin, mPainter->device()->width() - 2 * margin, mPainter->device()->height() - 2 * margin);
 
     mPage = 1;
     mCurrentRowPosition = 0;
@@ -124,11 +124,11 @@ void CrontabPrinter::printVariables()
     mPainter->translate(0, 20);
     mCurrentRowPosition = 0;
 
-    //Environment Variables
+    // Environment Variables
 
     drawTitle(i18n("Environment Variables"));
 
-    //QList<QStringList> variablesContent;
+    // QList<QStringList> variablesContent;
     const auto variables = cron->variables();
     for (CTVariable *variable : variables) {
         mPainter->drawText(*(mPrintView), Qt::AlignLeft | Qt::TextWordWrap, variable->variable + QLatin1String(" = ") + variable->value);
@@ -232,7 +232,9 @@ void CrontabPrinter::printPageNumber()
     mPainter->translate(0, -mCurrentRowPosition);
     mPrintView->moveTo(QPoint(0, mPrintView->height()));
     mPainter->translate(0, -mPrintView->height());
-    mPainter->drawText(mPrintView->right() - mPainter->fontMetrics().boundingRect(QString::number(mPage)).width(), mPrintView->bottom()+ mPainter->fontMetrics().ascent() + 5, QString::number(mPage));
+    mPainter->drawText(mPrintView->right() - mPainter->fontMetrics().boundingRect(QString::number(mPage)).width(),
+                       mPrintView->bottom() + mPainter->fontMetrics().ascent() + 5,
+                       QString::number(mPage));
 }
 
 void CrontabPrinter::changeRow(int x, int y)
@@ -244,7 +246,7 @@ void CrontabPrinter::changeRow(int x, int y)
 int CrontabPrinter::computeMargin() const
 {
     const int dpiy = mPainter->device()->logicalDpiY();
-    const int margin = (int)((2/2.54)*dpiy);    // 2 cm margins
+    const int margin = (int)((2 / 2.54) * dpiy); // 2 cm margins
 
     return margin;
 }
@@ -293,13 +295,14 @@ void CrontabPrinter::drawTable(const QList<int> &columnWidths)
 
     mPainter->setPen(pen);
 
-    //First horizontal line
+    // First horizontal line
     mPainter->drawLine(QPoint(margin, 0), QPoint(margin + columnWidthsTotal, 0));
 
-    //Second horizontal line
-    mPainter->drawLine(QPoint(margin, 0+computeStringHeight(QStringLiteral(" "))), QPoint(margin + columnWidthsTotal, 0+computeStringHeight(QStringLiteral(" "))));
+    // Second horizontal line
+    mPainter->drawLine(QPoint(margin, 0 + computeStringHeight(QStringLiteral(" "))),
+                       QPoint(margin + columnWidthsTotal, 0 + computeStringHeight(QStringLiteral(" "))));
 
-    //First vertical line
+    // First vertical line
     mPainter->drawLine(QPoint(linePositionX, 0), QPoint(linePositionX, mCurrentRowPosition));
 
     for (int columnWidth : columnWidths) {
@@ -307,7 +310,7 @@ void CrontabPrinter::drawTable(const QList<int> &columnWidths)
         mPainter->drawLine(QPoint(linePositionX, 0), QPoint(linePositionX, mCurrentRowPosition));
     }
 
-    //Last horizontal line
+    // Last horizontal line
     mPainter->drawLine(QPoint(margin, mCurrentRowPosition), QPoint(margin + columnWidthsTotal, mCurrentRowPosition));
 
     mPainter->setPen(originalPen);
@@ -342,7 +345,7 @@ QList<int> CrontabPrinter::findColumnWidths(const QList<QStringList> &contents, 
     QList<int> columnWidths = findMaxWidths(contents, columnCount);
 
     int margin = computeMargin();
-    int pageWidth = mPainter->device()->width() - 2*margin;
+    int pageWidth = mPainter->device()->width() - 2 * margin;
 
     int columnWidthSum = 0;
     for (int width : qAsConst(columnWidths)) {

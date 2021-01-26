@@ -11,26 +11,26 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include <QVBoxLayout>
+#include <QApplication>
+#include <QButtonGroup>
+#include <QClipboard>
+#include <QComboBox>
 #include <QHBoxLayout>
 #include <QLabel>
-#include <QSplitter>
 #include <QRadioButton>
-#include <QButtonGroup>
-#include <QComboBox>
-#include <QApplication>
-#include <QClipboard>
+#include <QSplitter>
+#include <QVBoxLayout>
 
 #include <KLocalizedString>
-#include <QIcon>
-#include <QAction>
 #include <KStandardAction>
+#include <QAction>
+#include <QIcon>
 
-#include "cthost.h"
-#include "ctcron.h"
-#include "ctvariable.h"
-#include "cttask.h"
 #include "ctGlobalCron.h"
+#include "ctcron.h"
+#include "cthost.h"
+#include "cttask.h"
+#include "ctvariable.h"
 
 #include "crontabPrinter.h"
 #include "taskWidget.h"
@@ -291,7 +291,7 @@ CTCron *CrontabWidget::currentCron() const
         return mCtHost->findSystemCron();
     }
 
-    if (mOtherUsers->currentIndex() == mOtherUsers->count()-1) {
+    if (mOtherUsers->currentIndex() == mOtherUsers->count() - 1) {
         logDebug() << "Using Global Cron";
         return mCtGlobalCron;
     }
@@ -326,7 +326,7 @@ void CrontabWidget::setupActions()
 {
     logDebug() << "Setup actions";
 
-    //Edit menu
+    // Edit menu
     mCutAction = KStandardAction::cut(this, SLOT(cut()), this);
     mCopyAction = KStandardAction::copy(this, SLOT(copy()), this);
     mPasteAction = KStandardAction::paste(this, SLOT(paste()), this);

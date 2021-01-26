@@ -8,8 +8,8 @@
 
 #include "cttask.h"
 
-#include <KLocalizedString>
 #include <KIconLoader>
+#include <KLocalizedString>
 
 #include <QMimeDatabase>
 #include <QUrl>
@@ -40,19 +40,19 @@ CTTask::CTTask(const QString &tokenString, const QString &_comment, const QStrin
     reboot = false;
     if (tokStr.mid(0, 1) == QLatin1String("@")) {
         if (tokStr.mid(1, 6) == QLatin1String("yearly")) {
-            tokStr = QLatin1String("0 0 1 1 *")+tokStr.mid(7, tokStr.length()-1);
+            tokStr = QLatin1String("0 0 1 1 *") + tokStr.mid(7, tokStr.length() - 1);
         } else if (tokStr.mid(1, 8) == QLatin1String("annually")) {
-            tokStr = QLatin1String("0 0 1 1 *")+tokStr.mid(9, tokStr.length()-1);
+            tokStr = QLatin1String("0 0 1 1 *") + tokStr.mid(9, tokStr.length() - 1);
         } else if (tokStr.mid(1, 7) == QLatin1String("monthly")) {
-            tokStr = QLatin1String("0 0 1 * *")+tokStr.mid(8, tokStr.length()-1);
+            tokStr = QLatin1String("0 0 1 * *") + tokStr.mid(8, tokStr.length() - 1);
         } else if (tokStr.mid(1, 6) == QLatin1String("weekly")) {
-            tokStr = QLatin1String("0 0 * * 0")+tokStr.mid(7, tokStr.length()-1);
+            tokStr = QLatin1String("0 0 * * 0") + tokStr.mid(7, tokStr.length() - 1);
         } else if (tokStr.mid(1, 5) == QLatin1String("daily")) {
-            tokStr = QLatin1String("0 0 * * *")+tokStr.mid(6, tokStr.length()-1);
+            tokStr = QLatin1String("0 0 * * *") + tokStr.mid(6, tokStr.length() - 1);
         } else if (tokStr.mid(1, 6) == QLatin1String("hourly")) {
-            tokStr = QLatin1String("0 * * * *")+tokStr.mid(7, tokStr.length()-1);
+            tokStr = QLatin1String("0 * * * *") + tokStr.mid(7, tokStr.length() - 1);
         } else if (tokStr.mid(1, 6) == QLatin1String("reboot")) {
-            tokStr = tokStr.mid(7, tokStr.length()-1);
+            tokStr = tokStr.mid(7, tokStr.length() - 1);
             reboot = true;
         }
     }
@@ -60,53 +60,53 @@ CTTask::CTTask(const QString &tokenString, const QString &_comment, const QStrin
     int spacePos(tokStr.indexOf(QRegExp(QLatin1String("[ \t]"))));
     // If reboot bypass initialize functions so no keys selected in modify task
     if (!reboot) {
-        //logDebug() << "Line : " << tokStr;
+        // logDebug() << "Line : " << tokStr;
         minute.initialize(tokStr.mid(0, spacePos));
 
-        while (isSpace(tokStr, spacePos+1)) {
+        while (isSpace(tokStr, spacePos + 1)) {
             spacePos++;
         }
-        tokStr = tokStr.mid(spacePos+1, tokStr.length()-1);
+        tokStr = tokStr.mid(spacePos + 1, tokStr.length() - 1);
         spacePos = tokStr.indexOf(QRegExp(QLatin1String("[ \t]")));
         hour.initialize(tokStr.mid(0, spacePos));
 
-        while (isSpace(tokStr, spacePos+1)) {
+        while (isSpace(tokStr, spacePos + 1)) {
             spacePos++;
         }
-        tokStr = tokStr.mid(spacePos+1, tokStr.length()-1);
+        tokStr = tokStr.mid(spacePos + 1, tokStr.length() - 1);
         spacePos = tokStr.indexOf(QRegExp(QLatin1String("[ \t]")));
         dayOfMonth.initialize(tokStr.mid(0, spacePos));
 
-        while (isSpace(tokStr, spacePos+1)) {
+        while (isSpace(tokStr, spacePos + 1)) {
             spacePos++;
         }
-        tokStr = tokStr.mid(spacePos+1, tokStr.length()-1);
+        tokStr = tokStr.mid(spacePos + 1, tokStr.length() - 1);
         spacePos = tokStr.indexOf(QRegExp(QLatin1String("[ \t]")));
         month.initialize(tokStr.mid(0, spacePos));
 
-        while (isSpace(tokStr, spacePos+1)) {
+        while (isSpace(tokStr, spacePos + 1)) {
             spacePos++;
         }
-        tokStr = tokStr.mid(spacePos+1, tokStr.length()-1);
+        tokStr = tokStr.mid(spacePos + 1, tokStr.length() - 1);
         spacePos = tokStr.indexOf(QRegExp(QLatin1String("[ \t]")));
         dayOfWeek.initialize(tokStr.mid(0, spacePos));
     }
 
     if (mSystemCrontab) {
-        while (isSpace(tokStr, spacePos+1)) {
+        while (isSpace(tokStr, spacePos + 1)) {
             spacePos++;
         }
-        tokStr = tokStr.mid(spacePos+1, tokStr.length()-1);
+        tokStr = tokStr.mid(spacePos + 1, tokStr.length() - 1);
         spacePos = tokStr.indexOf(QRegExp(QLatin1String("[ \t]")));
         userLogin = tokStr.mid(0, spacePos);
     } else {
         userLogin = _userLogin;
     }
 
-    command = tokStr.mid(spacePos+1, tokStr.length()-1);
+    command = tokStr.mid(spacePos + 1, tokStr.length() - 1);
     // remove leading whitespace
     while (command.indexOf(QRegExp(QLatin1String("[ \t]"))) == 0) {
-        command = command.mid(1, command.length()-1);
+        command = command.mid(1, command.length() - 1);
     }
     comment = _comment;
 
@@ -136,7 +136,7 @@ CTTask::CTTask(const CTTask &source)
 {
 }
 
-CTTask &CTTask::operator =(const CTTask &source)
+CTTask &CTTask::operator=(const CTTask &source)
 {
     if (this == &source) {
         return *this;
@@ -215,7 +215,8 @@ void CTTask::cancel()
 
 bool CTTask::dirty() const
 {
-    return month.isDirty() || dayOfMonth.isDirty() || dayOfWeek.isDirty() || hour.isDirty() || minute.isDirty() || (userLogin != mInitialUserLogin) || (command != mInitialCommand) || (comment != mInitialComment) || (enabled != mInitialEnabled) || (reboot != mInitialReboot);
+    return month.isDirty() || dayOfMonth.isDirty() || dayOfWeek.isDirty() || hour.isDirty() || minute.isDirty() || (userLogin != mInitialUserLogin)
+        || (command != mInitialCommand) || (comment != mInitialComment) || (enabled != mInitialEnabled) || (reboot != mInitialReboot);
 }
 
 QString CTTask::schedulingCronFormat() const
@@ -384,10 +385,11 @@ QIcon CTTask::commandIcon() const
     QUrl commandPath = QUrl::fromLocalFile(completeCommandPath());
 
     QMimeType mimeType = QMimeDatabase().mimeTypeForUrl(commandPath);
-    //logDebug() << mimeType->name();
+    // logDebug() << mimeType->name();
     if (mimeType.name() == QLatin1String("application/x-executable") || mimeType.name() == QLatin1String("application/octet-stream")) {
-        //The next line is identical as SmallIcon(commandPath.fileName()), but is able to return a isNull() QPixmap
-        QPixmap pixmap = KIconLoader::global()->loadIcon(commandPath.fileName(), KIconLoader::Small, 0, KIconLoader::DefaultState, QStringList(), nullptr, true);
+        // The next line is identical as SmallIcon(commandPath.fileName()), but is able to return a isNull() QPixmap
+        QPixmap pixmap =
+            KIconLoader::global()->loadIcon(commandPath.fileName(), KIconLoader::Small, 0, KIconLoader::DefaultState, QStringList(), nullptr, true);
         if (pixmap.isNull()) {
             return QIcon::fromTheme(QLatin1String("system-run"));
         }
@@ -412,7 +414,7 @@ QPair<QString, bool> CTTask::unQuoteCommand() const
                 return QPair<QString, bool>(QLatin1String(""), false);
             }
 
-            return QPair<QString, bool>(fullCommand.mid(1, nextQuote-1), true);
+            return QPair<QString, bool>(fullCommand.mid(1, nextQuote - 1), true);
         }
     }
 
@@ -425,7 +427,7 @@ QString CTTask::decryptBinaryCommand(const QString &command) const
 
     bool found = false;
     for (int i = 0; i < command.length(); ++i) {
-        if (command.at(i) == QLatin1Char(' ') && command.at(i-1) != QLatin1Char('\\')) {
+        if (command.at(i) == QLatin1Char(' ') && command.at(i - 1) != QLatin1Char('\\')) {
             fullCommand = command.left(i);
             found = true;
             break;

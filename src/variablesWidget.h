@@ -11,8 +11,8 @@
 
 #include <QTreeWidget>
 
-#include "genericListWidget.h"
 #include "cthost.h"
+#include "genericListWidget.h"
 
 class VariableWidget;
 class CTVariable;
@@ -27,7 +27,6 @@ class VariablesWidget : public GenericListWidget
     Q_OBJECT
 
 public:
-
     /**
      * Construct tasks folder from branch.
      */

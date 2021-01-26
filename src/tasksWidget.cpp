@@ -8,20 +8,20 @@
 
 #include "tasksWidget.h"
 
-#include <QProcess>
 #include <QAction>
 #include <QList>
+#include <QProcess>
 
-#include <KStandardAction>
 #include <KLocalizedString>
+#include <KStandardAction>
 
 #include "ctcron.h"
 #include "cttask.h"
 #include "ctvariable.h"
 
 #include "crontabWidget.h"
-#include "taskWidget.h"
 #include "taskEditorDialog.h"
+#include "taskWidget.h"
 
 #include "logging.h"
 
@@ -118,7 +118,8 @@ void TasksWidget::runTaskNow() const
 
 void TasksWidget::createTask()
 {
-    CTTask *task = new CTTask(QLatin1String(""), QLatin1String(""), crontabWidget()->currentCron()->userLogin(), crontabWidget()->currentCron()->isMultiUserCron());
+    CTTask *task =
+        new CTTask(QLatin1String(""), QLatin1String(""), crontabWidget()->currentCron()->userLogin(), crontabWidget()->currentCron()->isMultiUserCron());
 
     TaskEditorDialog taskEditorDialog(task, i18n("New Task"), crontabWidget());
     const int result = taskEditorDialog.exec();
@@ -196,12 +197,12 @@ void TasksWidget::deleteSelection()
 
 void TasksWidget::refreshTasks(CTCron *cron)
 {
-    //Remove previous items
+    // Remove previous items
     removeAll();
 
     refreshHeaders();
 
-    //Add new items
+    // Add new items
     const auto tasks = cron->tasks();
     for (CTTask *ctTask : tasks) {
         new TaskWidget(this, ctTask);
@@ -320,7 +321,7 @@ void TasksWidget::toggleNewEntryAction(bool state)
 
 void TasksWidget::changeCurrentSelection()
 {
-    //logDebug() << "Change selection...";
+    // logDebug() << "Change selection...";
 
     if (treeWidget()->topLevelItemCount() == 0) {
         togglePrintAction(false);

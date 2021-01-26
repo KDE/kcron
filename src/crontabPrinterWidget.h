@@ -23,7 +23,6 @@ class CrontabPrinterWidget : public QWidget
 {
     Q_OBJECT
 public:
-
     /**
      * Constructs the dialog, if root is true the print all users is not disabled
      */

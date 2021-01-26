@@ -31,6 +31,7 @@ QString CTMonth::getName(const int ndx)
 void CTMonth::initializeNames()
 {
     if (shortName.isEmpty()) {
-        shortName << QLatin1String("") << i18n("January") << i18n("February") << i18n("March") << i18n("April") << i18nc("May long", "May") << i18n("June") << i18nc("July long", "July") << i18n("August") << i18n("September") << i18n("October") << i18n("November") << i18n("December");
+        shortName << QLatin1String("") << i18n("January") << i18n("February") << i18n("March") << i18n("April") << i18nc("May long", "May") << i18n("June")
+                  << i18nc("July long", "July") << i18n("August") << i18n("September") << i18n("October") << i18n("November") << i18n("December");
     }
 }

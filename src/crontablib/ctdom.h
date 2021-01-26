@@ -9,8 +9,8 @@
 #ifndef CTDOM_H
 #define CTDOM_H
 
-#include <QString>
 #include <QList>
+#include <QString>
 
 #include "ctunit.h"
 
@@ -37,6 +37,7 @@ public:
 
     static const int MINIMUM = 1;
     static const int MAXIMUM = 31;
+
 private:
     static void initializeNames();
     static QList<QString> shortName;

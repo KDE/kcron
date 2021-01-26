@@ -10,8 +10,8 @@
 
 #include <KLocalizedString>
 
-#include "cttask.h"
 #include "ctcron.h"
+#include "cttask.h"
 
 #include "crontabWidget.h"
 #include "taskEditorDialog.h"

@@ -8,8 +8,8 @@
 
 #include "ctSystemCron.h"
 
-#include <KShell>
 #include <KLocalizedString>
+#include <KShell>
 
 #include <QTemporaryFile>
 

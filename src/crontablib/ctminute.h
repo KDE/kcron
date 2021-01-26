@@ -17,7 +17,6 @@
 class CTMinute : public CTUnit
 {
 public:
-
     /**
      * Constructs from a tokenized string.
      */

@@ -16,8 +16,8 @@
 #define CRONTAB_BINARY "crontab"
 
 #include <QString>
-#include <QWidget>
 #include <QVariantList>
+#include <QWidget>
 
 #include <KCModule>
 #include <KSharedConfig>

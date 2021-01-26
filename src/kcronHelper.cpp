@@ -8,13 +8,13 @@
 
 #include "kcronHelper.h"
 
+#include <QComboBox>
 #include <QFontMetrics>
 #include <QTextEdit>
-#include <QComboBox>
 
-#include "cttask.h"
 #include "ctcron.h"
 #include "cthost.h"
+#include "cttask.h"
 
 #include "crontabWidget.h"
 
@@ -32,7 +32,7 @@ void KCronHelper::initUserCombo(QComboBox *userCombo, CrontabWidget *crontabWidg
 
         users.append(ctCron->userLogin());
 
-        //Select the actual user
+        // Select the actual user
         if (ctCron->userLogin() == selectedUserLogin) {
             selectedIndex = userComboIndex;
         }
@@ -54,7 +54,7 @@ QTextEdit *KCronHelper::createCommentEdit(QWidget *parent)
     edit->setTabChangesFocus(true);
 
     const QFontMetrics fontMetrics(edit->currentFont());
-    edit->setMaximumHeight(fontMetrics.lineSpacing() * 3); //TODO Choose a smarter value
+    edit->setMaximumHeight(fontMetrics.lineSpacing() * 3); // TODO Choose a smarter value
 
     return edit;
 }

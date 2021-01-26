@@ -25,7 +25,6 @@ class QPrinter;
 class CrontabPrinter
 {
 public:
-
     /**
      * Constructor
      */
@@ -52,7 +51,6 @@ public:
     bool isAllUsers() const;
 
 private:
-
     /**
      *Disable the copy constructor and the assignment operator
      */

@@ -14,7 +14,6 @@
 class CTSaveStatus
 {
 public:
-
     CTSaveStatus();
 
     CTSaveStatus(const QString &errorMessage, const QString &detailErrorMessage);

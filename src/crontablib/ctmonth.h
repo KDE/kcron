@@ -9,8 +9,8 @@
 #ifndef CTMONTH_H
 #define CTMONTH_H
 
-#include <QString>
 #include <QList>
+#include <QString>
 
 #include "ctunit.h"
 
@@ -20,7 +20,6 @@
 class CTMonth : public CTUnit
 {
 public:
-
     /**
      * Constructs from a tokenized string.
      */
@@ -38,6 +37,7 @@ public:
 
     static const int MINIMUM = 1;
     static const int MAXIMUM = 12;
+
 private:
     static void initializeNames();
     static QList<QString> shortName;

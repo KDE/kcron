@@ -17,7 +17,6 @@
 class CTHour : public CTUnit
 {
 public:
-
     /**
      * Constructs from a tokenized string.
      */

@@ -9,16 +9,16 @@
 #ifndef CTTASK_H
 #define CTTASK_H
 
-#include <QString>
-#include <QPair>
-#include <QStringList>
 #include <QIcon>
+#include <QPair>
+#include <QString>
+#include <QStringList>
 
-#include "ctmonth.h"
 #include "ctdom.h"
 #include "ctdow.h"
 #include "cthour.h"
 #include "ctminute.h"
+#include "ctmonth.h"
 
 /**
  * A scheduled task (encapsulation of crontab entry).  Encapsulates
@@ -27,7 +27,6 @@
 class CTTask
 {
 public:
-
     /**
      * Constructs scheduled task from crontab format string.
      */
@@ -41,7 +40,7 @@ public:
     /**
      * Assignment operator.
      */
-    CTTask &operator =(const CTTask &source);
+    CTTask &operator=(const CTTask &source);
 
     /**
      * Tokenizes scheduled task to crontab format.

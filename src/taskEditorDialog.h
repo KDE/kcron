@@ -9,11 +9,11 @@
 #ifndef TASK_EDITOR_DIALOG_H
 #define TASK_EDITOR_DIALOG_H
 
-#include <QLabel>
-#include <QPushButton>
-#include <QGroupBox>
 #include <QComboBox>
 #include <QDialog>
+#include <QGroupBox>
+#include <QLabel>
+#include <QPushButton>
 #include <QStringList>
 #include <QTextEdit>
 
@@ -33,11 +33,7 @@ class CrontabWidget;
 class SetOrClearAllButton : public QPushButton
 {
 public:
-
-    enum Status {
-        SET_ALL,
-        CLEAR_ALL
-    };
+    enum Status { SET_ALL, CLEAR_ALL };
 
     SetOrClearAllButton(QWidget *parent, SetOrClearAllButton::Status status);
 
@@ -48,14 +44,12 @@ public:
     bool isClearAll();
 
 private:
-
     SetOrClearAllButton::Status currentStatus;
 };
 
 class NumberPushButton : public QPushButton
 {
 public:
-
     explicit NumberPushButton(QWidget *parent);
     NumberPushButton(bool digitMode, QWidget *parent);
 
@@ -78,7 +72,6 @@ class TaskEditorDialog : public QDialog
     Q_OBJECT
 
 public:
-
     /**
      * Initialize from CTTask.
      */

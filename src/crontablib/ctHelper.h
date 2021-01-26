@@ -14,7 +14,6 @@
 class CTHelper
 {
 public:
-
     static QString exportComment(const QString &comment);
 };
 

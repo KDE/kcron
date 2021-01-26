@@ -20,7 +20,6 @@ class TasksWidget;
 class TaskWidget : public QTreeWidgetItem
 {
 public:
-
     /**
      * Initialize the list view item and task.
      */
@@ -42,7 +41,6 @@ public:
     void refresh();
 
 private:
-
     /**
      * Task.
      */

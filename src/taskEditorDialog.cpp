@@ -9,28 +9,28 @@
 #include "taskEditorDialog.h"
 
 #include <QCheckBox>
-#include <QPalette>
 #include <QEvent>
-#include <QHBoxLayout>
-#include <QVBoxLayout>
 #include <QGridLayout>
+#include <QHBoxLayout>
+#include <QPalette>
 #include <QPushButton>
 #include <QStandardPaths>
+#include <QVBoxLayout>
 
 #include <QStyleOption>
 #include <QStylePainter>
 
 #include <KAcceleratorManager>
 #include <KLocalizedString>
-#include <QPushButton>
 #include <KStandardShortcut>
 #include <QDialogButtonBox>
+#include <QPushButton>
 #include <kurlrequester.h>
 
-#include "logging.h"
-#include "cttask.h"
 #include "ctcron.h"
 #include "cthost.h"
+#include "cttask.h"
+#include "logging.h"
 
 #include "crontabWidget.h"
 
@@ -90,7 +90,7 @@ TaskEditorDialog::TaskEditorDialog(CTTask *_ctTask, const QString &_caption, Cro
     mCommand->setMode(KFile::File | KFile::ExistingOnly | KFile::LocalOnly);
     mCommand->setUrl(QUrl::fromLocalFile(mCtTask->command));
 
-    //Initialize special valid commands
+    // Initialize special valid commands
     mSpecialValidCommands << QStringLiteral("cd");
 
     commandConfigurationLayout->addLayout(commandLayout, 0, 1);
@@ -175,7 +175,7 @@ TaskEditorDialog::TaskEditorDialog(CTTask *_ctTask, const QString &_caption, Cro
 
     v2->addStretch(1);
 
-    //schedulingLayout->addStretch(1);
+    // schedulingLayout->addStretch(1);
 
     mCommand->setFocus();
 
@@ -387,7 +387,7 @@ void TaskEditorDialog::increaseMinutesGroup()
     logDebug() << "Show all minutes";
 
     int minuteIndex = 0;
-    for (int row = 0; row < (minuteTotal+1)/minutePerColumn; ++row) {
+    for (int row = 0; row < (minuteTotal + 1) / minutePerColumn; ++row) {
         for (int column = 0; column < minutePerColumn; ++column) {
             mMinutesLayout->addWidget(mMinuteButtons[minuteIndex], row, column);
             mMinuteButtons[minuteIndex]->show();
@@ -395,7 +395,7 @@ void TaskEditorDialog::increaseMinutesGroup()
         }
     }
 
-    mMinutesLayout->addLayout(mMinutesPreselectionLayout, ((minuteTotal+1)/minutePerColumn), 0, 1, minutePerColumn);
+    mMinutesLayout->addLayout(mMinutesPreselectionLayout, ((minuteTotal + 1) / minutePerColumn), 0, 1, minutePerColumn);
     mMinutesLayout->invalidate();
     this->resize(sizeHint());
 }
@@ -480,7 +480,7 @@ void TaskEditorDialog::createMinutesGroup(QWidget *main)
     connect(mMinutesPreselection, static_cast<void (QComboBox::*)(int)>(&QComboBox::activated), this, &TaskEditorDialog::slotMinutesPreselection);
     connect(mMinutesPreselection, static_cast<void (QComboBox::*)(int)>(&QComboBox::activated), this, &TaskEditorDialog::slotWizard);
 
-    //First mandatory increase
+    // First mandatory increase
     increaseMinutesGroup();
 
     if (canReduceMinutesGroup()) {
@@ -508,7 +508,7 @@ QGroupBox *TaskEditorDialog::createHoursGroup(QWidget *main)
     logDebug() << "Creating hours group";
     QGroupBox *hoursGroup = new QGroupBox(i18n("Hours"), main);
 
-    QGridLayout *hoursLayout = new QGridLayout(hoursGroup); //5 x 7
+    QGridLayout *hoursLayout = new QGridLayout(hoursGroup); // 5 x 7
 
     mMorningLabel = new QLabel(i18n("AM:"), this);
     mMorningLabel->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
@@ -520,7 +520,7 @@ QGroupBox *TaskEditorDialog::createHoursGroup(QWidget *main)
         for (int hour = 0; hour <= 5; ++hour) {
             NumberPushButton *hourButton = createHourButton(hoursGroup, hourCount);
             mHourButtons[hourCount] = hourButton;
-            hoursLayout->addWidget(hourButton, column, hour+1);
+            hoursLayout->addWidget(hourButton, column, hour + 1);
             hourCount++;
         }
     }
@@ -992,12 +992,12 @@ void TaskEditorDialog::slotMinutesPreselection(int index)
     logDebug() << "Selected step " << step;
 
     if (step == -1) {
-        //Unselect everything
+        // Unselect everything
         for (int mi = 0; mi <= minuteTotal; ++mi) {
             mMinuteButtons[mi]->setChecked(false);
         }
 
-        //Select Custom selection in the combo box
+        // Select Custom selection in the combo box
         for (int index = 0; index < mMinutesPreselection->count(); ++index) {
             if (mMinutesPreselection->itemData(index).toInt() == 0) {
                 mMinutesPreselection->setCurrentIndex(index);

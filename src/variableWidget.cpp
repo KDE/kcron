@@ -12,8 +12,8 @@
 
 #include "ctvariable.h"
 
-#include "variableEditorDialog.h"
 #include "taskEditorDialog.h"
+#include "variableEditorDialog.h"
 
 VariableWidget::VariableWidget(VariablesWidget *_variablesWidget, CTVariable *_ctVariable)
     : QTreeWidgetItem(_variablesWidget->treeWidget())

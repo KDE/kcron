@@ -9,8 +9,8 @@
 #ifndef CTCRON_H
 #define CTCRON_H
 
-#include <QString>
 #include <QList>
+#include <QString>
 #include <QStringList>
 
 class CTTask;
@@ -47,7 +47,6 @@ public:
 class CTCronPrivate
 {
 public:
-
     /**
      * Indicates whether or not the crontab belongs to the system.
      */
@@ -105,7 +104,6 @@ public:
 class CTCron
 {
 public:
-
     /**
      * If you already have a struct passwd, use it instead. This
      * is never used for the system crontab.
@@ -120,7 +118,7 @@ public:
     /**
      * Copy one user's tasks and environment variables to another user.
      */
-    CTCron &operator =(const CTCron &source);
+    CTCron &operator=(const CTCron &source);
 
     virtual QList<CTTask *> tasks() const;
 
@@ -184,7 +182,6 @@ public:
     QString userRealName() const;
 
 protected:
-
     /**
      * Help constructor for subclasses
      */
@@ -192,8 +189,8 @@ protected:
 
     // Initialize member variables from the struct passwd.
     bool initializeFromUserInfos(const struct passwd *userInfos);
-private:
 
+private:
     /**
      * Can't copy a user!
      */
@@ -202,7 +199,6 @@ private:
     CTSaveStatus prepareSaveStatusError(const CommandLineStatus &commandLineStatus);
 
 protected:
-
     /**
      * Parses crontab file format.
      */

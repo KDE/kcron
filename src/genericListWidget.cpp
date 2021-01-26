@@ -8,17 +8,17 @@
 
 #include "genericListWidget.h"
 
-#include <QHeaderView>
-#include <QVBoxLayout>
-#include <QKeyEvent>
 #include <QAction>
+#include <QHeaderView>
+#include <QKeyEvent>
+#include <QVBoxLayout>
 
 #include "ctcron.h"
 #include "cttask.h"
 
 #include "crontabWidget.h"
-#include "taskWidget.h"
 #include "taskEditorDialog.h"
+#include "taskWidget.h"
 
 #include "logging.h"
 
@@ -102,8 +102,8 @@ CTHost *GenericListWidget::ctHost() const
 
 void GenericListWidget::resizeColumnContents()
 {
-    //Resize all columns except the last one (which always take the last available space)
-    for (int i = 0, total = mTreeWidget->columnCount()-1; i < total; ++i) {
+    // Resize all columns except the last one (which always take the last available space)
+    for (int i = 0, total = mTreeWidget->columnCount() - 1; i < total; ++i) {
         mTreeWidget->resizeColumnToContents(i);
     }
 }
@@ -127,8 +127,8 @@ void GenericListWidget::keyPressEvent(QKeyEvent *e)
 
 void GenericListWidget::removeAll()
 {
-    //Remove previous items
-    for (int i = treeWidget()->topLevelItemCount()-1; i >= 0; --i) {
+    // Remove previous items
+    for (int i = treeWidget()->topLevelItemCount() - 1; i >= 0; --i) {
         delete treeWidget()->takeTopLevelItem(i);
     }
 }
@@ -165,7 +165,7 @@ void GenericListWidget::setActionEnabled(QAction *action, bool enabled)
 {
     const auto associatedWidgets = action->associatedWidgets();
     for (QWidget *widget : associatedWidgets) {
-        //Only change status of associated Buttons
+        // Only change status of associated Buttons
         QPushButton *button = qobject_cast<QPushButton *>(widget);
         if (button) {
             button->setEnabled(enabled);

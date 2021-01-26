@@ -19,8 +19,8 @@
 #include "ctvariable.h"
 
 #include "crontabWidget.h"
-#include "variableWidget.h"
 #include "variableEditorDialog.h"
+#include "variableWidget.h"
 
 #include "logging.h"
 /**
@@ -162,7 +162,7 @@ void VariablesWidget::addVariable(CTVariable *variable)
 
 void VariablesWidget::refreshVariables(CTCron *cron)
 {
-    //Remove previous items
+    // Remove previous items
     removeAll();
 
     refreshHeaders();

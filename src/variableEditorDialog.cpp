@@ -10,13 +10,13 @@
 #include <QGridLayout>
 #include <QPushButton>
 
-#include <QIcon>
 #include <KLocalizedString>
 #include <QDialogButtonBox>
+#include <QIcon>
 
-#include "ctvariable.h"
-#include "cthost.h"
 #include "ctcron.h"
+#include "cthost.h"
+#include "ctvariable.h"
 
 #include "crontabWidget.h"
 
@@ -142,7 +142,7 @@ VariableEditorDialog::~VariableEditorDialog()
 
 void VariableEditorDialog::setupTitleWidget(const QString &comment, KTitleWidget::MessageType messageType)
 {
-    //krazy:exclude=doublequote_chars
+    // krazy:exclude=doublequote_chars
     if (comment.isEmpty()) {
         mTitleWidget->setComment(i18n("<i>This variable will be used by scheduled tasks.</i>"));
         mTitleWidget->setIcon(QIcon::fromTheme(QStringLiteral("text-plain")), KTitleWidget::ImageRight);

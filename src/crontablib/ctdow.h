@@ -9,8 +9,8 @@
 #ifndef CTDOW_H
 #define CTDOW_H
 
-#include <QString>
 #include <QList>
+#include <QString>
 
 #include "ctunit.h"
 

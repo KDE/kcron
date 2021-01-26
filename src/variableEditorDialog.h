@@ -9,11 +9,11 @@
 #ifndef VARIABLE_EDITOR_DIALOG_H
 #define VARIABLE_EDITOR_DIALOG_H
 
+#include <QCheckBox>
+#include <QComboBox>
+#include <QDialog>
 #include <QLabel>
 #include <QLineEdit>
-#include <QComboBox>
-#include <QCheckBox>
-#include <QDialog>
 #include <QTextEdit>
 
 #include <KTitleWidget>
@@ -29,7 +29,6 @@ class VariableEditorDialog : public QDialog
     Q_OBJECT
 
 public:
-
     /**
      * Initialize from CTVariable.
      */
@@ -63,7 +62,6 @@ private Q_SLOTS:
     void slotWizard();
 
 private:
-
     /**
      * Environment variable.
      */

@@ -9,8 +9,8 @@
 #ifndef CTHOST_H
 #define CTHOST_H
 
-#include <QString>
 #include <QList>
+#include <QString>
 
 #include "ctSaveStatus.h"
 
@@ -34,7 +34,6 @@ struct passwd;
 class CTHost
 {
 public:
-
     /**
      * Constructs the user(s), scheduled tasks, and environment variables
      * from crontab files.
@@ -88,7 +87,6 @@ public:
     QList<CTCron *> mCrons;
 
 private:
-
     /**
      * Copy construction not allowed.
      */
@@ -97,7 +95,7 @@ private:
     /**
      * Assignment not allowed
      */
-    CTHost &operator =(const CTHost &source);
+    CTHost &operator=(const CTHost &source);
 
     /**
      * Factory create a cron table.  Appends to the end of cron.

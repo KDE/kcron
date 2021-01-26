@@ -9,8 +9,8 @@
 #ifndef CTVARIABLE_H
 #define CTVARIABLE_H
 
-#include <QString>
 #include <QIcon>
+#include <QString>
 
 /**
  * An environment variable (encapsulation of crontab environment variable
@@ -19,7 +19,6 @@
 class CTVariable
 {
 public:
-
     /**
      * Constructs environment variable from crontab format string.
      */
@@ -33,7 +32,7 @@ public:
     /**
      * Assignment operator.
      */
-    CTVariable &operator =(const CTVariable &source);
+    CTVariable &operator=(const CTVariable &source);
 
     /**
      * Tokenizes environment variable to crontab format.

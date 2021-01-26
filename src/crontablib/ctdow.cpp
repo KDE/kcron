@@ -58,6 +58,7 @@ void CTDayOfWeek::initializeNames()
     if (shortName.isEmpty()) {
         shortName << QLatin1String("") << i18n("Mon") << i18n("Tue") << i18n("Wed") << i18n("Thu") << i18n("Fri") << i18n("Sat") << i18n("Sun");
 
-        longName << QLatin1String("") << i18n("Monday") << i18n("Tuesday") << i18n("Wednesday") << i18n("Thursday") << i18n("Friday") << i18n("Saturday") << i18n("Sunday");
+        longName << QLatin1String("") << i18n("Monday") << i18n("Tuesday") << i18n("Wednesday") << i18n("Thursday") << i18n("Friday") << i18n("Saturday")
+                 << i18n("Sunday");
     }
 }

@@ -16,7 +16,6 @@
 class CTSystemCron : public CTCron
 {
 public:
-
     /**
      * Constructs the scheduled tasks, environment variables from crontab
      * files and obtains some information about the user from the system.

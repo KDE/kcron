@@ -9,18 +9,18 @@
 
 #include "cthost.h"
 
-#include <unistd.h>  // getuid()
-#include <sys/types.h>
 #include <pwd.h>
+#include <sys/types.h>
+#include <unistd.h> // getuid()
 
 #include <QFile>
 #include <QTextStream>
 
 #include <KLocalizedString>
 
-#include "ctcron.h"
-#include "ctSystemCron.h"
 #include "ctInitializationError.h"
+#include "ctSystemCron.h"
+#include "ctcron.h"
 
 #include "logging.h"
 
@@ -42,7 +42,7 @@ CTHost::CTHost(const QString &cronBinary, CTInitializationError &ctInitializatio
                     return;
                 }
             }
-            //delete userInfos;
+            // delete userInfos;
         }
         setpwent(); // restart again for others
     }
@@ -53,14 +53,14 @@ CTHost::CTHost(const QString &cronBinary, CTInitializationError &ctInitializatio
         setpwent(); // restart
         while ((userInfos = getpwent())) {
             if ((userInfos->pw_uid == uid) && (!allowDeny(userInfos->pw_name))) {
-                ctInitializationError.setErrorMessage(i18n("You have been blocked from using KCron\
+                ctInitializationError.setErrorMessage(
+                    i18n("You have been blocked from using KCron\
 	                      by either the /etc/cron.allow file or the /etc/cron.deny file.\
-	                      \n\nCheck the crontab man page for further details.")
-                                                      );
+	                      \n\nCheck the crontab man page for further details."));
 
                 return;
             }
-            //delete userInfos;
+            // delete userInfos;
         }
 
         setpwent(); // restart again for others
@@ -73,7 +73,7 @@ CTHost::CTHost(const QString &cronBinary, CTInitializationError &ctInitializatio
             return;
         }
 
-        //delete currentUserPassword;
+        // delete currentUserPassword;
     }
 
     // Create the system cron table.
@@ -137,7 +137,8 @@ CTSaveStatus CTHost::save()
         const CTSaveStatus ctSaveStatus = ctCron->save();
 
         if (ctSaveStatus.isError()) {
-            return CTSaveStatus(i18nc("User login: errorMessage", "User %1: %2", ctCron->userLogin(), ctSaveStatus.errorMessage()), ctSaveStatus.detailErrorMessage());
+            return CTSaveStatus(i18nc("User login: errorMessage", "User %1: %2", ctCron->userLogin(), ctSaveStatus.errorMessage()),
+                                ctSaveStatus.detailErrorMessage());
         }
     }
 

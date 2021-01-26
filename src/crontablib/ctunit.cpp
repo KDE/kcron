@@ -39,7 +39,7 @@ CTUnit::~CTUnit()
 {
 }
 
-CTUnit &CTUnit::operator =(const CTUnit &unit)
+CTUnit &CTUnit::operator=(const CTUnit &unit)
 {
     if (this == &unit) {
         return *this;
@@ -94,7 +94,7 @@ void CTUnit::parse(const QString &tokenString)
             step = 1;
             slashpos = subelement.length();
         } else {
-            step = fieldToValue(subelement.mid(slashpos+1, subelement.length()-slashpos-1));
+            step = fieldToValue(subelement.mid(slashpos + 1, subelement.length() - slashpos - 1));
             if (step < 1) {
                 step = 1;
             }
@@ -113,7 +113,7 @@ void CTUnit::parse(const QString &tokenString)
             }
         } else {
             beginat = fieldToValue(subelement.mid(0, dashpos));
-            endat = fieldToValue(subelement.mid(dashpos+1, slashpos-dashpos-1));
+            endat = fieldToValue(subelement.mid(dashpos + 1, slashpos - dashpos - 1));
         }
 
         // ignore out of range
@@ -129,7 +129,7 @@ void CTUnit::parse(const QString &tokenString)
             mInitialEnabled[i] = mEnabled[i] = true;
         }
 
-        tokStr = tokStr.mid(commapos+1, tokStr.length()-commapos-1);
+        tokStr = tokStr.mid(commapos + 1, tokStr.length() - commapos - 1);
     }
 }
 
@@ -258,7 +258,8 @@ int CTUnit::fieldToValue(const QString &entry) const
 
     // check for days
     QList<QString> days;
-    days << QStringLiteral("sun") << QStringLiteral("mon") << QStringLiteral("tue") << QStringLiteral("wed") << QStringLiteral("thu") << QStringLiteral("fri") << QStringLiteral("sat");
+    days << QStringLiteral("sun") << QStringLiteral("mon") << QStringLiteral("tue") << QStringLiteral("wed") << QStringLiteral("thu") << QStringLiteral("fri")
+         << QStringLiteral("sat");
 
     int day = days.indexOf(lower);
     if (day != -1) {
@@ -267,15 +268,16 @@ int CTUnit::fieldToValue(const QString &entry) const
 
     // check for months
     QList<QString> months;
-    months << QLatin1String("") << QStringLiteral("jan") << QStringLiteral("feb") << QStringLiteral("mar") << QStringLiteral("apr") << QStringLiteral("may") << QStringLiteral("jun") << QStringLiteral("jul") << QStringLiteral("aug") << QStringLiteral("sep") << QStringLiteral("oct") << QStringLiteral(
-        "nov") << QStringLiteral("dec");
+    months << QLatin1String("") << QStringLiteral("jan") << QStringLiteral("feb") << QStringLiteral("mar") << QStringLiteral("apr") << QStringLiteral("may")
+           << QStringLiteral("jun") << QStringLiteral("jul") << QStringLiteral("aug") << QStringLiteral("sep") << QStringLiteral("oct") << QStringLiteral("nov")
+           << QStringLiteral("dec");
 
     int month = months.indexOf(lower);
     if (month != -1) {
         return month;
     }
 
-    //If the string does not match a day ora month, then it's a simple number (minute, hour or day of month)
+    // If the string does not match a day ora month, then it's a simple number (minute, hour or day of month)
     return entry.toInt();
 }
 
@@ -290,7 +292,7 @@ int CTUnit::findPeriod(const QList<int> &periods) const
 
         for (int i = minimum(); i <= maximum(); i++) {
             bool periodTesting;
-            if ((double)i/(double)period == i/period) {
+            if ((double)i / (double)period == i / period) {
                 periodTesting = true;
             } else {
                 periodTesting = false;

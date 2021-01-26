@@ -11,8 +11,8 @@
 
 #include <QTreeWidget>
 
-#include "genericListWidget.h"
 #include "cthost.h"
+#include "genericListWidget.h"
 
 class TaskWidget;
 
@@ -24,7 +24,6 @@ class TasksWidget : public GenericListWidget
     Q_OBJECT
 
 public:
-
     /**
      * Construct tasks folder from branch.
      */

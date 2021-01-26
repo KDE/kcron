@@ -19,7 +19,6 @@ class CTVariable;
 class VariableWidget : public QTreeWidgetItem
 {
 public:
-
     /**
      * Initialize the list view item and task.
      */
@@ -41,7 +40,6 @@ public:
     CTVariable *getCTVariable() const;
 
 private:
-
     /**
      * Variable
      */

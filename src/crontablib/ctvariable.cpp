@@ -28,7 +28,7 @@ CTVariable::CTVariable(const QString &tokenString, const QString &_comment, cons
     const int spacepos = tokStr.indexOf(QRegExp(QLatin1String("[ =]")));
     variable = tokStr.mid(0, spacepos);
 
-    value = tokStr.mid(spacepos+1, tokStr.length()-spacepos-1);
+    value = tokStr.mid(spacepos + 1, tokStr.length() - spacepos - 1);
     comment = _comment;
 
     userLogin = _userLogin;
@@ -54,7 +54,7 @@ CTVariable::CTVariable(const CTVariable &source)
 {
 }
 
-CTVariable &CTVariable::operator =(const CTVariable &source)
+CTVariable &CTVariable::operator=(const CTVariable &source)
 {
     if (this == &source) {
         return *this;
@@ -108,7 +108,8 @@ void CTVariable::cancel()
 
 bool CTVariable::dirty() const
 {
-    return (variable != mInitialVariable) || (value != mInitialValue) || (comment != mInitialComment) || (userLogin != mInitialUserLogin) || (enabled != mInitialEnabled);
+    return (variable != mInitialVariable) || (value != mInitialValue) || (comment != mInitialComment) || (userLogin != mInitialUserLogin)
+        || (enabled != mInitialEnabled);
 }
 
 QIcon CTVariable::variableIcon() const

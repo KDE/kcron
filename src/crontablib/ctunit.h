@@ -9,8 +9,8 @@
 #ifndef CTUNIT_H
 #define CTUNIT_H
 
-#include <QString>
 #include <QList>
+#include <QString>
 
 /**
  * A cron table unit parser and tokenizer.
@@ -28,7 +28,6 @@ protected:
     virtual QString genericDescribe(const QList<QString> &label) const;
 
 public:
-
     /**
      * Base initial image as empty and copy enabled intervals.
      */
@@ -42,7 +41,7 @@ public:
     /**
      * Copy enabled intervals.
      */
-    CTUnit &operator =(const CTUnit &unit);
+    CTUnit &operator=(const CTUnit &unit);
 
     /**
      * Tokenizes unit into string such as
@@ -103,7 +102,6 @@ public:
     int findPeriod(const QList<int> &periods) const;
 
 protected:
-
     /**
      * Parses unit such as "0-3,5,6,10-30/5".
      * Does not initialize array of enabled intervals.
@@ -123,7 +121,6 @@ private:
     QString mInitialTokStr;
 
 public:
-
     /**
      * Constant indicating short format.
      */

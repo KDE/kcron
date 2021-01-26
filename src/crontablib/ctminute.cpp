@@ -23,7 +23,7 @@ CTMinute::CTMinute()
 
 int CTMinute::findPeriod() const
 {
-    const QList<int> periods {1, 2, 5, 10, 15, 20, 30};
+    const QList<int> periods{1, 2, 5, 10, 15, 20, 30};
 
     return CTUnit::findPeriod(periods);
 }
