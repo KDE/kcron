@@ -25,7 +25,7 @@ QString CTMonth::describe() const
 QString CTMonth::getName(const int ndx)
 {
     initializeNames();
-    return shortName[ndx];
+    return shortName.at(ndx);
 }
 
 void CTMonth::initializeNames()

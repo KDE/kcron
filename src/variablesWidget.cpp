@@ -78,6 +78,7 @@ QList<VariableWidget *> VariablesWidget::selectedVariablesWidget() const
     QList<VariableWidget *> variablesWidget;
 
     const QList<QTreeWidgetItem *> variablesItems = treeWidget()->selectedItems();
+    variablesWidget.reserve(variablesItems.count());
     for (QTreeWidgetItem *item : variablesItems) {
         VariableWidget *variableWidget = static_cast<VariableWidget *>(item);
         variablesWidget.append(variableWidget);

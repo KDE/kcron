@@ -26,6 +26,7 @@ CTUnit::CTUnit(const CTUnit &source)
 
     mInitialEnabled.clear();
     mEnabled.clear();
+    mInitialEnabled.reserve(mMax + 1);
     for (int i = 0; i <= mMax; i++) {
         mInitialEnabled.append(false);
         mEnabled.append(source.mEnabled.at(i));
@@ -239,7 +240,7 @@ void CTUnit::apply()
 {
     mInitialTokStr = exportUnit();
     for (int i = mMin; i <= mMax; i++) {
-        mInitialEnabled[i] = mEnabled[i];
+        mInitialEnabled[i] = mEnabled.at(i);
     }
     mDirty = false;
 }
@@ -247,7 +248,7 @@ void CTUnit::apply()
 void CTUnit::cancel()
 {
     for (int i = mMin; i <= mMax; i++) {
-        mEnabled[i] = mInitialEnabled[i];
+        mEnabled[i] = mInitialEnabled.at(i);
     }
     mDirty = false;
 }

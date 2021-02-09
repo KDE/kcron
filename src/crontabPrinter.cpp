@@ -321,6 +321,7 @@ void CrontabPrinter::drawTable(const QList<int> &columnWidths)
 QList<int> CrontabPrinter::findMaxWidths(const QList<QStringList> &contents, int columnCount)
 {
     QList<int> columnWidths;
+    columnWidths.reserve(columnCount);
     for (int i = 0; i < columnCount; ++i) {
         columnWidths.append(0);
     }

@@ -50,7 +50,7 @@ QString CTDayOfWeek::describe() const
 QString CTDayOfWeek::getName(const int ndx, const bool format)
 {
     initializeNames();
-    return (format == shortFormat) ? shortName[ndx] : longName[ndx];
+    return (format == shortFormat) ? shortName.at(ndx) : longName.at(ndx);
 }
 
 void CTDayOfWeek::initializeNames()

@@ -52,6 +52,7 @@ QList<TaskWidget *> TasksWidget::selectedTasksWidget() const
     QList<TaskWidget *> tasksWidget;
 
     const QList<QTreeWidgetItem *> tasksItems = treeWidget()->selectedItems();
+    tasksWidget.reserve(tasksItems.count());
     for (QTreeWidgetItem *item : tasksItems) {
         TaskWidget *taskWidget = static_cast<TaskWidget *>(item);
         tasksWidget.append(taskWidget);
@@ -98,6 +99,7 @@ void TasksWidget::runTaskNow() const
     QStringList commandList;
 
     const auto variables = ctCron->variables();
+    commandList.reserve(variables.count() + 5);
     for (CTVariable *variable : variables) {
         commandList << QStringLiteral("export %1=\"%2\"").arg(variable->variable, variable->value);
     }
