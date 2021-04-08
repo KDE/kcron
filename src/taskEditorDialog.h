@@ -19,7 +19,6 @@
 
 #include <KTitleWidget>
 
-class QLabel;
 class QCheckBox;
 class QGridLayout;
 class QHBoxLayout;
