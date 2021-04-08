@@ -82,9 +82,7 @@ CTHost::CTHost(const QString &cronBinary, CTInitializationError &ctInitializatio
 
 CTHost::~CTHost()
 {
-    foreach (CTCron *ctCron, mCrons) {
-        delete ctCron;
-    }
+    qDeleteAll(mCrons);
 }
 
 bool CTHost::allowDeny(char *name)

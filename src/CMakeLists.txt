@@ -54,7 +54,7 @@ set(kcm_cron_SRCS
 add_library(kcm_cron MODULE ${kcm_cron_SRCS})
 
 target_link_libraries(kcm_cron 
-    Qt5::PrintSupport
+    Qt::PrintSupport
     KF5::ConfigWidgets
     KF5::I18n
     KF5::IconThemes

@@ -206,14 +206,10 @@ void CrontabWidget::refreshCron()
 
 void CrontabWidget::copy()
 {
-    foreach (CTTask *task, mClipboardTasks) {
-        delete task;
-    }
+    qDeleteAll(mClipboardTasks);
     mClipboardTasks.clear();
 
-    foreach (CTVariable *variable, mClipboardVariables) {
-        delete variable;
-    }
+    qDeleteAll(mClipboardVariables);
     mClipboardVariables.clear();
 
     QString clipboardText;

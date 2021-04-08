@@ -176,11 +176,11 @@ void TasksWidget::deleteSelection()
 {
     logDebug() << "Selection deleting...";
 
-    QList<QTreeWidgetItem *> tasksItems = treeWidget()->selectedItems();
+    const QList<QTreeWidgetItem *> tasksItems = treeWidget()->selectedItems();
 
     bool deleteSomething = !(tasksItems.isEmpty());
 
-    foreach (QTreeWidgetItem *item, tasksItems) {
+    for (QTreeWidgetItem *item : tasksItems) {
         TaskWidget *taskWidget = static_cast<TaskWidget *>(item);
 
         crontabWidget()->currentCron()->removeTask(taskWidget->getCTTask());

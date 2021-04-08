@@ -245,14 +245,9 @@ QString CTCron::exportCron() const
 
 CTCron::~CTCron()
 {
-    foreach (CTTask *ctTask, d->task) {
-        delete ctTask;
-    }
+    qDeleteAll(d->task);
 
-    foreach (CTVariable *ctVariable, d->variable) {
-        delete ctVariable;
-    }
-
+    qDeleteAll(d->variable);
     delete d;
 }
 

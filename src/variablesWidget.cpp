@@ -99,10 +99,10 @@ VariableWidget *VariablesWidget::firstSelectedVariableWidget() const
 
 void VariablesWidget::deleteSelection()
 {
-    QList<QTreeWidgetItem *> variablesItems = treeWidget()->selectedItems();
+    const QList<QTreeWidgetItem *> variablesItems = treeWidget()->selectedItems();
     bool deleteSomething = !(variablesItems.isEmpty());
 
-    foreach (QTreeWidgetItem *item, variablesItems) {
+    for (QTreeWidgetItem *item : variablesItems) {
         VariableWidget *variableWidget = static_cast<VariableWidget *>(item);
 
         crontabWidget()->currentCron()->removeVariable(variableWidget->getCTVariable());

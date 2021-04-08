@@ -1,8 +1,8 @@
-cmake_minimum_required (VERSION 3.5.0 FATAL_ERROR)
+cmake_minimum_required (VERSION 3.16.0 FATAL_ERROR)
 project(kcron)
 
-set (QT_MIN_VERSION "5.12.0")
-set (KF5_MIN_VERSION "5.68.0")
+set (QT_MIN_VERSION "5.15.0")
+set (KF5_MIN_VERSION "5.80.0")
 
 find_package (ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 set (CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
@@ -27,9 +27,7 @@ find_package(KF5 REQUIRED COMPONENTS
     IconThemes
     KIO
 )
-if(ECM_VERSION VERSION_GREATER_EQUAL 5.79)
-    include(KDEGitCommitHooks)
-endif()
+include(KDEGitCommitHooks)
 
 
 add_subdirectory(src) 
@@ -44,9 +42,7 @@ ecm_qt_install_logging_categories(
         )
 
 
-if(ECM_VERSION VERSION_GREATER_EQUAL 5.79)
-    kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
-endif()
+kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
 ki18n_install(po)
 kdoctools_install(po)
 
