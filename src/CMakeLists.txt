@@ -57,7 +57,6 @@ target_link_libraries(kcm_cron
     Qt::PrintSupport
     KF5::ConfigWidgets
     KF5::I18n
-    KF5::IconThemes
     KF5::KIOWidgets
 )
 

@@ -24,7 +24,6 @@ find_package(KF5 REQUIRED COMPONENTS
     ConfigWidgets
     DocTools
     I18n
-    IconThemes
     KIO
 )
 include(KDEGitCommitHooks)

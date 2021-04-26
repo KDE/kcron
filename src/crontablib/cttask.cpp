@@ -8,7 +8,6 @@
 
 #include "cttask.h"
 
-#include <KIconLoader>
 #include <KLocalizedString>
 
 #include <QMimeDatabase>
