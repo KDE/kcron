@@ -387,14 +387,7 @@ QIcon CTTask::commandIcon() const
     QMimeType mimeType = QMimeDatabase().mimeTypeForUrl(commandPath);
     // logDebug() << mimeType->name();
     if (mimeType.name() == QLatin1String("application/x-executable") || mimeType.name() == QLatin1String("application/octet-stream")) {
-        // The next line is identical as SmallIcon(commandPath.fileName()), but is able to return a isNull() QPixmap
-        QPixmap pixmap =
-            KIconLoader::global()->loadIcon(commandPath.fileName(), KIconLoader::Small, 0, KIconLoader::DefaultState, QStringList(), nullptr, true);
-        if (pixmap.isNull()) {
-            return QIcon::fromTheme(QLatin1String("system-run"));
-        }
-
-        return QIcon(pixmap);
+        return QIcon::fromTheme(commandPath.fileName(), QIcon::fromTheme(QLatin1String("system-run")));
     }
 
     return QIcon::fromTheme(mimeType.iconName());
