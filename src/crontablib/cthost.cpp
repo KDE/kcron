@@ -180,7 +180,7 @@ QString CTHost::createCTCron(const struct passwd *userInfos)
     }
 
     CTInitializationError ctInitializationError;
-    CTCron *p = new CTCron(mCrontabBinary, userInfos, currentUserCron, ctInitializationError);
+    auto p = new CTCron(mCrontabBinary, userInfos, currentUserCron, ctInitializationError);
     if (ctInitializationError.hasErrorMessage()) {
         delete p;
         return ctInitializationError.errorMessage();

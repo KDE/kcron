@@ -124,12 +124,12 @@ public:
     /**
      * Constant indicating short format.
      */
-    static const bool shortFormat = 0;
+    static const bool shortFormat = false;
 
     /**
      * Constant indicating long format.
      */
-    static const bool longFormat = 1;
+    static const bool longFormat = true;
 };
 
 #endif // CTUNIT_H

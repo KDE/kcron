@@ -28,25 +28,25 @@
 GenericListWidget::GenericListWidget(CrontabWidget *crontabWidget, const QString &label, const QIcon &icon)
     : QWidget(crontabWidget)
 {
-    QVBoxLayout *mainLayout = new QVBoxLayout(this);
+    auto mainLayout = new QVBoxLayout(this);
     mainLayout->setContentsMargins(0, 0, 0, 0);
 
     mCrontabWidget = crontabWidget;
 
     // Label layout
-    QHBoxLayout *labelLayout = new QHBoxLayout();
+    auto labelLayout = new QHBoxLayout();
 
-    QLabel *tasksIcon = new QLabel(this);
+    auto tasksIcon = new QLabel(this);
     tasksIcon->setPixmap(icon.pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize, nullptr, this)));
     labelLayout->addWidget(tasksIcon);
 
-    QLabel *tasksLabel = new QLabel(label, this);
+    auto tasksLabel = new QLabel(label, this);
     labelLayout->addWidget(tasksLabel, 1, Qt::AlignLeft);
 
     mainLayout->addLayout(labelLayout);
 
     // Tree layout
-    QHBoxLayout *treeLayout = new QHBoxLayout();
+    auto treeLayout = new QHBoxLayout();
 
     mTreeWidget = new QTreeWidget(this);
 
@@ -135,7 +135,7 @@ void GenericListWidget::removeAll()
 
 QAction *GenericListWidget::createSeparator()
 {
-    QAction *action = new QAction(this);
+    auto action = new QAction(this);
     action->setSeparator(true);
 
     return action;
@@ -143,7 +143,7 @@ QAction *GenericListWidget::createSeparator()
 
 void GenericListWidget::addRightAction(QAction *action, const QObject *receiver, const char *member)
 {
-    QPushButton *button = new QPushButton(action->text(), this);
+    auto button = new QPushButton(action->text(), this);
     button->setIcon(action->icon());
     button->setWhatsThis(action->whatsThis());
     button->setToolTip(action->toolTip());
@@ -166,7 +166,7 @@ void GenericListWidget::setActionEnabled(QAction *action, bool enabled)
     const auto associatedWidgets = action->associatedWidgets();
     for (QWidget *widget : associatedWidgets) {
         // Only change status of associated Buttons
-        QPushButton *button = qobject_cast<QPushButton *>(widget);
+        auto button = qobject_cast<QPushButton *>(widget);
         if (button) {
             button->setEnabled(enabled);
         }

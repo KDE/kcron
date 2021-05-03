@@ -19,7 +19,7 @@ CrontabPrinterWidget::CrontabPrinterWidget(bool root)
 {
     setWindowTitle(i18n("Cron Options"));
 
-    QVBoxLayout *main_ = new QVBoxLayout(this);
+    auto main_ = new QVBoxLayout(this);
 
     mChkPrintCrontab = new QCheckBox(i18n("Print cron&tab"), this);
     mChkPrintCrontab->setObjectName(QStringLiteral("chkPrintCrontab"));

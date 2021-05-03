@@ -48,7 +48,7 @@ void KCronHelper::initUserCombo(QComboBox *userCombo, CrontabWidget *crontabWidg
 
 QTextEdit *KCronHelper::createCommentEdit(QWidget *parent)
 {
-    QTextEdit *edit = new QTextEdit(parent);
+    auto edit = new QTextEdit(parent);
     edit->setAcceptRichText(false);
     edit->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum));
     edit->setTabChangesFocus(true);

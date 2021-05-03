@@ -52,7 +52,7 @@ void VariablesWidget::modifySelection()
 
 void VariablesWidget::modifySelection(QTreeWidgetItem *item, int position)
 {
-    VariableWidget *variableWidget = static_cast<VariableWidget *>(item);
+    auto variableWidget = static_cast<VariableWidget *>(item);
 
     if (variableWidget) {
         if (position == statusColumnIndex()) {
@@ -80,7 +80,7 @@ QList<VariableWidget *> VariablesWidget::selectedVariablesWidget() const
     const QList<QTreeWidgetItem *> variablesItems = treeWidget()->selectedItems();
     variablesWidget.reserve(variablesItems.count());
     for (QTreeWidgetItem *item : variablesItems) {
-        VariableWidget *variableWidget = static_cast<VariableWidget *>(item);
+        auto variableWidget = static_cast<VariableWidget *>(item);
         variablesWidget.append(variableWidget);
     }
 
@@ -103,7 +103,7 @@ void VariablesWidget::deleteSelection()
     bool deleteSomething = !(variablesItems.isEmpty());
 
     for (QTreeWidgetItem *item : variablesItems) {
-        VariableWidget *variableWidget = static_cast<VariableWidget *>(item);
+        auto variableWidget = static_cast<VariableWidget *>(item);
 
         crontabWidget()->currentCron()->removeVariable(variableWidget->getCTVariable());
         delete variableWidget->getCTVariable();
@@ -138,7 +138,7 @@ int VariablesWidget::statusColumnIndex()
 
 void VariablesWidget::createVariable()
 {
-    CTVariable *variable = new CTVariable(QLatin1String(""), QLatin1String(""), crontabWidget()->currentCron()->userLogin());
+    auto variable = new CTVariable(QLatin1String(""), QLatin1String(""), crontabWidget()->currentCron()->userLogin());
 
     VariableEditorDialog variableEditorDialog(variable, i18n("New Variable"), crontabWidget());
     int result = variableEditorDialog.exec();

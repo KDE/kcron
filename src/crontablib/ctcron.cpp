@@ -144,14 +144,14 @@ CTCron &CTCron::operator=(const CTCron &source)
     d->variable.clear();
     const auto variables = source.variables();
     for (CTVariable *ctVariable : variables) {
-        CTVariable *tmp = new CTVariable(*ctVariable);
+        auto tmp = new CTVariable(*ctVariable);
         d->variable.append(tmp);
     }
 
     d->task.clear();
     const auto tasks = source.tasks();
     for (CTTask *ctTask : tasks) {
-        CTTask *tmp = new CTTask(*ctTask);
+        auto tmp = new CTTask(*ctTask);
         d->task.append(tmp);
     }
 
@@ -206,14 +206,14 @@ void CTCron::parseFile(const QString &fileName)
         // sign, it must be a variable
         if ((firstEquals > 0) && ((firstWhiteSpace == -1) || firstWhiteSpace > firstEquals)) {
             // create variable
-            CTVariable *tmp = new CTVariable(line, comment, d->userLogin);
+            auto tmp = new CTVariable(line, comment, d->userLogin);
             d->variable.append(tmp);
             comment.clear();
         }
         // must be a task, either enabled or disabled
         else {
             if (firstWhiteSpace > 0) {
-                CTTask *tmp = new CTTask(line, comment, d->userLogin, d->multiUserCron);
+                auto tmp = new CTTask(line, comment, d->userLogin, d->multiUserCron);
                 d->task.append(tmp);
                 comment.clear();
             }

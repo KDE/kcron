@@ -30,10 +30,10 @@ VariableEditorDialog::VariableEditorDialog(CTVariable *_ctVariable, const QStrin
 
     setModal(true);
     setWindowTitle(_caption);
-    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
+    auto buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
     mOkButton = buttonBox->button(QDialogButtonBox::Ok);
 
-    QGridLayout *layout = new QGridLayout;
+    auto layout = new QGridLayout;
     setLayout(layout);
 
     layout->setColumnMinimumWidth(1, 270);
@@ -50,7 +50,7 @@ VariableEditorDialog::VariableEditorDialog(CTVariable *_ctVariable, const QStrin
     layout->addWidget(mTitleWidget, layoutPosition, 0, 1, 2);
 
     // variable
-    QLabel *labVariable = new QLabel(i18nc("The environmental variable name ie HOME, MAILTO etc", "&Variable:"), this);
+    auto labVariable = new QLabel(i18nc("The environmental variable name ie HOME, MAILTO etc", "&Variable:"), this);
     layout->addWidget(labVariable, ++layoutPosition, 0, Qt::AlignLeft);
 
     mCmbVariable = new QComboBox(this);
@@ -66,10 +66,10 @@ VariableEditorDialog::VariableEditorDialog(CTVariable *_ctVariable, const QStrin
     labVariable->setBuddy(mCmbVariable);
 
     // details
-    QLabel *labDetails = new QLabel(QLatin1String(""), this);
+    auto labDetails = new QLabel(QLatin1String(""), this);
     layout->addWidget(labDetails, ++layoutPosition, 0, Qt::AlignLeft);
 
-    QHBoxLayout *detailsLayout = new QHBoxLayout;
+    auto detailsLayout = new QHBoxLayout;
     mDetailsIcon = new QLabel(this);
     detailsLayout->addWidget(mDetailsIcon);
 
@@ -79,7 +79,7 @@ VariableEditorDialog::VariableEditorDialog(CTVariable *_ctVariable, const QStrin
     layout->addLayout(detailsLayout, layoutPosition, 1, Qt::AlignLeft);
 
     // value
-    QLabel *labValue = new QLabel(i18n("Va&lue:"), this);
+    auto labValue = new QLabel(i18n("Va&lue:"), this);
     layout->addWidget(labValue, ++layoutPosition, 0, Qt::AlignLeft);
 
     mLeValue = new QLineEdit(this);
@@ -88,7 +88,7 @@ VariableEditorDialog::VariableEditorDialog(CTVariable *_ctVariable, const QStrin
     labValue->setBuddy(mLeValue);
 
     // User Combo
-    QLabel *userLabel = new QLabel(i18n("&Run as:"), this);
+    auto userLabel = new QLabel(i18n("&Run as:"), this);
     layout->addWidget(userLabel, ++layoutPosition, 0);
 
     mUserCombo = new QComboBox(this);
@@ -104,7 +104,7 @@ VariableEditorDialog::VariableEditorDialog(CTVariable *_ctVariable, const QStrin
     }
 
     // comment
-    QLabel *labComment = new QLabel(i18n("Co&mment:"), this);
+    auto labComment = new QLabel(i18n("Co&mment:"), this);
     layout->addWidget(labComment, ++layoutPosition, 0, Qt::AlignLeft);
 
     mTeComment = KCronHelper::createCommentEdit(this);

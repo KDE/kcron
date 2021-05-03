@@ -29,12 +29,12 @@ K_PLUGIN_FACTORY(KCMCronFactory, registerPlugin<KCMCron>();)
 KCMCron::KCMCron(QWidget *parent, const QVariantList & /*args*/)
     : KCModule(parent)
 {
-    KAboutData *aboutData = new KAboutData(QStringLiteral("kcm_cron"),
-                                           i18n("Task Scheduler"),
-                                           QStringLiteral("5.0"),
-                                           i18n("KDE Task Scheduler"),
-                                           KAboutLicense::GPL,
-                                           i18n("(c) 2008, Nicolas Ternisien\n(c) 1999-2000, Gary Meyer"));
+    auto aboutData = new KAboutData(QStringLiteral("kcm_cron"),
+                                    i18n("Task Scheduler"),
+                                    QStringLiteral("5.0"),
+                                    i18n("KDE Task Scheduler"),
+                                    KAboutLicense::GPL,
+                                    i18n("(c) 2008, Nicolas Ternisien\n(c) 1999-2000, Gary Meyer"));
 
     aboutData->addAuthor(i18n("Nicolas Ternisien"), QString(), QStringLiteral("nicolas.ternisien@gmail.com"));
     aboutData->addAuthor(i18n("Gary Meyer"), QString(), QStringLiteral("gary@meyer.net"));
@@ -62,7 +62,7 @@ KCMCron::KCMCron(QWidget *parent, const QVariantList & /*args*/)
     connect(mCrontabWidget->variablesWidget(), SIGNAL(variableModified(bool)), this, SIGNAL(changed(bool)));
 
     // Initialize view.
-    QVBoxLayout *layout = new QVBoxLayout(this);
+    auto layout = new QVBoxLayout(this);
 
     layout->addWidget(mCrontabWidget);
 

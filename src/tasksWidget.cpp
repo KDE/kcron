@@ -54,7 +54,7 @@ QList<TaskWidget *> TasksWidget::selectedTasksWidget() const
     const QList<QTreeWidgetItem *> tasksItems = treeWidget()->selectedItems();
     tasksWidget.reserve(tasksItems.count());
     for (QTreeWidgetItem *item : tasksItems) {
-        TaskWidget *taskWidget = static_cast<TaskWidget *>(item);
+        auto taskWidget = static_cast<TaskWidget *>(item);
         tasksWidget.append(taskWidget);
     }
 
@@ -120,7 +120,7 @@ void TasksWidget::runTaskNow() const
 
 void TasksWidget::createTask()
 {
-    CTTask *task =
+    auto task =
         new CTTask(QLatin1String(""), QLatin1String(""), crontabWidget()->currentCron()->userLogin(), crontabWidget()->currentCron()->isMultiUserCron());
 
     TaskEditorDialog taskEditorDialog(task, i18n("New Task"), crontabWidget());
@@ -151,7 +151,7 @@ void TasksWidget::modifySelection()
 
 void TasksWidget::modifySelection(QTreeWidgetItem *item, int position)
 {
-    TaskWidget *taskWidget = static_cast<TaskWidget *>(item);
+    auto taskWidget = static_cast<TaskWidget *>(item);
     if (taskWidget) {
         if (position == statusColumnIndex()) {
             taskWidget->toggleEnable();
@@ -181,7 +181,7 @@ void TasksWidget::deleteSelection()
     bool deleteSomething = !(tasksItems.isEmpty());
 
     for (QTreeWidgetItem *item : tasksItems) {
-        TaskWidget *taskWidget = static_cast<TaskWidget *>(item);
+        auto taskWidget = static_cast<TaskWidget *>(item);
 
         crontabWidget()->currentCron()->removeTask(taskWidget->getCTTask());
         delete taskWidget->getCTTask();

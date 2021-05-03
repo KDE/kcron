@@ -95,11 +95,11 @@ bool CrontabWidget::hasClipboardContent()
 
 QHBoxLayout *CrontabWidget::createCronSelector()
 {
-    QHBoxLayout *layout = new QHBoxLayout();
+    auto layout = new QHBoxLayout();
 
     layout->addWidget(new QLabel(i18n("Show the following Cron:"), this));
 
-    QButtonGroup *group = new QButtonGroup(this);
+    auto group = new QButtonGroup(this);
 
     mCurrentUserCronRadio = new QRadioButton(i18n("Personal Cron"), this);
     mCurrentUserCronRadio->setChecked(true);
@@ -152,7 +152,7 @@ QHBoxLayout *CrontabWidget::createCronSelector()
 
 void CrontabWidget::initialize()
 {
-    QVBoxLayout *layout = new QVBoxLayout(this);
+    auto layout = new QVBoxLayout(this);
 
     logDebug() << "Begin view refresh";
 
@@ -161,7 +161,7 @@ void CrontabWidget::initialize()
     QHBoxLayout *cronSelector = createCronSelector();
     layout->addLayout(cronSelector);
 
-    QSplitter *splitter = new QSplitter(this);
+    auto splitter = new QSplitter(this);
     splitter->setOrientation(Qt::Vertical);
     layout->addWidget(splitter);
 
@@ -219,7 +219,7 @@ void CrontabWidget::copy()
 
         const QList<TaskWidget *> tasksWidget = mTasksWidget->selectedTasksWidget();
         for (TaskWidget *taskWidget : tasksWidget) {
-            CTTask *task = new CTTask(*(taskWidget->getCTTask()));
+            auto task = new CTTask(*(taskWidget->getCTTask()));
             mClipboardTasks.append(task);
 
             clipboardText += task->exportTask() + QLatin1String("\n");
@@ -231,7 +231,7 @@ void CrontabWidget::copy()
 
         const QList<VariableWidget *> variablesWidget = mVariablesWidget->selectedVariablesWidget();
         for (VariableWidget *variableWidget : variablesWidget) {
-            CTVariable *variable = new CTVariable(*(variableWidget->getCTVariable()));
+            auto variable = new CTVariable(*(variableWidget->getCTVariable()));
             mClipboardVariables.append(variable);
 
             clipboardText += variable->exportVariable() + QLatin1String("\n");

@@ -52,14 +52,14 @@ TaskEditorDialog::TaskEditorDialog(CTTask *_ctTask, const QString &_caption, Cro
     mCtTask = _ctTask;
     mCrontabWidget = _crontabWidget;
 
-    QWidget *main = new QWidget(this);
-    QVBoxLayout *mainLayout = new QVBoxLayout(main);
+    auto main = new QWidget(this);
+    auto mainLayout = new QVBoxLayout(main);
     mainLayout->setContentsMargins(0, 0, 0, 0);
 
-    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
+    auto buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
     mOkButton = buttonBox->button(QDialogButtonBox::Ok);
 
-    QVBoxLayout *dialogLayout = new QVBoxLayout();
+    auto dialogLayout = new QVBoxLayout();
     dialogLayout->addWidget(main);
     dialogLayout->addWidget(buttonBox);
     setLayout(dialogLayout);
@@ -71,14 +71,14 @@ TaskEditorDialog::TaskEditorDialog(CTTask *_ctTask, const QString &_caption, Cro
 
     mainLayout->addWidget(mTitleWidget);
 
-    QGridLayout *commandConfigurationLayout = new QGridLayout();
+    auto commandConfigurationLayout = new QGridLayout();
     mainLayout->addLayout(commandConfigurationLayout);
 
     // command
-    QLabel *labCommand = new QLabel(i18n("&Command:"), main);
+    auto labCommand = new QLabel(i18n("&Command:"), main);
     commandConfigurationLayout->addWidget(labCommand, 0, 0);
 
-    QHBoxLayout *commandLayout = new QHBoxLayout();
+    auto commandLayout = new QHBoxLayout();
     mCommandIcon = new QLabel(main);
     mMissingCommandPixmap = QIcon::fromTheme(QStringLiteral("image-missing")).pixmap(style()->pixelMetric(QStyle::PM_SmallIconSize, nullptr, this));
     commandLayout->addWidget(mCommandIcon);
@@ -96,7 +96,7 @@ TaskEditorDialog::TaskEditorDialog(CTTask *_ctTask, const QString &_caption, Cro
     commandConfigurationLayout->addLayout(commandLayout, 0, 1);
 
     // User Combo
-    QLabel *userLabel = new QLabel(i18n("&Run as:"), main);
+    auto userLabel = new QLabel(i18n("&Run as:"), main);
     commandConfigurationLayout->addWidget(userLabel, 1, 0);
 
     mUserCombo = new QComboBox(main);
@@ -112,7 +112,7 @@ TaskEditorDialog::TaskEditorDialog(CTTask *_ctTask, const QString &_caption, Cro
     }
 
     // comment
-    QLabel *labComment = new QLabel(i18n("Co&mment:"), main);
+    auto labComment = new QLabel(i18n("Co&mment:"), main);
     commandConfigurationLayout->addWidget(labComment, 2, 0, Qt::AlignTop);
 
     mLeComment = KCronHelper::createCommentEdit(main);
@@ -121,7 +121,7 @@ TaskEditorDialog::TaskEditorDialog(CTTask *_ctTask, const QString &_caption, Cro
 
     mLeComment->setText(mCtTask->comment);
 
-    QHBoxLayout *checkboxesLayout = new QHBoxLayout();
+    auto checkboxesLayout = new QHBoxLayout();
     mainLayout->addLayout(checkboxesLayout);
 
     // enabled
@@ -140,10 +140,10 @@ TaskEditorDialog::TaskEditorDialog(CTTask *_ctTask, const QString &_caption, Cro
     mCbEveryDay->setChecked(everyDay);
     checkboxesLayout->addWidget(mCbEveryDay);
 
-    QHBoxLayout *schedulingLayout = new QHBoxLayout();
+    auto schedulingLayout = new QHBoxLayout();
     mainLayout->addLayout(schedulingLayout);
 
-    QVBoxLayout *monthLayout = new QVBoxLayout();
+    auto monthLayout = new QVBoxLayout();
     schedulingLayout->addLayout(monthLayout);
 
     // months
@@ -151,7 +151,7 @@ TaskEditorDialog::TaskEditorDialog(CTTask *_ctTask, const QString &_caption, Cro
     monthLayout->addWidget(mBgMonth);
     monthLayout->addStretch(1);
 
-    QVBoxLayout *v1 = new QVBoxLayout();
+    auto v1 = new QVBoxLayout();
     schedulingLayout->addLayout(v1);
 
     // days of the month
@@ -164,7 +164,7 @@ TaskEditorDialog::TaskEditorDialog(CTTask *_ctTask, const QString &_caption, Cro
 
     v1->addStretch(1);
 
-    QVBoxLayout *v2 = new QVBoxLayout();
+    auto v2 = new QVBoxLayout();
     schedulingLayout->addLayout(v2);
 
     mHoursGroup = createHoursGroup(main);
@@ -239,13 +239,13 @@ bool TaskEditorDialog::isEveryDay()
 
 QGroupBox *TaskEditorDialog::createDaysOfMonthGroup(QWidget *main)
 {
-    QGroupBox *daysOfMonthGroup = new QGroupBox(i18n("Days of Month"), main);
-    QGridLayout *daysOfMonthLayout = new QGridLayout(daysOfMonthGroup);
+    auto daysOfMonthGroup = new QGroupBox(i18n("Days of Month"), main);
+    auto daysOfMonthLayout = new QGridLayout(daysOfMonthGroup);
 
     int dm = CTDayOfMonth::MINIMUM;
     for (int row = 0; row < 5; ++row) {
         for (int column = 0; column < 7; ++column) {
-            NumberPushButton *day = new NumberPushButton(true, daysOfMonthGroup);
+            auto day = new NumberPushButton(true, daysOfMonthGroup);
             day->setText(QString::number(dm));
             day->setCheckable(true);
             day->setChecked(mCtTask->dayOfMonth.isEnabled(dm));
@@ -276,8 +276,8 @@ QGroupBox *TaskEditorDialog::createDaysOfMonthGroup(QWidget *main)
 
 QGroupBox *TaskEditorDialog::createMonthsGroup(QWidget *main)
 {
-    QGroupBox *monthsGroup = new QGroupBox(i18n("Months"), main);
-    QGridLayout *monthsLayout = new QGridLayout(monthsGroup);
+    auto monthsGroup = new QGroupBox(i18n("Months"), main);
+    auto monthsLayout = new QGridLayout(monthsGroup);
 
     int column = 0;
     int row = 0;
@@ -312,8 +312,8 @@ QGroupBox *TaskEditorDialog::createMonthsGroup(QWidget *main)
 
 QGroupBox *TaskEditorDialog::createDaysOfWeekGroup(QWidget *main)
 {
-    QGroupBox *daysOfWeekGroup = new QGroupBox(i18n("Days of Week"), main);
-    QGridLayout *daysOfWeekLayout = new QGridLayout(daysOfWeekGroup);
+    auto daysOfWeekGroup = new QGroupBox(i18n("Days of Week"), main);
+    auto daysOfWeekLayout = new QGridLayout(daysOfWeekGroup);
 
     int column = 0;
     int row = 0;
@@ -433,7 +433,7 @@ void TaskEditorDialog::reduceMinutesGroup()
 
 NumberPushButton *TaskEditorDialog::createMinuteButton(int minuteIndex)
 {
-    NumberPushButton *minuteButton = new NumberPushButton(true, mMinutesGroup);
+    auto minuteButton = new NumberPushButton(true, mMinutesGroup);
     minuteButton->setText(QString::number(minuteIndex));
     minuteButton->setCheckable(true);
     minuteButton->setChecked(mCtTask->minute.isEnabled(minuteIndex));
@@ -458,7 +458,7 @@ void TaskEditorDialog::createMinutesGroup(QWidget *main)
 
     mMinutesPreselectionLayout = new QHBoxLayout();
 
-    QLabel *minutesPreselectionLabel = new QLabel(i18n("Preselection:"));
+    auto minutesPreselectionLabel = new QLabel(i18n("Preselection:"));
     mMinutesPreselectionLayout->addWidget(minutesPreselectionLabel);
 
     mMinutesPreselection = new QComboBox(this);
@@ -492,7 +492,7 @@ void TaskEditorDialog::createMinutesGroup(QWidget *main)
 
 NumberPushButton *TaskEditorDialog::createHourButton(QGroupBox *hoursGroup, int hour)
 {
-    NumberPushButton *hourButton = new NumberPushButton(true, hoursGroup);
+    auto hourButton = new NumberPushButton(true, hoursGroup);
     hourButton->setText(QString::number(hour));
     hourButton->setCheckable(true);
     hourButton->setChecked(mCtTask->hour.isEnabled(hour));
@@ -506,9 +506,9 @@ NumberPushButton *TaskEditorDialog::createHourButton(QGroupBox *hoursGroup, int 
 QGroupBox *TaskEditorDialog::createHoursGroup(QWidget *main)
 {
     logDebug() << "Creating hours group";
-    QGroupBox *hoursGroup = new QGroupBox(i18n("Hours"), main);
+    auto hoursGroup = new QGroupBox(i18n("Hours"), main);
 
-    QGridLayout *hoursLayout = new QGridLayout(hoursGroup); // 5 x 7
+    auto hoursLayout = new QGridLayout(hoursGroup); // 5 x 7
 
     mMorningLabel = new QLabel(i18n("AM:"), this);
     mMorningLabel->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
@@ -648,7 +648,7 @@ void TaskEditorDialog::slotOK()
 
     if ((weekDaysSelected == 0) && (monthDaysSelected > 0)) {
         for (int dw = 1; dw <= 7; dw++) {
-            mDayOfWeekButtons[dw]->setChecked(1);
+            mDayOfWeekButtons[dw]->setChecked(true);
         }
     }
 
