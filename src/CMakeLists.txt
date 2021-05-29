@@ -7,8 +7,10 @@ include_directories(
 )
 
 ########## KCM Module ###############
+add_library(kcm_cron MODULE)
+ecm_qt_declare_logging_category(kcm_cron HEADER kcm_cron_debug.h IDENTIFIER KCM_CRON_LOG CATEGORY_NAME org.kde.kcm.cron DESCRIPTION "kcm cron" EXPORT KCRON)
 
-set(kcron_crontablib_SRCS
+target_sources(kcm_cron PRIVATE
    crontablib/cthost.cpp
    crontablib/ctcron.cpp
    crontablib/ctmonth.cpp
@@ -24,12 +26,7 @@ set(kcron_crontablib_SRCS
    crontablib/ctInitializationError.cpp
    crontablib/ctSaveStatus.cpp
    crontablib/ctHelper.cpp
-)
 
-ecm_qt_declare_logging_category(kcron_crontablib_SRCS HEADER kcm_cron_debug.h IDENTIFIER KCM_CRON_LOG CATEGORY_NAME org.kde.kcm.cron DESCRIPTION "kcm cron" EXPORT KCRON)
-
-set(kcm_cron_SRCS 
-   ${kcron_crontablib_SRCS}
    genericListWidget.cpp
     
    tasksWidget.cpp
@@ -51,7 +48,6 @@ set(kcm_cron_SRCS
    kcmCron.cpp 
 )
 
-add_library(kcm_cron MODULE ${kcm_cron_SRCS})
 
 target_link_libraries(kcm_cron 
     Qt::PrintSupport
