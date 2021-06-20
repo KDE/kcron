@@ -936,13 +936,10 @@ void TaskEditorDialog::slotAllDaysOfWeek()
 
 void TaskEditorDialog::slotDayOfWeekChanged()
 {
-    bool allChecked = true;
     bool allCleared = true;
     for (int dw = 1; dw <= 7; dw++) {
         if (mDayOfWeekButtons[dw]->isChecked()) {
             allCleared = false;
-        } else {
-            allChecked = false;
         }
     }
     if (allCleared) {
@@ -968,13 +965,10 @@ void TaskEditorDialog::slotAllHours()
 
 void TaskEditorDialog::slotHourChanged()
 {
-    bool allChecked = true;
     bool allCleared = true;
     for (int ho = 0; ho <= 23; ho++) {
         if (mHourButtons[ho]->isChecked()) {
             allCleared = false;
-        } else {
-            allChecked = false;
         }
     }
 
