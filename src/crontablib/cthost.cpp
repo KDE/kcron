@@ -131,7 +131,7 @@ CTSaveStatus CTHost::save()
         return ctCron->save();
     }
 
-    for (CTCron *ctCron : qAsConst(mCrons)) {
+    for (CTCron *ctCron : std::as_const(mCrons)) {
         const CTSaveStatus ctSaveStatus = ctCron->save();
 
         if (ctSaveStatus.isError()) {
@@ -145,7 +145,7 @@ CTSaveStatus CTHost::save()
 
 void CTHost::cancel()
 {
-    for (CTCron *ctCron : qAsConst(mCrons)) {
+    for (CTCron *ctCron : std::as_const(mCrons)) {
         ctCron->cancel();
     }
 }
@@ -154,7 +154,7 @@ bool CTHost::isDirty()
 {
     bool isDirty = false;
 
-    for (CTCron *ctCron : qAsConst(mCrons)) {
+    for (CTCron *ctCron : std::as_const(mCrons)) {
         if (ctCron->isDirty()) {
             isDirty = true;
         }
@@ -193,7 +193,7 @@ QString CTHost::createCTCron(const struct passwd *userInfos)
 
 CTCron *CTHost::findCurrentUserCron() const
 {
-    for (CTCron *ctCron : qAsConst(mCrons)) {
+    for (CTCron *ctCron : std::as_const(mCrons)) {
         if (ctCron->isCurrentUserCron()) {
             return ctCron;
         }
@@ -205,7 +205,7 @@ CTCron *CTHost::findCurrentUserCron() const
 
 CTCron *CTHost::findSystemCron() const
 {
-    for (CTCron *ctCron : qAsConst(mCrons)) {
+    for (CTCron *ctCron : std::as_const(mCrons)) {
         if (ctCron->isMultiUserCron()) {
             return ctCron;
         }
@@ -217,7 +217,7 @@ CTCron *CTHost::findSystemCron() const
 
 CTCron *CTHost::findUserCron(const QString &userLogin) const
 {
-    for (CTCron *ctCron : qAsConst(mCrons)) {
+    for (CTCron *ctCron : std::as_const(mCrons)) {
         if (ctCron->userLogin() == userLogin) {
             return ctCron;
         }
@@ -229,7 +229,7 @@ CTCron *CTHost::findUserCron(const QString &userLogin) const
 
 CTCron *CTHost::findCronContaining(CTTask *ctTask) const
 {
-    for (CTCron *ctCron : qAsConst(mCrons)) {
+    for (CTCron *ctCron : std::as_const(mCrons)) {
         if (ctCron->tasks().contains(ctTask)) {
             return ctCron;
         }
@@ -241,7 +241,7 @@ CTCron *CTHost::findCronContaining(CTTask *ctTask) const
 
 CTCron *CTHost::findCronContaining(CTVariable *ctVariable) const
 {
-    for (CTCron *ctCron : qAsConst(mCrons)) {
+    for (CTCron *ctCron : std::as_const(mCrons)) {
         if (ctCron->variables().contains(ctVariable)) {
             return ctCron;
         }

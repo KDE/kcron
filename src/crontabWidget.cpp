@@ -267,13 +267,13 @@ void CrontabWidget::paste()
     logDebug() << "Paste content";
 
     if (mTasksWidget->treeWidget()->hasFocus()) {
-        for (CTTask *task : qAsConst(mClipboardTasks)) {
+        for (CTTask *task : std::as_const(mClipboardTasks)) {
             mTasksWidget->addTask(new CTTask(*task));
         }
     }
 
     if (mVariablesWidget->treeWidget()->hasFocus()) {
-        for (CTVariable *variable : qAsConst(mClipboardVariables)) {
+        for (CTVariable *variable : std::as_const(mClipboardVariables)) {
             mVariablesWidget->addVariable(new CTVariable(*variable));
         }
     }

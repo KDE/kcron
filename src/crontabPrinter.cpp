@@ -108,7 +108,7 @@ void CrontabPrinter::printTasks()
     taskHeaders << i18n("Scheduling") << i18n("Command") << i18n("Description");
     drawHeader(tasksColumnWidths, taskHeaders);
 
-    for (const QStringList &contents : qAsConst(tasksContent)) {
+    for (const QStringList &contents : std::as_const(tasksContent)) {
         drawContentRow(tasksColumnWidths, contents);
 
         needNewPage();
@@ -349,7 +349,7 @@ QList<int> CrontabPrinter::findColumnWidths(const QList<QStringList> &contents, 
     int pageWidth = mPainter->device()->width() - 2 * margin;
 
     int columnWidthSum = 0;
-    for (int width : qAsConst(columnWidths)) {
+    for (int width : std::as_const(columnWidths)) {
         logDebug() << "Column : " << width;
         columnWidthSum += width;
     }

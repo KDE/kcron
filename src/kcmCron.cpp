@@ -110,7 +110,7 @@ bool KCMCron::init()
     // if there currently are no scheduled tasks...
     if (!mCtHost->isRootUser()) {
         int taskCount = 0;
-        for (CTCron *ctCron : qAsConst(mCtHost->mCrons)) {
+        for (CTCron *ctCron : std::as_const(mCtHost->mCrons)) {
             taskCount += ctCron->tasks().count();
         }
 

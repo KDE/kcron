@@ -225,12 +225,12 @@ QString CTCron::exportCron() const
 {
     QString exportCron;
 
-    for (CTVariable *ctVariable : qAsConst(d->variable)) {
+    for (CTVariable *ctVariable : std::as_const(d->variable)) {
         exportCron += ctVariable->exportVariable();
         exportCron += QLatin1String("\n");
     }
 
-    for (CTTask *ctTask : qAsConst(d->task)) {
+    for (CTTask *ctTask : std::as_const(d->task)) {
         exportCron += ctTask->exportTask();
         exportCron += QLatin1String("\n");
     }
@@ -317,11 +317,11 @@ CTSaveStatus CTCron::save()
     }
 
     // Mark as applied
-    for (CTTask *ctTask : qAsConst(d->task)) {
+    for (CTTask *ctTask : std::as_const(d->task)) {
         ctTask->apply();
     }
 
-    for (CTVariable *ctVariable : qAsConst(d->variable)) {
+    for (CTVariable *ctVariable : std::as_const(d->variable)) {
         ctVariable->apply();
     }
 
@@ -354,13 +354,13 @@ bool CTCron::isDirty() const
         return true;
     }
 
-    for (CTTask *ctTask : qAsConst(d->task)) {
+    for (CTTask *ctTask : std::as_const(d->task)) {
         if (ctTask->dirty()) {
             return true;
         }
     }
 
-    for (CTVariable *ctVariable : qAsConst(d->variable)) {
+    for (CTVariable *ctVariable : std::as_const(d->variable)) {
         if (ctVariable->dirty()) {
             return true;
         }
@@ -373,7 +373,7 @@ QString CTCron::path() const
 {
     QString path;
 
-    for (CTVariable *ctVariable : qAsConst(d->variable)) {
+    for (CTVariable *ctVariable : std::as_const(d->variable)) {
         if (ctVariable->variable == QLatin1String("PATH")) {
             path = ctVariable->value;
         }
