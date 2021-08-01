@@ -6,8 +6,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef CTDOW_H
-#define CTDOW_H
+#pragma once
 
 #include <QList>
 #include <QString>
@@ -50,4 +49,3 @@ private:
     static QList<QString> longName;
 };
 
-#endif // CTDOW_H

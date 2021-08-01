@@ -6,8 +6,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef CRONTABWIDGET_H
-#define CRONTABWIDGET_H
+#pragma once
 
 #include <QWidget>
 
@@ -146,4 +145,3 @@ private:
     CTGlobalCron *mCtGlobalCron = nullptr;
 };
 
-#endif // CRONTABWIDGET_H

@@ -6,8 +6,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef CTUNIT_H
-#define CTUNIT_H
+#pragma once
 
 #include <QList>
 #include <QString>
@@ -132,4 +131,3 @@ public:
     static const bool longFormat = true;
 };
 
-#endif // CTUNIT_H

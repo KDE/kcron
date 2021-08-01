@@ -6,8 +6,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef GENERIC_LIST_WIDGET_H
-#define GENERIC_LIST_WIDGET_H
+#pragma once
 
 #include <QTreeWidget>
 
@@ -66,4 +65,3 @@ private:
     QVBoxLayout *mActionsLayout = nullptr;
 };
 
-#endif // GENERIC_LIST_WIDGET_H

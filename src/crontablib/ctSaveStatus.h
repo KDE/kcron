@@ -6,8 +6,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef CT_SAVE_STATUS
-#define CT_SAVE_STATUS
+#pragma once
 
 #include <QString>
 
@@ -32,4 +31,3 @@ private:
     QString mDetailError;
 };
 
-#endif // CT_SAVE_STATUS

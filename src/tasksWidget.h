@@ -6,8 +6,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef TASKS_WIDGET_H
-#define TASKS_WIDGET_H
+#pragma once
 
 #include <QTreeWidget>
 
@@ -103,4 +102,3 @@ private:
     QAction *mPrintAction = nullptr;
 };
 
-#endif // TASKS_WIDGET_H

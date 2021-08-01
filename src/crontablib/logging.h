@@ -16,11 +16,9 @@
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 */
 
-#ifndef KCRON_LOGGING_H_
-#define KCRON_LOGGING_H_
+#pragma once
 
 #include "kcm_cron_debug.h"
 
 #define logDebug() qCDebug(KCM_CRON_LOG)
 
-#endif // KCRON_LOGGING_H_

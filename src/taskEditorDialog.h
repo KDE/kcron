@@ -6,8 +6,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef TASK_EDITOR_DIALOG_H
-#define TASK_EDITOR_DIALOG_H
+#pragma once
 
 #include <QComboBox>
 #include <QDialog>
@@ -244,4 +243,3 @@ private:
     QStringList mSpecialValidCommands;
 };
 
-#endif // TASK_EDITOR_DIALOG_H

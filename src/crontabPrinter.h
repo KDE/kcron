@@ -7,8 +7,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef CRONTABPRINTER_H
-#define CRONTABPRINTER_H
+#pragma once
 
 #include <QList>
 
@@ -98,4 +97,3 @@ private:
     int mCurrentRowPosition = 0;
 };
 
-#endif

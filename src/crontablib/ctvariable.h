@@ -6,8 +6,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef CTVARIABLE_H
-#define CTVARIABLE_H
+#pragma once
 
 #include <QIcon>
 #include <QString>
@@ -73,4 +72,3 @@ private:
     bool mInitialEnabled;
 };
 
-#endif // CTVARIABLE_H

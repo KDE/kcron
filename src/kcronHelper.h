@@ -6,8 +6,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef KCRON_HELPER_H
-#define KCRON_HELPER_H
+#pragma once
 
 #include <QString>
 #include <QWidget>
@@ -25,4 +24,3 @@ public:
     static QTextEdit *createCommentEdit(QWidget *parent);
 };
 
-#endif // KCRON_HELPER_H

@@ -6,8 +6,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef CTDOM_H
-#define CTDOM_H
+#pragma once
 
 #include <QList>
 #include <QString>
@@ -43,4 +42,3 @@ private:
     static QList<QString> shortName;
 };
 
-#endif // CTDOM_H

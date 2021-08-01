@@ -6,8 +6,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef VARIABLE_WIDGET_H
-#define VARIABLE_WIDGET_H
+#pragma once
 
 #include "variablesWidget.h"
 
@@ -48,4 +47,3 @@ private:
     VariablesWidget *variablesWidget = nullptr;
 };
 
-#endif // VARIABLE_WIDGET_H

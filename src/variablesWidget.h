@@ -6,8 +6,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef VARIABLES_WIDGET_H
-#define VARIABLES_WIDGET_H
+#pragma once
 
 #include <QTreeWidget>
 
@@ -88,4 +87,3 @@ private:
     QAction *mDeleteAction = nullptr;
 };
 
-#endif // VARIABLES_WIDGET_H

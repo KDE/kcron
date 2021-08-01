@@ -6,8 +6,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef CTMINUTE_H
-#define CTMINUTE_H
+#pragma once
 
 #include "ctunit.h"
 
@@ -29,4 +28,3 @@ public:
     QString exportUnit() const override;
 };
 
-#endif // CTMINUTE_H

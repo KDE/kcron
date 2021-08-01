@@ -6,8 +6,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef CT_INITIALIZATION_ERROR
-#define CT_INITIALIZATION_ERROR
+#pragma once
 
 #include <QString>
 
@@ -24,4 +23,3 @@ private:
     QString mError;
 };
 
-#endif // CT_INITIALIZATION_ERROR

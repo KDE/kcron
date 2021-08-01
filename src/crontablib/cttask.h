@@ -6,8 +6,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef CTTASK_H
-#define CTTASK_H
+#pragma once
 
 #include <QIcon>
 #include <QPair>
@@ -133,4 +132,3 @@ private:
     bool mInitialReboot;
 };
 
-#endif // CTTASK_H

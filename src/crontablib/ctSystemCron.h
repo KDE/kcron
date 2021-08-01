@@ -6,8 +6,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef CT_SYSTEM_CRON_H
-#define CT_SYSTEM_CRON_H
+#pragma once
 
 #include <QString>
 
@@ -32,4 +31,3 @@ public:
     ~CTSystemCron() override;
 };
 
-#endif // CT_SYSTEM_CRON_H

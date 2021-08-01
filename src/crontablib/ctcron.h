@@ -6,8 +6,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef CTCRON_H
-#define CTCRON_H
+#pragma once
 
 #include <QList>
 #include <QString>
@@ -209,4 +208,3 @@ protected:
     CTCronPrivate *const d;
 };
 
-#endif // CTCRON_H

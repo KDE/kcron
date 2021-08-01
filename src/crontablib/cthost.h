@@ -6,8 +6,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef CTHOST_H
-#define CTHOST_H
+#pragma once
 
 #include <QList>
 #include <QString>
@@ -111,4 +110,3 @@ private:
     QString mCrontabBinary;
 };
 
-#endif // CTHOST_H

@@ -7,8 +7,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef CRONTABPRINTERWIDGET_H
-#define CRONTABPRINTERWIDGET_H
+#pragma once
 
 #include <QWidget>
 
@@ -41,4 +40,3 @@ private:
     QCheckBox *mChkPrintAllUsers = nullptr;
 };
 
-#endif

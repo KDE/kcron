@@ -6,8 +6,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef CT_HELPER
-#define CT_HELPER
+#pragma once
 
 #include <QString>
 
@@ -17,4 +16,3 @@ public:
     static QString exportComment(const QString &comment);
 };
 
-#endif // CT_HELPER

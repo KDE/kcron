@@ -6,8 +6,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef KCM_CRON_H
-#define KCM_CRON_H
+#pragma once
 
 /**
  * Crontab binary executable location
@@ -63,4 +62,3 @@ private:
     CTHost *mCtHost = nullptr;
 };
 
-#endif // KCM_CRON_H

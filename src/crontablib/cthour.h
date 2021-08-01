@@ -6,8 +6,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef CTHOUR_H
-#define CTHOUR_H
+#pragma once
 
 #include "ctunit.h"
 
@@ -27,4 +26,3 @@ public:
     QString exportUnit() const override;
 };
 
-#endif // CTHOUR_H

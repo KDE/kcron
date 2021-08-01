@@ -6,8 +6,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef CT_GLOBAL_CRON_H
-#define CT_GLOBAL_CRON_H
+#pragma once
 
 #include <QList>
 
@@ -48,4 +47,3 @@ private:
     CTHost *mCtHost = nullptr;
 };
 
-#endif // CT_GLOBAL_CRON_H

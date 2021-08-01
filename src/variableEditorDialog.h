@@ -6,8 +6,7 @@
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
-#ifndef VARIABLE_EDITOR_DIALOG_H
-#define VARIABLE_EDITOR_DIALOG_H
+#pragma once
 
 #include <QCheckBox>
 #include <QComboBox>
@@ -87,4 +86,3 @@ private:
     QComboBox *mUserCombo = nullptr;
 };
 
-#endif // VARIABLE_EDITOR_DIALOG_H
