@@ -2,7 +2,7 @@ cmake_minimum_required (VERSION 3.16.0 FATAL_ERROR)
 project(kcron)
 
 set (QT_MIN_VERSION "5.15.0")
-set (KF5_MIN_VERSION "5.84.0")
+set (KF5_MIN_VERSION "5.85.0")
 
 find_package (ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 set (CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
@@ -10,9 +10,11 @@ set (CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 add_definitions(-DTRANSLATION_DOMAIN="kcron")
 
 include(KDEInstallDirs)
-include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
+include(KDECompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
 include(ECMQtDeclareLoggingCategory)
+include(KDEGitCommitHooks)
+
 
 find_package (Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     Core
@@ -26,9 +28,8 @@ find_package(KF5 REQUIRED COMPONENTS
     I18n
     KIO
 )
-include(KDEGitCommitHooks)
 add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f00)
-add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055500)
+add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055600)
 
 
 add_subdirectory(src) 
