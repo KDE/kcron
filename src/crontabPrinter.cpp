@@ -57,7 +57,6 @@ bool CrontabPrinter::start()
 
     // initialize the printer using the print dialog
     auto printDialog = new QPrintDialog(mPrinter, nullptr);
-    printDialog->setOptionTabs(QList<QWidget *>() << mCrontabWidget);
     printDialog->setEnabledOptions(QAbstractPrintDialog::PrintToFile);
     if (printDialog->exec() == QDialog::Rejected) {
         logDebug() << "Printing canceled";
