@@ -23,7 +23,7 @@
 #include "cttask.h"
 #include "ctvariable.h"
 
-#include "logging.h"
+#include "kcm_cron_debug.h"
 
 CrontabPrinter::CrontabPrinter(CrontabWidget *crontabWidget)
     : mCrontabWidget(crontabWidget)
@@ -41,7 +41,7 @@ CrontabPrinter::~CrontabPrinter()
 
 bool CrontabPrinter::start()
 {
-    logDebug() << "Printing selection...";
+    qCDebug(KCM_CRON_LOG) << "Printing selection...";
 
     if (!mPrinter) {
         mPrinter = new QPrinter();
@@ -59,7 +59,7 @@ bool CrontabPrinter::start()
     auto printDialog = new QPrintDialog(mPrinter, nullptr);
     printDialog->setEnabledOptions(QAbstractPrintDialog::PrintToFile);
     if (printDialog->exec() == QDialog::Rejected) {
-        logDebug() << "Printing canceled";
+        qCDebug(KCM_CRON_LOG) << "Printing canceled";
         delete printDialog;
         return false;
     }
@@ -226,7 +226,7 @@ void CrontabPrinter::finish()
 
 void CrontabPrinter::printPageNumber()
 {
-    logDebug() << "Printing page number...";
+    qCDebug(KCM_CRON_LOG) << "Printing page number...";
 
     mPainter->translate(0, -mCurrentRowPosition);
     mPrintView->moveTo(QPoint(0, mPrintView->height()));
@@ -349,12 +349,12 @@ QList<int> CrontabPrinter::findColumnWidths(const QList<QStringList> &contents, 
 
     int columnWidthSum = 0;
     for (int width : std::as_const(columnWidths)) {
-        logDebug() << "Column : " << width;
+        qCDebug(KCM_CRON_LOG) << "Column : " << width;
         columnWidthSum += width;
     }
 
     if (columnWidthSum >= pageWidth) {
-        logDebug() << "The printing could be out of the page";
+        qCDebug(KCM_CRON_LOG) << "The printing could be out of the page";
         return columnWidths;
     }
 

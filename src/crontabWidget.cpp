@@ -39,7 +39,7 @@
 
 #include "kcmCron.h"
 
-#include "logging.h"
+#include "kcm_cron_debug.h"
 
 class CTGlobalCron;
 
@@ -58,13 +58,13 @@ CrontabWidget::CrontabWidget(QWidget *parent, CTHost *ctHost)
 
     initialize();
 
-    logDebug() << "Clipboard Status " << hasClipboardContent();
+    qCDebug(KCM_CRON_LOG) << "Clipboard Status " << hasClipboardContent();
 
     mTasksWidget->setFocus();
 
     QTreeWidgetItem *item = mTasksWidget->treeWidget()->topLevelItem(0);
     if (item != nullptr) {
-        logDebug() << "First item found" << mTasksWidget->treeWidget()->topLevelItemCount();
+        qCDebug(KCM_CRON_LOG) << "First item found" << mTasksWidget->treeWidget()->topLevelItemCount();
         item->setSelected(true);
     }
 
@@ -154,9 +154,9 @@ void CrontabWidget::initialize()
 {
     auto layout = new QVBoxLayout(this);
 
-    logDebug() << "Begin view refresh";
+    qCDebug(KCM_CRON_LOG) << "Begin view refresh";
 
-    logDebug() << "Creating Tasks list...";
+    qCDebug(KCM_CRON_LOG) << "Creating Tasks list...";
 
     QHBoxLayout *cronSelector = createCronSelector();
     layout->addLayout(cronSelector);
@@ -184,7 +184,7 @@ void CrontabWidget::refreshCron()
     mVariablesWidget->refreshVariables(ctCron);
 
     if (ctCron->isMultiUserCron() && !ctHost()->isRootUser()) {
-        logDebug() << "Disabling view...";
+        qCDebug(KCM_CRON_LOG) << "Disabling view...";
 
         mTasksWidget->treeWidget()->setEnabled(false);
         mVariablesWidget->treeWidget()->setEnabled(false);
@@ -194,7 +194,7 @@ void CrontabWidget::refreshCron()
         togglePasteAction(false);
         mTasksWidget->toggleRunNowAction(false);
     } else {
-        logDebug() << "Enabling view...";
+        qCDebug(KCM_CRON_LOG) << "Enabling view...";
 
         mTasksWidget->treeWidget()->setEnabled(true);
         mVariablesWidget->treeWidget()->setEnabled(true);
@@ -215,7 +215,7 @@ void CrontabWidget::copy()
     QString clipboardText;
 
     if (mTasksWidget->treeWidget()->hasFocus()) {
-        logDebug() << "Tasks copying";
+        qCDebug(KCM_CRON_LOG) << "Tasks copying";
 
         const QList<TaskWidget *> tasksWidget = mTasksWidget->selectedTasksWidget();
         for (TaskWidget *taskWidget : tasksWidget) {
@@ -227,7 +227,7 @@ void CrontabWidget::copy()
     }
 
     if (mVariablesWidget->treeWidget()->hasFocus()) {
-        logDebug() << "Variables copying";
+        qCDebug(KCM_CRON_LOG) << "Variables copying";
 
         const QList<VariableWidget *> variablesWidget = mVariablesWidget->selectedVariablesWidget();
         for (VariableWidget *variableWidget : variablesWidget) {
@@ -241,30 +241,30 @@ void CrontabWidget::copy()
     QApplication::clipboard()->setText(clipboardText, QClipboard::Clipboard);
     QApplication::clipboard()->setText(clipboardText, QClipboard::Selection);
 
-    logDebug() << "Clipboard Status " << hasClipboardContent();
+    qCDebug(KCM_CRON_LOG) << "Clipboard Status " << hasClipboardContent();
     togglePasteAction(hasClipboardContent());
 }
 
 void CrontabWidget::cut()
 {
-    logDebug() << "Cut content";
+    qCDebug(KCM_CRON_LOG) << "Cut content";
 
     copy();
 
     if (mTasksWidget->treeWidget()->hasFocus()) {
-        logDebug() << "Tasks cutting";
+        qCDebug(KCM_CRON_LOG) << "Tasks cutting";
         mTasksWidget->deleteSelection();
     }
 
     if (mVariablesWidget->treeWidget()->hasFocus()) {
-        logDebug() << "Variables cutting";
+        qCDebug(KCM_CRON_LOG) << "Variables cutting";
         mVariablesWidget->deleteSelection();
     }
 }
 
 void CrontabWidget::paste()
 {
-    logDebug() << "Paste content";
+    qCDebug(KCM_CRON_LOG) << "Paste content";
 
     if (mTasksWidget->treeWidget()->hasFocus()) {
         for (CTTask *task : std::as_const(mClipboardTasks)) {
@@ -288,7 +288,7 @@ CTCron *CrontabWidget::currentCron() const
     }
 
     if (mOtherUsers->currentIndex() == mOtherUsers->count() - 1) {
-        logDebug() << "Using Global Cron";
+        qCDebug(KCM_CRON_LOG) << "Using Global Cron";
         return mCtGlobalCron;
     }
 
@@ -320,7 +320,7 @@ void CrontabWidget::checkOtherUsers()
 
 void CrontabWidget::setupActions()
 {
-    logDebug() << "Setup actions";
+    qCDebug(KCM_CRON_LOG) << "Setup actions";
 
     // Edit menu
     mCutAction = KStandardAction::cut(this, SLOT(cut()), this);
@@ -328,7 +328,7 @@ void CrontabWidget::setupActions()
     mPasteAction = KStandardAction::paste(this, SLOT(paste()), this);
     togglePasteAction(false);
 
-    logDebug() << "Actions initialized";
+    qCDebug(KCM_CRON_LOG) << "Actions initialized";
 }
 
 QList<QAction *> CrontabWidget::cutCopyPasteActions()
@@ -366,7 +366,7 @@ void CrontabWidget::print()
     CrontabPrinter printer(this);
 
     if (!printer.start()) {
-        logDebug() << "Unable to start printer";
+        qCDebug(KCM_CRON_LOG) << "Unable to start printer";
         return;
     }
     printer.printTasks();

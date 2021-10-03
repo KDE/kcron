@@ -22,7 +22,7 @@
 #include "ctcron.h"
 #include "cthost.h"
 #include "cttask.h"
-#include "logging.h"
+#include "kcm_cron_debug.h"
 
 K_PLUGIN_FACTORY(KCMCronFactory, registerPlugin<KCMCron>();)
 
@@ -56,7 +56,7 @@ KCMCron::KCMCron(QWidget *parent, const QVariantList & /*args*/)
 
     mCrontabWidget = new CrontabWidget(this, mCtHost);
 
-    logDebug() << "Crontab Widget initialized";
+    qCDebug(KCM_CRON_LOG) << "Crontab Widget initialized";
 
     connect(mCrontabWidget->tasksWidget(), SIGNAL(taskModified(bool)), this, SIGNAL(changed(bool)));
     connect(mCrontabWidget->variablesWidget(), SIGNAL(variableModified(bool)), this, SIGNAL(changed(bool)));
@@ -82,14 +82,14 @@ KCMCron::~KCMCron()
 
 void KCMCron::load()
 {
-    logDebug() << "Calling load";
+    qCDebug(KCM_CRON_LOG) << "Calling load";
 
     mCtHost->cancel();
 }
 
 void KCMCron::save()
 {
-    logDebug() << "Saving crontab...";
+    qCDebug(KCM_CRON_LOG) << "Saving crontab...";
 
     CTSaveStatus saveStatus = mCtHost->save();
     if (saveStatus.isError()) {
@@ -99,7 +99,7 @@ void KCMCron::save()
 
 void KCMCron::defaults()
 {
-    logDebug() << "Loading defaults";
+    qCDebug(KCM_CRON_LOG) << "Loading defaults";
 
     mCtHost->cancel();
 }

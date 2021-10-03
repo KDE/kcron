@@ -10,7 +10,7 @@
 
 #include <KLocalizedString>
 
-#include "logging.h"
+#include "kcm_cron_debug.h"
 
 CTUnit::CTUnit(int _min, int _max, const QString &tokStr)
 {

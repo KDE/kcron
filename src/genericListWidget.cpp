@@ -20,7 +20,7 @@
 #include "taskEditorDialog.h"
 #include "taskWidget.h"
 
-#include "logging.h"
+#include "kcm_cron_debug.h"
 
 /**
  * Construct tasks folder from branch.
@@ -77,7 +77,7 @@ GenericListWidget::GenericListWidget(CrontabWidget *crontabWidget, const QString
 
     mainLayout->addLayout(treeLayout);
 
-    logDebug() << "Generic list created";
+    qCDebug(KCM_CRON_LOG) << "Generic list created";
     connect(treeWidget(), &QTreeWidget::itemDoubleClicked, this, &GenericListWidget::modifySelection);
 }
 

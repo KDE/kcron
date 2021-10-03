@@ -22,7 +22,7 @@
 #include "variableEditorDialog.h"
 #include "variableWidget.h"
 
-#include "logging.h"
+#include "kcm_cron_debug.h"
 /**
  * Construct tasks folder from branch.
  */
@@ -38,7 +38,7 @@ VariablesWidget::VariablesWidget(CrontabWidget *crontabWidget)
 
     connect(treeWidget(), &QTreeWidget::itemSelectionChanged, this, &VariablesWidget::changeCurrentSelection);
 
-    logDebug() << "Variables list created";
+    qCDebug(KCM_CRON_LOG) << "Variables list created";
 }
 
 VariablesWidget::~VariablesWidget()
@@ -154,7 +154,7 @@ void VariablesWidget::createVariable()
 
 void VariablesWidget::addVariable(CTVariable *variable)
 {
-    logDebug() << "Add a new variable";
+    qCDebug(KCM_CRON_LOG) << "Add a new variable";
     crontabWidget()->currentCron()->addVariable(variable);
     new VariableWidget(this, variable);
 
@@ -251,7 +251,7 @@ void VariablesWidget::toggleNewEntryAction(bool state)
 
 void VariablesWidget::changeCurrentSelection()
 {
-    logDebug() << "Change selection...";
+    qCDebug(KCM_CRON_LOG) << "Change selection...";
 
     bool enabled;
     if (treeWidget()->selectedItems().isEmpty()) {

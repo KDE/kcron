@@ -15,7 +15,7 @@
 
 #include "ctHelper.h"
 
-#include "logging.h"
+#include "kcm_cron_debug.h"
 
 CTTask::CTTask(const QString &tokenString, const QString &_comment, const QString &_userLogin, bool _systemCrontab)
     : mSystemCrontab(_systemCrontab)
@@ -59,7 +59,7 @@ CTTask::CTTask(const QString &tokenString, const QString &_comment, const QStrin
     int spacePos(tokStr.indexOf(QRegExp(QLatin1String("[ \t]"))));
     // If reboot bypass initialize functions so no keys selected in modify task
     if (!reboot) {
-        // logDebug() << "Line : " << tokStr;
+        // qCDebug(KCM_CRON_LOG) << "Line : " << tokStr;
         minute.initialize(tokStr.mid(0, spacePos));
 
         while (isSpace(tokStr, spacePos + 1)) {
@@ -384,7 +384,7 @@ QIcon CTTask::commandIcon() const
     QUrl commandPath = QUrl::fromLocalFile(completeCommandPath());
 
     QMimeType mimeType = QMimeDatabase().mimeTypeForUrl(commandPath);
-    // logDebug() << mimeType->name();
+    // qCDebug(KCM_CRON_LOG) << mimeType->name();
     if (mimeType.name() == QLatin1String("application/x-executable") || mimeType.name() == QLatin1String("application/octet-stream")) {
         return QIcon::fromTheme(commandPath.fileName(), QIcon::fromTheme(QLatin1String("system-run")));
     }

@@ -25,7 +25,7 @@
 #include <pwd.h> // pwd, getpwnam(), getpwuid()
 #include <unistd.h> // getuid(), unlink()
 
-#include "logging.h"
+#include "kcm_cron_debug.h"
 
 CommandLineStatus CommandLine::execute()
 {
@@ -97,7 +97,7 @@ CTCron::CTCron(const QString &crontabBinary, const struct passwd *userInfos, boo
 
     if (!initializeFromUserInfos(userInfos)) {
         ctInitializationError.setErrorMessage(i18n("No password entry found for uid '%1'", getuid()));
-        logDebug() << "Error in crontab creation of" << userInfos->pw_name;
+        qCDebug(KCM_CRON_LOG) << "Error in crontab creation of" << userInfos->pw_name;
         return;
     }
 
@@ -106,9 +106,9 @@ CTCron::CTCron(const QString &crontabBinary, const struct passwd *userInfos, boo
     if (commandLineStatus.exitCode == 0) {
         this->parseFile(d->tmpFileName);
     } else {
-        logDebug() << "Error when executing command" << commandLineStatus.commandLine;
-        logDebug() << "Standard output :" << commandLineStatus.standardOutput;
-        logDebug() << "Standard error :" << commandLineStatus.standardError;
+        qCDebug(KCM_CRON_LOG) << "Error when executing command" << commandLineStatus.commandLine;
+        qCDebug(KCM_CRON_LOG) << "Standard output :" << commandLineStatus.standardOutput;
+        qCDebug(KCM_CRON_LOG) << "Standard error :" << commandLineStatus.standardError;
     }
 
     d->initialTaskCount = d->task.size();
@@ -138,7 +138,7 @@ CTCron &CTCron::operator=(const CTCron &source)
     }
 
     if (source.isSystemCron()) {
-        logDebug() << "Affect the system cron";
+        qCDebug(KCM_CRON_LOG) << "Affect the system cron";
     }
 
     d->variable.clear();
@@ -258,7 +258,7 @@ bool CTCron::saveToFile(const QString &fileName)
         return false;
     }
 
-    // logDebug() << exportCron();
+    // qCDebug(KCM_CRON_LOG) << exportCron();
 
     QTextStream out(&file);
     out << exportCron();
@@ -401,7 +401,7 @@ void CTCron::addTask(CTTask *task)
         task->setSystemCrontab(false);
     }
 
-    logDebug() << "Adding task" << task->comment << " user : " << task->userLogin;
+    qCDebug(KCM_CRON_LOG) << "Adding task" << task->comment << " user : " << task->userLogin;
 
     d->task.append(task);
 }
@@ -414,7 +414,7 @@ void CTCron::addVariable(CTVariable *variable)
         variable->userLogin = d->userLogin;
     }
 
-    logDebug() << "Adding variable" << variable->variable << " user : " << variable->userLogin;
+    qCDebug(KCM_CRON_LOG) << "Adding variable" << variable->variable << " user : " << variable->userLogin;
 
     d->variable.append(variable);
 }

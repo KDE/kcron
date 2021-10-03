@@ -30,7 +30,7 @@
 #include "ctcron.h"
 #include "cthost.h"
 #include "cttask.h"
-#include "logging.h"
+#include "kcm_cron_debug.h"
 
 #include "crontabWidget.h"
 
@@ -359,12 +359,12 @@ bool TaskEditorDialog::canReduceMinutesGroup()
 
 void TaskEditorDialog::emptyMinutesGroup()
 {
-    logDebug() << "Empty minutes layout";
+    qCDebug(KCM_CRON_LOG) << "Empty minutes layout";
 
     for (int minuteIndex = 0; minuteIndex <= minuteTotal; ++minuteIndex) {
         mMinutesLayout->removeWidget(mMinuteButtons[minuteIndex]);
         mMinuteButtons[minuteIndex]->hide();
-        logDebug() << "Layout count" << mMinutesLayout->count();
+        qCDebug(KCM_CRON_LOG) << "Layout count" << mMinutesLayout->count();
     }
 
     mMinutesLayout->removeItem(mMinutesPreselectionLayout);
@@ -384,7 +384,7 @@ void TaskEditorDialog::increaseMinutesGroup()
     */
     emptyMinutesGroup();
 
-    logDebug() << "Show all minutes";
+    qCDebug(KCM_CRON_LOG) << "Show all minutes";
 
     int minuteIndex = 0;
     for (int row = 0; row < (minuteTotal + 1) / minutePerColumn; ++row) {
@@ -402,7 +402,7 @@ void TaskEditorDialog::increaseMinutesGroup()
 
 void TaskEditorDialog::reduceMinutesGroup()
 {
-    logDebug() << "Reducing view";
+    qCDebug(KCM_CRON_LOG) << "Reducing view";
 
     emptyMinutesGroup();
 
@@ -420,7 +420,7 @@ void TaskEditorDialog::reduceMinutesGroup()
                 nextRow = 1;
             }
         } else {
-            logDebug() << "Reducing id" << minuteIndex;
+            qCDebug(KCM_CRON_LOG) << "Reducing id" << minuteIndex;
             mCtTask->minute.setEnabled(minuteIndex, false);
             mMinuteButtons[minuteIndex]->setChecked(false);
         }
@@ -446,7 +446,7 @@ NumberPushButton *TaskEditorDialog::createMinuteButton(int minuteIndex)
 
 void TaskEditorDialog::createMinutesGroup(QWidget *main)
 {
-    logDebug() << "Creating minutes group";
+    qCDebug(KCM_CRON_LOG) << "Creating minutes group";
 
     mMinutesGroup = new QGroupBox(i18n("Minutes"), main);
 
@@ -487,7 +487,7 @@ void TaskEditorDialog::createMinutesGroup(QWidget *main)
         reduceMinutesGroup();
     }
 
-    logDebug() << "Minutes group created";
+    qCDebug(KCM_CRON_LOG) << "Minutes group created";
 }
 
 NumberPushButton *TaskEditorDialog::createHourButton(QGroupBox *hoursGroup, int hour)
@@ -505,7 +505,7 @@ NumberPushButton *TaskEditorDialog::createHourButton(QGroupBox *hoursGroup, int 
 
 QGroupBox *TaskEditorDialog::createHoursGroup(QWidget *main)
 {
-    logDebug() << "Creating hours group";
+    qCDebug(KCM_CRON_LOG) << "Creating hours group";
     auto hoursGroup = new QGroupBox(i18n("Hours"), main);
 
     auto hoursLayout = new QGridLayout(hoursGroup); // 5 x 7
@@ -536,7 +536,7 @@ QGroupBox *TaskEditorDialog::createHoursGroup(QWidget *main)
     connect(mAllHours, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotAllHours);
     connect(mAllHours, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotWizard);
 
-    logDebug() << "Create hours group";
+    qCDebug(KCM_CRON_LOG) << "Create hours group";
     return hoursGroup;
 }
 
@@ -720,7 +720,7 @@ bool TaskEditorDialog::checkCommand()
     QString path = pathCommand.at(0);
     QString binaryCommand = pathCommand.at(1);
 
-    logDebug() << "Looking for " << binaryCommand << "in" << path;
+    qCDebug(KCM_CRON_LOG) << "Looking for " << binaryCommand << "in" << path;
 
     bool found = false;
     bool exec = false;
@@ -983,7 +983,7 @@ void TaskEditorDialog::slotMinutesPreselection(int index)
 {
     QVariant itemData = mMinutesPreselection->itemData(index);
     int step = itemData.toInt();
-    logDebug() << "Selected step " << step;
+    qCDebug(KCM_CRON_LOG) << "Selected step " << step;
 
     if (step == -1) {
         // Unselect everything
