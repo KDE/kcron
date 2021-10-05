@@ -89,7 +89,7 @@ void TasksWidget::runTaskNow() const
 
     CTCron *ctCron = crontabWidget()->currentCron();
     if (!ctCron) {
-        qCDebug(KCM_CRON_LOG) << "Unable to find the related CtCron, please report this bug to KCron developer";
+        qCDebug(KCM_CRON_LOG) << "Unable to find the related CtCron, please report this bug to the developers.";
         return;
     }
 
