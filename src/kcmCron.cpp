@@ -95,6 +95,7 @@ void KCMCron::save()
     if (saveStatus.isError()) {
         KMessageBox::detailedError(this, saveStatus.errorMessage(), saveStatus.detailErrorMessage());
     }
+    qCDebug(KCM_CRON_LOG) << "saved ct host";
 }
 
 void KCMCron::defaults()

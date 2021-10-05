@@ -347,7 +347,7 @@ CTSaveStatus CTCron::save()
 
     d->initialTaskCount = d->task.size();
     d->initialVariableCount = d->variable.size();
-
+    qCDebug(KCM_CRON_LOG) << "All saved";
     return CTSaveStatus();
 }
 
