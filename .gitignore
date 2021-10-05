@@ -10,6 +10,7 @@
 *.moc.cpp
 *.orig
 *.user
+.directory
 .*.swp
 .swp.*
 Doxyfile
@@ -21,3 +22,4 @@ CMakeLists.txt.user*
 *.unc-backup*
 .cmake/
 .clang-format
+.cache/*
