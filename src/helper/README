@@ -1,0 +1,5 @@
+The contents of this folder, as well as a few tweaks
+regarding KAuth and polkit permissions were sourced 
+and modified from the GPL-licensed project Zeit by lolmu.
+
+The original project can be found here https://github.com/loimu/zeit.
