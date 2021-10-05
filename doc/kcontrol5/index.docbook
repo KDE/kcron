@@ -251,7 +251,7 @@ every Sunday of the selected months (regardless of day of the
 month).</para>
 
 <para>The scheduled task is not actually set up until the
-<filename>crontab</filename> has been saved.</para>
+ <filename>crontab</filename> has been saved.</para>
 
 </sect3>
 </sect2>
