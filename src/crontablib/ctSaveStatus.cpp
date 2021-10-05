@@ -14,10 +14,10 @@ CTSaveStatus::CTSaveStatus()
 }
 
 CTSaveStatus::CTSaveStatus(const QString &errorMessage, const QString &detailErrorMessage)
+    : mErrorStatus(true)
+    , mError(errorMessage)
+    , mDetailError(detailErrorMessage)
 {
-    mErrorStatus = true;
-    mError = errorMessage;
-    mDetailError = detailErrorMessage;
 }
 
 QString CTSaveStatus::errorMessage() const

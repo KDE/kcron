@@ -12,6 +12,7 @@
 #include <QPainter>
 #include <QPrintDialog>
 #include <QPrinter>
+#include <numeric>
 
 #include <KLocalizedString>
 
@@ -279,10 +280,7 @@ void CrontabPrinter::drawTable(const QList<int> &columnWidths)
 {
     mPainter->translate(0, -mCurrentRowPosition + computeMargin());
 
-    int columnWidthsTotal = 0;
-    for (int columnWidth : columnWidths) {
-        columnWidthsTotal += columnWidth;
-    }
+    int columnWidthsTotal = std::accumulate(columnWidths.begin(), columnWidths.end(), 0);
 
     const int margin = computeMargin();
     int linePositionX = margin;
