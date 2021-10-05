@@ -19,7 +19,6 @@ class CTHost;
 class CTCron;
 class QRadioButton;
 class QComboBox;
-class CTGlobalCron;
 
 /**
  * Main GUI view of the crontab entries.
@@ -139,9 +138,5 @@ private:
 
     QComboBox *mOtherUsers = nullptr;
 
-    /**
-     * Pointer to the pseudo Global Cron object
-     */
-    CTGlobalCron *mCtGlobalCron = nullptr;
 };
 

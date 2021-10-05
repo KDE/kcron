@@ -91,7 +91,7 @@ void KCMCron::save()
 {
     qCDebug(KCM_CRON_LOG) << "Saving crontab...";
 
-    CTSaveStatus saveStatus = mCtHost->save();
+    CTSaveStatus saveStatus = mCtHost->save(mCrontabWidget);
     if (saveStatus.isError()) {
         KMessageBox::detailedError(this, saveStatus.errorMessage(), saveStatus.detailErrorMessage());
     }
@@ -107,22 +107,20 @@ void KCMCron::defaults()
 bool KCMCron::init()
 {
     // Display greeting screen.
-    // if there currently are no scheduled tasks...
-    if (!mCtHost->isRootUser()) {
-        int taskCount = 0;
-        for (CTCron *ctCron : std::as_const(mCtHost->mCrons)) {
-            taskCount += ctCron->tasks().count();
-        }
+    // If there currently are no scheduled tasks...
+    int taskCount = 0;
+    for (CTCron *ctCron : std::as_const(mCtHost->mCrons)) {
+        taskCount += ctCron->tasks().count();
+    }
 
-        if (taskCount == 0) {
-            show();
-            // TODO Add this as a passive popup/message/something else
-            KMessageBox::information(this,
-                                     i18n("You can use this application to schedule programs to run in the background.\nTo schedule a new task now, click on "
-                                          "the Tasks folder and select Edit/New from the menu."),
-                                     i18n("Welcome to the Task Scheduler"),
-                                     QStringLiteral("welcome"));
-        }
+    if (taskCount == 0) {
+        show();
+        // TODO Add this as a passive popup/message/something else
+        KMessageBox::information(this,
+                                 i18n("You can use this application to schedule programs to run in the background.\nTo schedule a new task now, click on "
+                                      "the Tasks folder and select Edit/New from the menu."),
+                                 i18n("Welcome to the Task Scheduler"),
+                                 QStringLiteral("welcome"));
     }
 
     return true;

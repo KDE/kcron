@@ -10,6 +10,7 @@
 
 #include <QComboBox>
 #include <QFontMetrics>
+#include <QString>
 #include <QTextEdit>
 
 #include "ctcron.h"
@@ -20,16 +21,15 @@
 
 void KCronHelper::initUserCombo(QComboBox *userCombo, CrontabWidget *crontabWidget, const QString &selectedUserLogin)
 {
+    // This only applies to the System Crontab.
+    // Populate the "Run as:" combobox with the login names of all current crons,
+    // selecting the current user (root) as the default selection.
     int userComboIndex = 0;
 
     QStringList users;
     int selectedIndex = 0;
     const auto crons = crontabWidget->ctHost()->mCrons;
     for (CTCron *ctCron : crons) {
-        if (ctCron->isSystemCron()) {
-            continue;
-        }
-
         users.append(ctCron->userLogin());
 
         // Select the actual user

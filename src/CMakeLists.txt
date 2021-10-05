@@ -21,7 +21,6 @@ target_sources(kcm_cron PRIVATE
    crontablib/cttask.cpp
    crontablib/ctunit.cpp
    crontablib/ctvariable.cpp
-   crontablib/ctGlobalCron.cpp
    crontablib/ctSystemCron.cpp
    crontablib/ctInitializationError.cpp
    crontablib/ctSaveStatus.cpp
@@ -54,8 +53,12 @@ target_link_libraries(kcm_cron
     KF5::ConfigWidgets
     KF5::I18n
     KF5::KIOWidgets
+    KF5::CoreAddons
+    KF5::Auth
 )
 
 install(TARGETS  kcm_cron  DESTINATION ${KDE_INSTALL_PLUGINDIR} )
+# For root permissions.
+add_subdirectory(helper)
 
 install(FILES kcm_cron.desktop  DESTINATION  ${KDE_INSTALL_KSERVICES5DIR} )

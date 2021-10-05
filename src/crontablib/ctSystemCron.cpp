@@ -42,7 +42,7 @@ CTSystemCron::CTSystemCron(const QString &crontabBinary)
     d->writeCommandLine.parameters << d->tmpFileName;
     d->writeCommandLine.standardOutputFile = QStringLiteral("/etc/crontab");
 
-    d->userLogin = i18n("System Crontab");
+    d->userLogin = i18n("root");
     d->userRealName = d->userLogin;
 
     d->initialTaskCount = 0;

@@ -22,6 +22,10 @@
 #include "cttask.h"
 #include "ctvariable.h"
 
+// For root permissions
+#include <KAuthAction>
+#include <KAuthExecuteJob>
+
 #include <pwd.h> // pwd, getpwnam(), getpwuid()
 #include <unistd.h> // getuid(), unlink()
 
@@ -306,14 +310,30 @@ CTSaveStatus CTCron::save()
         return CTSaveStatus(i18n("Unable to open crontab file for writing"), i18n("The file %1 could not be opened.", d->tmpFileName));
     }
 
-    CommandLineStatus commandLineStatus = d->writeCommandLine.execute();
-    // install temp file into crontab
-    if (commandLineStatus.exitCode != 0) {
+    // For root permissions.
+    if (d->systemCron) {
+        qCDebug(KCM_CRON_LOG) << "Attempting to save system cron";
+        QVariantMap args;
+        args.insert(QLatin1String("source"), d->tmpFileName);
+        args.insert(QLatin1String("target"), d->writeCommandLine.standardOutputFile);
+        KAuth::Action saveAction(QLatin1String("local.kcron.crontab.save"));
+        saveAction.setHelperId(QLatin1String("local.kcron.crontab"));
+        saveAction.setArguments(args);
+        KAuth::ExecuteJob *job = saveAction.execute();
+        if (!job->exec())
+            qCDebug(KCM_CRON_LOG) << "KAuth returned an error: " << job->error() << job->errorText();
         QFile::remove(d->tmpFileName);
-        return prepareSaveStatusError(commandLineStatus);
-    } else {
-        // Remove the temp file
+        if (job->error() > 0)
+            return CTSaveStatus(i18n("KAuth::ExecuteJob Error"), job->errorText());
+    }
+    // End root permissions.
+    else {
+        qCDebug(KCM_CRON_LOG) << "Attempting to save user cron";
+        // Save without root permissions.
+        CommandLineStatus commandLineStatus = d->writeCommandLine.execute();
         QFile::remove(d->tmpFileName);
+        if (commandLineStatus.exitCode != 0)
+            return prepareSaveStatusError(commandLineStatus);
     }
 
     // Mark as applied

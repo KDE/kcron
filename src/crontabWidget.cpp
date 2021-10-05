@@ -26,7 +26,6 @@
 #include <QAction>
 #include <QIcon>
 
-#include "ctGlobalCron.h"
 #include "ctcron.h"
 #include "cthost.h"
 #include "cttask.h"
@@ -41,18 +40,10 @@
 
 #include "kcm_cron_debug.h"
 
-class CTGlobalCron;
-
 CrontabWidget::CrontabWidget(QWidget *parent, CTHost *ctHost)
     : QWidget(parent)
 {
     mCtHost = ctHost;
-
-    if (mCtHost->isRootUser()) {
-        mCtGlobalCron = new CTGlobalCron(mCtHost);
-    } else {
-        mCtGlobalCron = nullptr;
-    }
 
     setupActions();
 
@@ -76,8 +67,6 @@ CrontabWidget::~CrontabWidget()
 {
     delete mTasksWidget;
     delete mVariablesWidget;
-
-    delete mCtGlobalCron;
 }
 
 bool CrontabWidget::hasClipboardContent()
@@ -110,40 +99,7 @@ QHBoxLayout *CrontabWidget::createCronSelector()
     group->addButton(mSystemCronRadio);
     layout->addWidget(mSystemCronRadio);
 
-    mOtherUserCronRadio = new QRadioButton(i18n("Cron of User:"), this);
-    group->addButton(mOtherUserCronRadio);
-
-    mOtherUsers = new QComboBox(this);
-
-    layout->addWidget(mOtherUserCronRadio);
-    layout->addWidget(mOtherUsers);
-
-    if (ctHost()->isRootUser()) {
-        QStringList users;
-
-        const auto crons = ctHost()->mCrons;
-        for (CTCron *ctCron : crons) {
-            if (ctCron->isCurrentUserCron()) {
-                continue;
-            }
-
-            if (ctCron->isSystemCron()) {
-                continue;
-            }
-
-            users.append(ctCron->userLogin());
-        }
-
-        users.sort();
-        mOtherUsers->addItems(users);
-        mOtherUsers->addItem(QIcon::fromTheme(QStringLiteral("users")), i18n("Show All Personal Crons"));
-    } else {
-        mOtherUserCronRadio->hide();
-        mOtherUsers->hide();
-    }
-
     connect(group, static_cast<void (QButtonGroup::*)(QAbstractButton *)>(&QButtonGroup::buttonClicked), this, &CrontabWidget::refreshCron);
-    connect(mOtherUsers, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &CrontabWidget::checkOtherUsers);
 
     layout->addStretch(1);
 
@@ -183,25 +139,12 @@ void CrontabWidget::refreshCron()
     mTasksWidget->refreshTasks(ctCron);
     mVariablesWidget->refreshVariables(ctCron);
 
-    if (ctCron->isMultiUserCron() && !ctHost()->isRootUser()) {
-        qCDebug(KCM_CRON_LOG) << "Disabling view...";
 
-        mTasksWidget->treeWidget()->setEnabled(false);
-        mVariablesWidget->treeWidget()->setEnabled(false);
+    mTasksWidget->treeWidget()->setEnabled(true);
+    mVariablesWidget->treeWidget()->setEnabled(true);
 
-        toggleNewEntryActions(false);
-        toggleModificationActions(false);
-        togglePasteAction(false);
-        mTasksWidget->toggleRunNowAction(false);
-    } else {
-        qCDebug(KCM_CRON_LOG) << "Enabling view...";
-
-        mTasksWidget->treeWidget()->setEnabled(true);
-        mVariablesWidget->treeWidget()->setEnabled(true);
-
-        toggleNewEntryActions(true);
-        togglePasteAction(hasClipboardContent());
-    }
+    toggleNewEntryActions(true);
+    togglePasteAction(hasClipboardContent());
 }
 
 void CrontabWidget::copy()
@@ -281,19 +224,13 @@ void CrontabWidget::paste()
 
 CTCron *CrontabWidget::currentCron() const
 {
+    // Checks which mode the gui is in, either user cron or system cron,
+    // returning the appropriate cron.
     if (mCurrentUserCronRadio->isChecked()) {
         return mCtHost->findCurrentUserCron();
-    } else if (mSystemCronRadio->isChecked()) {
+    } else {
         return mCtHost->findSystemCron();
     }
-
-    if (mOtherUsers->currentIndex() == mOtherUsers->count() - 1) {
-        qCDebug(KCM_CRON_LOG) << "Using Global Cron";
-        return mCtGlobalCron;
-    }
-
-    QString currentUserLogin = mOtherUsers->currentText();
-    return mCtHost->findUserCron(currentUserLogin);
 }
 
 TasksWidget *CrontabWidget::tasksWidget() const

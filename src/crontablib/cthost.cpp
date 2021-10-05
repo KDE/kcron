@@ -18,6 +18,8 @@
 
 #include <KLocalizedString>
 
+#include "crontabWidget.h"
+
 #include "ctInitializationError.h"
 #include "ctSystemCron.h"
 #include "ctcron.h"
@@ -122,25 +124,14 @@ bool CTHost::allowDeny(char *name)
     }
 }
 
-CTSaveStatus CTHost::save()
+CTSaveStatus CTHost::save(CrontabWidget *mCrontabWidget)
 {
-    if (!isRootUser()) {
-        qCDebug(KCM_CRON_LOG) << "Save current user cron";
-        CTCron *ctCron = findCurrentUserCron();
+    qCDebug(KCM_CRON_LOG) << "Save current cron.";
+    // Retrieve the current cron to use. This could either be a user cron or a system cron.
+    // Implements system cron entry point.
+    CTCron *ctCron = mCrontabWidget->currentCron();
 
-        return ctCron->save();
-    }
-
-    for (CTCron *ctCron : std::as_const(mCrons)) {
-        const CTSaveStatus ctSaveStatus = ctCron->save();
-
-        if (ctSaveStatus.isError()) {
-            return CTSaveStatus(i18nc("User login: errorMessage", "User %1: %2", ctCron->userLogin(), ctSaveStatus.errorMessage()),
-                                ctSaveStatus.detailErrorMessage());
-        }
-    }
-
-    return CTSaveStatus();
+    return ctCron->save();
 }
 
 void CTHost::cancel()
@@ -249,9 +240,4 @@ CTCron *CTHost::findCronContaining(CTVariable *ctVariable) const
 
     qCDebug(KCM_CRON_LOG) << "Unable to find the cron of this variable. Please report this bug and your crontab config to the developers.";
     return nullptr;
-}
-
-bool CTHost::isRootUser() const
-{
-    return getuid() == 0;
 }
