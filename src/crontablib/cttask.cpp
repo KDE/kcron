@@ -62,28 +62,28 @@ CTTask::CTTask(const QString &tokenString, const QString &_comment, const QStrin
         // qCDebug(KCM_CRON_LOG) << "Line : " << tokStr;
         minute.initialize(tokStr.mid(0, spacePos));
 
-        while (isSpace(tokStr, spacePos + 1)) {
+        while (isSpaceAt(tokStr, spacePos + 1)) {
             spacePos++;
         }
         tokStr = tokStr.mid(spacePos + 1, tokStr.length() - 1);
         spacePos = tokStr.indexOf(QRegExp(QLatin1String("[ \t]")));
         hour.initialize(tokStr.mid(0, spacePos));
 
-        while (isSpace(tokStr, spacePos + 1)) {
+        while (isSpaceAt(tokStr, spacePos + 1)) {
             spacePos++;
         }
         tokStr = tokStr.mid(spacePos + 1, tokStr.length() - 1);
         spacePos = tokStr.indexOf(QRegExp(QLatin1String("[ \t]")));
         dayOfMonth.initialize(tokStr.mid(0, spacePos));
 
-        while (isSpace(tokStr, spacePos + 1)) {
+        while (isSpaceAt(tokStr, spacePos + 1)) {
             spacePos++;
         }
         tokStr = tokStr.mid(spacePos + 1, tokStr.length() - 1);
         spacePos = tokStr.indexOf(QRegExp(QLatin1String("[ \t]")));
         month.initialize(tokStr.mid(0, spacePos));
 
-        while (isSpace(tokStr, spacePos + 1)) {
+        while (isSpaceAt(tokStr, spacePos + 1)) {
             spacePos++;
         }
         tokStr = tokStr.mid(spacePos + 1, tokStr.length() - 1);
@@ -92,7 +92,7 @@ CTTask::CTTask(const QString &tokenString, const QString &_comment, const QStrin
     }
 
     if (mSystemCrontab) {
-        while (isSpace(tokStr, spacePos + 1)) {
+        while (isSpaceAt(tokStr, spacePos + 1)) {
             spacePos++;
         }
         tokStr = tokStr.mid(spacePos + 1, tokStr.length() - 1);

@@ -103,7 +103,7 @@ public:
     bool reboot;
 
 private:
-    inline bool isSpace(const QString &token, int pos)
+    inline bool isSpaceAt(const QString &token, int pos)
     {
         if (pos >= token.length()) {
             return false;
