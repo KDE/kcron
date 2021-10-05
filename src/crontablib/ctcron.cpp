@@ -122,6 +122,7 @@ CTCron::CTCron(const QString &crontabBinary, const struct passwd *userInfos, boo
 CTCron::CTCron()
     : d(new CTCronPrivate())
 {
+    // Empty constructor, new CTCronPrivate created.
 }
 
 bool CTCron::initializeFromUserInfos(const struct passwd *userInfos)
@@ -141,6 +142,7 @@ CTCron &CTCron::operator=(const CTCron &source)
         return *this;
     }
 
+    // Not sure when this would tigger.
     if (source.isSystemCron()) {
         qCDebug(KCM_CRON_LOG) << "Affect the system cron";
     }

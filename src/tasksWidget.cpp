@@ -120,12 +120,14 @@ void TasksWidget::runTaskNow() const
 
 void TasksWidget::createTask()
 {
+    // Gather necessary data to combine it into a CTTask, opening the taskEditor dialog.
     auto task =
         new CTTask(QLatin1String(""), QLatin1String(""), crontabWidget()->currentCron()->userLogin(), crontabWidget()->currentCron()->isMultiUserCron());
 
     TaskEditorDialog taskEditorDialog(task, i18n("New Task"), crontabWidget());
     const int result = taskEditorDialog.exec();
 
+    // Signal that changes were made if the task was created, or clean up if not.
     if (result == QDialog::Accepted) {
         addTask(task);
         Q_EMIT taskModified(true);

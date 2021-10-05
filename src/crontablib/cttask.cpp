@@ -59,7 +59,6 @@ CTTask::CTTask(const QString &tokenString, const QString &_comment, const QStrin
     int spacePos(tokStr.indexOf(QRegExp(QLatin1String("[ \t]"))));
     // If reboot bypass initialize functions so no keys selected in modify task
     if (!reboot) {
-        // qCDebug(KCM_CRON_LOG) << "Line : " << tokStr;
         minute.initialize(tokStr.mid(0, spacePos));
 
         while (isSpaceAt(tokStr, spacePos + 1)) {
@@ -91,6 +90,10 @@ CTTask::CTTask(const QString &tokenString, const QString &_comment, const QStrin
         dayOfWeek.initialize(tokStr.mid(0, spacePos));
     }
 
+    // Since it's a multiuser(system) task, the token contains the user login,
+    // and the command, separated by a tab (\t).
+    // The two need to subsequently be separated again.
+    // E.g. "root\tmy_test_script.sh"
     if (mSystemCrontab) {
         while (isSpaceAt(tokStr, spacePos + 1)) {
             spacePos++;
@@ -101,7 +104,6 @@ CTTask::CTTask(const QString &tokenString, const QString &_comment, const QStrin
     } else {
         userLogin = _userLogin;
     }
-
     command = tokStr.mid(spacePos + 1, tokStr.length() - 1);
     // remove leading whitespace
     while (command.indexOf(QRegExp(QLatin1String("[ \t]"))) == 0) {

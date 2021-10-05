@@ -77,7 +77,6 @@ CTHost::CTHost(const QString &cronBinary, CTInitializationError &ctInitializatio
 
         // delete currentUserPassword;
     }
-
     // Create the system cron table.
     createSystemCron();
 }
@@ -184,6 +183,7 @@ QString CTHost::createCTCron(const struct passwd *userInfos)
 
 CTCron *CTHost::findCurrentUserCron() const
 {
+    // Because multiple users may exist, return only the currently logged in user's cron in user cron mode.
     for (CTCron *ctCron : std::as_const(mCrons)) {
         if (ctCron->isCurrentUserCron()) {
             return ctCron;
@@ -196,6 +196,7 @@ CTCron *CTHost::findCurrentUserCron() const
 
 CTCron *CTHost::findSystemCron() const
 {
+    // Return the cron belonging to root.
     for (CTCron *ctCron : std::as_const(mCrons)) {
         if (ctCron->isMultiUserCron()) {
             return ctCron;

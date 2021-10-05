@@ -206,6 +206,7 @@ protected:
 
     bool saveToFile(const QString &fileName);
 
+    // d probably stands for data.
     CTCronPrivate *const d;
 };
 
