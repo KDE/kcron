@@ -52,7 +52,7 @@ public:
     bool systemCron;
 
     /**
-     * Indicates if this cron could have tasks and variables from different user
+     * Indicates if this cron could have tasks and variables from different users.
      */
     bool multiUserCron;
 
@@ -62,7 +62,7 @@ public:
     bool currentUserCron;
 
     /**
-     * User  login.
+     * User login.
      */
     QString userLogin;
 
@@ -91,7 +91,7 @@ public:
     QString tmpFileName;
 
     /**
-     * Contains path to the crontab binary file
+     * Contains path to the crontab binary file.
      */
     QString crontabBinary;
 };
@@ -176,7 +176,8 @@ public:
     QString userLogin() const;
 
     /**
-     * Bugged method for the moment (need to parse x,x,x,x data from /etc/passwd)
+     * TODO
+     * Bugged method for the moment (need to parse x,x,x,x data from /etc/passwd).
      */
     QString userRealName() const;
 
