@@ -199,7 +199,7 @@ CTCron *CTHost::findCurrentUserCron() const
         }
     }
 
-    qCDebug(KCM_CRON_LOG) << "Unable to find the current user Cron. Please report this bug and your crontab config to the developers";
+    qCDebug(KCM_CRON_LOG) << "Unable to find the current user Cron. Please report this bug and your crontab config to the developers.";
     return nullptr;
 }
 
@@ -211,7 +211,7 @@ CTCron *CTHost::findSystemCron() const
         }
     }
 
-    qCDebug(KCM_CRON_LOG) << "Unable to find the system Cron. Please report this bug and your crontab config to the developers";
+    qCDebug(KCM_CRON_LOG) << "Unable to find the system Cron. Please report this bug and your crontab config to the developers.";
     return nullptr;
 }
 
@@ -223,7 +223,7 @@ CTCron *CTHost::findUserCron(const QString &userLogin) const
         }
     }
 
-    qCDebug(KCM_CRON_LOG) << "Unable to find the user Cron " << userLogin << ". Please report this bug and your crontab config to the developers";
+    qCDebug(KCM_CRON_LOG) << "Unable to find the user Cron " << userLogin << ". Please report this bug and your crontab config to the developers.";
     return nullptr;
 }
 
@@ -235,7 +235,7 @@ CTCron *CTHost::findCronContaining(CTTask *ctTask) const
         }
     }
 
-    qCDebug(KCM_CRON_LOG) << "Unable to find the cron of this task. Please report this bug and your crontab config to the developers";
+    qCDebug(KCM_CRON_LOG) << "Unable to find the cron of this task. Please report this bug and your crontab config to the developers.";
     return nullptr;
 }
 
@@ -247,7 +247,7 @@ CTCron *CTHost::findCronContaining(CTVariable *ctVariable) const
         }
     }
 
-    qCDebug(KCM_CRON_LOG) << "Unable to find the cron of this variable. Please report this bug and your crontab config to the developers";
+    qCDebug(KCM_CRON_LOG) << "Unable to find the cron of this variable. Please report this bug and your crontab config to the developers.";
     return nullptr;
 }
 

@@ -48,7 +48,7 @@ public:
 
     /**
      * Apply changes.
-     * return an empty string if no problem
+     * return an empty string if no problem ocurred.
      */
     CTSaveStatus save();
 

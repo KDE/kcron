@@ -47,7 +47,7 @@ public:
     QString exportTask();
 
     /**
-     * Scheduling using the cron format
+     * Scheduling using the cron format.
      */
     QString schedulingCronFormat() const;
 

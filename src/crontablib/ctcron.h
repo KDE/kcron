@@ -104,8 +104,8 @@ class CTCron
 {
 public:
     /**
-     * If you already have a struct passwd, use it instead. This
-     * is never used for the system crontab.
+     * If you already have a struct passwd, use it instead.
+     * This is never used for the system crontab.
      */
     explicit CTCron(const QString &cronBinary, const struct passwd *userInfos, bool currentUserCron, CTInitializationError &ctInitializationError);
 
@@ -153,23 +153,23 @@ public:
     bool isDirty() const;
 
     /**
-     * Returns the PATH environment variable value.  A short cut to iterating
-     * the tasks vector.
+     * Returns the PATH environment variable value.
+     * A short cut to iterating the tasks vector.
      */
     QString path() const;
 
     /**
-     * Returns true if this cron could have tasks and variables from different user
+     * Returns true if this cron could have tasks and variables from a different user.
      */
     bool isMultiUserCron() const;
 
     /**
-     * Returns true if this cron is the system cron
+     * Returns true if this cron is the system cron.
      */
     bool isSystemCron() const;
 
     /**
-     * Returns true if this cron is the cron of the user who launches this app
+     * Returns true if this cron is the cron of the user who launched this app.
      */
     bool isCurrentUserCron() const;
 
@@ -182,7 +182,7 @@ public:
 
 protected:
     /**
-     * Help constructor for subclasses
+     * Help constructor for subclasses.
      */
     explicit CTCron();
 
