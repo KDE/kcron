@@ -17,6 +17,8 @@
 #include <QStandardPaths>
 #include <QVBoxLayout>
 
+#include <QLocale>
+
 #include <QStyleOption>
 #include <QStylePainter>
 
@@ -104,6 +106,7 @@ TaskEditorDialog::TaskEditorDialog(CTTask *_ctTask, const QString &_caption, Cro
     userLabel->setBuddy(mUserCombo);
     commandConfigurationLayout->addWidget(mUserCombo, 1, 1);
 
+    // When in multiuser (system) mode, a user column is required.
     if (mCrontabWidget->tasksWidget()->needUserColumn()) {
         KCronHelper::initUserCombo(mUserCombo, mCrontabWidget, mCtTask->userLogin);
     } else {
@@ -505,33 +508,44 @@ NumberPushButton *TaskEditorDialog::createHourButton(QGroupBox *hoursGroup, int 
 
 QGroupBox *TaskEditorDialog::createHoursGroup(QWidget *main)
 {
+    // Hide the AM/PM labels if the locale is set to 24h format.
+    // 'A' or 'a' means am/pm is shown (and then 'h' uses 12-hour format)
+    // but 'H' forces a 24-hour format anyway, even with am/pm shown.
+    const QString str = QLocale().timeFormat();
+    static bool use12Clock = str.contains(QLatin1Char('a'), Qt::CaseInsensitive) && !str.contains(QLatin1Char('H'));
+
     qCDebug(KCM_CRON_LOG) << "Creating hours group";
     auto hoursGroup = new QGroupBox(i18n("Hours"), main);
 
-    auto hoursLayout = new QGridLayout(hoursGroup); // 5 x 7
+    auto hoursLayout = new QGridLayout(hoursGroup); // 5 x 6 (24h) // 5 x 7 (12h)
 
-    mMorningLabel = new QLabel(i18n("AM:"), this);
-    mMorningLabel->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
-    mMorningLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Minimum);
-    hoursLayout->addWidget(mMorningLabel, 0, 0, Qt::AlignLeft | Qt::AlignVCenter);
+    if (use12Clock) {
+        mMorningLabel = new QLabel(i18n("AM:"), this);
+        mMorningLabel->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+        mMorningLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Minimum);
+        hoursLayout->addWidget(mMorningLabel, 0, 0, Qt::AlignLeft | Qt::AlignVCenter);
+    }
 
     int hourCount = 0;
     for (int column = 0; column <= 3; ++column) {
         for (int hour = 0; hour <= 5; ++hour) {
             NumberPushButton *hourButton = createHourButton(hoursGroup, hourCount);
             mHourButtons[hourCount] = hourButton;
-            hoursLayout->addWidget(hourButton, column, hour + 1);
+            // When using the 12h format, the hour buttons need to be inserted 1 column over to leave room for the AM/PM labels.
+            hoursLayout->addWidget(hourButton, column, hour + (use12Clock ? 1 : 0));
             hourCount++;
         }
     }
 
-    mAfternoonLabel = new QLabel(i18n("PM:"), this);
-    mAfternoonLabel->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
-    mAfternoonLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Minimum);
-    hoursLayout->addWidget(mAfternoonLabel, 2, 0, Qt::AlignLeft | Qt::AlignVCenter);
+    if (use12Clock) {
+        mAfternoonLabel = new QLabel(i18n("PM:"), this);
+        mAfternoonLabel->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+        mAfternoonLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Minimum);
+        hoursLayout->addWidget(mAfternoonLabel, 2, 0, Qt::AlignLeft | Qt::AlignVCenter);
+    }
 
     mAllHours = new SetOrClearAllButton(this, SetOrClearAllButton::SET_ALL);
-    hoursLayout->addWidget(mAllHours, 4, 0, 1, 7);
+    hoursLayout->addWidget(mAllHours, 4, 0, 1, use12Clock ? 7 : 6);
 
     connect(mAllHours, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotAllHours);
     connect(mAllHours, &SetOrClearAllButton::clicked, this, &TaskEditorDialog::slotWizard);

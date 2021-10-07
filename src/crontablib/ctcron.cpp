@@ -316,26 +316,28 @@ CTSaveStatus CTCron::save()
     if (d->systemCron) {
         qCDebug(KCM_CRON_LOG) << "Attempting to save system cron";
         QVariantMap args;
-        args.insert(QLatin1String("source"), d->tmpFileName);
-        args.insert(QLatin1String("target"), d->writeCommandLine.standardOutputFile);
-        KAuth::Action saveAction(QLatin1String("local.kcron.crontab.save"));
-        saveAction.setHelperId(QLatin1String("local.kcron.crontab"));
+        args.insert(QStringLiteral("source"), d->tmpFileName);
+        args.insert(QStringLiteral("target"), d->writeCommandLine.standardOutputFile);
+        KAuth::Action saveAction(QStringLiteral("local.kcron.crontab.save"));
+        saveAction.setHelperId(QStringLiteral("local.kcron.crontab"));
         saveAction.setArguments(args);
         KAuth::ExecuteJob *job = saveAction.execute();
         if (!job->exec())
             qCDebug(KCM_CRON_LOG) << "KAuth returned an error: " << job->error() << job->errorText();
         QFile::remove(d->tmpFileName);
-        if (job->error() > 0)
+        if (job->error() > 0) {
             return CTSaveStatus(i18n("KAuth::ExecuteJob Error"), job->errorText());
+        }
     }
     // End root permissions.
     else {
         qCDebug(KCM_CRON_LOG) << "Attempting to save user cron";
         // Save without root permissions.
-        CommandLineStatus commandLineStatus = d->writeCommandLine.execute();
+        const CommandLineStatus commandLineStatus = d->writeCommandLine.execute();
         QFile::remove(d->tmpFileName);
-        if (commandLineStatus.exitCode != 0)
+        if (commandLineStatus.exitCode != 0) {
             return prepareSaveStatusError(commandLineStatus);
+        }
     }
 
     // Mark as applied

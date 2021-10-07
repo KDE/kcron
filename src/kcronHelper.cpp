@@ -32,7 +32,6 @@ void KCronHelper::initUserCombo(QComboBox *userCombo, CrontabWidget *crontabWidg
     for (CTCron *ctCron : crons) {
         users.append(ctCron->userLogin());
 
-        // Select the actual user
         if (ctCron->userLogin() == selectedUserLogin) {
             selectedIndex = userComboIndex;
         }

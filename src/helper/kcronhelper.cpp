@@ -31,12 +31,14 @@
 ActionReply KcronHelper::save(const QVariantMap &args)
 {
     qCDebug(KCM_CRON_HELPER_LOG) << "running actions";
-    QString source = args[QLatin1String("source")].toString();
-    QString destination = args[QLatin1String("target")].toString();
-    if (!QFile::remove(destination))
+    const QString source = args[QLatin1String("source")].toString();
+    const QString destination = args[QLatin1String("target")].toString();
+    if (!QFile::remove(destination)) {
         qCWarning(KCM_CRON_HELPER_LOG) << "can't remove file, it doesn't exist";
-    if (!QFile::copy(source, destination))
+    }
+    if (!QFile::copy(source, destination)) {
         qCWarning(KCM_CRON_HELPER_LOG) << "can't write into the system file, something went wrong";
+    }
     return ActionReply::SuccessReply();
 }
 

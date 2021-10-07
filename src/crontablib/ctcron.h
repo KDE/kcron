@@ -196,8 +196,6 @@ private:
      */
     CTCron(const CTCron &source);
 
-    CTSaveStatus prepareSaveStatusError(const CommandLineStatus &commandLineStatus);
-
 protected:
     /**
      * Parses crontab file format.
@@ -206,6 +204,7 @@ protected:
 
     bool saveToFile(const QString &fileName);
 
+    CTSaveStatus prepareSaveStatusError(const CommandLineStatus &commandLineStatus);
     // d probably stands for data.
     CTCronPrivate *const d;
 };

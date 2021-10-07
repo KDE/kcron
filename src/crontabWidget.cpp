@@ -37,7 +37,6 @@
 #include "variableWidget.h"
 
 #include "kcmCron.h"
-
 #include "kcm_cron_debug.h"
 
 CrontabWidget::CrontabWidget(QWidget *parent, CTHost *ctHost)
@@ -134,6 +133,7 @@ void CrontabWidget::initialize()
 
 void CrontabWidget::refreshCron()
 {
+    // Refreshes the main GUI.
     CTCron *ctCron = currentCron();
 
     mTasksWidget->refreshTasks(ctCron);

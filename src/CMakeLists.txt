@@ -8,7 +8,13 @@ include_directories(
 
 ########## KCM Module ###############
 add_library(kcm_cron MODULE)
-ecm_qt_declare_logging_category(kcm_cron HEADER kcm_cron_debug.h IDENTIFIER KCM_CRON_LOG CATEGORY_NAME org.kde.kcm.cron DESCRIPTION "kcm cron" EXPORT KCRON)
+ecm_qt_declare_logging_category(kcm_cron 
+    HEADER kcm_cron_debug.h
+    IDENTIFIER KCM_CRON_LOG
+    CATEGORY_NAME org.kde.kcm.cron
+    DESCRIPTION "kcm cron"
+    EXPORT KCRON
+)
 
 target_sources(kcm_cron PRIVATE
    crontablib/cthost.cpp
@@ -61,4 +67,6 @@ install(TARGETS  kcm_cron  DESTINATION ${KDE_INSTALL_PLUGINDIR} )
 # For root permissions.
 add_subdirectory(helper)
 
-install(FILES kcm_cron.desktop  DESTINATION  ${KDE_INSTALL_KSERVICES5DIR} )
+install(FILES kcm_cron.desktop
+        DESTINATION  ${KDE_INSTALL_KSERVICES5DIR}
+)
