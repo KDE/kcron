@@ -1,10 +1,28 @@
 [Domain]
 Name=Crontab Actions
+Name[ca]=Accions de «contrab»
+Name[es]=Acciones de crontab
+Name[nl]=Crontab-acties
+Name[sv]=Åtgärder i crontab
+Name[uk]=Дії Crontab
+Name[x-test]=xxCrontab Actionsxx
 Policy=auth_admin
 Persistence=session
 
 [local.kcron.crontab.save]
 Name=Write Crontab
+Name[ca]=Escriu el «contrab»
+Name[es]=Escribir crontab
+Name[nl]=Crontab schrijven
+Name[sv]=Skriv crontab
+Name[uk]=Записати Crontab
+Name[x-test]=xxWrite Crontabxx
 Description=Write into the system crontab file
+Description[ca]=Escriu dins del fitxer «contrab» del sistema
+Description[es]=Escribir en el archivo crontab del sistema
+Description[nl]=In het systeem-crontab-bestand schrijven
+Description[sv]=Skriv i systemets crontab-fil
+Description[uk]=Записати до загальносистемного файла crontab
+Description[x-test]=xxWrite into the system crontab filexx
 Policy=auth_admin
 Persistence=session
