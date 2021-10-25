@@ -78,7 +78,7 @@ public:
     /**
      * Destroy.
      */
-    ~TaskEditorDialog();
+    ~TaskEditorDialog() override;
 
 private Q_SLOTS:
 
