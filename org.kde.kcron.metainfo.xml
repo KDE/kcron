@@ -34,6 +34,7 @@
   <name xml:lang="sl">KCron</name>
   <name xml:lang="sv">Kcron</name>
   <name xml:lang="uk">KCron</name>
+  <name xml:lang="vi">KCron</name>
   <name xml:lang="x-test">xxKCronxx</name>
   <name xml:lang="zh-CN">KCron</name>
   <name xml:lang="zh-TW">KCron</name>
@@ -67,6 +68,7 @@
   <summary xml:lang="sl">Razporejevalnik opravil (Task scheduler)</summary>
   <summary xml:lang="sv">Jobbschemaläggare</summary>
   <summary xml:lang="uk">Планувальник завдань</summary>
+  <summary xml:lang="vi">Trình lập lịch tác vụ</summary>
   <summary xml:lang="x-test">xxTask Schedulerxx</summary>
   <summary xml:lang="zh-CN">任务调度器</summary>
   <summary xml:lang="zh-TW">工作排程工具</summary>
@@ -99,6 +101,7 @@
     <p xml:lang="sl">Task scheduler (Razporejevalnik opravil) je grafični vmesnik standardnega pomožnega programa "cron". Z njim lahko dosežemo, da se ukazi (oz. opravila) sprožijo ob določenem času, na določen dan ali datum ali ponovljeno v določenih intervalih (z določenim časom med proženji).</p>
     <p xml:lang="sv">Jobbschemaläggare är ett grafiskt gränssnitt för det vanliga verktyget "cron". Med det kan kommandon (eller "aktiviteter") köras vid specifika tider, en viss dag eller ett visst datum, eller med specifika intervall (tid mellan körningar).</p>
     <p xml:lang="uk">Планувальник завдань є графічною оболонкою до стандартної програми «cron». За його допомогою можна віддавати команди (або виконувати «завдання») у певні моменти часу, у певні дні або дати або з певним інтервалом (часом між послідовними виконаннями).</p>
+    <p xml:lang="vi">Trình lập lịch tác vụ là một tiền phương đồ hoạ cho tiện ích "cron" tiêu chuẩn. Với nó, các lệnh (hay còn gọi là "các tác vụ") có thể được chạy vào những lúc cụ thể, vào một ngày nhất định, hoặc ở các khoảng thời gian được chỉ định (thời gian giữa các lần chạy).</p>
     <p xml:lang="x-test">xxTask Scheduler is a graphical front end to the standard "cron" utility. With it, commands (or "tasks") can be run at specific times, on a certain day or date, or at specific intervals (time between execution).xx</p>
     <p xml:lang="zh-CN">任务调度器是标准“cron”工具的图形化前端。利用它，您可以在特定时间，一周中的某天，特定日期，或者按照某个周期 (运行之间的间隔) 运行命令 (或者“任务”)。</p>
     <p xml:lang="zh-TW">《工作排程工具》是標準 cron 工具程式的圖形前端。使用這工具，指令（或「工作」）可以執行指定次數、特定的日期，或特定的間隔（執行間隔時間）。</p>
