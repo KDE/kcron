@@ -10,7 +10,6 @@
 
 #include <QComboBox>
 #include <QFontMetrics>
-#include <QString>
 #include <QTextEdit>
 
 #include "ctcron.h"
