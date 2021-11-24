@@ -34,7 +34,7 @@ find_package(KF5 REQUIRED COMPONENTS
 )
 
 add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f00)
-add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055600)
+add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055800)
 
 
 add_subdirectory(src) 
