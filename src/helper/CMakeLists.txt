@@ -1,6 +1,6 @@
 
 add_executable(kcron_helper kcronhelper.cpp)
-target_link_libraries(kcron_helper PRIVATE KF5::AuthCore Qt5::Core KF5::Auth)
+target_link_libraries(kcron_helper PRIVATE KF5::AuthCore Qt${QT_MAJOR_VERSION}::Core KF5::Auth)
 
 ecm_qt_declare_logging_category(kcron_helper
     HEADER kcm_cron_helper_debug.h

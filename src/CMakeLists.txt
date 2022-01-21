@@ -55,7 +55,7 @@ target_sources(kcm_cron PRIVATE
 
 
 target_link_libraries(kcm_cron 
-    Qt::PrintSupport
+    Qt${QT_MAJOR_VERSION}::PrintSupport
     KF5::ConfigWidgets
     KF5::I18n
     KF5::KIOWidgets
@@ -68,5 +68,5 @@ install(TARGETS  kcm_cron  DESTINATION ${KDE_INSTALL_PLUGINDIR} )
 add_subdirectory(helper)
 
 install(FILES kcm_cron.desktop
-        DESTINATION  ${KDE_INSTALL_KSERVICES5DIR}
+        DESTINATION  ${KDE_INSTALL_KSERVICESDIR}
 )

@@ -11,7 +11,7 @@
 #include <QDateTime>
 #include <QFile>
 #include <QProcess>
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QTemporaryFile>
 #include <QTextStream>
 
@@ -186,7 +186,7 @@ void CTCron::parseFile(const QString &fileName)
             }
             leadingComment = false;
             // If the first 10 characters don't contain a character, it's probably a disabled entry.
-            int firstText = line.indexOf(QRegExp(QLatin1String("\\w")));
+            int firstText = line.indexOf(QRegularExpression(QLatin1String("\\w")));
             if (firstText < 0) {
                 continue;
             }
@@ -204,7 +204,7 @@ void CTCron::parseFile(const QString &fileName)
         }
 
         // either a task or a variable
-        int firstWhiteSpace(line.indexOf(QRegExp(QLatin1String("[ \t]"))));
+        int firstWhiteSpace(line.indexOf(QRegularExpression(QLatin1String("[ \t]"))));
         int firstEquals(line.indexOf(QLatin1String("=")));
 
         // if there is an equals sign and either there is no

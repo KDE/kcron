@@ -8,9 +8,8 @@
 
 #include "ctvariable.h"
 
-#include <QRegExp>
-
 #include <KLocalizedString>
+#include <QRegularExpression>
 
 #include "ctHelper.h"
 
@@ -25,7 +24,7 @@ CTVariable::CTVariable(const QString &tokenString, const QString &_comment, cons
         enabled = true;
     }
 
-    const int spacepos = tokStr.indexOf(QRegExp(QLatin1String("[ =]")));
+    const int spacepos = tokStr.indexOf(QRegularExpression(QLatin1String("[ =]")));
     variable = tokStr.mid(0, spacepos);
 
     value = tokStr.mid(spacepos + 1, tokStr.length() - spacepos - 1);
