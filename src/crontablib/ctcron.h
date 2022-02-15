@@ -16,6 +16,9 @@ class CTTask;
 class CTVariable;
 class CTInitializationError;
 
+class QFile;
+class QTextStream;
+
 struct passwd;
 
 #include "ctSaveStatus.h"
@@ -37,8 +40,6 @@ public:
     QString commandLine;
 
     QStringList parameters;
-
-    QString standardOutputFile;
 
     CommandLineStatus execute();
 };
@@ -85,10 +86,6 @@ public:
 
     int initialTaskCount;
     int initialVariableCount;
-
-    CommandLine writeCommandLine;
-
-    QString tmpFileName;
 
     /**
      * Contains path to the crontab binary file.
@@ -201,8 +198,7 @@ protected:
      * Parses crontab file format.
      */
     void parseFile(const QString &fileName);
-
-    bool saveToFile(const QString &fileName);
+    void parseTextStream(QTextStream *stream);
 
     CTSaveStatus prepareSaveStatusError(const CommandLineStatus &commandLineStatus);
     // d probably stands for data.

@@ -11,7 +11,7 @@
 #include <KLocalizedString>
 #include <KShell>
 
-#include <QTemporaryFile>
+#include <QFileInfo>
 
 #include "cthost.h"
 #include "cttask.h"
@@ -28,20 +28,6 @@ CTSystemCron::CTSystemCron(const QString &crontabBinary)
 
     d->crontabBinary = crontabBinary;
 
-    QTemporaryFile tmp;
-    tmp.open();
-    d->tmpFileName = tmp.fileName();
-
-    CommandLine readCommandLine;
-
-    readCommandLine.commandLine = QStringLiteral("cat");
-    readCommandLine.parameters << QStringLiteral("/etc/crontab");
-    readCommandLine.standardOutputFile = d->tmpFileName;
-
-    d->writeCommandLine.commandLine = QStringLiteral("cat");
-    d->writeCommandLine.parameters << d->tmpFileName;
-    d->writeCommandLine.standardOutputFile = QStringLiteral("/etc/crontab");
-
     d->userLogin = i18n("root");
     d->userRealName = d->userLogin;
 
@@ -50,8 +36,9 @@ CTSystemCron::CTSystemCron(const QString &crontabBinary)
 
     // Don't set error if it can't be read, it means the user
     // doesn't have a crontab.
-    if (readCommandLine.execute().exitCode == 0) {
-        this->parseFile(d->tmpFileName);
+    const QString crontabFile = QStringLiteral("/etc/crontab");
+    if (QFileInfo::exists(crontabFile)) {
+        parseFile(crontabFile);
     }
 
     d->initialTaskCount = d->task.size();
