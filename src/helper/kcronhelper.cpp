@@ -32,7 +32,7 @@ ActionReply KcronHelper::save(const QVariantMap &args)
 {
     qCDebug(KCM_CRON_HELPER_LOG) << "running actions";
     const QString source = args[QLatin1String("source")].toString();
-    const QString destination = args[QLatin1String("target")].toString();
+    const QString destination = QStringLiteral("/etc/crontab");
     {
         QFile destinationFile(destination);
         if (destinationFile.exists() && !destinationFile.remove()) {
@@ -44,6 +44,9 @@ ActionReply KcronHelper::save(const QVariantMap &args)
     }
     {
         QFile sourceFile(source);
+        if (!sourceFile.setPermissions(QFileDevice::ReadOwner | QFileDevice::WriteOwner | QFileDevice::ReadGroup | QFileDevice::ReadOther)) {
+            qCWarning(KCM_CRON_HELPER_LOG) << "can't change permissions to 644";
+        }
         if (!sourceFile.copy(destination)) {
             qCWarning(KCM_CRON_HELPER_LOG) << "can't write into the system file" << sourceFile.errorString();
             ActionReply reply = ActionReply::HelperErrorReply();

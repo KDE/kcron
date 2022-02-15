@@ -35,10 +35,6 @@ CommandLineStatus CommandLine::execute()
 {
     QProcess process;
 
-    if (!standardOutputFile.isEmpty()) {
-        process.setStandardOutputFile(standardOutputFile);
-    }
-
     int exitCode;
     process.start(commandLine, parameters);
     if (!process.waitForStarted()) {
@@ -51,9 +47,6 @@ CommandLineStatus CommandLine::execute()
     CommandLineStatus commandLineStatus;
 
     commandLineStatus.commandLine = commandLine + QLatin1String(" ") + parameters.join(QLatin1String(" "));
-    if (!standardOutputFile.isEmpty()) {
-        commandLineStatus.commandLine += QLatin1String(" > ") + standardOutputFile;
-    }
 
     commandLineStatus.standardOutput = QLatin1String(process.readAllStandardOutput());
     commandLineStatus.standardError = QLatin1String(process.readAllStandardError());
@@ -73,27 +66,15 @@ CTCron::CTCron(const QString &crontabBinary, const struct passwd *userInfos, boo
 
     d->crontabBinary = crontabBinary;
 
-    QTemporaryFile tmp;
-    tmp.open();
-    d->tmpFileName = tmp.fileName();
-
     CommandLine readCommandLine;
 
     // regular user, so provide user's own crontab
     if (currentUserCron) {
         readCommandLine.commandLine = d->crontabBinary;
         readCommandLine.parameters << QStringLiteral("-l");
-        readCommandLine.standardOutputFile = d->tmpFileName;
-
-        d->writeCommandLine.commandLine = d->crontabBinary;
-        d->writeCommandLine.parameters << d->tmpFileName;
     } else {
         readCommandLine.commandLine = d->crontabBinary;
         readCommandLine.parameters << QStringLiteral("-u") << QLatin1String(userInfos->pw_name) << QStringLiteral("-l");
-        readCommandLine.standardOutputFile = d->tmpFileName;
-
-        d->writeCommandLine.commandLine = d->crontabBinary;
-        d->writeCommandLine.parameters << QStringLiteral("-u") << QLatin1String(userInfos->pw_name) << d->tmpFileName;
     }
 
     d->initialTaskCount = 0;
@@ -108,7 +89,8 @@ CTCron::CTCron(const QString &crontabBinary, const struct passwd *userInfos, boo
     // Don't set error if it can't be read, it means the user doesn't have a crontab.
     CommandLineStatus commandLineStatus = readCommandLine.execute();
     if (commandLineStatus.exitCode == 0) {
-        this->parseFile(d->tmpFileName);
+        QTextStream stream(&commandLineStatus.standardOutput);
+        parseTextStream(&stream);
     } else {
         qCDebug(KCM_CRON_LOG) << "Error when executing command" << commandLineStatus.commandLine;
         qCDebug(KCM_CRON_LOG) << "Standard output :" << commandLineStatus.standardOutput;
@@ -171,12 +153,17 @@ void CTCron::parseFile(const QString &fileName)
         return;
     }
 
+    QTextStream in(&file);
+    parseTextStream(&in);
+}
+
+void CTCron::parseTextStream(QTextStream *stream)
+{
     QString comment;
     bool leadingComment = true;
 
-    QTextStream in(&file);
-    while (!in.atEnd()) {
-        QString line = in.readLine();
+    while (!stream->atEnd()) {
+        QString line = stream->readLine();
 
         // search for comments "#" but not disabled tasks "#\"
         if (line.indexOf(QLatin1String("#")) == 0 && line.indexOf(QLatin1String("\\")) != 1) {
@@ -257,24 +244,6 @@ CTCron::~CTCron()
     delete d;
 }
 
-bool CTCron::saveToFile(const QString &fileName)
-{
-    QFile file(fileName);
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        return false;
-    }
-
-    // qCDebug(KCM_CRON_LOG) << exportCron();
-
-    QTextStream out(&file);
-    out << exportCron();
-
-    out.flush();
-    file.close();
-
-    return true;
-}
-
 CTSaveStatus CTCron::prepareSaveStatusError(const CommandLineStatus &commandLineStatus)
 {
     QString standardOutput;
@@ -307,24 +276,29 @@ CTSaveStatus CTCron::prepareSaveStatusError(const CommandLineStatus &commandLine
 CTSaveStatus CTCron::save()
 {
     // write to temp file
-    bool saveStatus = saveToFile(d->tmpFileName);
-    if (!saveStatus) {
-        return CTSaveStatus(i18n("Unable to open crontab file for writing"), i18n("The file %1 could not be opened.", d->tmpFileName));
+    QTemporaryFile tmp;
+    if (!tmp.open()) {
+        return CTSaveStatus(i18n("Unable to open crontab file for writing"), i18n("The file %1 could not be opened.", tmp.fileName()));
     }
+
+    {
+        QTextStream out(&tmp);
+        out << exportCron();
+        out.flush();
+    }
+    tmp.close();
 
     // For root permissions.
     if (d->systemCron) {
         qCDebug(KCM_CRON_LOG) << "Attempting to save system cron";
         QVariantMap args;
-        args.insert(QStringLiteral("source"), d->tmpFileName);
-        args.insert(QStringLiteral("target"), d->writeCommandLine.standardOutputFile);
+        args.insert(QStringLiteral("source"), tmp.fileName());
         KAuth::Action saveAction(QStringLiteral("local.kcron.crontab.save"));
         saveAction.setHelperId(QStringLiteral("local.kcron.crontab"));
         saveAction.setArguments(args);
         KAuth::ExecuteJob *job = saveAction.execute();
         if (!job->exec())
             qCDebug(KCM_CRON_LOG) << "KAuth returned an error: " << job->error() << job->errorText();
-        QFile::remove(d->tmpFileName);
         if (job->error() > 0) {
             return CTSaveStatus(i18n("KAuth::ExecuteJob Error"), job->errorText());
         }
@@ -333,8 +307,15 @@ CTSaveStatus CTCron::save()
     else {
         qCDebug(KCM_CRON_LOG) << "Attempting to save user cron";
         // Save without root permissions.
-        const CommandLineStatus commandLineStatus = d->writeCommandLine.execute();
-        QFile::remove(d->tmpFileName);
+        CommandLine writeCommandLine;
+        writeCommandLine.commandLine = d->crontabBinary;
+        if (d->currentUserCron) {
+            writeCommandLine.parameters << tmp.fileName();
+        } else {
+            writeCommandLine.parameters << QStringLiteral("-u") << d->userLogin << tmp.fileName();
+        }
+
+        const CommandLineStatus commandLineStatus = writeCommandLine.execute();
         if (commandLineStatus.exitCode != 0) {
             return prepareSaveStatusError(commandLineStatus);
         }
