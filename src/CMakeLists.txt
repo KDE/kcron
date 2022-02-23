@@ -60,7 +60,7 @@ target_link_libraries(kcm_cron
     KF5::I18n
     KF5::KIOWidgets
     KF5::CoreAddons
-    KF5::Auth
+    KF5::AuthCore
 )
 
 install(TARGETS  kcm_cron  DESTINATION ${KDE_INSTALL_PLUGINDIR} )
