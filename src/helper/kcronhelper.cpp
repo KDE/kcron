@@ -31,29 +31,38 @@
 ActionReply KcronHelper::save(const QVariantMap &args)
 {
     qCDebug(KCM_CRON_HELPER_LOG) << "running actions";
-    const QString source = args[QLatin1String("source")].toString();
-    const QString destination = QStringLiteral("/etc/crontab");
+
+    QByteArray newCronData;
     {
-        QFile destinationFile(destination);
-        if (destinationFile.exists() && !destinationFile.remove()) {
-            ActionReply reply = ActionReply::HelperErrorReply();
-            qCWarning(KCM_CRON_HELPER_LOG) << "can't remove file" << destinationFile.errorString();
-            reply.setErrorDescription(destinationFile.errorString());
-            return reply;
-        }
-    }
-    {
+        const QString source = args[QLatin1String("source")].toString();
         QFile sourceFile(source);
-        if (!sourceFile.setPermissions(QFileDevice::ReadOwner | QFileDevice::WriteOwner | QFileDevice::ReadGroup | QFileDevice::ReadOther)) {
-            qCWarning(KCM_CRON_HELPER_LOG) << "can't change permissions to 644";
-        }
-        if (!sourceFile.copy(destination)) {
-            qCWarning(KCM_CRON_HELPER_LOG) << "can't write into the system file" << sourceFile.errorString();
+        if (!sourceFile.open(QIODevice::ReadOnly)) {
+            qCWarning(KCM_CRON_HELPER_LOG) << "can't open source file for reading" << source << sourceFile.errorString();
             ActionReply reply = ActionReply::HelperErrorReply();
             reply.setErrorDescription(sourceFile.errorString());
             return reply;
         }
+
+        newCronData = sourceFile.readAll();
     }
+
+    {
+        const QString destination = QStringLiteral("/etc/crontab");
+        QFile destinationFile(destination);
+        if (!destinationFile.open(QIODevice::WriteOnly)) {
+            ActionReply reply = ActionReply::HelperErrorReply();
+            qCWarning(KCM_CRON_HELPER_LOG) << "can't open destination file for writing" << destinationFile.errorString();
+            reply.setErrorDescription(destinationFile.errorString());
+            return reply;
+        }
+
+        if (destinationFile.write(newCronData) < 0) {
+            ActionReply reply = ActionReply::HelperErrorReply();
+            qCWarning(KCM_CRON_HELPER_LOG) << "writing to destination file failed" << destinationFile.errorString();
+            reply.setErrorDescription(destinationFile.errorString());
+        }
+    }
+
     return ActionReply::SuccessReply();
 }
 
