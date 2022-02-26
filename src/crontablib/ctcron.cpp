@@ -23,8 +23,14 @@
 #include "ctvariable.h"
 
 // For root permissions
+#include <kauth_version.h>
+#if KAUTH_VERSION >= QT_VERSION_CHECK(5, 92, 0)
+#include <KAuth/Action>
+#include <KAuth/ExecuteJob>
+#else
 #include <KAuthAction>
 #include <KAuthExecuteJob>
+#endif
 
 #include <pwd.h> // pwd, getpwnam(), getpwuid()
 #include <unistd.h> // getuid(), unlink()
