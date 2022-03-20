@@ -33,6 +33,7 @@
   <name xml:lang="sk">KCron</name>
   <name xml:lang="sl">KCron</name>
   <name xml:lang="sv">Kcron</name>
+  <name xml:lang="tr">KCron</name>
   <name xml:lang="uk">KCron</name>
   <name xml:lang="vi">KCron</name>
   <name xml:lang="x-test">xxKCronxx</name>
@@ -67,6 +68,7 @@
   <summary xml:lang="sk">Plánovač úloh</summary>
   <summary xml:lang="sl">Razporejevalnik opravil (Task scheduler)</summary>
   <summary xml:lang="sv">Jobbschemaläggare</summary>
+  <summary xml:lang="tr">Görev Zamanlayıcı</summary>
   <summary xml:lang="uk">Планувальник завдань</summary>
   <summary xml:lang="vi">Trình lập lịch tác vụ</summary>
   <summary xml:lang="x-test">xxTask Schedulerxx</summary>
@@ -100,6 +102,7 @@
     <p xml:lang="sk">Plánovač úloh je grafický frontend pre štandardnú utilitu "cron". Príkazy alebo úlohy sa dajú spúšťať v určenom čase alebo v určenom dátume, prípadne v špecifických intervaloch (časom medzi spusteniami).</p>
     <p xml:lang="sl">Task scheduler (Razporejevalnik opravil) je grafični vmesnik standardnega pomožnega programa "cron". Z njim lahko dosežemo, da se ukazi (oz. opravila) sprožijo ob določenem času, na določen dan ali datum ali ponovljeno v določenih intervalih (z določenim časom med proženji).</p>
     <p xml:lang="sv">Jobbschemaläggare är ett grafiskt gränssnitt för det vanliga verktyget "cron". Med det kan kommandon (eller "aktiviteter") köras vid specifika tider, en viss dag eller ett visst datum, eller med specifika intervall (tid mellan körningar).</p>
+    <p xml:lang="tr">Görev Zamanlayıcı, standart "cron" izlencesi için grafik bir önyüzdür. Bu programla, komutlar (veya "görevler"), belirli zamanlarda, belli bir gün veya tarihte veya belirli aralıklarla çalıştırılabilir.</p>
     <p xml:lang="uk">Планувальник завдань є графічною оболонкою до стандартної програми «cron». За його допомогою можна віддавати команди (або виконувати «завдання») у певні моменти часу, у певні дні або дати або з певним інтервалом (часом між послідовними виконаннями).</p>
     <p xml:lang="vi">Trình lập lịch tác vụ là một tiền phương đồ hoạ cho tiện ích "cron" tiêu chuẩn. Với nó, các lệnh (hay còn gọi là "các tác vụ") có thể được chạy vào những lúc cụ thể, vào một ngày nhất định, hoặc ở các khoảng thời gian được chỉ định (thời gian giữa các lần chạy).</p>
     <p xml:lang="x-test">xxTask Scheduler is a graphical front end to the standard "cron" utility. With it, commands (or "tasks") can be run at specific times, on a certain day or date, or at specific intervals (time between execution).xx</p>
