@@ -1,8 +1,8 @@
 cmake_minimum_required (VERSION 3.16.0 FATAL_ERROR)
 project(kcron)
 
-set (QT_MIN_VERSION "5.15.0")
-set (KF5_MIN_VERSION "5.90.0")
+set (QT_MIN_VERSION "5.15.2")
+set (KF5_MIN_VERSION "5.92.0")
 
 find_package (ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
 set (CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
@@ -15,6 +15,7 @@ include(KDECMakeSettings)
 include(ECMQtDeclareLoggingCategory)
 include(KDEGitCommitHooks)
 include(KDEClangFormat)
+include(ECMDeprecationSettings)
 file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h *.c)
 kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
 
@@ -40,8 +41,9 @@ set_package_properties(KF5DocTools PROPERTIES DESCRIPTION
     TYPE OPTIONAL
 )
 
-add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f00)
-add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055A00)
+ecm_set_disabled_deprecation_versions(QT 5.15.2
+    KF 5.92
+)
 
 
 add_subdirectory(src) 
