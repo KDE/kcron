@@ -136,6 +136,7 @@ Comment[zh_CN]=配置并调度计划任务
 Comment[zh_TW]=設定與排程工作
 X-KDE-Keywords=cron,crontab,scheduled,tasks,task,schedule,vixie
 X-KDE-Keywords[ar]=cron,crontab,جدولة,مهام,مهمّة,مهمة,كرون
+X-KDE-Keywords[bg]=задачи
 X-KDE-Keywords[bs]=cron,crontab,scheduled,tasks,raspoređeni,zadaci,zadato, redoslijed,task,schedule,vixie
 X-KDE-Keywords[ca]=cron,crontab,planificat,tasques,tasca,planificació,vixie
 X-KDE-Keywords[ca@valencia]=cron,crontab,planificat,tasques,tasca,planificació,vixie
