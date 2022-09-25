@@ -14,7 +14,6 @@
 #include <QApplication>
 #include <QButtonGroup>
 #include <QClipboard>
-#include <QComboBox>
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QRadioButton>
@@ -24,7 +23,6 @@
 #include <KLocalizedString>
 #include <KStandardAction>
 #include <QAction>
-#include <QIcon>
 
 #include "ctcron.h"
 #include "cthost.h"

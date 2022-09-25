@@ -9,7 +9,6 @@
 #include "kcmCron.h"
 
 #include <KAboutData>
-#include <KConfig>
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <KPluginFactory>
