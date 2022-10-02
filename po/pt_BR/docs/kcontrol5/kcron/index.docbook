@@ -1,0 +1,643 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % Brazilian-Portuguese "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE">
+]>
+
+<article id="kcron" lang="&language;">
+<title
+>Agendador de tarefas</title>
+
+<articleinfo>
+<authorgroup>
+<author
+><firstname
+>Morgan</firstname
+> <othername
+>N.</othername
+> <surname
+>Sandquist</surname
+> <affiliation
+><address
+>&Morgan.N.Sandquist.mail;</address>
+</affiliation>
+</author>
+
+<othercredit role="developer"
+><firstname
+>Gary</firstname
+> <surname
+>Meyer</surname
+> <affiliation
+><address
+>&Gary.Meyer.mail;</address>
+</affiliation>
+<contrib
+>Desenvolvedor</contrib>
+</othercredit>
+
+<othercredit role="reviewer"
+><firstname
+>Lauri</firstname
+> <surname
+>Watts</surname
+> <affiliation
+><address
+>&Lauri.Watts.mail;</address>
+</affiliation>
+<contrib
+>Revisor</contrib>
+</othercredit>
+
+<othercredit role="translator"
+><firstname
+>Henrique</firstname
+><surname
+>Marks</surname
+><affiliation
+><address
+><email
+>henrique@if.ufrgs.br</email
+></address
+></affiliation
+><contrib
+>Tradução</contrib
+></othercredit
+> 
+
+</authorgroup>
+
+<copyright>
+<year
+>2000</year>
+<holder
+>&Morgan.N.Sandquist;</holder>
+</copyright>
+
+<date
+>27/05/2015</date>
+<releaseinfo
+>Plasma 5.3</releaseinfo>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>cron</keyword>
+<keyword
+>crontab</keyword>
+<keyword
+>agendador</keyword>
+</keywordset>
+
+</articleinfo>
+
+<sect1 id="introduction">
+<title
+>Introdução</title>
+
+<para
+>Este é um módulo para agendar programas que rodam em segundo plano. Ele é uma interface gráfica para o <command
+>cron</command
+>, o agendador de sistema do &UNIX;.</para>
+
+<important
+><para
+>Não esqueça de informar ao seu sistema para iniciar o daemon do cron (<filename
+>crond</filename
+>) primeiro, ou as configurações deste módulo não irão funcionar.</para
+></important>
+
+<sect2 id="kcron-start-up">
+<title
+>Inicialização</title>
+
+<para
+>Quando inicia este módulo você vê um resumo das tarefas agendadas existentes e das variáveis de ambiente associadas. Se você está rodando como superusuário, você verá os itens de todos os usuários além dos itens de sistema agendados.</para>
+<!--admin mode-->
+<screenshot>
+<screeninfo
+>inicialização</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="kcronstart.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>inicialização</phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<sect3>
+<title
+>Tarefas Agendadas</title>
+
+<para
+>As tarefas agendadas aparecem sob uma lista chamada <guilabel
+>Tarefas</guilabel
+>. Para cada tarefa agendada, os seguintes itens serão mostrados:</para>
+
+<variablelist>
+
+<!-- system cron first column User=root-->
+<varlistentry>
+<term
+><guilabel
+>Agendamento</guilabel
+></term>
+<listitem
+><para
+>Nesta coluna, poderá aparecer o "@reboot" para as tarefas agendadas na inicialização ou o item do 'crontab'.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Comando</guilabel
+></term>
+<listitem
+><para
+>Arquivo do programa e parâmetros.</para
+></listitem>
+</varlistentry>
+<varlistentry
+> 
+<term
+><guilabel
+>Estado</guilabel
+></term>
+<listitem
+><para
+>Ativo ou inativo.</para
+></listitem>
+</varlistentry
+> 
+<varlistentry
+> 
+<term
+><guilabel
+>Descrição</guilabel
+></term>
+<listitem
+><para
+>Uma descrição para a tarefa, por exemplo a sua finalidade.</para
+></listitem>
+</varlistentry
+> 
+<varlistentry>
+<term
+><guilabel
+>Detalhes do agendamento</guilabel
+></term>
+<listitem
+><para
+>Descrição em linguagem cotidiana da tarefa agendada.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+
+<sect3>
+<title
+>Variáveis de ambiente</title>
+
+<para
+>Variáveis de ambiente aparecem na lista de <guilabel
+>Variáveis do ambiente</guilabel
+>. Para cada variável de ambiente, será mostrado o seguinte: </para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Variável</guilabel
+></term>
+<listitem
+><para
+>Nome da variável.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Valor</guilabel
+></term>
+<listitem
+><para
+>Valor da variável.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Estado</guilabel
+></term>
+<listitem
+><para
+>Ativo ou inativo.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Comentário</guilabel
+></term>
+<listitem
+><para
+>Descrição em linguagem cotidiana da variável.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Variáveis de ambientes que aparecerem aqui irão sobrescrever qualquer variável de ambiente previamente existente para todas as tarefas agendadas.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="new-task">
+<title
+>Agendando novas tarefas</title>
+
+<para
+>Para criar uma nova tarefa agendada, clique no botão <guibutton
+>Nova tarefa...</guibutton
+>. Em alternativa, você poderá selecionar esta ação no menu de contexto do botão <mousebutton
+>direito</mousebutton
+> do mouse.</para>
+
+<sect3>
+<title
+>Caixa de diálogo Editar tarefa</title>
+
+<screenshot>
+<screeninfo
+>Diálogo <guilabel
+>Editar Tarefa</guilabel
+>.</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="newtask.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Diálogo <guilabel
+>Editar Tarefa</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Comando</guilabel
+></term>
+<listitem
+><para
+>Insira o nome do programa. Você pode especificar tanto um caminho relativo quanto absoluto. Se você quiser procurar pelo programa, clique no ícone <guiicon
+>Navegar</guiicon
+>.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Comentário</guilabel
+></term>
+<listitem
+><para
+>Entre uma descrição da tarefa a ser agendada.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Ativar esta tarefa</guibutton
+></term>
+<listitem
+><para
+>Para habilitar ou desabilitar a tarefa, selecione ou desmarque este botão.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Executar ao iniciar o sistema</guibutton
+></term>
+<listitem>
+<para
+>Assinale este botão para executar a tarefa na inicialização do sistema.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Executar todos os dias</guibutton
+></term>
+<listitem>
+<para
+>Se você quer agendar a tarefa para ser executada diariamente, selecione este botão.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Meses</guilabel
+></term>
+<listitem
+><para
+>Selecione os meses durante os quais a tarefa deve ser realizada.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Dias do mês</guilabel
+></term>
+<listitem
+><para
+>Selecione os dias do mês nos quais a tarefa será realizada.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Dias da semana</guilabel
+></term>
+<listitem
+><para
+>Selecione os dias da semana nos quais a tarefa será realizada.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Horas</guilabel
+></term>
+<listitem
+><para
+>Selecione as horas nas quais a tarefa será realizada.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Minutos</guilabel
+></term>
+<listitem
+><para
+>Selecione o minuto de agendamento da tarefa. O <command
+>cron</command
+> não suporta agendamento de tarefas em intervalos menores do que um minuto.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>OK</guibutton
+></term>
+<listitem
+><para
+>Completa a criação desta tarefa.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Cancelar</guibutton
+></term>
+<listitem
+><para
+>Cancela a criação desta tarefa.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Se você selecionou tanto dias do mês, quanto dias da semana, a tarefa será executada quando quaisquer das condições for satisfeita. Por exemplo, se você selecionou o 1° e 15° dias do mês, e selecionou Domingo, o programa será executado todos os dias primeiro e quinze (independente do dia da semana) e também todos os domingos do mês (independente do dia do mês).</para>
+
+<para
+>A tarefa não será agendada até que o <filename
+>crontab</filename
+> tenha sido salvo.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="manage-tasks">
+<title
+>Gerenciando Tarefas Agendadas</title>
+
+<para
+>Assim como ao criar novas tarefas, as mudanças a estas só serão feitas após o <filename
+>crontab</filename
+> ter sido salvo.</para>
+
+<para
+>Use os botões à direita da lista de tarefas para modificar, apagar, imprimir ou executar agora uma determinada tarefa. Você poderá também acessar a todas estas ações com o menu de contexto. Além disso, o menu de contexto oferece ainda ações para cortar, copiar e colar as tarefas.</para>
+
+</sect2>
+
+<sect2 id="new-variable">
+<title
+>Adicionando Variáveis de Ambiente</title>
+
+<para
+>Para criar uma nova variável de ambiente, clique no botão <guibutton
+>Nova variável...</guibutton
+>.</para>
+
+<para
+>Alternativamente, você pode usar o menu do botão <mousebutton
+>direito</mousebutton
+> do mouse para escolher esta ação.</para>
+
+<sect3>
+<title
+>Caixa de diálogo Editar variável</title>
+
+<screenshot>
+<screeninfo
+>Caixa de diálogo<guilabel
+>Editar Variável</guilabel
+>.</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="newvariable.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Caixa de diálogo<guilabel
+>Editar variável</guilabel
+>.</phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Variável</guilabel
+></term
+> 
+<listitem
+><para
+>Entre o nome da variável de ambiente. Você pode usar a caixa da lista suspensa para selecionar dentre as variáveis de ambiente mais comuns utilizadas em tarefas agendadas. Estas incluem:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guimenuitem
+>HOME</guimenuitem
+></term>
+<listitem
+><para
+>Para ser utilizada ao invés da pasta padrão do usuário.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>MAILTO</guimenuitem
+></term>
+<listitem
+><para
+>Para enviar um e-mail para um endereço que não seja o padrão do usuário.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>PATH</guimenuitem
+></term>
+<listitem
+><para
+>Será usada para procurar pastas que contenham arquivos executáveis.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>SHELL</guimenuitem
+></term>
+<listitem
+><para
+>Será usada ao invés do shell padrão do usuário.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>LD_CONFIG_PATH</guimenuitem
+></term>
+<listitem
+><para
+>A localização das bibliotecas dinâmicas. Isto permite às tarefas do Cron executarem aplicativos que tenham bibliotecas que precisem de ser instaladas fora dos locais (path) de bibliotecas do sistema.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Valor</guilabel
+></term>
+<listitem
+><para
+>Digite o valor da variável de ambiente.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Comentário</guilabel
+></term>
+<listitem
+><para
+>Digite uma descrição da a variável de ambiente, como o seu propósito.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Ativar esta variável</guilabel
+></term>
+<listitem>
+<para
+>Para habilitar ou desabilitar uma variável, selecione ou desmarque este botão.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>OK</guibutton
+></term>
+<listitem>
+<para
+>Completa a configuração desta variável.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Cancelar</guibutton
+></term>
+<listitem>
+<para
+>Cancela a configuração desta variável.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>A variável de ambiente não é realmente configurada até que o <filename
+>crontab</filename
+> tenha sido salvo.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="manage-variables">
+<title
+>Gerenciando Variáveis de Ambiente</title>
+
+<note
+><para
+>Assim como na criação de novas variáveis, as mudanças às variáveis não serão realmente realizadas até que o <filename
+>crontab</filename
+> tenha sido salvo.</para
+></note>
+
+<para
+>Use os botões à direita da lista de variáveis para modificar ou apagar uma determinada variável. Você poderá também acessar a todas estas ações com o menu de contexto. Além disso, o menu de contexto oferece ainda ações para cortar, copiar e colar as variáveis.</para>
+
+</sect2>
+</sect1>
+</article>
+
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+-->     

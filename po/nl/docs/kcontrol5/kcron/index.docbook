@@ -1,0 +1,629 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % Dutch "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE">
+]>
+
+<article id="kcron" lang="&language;">
+<title
+>Takenplanner</title>
+
+<articleinfo>
+<authorgroup>
+<author
+><firstname
+>Morgan</firstname
+> <othername
+>N.</othername
+> <surname
+>Sandquist</surname
+> <affiliation
+><address
+>&Morgan.N.Sandquist.mail;</address>
+</affiliation>
+</author>
+
+<othercredit role="developer"
+><firstname
+>Gary</firstname
+> <surname
+>Meyer</surname
+> <affiliation
+><address
+>&Gary.Meyer.mail;</address>
+</affiliation>
+<contrib
+>Ontwikkelaar</contrib>
+</othercredit>
+
+<othercredit role="reviewer"
+><firstname
+>Lauri</firstname
+> <surname
+>Watts</surname
+> <affiliation
+><address
+>&Lauri.Watts.mail;</address>
+</affiliation>
+<contrib
+>Nalezer</contrib>
+</othercredit>
+
+&Niels.Reedijk;&Otto.Bruggeman;&Rinse.Devries;&Natalie.Koning; 
+
+</authorgroup>
+
+<copyright>
+<year
+>2000</year>
+<holder
+>&Morgan.N.Sandquist;</holder>
+</copyright>
+
+<date
+>2017-01-12</date>
+<releaseinfo
+>Applications 16.12</releaseinfo>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>cron</keyword>
+<keyword
+>crontab</keyword>
+<keyword
+>takenplanner</keyword>
+</keywordset>
+
+</articleinfo>
+
+<sect1 id="introduction">
+<title
+>Inleiding</title>
+
+<para
+>Dit is een module waarmee u kunt plannen wanneer taken op de achtergrond worden uitgevoerd. Het is een grafische schil voor <command
+>cron</command
+>, de takenplanner van het &UNIX; systeem.</para>
+
+<important
+><para
+>Vergeet niet om eerst de cron daemon <filename
+>crond</filename
+> te starten, anders zullen de instellingen in deze module niet werken.</para
+></important>
+
+<sect2 id="kcron-start-up">
+<title
+>Opstarten</title>
+
+<para
+>Als u deze module opstart ziet u een samenvatting van de bestaande geplande taken en bijhorende omgevingsvariabelen. Als u het programma als root opstart zult u de geplande taken van alle gebruikers op de computer en ook alle systeemtaken zien.</para>
+<!--admin mode-->
+<screenshot>
+<screeninfo
+>opstarten</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="kcronstart.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>opstarten</phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<sect3>
+<title
+>Ingestelde taken</title>
+
+<para
+>Geplande taken verschijnen in de lijst <guilabel
+>Taken</guilabel
+>. Voor elke geplande taak wordt de volgende informatie getoond:</para>
+
+<variablelist>
+
+<!-- system cron first column User=root-->
+<varlistentry>
+<term
+><guilabel
+>Takenplanning</guilabel
+></term>
+<listitem
+><para
+>In deze kolom wordt ofwel "@reboot" voor takenplanningen bij opstarten of de crontabregel getoond.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Commando</guilabel
+></term>
+<listitem
+><para
+>Programmabestand en parameters.</para
+></listitem>
+</varlistentry>
+<varlistentry
+> 
+<term
+><guilabel
+>Status</guilabel
+></term>
+<listitem
+><para
+>In- of uitgeschakeld</para
+></listitem>
+</varlistentry
+> 
+<varlistentry
+> 
+<term
+><guilabel
+>Beschrijving</guilabel
+></term>
+<listitem
+><para
+>Een beschrijving van de taak, zoiets als het doel ervan.</para
+></listitem>
+</varlistentry
+> 
+<varlistentry>
+<term
+><guilabel
+>Planningdetails</guilabel
+></term>
+<listitem
+><para
+>Een beschrijving van de geplande taak.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+
+<sect3>
+<title
+>Omgevingsvariabelen</title>
+
+<para
+>Omgevingsvariabelen staan in de lijst <guilabel
+>Omgevingsvariabelen</guilabel
+>. Voor elke omgevingsvariabele wordt het volgende getoond: </para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Variabele</guilabel
+></term>
+<listitem
+><para
+>Variabelenaam.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Waarde</guilabel
+></term>
+<listitem
+><para
+>Variabelewaarde.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Status</guilabel
+></term>
+<listitem
+><para
+>In- of uitgeschakeld</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Toelichting</guilabel
+></term>
+<listitem
+><para
+>Beschrijving van de variabele.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>De omgevingsvariabelen die hier staan vervangen elke bestaande omgevingsvariabelen voor alle geplande taken.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="new-task">
+<title
+>Geplande taken toevoegen</title>
+
+<para
+>Om een nieuwe geplande taak aan te maken, klik op de knop <guibutton
+>Nieuwe taak...</guibutton
+>. Alternatief kunt u deze actie kiezen uit het contextmenu van de muisknop <mousebutton
+>rechts</mousebutton
+>.</para>
+
+<sect3>
+<title
+>Het dialoogvenster Taak bewerken</title>
+
+<screenshot>
+<screeninfo
+>Het dialoogvenster <guilabel
+>Taak bewerken</guilabel
+>.</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="newtask.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Het dialoogvenster <guilabel
+>Taak bewerken</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Commando</guilabel
+></term>
+<listitem
+><para
+>Voer de naam in van het programma. U kunt een relatief of absoluut pad opgeven. Als u het programma wilt opzoeken, klik dan op de knop <guiicon
+>Bladeren</guiicon
+>.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Toelichting</guilabel
+></term>
+<listitem
+><para
+>Voer een beschrijving in voor de te plannen taak.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Deze taak inschakelen</guibutton
+></term>
+<listitem
+><para
+>Om de taak aan- of uit te zetten selecteert of deselecteert u deze knop.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Starten tijdens systeemstart</guibutton
+></term>
+<listitem>
+<para
+>Activeer deze knop om de taak uit te voeren tijdens systeemstart.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Elke dag uitvoeren</guibutton
+></term>
+<listitem>
+<para
+>Als u de taak dagelijks wilt plannen, selecteert u deze knop.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Maanden</guilabel
+></term>
+<listitem
+><para
+>Selecteer de maanden waarin u de taak wilt plannen.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Dagen van de maand</guilabel
+></term>
+<listitem
+><para
+>Selecteer de dagen van de maand waarop de taak dient te worden gepland.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Dagen van de week</guilabel
+></term>
+<listitem
+><para
+>Selecteer de dagen van de week waarop de taak dient te worden gepland.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Uren</guilabel
+></term>
+<listitem
+><para
+>Selecteer de uren waarop u de taak wilt plannen.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Minuten</guilabel
+></term>
+<listitem
+><para
+>Selecteer de minuut waarop de taak dient te worden gepland. U kunt met <command
+>cron</command
+> niet vaker plannen dan met één minuut intervallen.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>OK</guibutton
+></term>
+<listitem
+><para
+>Hiermee voltooit u het aanmaken van de taak.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Annuleren</guibutton
+></term>
+<listitem
+><para
+>Hiermee annuleert u het aanmaken van de taak.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Als u zowel dagen van de maand als dagen van de week kiest, zal de taak worden uitgevoerd zodra één van die dagen langskomt. Als u bijvoorbeeld de eerste, de 15de en zondag selecteert, zal het programma elke eerste en 15de van de maand worden uitgevoerd (ongeacht de instelling voor dagen van de week), maar ook op elke zondag in de gekozen maanden (ongeacht de instelling voor dagen van de maand).</para>
+
+<para
+>De geplande taak wordt pas actief als de <filename
+>crontab</filename
+> is opgeslagen.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="manage-tasks">
+<title
+>Geplande taken beheren</title>
+
+<para
+>Net als bij het aanmaken van nieuwe taken zullen wijzigingen in taken pas actief worden als het bestand <filename
+>crontab</filename
+> is opgeslagen.</para>
+
+<para
+>Gebruik de knoppen rechts van de takenlijst om de geselecteerde taak te wijzigen, te verwijderen, af te drukken of nu uit te voeren. U bereikt al deze acties ook vanaf het contextmenu. Als extra biedt het contextmenu acties om taken te knippen, te kopiëren en te plakken.</para>
+
+</sect2>
+
+<sect2 id="new-variable">
+<title
+>Omgevingsvariabelen toevoegen</title>
+
+<para
+>Om een nieuwe omgevingsvariabele aan te maken, klikt u op de knop <guibutton
+>Nieuwe variabele...</guibutton
+>.</para>
+
+<para
+>Ook kunt u met de <mousebutton
+>rechter</mousebutton
+>muisknop klikken en in het contextmenu deze actie kiezen.</para>
+
+<sect3>
+<title
+>Het dialoogvenster Variabele bewerken</title>
+
+<screenshot>
+<screeninfo
+>Het dialoogvenster <guilabel
+>Variabele bewerken</guilabel
+>.</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="newvariable.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Het dialoogvenster <guilabel
+>Variabele bewerken</guilabel
+>.</phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Variabele</guilabel
+></term
+> 
+<listitem
+><para
+>Voer de naam in van de omgevingsvariabele. U kunt de afrollijst gebruiken om uit de meestgebruikte omgevingsvariabelen voor geplande taken te kiezen. Dit zijn:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guimenuitem
+>HOME</guimenuitem
+></term>
+<listitem
+><para
+>Geeft een alternatieve persoonlijke map aan.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>MAILTO</guimenuitem
+></term>
+<listitem
+><para
+>Om de e-mailuitvoer te verzenden naar een ander e-mailadres dan het standaardadres van de gebruiker.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>PATH</guimenuitem
+></term>
+<listitem
+><para
+>Om mappen op te geven waarin naar programmabestanden zal worden gezocht.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>SHELL</guimenuitem
+></term>
+<listitem
+><para
+>Om een andere shell dan die van de gebruiker op te geven.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>LD_CONFIG_PATH</guimenuitem
+></term>
+<listitem
+><para
+>De locatie van dynamische bibliotheken. Dit stelt cronjobs in staat om toepassingen uit te voeren die bibliotheken hebben die ze nodig hebben bij de uitvoering, maar geïnstalleerd zijn buiten het pad van de systeembibliotheken.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Waarde</guilabel
+></term>
+<listitem
+><para
+>Voer de waarde in van de omgevingsvariabele.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Toelichting</guilabel
+></term>
+<listitem
+><para
+>Voer een beschrijving in voor de omgevingsvariabele, zoals het doel ervan.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Deze variabele inschakelen</guilabel
+></term>
+<listitem>
+<para
+>Om een variabele aan of uit te zetten, selecteert of deselecteert u deze knop.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>OK</guibutton
+></term>
+<listitem>
+<para
+>Voltooit de instelling van deze variabele.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Annuleren</guibutton
+></term>
+<listitem>
+<para
+>Annuleert de instelling voor deze variabele.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>De omgevingsvariabele wordt pas toegepast als de <filename
+>crontab</filename
+> is opgeslagen.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="manage-variables">
+<title
+>Omgevingsvariabelen beheren</title>
+
+<note
+><para
+>Net als bij het aanmaken van nieuwe omgevingsvariabelen, worden wijzigingen pas toegepast als <filename
+>crontab</filename
+> is opgeslagen.</para
+></note>
+
+<para
+>Gebruik de knoppen rechts van de lijst met variabelen om een geselecteerde variabele te wijzigen of te verwijderen. Deze acties kunnen ook uit het contextmenu bereikt worden. Als extra biedt het contextmenu acties om te knippen, te kopiëren en te plakken.</para>
+
+</sect2>
+</sect1>
+</article>
+
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+-->     

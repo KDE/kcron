@@ -1,0 +1,629 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % French "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE">
+]>
+
+<article id="kcron" lang="&language;">
+<title
+>Planificateur de tâches</title>
+
+<articleinfo>
+<authorgroup>
+<author
+><firstname
+>Morgan</firstname
+> <othername
+>N.</othername
+> <surname
+>Sandquist</surname
+> <affiliation
+><address
+>&Morgan.N.Sandquist.mail;</address>
+</affiliation>
+</author>
+
+<othercredit role="developer"
+><firstname
+>Gary</firstname
+> <surname
+>Meyer</surname
+> <affiliation
+><address
+>&Gary.Meyer.mail;</address>
+</affiliation>
+<contrib
+>Développeur</contrib>
+</othercredit>
+
+<othercredit role="reviewer"
+><firstname
+>Lauri</firstname
+> <surname
+>Watts</surname
+> <affiliation
+><address
+>&Lauri.Watts.mail;</address>
+</affiliation>
+<contrib
+>Relecteur</contrib>
+</othercredit>
+
+&traducteurRobertJacolin; &traducteurLudovicGrossard; 
+
+</authorgroup>
+
+<copyright>
+<year
+>2000</year>
+<holder
+>&Morgan.N.Sandquist;</holder>
+</copyright>
+
+<date
+>12-01-2017</date>
+<releaseinfo
+>Applications 16.12</releaseinfo>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>cron</keyword>
+<keyword
+>crontab</keyword>
+<keyword
+>scheduler</keyword>
+</keywordset>
+
+</articleinfo>
+
+<sect1 id="introduction">
+<title
+>Introduction</title>
+
+<para
+>Il s'agit d'un module permettant de planifier le lancement de programmes en arrière-plan. C'est une interface graphique pour <command
+>cron</command
+>, le planificateur système d'&UNIX;.</para>
+
+<important
+><para
+>N'oubliez pas de préciser à votre système de démarrer le démon cron <filename
+>crond</filename
+> au préalable, sinon les réglaqes dans ce module ne fonctionneront pas.</para
+></important>
+
+<sect2 id="kcron-start-up">
+<title
+>Lancement</title>
+
+<para
+>Lorsque vous démarrez ce module, vous verrez une vue sommaire des tâches planifiées existantes et des variables d'environnement associées. Si vous l'utilisez en tant que superutilisateur, vous verrez ces rubriques pour tous les utilisateurs de l'ordinateur ainsi que les tâches-système planifiées.</para>
+<!--admin mode-->
+<screenshot>
+<screeninfo
+>Démarrage</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="kcronstart.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Démarrage</phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<sect3>
+<title
+>Les tâches planifiées</title>
+
+<para
+>Les tâches planifiées apparaissent dans une liste <guilabel
+>Tâches</guilabel
+>. Pour chaque tâche planifiée, les éléments suivants sont affichés :</para>
+
+<variablelist>
+
+<!-- system cron first column User=root-->
+<varlistentry>
+<term
+><guilabel
+>Planification</guilabel
+></term>
+<listitem
+><para
+>Dans cette colonne, est affiché soit « @reboot » pour les tâches planifiées au démarrage, soit l'entrée de la crontab.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Commande</guilabel
+></term>
+<listitem
+><para
+>le programme et ses paramètres ;</para
+></listitem>
+</varlistentry>
+<varlistentry
+> 
+<term
+><guilabel
+>État</guilabel
+></term>
+<listitem
+><para
+>Activée ou désactivée</para
+></listitem>
+</varlistentry
+> 
+<varlistentry
+> 
+<term
+><guilabel
+>Description</guilabel
+></term>
+<listitem
+><para
+>Une description pour la tâche, comme son but par exemple.</para
+></listitem>
+</varlistentry
+> 
+<varlistentry>
+<term
+><guilabel
+>Détails de la planification</guilabel
+></term>
+<listitem
+><para
+>une description de la tâche planifiée en langage naturel.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+
+<sect3>
+<title
+>Les variables d'environnement</title>
+
+<para
+>Les variables d'environnement apparaissent dans la liste <guilabel
+>Variables d'environnement</guilabel
+>. Pour chaque variable d'environnement, il est affiché : </para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>La variable</guilabel
+></term>
+<listitem
+><para
+>le nom de la variable ;</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>sa valeur</guilabel
+></term>
+<listitem
+><para
+>la valeur de la variable ;</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>État</guilabel
+></term>
+<listitem
+><para
+>Activée ou désactivée</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Commentaire</guilabel
+></term>
+<listitem
+><para
+>une description de la variable en langage naturel.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Les variables d'environnement qui apparaissent ici écraseront n'importe quelle variable d'environnement existante pour toutes les tâches planifiées. </para>
+
+</sect3>
+</sect2>
+
+<sect2 id="new-task">
+<title
+>Ajouter une tâche planifiée</title>
+
+<para
+>Pour créer une nouvelle tâche planifiée, cliquez sur le bouton <guibutton
+>Nouvelle tâche…</guibutton
+>. Vous pouvez également choisir cette action dans le menu contextuel qui apparaît avec un clic <mousebutton
+>droit</mousebutton
+> de la souris.</para>
+
+<sect3>
+<title
+>La boîte de dialogue de modification de tâche</title>
+
+<screenshot>
+<screeninfo
+>La boîte de dialogue <guilabel
+>Modifier la tâche</guilabel
+>.</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="newtask.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>La boîte de dialogue <guilabel
+>Modifier la tâche</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Commande</guilabel
+></term>
+<listitem
+><para
+>Saisissez le nom du programme. Vous pouvez spécifier soit un emplacement relatif soit un emplacement absolu. Si vous désirez rechercher le programme, cliquez sur <guiicon
+>Parcourir...</guiicon
+>.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Commentaire</guilabel
+></term>
+<listitem
+><para
+>Saisissez une description de la tâche à planifier.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Activer cette tâche</guibutton
+></term>
+<listitem
+><para
+>Pour activer ou désactiver la tâche, cochez ou décochez ce bouton.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Lancer au démarrage du systéme</guibutton
+></term>
+<listitem>
+<para
+>Cochez ce bouton pour lancer la tâche au démarrage du système.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Exécuter chaque jour</guibutton
+></term>
+<listitem>
+<para
+>Si vous voulez planifier la tâche pour la lancer quotidiennement, cochez ce bouton.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Mois</guilabel
+></term>
+<listitem
+><para
+>Choisissez les mois pendant lesquels la tâche doit être planifiée.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Jours du mois</guilabel
+></term>
+<listitem
+><para
+>Choisissez les jours du mois où la tâche doit être planifiée.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Jours de la semaine</guilabel
+></term>
+<listitem
+><para
+>Choisissez les jours de la semaine où la tâche doit être planifiée.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Heures</guilabel
+></term>
+<listitem
+><para
+>Choisissez les heures pendant lesquelles la tâche doit être planifiée.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Minutes</guilabel
+></term>
+<listitem
+><para
+>Choisissez les minutes où la tâche doit être planifiée. <command
+>cron</command
+> ne peut pas planifier des tâches avec un meilleur intervalle qu'une minute.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Ok</guibutton
+></term>
+<listitem
+><para
+>Termine la création de la tâche.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Annuler</guibutton
+></term>
+<listitem
+><para
+>Annule la création de la tâche.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Si vous sélectionnez à la fois les jours du mois et les jours de la semaine, la tâche sera lancée lorsqu'une des conditions sera rencontrée. Par exemple, si vous choisissez le 1er et le 15 ainsi que dimanche, le programme sera lancé tous les 1er et 15ème jour des mois sélectionnés (sans se soucier du jour de la semaine) ainsi que chaque dimanche des mois sélectionnés (sans se soucier du jour du mois).</para>
+
+<para
+>La tâche planifiée n'est pas initialisée tant que la <filename
+>table des tâches</filename
+> n'a pas été enregistrée.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="manage-tasks">
+<title
+>La gestion des tâches planifiées</title>
+
+<para
+>Comme lors de la création d'une nouvelle tâche, les changements d'une tâche ne prendront effet que lorsque la <filename
+>table des tâches</filename
+> sera enregistrée.</para>
+
+<para
+>Utilisez les boutons à droite de la liste des tâches pour modifier, supprimer, imprimer ou exécuter maintenant une tâche. Vous avez également accès à ces commandes depuis le menu contextuel. Ce menu permet également de couper, copier et coller des tâches.</para>
+
+</sect2>
+
+<sect2 id="new-variable">
+<title
+>Ajouter des variables d'environnement</title>
+
+<para
+>Pour créer une nouvelle variable d'environnement, cliquez sur le bouton <guibutton
+>Nouvelle variable…</guibutton
+>.</para>
+
+<para
+>Vous pouvez aussi utiliser le menu du bouton <mousebutton
+>droit</mousebutton
+> de la souris et choisir cette action.</para>
+
+<sect3>
+<title
+>La boîte de dialogue de modification de variable</title>
+
+<screenshot>
+<screeninfo
+>La boîte de dialogue <guilabel
+>Modifier la variable</guilabel
+>.</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="newvariable.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>La boîte de dialogue <guilabel
+>Modifier la variable</guilabel
+>.</phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>La variable</guilabel
+></term
+> 
+<listitem
+><para
+>Saisissez le nom de la variable d'environnement. Vous pouvez utiliser la liste déroulante pour choisir parmi les variables d'environnement les plus utilisées par les tâches planifiées. Cette liste contient les variables :</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guimenuitem
+>HOME</guimenuitem
+></term>
+<listitem
+><para
+>Cette variable est utilisée à la place du dossier personnel par défaut de l'utilisateur.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>MAILTO</guimenuitem
+></term>
+<listitem
+><para
+>Pour envoyer un courrier électronique vers une adresse autre que celle de l'utilisateur par défaut.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>PATH</guimenuitem
+></term>
+<listitem
+><para
+>Cette variable est utilisée pour chercher les dossiers des programmes.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>SHELL</guimenuitem
+></term>
+<listitem
+><para
+>Utilisée à la place de la valeur de l'utilisateur par défaut.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>LD_CONFIG_PATH</guimenuitem
+></term>
+<listitem
+><para
+>L'emplacement des bibliothèques dynamiques. Ceci permet aux tâches planifiées d'exécuter des applications qui nécessitent pour fonctionner des bibliothèques installées en dehors de l'emplacement système pour les bibilothèques.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>sa valeur</guilabel
+></term>
+<listitem
+><para
+>Saisissez la valeur de la variable d'environnement.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Commentaire</guilabel
+></term>
+<listitem
+><para
+>Saisissez une description pour la variable d'environnement, son but par exemple.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Activer cette variable</guilabel
+></term>
+<listitem>
+<para
+>Pour activer ou désactiver une variable, cochez ou décochez ce bouton.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Ok</guibutton
+></term>
+<listitem>
+<para
+>Termine la création de la variable.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Annuler</guibutton
+></term>
+<listitem>
+<para
+>Annule la création de cette variable.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>La variable d'environnement n'est pas initialisée tant que la <filename
+>table des tâches</filename
+> n'a pas été enregistrée.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="manage-variables">
+<title
+>La gestion des variables d'environnement</title>
+
+<note
+><para
+>Comme avec la création de nouvelles variables, la modification des variables ne sera réellement prise en compte que lorsque la <filename
+>table des tâches</filename
+> sera enregistrée.</para
+></note>
+
+<para
+>Utilisez les boutons à la droite de la liste des variables pour modifier ou supprimer une variable. Vous avez également accès à toutes ces actions depuis le menu contextuel. Ce menu permet également de couper, copier et coller des variables.</para>
+
+</sect2>
+</sect1>
+</article>
+
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+-->     

@@ -1,0 +1,732 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" 
+"dtd/kdedbx45.dtd" [
+  <!ENTITY % Estonian  "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE">
+]>
+
+<article id="kcron" lang="&language;">
+<title
+>Ülesannete ajastaja</title>
+
+<articleinfo>
+<authorgroup>
+<author
+><firstname
+>Morgan</firstname
+> <othername
+>N.</othername
+> <surname
+>Sandquist</surname
+> <affiliation
+><address
+>&Morgan.N.Sandquist.mail;</address>
+</affiliation>
+</author>
+
+<othercredit role="developer"
+><firstname
+>Gary</firstname
+> <surname
+>Meyer</surname
+> <affiliation
+><address
+>&Gary.Meyer.mail;</address>
+</affiliation>
+<contrib
+>Arendaja</contrib>
+</othercredit>
+
+<othercredit role="reviewer"
+><firstname
+>Lauri</firstname
+> <surname
+>Watts</surname
+> <affiliation
+><address
+>&Lauri.Watts.mail;</address>
+</affiliation>
+<contrib
+>Korrigeerija</contrib>
+</othercredit>
+
+<othercredit role="translator"
+><firstname
+>Marek</firstname
+><surname
+>Laane</surname
+><affiliation
+><address
+><email
+>bald@starman.ee</email
+></address
+></affiliation
+><contrib
+>Tõlge eesti keelde</contrib
+></othercredit
+> 
+
+</authorgroup>
+
+<copyright>
+<year
+>2000</year>
+<holder
+>&Morgan.N.Sandquist;</holder>
+</copyright>
+
+<date
+>2013-06-22</date>
+<releaseinfo
+>&kde; 4.11</releaseinfo>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>cron</keyword>
+<keyword
+>crontab</keyword>
+<keyword
+>ajastaja</keyword>
+</keywordset>
+
+</articleinfo>
+
+<sect1 id="introduction">
+<title
+>Sissejuhatus</title>
+
+<para
+>See on moodul, mille abil saab ajastada rakendusi taustal töötama. See kujutab endast &UNIX; süsteemse planeerija <command
+>cron</command
+> graafilist kasutajaliidest.</para>
+
+<important
+><para
+>Ära unusta esmalt laskmast süsteemil käivitada cron deemonit <filename
+>crond</filename
+>, sest muidu ei tööta ka moodul.</para
+></important>
+
+<sect2 id="kcron-start-up">
+<title
+>Alustamine</title>
+
+<para
+>Kui avad mooduli, näed olemasolevate ajastatud käskude ja nendega seotud keskkonnamuutujate kokkuvõtet. Kui käivitasid rakenduse administraatorina, näed nii kõigi arvuti kasutajate kui süsteemi ajastatud käske.</para>
+<!--admin mode-->
+<screenshot>
+<screeninfo
+>alustamine</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="kcronstart.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>alustamine</phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<sect3>
+<title
+>Ajastatud ülesanded</title>
+
+<para
+>Ajastatud ülesanded on näha loendis <guilabel
+>Ülesanded</guilabel
+>. Iga ajastatud ülesande puhul on ära toodud järgmine info:</para>
+
+<variablelist>
+
+<!-- system cron first column User=root-->
+<varlistentry>
+<term
+><guilabel
+>Ajastamine</guilabel
+></term>
+<listitem
+><para
+>Selles tulbas seisab kas "@reboot" ülesannete puhul, mis käivitatakse alglaadimisel, või crontabi kirje.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Käsk</guilabel
+></term>
+<listitem
+><para
+>Rakenduse fail ja parameetrid.</para
+></listitem>
+</varlistentry>
+<varlistentry
+> 
+<term
+><guilabel
+>Olek</guilabel
+></term>
+<listitem
+><para
+>Lubatud või keelatud</para
+></listitem>
+</varlistentry
+> 
+<varlistentry
+> 
+<term
+><guilabel
+>Kirjeldus</guilabel
+></term>
+<listitem
+><para
+>Ülesande kirjeldus, nt. selle eesmärk.</para
+></listitem>
+</varlistentry
+> 
+<varlistentry>
+<term
+><guilabel
+>Ajastamise üksikasjad</guilabel
+></term>
+<listitem
+><para
+>Ajastatud käsu kirjeldus inimesele arusaadavas keeles.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+
+<sect3>
+<title
+>Keskkonnamuutujad</title>
+
+<para
+>Keskkonnamuutujad on näha loendis <guilabel
+>Keskkonnamuutujad</guilabel
+>. Iga keskkonnamuutuja puhul on ära toodud: </para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Muutuja</guilabel
+></term>
+<listitem
+><para
+>Muutuja nimi.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Väärtus</guilabel
+></term>
+<listitem
+><para
+>Muutuja väärtus.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Olek</guilabel
+></term>
+<listitem
+><para
+>Lubatud või keelatud</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Kommentaar</guilabel
+></term>
+<listitem
+><para
+>Muutuja kirjeldus inimesele arusaadavas keeles.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Siin nähtavad keskkonnamuutujad tühistavad kõik muud ajastatud käskude kohta käivad keskkonnamuutujad.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="new-task">
+<title
+>Ajastatud käskude lisamine</title>
+
+<para
+>Uue ajastatud ülesande loomiseks klõpsa nupule  <guibutton
+>Uus ülesanne...</guibutton
+> Sama toimingu võib valida ka kontekstimenüüst, mis avaneb hiire <mousebutton
+>parema</mousebutton
+> nupuga klõpsates.</para>
+
+<sect3>
+<title
+>Ülesande muutmise dialoog</title>
+
+<screenshot>
+<screeninfo
+>Dialoog <guilabel
+>Ülesande muutmine</guilabel
+>.</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="newtask.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Dialoog <guilabel
+>Ülesande muutmine</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Käsk</guilabel
+></term>
+<listitem
+><para
+>Rakenduse nimi. Siin võib anda nii suhtelise kui absoluutse otsingutee. Kui sa ei ole rakenduse asukohas kindel, klõpsa ikoonile <guiicon
+>Lehitse</guiicon
+>.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Kommentaar</guilabel
+></term>
+<listitem
+><para
+>Ajastatud käsu kirjeldus.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Ülesande lubamine</guibutton
+></term>
+<listitem
+><para
+>Ülesande lubamiseks või keelamiseks märgi see valik või eemalda märge.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Käivitamine süsteemi alglaadimisel</guibutton
+></term>
+<listitem>
+<para
+>Selle märkimise käivitatakse ülesanne süsteemi alglaadimisel.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Käivitamine iga päev</guibutton
+></term>
+<listitem>
+<para
+>Kui soovid, et käsku täidetaks iga päev, märgi see valik.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Kuud</guilabel
+></term>
+<listitem
+><para
+>Kuude valimine, millal käsku täita.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Kuupäevad</guilabel
+></term>
+<listitem
+><para
+>Kuupäevade valimine, millal käsku täita.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Nädalapäevad</guilabel
+></term>
+<listitem
+><para
+>Nädalapäevade valimine, millal käsku täita.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Tunnid</guilabel
+></term>
+<listitem
+><para
+>Tundide valimine, millal käsku täita.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Minutid</guilabel
+></term>
+<listitem
+><para
+>Minutid, millal käsku täita. <command
+>cron</command
+> ei toeta käskude ajastamist väiksemale kui üheminutilisele intervallile.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>OK</guibutton
+></term>
+<listitem
+><para
+>Viib lõpule uue ülesande lisamise.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Katkesta</guibutton
+></term>
+<listitem
+><para
+>Katkestab uue ülesande loomise.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Kui valid nii kuu- kui nädalapäevad, käivitatakse ülesanne siis, kui üks tingimustest on täidetud. Kui näiteks valid 1. ja 15. kuupäeva ning pühapäeva, käivitatakse ülesanne iga valitud kuu(de) 1. ja 15. päeval (sõltumata nädalapäevast) ning igal valitud kuu(de) pühapäeval (sõltumata kuupäevast).</para>
+
+<para
+>Ajastatud ülesanne ei ole tegelikult rakendatav seni, kuni <filename
+>crontab</filename
+> ei ole salvestatud.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="manage-tasks">
+<title
+>Ajastatud ülesannete haldamine</title>
+
+<para
+>Nagu uute ülesannete loomisel, et rakendata ka ülesannete muudatusi enne, kui <filename
+>crontab</filename
+> pole salvestatud.</para>
+
+<para
+>Ülesannete loendist paremal asuvate nuppudega saab ülesandeid muuta, kustutada, trükkida või kohe käivitada. Samu toiminguid saab ette võtta ka kontekstimenüüst. Lisaks pakub kontekstimenüü võimalusi ülesandeid lõigata, kopeerida ja asetada.</para>
+
+</sect2>
+
+<sect2 id="new-variable">
+<title
+>Keskkonnamuutujate lisamine</title>
+
+<para
+>Uue keskkonnamuutuja loomiseks klõpsa nupule <guibutton
+>Uus muutuja...</guibutton
+></para>
+
+<para
+>Sama tulemuse annab hiire <mousebutton
+>parema</mousebutton
+> nupu klõpsuga avanevast kontekstimenüüst vastava käsu valimine.</para>
+
+<sect3>
+<title
+>Muutuja muutmise dialoog</title>
+
+<screenshot>
+<screeninfo
+><guilabel
+>Muutuja muutmine</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="newvariable.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+><guilabel
+>Muutuja muutmine</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Muutuja</guilabel
+></term
+> 
+<listitem
+><para
+>Keskkonnamuutuja nimi. Rippmenüüst saab valida mõne ajastatud käskude puhul kõige sagedamini kasutatava keskkonnamuutuja, sealhulgas:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guimenuitem
+>HOME</guimenuitem
+></term>
+<listitem
+><para
+>Kasutatakse kasutaja vaikimisi kodukataloogi asemel.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>MAILTO</guimenuitem
+></term>
+<listitem
+><para
+>E-posti väljund saadetakse aadressile, mis erineb kasutaja vaikimisi e-posti aadressist.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>PATH</guimenuitem
+></term>
+<listitem
+><para
+>Kasutatakse rakenduse faili otsimiseks kataloogidest.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>SHELL</guimenuitem
+></term>
+<listitem
+><para
+>Kasutatakse kasutaja vaikeshelli asemel.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>LD_CONFIG_PATH</guimenuitem
+></term>
+<listitem
+><para
+>Dünaamiliste teekide asukoht. See võimaldab cron'il käivitada rakendusi, mille käivitamist vajavad teegid on paigaldatud mujale kui süsteemne teekide asukoht.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Väärtus</guilabel
+></term>
+<listitem
+><para
+>Keskkonnamuutuja väärtus.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Kommentaar</guilabel
+></term>
+<listitem
+><para
+>Keskkonnamuutuja kirjeldus, nt. selle tähendus.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Muutuja lubamine</guilabel
+></term>
+<listitem>
+<para
+>Muutuja lubamiseks või keelamiseks märgi see valik või eemalda märge.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>OK</guibutton
+></term>
+<listitem>
+<para
+>Viib keskkonnamuutuja lisamise lõpule.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Katkesta</guibutton
+></term>
+<listitem>
+<para
+>Katkestab muutuja lisamise.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Keskkonnamuutuja rakendub tegelikult alles siis, kui <filename
+>crontab</filename
+> on salvestatud.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="manage-variables">
+<title
+>Keskkonnamuutujate haldamine</title>
+
+<note
+><para
+>Nagu uute muutujate loomisel, ei rakendu ka muutujatesse tehtud muudatused, enne kui <filename
+>crontab</filename
+> ei ole salvestatud.</para
+></note>
+
+<para
+>Muutujate loendist paremal asuvate nuppudega saab valitud muutujat muuta või kustutada. Samu toiminguid saab ette võtta ka kontekstimenüüst. Lisaks pakub kontekstimenüü võimalusi ülesandeid lõigata, kopeerida ja asetada.</para>
+
+</sect2>
+<!--
+<sect2 id="saving-crontab">
+<title
+>Saving the <filename
+>crontab</filename
+></title>
+
+<para
+>Once all scheduled tasks and environment variables have been
+created and/or properly modified, save the <filename
+>crontab</filename>
+by selecting
+<menuchoice>
+<guimenu
+>File</guimenu
+> <guimenuitem
+>Save</guimenuitem
+> </menuchoice
+>.</para>
+
+<para
+>Alternatively, you can simply press <keycombo
+action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+>. Additions or changes
+will not actually be made until this is done.</para>
+
+</sect2>
+
+<sect2 id="printing-crontab">
+<title
+>Printing the <filename
+>crontab</filename
+></title>
+
+<para
+>To print the <filename
+>crontab</filename
+> as it has been saved,
+select <menuchoice
+> <guimenu
+>File</guimenu>
+<guimenuitem
+>Print</guimenuitem
+> </menuchoice
+>.</para>
+
+<para
+>The standard &kde; printer dialog will display.  If you select
+<guilabel
+>Expand</guilabel
+> you will see that there are two extra
+&kcron; specific options in the Print Dialog box.</para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Print Crontab</guilabel
+></term>
+<listitem>
+<para
+>Prints the <filename
+>crontab</filename
+> for the current user.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Print All Users</guilabel
+></term>
+<listitem>
+<para
+>Prints the <filename
+>crontab</filename
+>s for all users.  This option is
+enabled only for users with super-user privileges.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+-->
+</sect1>
+</article>
+
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+-->     

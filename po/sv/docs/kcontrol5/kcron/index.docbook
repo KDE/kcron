@@ -1,0 +1,643 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % Swedish "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE">
+]>
+
+<article id="kcron" lang="&language;">
+<title
+>Jobbschemaläggare</title>
+
+<articleinfo>
+<authorgroup>
+<author
+><firstname
+>Morgan</firstname
+> <othername
+>N.</othername
+> <surname
+>Sandquist</surname
+> <affiliation
+><address
+>&Morgan.N.Sandquist.mail;</address>
+</affiliation>
+</author>
+
+<othercredit role="developer"
+><firstname
+>Gary</firstname
+> <surname
+>Meyer</surname
+> <affiliation
+><address
+>&Gary.Meyer.mail;</address>
+</affiliation>
+<contrib
+>Utvecklare</contrib>
+</othercredit>
+
+<othercredit role="reviewer"
+><firstname
+>Lauri</firstname
+> <surname
+>Watts</surname
+> <affiliation
+><address
+>&Lauri.Watts.mail;</address>
+</affiliation>
+<contrib
+>Granskare</contrib>
+</othercredit>
+
+<othercredit role="translator"
+> <firstname
+>Stefan</firstname
+> <surname
+>Asserhäll</surname
+> <affiliation
+><address
+><email
+>stefan.asserhall@bredband.net</email
+></address
+></affiliation
+> <contrib
+>Översättare</contrib
+></othercredit
+> 
+
+</authorgroup>
+
+<copyright>
+<year
+>2000</year>
+<holder
+>&Morgan.N.Sandquist;</holder>
+</copyright>
+
+<date
+>2017-01-12</date>
+<releaseinfo
+>Program 16.12</releaseinfo>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>cron</keyword>
+<keyword
+>crontab</keyword>
+<keyword
+>schemaläggare</keyword>
+</keywordset>
+
+</articleinfo>
+
+<sect1 id="introduction">
+<title
+>Inledning</title>
+
+<para
+>Det här är en modul som schemalägger program som ska köras i bakgrunden. Det är ett grafiskt användargränssnitt för kommandot <command
+>cron</command
+>, &UNIX;-systemets schemaläggare.</para>
+
+<important
+><para
+>Glöm inte bort att först tala om för systemet att cron-demonen <filename
+>crond</filename
+> ska startas, annars fungerar inte inställningarna i den här modulen.</para
+></important>
+
+<sect2 id="kcron-start-up">
+<title
+>Start</title>
+
+<para
+>När modulen startas, ser du en sammanfattande vy av befintliga schemalagda aktiviteter och tillhörande miljövariabler. Om du kör som root-användare, ser du de här objekten för alla användare av datorn samt systemets schemalagda aktiviteter.</para>
+<!--admin mode-->
+<screenshot>
+<screeninfo
+>Start</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="kcronstart.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Start</phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<sect3>
+<title
+>Schemalagda aktiviteter</title>
+
+<para
+>Schemalagda aktiviteter visas under listan <guilabel
+>Aktiviteter</guilabel
+>. För varje schemalagd aktivitet, visas följande objekt:</para>
+
+<variablelist>
+
+<!-- system cron first column User=root-->
+<varlistentry>
+<term
+><guilabel
+>Schemaläggning</guilabel
+></term>
+<listitem
+><para
+>I den här kolumnen visas antingen "@reboot" för aktiviteter schemalagda när datorn startas, eller posten i crontab.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Kommando</guilabel
+></term>
+<listitem
+><para
+>Programfil och parametrar.</para
+></listitem>
+</varlistentry>
+<varlistentry
+> 
+<term
+><guilabel
+>Status</guilabel
+></term>
+<listitem
+><para
+>Aktiverad eller inaktiverad.</para
+></listitem>
+</varlistentry
+> 
+<varlistentry
+> 
+<term
+><guilabel
+>Beskrivning</guilabel
+></term>
+<listitem
+><para
+>En beskrivning av aktiviteten, som dess syfte.</para
+></listitem>
+</varlistentry
+> 
+<varlistentry>
+<term
+><guilabel
+>Schemaläggningsinformation</guilabel
+></term>
+<listitem
+><para
+>Beskrivning med naturligt språk av schemalagda aktiviteter.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+
+<sect3>
+<title
+>Miljövariabler</title>
+
+<para
+>Miljövariabler visas i listan <guilabel
+>Miljövariabler</guilabel
+>. För varje miljövariabel, visas följande: </para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Variabel</guilabel
+></term>
+<listitem
+><para
+>Variabelnamn</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Värde</guilabel
+></term>
+<listitem
+><para
+>Variabelvärde</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Status</guilabel
+></term>
+<listitem
+><para
+>Aktiverad eller inaktiverad.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Kommentar</guilabel
+></term>
+<listitem
+><para
+>Beskrivning med naturligt språk av variabeln.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Miljövariabler som visas här överskrider alla befintliga miljövariabler för alla schemalagda aktiviteter.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="new-task">
+<title
+>Lägga till schemalagda aktiviteter</title>
+
+<para
+>För att skapa en ny schemalagd aktivitet, klicka på knappen <guibutton
+>Ny aktivitet...</guibutton
+>. Som ett alternativ kan du välja åtgärden från den sammanhangsberoende menyn med <mousebutton
+>höger</mousebutton
+> musknapp.</para>
+
+<sect3>
+<title
+>Dialogrutan Redigera aktivitet</title>
+
+<screenshot>
+<screeninfo
+>Dialogrutan <guilabel
+>Redigera aktivitet</guilabel
+>.</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="newtask.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Dialogrutan <guilabel
+>Redigera aktivitet</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Kommando</guilabel
+></term>
+<listitem
+><para
+>Skriv in namnet på programmet. Du kan antingen ange en relativ sökväg eller en absolut sökväg. Om du vill leta efter programmet, klicka på ikonen <guiicon
+>Bläddra</guiicon
+>.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Kommentar</guilabel
+></term>
+<listitem
+><para
+>Skriv in en beskrivning av aktiviteten som ska schemaläggas.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Aktivera aktiviteten</guibutton
+></term>
+<listitem
+><para
+>För att aktivera eller inaktivera aktiviteten, markera eller avmarkera den här knappen.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Kör vid systemstart</guibutton
+></term>
+<listitem>
+<para
+>Markera knappen för att utföra aktiviteten när datorn startas.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Kör varje dag</guibutton
+></term>
+<listitem>
+<para
+>Om du vill att aktiviteten ska schemaläggas för att köra varje dag,  markera den här knappen.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Månader</guilabel
+></term>
+<listitem
+><para
+>Välj månaderna då aktiviteten ska schemaläggas.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Månadens dagar</guilabel
+></term>
+<listitem
+><para
+>Välj månadens dagar då aktiviteten ska schemaläggas.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Veckans dagar</guilabel
+></term>
+<listitem
+><para
+>Välj veckans dagar då aktiviteten ska schemaläggas.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Timmar</guilabel
+></term>
+<listitem
+><para
+>Välj timmarna då aktiviteten ska schemaläggas.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Minuter</guilabel
+></term>
+<listitem
+><para
+>Välj minuten då aktiviteten ska schemaläggas. <command
+>cron</command
+> stödjer inte schemaläggning av aktiviteter med intervall mindre än en minut.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Ok</guibutton
+></term>
+<listitem
+><para
+>Fullbordar skapande av den här aktiviteten.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Avbryt</guibutton
+></term>
+<listitem
+><para
+>Avbryter skapande av den här aktiviteten.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Om du väljer både månadens dagar och veckans dagar, kommer aktiviteten att köras när endera villkoret uppfylls. Om du till exempel väljer den 1:a och 15:de, och väljer söndag, körs programmet den 1:a och 15:de i de valda månaderna (oberoende av veckodag) samt varje söndag i de valda månaderna (oberoende av dagen i månaden).</para>
+
+<para
+>Den schemalagda aktiviteten sätts i själva verket inte igång förrän <filename
+>crontab</filename
+> har sparats.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="manage-tasks">
+<title
+>Hantera schemalagda aktiviteter</title>
+
+<para
+>Precis som när nya aktiviteter skapas, så sker inte ändringarna förrän <filename
+>crontab</filename
+> sparas.</para>
+
+<para
+>Använd knapparna till höger om aktivitetslistan för att ändra, ta bort, skriva ut eller köra en markerad aktivitet nu. Alla dessa åtgärder kan dessutom nås från den sammanhangsberoende menyn. Dessutom tillhandahåller den sammanhangsberoende menyn åtgärder för att klippa ut, kopiera och klistra in aktiviteter.</para>
+
+</sect2>
+
+<sect2 id="new-variable">
+<title
+>Lägga till miljövariabler</title>
+
+<para
+>För att skapa en ny miljövariabel, klicka på <guibutton
+>Ny variabel...</guibutton
+>.</para>
+
+<para
+>Som ett alternativ kan du använda menyn som visas med <mousebutton
+>höger</mousebutton
+> musknapp för att välja åtgärden</para>
+
+<sect3>
+<title
+>Dialogrutan Redigera variabel</title>
+
+<screenshot>
+<screeninfo
+>Dialogrutan <guilabel
+>Redigera variabel</guilabel
+>.</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="newvariable.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Dialogrutan <guilabel
+>Redigera variabel</guilabel
+>.</phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Variabel</guilabel
+></term
+> 
+<listitem
+><para
+>Skriv in miljövariabelns namn. Du kan använda kombinationsrutan för att välja bland de vanligaste miljövariablerna som används av schemalagda aktiviteter. Dessa omfattar:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guimenuitem
+>HOME</guimenuitem
+></term>
+<listitem
+><para
+>Att användas istället för användarens förvalda hemkatalog.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>MAILTO</guimenuitem
+></term>
+<listitem
+><para
+>För att skicka e-postutmatning till en e-postadress som inte är användarens normala e-postadress.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>PATH</guimenuitem
+></term>
+<listitem
+><para
+>Att användas för att söka i kataloger efter programfiler.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>SHELL</guimenuitem
+></term>
+<listitem
+><para
+>Att användas istället för användarens normala värde.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>LD_CONFIG_PATH</guimenuitem
+></term>
+<listitem
+><para
+>Platsen för dynamiska bibliotek. Den låter cron-jobb köra program som har bibliotek de måste köra installerade utanför systemets bibliotekssökväg.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Värde</guilabel
+></term>
+<listitem
+><para
+>Skriv in miljövariabelns värde.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Kommentar</guilabel
+></term>
+<listitem
+><para
+>Skriv in en beskrivning av miljövariabeln, som dess syfte.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Aktivera variabeln</guilabel
+></term>
+<listitem>
+<para
+>För att aktivera eller inaktivera variabeln, markera eller avmarkera den här knappen.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Ok</guibutton
+></term>
+<listitem>
+<para
+>Fullbordar skapande av den här variabeln.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Avbryt</guibutton
+></term>
+<listitem>
+<para
+>Avbryter skapande av den här variabeln.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Miljövariabeln gäller i själva verket inte förrän <filename
+>crontab</filename
+> har sparats.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="manage-variables">
+<title
+>Hantera miljövariabler</title>
+
+<note
+><para
+>Precis som när nya variabler skapas, så sker inte ändringar av variabler förrän <filename
+>crontab</filename
+> sparas.</para
+></note>
+
+<para
+>Använd knapparna till höger om variabellistan för att ändra eller ta bort en markerad variabel. Alla dessa åtgärder kan dessutom nås från den sammanhangsberoende menyn. Dessutom tillhandahåller den sammanhangsberoende menyn åtgärder för att klippa ut, kopiera och klistra in variabler.</para>
+
+</sect2>
+</sect1>
+</article>
+
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+-->     

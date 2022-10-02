@@ -1,0 +1,643 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % Korean "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE">
+]>
+
+<article id="kcron" lang="&language;">
+<title
+>작업 스케줄러</title>
+
+<articleinfo>
+<authorgroup>
+<author
+><firstname
+>Morgan</firstname
+><othername
+>N.</othername
+><surname
+>Sandquist</surname
+> <affiliation
+><address
+>&Morgan.N.Sandquist.mail;</address>
+</affiliation>
+</author>
+
+<othercredit role="developer"
+><firstname
+>Gary</firstname
+><surname
+>Meyer</surname
+> <affiliation
+><address
+>&Gary.Meyer.mail;</address>
+</affiliation>
+<contrib
+>개발자</contrib>
+</othercredit>
+
+<othercredit role="reviewer"
+><firstname
+>Lauri</firstname
+><surname
+>Watts</surname
+> <affiliation
+><address
+>&Lauri.Watts.mail;</address>
+</affiliation>
+<contrib
+>검토자</contrib>
+</othercredit>
+
+<othercredit role="translator"
+><firstname
+>Lee</firstname
+><surname
+>JungHee</surname
+><affiliation
+><address
+><email
+>daemul72@gmail.com</email
+></address
+></affiliation
+><contrib
+>문서 번역</contrib
+></othercredit
+> 
+
+</authorgroup>
+
+<copyright>
+<year
+>2000</year>
+<holder
+>&Morgan.N.Sandquist;</holder>
+</copyright>
+
+<date
+>2017-01-12</date>
+<releaseinfo
+>프로그램 16.12</releaseinfo>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>cron</keyword>
+<keyword
+>crontab</keyword>
+<keyword
+>스케줄러</keyword>
+</keywordset>
+
+</articleinfo>
+
+<sect1 id="introduction">
+<title
+>소개</title>
+
+<para
+>백그라운드에서 실행되도록 프로그램을 예약하기 위한 모듈입니다. &UNIX; 시스템의 <command
+>cron</command
+>, 시스템 스케줄러에 대한 그래픽 사용자 인터페이스입니다.</para>
+
+<important
+><para
+>먼저 <filename
+>crond</filename
+>cron 데몬을 시작하도록 시스템에 지시하지 않으면 이 모듈의 설정이 작동하지 않습니다.</para
+></important>
+
+<sect2 id="kcron-start-up">
+<title
+>시작하기</title>
+
+<para
+>이 모듈을 시작하면 기존의 예약된 작업 및 관련 환경 변수에 대한 요약된 보기가 표시됩니다. 루트 사용자로 실행 중인 경우 시스템의 예약된 작업뿐만 아니라 컴퓨터의 모든 사용자에 대해 이러한 항목이 표시됩니다.</para>
+<!--admin mode-->
+<screenshot>
+<screeninfo
+>시작하기</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="kcronstart.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>시작하기</phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<sect3>
+<title
+>예약된 작업</title>
+
+<para
+>예약된 작업은 <guilabel
+>작업</guilabel
+>목록 아래에 나타납니다. 예약된 각 작업에 대해 다음 항목이 표시됩니다:</para>
+
+<variablelist>
+
+<!-- system cron first column User=root-->
+<varlistentry>
+<term
+><guilabel
+>일정</guilabel
+></term>
+<listitem
+><para
+>이 열에는 부팅 시 작업 일정을 뜻하는 "@reboot" 또는 crontab 항목이 표시됩니다.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>명령</guilabel
+></term>
+<listitem
+><para
+>프로그램 파일 및 매개 변수입니다.</para
+></listitem>
+</varlistentry>
+<varlistentry
+> 
+<term
+><guilabel
+>상태</guilabel
+></term>
+<listitem
+><para
+>활성화 또는 비활성화 상태입니다.</para
+></listitem>
+</varlistentry
+> 
+<varlistentry
+> 
+<term
+><guilabel
+>설명</guilabel
+></term>
+<listitem
+><para
+>목적과 같은 작업에 대한 설명입니다.</para
+></listitem>
+</varlistentry
+> 
+<varlistentry>
+<term
+><guilabel
+>예약 정보</guilabel
+></term>
+<listitem
+><para
+>예약된 작업에 대한 이해하기 쉬운 설명입니다.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+
+<sect3>
+<title
+>환경 변수</title>
+
+<para
+>환경 변수는 <guilabel
+>환경 변수</guilabel
+>목록에 나타납니다. 각 환경 변수에 대해 다음이 표시됩니다: </para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>변수</guilabel
+></term>
+<listitem
+><para
+>변수 이름입니다.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>값</guilabel
+></term>
+<listitem
+><para
+>변수 값입니다.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>상태</guilabel
+></term>
+<listitem
+><para
+>활성화 또는 비활성화 상태입니다.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>설명</guilabel
+></term>
+<listitem
+><para
+>변수의 이해하기 쉬운 설명입니다.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>여기에 나타나는 환경 변수는 모든 예약된 작업에 대한 기존 환경 변수를 재정의합니다.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="new-task">
+<title
+>예약된 작업 추가</title>
+
+<para
+>예약된 새 작업을 만들려면 <guibutton
+>새 작업 ...</guibutton
+>단추를 클릭하십시오. 또는 <mousebutton
+>오른쪽</mousebutton
+> 마우스 단추 콘텍스트 메뉴에서 이 동작을 선택할 수 있습니다.</para>
+
+<sect3>
+<title
+>작업 편집 대화 상자</title>
+
+<screenshot>
+<screeninfo
+><guilabel
+>작업 편집</guilabel
+>대화 상자입니다.</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="newtask.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+><guilabel
+>작업 편집</guilabel
+>대화 상자</phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>명령</guilabel
+></term>
+<listitem
+><para
+>프로그램 이름을 입력하십시오. 상대 경로 또는 절대 경로를 지정할 수 있습니다. 프로그램을 찾으려면 <guiicon
+>찾아보기</guiicon
+> 아이콘을 클릭하십시오.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>설명</guilabel
+></term>
+<listitem
+><para
+>예약할 작업에 대한 설명을 입력하십시오.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>이 작업을 활성화</guibutton
+></term>
+<listitem
+><para
+>작업을 활성화 또는 비활성화하려면 이 단추를 선택하거나 선택 해제하십시오.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>시스템 시작 시 실행</guibutton
+></term>
+<listitem>
+<para
+>시스템 시작 시 작업을 실행하려면 이 단추를 선택하십시오.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>매일 실행</guibutton
+></term>
+<listitem>
+<para
+>작업이 매일 실행되도록 예약하려면 이 단추를 선택하십시오.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>월</guilabel
+></term>
+<listitem
+><para
+>작업을 예약할 월들을 선택하십시오.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>월의 일수</guilabel
+></term>
+<listitem
+><para
+>작업을 예약할 월의 일수를 선택하십시오.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>요일</guilabel
+></term>
+<listitem
+><para
+>작업을 예약할 요일을 선택하십시오.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>시간</guilabel
+></term>
+<listitem
+><para
+>작업을 예약할 시간을 선택하십시오.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>분</guilabel
+></term>
+<listitem
+><para
+>작업을 예약할 분을 선택하십시오. <command
+>cron</command
+>은 1분 간격 이하의 예약 작업을 지원하지 않습니다.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>확인</guibutton
+></term>
+<listitem
+><para
+>이 작업 생성을 완료합니다.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>취소</guibutton
+></term>
+<listitem
+><para
+>이 작업 생성을 취소합니다.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>월과 요일을 모두 선택하면 두 조건 중 하나 이상을 충족할 때 작업이 실행됩니다. 예를 들어, 1일과 15일을 선택하고 일요일을 선택하면 선택한 달의 1일과 15일(요일에 관계없이) 및 선택한 달의 모든 일요일(날짜와 무관하게)에 이 프로그램이 실행됩니다.</para>
+
+<para
+><filename
+>crontab</filename
+>이 저장될 때까지 예약된 작업이 실제로 설정되지 않습니다.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="manage-tasks">
+<title
+>예약된 작업 관리</title>
+
+<para
+>새 작업을 만들 때 <filename
+>crontab</filename
+>이 저장될 때까지 작업이 실제로 변경되지 않습니다.</para>
+
+<para
+>작업 목록 오른쪽에 있는 단추를 사용하여 선택한 작업을 수정, 삭제, 인쇄 또는 지금 실행할 수 있습니다. 콘텍스트 메뉴에서도 이러한 모든 작업을 수행할 수 있습니다. 또한 콘텍스트 메뉴에서도 작업 잘라내기, 복사 및 붙여넣기를 수행할 수 있습니다.</para>
+
+</sect2>
+
+<sect2 id="new-variable">
+<title
+>환경 변수 추가</title>
+
+<para
+>새 환경 변수를 만들려면 <guibutton
+>새 변수 ...</guibutton
+>단추를 클릭하십시오.</para>
+
+<para
+>또는 <mousebutton
+>오른쪽</mousebutton
+> 마우스 단추 메뉴를 사용하여 이 작업을 선택할 수 있습니다.</para>
+
+<sect3>
+<title
+>변수 편집 대화 상자</title>
+
+<screenshot>
+<screeninfo
+><guilabel
+>변수 편집</guilabel
+>대화 상자</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="newvariable.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+><guilabel
+>변수 편집</guilabel
+>대화 상자</phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>변수</guilabel
+></term
+> 
+<listitem
+><para
+>환경 변수 이름을 입력하십시오. 드롭 다운 목록 상자를 사용하여 예약된 작업에 사용되는 가장 일반적인 환경 변수 중에서 선택할 수 있습니다. 여기에는 다음이 포함됩니다:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guimenuitem
+>HOME</guimenuitem
+></term>
+<listitem
+><para
+>기본 사용자의 홈 폴더 대신 사용됩니다.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>MAILTO</guimenuitem
+></term>
+<listitem
+><para
+>사용자의 기본 이메일 주소 이외의 이메일 주소로 이메일 출력을 보냅니다.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>PATH</guimenuitem
+></term>
+<listitem
+><para
+>프로그램 파일의 폴더를 검색하는 데 사용됩니다.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>SHELL</guimenuitem
+></term>
+<listitem
+><para
+>사용자의 기본값 대신 사용됩니다.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>LD_CONFIG_PATH</guimenuitem
+></term>
+<listitem
+><para
+>동적 라이브러리의 위치입니다. 이를 통해 cron 작업에서 시스템 라이브러리 경로 외부에 설치된 라이브러리가 있는 프로그램을 실행할 수 있습니다.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>값</guilabel
+></term>
+<listitem
+><para
+>환경 변수 값을 입력하십시오.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>설명</guilabel
+></term>
+<listitem
+><para
+>환경 변수의 목적과 같은 환경 변수에 대한 설명을 입력하십시오.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>이 변수 사용하기</guilabel
+></term>
+<listitem>
+<para
+>변수를 활성화하거나 비활성화하려면 이 단추를 선택하거나 선택 해제하십시오.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>확인</guibutton
+></term>
+<listitem>
+<para
+>이 변수의 설정을 완료합니다.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>취소</guibutton
+></term>
+<listitem>
+<para
+>이 변수의 설정을 취소합니다.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+><filename
+>crontab</filename
+>이 저장될 때까지 환경 변수는 실제로 설정되지 않습니다.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="manage-variables">
+<title
+>환경 변수 관리</title>
+
+<note
+><para
+>새 변수를 만들 때 <filename
+>crontab</filename
+>을 저장할 때까지 변수를 실제로 변경하지 않습니다.</para
+></note>
+
+<para
+>변수 목록의 오른쪽에 있는 단추를 사용하여 선택한 변수를 수정하거나 삭제하십시오. 콘텍스트 메뉴에서도 이러한 모든 작업을 수행할 수 있습니다. 또한 콘텍스트 메뉴에서도 변수 잘라내기, 복사 및 붙여넣기를 수행할 수 있습니다.</para>
+
+</sect2>
+</sect1>
+</article>
+
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+-->     

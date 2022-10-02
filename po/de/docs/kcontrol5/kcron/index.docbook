@@ -1,0 +1,643 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % German "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE">
+]>
+
+<article id="kcron" lang="&language;">
+<title
+>Auftragsplaner</title>
+
+<articleinfo>
+<authorgroup>
+<author
+><firstname
+>Morgan</firstname
+> <othername
+>N.</othername
+> <surname
+>Sandquist</surname
+> <affiliation
+><address
+>&Morgan.N.Sandquist.mail;</address>
+</affiliation>
+</author>
+
+<othercredit role="developer"
+><firstname
+>Gary</firstname
+> <surname
+>Meyer</surname
+> <affiliation
+><address
+>&Gary.Meyer.mail;</address>
+</affiliation>
+<contrib
+>Entwicklung</contrib>
+</othercredit>
+
+<othercredit role="reviewer"
+><firstname
+>Lauri</firstname
+> <surname
+>Watts</surname
+> <affiliation
+><address
+>&Lauri.Watts.mail;</address>
+</affiliation>
+<contrib
+>Korrektur</contrib>
+</othercredit>
+
+<othercredit role="translator"
+><firstname
+>Robert</firstname
+><surname
+>Schröter</surname
+><affiliation
+><address
+><email
+>robert-schroeter@gmx.de</email
+></address
+></affiliation
+><contrib
+>Übersetzung der Dokumentation</contrib
+></othercredit
+> 
+
+</authorgroup>
+
+<copyright>
+<year
+>2000</year>
+<holder
+>&Morgan.N.Sandquist;</holder>
+</copyright>
+
+<date
+>2017-01-12</date>
+<releaseinfo
+>Anwendungen 16.12</releaseinfo>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>cron</keyword>
+<keyword
+>crontab</keyword>
+<keyword
+>scheduler</keyword>
+</keywordset>
+
+</articleinfo>
+
+<sect1 id="introduction">
+<title
+>Einleitung</title>
+
+<para
+>Dies ist ein Modul um für andere Programme einen Zeitplan zur Ausführung im Hintergrund festzulegen. Es ist eine grafische Benutzeroberfläche für das &UNIX;-Systemprogramm <command
+>cron</command
+>.</para>
+
+<important
+><para
+>Ihr System muss zuerst den cron-Dämon <filename
+>crond</filename
+> starten, sonst funktionieren die Einstellungen in diesem Modul nicht.</para
+></important>
+
+<sect2 id="kcron-start-up">
+<title
+>Start des Moduls</title>
+
+<para
+>Beim Start dieses Moduls wird eine Liste bereits geplanter Aufträge und dazugehöriger Umgebungsvariablen angezeigt. Wenn Sie dieses Modul mit Systemverwalterrechten benutzen, werden sowohl die geplanten Aufträge aller Benutzer des Systems wie auch die systeminternen Aufträge angezeigt.</para>
+<!--admin mode-->
+<screenshot>
+<screeninfo
+>Start des Moduls</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="kcronstart.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Start des Moduls</phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<sect3>
+<title
+>Geplante Aufträge</title>
+
+<para
+>Die geplanten Aufträge erscheinen in einer Liste <guilabel
+>Aufträge</guilabel
+>. Für jeden Auftrag wird angezeigt:</para>
+
+<variablelist>
+
+<!-- system cron first column User=root-->
+<varlistentry>
+<term
+><guilabel
+>Planung</guilabel
+></term>
+<listitem
+><para
+>In dieser Spalte wird entweder „@reboot“ für Aufträge angezeigt, die beim Hochfahren des Rechners ausgeführt werden, oder die Einträge aus der Datei crontab.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Befehl</guilabel
+></term>
+<listitem
+><para
+>Programmname und Parameter.</para
+></listitem>
+</varlistentry>
+<varlistentry
+> 
+<term
+><guilabel
+>Status</guilabel
+></term>
+<listitem
+><para
+>Aktiviert oder Deaktiviert.</para
+></listitem>
+</varlistentry
+> 
+<varlistentry
+> 
+<term
+><guilabel
+>Beschreibung</guilabel
+></term>
+<listitem
+><para
+>Eine Beschreibung des Auftrags, wie zum Beispiel den Einsatzzweck.</para
+></listitem>
+</varlistentry
+> 
+<varlistentry>
+<term
+><guilabel
+>Details zur Planung</guilabel
+></term>
+<listitem
+><para
+>Ausführliche Beschreibung des geplanten Auftrags.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+
+<sect3>
+<title
+>Umgebungsvariablen</title>
+
+<para
+>Umgebungsvariablen erscheinen in der Liste <guilabel
+>Umgebungsvariablen</guilabel
+>. Für jede Variable wird folgendes angezeigt: </para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Variable</guilabel
+></term>
+<listitem
+><para
+>Name der Variablen.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Wert</guilabel
+></term>
+<listitem
+><para
+>Wert der Variablen.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Status</guilabel
+></term>
+<listitem
+><para
+>Aktiviert oder Deaktiviert.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Kommentar</guilabel
+></term>
+<listitem
+><para
+>Beschreibung der Variablen.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Die hier erscheinenden Umgebungsvariablen setzen die sonst bestehenden Umgebungsvariablen für alle aufgeführten Aufträge außer Kraft.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="new-task">
+<title
+>Neue Aufträge hinzufügen</title>
+
+<para
+>Um eine neuen Auftrag hinzuzufügen, klicken Sie auf den Knopf <guibutton
+>Neuer Auftrag ...</guibutton
+> Diese Aktion kann auch aus dem Kontextmenü gewählt werden, das durch Klicken mit der <mousebutton
+>rechten</mousebutton
+> Maustaste aufgerufen wird.</para>
+
+<sect3>
+<title
+>Der Dialog Neuer Auftrag</title>
+
+<screenshot>
+<screeninfo
+>Der Dialog<guilabel
+>Neuer Auftrag</guilabel
+>.</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="newtask.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Der Dialog<guilabel
+>Neuer Auftrag</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Befehl</guilabel
+></term>
+<listitem
+><para
+>Geben Sie hier den Namen des zu startenden Programms ein. Sie können entweder einen relativen oder einen absoluten Pfadnamen angeben. Wenn Sie das Programm zuerst suchen möchten, drücken Sie das Symbol <guiicon
+>Dateiauswahl</guiicon
+>.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Kommentar</guilabel
+></term>
+<listitem
+><para
+>Hier können Sie eine Beschreibung des Auftrags eingeben.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Diesen Auftrag aktivieren</guibutton
+></term>
+<listitem
+><para
+>Um eine Auftrag zu aktivieren oder zu deaktivieren, klicken Sie auf dieses Ankreuzfeld.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Ausführen während des Systemstarts</guibutton
+></term>
+<listitem>
+<para
+>Aktivieren Sie diese Einstellung, um Aufträge beim Hochfahren des Rechners ausführen zu lassen.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Jeden Tag ausführen</guibutton
+></term>
+<listitem>
+<para
+>Wenn der Auftrag jeden Tag ausgeführt werden soll, aktivieren Sie diese Einstellung.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Monate</guilabel
+></term>
+<listitem
+><para
+>Wählen Sie die Monate aus, in denen der Auftrag ausgeführt werden soll.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Tage</guilabel
+></term>
+<listitem
+><para
+>Wählen Sie die Tage im Monat aus, an denen der Auftrag ausgeführt werden soll.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Wochentage</guilabel
+></term>
+<listitem
+><para
+>Wählen Sie die Wochentage aus, an denen der Auftrag ausgeführt werden soll.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Stunden</guilabel
+></term>
+<listitem
+><para
+>Wählen Sie die Stunde(n), zu der der Auftrag ausgeführt werden soll.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Minuten</guilabel
+></term>
+<listitem
+><para
+>Wählen Sie die Minute(n), zu der der Auftrag ausgeführt werden soll. Das Programm <command
+>cron</command
+> kann Aufträge nur im Mindestzeitabstand von einer Minute ausführen.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>OK</guibutton
+></term>
+<listitem
+><para
+>Schließt Bearbeitung des Auftrag ab.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Abbrechen</guibutton
+></term>
+<listitem
+><para
+>Bricht die Bearbeitung des Auftrags ab.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Wenn Sie sowohl Monatstag(e) als auch Wochentag(e) angeben, wird der Auftrag sowohl bei einem passenden Datum als auch an einem passenden Wochentag ausgeführt. Wenn Sie z. B. den 1. und 15. und Sonntag auswählen, wird das Programm am 1. und 15. der gewählten Monate unabhängig vom Wochentag ausgeführt, und außerdem an jedem Sonntag der Monate, egal, auf welches Datum sie fallen.</para>
+
+<para
+>Der Auftrag ist erst dann fertig aufgenommen, wenn die <filename
+>crontab</filename
+> gespeichert wurde.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="manage-tasks">
+<title
+>Aufträge verwalten</title>
+
+<para
+>Wie bei der Erstellung neuer Aufträge werden Änderungen erst dann aktiv, wenn die <filename
+>crontab</filename
+> gespeichert wurde.</para>
+
+<para
+>Mit den Knöpfen rechts von der Auftragsliste können Aufträge bearbeitet, gelöscht, gedruckt oder sofort ausgeführt werden. Diese Aktionen finden Sie ebenfalls im Kontextmenü. Zusätzlich enthält dieses Menü noch Aktionen, um Aufträge auszuschneiden, zu kopieren und einzufügen.</para>
+
+</sect2>
+
+<sect2 id="new-variable">
+<title
+>Umgebungsvariablen hinzufügen</title>
+
+<para
+>Um eine neue Umgebungsvariable zu erstellen, klicken Sie auf den Knopf <guibutton
+>Neue Variable ...</guibutton
+>.</para>
+
+<para
+>Alternativ dazu können Sie auch mit der <mousebutton
+>rechten</mousebutton
+> Maustaste auf den Auftrag klicken und diese Aktion auswählen.</para>
+
+<sect3>
+<title
+>Der Dialog Neue Variable</title>
+
+<screenshot>
+<screeninfo
+>Der Dialog <guilabel
+>Neue Variable</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="newvariable.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Der Dialog <guilabel
+>Neue Variable</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Variable</guilabel
+></term
+> 
+<listitem
+><para
+>Geben Sie den Namen der Variablen ein. Sie können auch eine aus der Liste der am häufigsten benutzten Umgebungsvariablen wählen; klicken Sie hierzu auf den Pfeil neben dem Feld für den Variablennamen. Dies sind:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guimenuitem
+>HOME</guimenuitem
+></term>
+<listitem
+><para
+>Ordner, der anstelle des normalen Persönlichen Orders des Benutzers verwendet werden soll.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>MAILTO</guimenuitem
+></term>
+<listitem
+><para
+>Um E-Mails aus dem aufzurufenden Programm an eine andere als die normale Adresse zu schicken</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>PATH</guimenuitem
+></term>
+<listitem
+><para
+>Pfadliste, in der nach ausführbaren Programmen gesucht wird.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>SHELL</guimenuitem
+></term>
+<listitem
+><para
+>Shell, die anstelle der normalen Shell benutzt wird</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>LD_CONFIG_PATH</guimenuitem
+></term>
+<listitem
+><para
+>Der Speicherort dynamischer Bibliotheken. Damit können geplante Aufträge ausgeführt werden, die Programme verwenden, deren Bibliotheken nicht im Systempfad installiert sind.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Wert</guilabel
+></term>
+<listitem
+><para
+>Geben Sie hier den Wert der Variablen ein.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Kommentar</guilabel
+></term>
+<listitem
+><para
+>Geben Sie eine Beschreibung der Variablen ein, also wofür sie verwendet wird.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Diese Variable aktivieren</guilabel
+></term>
+<listitem>
+<para
+>Um die Variable zu deaktivieren oder wieder zu aktivieren, klicken Sie auf diesen Knopf.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>OK</guibutton
+></term>
+<listitem>
+<para
+>Beendet das Bearbeiten der Variablen.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Abbrechen</guibutton
+></term>
+<listitem>
+<para
+>Bricht die Bearbeitung der Variablen ab.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Die Umgebungsvariable ist erst dann fertig aufgenommen, wenn die <filename
+>crontab</filename
+> gespeichert wurde.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="manage-variables">
+<title
+>Umgebungsvariablen verwalten</title>
+
+<note
+><para
+>Wie bei der Erstellung neuer Variablen werden Änderungen erst dann vorgenommen, wenn die <filename
+>crontab</filename
+> gespeichert wurde.</para
+></note>
+
+<para
+>Mit den Knöpfen rechts von der Variablenliste können Variablen bearbeitet oder gelöscht werden Diese Aktionen finden Sie ebenfalls im Kontextmenü. Zusätzlich enthält dieses Menü noch Aktionen, um Variablen auszuschneiden, zu kopieren und einzufügen.</para>
+
+</sect2>
+</sect1>
+</article>
+
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+-->     

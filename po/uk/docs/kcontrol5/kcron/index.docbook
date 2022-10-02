@@ -1,0 +1,643 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % Ukrainian "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE">
+]>
+
+<article id="kcron" lang="&language;">
+<title
+>Планувальник завдань</title>
+
+<articleinfo>
+<authorgroup>
+<author
+><firstname
+>Morgan</firstname
+> <othername
+>N.</othername
+> <surname
+>Sandquist</surname
+> <affiliation
+><address
+>&Morgan.N.Sandquist.mail;</address>
+</affiliation>
+</author>
+
+<othercredit role="developer"
+><firstname
+>Gary</firstname
+> <surname
+>Meyer</surname
+> <affiliation
+><address
+>&Gary.Meyer.mail;</address>
+</affiliation>
+<contrib
+>Розробник</contrib>
+</othercredit>
+
+<othercredit role="reviewer"
+><firstname
+>Lauri</firstname
+> <surname
+>Watts</surname
+> <affiliation
+><address
+>&Lauri.Watts.mail;</address>
+</affiliation>
+<contrib
+>Рецензент</contrib>
+</othercredit>
+
+<othercredit role="translator"
+><firstname
+>Юрій</firstname
+><surname
+>Чорноіван</surname
+><affiliation
+><address
+><email
+>yurchor@ukr.net</email
+></address
+></affiliation
+><contrib
+>Переклад українською</contrib
+></othercredit
+> 
+
+</authorgroup>
+
+<copyright>
+<year
+>2000</year>
+<holder
+>&Morgan.N.Sandquist;</holder>
+</copyright>
+
+<date
+>12 січня 2017 року</date>
+<releaseinfo
+>Програми 16.12</releaseinfo>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>cron</keyword>
+<keyword
+>crontab</keyword>
+<keyword
+>планувальник</keyword>
+</keywordset>
+
+</articleinfo>
+
+<sect1 id="introduction">
+<title
+>Вступ</title>
+
+<para
+>Це модуль для створення розкладу запуску інших програм, які запускаються у тлі системи. Ця програма є графічним інтерфейсом користувача до програми <command
+>cron</command
+>, системного планувальника &UNIX;.</para>
+
+<important
+><para
+>Перш за все, не забудьте повідомити систему, що слід запустити фонову службу <filename
+>crond</filename
+>, якщо ви цього не зробите, параметри, вказані за допомогою цього модуля, не працюватимуть.</para
+></important>
+
+<sect2 id="kcron-start-up">
+<title
+>Запуск</title>
+
+<para
+>Після відкриття сторінки цього модуля ви побачите список існуючих запланованих завдань і відповідних системних змінних. Якщо програму запущено від імені користувача root (адміністратора), ви побачите ці записи для всіх користувачів цього комп’ютера, а також заплановані системні завдання.</para>
+<!--admin mode-->
+<screenshot>
+<screeninfo
+>запуск</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="kcronstart.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>запуск</phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<sect3>
+<title
+>Заплановані завдання</title>
+
+<para
+>Заплановані завдання буде показано у списку <guilabel
+>Завдання</guilabel
+>. Для кожного пункту запланованого завдання буде показано:</para>
+
+<variablelist>
+
+<!-- system cron first column User=root-->
+<varlistentry>
+<term
+><guilabel
+>Планування</guilabel
+></term>
+<listitem
+><para
+>У цьому стовпчику буде показано або "@reboot" для завдань розкладу, що виконуються під час завантаження, або запис у  crontab.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Команда</guilabel
+></term>
+<listitem
+><para
+>Файл програми і параметри.</para
+></listitem>
+</varlistentry>
+<varlistentry
+> 
+<term
+><guilabel
+>Стан</guilabel
+></term>
+<listitem
+><para
+>Увімкнено або вимкнено</para
+></listitem>
+</varlistentry
+> 
+<varlistentry
+> 
+<term
+><guilabel
+>Опис</guilabel
+></term>
+<listitem
+><para
+>Опис завдання, наприклад його призначення.</para
+></listitem>
+</varlistentry
+> 
+<varlistentry>
+<term
+><guilabel
+>Подробиці планування</guilabel
+></term>
+<listitem
+><para
+>Опис запланованого завдання мовою локалі користувача.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+
+<sect3>
+<title
+>Змінні середовища</title>
+
+<para
+>Змінні середовища буде показано у списку <guilabel
+>Змінні середовища</guilabel
+>. Для кожної змінної середовища показано: </para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Змінна</guilabel
+></term>
+<listitem
+><para
+>Назву змінної.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Значення</guilabel
+></term>
+<listitem
+><para
+>Значення змінної.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Стан</guilabel
+></term>
+<listitem
+><para
+>Увімкнено або вимкнено</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Коментар</guilabel
+></term>
+<listitem
+><para
+>Опис змінної мовою локалі користувача.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Системні змінні, які тут показано, перевизначають будь-які існуючі змінні середовища для всіх запланованих завдань.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="new-task">
+<title
+>Додавання запланованих завдань</title>
+
+<para
+>Щоб створити новий запис завдання за розкладом, натисніть кнопку <guibutton
+>Нове завдання...</guibutton
+>. Крім того, ви можете вибрати цей пункт з контекстного меню, що викликається клацанням <mousebutton
+>правою</mousebutton
+> кнопкою миші.</para>
+
+<sect3>
+<title
+>Діалогове вікно «Змінити завдання»</title>
+
+<screenshot>
+<screeninfo
+>Діалогове вікно <guilabel
+>Змінити завдання</guilabel
+>.</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="newtask.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Діалогове вікно <guilabel
+>Змінити завдання</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Команда</guilabel
+></term>
+<listitem
+><para
+>Тут можна ввести назву файла програми. Ви можете вказати відносний або абсолютний шлях до цього файла. Якщо ви бажаєте самі знайти програму, натисніть кнопку <guiicon
+>Навігація...</guiicon
+>.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Коментар</guilabel
+></term>
+<listitem
+><para
+>Тут ви можете ввести опис завдання, яке слід запланувати.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Увімкнути це завдання</guibutton
+></term>
+<listitem
+><para
+>Щоб увімкнути або вимкнути завдання, позначте або зніміть позначку з цього поля.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Виконувати при запуску системи</guibutton
+></term>
+<listitem>
+<para
+>Натисніть позначте цей пункт, щоб завдання було виконано під час завантаження системи.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Виконувати щодня</guibutton
+></term>
+<listitem>
+<para
+>Якщо вам потрібно запланувати запуск завдання щодня, позначте цей пункт.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Місяці</guilabel
+></term>
+<listitem
+><para
+>Тут можна вказати кількість місяців, протягом яких слід планувати виконання цього завдання.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Дні місяця</guilabel
+></term>
+<listitem
+><para
+>Тут можна вказати дні місяця, на які слід запланувати виконання цього завдання.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Дні тижня</guilabel
+></term>
+<listitem
+><para
+>Тут можна вказати дні тижня, на які слід запланувати виконання цього завдання.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Години</guilabel
+></term>
+<listitem
+><para
+>Тут можна вказати годину, о котрій слід запланувати виконання цього завдання.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Хвилини</guilabel
+></term>
+<listitem
+><para
+>Тут можна вказати кількість хвилин, за які слід запланувати виконання цього завдання. <command
+>cron</command
+> не підтримує планування завдань за проміжки, менші за одну хвилину.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Гаразд</guibutton
+></term>
+<listitem
+><para
+>Завершує створення розкладу цього завдання.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Скасувати</guibutton
+></term>
+<listitem
+><para
+>Скасовує створення розкладу для цього завдання.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Якщо ви обрали, наприклад, і дні місяця, і дні тижня, завдання буде запущено, якщо буде виконано хоч одну з умов. Тобто, якщо ви обрали перше, п’ятнадцяте числа і неділю, програму буде запущено першого і п’ятнадцятого числа вибраних місяців (незалежно від дня тижня, на який вони припадають), а також кожної неділі обраних місяців (незалежно від числа місяця, на який вона припадає).</para>
+
+<para
+>Завдання не потрапить до справжнього розкладу, доки не буде збережено <filename
+>crontab</filename
+>.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="manage-tasks">
+<title
+>Керування запланованими завданнями</title>
+
+<para
+>Так само зі створенням нових завдань: зміни у завданнях не буде зроблено, доки не буде збережено файл <filename
+>crontab</filename
+>.</para>
+
+<para
+>Скористайтеся кнопками, розташованими праворуч від списку завдань для зміни, вилучення, друку або негайного виконання позначеного завдання. Доступ до цих пунктів дій можна отримати і за допомогою контекстного меню. Крім того, за допомогою контекстного меню ви зможете вирізати, скопіювати або вставити пункти завдань.</para>
+
+</sect2>
+
+<sect2 id="new-variable">
+<title
+>Додавання змінних середовища</title>
+
+<para
+>Створити нову змінну середовища можна натисканням кнопки <guibutton
+>Нова змінна...</guibutton
+>.</para>
+
+<para
+>Крім того, ви можете скористатися контекстним меню, яке викликається клацанням <mousebutton
+>правою</mousebutton
+> кнопкою миші, щоб скористатися цією дією.</para>
+
+<sect3>
+<title
+>Діалогове вікно «Редагування змінної»</title>
+
+<screenshot>
+<screeninfo
+>Діалогове вікно <guilabel
+>Редагування змінної</guilabel
+>.</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="newvariable.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Діалогове вікно <guilabel
+>Редагування змінної</guilabel
+>.</phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Змінна</guilabel
+></term
+> 
+<listitem
+><para
+>Введіть назву змінної середовища. Ви можете скористатися спадним списком, щоб обрати одну зі звичайних змінних середовища, які використовуються для керування запланованими завданнями. Серед цих змінних:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guimenuitem
+>HOME</guimenuitem
+></term>
+<listitem
+><para
+>Змінна, яка позначає домашню теку користувача.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>MAILTO</guimenuitem
+></term>
+<listitem
+><para
+>Змінна, яка містить адресу скриньки електронної пошти для листування, яка відрізняється від типової адреси електронної пошти користувача.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>PATH</guimenuitem
+></term>
+<listitem
+><para
+>Змінна, що використовується для пошуку тек з файлами програм.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>SHELL</guimenuitem
+></term>
+<listitem
+><para
+>Змінна, яка використовується замість типового значення для користувача.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>LD_CONFIG_PATH</guimenuitem
+></term>
+<listitem
+><para
+>Розташування динамічних бібліотек. За допомогою цього параметра можна визначати завдання cron з виконання програм, бібліотеки яких має бути встановлено поза межами каталогів, де зберігаються загальносистемні бібліотеки.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Значення</guilabel
+></term>
+<listitem
+><para
+>Введіть значення змінної середовища.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Коментар</guilabel
+></term>
+<listitem
+><para
+>Введіть опис змінної середовища, наприклад її призначення.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Увімкнути цю змінну</guilabel
+></term>
+<listitem>
+<para
+>Щоб увімкнути або вимкнути змінну, поставте або зніміть позначку у цьому полі.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Гаразд</guibutton
+></term>
+<listitem>
+<para
+>Завершує встановлення змінної.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Скасувати</guibutton
+></term>
+<listitem>
+<para
+>Скасовує встановлення змінної.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Значення змінної середовища не буде встановлено по-справжньому, доки не буде збережено файл <filename
+>crontab</filename
+>.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="manage-variables">
+<title
+>Керування змінними середовища</title>
+
+<note
+><para
+>Так само зі створенням нових змінних: змінну не буде встановлено, доки не буде збережено файл <filename
+>crontab</filename
+>.</para
+></note>
+
+<para
+>Скористайтеся кнопками, розташованими праворуч від списку змінних для зміни або вилучення позначеної змінної. Доступ до цих пунктів дій можна отримати і за допомогою контекстного меню. Крім того, за допомогою контекстного меню ви зможете вирізати, скопіювати або вставити пункти змінних.</para>
+
+</sect2>
+</sect1>
+</article>
+
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+-->     

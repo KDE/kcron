@@ -1,0 +1,625 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % Catalan  "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE">
+]>
+
+<article id="kcron" lang="&language;">
+<title
+>Planificador de tasques</title>
+
+<articleinfo>
+<authorgroup>
+<author
+><firstname
+>Morgan</firstname
+> <othername
+>N.</othername
+> <surname
+>Sandquist</surname
+> <affiliation
+><address
+>&Morgan.N.Sandquist.mail;</address>
+</affiliation>
+</author>
+
+<othercredit role="developer"
+><firstname
+>Gary</firstname
+> <surname
+>Meyer</surname
+> <affiliation
+><address
+>&Gary.Meyer.mail;</address>
+</affiliation>
+<contrib
+>Desenvolupador</contrib>
+</othercredit>
+
+<othercredit role="reviewer"
+><firstname
+>Lauri</firstname
+> <surname
+>Watts</surname
+> <affiliation
+><address
+>&Lauri.Watts.mail;</address>
+</affiliation>
+<contrib
+>Revisor</contrib>
+</othercredit>
+
+&traductor.Antoni.Bella; 
+
+</authorgroup>
+
+<copyright>
+<year
+>2000</year>
+<holder
+>&Morgan.N.Sandquist;</holder>
+</copyright>
+
+<date
+>12 de gener de 2017</date>
+<releaseinfo
+>Aplicacions 16.12</releaseinfo>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>cron</keyword>
+<keyword
+>crontab</keyword>
+<keyword
+>planificador</keyword>
+</keywordset>
+
+</articleinfo>
+
+<sect1 id="introduction">
+<title
+>Introducció</title>
+
+<para
+>Aquest és un mòdul per a planificar l'execució de programes en segon pla. És una interfície gràfica d'usuari per al <command
+>cron</command
+>, el planificador del sistema &UNIX;.</para>
+
+<important
+><para
+>No oblideu d'indicar-li al vostre sistema que primer iniciï el dimoni del cron <filename
+>crond</filename
+>, o les opcions en aquest mòdul no funcionaran.</para
+></important>
+
+<sect2 id="kcron-start-up">
+<title
+>Inici</title>
+
+<para
+>Quan inicieu aquest mòdul veureu una vista resumida de les tasques planificades existents i de les variables d'entorn associades. Si l'esteu executant com a usuari root, veureu aquests elements per a tots els usuaris, així com les tasques planificades del sistema.</para>
+<!--admin mode-->
+<screenshot>
+<screeninfo
+>inici</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="kcronstart.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>inici</phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<sect3>
+<title
+>Tasques planificades</title>
+
+<para
+>Les tasques planificades apareixen a la llista <guilabel
+>Tasques</guilabel
+>. Per a cada tasca planificada, es mostren els següents elements:</para>
+
+<variablelist>
+
+<!-- system cron first column User=root-->
+<varlistentry>
+<term
+><guilabel
+>Planificació</guilabel
+></term>
+<listitem
+><para
+>En aquesta columna es mostra «@reboot» per a les tasques planificades en l'arrencada, o l'entrada del crontab.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Ordre</guilabel
+></term>
+<listitem
+><para
+>Un fitxer de programa i els paràmetres.</para
+></listitem>
+</varlistentry>
+<varlistentry
+> 
+<term
+><guilabel
+>Estat</guilabel
+></term>
+<listitem
+><para
+>Activada o desactivada.</para
+></listitem>
+</varlistentry
+> 
+<varlistentry
+> 
+<term
+><guilabel
+>Descripció</guilabel
+></term>
+<listitem
+><para
+>Introduïu-hi una descripció de la tasca, la seva finalitat per exemple.</para
+></listitem>
+</varlistentry
+> 
+<varlistentry>
+<term
+><guilabel
+>Detalls de la planificació</guilabel
+></term>
+<listitem
+><para
+>Una descripció en llenguatge natural de la tasca planificada.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+
+<sect3>
+<title
+>Variables d'entorn</title>
+
+<para
+>Les variables d'entorn apareixen a la llista <guilabel
+>Variables d'entorn</guilabel
+>. Per a cada variable d'entorn es mostra el següent: </para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Variable</guilabel
+></term>
+<listitem
+><para
+>El nom de la variable.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Valor</guilabel
+></term>
+<listitem
+><para
+>El valor de la variable.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Estat</guilabel
+></term>
+<listitem
+><para
+>Activada o desactivada.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Comentari</guilabel
+></term>
+<listitem
+><para
+>Una descripció corrent de la variable.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Les variables d'entorn que apareixen aquí substituiran a qualsevol variable d'entorn existent per a totes les tasques planificades.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="new-task">
+<title
+>Afegir tasques planificades</title>
+
+<para
+>Per a crear una nova tasca planificada, feu clic al botó <guibutton
+>Tasca nova...</guibutton
+>. Alternativament, podeu seleccionar aquesta acció des del menú contextual del &BDR;.</para>
+
+<sect3>
+<title
+>El diàleg Edita la tasca</title>
+
+<screenshot>
+<screeninfo
+>El diàleg <guilabel
+>Edita la tasca</guilabel
+>.</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="newtask.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>El diàleg <guilabel
+>Edita la tasca</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Ordre</guilabel
+></term>
+<listitem
+><para
+>Introduïu el nom del programa. Podeu especificar-hi un camí relatiu o absolut. Si voleu cercar el programa, premeu el botó <guiicon
+>Explora</guiicon
+>.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Comentari</guilabel
+></term>
+<listitem
+><para
+>Introduïu una descripció de la tasca a planificar.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Activa aquesta tasca</guibutton
+></term>
+<listitem
+><para
+>Per activar o desactivar la tasca, seleccioneu o desseleccioneu aquest botó.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Executa en arrencar el sistema</guibutton
+></term>
+<listitem>
+<para
+>Marqueu aquest botó per a executar la tasca en arrencar el sistema.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Executa cada dia</guibutton
+></term>
+<listitem>
+<para
+>Si voleu planificar la tasca per executar-se diàriament, seleccioneu aquest botó.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Mesos</guilabel
+></term>
+<listitem
+><para
+>Selecciona els mesos durant els quals la tasca romandrà planificada.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Dies del mes</guilabel
+></term>
+<listitem
+><para
+>Selecciona els dies del mes durant els quals la tasca romandrà planificada.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Dies de la setmana</guilabel
+></term>
+<listitem
+><para
+>Selecciona els dies de la setmana durant els quals la tasca romandrà planificada.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Hores</guilabel
+></term>
+<listitem
+><para
+>Selecciona les hores durant les quals la tasca romandrà planificada.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Minuts</guilabel
+></term>
+<listitem
+><para
+>Selecciona els minuts durant els quals la tasca romandrà planificada. El <command
+>cron</command
+> no permet la planificació de tasques a intervals inferiors a un minut.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>D'acord</guibutton
+></term>
+<listitem
+><para
+>Completa la creació d'aquesta tasca.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Cancel·la</guibutton
+></term>
+<listitem
+><para
+>Cancel·la la creació d'aquesta tasca.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Si seleccioneu alhora dies del mes i dies de la setmana, la tasca s'executarà quan es compleixi qualsevol de les condicions. Per exemple, si seleccioneu els dies 1 i 15 de cada mes, així com el diumenge, el programa s'executarà cada dia 1 i 15 dels mesos seleccionats (independentment del dia de la setmana) i també s'executarà tots els diumenges dels mesos seleccionats (independentment del dia del mes).</para>
+
+<para
+>Les tasques planificades no estaran realment en acció fins que es desi el <filename
+>crontab</filename
+>.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="manage-tasks">
+<title
+>Gestionar les tasques planificades</title>
+
+<para
+>Quan s'han creat tasques noves, els canvis no estaran realment en acció fins que es desi el <filename
+>crontab</filename
+>.</para>
+
+<para
+>Utilitzeu els botons a la dreta de la llista de tasques per a modificar, suprimir, imprimir o executar ara una tasca seleccionada. També trobareu totes aquestes accions en el menú contextual. Addicionalment el menú contextual proporciona accions per a retallar, copiar i enganxar les tasques.</para>
+
+</sect2>
+
+<sect2 id="new-variable">
+<title
+>Afegir les variables d'entorn</title>
+
+<para
+>Per a crear una variable d'entorn nova, feu clic al botó <guibutton
+>Variable nova...</guibutton
+>.</para>
+
+<para
+>Alternativament, podeu utilitzar el menú del &BDR; per a seleccionar aquesta acció.</para>
+
+<sect3>
+<title
+>El diàleg Edita la variable</title>
+
+<screenshot>
+<screeninfo
+>El diàleg <guilabel
+>Edita la variable</guilabel
+>.</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="newvariable.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>El diàleg <guilabel
+>Edita la variable</guilabel
+>.</phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Variable</guilabel
+></term
+> 
+<listitem
+><para
+>Introduïu el nom de la variable d'entorn. Podeu utilitzar el quadre de llista desplegable, a on trobareu les variables d'entorn més freqüents per a les tasques planificades. Aquestes inclouen:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guimenuitem
+>HOME</guimenuitem
+></term>
+<listitem
+><para
+>A utilitzar en comptes de la carpeta d'inici per omissió de l'usuari.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>MAILTO</guimenuitem
+></term>
+<listitem
+><para
+>Per enviar el correu de sortida cap a una adreça de correu electrònic diferent de l'adreça per omissió de l'usuari.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>PATH</guimenuitem
+></term>
+<listitem
+><para
+>A utilitzar per a cercar en carpetes els fitxers de programa.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>SHELL</guimenuitem
+></term>
+<listitem
+><para
+>A utilitzar en comptes del valor per omissió de l'usuari.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>LD_CONFIG_PATH</guimenuitem
+></term>
+<listitem
+><para
+>La ubicació de les biblioteques dinàmiques. Permet que les tasques del «cron» executin les aplicacions amb les biblioteques necessàries per executar-se instal·lades fora del camí de les biblioteques del sistema.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Valor</guilabel
+></term>
+<listitem
+><para
+>Introduïu-hi el valor de la variable.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Comentari</guilabel
+></term>
+<listitem
+><para
+>Introduïu-hi una descripció per a la variable d'entorn, tal com la seva finalitat.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Activa aquesta variable</guilabel
+></term>
+<listitem>
+<para
+>Per activar o desactivar la variable, seleccioneu o desseleccioneu aquest botó.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>D'acord</guibutton
+></term>
+<listitem>
+<para
+>Completa l'opció de configuració d'aquesta variable.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Cancel·la</guibutton
+></term>
+<listitem>
+<para
+>Cancel·la l'opció de configuració d'aquesta variable.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Les variables d'entorn no estaran realment en acció fins que es desi el <filename
+>crontab</filename
+>.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="manage-variables">
+<title
+>Gestionar les variables d'entorn</title>
+
+<note
+><para
+>Quan s'han creat variables noves, els canvis no estaran realment en acció fins que es desi el <filename
+>crontab</filename
+>.</para
+></note>
+
+<para
+>Utilitzeu els botons a la dreta de la llista de variables per a modificar, suprimir, imprimir o executar ara una variable seleccionada. També trobareu totes aquestes accions en el menú contextual. Addicionalment el menú contextual proporciona accions per a retallar, copiar i enganxar les variables.</para>
+
+</sect2>
+</sect1>
+</article>
+
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+-->     

@@ -1,0 +1,641 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % Russian "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE">
+]>
+
+<article id="kcron" lang="&language;">
+<title
+>Планировщик заданий</title>
+
+<articleinfo>
+<authorgroup>
+<author
+><firstname
+>Morgan</firstname
+> <othername
+>N.</othername
+> <surname
+>Sandquist</surname
+> <affiliation
+><address
+>&Morgan.N.Sandquist.mail;</address>
+</affiliation>
+</author>
+
+<othercredit role="developer"
+><firstname
+>Gary</firstname
+> <surname
+>Meyer</surname
+> <affiliation
+><address
+>&Gary.Meyer.mail;</address>
+</affiliation>
+<contrib
+>Разработчик</contrib>
+</othercredit>
+
+<othercredit role="reviewer"
+><firstname
+>Lauri</firstname
+> <surname
+>Watts</surname
+> <affiliation
+><address
+>&Lauri.Watts.mail;</address>
+</affiliation>
+<contrib
+>Редактор</contrib>
+</othercredit>
+
+<othercredit role="translator"
+><firstname
+>Andrei</firstname
+><surname
+>Darashenka</surname
+><affiliation
+><address
+><email
+>adorosh+KDE.RU@smolevichi.org.by</email
+></address
+></affiliation
+><contrib
+>Перевод на русский</contrib
+></othercredit
+> 
+
+</authorgroup>
+
+<copyright>
+<year
+>2000</year>
+<holder
+>&Morgan.N.Sandquist;</holder>
+</copyright>
+
+<date
+>12 января 2017 г.</date>
+<releaseinfo
+>Приложения KDE 16.12</releaseinfo>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>cron</keyword>
+<keyword
+>crontab</keyword>
+<keyword
+>планировщик</keyword>
+</keywordset>
+
+</articleinfo>
+
+<sect1 id="introduction">
+<title
+>Введение</title>
+
+<para
+>Этот модуль настройки предназначен для для планирования запуска программ в фоновом режиме. Другими словами, это графический интерфейс для планировщика cron в &UNIX;-системах.</para>
+
+<important
+><para
+>Не забудьте запустить <filename
+>crond</filename
+> — демон cron, иначе параметры в этом модуле настройки не будут работать.</para
+></important>
+
+<sect2 id="kcron-start-up">
+<title
+>Запуск</title>
+
+<para
+>После запуска этого модуля вы увидите сводку существующих запланированных заданий и соответствующих переменных окружения. Если модуль настройки запущен от имени суперпользователя, вы увидите задания для всех пользователей системы, а также системные задания.</para>
+<!--admin mode-->
+<screenshot>
+<screeninfo
+>запуск</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="kcronstart.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>запуск</phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<sect3>
+<title
+>Запланированные задания</title>
+
+<para
+>Запланированные задания показываются в списке под заголовком <guilabel
+>Запланированные задания</guilabel
+>. Для каждого задания приводится следующая информация:</para>
+
+<variablelist>
+
+<!-- system cron first column User=root-->
+<varlistentry>
+<term
+><guilabel
+>Периодичность</guilabel
+></term>
+<listitem
+><para
+>В этом столбце может быть написано либо «@reboot» (для заданий, запускаемых при загрузке системы), либо периодичность, в формате crontab.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Команда</guilabel
+></term>
+<listitem
+><para
+>Файл программы и параметры запуска.</para
+></listitem>
+</varlistentry>
+<varlistentry
+> 
+<term
+><guilabel
+>Состояние</guilabel
+></term>
+<listitem
+><para
+>Включено или выключено</para
+></listitem>
+</varlistentry
+> 
+<varlistentry
+> 
+<term
+><guilabel
+>Описание</guilabel
+></term>
+<listitem
+><para
+>Описание задания, например, его назначение.</para
+></listitem>
+</varlistentry
+> 
+<varlistentry>
+<term
+><guilabel
+>Подробности</guilabel
+></term>
+<listitem
+><para
+>Расписание выполнения задания в виде текста.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+
+<sect3>
+<title
+>Переменные окружения</title>
+
+<para
+>Переменные окружения показываются в списке под заголовком <guilabel
+>Переменные среды</guilabel
+>. Для каждой переменной среды приводится следующая информация: </para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Переменная</guilabel
+></term>
+<listitem
+><para
+>Имя переменной.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Значение</guilabel
+></term>
+<listitem
+><para
+>Значение переменной.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Состояние</guilabel
+></term>
+<listitem
+><para
+>Включено или выключено</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Комментарий</guilabel
+></term>
+<listitem
+><para
+>Понятное описание переменной.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Переменные окружения, показанные здесь, заменят любую другую переменную окружения для всех запланированных заданий.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="new-task">
+<title
+>Добавление запланированных заданий</title>
+
+<para
+>Чтобы создать задание, нажмите кнопку <guibutton
+>Добавить задание...</guibutton
+>. То же действие можно выполнить из контекстного меню, открываемого нажатием <mousebutton
+>правой</mousebutton
+> кнопки мыши.</para>
+
+<sect3>
+<title
+>Диалог «Редактирование задания»</title>
+
+<screenshot>
+<screeninfo
+>Диалог <guilabel
+>Правка задания</guilabel
+>.</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="newtask.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Диалог <guilabel
+> Правка задания</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Команда</guilabel
+></term>
+<listitem
+><para
+>Введите имя программы. Можно указывать как абсолютный, так и относительный путь. Если хотите найти программу в файловой системе, нажмите кнопку со значком <guiicon
+>Выбрать файл или папку</guiicon
+>.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Комментарий</guilabel
+></term>
+<listitem
+><para
+>Введите описание задания, которое нужно запланировать.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Активировать это задание</guibutton
+></term>
+<listitem
+><para
+>Используйте этот флажок для включения или выключения задания.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Запускать при загрузке системы</guibutton
+></term>
+<listitem>
+<para
+>Включите этот флажок, чтобы задание запускалось при загрузке системы.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Запускать ежедневно</guibutton
+></term>
+<listitem>
+<para
+>Включите этот флажок, чтобы задание выполнялось каждый день.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Месяцы</guilabel
+></term>
+<listitem
+><para
+>Выберите месяцы, по которым задание будет выполняться.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Дни месяца</guilabel
+></term>
+<listitem
+><para
+>Выберите дни месяца, по которым задание будет выполняться.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Дни недели</guilabel
+></term>
+<listitem
+><para
+>Выберите дни недели, по которым задание будет выполняться.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Часы</guilabel
+></term>
+<listitem
+><para
+>Выберите количество часов, по которому задание будет запускаться на выполнение.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Минуты</guilabel
+></term>
+<listitem
+><para
+>Выберите количество минут, по которому задание будет запускаться на выполнение. <command
+>cron</command
+> не позволяет планировать задания чаще, чем раз в минуту.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>ОК</guibutton
+></term>
+<listitem
+><para
+>Завершить создание этого задания.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Отмена</guibutton
+></term>
+<listitem
+><para
+>Прервать процесс создания этого задания.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Если выбрать дни недели и дни месяца вместе, задание будет выполняться при достижении любого из условий. Например, если указать выполнение 1-го и 15-го числа любого месяца и указать  выполняться по воскресеньям, то задание запустится и 1-го, и 15-го числа вне зависимости от дня недели, и будет запускаться по всем воскресеньям месяца.</para>
+
+<para
+>Запланированное задание не установится в системе и не начнёт выполняться, пока не будет сохранён файл <filename
+>crontab</filename
+>.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="manage-tasks">
+<title
+>Управление запланированными заданиями</title>
+
+<para
+>Также как и с созданием, изменение запланированного задания не будет введено в действие и не начнёт выполняться по новому расписанию, пока не будет сохранён файл <filename
+>crontab</filename
+>.</para>
+
+<para
+>Используйте кнопки, расположенные справа от списка заданий, для изменения, удаления, печати или запуска выделенного в данный момент задания. Те же действия доступны в контекстном меню. Также в контекстном меню имеются пункты для копирования, вырезки и вставки заданий.</para>
+
+</sect2>
+
+<sect2 id="new-variable">
+<title
+>Добавление переменных окружения</title>
+
+<para
+>Чтобы создать задание, нажмите кнопку <guibutton
+>Добавить переменную...</guibutton
+>.</para>
+
+<para
+>То же действие можно выполнить из контекстного меню, открываемого нажатием <mousebutton
+>правой</mousebutton
+> кнопки мыши.</para>
+
+<sect3>
+<title
+>Диалог «Редактирование переменной»</title>
+
+<screenshot>
+<screeninfo
+>Диалог <guilabel
+>Редактировать переменные</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="newvariable.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>Диалог<guilabel
+> Редактировать переменные</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Переменная</guilabel
+></term
+> 
+<listitem
+><para
+>Введите имя переменной окружения. Можно использовать выпадающий список для ввода наиболее часто используемых имён переменных окружения, включая:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guimenuitem
+>HOME</guimenuitem
+></term>
+<listitem
+><para
+>Используется для переназначения домашнего каталога пользователя.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>MAILTO</guimenuitem
+></term>
+<listitem
+><para
+>Адресат для отправки писем вместо адреса пользователя.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>PATH</guimenuitem
+></term>
+<listitem
+><para
+>Список каталогов для поиска выполняемых файлов.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>SHELL</guimenuitem
+></term>
+<listitem
+><para
+>Будет запущена программа-оболочка вместо используемой по умолчанию.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>LD_CONFIG_PATH</guimenuitem
+></term>
+<listitem
+><para
+>Расположение динамических библиотек. Задав эту переменную, можно запускать в виде заданий приложения, использующие библиотеки, которые расположены не в системном каталоге для библиотек.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Значение</guilabel
+></term>
+<listitem
+><para
+>Введите значение переменной окружения.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Комментарий</guilabel
+></term>
+<listitem
+><para
+>Введите описание для этой переменной окружения, например цель её использования.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Активировать эту переменную</guilabel
+></term>
+<listitem>
+<para
+>Используйте этот флажок для включения или выключения переменной окружения.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>ОК</guibutton
+></term>
+<listitem>
+<para
+>Завершает установку переменной.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Отмена</guibutton
+></term>
+<listitem>
+<para
+>Отменяет установку переменной.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Переменная окружения не вступит в силу до сохранения файла <filename
+>crontab</filename
+>.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="manage-variables">
+<title
+>Управление переменными окружения</title>
+
+<note
+><para
+>Также как и при создании переменных, изменение их не вступит в силу до сохранения файла <filename
+>crontab</filename
+>.</para
+></note>
+
+<para
+>Используйте кнопки, расположенные справа от списка переменных среды, для изменения или удаления выделенной в данный момент переменной. Те же действия доступны в контекстном меню. Также в контекстном меню имеются пункты для копирования, вырезки и вставки переменных среды.</para>
+
+</sect2>
+</sect1>
+</article>
+
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+-->     

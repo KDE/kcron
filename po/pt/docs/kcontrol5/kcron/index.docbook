@@ -1,0 +1,643 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % Portuguese "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE">
+]>
+
+<article id="kcron" lang="&language;">
+<title
+>Escalonador de Tarefas</title>
+
+<articleinfo>
+<authorgroup>
+<author
+><firstname
+>Morgan</firstname
+> <othername
+>N.</othername
+> <surname
+>Sandquist</surname
+> <affiliation
+><address
+>&Morgan.N.Sandquist.mail;</address>
+</affiliation>
+</author>
+
+<othercredit role="developer"
+><firstname
+>Gary</firstname
+> <surname
+>Meyer</surname
+> <affiliation
+><address
+>&Gary.Meyer.mail;</address>
+</affiliation>
+<contrib
+>Desenvolvimento</contrib>
+</othercredit>
+
+<othercredit role="reviewer"
+><firstname
+>Lauri</firstname
+> <surname
+>Watts</surname
+> <affiliation
+><address
+>&Lauri.Watts.mail;</address>
+</affiliation>
+<contrib
+>Revisão</contrib>
+</othercredit>
+
+<othercredit role="translator"
+><firstname
+>José</firstname
+><surname
+>Pires</surname
+><affiliation
+><address
+><email
+>zepires@gmail.com</email
+></address
+></affiliation
+><contrib
+>Tradução</contrib
+></othercredit
+> 
+
+</authorgroup>
+
+<copyright>
+<year
+>2000</year>
+<holder
+>&Morgan.N.Sandquist;</holder>
+</copyright>
+
+<date
+>2017-01-12</date>
+<releaseinfo
+>Aplicações 16.12</releaseinfo>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>cron</keyword>
+<keyword
+>crontab</keyword>
+<keyword
+>escalonador</keyword>
+</keywordset>
+
+</articleinfo>
+
+<sect1 id="introduction">
+<title
+>Introdução</title>
+
+<para
+>Este é um módulo para escalonar os programas para serem executados em segundo plano. É uma interface gráfica de utilizador para o <application
+>cron</application
+>, o escalonador do sistema &UNIX;.</para>
+
+<important
+><para
+>Não se esqueça de indicar ao sistema para iniciar antecipadamente o servidor <filename
+>crond</filename
+>, senão a configuração deste módulo não irá funcionar.</para
+></important>
+
+<sect2 id="kcron-start-up">
+<title
+>Arranque</title>
+
+<para
+>Quando iniciar este módulo, irá ver uma vista resumida sobre as tarefas já existentes em escalonamento e as variáveis de ambiente. Se estiver a correr como administrador, irá ver esses itens para todos os utilizadores no computador, assim como as tarefas de sistema escalonadas.</para>
+<!--admin mode-->
+<screenshot>
+<screeninfo
+>arranque</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="kcronstart.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>arranque</phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<sect3>
+<title
+>Tarefas Escalonadas</title>
+
+<para
+>As tarefas escalonadas aparecem dentro duma pasta <guilabel
+>Tarefas</guilabel
+>. Para cada tarefa escalonada, são apresentados os seguintes itens:</para>
+
+<variablelist>
+
+<!-- system cron first column User=root-->
+<varlistentry>
+<term
+><guilabel
+>Escalonamento</guilabel
+></term>
+<listitem
+><para
+>Nesta coluna, tanto aparecerá o "@reboot" para as tarefas agendadas no arranque, ou então aparece o item do 'crontab'.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Comando</guilabel
+></term>
+<listitem
+><para
+>Ficheiro do programa e os parâmetros.</para
+></listitem>
+</varlistentry>
+<varlistentry
+> 
+<term
+><guilabel
+>Estado</guilabel
+></term>
+<listitem
+><para
+>Activo ou Inactivo.</para
+></listitem>
+</varlistentry
+> 
+<varlistentry
+> 
+<term
+><guilabel
+>Descrição</guilabel
+></term>
+<listitem
+><para
+>Uma descrição da tarefa, por exemplo a sua finalidade.</para
+></listitem>
+</varlistentry
+> 
+<varlistentry>
+<term
+><guilabel
+>Detalhes do Escalonamento</guilabel
+></term>
+<listitem
+><para
+>Descrição em língua natural da tarefa escalonada.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+
+<sect3>
+<title
+>Variáveis de Ambiente</title>
+
+<para
+>As variáveis de ambiente aparecem dentro duma pasta <guilabel
+>Variáveis de Ambiente</guilabel
+>. Para cada variável de ambiente, é mostrado o seguinte: </para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Variável</guilabel
+></term>
+<listitem
+><para
+>Nome da variável.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Valor</guilabel
+></term>
+<listitem
+><para
+>Valor da variável.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Estado</guilabel
+></term>
+<listitem
+><para
+>Activo ou Inactivo.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Comentário</guilabel
+></term>
+<listitem
+><para
+>Descrição em língua natural da variável.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>As variáveis de ambiente que aqui aparecem irão sobrepor qualquer variável de ambiente existente para todas as tarefas escalonadas.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="new-task">
+<title
+>Adicionar Tarefas Escalonadas</title>
+
+<para
+>Para criar uma nova tarefa agendada, carregue no botão <guibutton
+>Nova Tarefa...</guibutton
+>. Em alternativa, poderá seleccionar esta acção no menu de contexto do botão <mousebutton
+>direito</mousebutton
+> do rato.</para>
+
+<sect3>
+<title
+>A Janela Editar Tarefa</title>
+
+<screenshot>
+<screeninfo
+>a janela <guilabel
+>Editar Tarefa</guilabel
+>.</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="newtask.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>a janela <guilabel
+>Editar Tarefa</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Comando</guilabel
+></term>
+<listitem
+><para
+>Indique o nome do programa. Pode indicar uma localização relativa ou absoluta. Se quiser procurar pelo programa, carregue em <guibutton
+>Escolher</guibutton
+>.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Comentário</guilabel
+></term>
+<listitem
+><para
+>Indique uma descrição para a tarefa a escalonar.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Activar esta tarefa</guibutton
+></term>
+<listitem
+><para
+>Para activar ou desactivar a tarefa, seleccione ou desligue este botão.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Executar no arranque do sistema</guibutton
+></term>
+<listitem>
+<para
+>Assinale este botão para executar a tarefa no arranque do sistema.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Executar todos os dias</guibutton
+></term>
+<listitem>
+<para
+>Se quer que a tarefa se execute diariamente, seleccione este botão.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Meses</guilabel
+></term>
+<listitem
+><para
+>Seleccione os meses durante os quais a tarefa deve ser executada.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Dias do Mês</guilabel
+></term>
+<listitem
+><para
+>Seleccione os meses durante os quais a tarefa deve ser executada.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Dias da Semana</guilabel
+></term>
+<listitem
+><para
+>Seleccione os dias da semana nos quais a tarefa deve ser executada.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Horas</guilabel
+></term>
+<listitem
+><para
+>Seleccione as horas nas quais a tarefa deve ser executada.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Minutos</guilabel
+></term>
+<listitem
+><para
+>Seleccione os minutos nos quais a tarefa deve ser executada. O <command
+>cron</command
+> não suporta escalonar tarefas em intervalos menores do que um minuto.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>OK</guibutton
+></term>
+<listitem
+><para
+>Completa a criação desta tarefa.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Cancelar</guibutton
+></term>
+<listitem
+><para
+>Cancela a criação desta tarefa.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Se seleccionar tanto os dias do mês como os da semana, a tarefa será executada em qualquer uma das condições. Por exemplo, se seleccionar o dia 1 e o dia 15 e seleccionar o Domingo, o programa será executado em todos os dias 1 e 15 dos meses seleccionados (independentemente do dia da semana) assim como em todos os Domingos dos meses seleccionados (independentemente do dia do mês).</para>
+
+<para
+>A tarefa escalonada não está completamente configurada até o <filename
+>crontab</filename
+> ser gravado.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="manage-tasks">
+<title
+>Gerir as Tarefas Escalonadas</title>
+
+<para
+>Assim como ao criar tarefas novas, as alterações não terão efeito até o ficheiro <filename
+>crontab</filename
+> ser gravado.</para>
+
+<para
+>Use os botões à direita da lista de tarefas para modificar, apagar, imprimir ou executar agora uma dada tarefa. Poderá também aceder a todas estas acções com o menu de contexto. Para além disso, o menu de contexto oferece ainda acções para cortar, copiar e colar as tarefas.</para>
+
+</sect2>
+
+<sect2 id="new-variable">
+<title
+>Adicionar Variáveis de Ambiente</title>
+
+<para
+>Para criar uma nova variável de ambiente, carregue em <guibutton
+>Nova Variável...</guibutton
+>.</para>
+
+<para
+>Alternativamente, podes usar o menu do botão <mousebutton
+>direito</mousebutton
+> do rato e escolher esta acção.</para>
+
+<sect3>
+<title
+>A janela para Editar Variável</title>
+
+<screenshot>
+<screeninfo
+>A janela de <guilabel
+>Editar Variável</guilabel
+>.</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="newvariable.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>A janela de <guilabel
+>Editar Variável</guilabel
+>.</phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Variável</guilabel
+></term
+> 
+<listitem
+><para
+>Indique o nome da variável de ambiente. Pode usar a lista correspondente para seleccionar o nome das variáveis de ambiente mais comuns que são usadas pelas tarefas escalonadas. Estas incluem:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guimenuitem
+>HOME</guimenuitem
+></term>
+<listitem
+><para
+>A ser usada em vez da pasta pessoal do utilizador por omissão.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>MAILTO</guimenuitem
+></term>
+<listitem
+><para
+>Para enviar o resultado por e-mail para um endereço diferente do endereço de e-mail do utilizador por omissão.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>PATH</guimenuitem
+></term>
+<listitem
+><para
+>A ser usada para procurar pelos programas nas pastas indicadas.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>SHELL</guimenuitem
+></term>
+<listitem
+><para
+>A ser usada em vez do valor por omissão do utilizador.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>LD_CONFIG_PATH</guimenuitem
+></term>
+<listitem
+><para
+>A localização das bibliotecas dinâmicas. Isto permite às tarefas do Cron executarem aplicações que tenham bibliotecas que precisem de ser instaladas fora dos locais de bibliotecas do sistema.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Valor</guilabel
+></term>
+<listitem
+><para
+>Indique o nome da variável de ambiente.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Comentário</guilabel
+></term>
+<listitem
+><para
+>Indique uma descrição da variável de ambiente, por exemplo a sua finalidade.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Activar esta variável</guilabel
+></term>
+<listitem>
+<para
+>Para activar ou desactivar a variável, active ou desactive este botão.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>OK</guibutton
+></term>
+<listitem>
+<para
+>Completa a alteração desta variável.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Cancelar</guibutton
+></term>
+<listitem>
+<para
+>Cancela a alteração desta variável.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>De facto, a variável de ambiente não é definida até o ficheiro <filename
+>crontab</filename
+> ser gravado.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="manage-variables">
+<title
+>Gerir as Variáveis de Ambiente</title>
+
+<note
+><para
+>Assim como na criação de novas variáveis, as alterações às mesmas não terão efeito até o ficheiro <filename
+>crontab</filename
+> ser gravado.</para
+></note>
+
+<para
+>Use os botões à direita da lista de variáveis para modificar ou apagar uma dada variável. Poderá também aceder a todas estas acções com o menu de contexto. Para além disso, o menu de contexto oferece ainda acções para cortar, copiar e colar as variáveis.</para>
+
+</sect2>
+</sect1>
+</article>
+
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+-->     

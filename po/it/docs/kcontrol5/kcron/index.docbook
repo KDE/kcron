@@ -1,0 +1,663 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % Italian "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE">
+]>
+
+<article id="kcron" lang="&language;">
+<title
+>Pianificazione delle operazioni</title>
+
+<articleinfo>
+<authorgroup>
+<author
+><firstname
+>Morgan</firstname
+> <othername
+>N.</othername
+> <surname
+>Sandquist</surname
+> <affiliation
+><address
+>&Morgan.N.Sandquist.mail;</address>
+</affiliation>
+</author>
+
+<othercredit role="developer"
+><firstname
+>Gary</firstname
+> <surname
+>Meyer</surname
+> <affiliation
+><address
+>&Gary.Meyer.mail;</address>
+</affiliation>
+<contrib
+>Sviluppatore</contrib>
+</othercredit>
+
+<othercredit role="reviewer"
+><firstname
+>Lauri</firstname
+> <surname
+>Watts</surname
+> <affiliation
+><address
+>&Lauri.Watts.mail;</address>
+</affiliation>
+<contrib
+>Revisore</contrib>
+</othercredit>
+
+<othercredit role="translator"
+><firstname
+>Paolo</firstname
+><surname
+>Zamponi</surname
+><affiliation
+><address
+><email
+>zapaolo@email.it</email
+></address
+></affiliation
+><contrib
+>Traduzione e manutenzione del documento</contrib
+></othercredit
+><othercredit role="translator"
+><firstname
+>Valerio</firstname
+><surname
+>Passini</surname
+><contrib
+>Traduzione della documentazione</contrib
+></othercredit
+><othercredit role="translator"
+><firstname
+>Federico</firstname
+><surname
+>Zenith</surname
+><affiliation
+><address
+><email
+>federico.zenith@member.fsf.org</email
+></address
+></affiliation
+><contrib
+>Revisione e manutenzione della traduzione</contrib
+></othercredit
+> 
+
+</authorgroup>
+
+<copyright>
+<year
+>2000</year>
+<holder
+>&Morgan.N.Sandquist;</holder>
+</copyright>
+
+<date
+>12/01/2017</date>
+<releaseinfo
+>Applications 16.12</releaseinfo>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>cron</keyword>
+<keyword
+>crontab</keyword>
+<keyword
+>pianificatore</keyword>
+</keywordset>
+
+</articleinfo>
+
+<sect1 id="introduction">
+<title
+>Introduzione</title>
+
+<para
+>Questo è un modulo per pianificare i programmi che devono essere eseguiti in sottofondo. È un'interfaccia grafica per <command
+>cron</command
+>, il sistema di pianificazione &UNIX;.</para>
+
+<important
+><para
+>Non dimenticare di dire al sistema di avviare prima il demone cron, <filename
+>crond</filename
+>, altrimenti le impostazioni di questo modulo non funzioneranno.</para
+></important>
+
+<sect2 id="kcron-start-up">
+<title
+>Avvio</title>
+
+<para
+>Quando avvii questo modulo vedrai una vista riassuntiva delle operazioni pianificate esistenti, e le relative variabili d'ambiente. Se lo hai avviato come utente root allora vedrai le voci di tutti gli utenti del computer, oltre a quelli pianificati del sistema.</para>
+<!--admin mode-->
+<screenshot>
+<screeninfo
+>L'avvio</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="kcronstart.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>L'avvio</phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<sect3>
+<title
+>Operazioni pianificate</title>
+
+<para
+>Le operazioni pianificate appaiono nell'elenco <guilabel
+>Operazioni</guilabel
+>. Per ogni operazione pianificata, vengono visualizzati i seguenti elementi:</para>
+
+<variablelist>
+
+<!-- system cron first column User=root-->
+<varlistentry>
+<term
+><guilabel
+>Pianificazione</guilabel
+></term>
+<listitem
+><para
+>In questa colonna si legge <quote
+>@reboot</quote
+> per le operazioni da eseguire all'avvio del sistema o la voce di crontab.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Comando</guilabel
+></term>
+<listitem
+><para
+>Il file del programma e i parametri.</para
+></listitem>
+</varlistentry>
+<varlistentry
+> 
+<term
+><guilabel
+>Stato</guilabel
+></term>
+<listitem
+><para
+>Abilitata o disabilitata.</para
+></listitem>
+</varlistentry
+> 
+<varlistentry
+> 
+<term
+><guilabel
+>Descrizione</guilabel
+></term>
+<listitem
+><para
+>Una descrizione dell'operazione, come il suo scopo.</para
+></listitem>
+</varlistentry
+> 
+<varlistentry>
+<term
+><guilabel
+>Dettagli di pianificazione</guilabel
+></term>
+<listitem
+><para
+>Descrizione a parole dell'operazione pianificata.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+
+<sect3>
+<title
+>Variabili d'ambiente</title>
+
+<para
+>Le variabili d'ambiente appaiono nell'elenco <guilabel
+>Variabili d'ambiente</guilabel
+>. Per ogni variabile d'ambiente, si indicano: </para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Variabile</guilabel
+></term>
+<listitem
+><para
+>Nome della variabile.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Valore</guilabel
+></term>
+<listitem
+><para
+>Valore della variabile.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Stato</guilabel
+></term>
+<listitem
+><para
+>Abilitata o disabilitata.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Commento</guilabel
+></term>
+<listitem
+><para
+>Descrizione a parole della variabile.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Le variabili d'ambiente che compaiono qui sostituiranno ogni variabile d'ambiente esistente per tutte le operazioni pianificate.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="new-task">
+<title
+>Aggiungere operazioni pianificate</title>
+
+<para
+>Per creare una nuova operazione pianificata, premi il pulsante <guibutton
+>Nuova operazione</guibutton
+>. In alternativa, puoi selezionare questa azione dal menu contestuale del &RMB;.</para>
+
+<sect3>
+<title
+>La finestra Modifica operazione</title>
+
+<screenshot>
+<screeninfo
+>La finestra <guilabel
+>Modifica operazione</guilabel
+>.</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="newtask.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>la finestra <guilabel
+>Modifica operazione</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Comando</guilabel
+></term>
+<listitem
+><para
+>Immettere il nome del programma. Puoi specificare sia un percorso relativo che uno assoluto. Se vuoi cercare il programma premi l'icona <guiicon
+>Sfoglia</guiicon
+>.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Commento</guilabel
+></term>
+<listitem
+><para
+>Inserisci una descrizione dell'operazione da pianificare.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Abilita questa operazione</guibutton
+></term>
+<listitem
+><para
+>Per abilitare o disabilitare l'operazione, seleziona o deseleziona questo pulsante.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Esegui all'avvio del sistema</guibutton
+></term>
+<listitem>
+<para
+>Attiva questo pulsante per eseguire l'operazione all'avvio del sistema.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Esegui ogni giorno</guibutton
+></term>
+<listitem>
+<para
+>Se vuoi eseguire l'operazione ogni giorno, seleziona questo pulsante.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Mesi</guilabel
+></term>
+<listitem
+><para
+>Seleziona i mesi durante i quali l'operazione sarà pianificata.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Giorni del mese</guilabel
+></term>
+<listitem
+><para
+>Seleziona i giorni del mese durante i quali l'operazione sarà pianificata.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Giorni della settimana</guilabel
+></term>
+<listitem
+><para
+>Seleziona i giorni della settimana in cui l'operazione sarà pianificata.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Ore</guilabel
+></term>
+<listitem
+><para
+>Seleziona le ore in cui si deve eseguire l'operazione.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Minuti</guilabel
+></term>
+<listitem
+><para
+>Selezionare il minuto in cui l'operazione deve essere eseguita. <command
+>cron</command
+> non supporta la pianificazione di compiti a intervalli più brevi di un minuto.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>OK</guibutton
+></term>
+<listitem
+><para
+>Completa la creazione di questa operazione.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Annulla</guibutton
+></term>
+<listitem
+><para
+>Annulla la creazione di questa operazione.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Se selezioni sia i giorni del mese che i giorni della settimana, l'operazione partirà quando sarà soddisfatta almeno una condizione. Per esempio, se selezioni il primo e il 15 del mese e domenica, il programma verrà eseguito ogni primo e quindici del mese (indipendentemente dal giorno della settimana), così come ogni domenica dei mesi selezionati (indipendentemente dal giorno del mese).</para>
+
+<para
+>L'operazione pianificata in realtà non è impostata fino a quando non viene salvato <filename
+>crontab</filename
+>.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="manage-tasks">
+<title
+>Gestire le operazioni pianificate</title>
+
+<para
+>Come per la creazione di nuove operazioni, i cambiamenti alle operazioni in realtà non vengono fatti finché non viene salvato <filename
+>crontab</filename
+>.</para>
+
+<para
+>Usa i pulsanti a destra dell'operazione per modificare, eliminare, stampare o eseguire adesso un'operazione selezionata. Arrivi a tutte queste azioni anche dal menu contestuale, che inoltre contiene le azioni per tagliare, copiare e incollare le operazioni.</para>
+
+</sect2>
+
+<sect2 id="new-variable">
+<title
+>Aggiungere variabili d'ambiente</title>
+
+<para
+>Per creare una nuova variabile d'ambiente fai clic sul pulsante <guibutton
+>Nuova variabile...</guibutton
+>.</para>
+
+<para
+>In alternativa puoi usare il &RMB; per scegliere questa azione.</para>
+
+<sect3>
+<title
+>La finestra Modifica variabile</title>
+
+<screenshot>
+<screeninfo
+>La finestra <guilabel
+>Modifica variabile</guilabel
+>.</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="newvariable.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>La finestra <guilabel
+>Modifica variabile</guilabel
+>.</phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Variabile</guilabel
+></term
+> 
+<listitem
+><para
+>Inserisci il nome della variabile d'ambiente. Puoi usare l'elenco a cascata per selezionare una dalle delle variabili d'ambiente più comuni usate dalle operazioni pianificate. Queste includono:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guimenuitem
+>HOME</guimenuitem
+></term>
+<listitem
+><para
+>Da usare al posto della cartella Home dell'utente.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>MAILTO</guimenuitem
+></term>
+<listitem
+><para
+>Per mandare come output un'email ad un indirizzo di posta elettronica che non sia quello predefinito dell'utente.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>PATH</guimenuitem
+></term>
+<listitem
+><para
+>Da usare per cercare i programmi tra le cartelle.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>SHELL</guimenuitem
+></term>
+<listitem
+><para
+>Da usare al posto del valore predefinito dell'utente.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>LD_CONFIG_PATH</guimenuitem
+></term>
+<listitem
+><para
+>La posizione delle librerie dinamiche. Questo permette ai processi di Cron di eseguire le applicazioni con le librerie necessarie al loro funzionamento installate al di fuori del percorso delle librerie di sistema.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Valore</guilabel
+></term>
+<listitem
+><para
+>Inserisci il valore della variabile d'ambiente.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Commento</guilabel
+></term>
+<listitem
+><para
+>Inserisci una descrizione della variabile d'ambiente, come il suo scopo.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Abilita questa variabile</guilabel
+></term>
+<listitem>
+<para
+>Per abilitare o disabilitare la variabile seleziona o deseleziona questo pulsante.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>OK</guibutton
+></term>
+<listitem>
+<para
+>Completa l'impostazione di questa variabile.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Annulla</guibutton
+></term>
+<listitem>
+<para
+>Annulla l'impostazione di questa variabile.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>La variabile d'ambiente non è attiva finché non viene salvato <filename
+>crontab</filename
+>.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="manage-variables">
+<title
+>Gestire le variabili d'ambiente</title>
+
+<note
+><para
+>Come quando si creano nuove variabili, i cambiamenti alle variabili non saranno eseguiti finché non viene salvato <filename
+>crontab</filename
+>.</para
+></note>
+
+<para
+>Usa i pulsanti a destra della variabile per modificare o eliminare una variabile selezionata. Arrivi a tutte queste azioni anche dal menu contestuale, che inoltre contiene le azioni per tagliare, copiare e incollare le variabili.</para>
+
+</sect2>
+</sect1>
+</article>
+
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+-->     

@@ -1,0 +1,657 @@
+<?xml version="1.0" ?>
+<!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY % Spanish "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE">
+]>
+
+<article id="kcron" lang="&language;">
+<title
+>Planificador de tareas</title>
+
+<articleinfo>
+<authorgroup>
+<author
+><firstname
+>Morgan</firstname
+> <othername
+>N.</othername
+> <surname
+>Sandquist</surname
+> <affiliation
+><address
+>&Morgan.N.Sandquist.mail;</address>
+</affiliation>
+</author>
+
+<othercredit role="developer"
+><firstname
+>Gary</firstname
+> <surname
+>Meyer</surname
+> <affiliation
+><address
+>&Gary.Meyer.mail;</address>
+</affiliation>
+<contrib
+>Desarrollador</contrib>
+</othercredit>
+
+<othercredit role="reviewer"
+><firstname
+>Lauri</firstname
+> <surname
+>Watts</surname
+> <affiliation
+><address
+>&Lauri.Watts.mail;</address>
+</affiliation>
+<contrib
+>Revisor</contrib>
+</othercredit>
+
+<othercredit role="translator"
+><firstname
+>Juan Luis</firstname
+><surname
+>Montore</surname
+><affiliation
+><address
+><email
+>jlm@ict.es</email
+></address
+></affiliation
+><contrib
+>Traductor</contrib
+></othercredit
+> <othercredit role="translator"
+><firstname
+>Adrián</firstname
+><surname
+>Martínez</surname
+><affiliation
+><address
+><email
+>sfxgt3@gmail.com</email
+></address
+></affiliation
+><contrib
+>Traductor</contrib
+></othercredit
+> 
+
+</authorgroup>
+
+<copyright>
+<year
+>2000</year>
+<holder
+>&Morgan.N.Sandquist;</holder>
+</copyright>
+
+<date
+>2017-01-12</date>
+<releaseinfo
+>Aplicaciones 16.12</releaseinfo>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>cron</keyword>
+<keyword
+>crontab</keyword>
+<keyword
+>Planificador</keyword>
+</keywordset>
+
+</articleinfo>
+
+<sect1 id="introduction">
+<title
+>Introducción</title>
+
+<para
+>Este módulo le permite planificar la ejecución de aplicaciones en segundo plano. Es una interfaz gráfica para <command
+>cron</command
+>, el planificador de los sistemas &UNIX;.</para>
+
+<important
+><para
+>No olvide hacer que su sistema inicie primero el demonio de cron <filename
+>crond</filename
+>, o las preferencias de este módulo no funcionarán.</para
+></important>
+
+<sect2 id="kcron-start-up">
+<title
+>Arranque</title>
+
+<para
+>Cuando arranque este módulo verá un resumen de las tareas programadas existentes  y sus variables de entorno asociadas. Si lo está ejecutando como administrador verá las tareas correspondientes a todos los usuarios, así como las correspondientes al sistema.</para>
+<!--admin mode-->
+<screenshot>
+<screeninfo
+>arranque</screeninfo>
+<mediaobject>
+<imageobject>
+<imagedata fileref="kcronstart.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>arranque</phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<sect3>
+<title
+>Tareas programadas</title>
+
+<para
+>Las tareas programadas aparecen bajo una lista de <guilabel
+>Tareas</guilabel
+>. Para cada una de las tareas programadas, se muestra lo siguiente:</para>
+
+<variablelist>
+
+<!-- system cron first column User=root-->
+<varlistentry>
+<term
+><guilabel
+>Planificación</guilabel
+></term>
+<listitem
+><para
+>En esta columna se muestra «@reboot», para las tareas programadas para el inicio del sistema, o la entrada de «crontab».</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Orden</guilabel
+></term>
+<listitem
+><para
+>Nombre del programa y sus parámetros.</para
+></listitem>
+</varlistentry>
+<varlistentry
+> 
+<term
+><guilabel
+>Estado</guilabel
+></term>
+<listitem
+><para
+>Activada o desactivada.</para
+></listitem>
+</varlistentry
+> 
+<varlistentry
+> 
+<term
+><guilabel
+>Descripción</guilabel
+></term>
+<listitem
+><para
+>Una descripción de la tarea, como su propósito.</para
+></listitem>
+</varlistentry
+> 
+<varlistentry>
+<term
+><guilabel
+>Detalles de la programación</guilabel
+></term>
+<listitem
+><para
+>Descripción en lenguaje natural de la tarea programada.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+
+<sect3>
+<title
+>Variables de entorno</title>
+
+<para
+>Las variables de entorno aparecen en la lista de <guilabel
+>Variables de entorno</guilabel
+>. Para cada variable de entorno, se muestra lo siguiente: </para>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Variable</guilabel
+></term>
+<listitem
+><para
+>Nombre de la variable.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Valor</guilabel
+></term>
+<listitem
+><para
+>Valor de la variable.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Estado</guilabel
+></term>
+<listitem
+><para
+>Activada o desactivada.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Comentario</guilabel
+></term>
+<listitem
+><para
+>Descripción en lenguaje natural de la variable.</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Las variables de entorno que aparecen aquí anularán cualquier variable de entorno existente para todas las tareas programadas.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="new-task">
+<title
+>Añadiendo tareas programadas</title>
+
+<para
+>Para crear una nueva tarea programada, haga clic en el botón <guibutton
+>Nueva tarea...</guibutton
+> Alternativamente, puede seleccionar esta acción en el menú de contexto del botón <mousebutton
+>derecho</mousebutton
+> del ratón.</para>
+
+<sect3>
+<title
+>Diálogo «Editar Tarea»</title>
+
+<screenshot>
+<screeninfo
+>El diálogo <guilabel
+>Editar Tarea</guilabel
+>.</screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="newtask.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>El diálogo <guilabel
+>Editar Tarea</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Orden</guilabel
+></term>
+<listitem
+><para
+>Introduzca el nombre del programa. Puede especificar una ruta relativa o una absoluta. Si quiere buscar el programa, pulse sobre el icono <guibutton
+>Explorar</guibutton
+>.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Comentario</guilabel
+></term>
+<listitem
+><para
+>Introduzca la descripción de la tarea a programar.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Activar esta tarea</guibutton
+></term>
+<listitem
+><para
+>Para activar o desactivar la tarea, seleccione o deseleccione este botón.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Ejecutar durante el arranque del sistema</guibutton
+></term>
+<listitem>
+<para
+>Marque este botón para ejecutar la tarea en el arranque del sistema.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guibutton
+>Ejecutar cada día</guibutton
+></term>
+<listitem>
+<para
+>Si quiere ejecutar la tarea diariamente, seleccione este botón.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Meses</guilabel
+></term>
+<listitem
+><para
+>Seleccione los meses en los que quiera que la tarea sea programada.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Días del mes</guilabel
+></term>
+<listitem
+><para
+>Seleccione los días del mes en los que quiera que la tarea sea programada.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Días de la semana</guilabel
+></term>
+<listitem
+><para
+>Seleccione los días de la semana en los que quiera que la tarea sea programada.</para>
+</listitem
+> 
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Horas</guilabel
+></term>
+<listitem
+><para
+>Seleccione las horas en las que quiera que la tarea sea programada.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Minutos</guilabel
+></term>
+<listitem
+><para
+>Seleccione el minuto en el que quiera que la tarea sea programada. <command
+>cron</command
+> no permite tareas programadas con intervalos menores a un minuto.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Aceptar</guibutton
+></term>
+<listitem
+><para
+>Completa la creación de la tarea.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Cancelar</guibutton
+></term>
+<listitem
+><para
+>Cancela la creación de la tarea.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Si selecciona simultáneamente días del mes y días de la semana, la tarea se ejecutará cuando cualquiera de las condiciones se cumpla. Por ejemplo, si selecciona los días 1 y 15 de cada mes, así como el Domingo, el programa se ejecutará cada día 1 y 15 de los meses seleccionados (independientemente del día de la semana) y también se ejecutará todos los domingos de los meses seleccionados (independientemente del día del mes).</para>
+
+<para
+>La tarea programada no lo estará realmente hasta que no guarde el archivo <filename
+>crontab</filename
+>.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="manage-tasks">
+<title
+>Gestionando las tareas programadas</title>
+
+<para
+>Igual que ocurría al crear tareas nuevas, los cambios sobre las tareas existentes no serán efectivos hasta que el archivo <filename
+>crontab</filename
+> sea guardado.</para>
+
+<para
+>Utilice los botones a la derecha de la lista de tareas para modificar, eliminar, imprimir o ejecutar una tarea seleccionada. También puede realizar estas acciones desde el menú contextual. Además, dicho menú contiene acciones para cortar, copiar y pegar tareas.</para>
+
+</sect2>
+
+<sect2 id="new-variable">
+<title
+>Añadiendo variables de entorno</title>
+
+<para
+>Para crear una nueva variable de entorno, haga clic en el botón <guibutton
+>Nueva variable...</guibutton
+>.</para>
+
+<para
+>También puede pulsar el botón <mousebutton
+>derecho</mousebutton
+> del ratón para seleccionar esta acción.</para>
+
+<sect3>
+<title
+>Diálogo «Editar variable»</title>
+
+<screenshot>
+<screeninfo
+>El diálogo <guilabel
+>Editar variable</guilabel
+></screeninfo>
+<mediaobject>
+<imageobject
+><imagedata fileref="newvariable.png" format="PNG"/></imageobject>
+<textobject
+><phrase
+>El diálogo <guilabel
+>Editar variable</guilabel
+></phrase
+></textobject>
+</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Variable</guilabel
+></term
+> 
+<listitem
+><para
+>Introduzca el nombre de la variable de entorno. Puede usar la lista desplegable para  seleccionar una de las variables de entorno más comúnmente usadas por las tareas programadas. Estas incluyen:</para>
+
+<variablelist>
+
+<varlistentry>
+<term
+><guimenuitem
+>HOME</guimenuitem
+></term>
+<listitem
+><para
+>Para ser usado en lugar de la carpeta del usuario predeterminado.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>MAILTO</guimenuitem
+></term>
+<listitem
+><para
+>Para enviar mensajes de salida con una dirección de correo-e distinta de la del usuario predeterminado.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>PATH</guimenuitem
+></term>
+<listitem
+><para
+>Usado como rutas alternativas a carpetas con programas.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>SHELL</guimenuitem
+></term>
+<listitem
+><para
+>Usado como alternativa al valor predeterminado del usuario.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guimenuitem
+>LD_CONFIG_PATH</guimenuitem
+></term>
+<listitem
+><para
+>Ubicación de las bibliotecas dinámicas. Esto permite que los trabajos de cron ejecuten aplicaciones que tienen que ejecutar bibliotecas que están instaladas fuera de la ruta de bibliotecas del sistema.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Valor</guilabel
+></term>
+<listitem
+><para
+>Introduzca la variable de entorno.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Comentario</guilabel
+></term>
+<listitem
+><para
+>Introduzca la descripción de la variable de entorno, tal como su propósito.</para
+></listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guilabel
+>Activar esta variable</guilabel
+></term>
+<listitem>
+<para
+>Para activar o desactivar la variable, seleccione o deseleccione este botón.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Aceptar</guibutton
+></term>
+<listitem>
+<para
+>Completa la creación de esta variable.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term
+><guibutton
+>Cancelar</guibutton
+></term>
+<listitem>
+<para
+>Cancela la creación de esta variable.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>La variable de entorno no será efectiva hasta que se haya guardado el archivo <filename
+>crontab</filename
+>.</para>
+
+</sect3>
+</sect2>
+
+<sect2 id="manage-variables">
+<title
+>Gestionando variables de entorno</title>
+
+<note
+><para
+>Igual que ocurría al crear nuevas variables, los cambios sobre las variables existentes no serán efectivos hasta que el archivo <filename
+>crontab</filename
+> sea guardado.</para
+></note>
+
+<para
+>Use los botones a la derecha de la lista de variables para modificar o eliminar una variable seleccionada. También puede acceder a todas estas acciones desde el menú de contexto. Además, el menú contextual ofrece acciones para cortar, copiar y pegar variables.</para>
+
+</sect2>
+</sect1>
+</article>
+
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+-->     
