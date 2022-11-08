@@ -1019,16 +1019,3 @@ msgstr "Modifica la variable seleccionada."
 #, kde-format
 msgid "Delete the selected variable."
 msgstr "Suprimeix la variable seleccionada."
-
-#~ msgid "All users"
-#~ msgstr "Tots els usuaris"
-
-#~ msgctxt "User login: errorMessage"
-#~ msgid "User %1: %2"
-#~ msgstr "Usuari %1: %2"
-
-#~ msgid "Cron of User:"
-#~ msgstr "Cron de l'usuari:"
-
-#~ msgid "Show All Personal Crons"
-#~ msgstr "Mostra tots els Cron personals"
