@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-26 00:49+0000\n"
-"PO-Revision-Date: 2022-11-29 06:55+0100\n"
+"PO-Revision-Date: 2022-12-01 08:21+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -331,6 +331,10 @@ msgid ""
 "\n"
 "Check the crontab man page for further details."
 msgstr ""
+"თქვენ დაბლოკილი ბრძანდებით KCron-დან \t                      ან /etc/cron."
+"allow ფაილით, ან /etc/cron.deny ფაილით.\t                      \n"
+"\n"
+"მეტი დეტალებისტვის იხილეთ crontab-ის man გვერდი."
 
 #: src/crontablib/ctmonth.cpp:22
 #, kde-format
@@ -626,6 +630,11 @@ msgid ""
 "\n"
 "KCron will now exit.\n"
 msgstr ""
+"შეცდომა KCron-ის ინიციალიზაციისას:\n"
+"\n"
+"%1\n"
+"\n"
+"KCron მუშაობას ამთავრებს.\n"
 
 #: src/kcmCron.cpp:120
 #, kde-format
@@ -634,6 +643,9 @@ msgid ""
 "To schedule a new task now, click on the Tasks folder and select Edit/New "
 "from the menu."
 msgstr ""
+"ეს აპლიკაცია ფონში პროგრამების დაგეგმილად გასაშვებად შეგიძლიათ გამოიყენოთ.\n"
+"ახალი ამოცანის დასაგეგმად დააჭირეთ ამოცანების საქაღალდეზე და მენიუდან ახალი/"
+"ჩასწორება აირჩიეთ."
 
 #: src/kcmCron.cpp:122
 #, kde-format
@@ -648,7 +660,7 @@ msgstr "დაგეგმილი ამოცანის დამატე�
 #: src/taskEditorDialog.cpp:72 src/taskEditorDialog.cpp:870
 #, kde-format
 msgid "<i>This task will be executed at the specified intervals.</i>"
-msgstr ""
+msgstr "<i>ეს ამოცანა მითითებული ინტერვალით შესრულდება.</i>"
 
 #: src/taskEditorDialog.cpp:80
 #, kde-format
@@ -768,17 +780,17 @@ msgstr "PM:"
 #: src/taskEditorDialog.cpp:716 src/taskEditorDialog.cpp:726
 #, kde-format
 msgid "<i>Please type a valid command line...</i>"
-msgstr ""
+msgstr "<i>შეიყვანეთ სწორი ბრძანების სტრიქონი...</i>"
 
 #: src/taskEditorDialog.cpp:750
 #, kde-format
 msgid "<i>Please select an executable program...</i>"
-msgstr ""
+msgstr "<i>აირჩიეთ გამშვები პროგრამა...</i>"
 
 #: src/taskEditorDialog.cpp:758 src/taskEditorDialog.cpp:784
 #, kde-format
 msgid "<i>Please browse for a program to execute...</i>"
-msgstr ""
+msgstr "<i>იპოვეთ გამშვები პროგრამა...</i>"
 
 #: src/taskEditorDialog.cpp:771
 #, kde-format
@@ -800,7 +812,7 @@ msgstr "<i>აირჩიეთ 'თვეების' სექციიდ�
 msgid ""
 "<i>Please select from either the 'Days of Month' or the 'Days of Week' "
 "section...</i>"
-msgstr ""
+msgstr "<i>აირჩიეთ ან 'თვის დღეების' ან 'კვირის დღეების სექციიდან...</i>"
 
 #: src/taskEditorDialog.cpp:844
 #, kde-format
@@ -831,7 +843,7 @@ msgstr "<b>დაგეგმილი ამოცანები</b>"
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
-msgstr ""
+msgstr "სკრიპტის შესრულების დასასრული. გასასვლელად დააჭირეთ Enter-ს ან Ctrl+C."
 
 #: src/tasksWidget.cpp:127
 #, kde-format
@@ -933,7 +945,7 @@ msgstr "&ამ ცვლადის ჩართვა"
 #: src/variableEditorDialog.cpp:147
 #, kde-format
 msgid "<i>This variable will be used by scheduled tasks.</i>"
-msgstr ""
+msgstr "<i>ეს ცვლადი დაგეგმილი ამოცანების მიერ გამოიყენება.</i>"
 
 #: src/variableEditorDialog.cpp:194
 #, kde-format
