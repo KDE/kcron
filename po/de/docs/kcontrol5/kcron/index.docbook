@@ -1,632 +1,384 @@
 <?xml version="1.0" ?>
 <!DOCTYPE article PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
-  <!ENTITY % German "INCLUDE"
-> <!-- change language only here -->
+  <!ENTITY % English "INCLUDE" > <!-- change language only here -->
   <!ENTITY % addindex "IGNORE">
 ]>
 
 <article id="kcron" lang="&language;">
-<title
->Auftragsplaner</title>
+<title>Task Scheduler</title>
 
 <articleinfo>
 <authorgroup>
-<author
-><firstname
->Morgan</firstname
-> <othername
->N.</othername
-> <surname
->Sandquist</surname
-> <affiliation
-><address
->&Morgan.N.Sandquist.mail;</address>
+<author>
+<firstname>Morgan</firstname>
+<othername>N.</othername>
+<surname>Sandquist</surname>
+<affiliation><address>&Morgan.N.Sandquist.mail;</address>
 </affiliation>
 </author>
 
-<othercredit role="developer"
-><firstname
->Gary</firstname
-> <surname
->Meyer</surname
-> <affiliation
-><address
->&Gary.Meyer.mail;</address>
+<othercredit role="developer">
+<firstname>Gary</firstname>
+<surname>Meyer</surname>
+<affiliation><address>&Gary.Meyer.mail;</address>
 </affiliation>
-<contrib
->Entwicklung</contrib>
+<contrib>Developer</contrib>
 </othercredit>
 
-<othercredit role="reviewer"
-><firstname
->Lauri</firstname
-> <surname
->Watts</surname
-> <affiliation
-><address
->&Lauri.Watts.mail;</address>
+<othercredit role="reviewer">
+<firstname>Lauri</firstname>
+<surname>Watts</surname>
+<affiliation><address>&Lauri.Watts.mail;</address>
 </affiliation>
-<contrib
->Korrektur</contrib>
+<contrib>Reviewer</contrib>
 </othercredit>
 
-<othercredit role="translator"
-><firstname
->Robert</firstname
-><surname
->Schröter</surname
-><affiliation
-><address
-><email
->robert-schroeter@gmx.de</email
-></address
-></affiliation
-><contrib
->Übersetzung der Dokumentation</contrib
-></othercredit
-> 
+<!-- TRANS:ROLES_OF_TRANSLATORS -->
 
 </authorgroup>
 
 <copyright>
-<year
->2000</year>
-<holder
->&Morgan.N.Sandquist;</holder>
+<year>2000</year>
+<holder>&Morgan.N.Sandquist;</holder>
 </copyright>
 
-<date
->2017-01-12</date>
-<releaseinfo
->Anwendungen 16.12</releaseinfo>
+<date>2017-01-12</date>
+<releaseinfo>Applications 16.12</releaseinfo>
 
 <keywordset>
-<keyword
->KDE</keyword>
-<keyword
->cron</keyword>
-<keyword
->crontab</keyword>
-<keyword
->scheduler</keyword>
+<keyword>KDE</keyword>
+<keyword>cron</keyword>
+<keyword>crontab</keyword>
+<keyword>scheduler</keyword>
 </keywordset>
 
 </articleinfo>
 
 <sect1 id="introduction">
-<title
->Einleitung</title>
+<title>Introduction</title>
 
-<para
->Dies ist ein Modul um für andere Programme einen Zeitplan zur Ausführung im Hintergrund festzulegen. Es ist eine grafische Benutzeroberfläche für das &UNIX;-Systemprogramm <command
->cron</command
->.</para>
+<para>This is a module for scheduling programs to run in the
+background. It is a graphical user interface to <command>cron</command>,
+the &UNIX; system scheduler.</para>
 
-<important
-><para
->Ihr System muss zuerst den cron-Dämon <filename
->crond</filename
-> starten, sonst funktionieren die Einstellungen in diesem Modul nicht.</para
-></important>
+<important><para>Don't forget to tell your system to start the
+<filename>crond</filename> cron daemon first, or the settings in this 
+module will not work.</para></important>
 
 <sect2 id="kcron-start-up">
-<title
->Start des Moduls</title>
+<title>Start Up</title>
 
-<para
->Beim Start dieses Moduls wird eine Liste bereits geplanter Aufträge und dazugehöriger Umgebungsvariablen angezeigt. Wenn Sie dieses Modul mit Systemverwalterrechten benutzen, werden sowohl die geplanten Aufträge aller Benutzer des Systems wie auch die systeminternen Aufträge angezeigt.</para>
+<para>When you start this module you will see a summarized view of existing
+scheduled tasks and associated environment variables. If you are running
+as the root user, you will see these items for all users on the computer
+as well as the system scheduled tasks.</para>
 <!--admin mode-->
 <screenshot>
-<screeninfo
->Start des Moduls</screeninfo>
+<screeninfo>start up</screeninfo>
 <mediaobject>
 <imageobject>
 <imagedata fileref="kcronstart.png" format="PNG"/></imageobject>
-<textobject
-><phrase
->Start des Moduls</phrase
-></textobject>
+<textobject><phrase>start up</phrase></textobject>
 </mediaobject>
 </screenshot>
 
 <sect3>
-<title
->Geplante Aufträge</title>
+<title>Scheduled Tasks</title>
 
-<para
->Die geplanten Aufträge erscheinen in einer Liste <guilabel
->Aufträge</guilabel
->. Für jeden Auftrag wird angezeigt:</para>
+<para>Scheduled tasks appear under a <guilabel>Tasks</guilabel>
+list. For each scheduled task, the following items are displayed:</para>
 
 <variablelist>
 
 <!-- system cron first column User=root-->
 <varlistentry>
-<term
-><guilabel
->Planung</guilabel
-></term>
-<listitem
-><para
->In dieser Spalte wird entweder „@reboot“ für Aufträge angezeigt, die beim Hochfahren des Rechners ausgeführt werden, oder die Einträge aus der Datei crontab.</para
-></listitem>
+<term><guilabel>Scheduling</guilabel></term>
+<listitem><para>In this column either "@reboot" for task schedules at boot or
+the crontab entry is displayed.</para></listitem>
 </varlistentry>
 <varlistentry>
-<term
-><guilabel
->Befehl</guilabel
-></term>
-<listitem
-><para
->Programmname und Parameter.</para
-></listitem>
+<term><guilabel>Command</guilabel></term>
+<listitem><para>Program file and parameters.</para></listitem>
 </varlistentry>
-<varlistentry
-> 
-<term
-><guilabel
->Status</guilabel
-></term>
-<listitem
-><para
->Aktiviert oder Deaktiviert.</para
-></listitem>
-</varlistentry
-> 
-<varlistentry
-> 
-<term
-><guilabel
->Beschreibung</guilabel
-></term>
-<listitem
-><para
->Eine Beschreibung des Auftrags, wie zum Beispiel den Einsatzzweck.</para
-></listitem>
-</varlistentry
-> 
+<varlistentry> 
+<term><guilabel>Status</guilabel></term>
+<listitem><para>Enabled or Disabled.</para></listitem>
+</varlistentry> 
+<varlistentry> 
+<term><guilabel>Description</guilabel></term>
+<listitem><para>A description for the task, such as its
+purpose.</para></listitem>
+</varlistentry> 
 <varlistentry>
-<term
-><guilabel
->Details zur Planung</guilabel
-></term>
-<listitem
-><para
->Ausführliche Beschreibung des geplanten Auftrags.</para
-></listitem>
+<term><guilabel>Scheduling Details</guilabel></term>
+<listitem><para>Natural language description of scheduled
+task.</para></listitem>
 </varlistentry>
 </variablelist>
 
 </sect3>
 
 <sect3>
-<title
->Umgebungsvariablen</title>
+<title>Environment Variables</title>
 
-<para
->Umgebungsvariablen erscheinen in der Liste <guilabel
->Umgebungsvariablen</guilabel
->. Für jede Variable wird folgendes angezeigt: </para>
+<para>Environment variables appear in the
+<guilabel>Environment Variables</guilabel> list. For each environment variable,
+the following are displayed: </para>
 
 <variablelist>
 <varlistentry>
-<term
-><guilabel
->Variable</guilabel
-></term>
-<listitem
-><para
->Name der Variablen.</para
-></listitem>
+<term><guilabel>Variable</guilabel></term>
+<listitem><para>Variable name.</para></listitem>
 </varlistentry>
 <varlistentry>
-<term
-><guilabel
->Wert</guilabel
-></term>
-<listitem
-><para
->Wert der Variablen.</para
-></listitem>
+<term><guilabel>Value</guilabel></term>
+<listitem><para>Variable value.</para></listitem>
 </varlistentry>
 <varlistentry>
-<term
-><guilabel
->Status</guilabel
-></term>
-<listitem
-><para
->Aktiviert oder Deaktiviert.</para
-></listitem>
+<term><guilabel>Status</guilabel></term>
+<listitem><para>Enabled or Disabled.</para></listitem>
 </varlistentry>
 <varlistentry>
-<term
-><guilabel
->Kommentar</guilabel
-></term>
-<listitem
-><para
->Beschreibung der Variablen.</para
-></listitem>
+<term><guilabel>Comment</guilabel></term>
+<listitem><para>Natural language description of variable.</para></listitem>
 </varlistentry>
 </variablelist>
 
-<para
->Die hier erscheinenden Umgebungsvariablen setzen die sonst bestehenden Umgebungsvariablen für alle aufgeführten Aufträge außer Kraft.</para>
+<para>Environment variables appearing here will override any existing
+environment variable for all scheduled tasks.</para>
 
 </sect3>
 </sect2>
 
 <sect2 id="new-task">
-<title
->Neue Aufträge hinzufügen</title>
+<title>Adding Scheduled Tasks</title>
 
-<para
->Um eine neuen Auftrag hinzuzufügen, klicken Sie auf den Knopf <guibutton
->Neuer Auftrag ...</guibutton
-> Diese Aktion kann auch aus dem Kontextmenü gewählt werden, das durch Klicken mit der <mousebutton
->rechten</mousebutton
-> Maustaste aufgerufen wird.</para>
+<para>To create a new scheduled task, click the <guibutton>New Task...</guibutton>
+button. Alternatively, you can select this action from the
+<mousebutton>right</mousebutton> mouse button context menu.</para>
 
 <sect3>
-<title
->Der Dialog Neuer Auftrag</title>
+<title>The Edit Task Dialog</title>
 
 <screenshot>
-<screeninfo
->Der Dialog<guilabel
->Neuer Auftrag</guilabel
->.</screeninfo>
+<screeninfo><guilabel>Edit Task</guilabel> dialog.</screeninfo>
 <mediaobject>
-<imageobject
-><imagedata fileref="newtask.png" format="PNG"/></imageobject>
-<textobject
-><phrase
->Der Dialog<guilabel
->Neuer Auftrag</guilabel
-></phrase
-></textobject>
+<imageobject><imagedata fileref="newtask.png" format="PNG"/></imageobject>
+<textobject><phrase><guilabel>Edit Task</guilabel> dialog</phrase></textobject>
 </mediaobject>
 </screenshot>
 
 <variablelist>
 <varlistentry>
-<term
-><guilabel
->Befehl</guilabel
-></term>
-<listitem
-><para
->Geben Sie hier den Namen des zu startenden Programms ein. Sie können entweder einen relativen oder einen absoluten Pfadnamen angeben. Wenn Sie das Programm zuerst suchen möchten, drücken Sie das Symbol <guiicon
->Dateiauswahl</guiicon
->.</para>
-</listitem
-> 
+<term><guilabel>Command</guilabel></term>
+<listitem><para>Enter the name of the program. You can specify either a
+relative path or absolute path. If you want to look up the program, click
+<guiicon>Browse</guiicon> icon.</para>
+</listitem> 
 </varlistentry>
 <varlistentry>
-<term
-><guilabel
->Kommentar</guilabel
-></term>
-<listitem
-><para
->Hier können Sie eine Beschreibung des Auftrags eingeben.</para>
-</listitem
-> 
+<term><guilabel>Comment</guilabel></term>
+<listitem><para>Enter a description of the task to schedule.</para>
+</listitem> 
 </varlistentry>
 <varlistentry>
-<term
-><guibutton
->Diesen Auftrag aktivieren</guibutton
-></term>
-<listitem
-><para
->Um eine Auftrag zu aktivieren oder zu deaktivieren, klicken Sie auf dieses Ankreuzfeld.</para>
+<term><guibutton>Enable this task</guibutton></term>
+<listitem><para>To enable or disable the task, select or de-select
+this button.</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><guibutton
->Ausführen während des Systemstarts</guibutton
-></term>
+<term><guibutton>Run at system bootup</guibutton></term>
 <listitem>
-<para
->Aktivieren Sie diese Einstellung, um Aufträge beim Hochfahren des Rechners ausführen zu lassen.</para>
+<para>Check this button to run the task at system bootup.</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><guibutton
->Jeden Tag ausführen</guibutton
-></term>
+<term><guibutton>Run every day</guibutton></term>
 <listitem>
-<para
->Wenn der Auftrag jeden Tag ausgeführt werden soll, aktivieren Sie diese Einstellung.</para>
+<para>If you want to schedule the task to run daily, select this button.</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><guilabel
->Monate</guilabel
-></term>
-<listitem
-><para
->Wählen Sie die Monate aus, in denen der Auftrag ausgeführt werden soll.</para>
+<term><guilabel>Months</guilabel></term>
+<listitem><para>Select the months during which the task is to be
+scheduled.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term
-><guilabel
->Tage</guilabel
-></term>
-<listitem
-><para
->Wählen Sie die Tage im Monat aus, an denen der Auftrag ausgeführt werden soll.</para>
-</listitem
-> 
+<term><guilabel>Days of Month</guilabel></term>
+<listitem><para>Select the days of the month on which the task is to be
+scheduled.</para>
+</listitem> 
 </varlistentry>
 <varlistentry>
-<term
-><guilabel
->Wochentage</guilabel
-></term>
-<listitem
-><para
->Wählen Sie die Wochentage aus, an denen der Auftrag ausgeführt werden soll.</para>
-</listitem
-> 
+<term><guilabel>Days of Week</guilabel></term>
+<listitem><para>Select the days of the week on which the task is to be
+scheduled.</para>
+</listitem> 
 </varlistentry>
 <varlistentry>
-<term
-><guilabel
->Stunden</guilabel
-></term>
-<listitem
-><para
->Wählen Sie die Stunde(n), zu der der Auftrag ausgeführt werden soll.</para
-></listitem>
+<term><guilabel>Hours</guilabel></term>
+<listitem><para>Select the hours on which the task is to be
+scheduled.</para></listitem>
 </varlistentry>
 <varlistentry>
-<term
-><guilabel
->Minuten</guilabel
-></term>
-<listitem
-><para
->Wählen Sie die Minute(n), zu der der Auftrag ausgeführt werden soll. Das Programm <command
->cron</command
-> kann Aufträge nur im Mindestzeitabstand von einer Minute ausführen.</para>
+<term><guilabel>Minutes</guilabel></term>
+<listitem><para>Select the minute at which the task is to be scheduled. <command>cron</command>
+does not support scheduling tasks at smaller than one minute intervals.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term
-><guibutton
->OK</guibutton
-></term>
-<listitem
-><para
->Schließt Bearbeitung des Auftrag ab.</para>
+<term><guibutton>OK</guibutton></term>
+<listitem><para>Completes the creation of this task.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term
-><guibutton
->Abbrechen</guibutton
-></term>
-<listitem
-><para
->Bricht die Bearbeitung des Auftrags ab.</para>
+<term><guibutton>Cancel</guibutton></term>
+<listitem><para>Cancels the creation of this task.</para>
 </listitem>
 </varlistentry>
 </variablelist>
 
-<para
->Wenn Sie sowohl Monatstag(e) als auch Wochentag(e) angeben, wird der Auftrag sowohl bei einem passenden Datum als auch an einem passenden Wochentag ausgeführt. Wenn Sie z. B. den 1. und 15. und Sonntag auswählen, wird das Programm am 1. und 15. der gewählten Monate unabhängig vom Wochentag ausgeführt, und außerdem an jedem Sonntag der Monate, egal, auf welches Datum sie fallen.</para>
+<para>If you select both days of the month, and days of the week, the
+task will run when either condition is met. For instance, if you select
+the 1st and 15th, and select Sunday, the program will be run every 1st
+and 15th of the selected months (regardless of day of week) as well as
+every Sunday of the selected months (regardless of day of the
+month).</para>
 
-<para
->Der Auftrag ist erst dann fertig aufgenommen, wenn die <filename
->crontab</filename
-> gespeichert wurde.</para>
+<para>The scheduled task is not actually set up until the
+ <filename>crontab</filename> has been saved.</para>
 
 </sect3>
 </sect2>
 
 <sect2 id="manage-tasks">
-<title
->Aufträge verwalten</title>
+<title>Managing Scheduled Tasks</title>
 
-<para
->Wie bei der Erstellung neuer Aufträge werden Änderungen erst dann aktiv, wenn die <filename
->crontab</filename
-> gespeichert wurde.</para>
+<para>As with creating new tasks, changes to tasks will not actually be
+made until the <filename>crontab</filename> is saved.</para>
 
-<para
->Mit den Knöpfen rechts von der Auftragsliste können Aufträge bearbeitet, gelöscht, gedruckt oder sofort ausgeführt werden. Diese Aktionen finden Sie ebenfalls im Kontextmenü. Zusätzlich enthält dieses Menü noch Aktionen, um Aufträge auszuschneiden, zu kopieren und einzufügen.</para>
+<para>Use the buttons at the right of the task list to modify, delete, 
+print or run a selected task now. You reach all these actions from the
+context menu as well. Additionally the context menu provides actions to 
+cut, copy and paste tasks.</para>
 
 </sect2>
 
 <sect2 id="new-variable">
-<title
->Umgebungsvariablen hinzufügen</title>
+<title>Adding Environment Variables</title>
 
-<para
->Um eine neue Umgebungsvariable zu erstellen, klicken Sie auf den Knopf <guibutton
->Neue Variable ...</guibutton
->.</para>
+<para>To create a new environment variable, click the
+<guibutton>New Variable...</guibutton> button.</para>
 
-<para
->Alternativ dazu können Sie auch mit der <mousebutton
->rechten</mousebutton
-> Maustaste auf den Auftrag klicken und diese Aktion auswählen.</para>
+<para>Alternatively, you can use the <mousebutton>right</mousebutton>
+mouse button menu to choose this action.</para>
 
 <sect3>
-<title
->Der Dialog Neue Variable</title>
+<title>The Edit Variable dialog</title>
 
 <screenshot>
-<screeninfo
->Der Dialog <guilabel
->Neue Variable</guilabel
-></screeninfo>
+<screeninfo><guilabel>Edit Variable</guilabel> dialog.</screeninfo>
 <mediaobject>
-<imageobject
-><imagedata fileref="newvariable.png" format="PNG"/></imageobject>
-<textobject
-><phrase
->Der Dialog <guilabel
->Neue Variable</guilabel
-></phrase
-></textobject>
+<imageobject><imagedata fileref="newvariable.png" format="PNG"/></imageobject>
+<textobject><phrase><guilabel>Edit Variable</guilabel>
+dialog.</phrase></textobject>
 </mediaobject>
 </screenshot>
 
 <variablelist>
 <varlistentry>
-<term
-><guilabel
->Variable</guilabel
-></term
-> 
-<listitem
-><para
->Geben Sie den Namen der Variablen ein. Sie können auch eine aus der Liste der am häufigsten benutzten Umgebungsvariablen wählen; klicken Sie hierzu auf den Pfeil neben dem Feld für den Variablennamen. Dies sind:</para>
+<term><guilabel>Variable</guilabel></term> 
+<listitem><para>Enter the environment variable name. You can use the drop down
+list box to select from the most common environment variables used by scheduled
+tasks. Those include:</para>
 
 <variablelist>
 
 <varlistentry>
-<term
-><guimenuitem
->HOME</guimenuitem
-></term>
-<listitem
-><para
->Ordner, der anstelle des normalen Persönlichen Orders des Benutzers verwendet werden soll.</para
-></listitem>
+<term><guimenuitem>HOME</guimenuitem></term>
+<listitem><para>To be used instead of the default user's home
+folder.</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><guimenuitem
->MAILTO</guimenuitem
-></term>
-<listitem
-><para
->Um E-Mails aus dem aufzurufenden Programm an eine andere als die normale Adresse zu schicken</para
-></listitem>
+<term><guimenuitem>MAILTO</guimenuitem></term>
+<listitem><para>To send email output to an email address other than the user's
+default email address.</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><guimenuitem
->PATH</guimenuitem
-></term>
-<listitem
-><para
->Pfadliste, in der nach ausführbaren Programmen gesucht wird.</para
-></listitem>
+<term><guimenuitem>PATH</guimenuitem></term>
+<listitem><para>To be used to search folders for program
+files.</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><guimenuitem
->SHELL</guimenuitem
-></term>
-<listitem
-><para
->Shell, die anstelle der normalen Shell benutzt wird</para
-></listitem>
+<term><guimenuitem>SHELL</guimenuitem></term>
+<listitem><para>To be used instead of the user's default
+value.</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><guimenuitem
->LD_CONFIG_PATH</guimenuitem
-></term>
-<listitem
-><para
->Der Speicherort dynamischer Bibliotheken. Damit können geplante Aufträge ausgeführt werden, die Programme verwenden, deren Bibliotheken nicht im Systempfad installiert sind.</para
-></listitem>
+<term><guimenuitem>LD_CONFIG_PATH</guimenuitem></term>
+<listitem><para>The location of dynamic libraries. This allows cron jobs to execute 
+applications which have libraries they need to run installed outside the system library path.</para></listitem>
 </varlistentry>
 
 </variablelist>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term
-><guilabel
->Wert</guilabel
-></term>
-<listitem
-><para
->Geben Sie hier den Wert der Variablen ein.</para
-></listitem>
+<term><guilabel>Value</guilabel></term>
+<listitem><para>Enter the environment variable value.</para></listitem>
 </varlistentry>
 <varlistentry>
-<term
-><guilabel
->Kommentar</guilabel
-></term>
-<listitem
-><para
->Geben Sie eine Beschreibung der Variablen ein, also wofür sie verwendet wird.</para
-></listitem>
+<term><guilabel>Comment</guilabel></term>
+<listitem><para>Enter a description for the environment variable, such as its
+purpose.</para></listitem>
 </varlistentry>
 <varlistentry>
-<term
-><guilabel
->Diese Variable aktivieren</guilabel
-></term>
+<term><guilabel>Enable this variable</guilabel></term>
 <listitem>
-<para
->Um die Variable zu deaktivieren oder wieder zu aktivieren, klicken Sie auf diesen Knopf.</para>
+<para>To enable or disable the variable, select or de-select
+this button.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term
-><guibutton
->OK</guibutton
-></term>
+<term><guibutton>OK</guibutton></term>
 <listitem>
-<para
->Beendet das Bearbeiten der Variablen.</para>
+<para>Completes the setting of this variable.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term
-><guibutton
->Abbrechen</guibutton
-></term>
+<term><guibutton>Cancel</guibutton></term>
 <listitem>
-<para
->Bricht die Bearbeitung der Variablen ab.</para>
+<para>Cancels the setting of this variable.</para>
 </listitem>
 </varlistentry>
 </variablelist>
 
-<para
->Die Umgebungsvariable ist erst dann fertig aufgenommen, wenn die <filename
->crontab</filename
-> gespeichert wurde.</para>
+<para>The environment variable is not actually set up until the
+<filename>crontab</filename> has been saved.</para>
 
 </sect3>
 </sect2>
 
 <sect2 id="manage-variables">
-<title
->Umgebungsvariablen verwalten</title>
+<title>Managing Environment Variables</title>
 
-<note
-><para
->Wie bei der Erstellung neuer Variablen werden Änderungen erst dann vorgenommen, wenn die <filename
->crontab</filename
-> gespeichert wurde.</para
-></note>
+<note><para>As with creating new variables, changes to variables will
+not actually be made until the <filename>crontab</filename> is
+saved.</para></note>
 
-<para
->Mit den Knöpfen rechts von der Variablenliste können Variablen bearbeitet oder gelöscht werden Diese Aktionen finden Sie ebenfalls im Kontextmenü. Zusätzlich enthält dieses Menü noch Aktionen, um Variablen auszuschneiden, zu kopieren und einzufügen.</para>
+<para>Use the buttons at the right of the variable list to modify or delete 
+a selected variable. You reach all these actions from the
+context menu as well. Additionally the context menu provides actions to 
+cut, copy and paste variables.</para>
 
 </sect2>
 </sect1>
