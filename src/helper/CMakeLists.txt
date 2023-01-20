@@ -1,5 +1,5 @@
 
-add_executable(kcron_helper kcronhelper.cpp)
+add_executable(kcron_helper kcronhelper.cpp kcronhelper.h)
 target_link_libraries(kcron_helper PRIVATE KF5::AuthCore Qt${QT_MAJOR_VERSION}::Core KF5::AuthCore)
 
 ecm_qt_declare_logging_category(kcron_helper

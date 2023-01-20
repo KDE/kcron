@@ -17,40 +17,40 @@ ecm_qt_declare_logging_category(kcm_cron
 )
 
 target_sources(kcm_cron PRIVATE
-   crontablib/cthost.cpp
-   crontablib/ctcron.cpp
-   crontablib/ctmonth.cpp
-   crontablib/ctminute.cpp
-   crontablib/cthour.cpp
-   crontablib/ctdom.cpp
-   crontablib/ctdow.cpp
-   crontablib/cttask.cpp
-   crontablib/ctunit.cpp
-   crontablib/ctvariable.cpp
-   crontablib/ctSystemCron.cpp
-   crontablib/ctInitializationError.cpp
-   crontablib/ctSaveStatus.cpp
-   crontablib/ctHelper.cpp
+   crontablib/cthost.cpp crontablib/cthost.h
+   crontablib/ctcron.cpp crontablib/ctcron.h
+   crontablib/ctmonth.cpp crontablib/ctmonth.h
+   crontablib/ctminute.cpp crontablib/ctminute.h
+   crontablib/cthour.cpp crontablib/cthour.h
+   crontablib/ctdom.cpp crontablib/ctdom.h
+   crontablib/ctdow.cpp crontablib/ctdow.h
+   crontablib/cttask.cpp crontablib/cttask.h
+   crontablib/ctunit.cpp crontablib/ctunit.h
+   crontablib/ctvariable.cpp crontablib/ctvariable.h
+   crontablib/ctSystemCron.cpp crontablib/ctSystemCron.h
+   crontablib/ctInitializationError.cpp crontablib/ctInitializationError.h
+   crontablib/ctSaveStatus.cpp crontablib/ctSaveStatus.h
+   crontablib/ctHelper.cpp crontablib/ctHelper.h
 
-   genericListWidget.cpp
+   genericListWidget.cpp genericListWidget.h
     
-   tasksWidget.cpp
-   taskWidget.cpp 
+   tasksWidget.cpp tasksWidget.h
+   taskWidget.cpp taskWidget.h 
 
-   variablesWidget.cpp
-   variableWidget.cpp 
+   variablesWidget.cpp variablesWidget.h
+   variableWidget.cpp variableWidget.h 
  
-   taskEditorDialog.cpp 
-   variableEditorDialog.cpp
+   taskEditorDialog.cpp taskEditorDialog.h 
+   variableEditorDialog.cpp variableEditorDialog.h
 
-   crontabWidget.cpp 
+   crontabWidget.cpp crontabWidget.h 
 
-   kcronHelper.cpp
+   kcronHelper.cpp kcronHelper.h
     
-   crontabPrinter.cpp 
-   crontabPrinterWidget.cpp 
+   crontabPrinter.cpp crontabPrinter.h 
+   crontabPrinterWidget.cpp crontabPrinterWidget.h 
 
-   kcmCron.cpp 
+   kcmCron.cpp kcmCron.h 
 )
 
 
