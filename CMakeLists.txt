@@ -2,9 +2,9 @@ cmake_minimum_required (VERSION 3.16.0 FATAL_ERROR)
 project(kcron)
 
 set (QT_MIN_VERSION "5.15.2")
-set (KF5_MIN_VERSION "5.92.0")
+set (KF_MIN_VERSION "5.92.0")
 
-find_package (ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
+find_package (ECM ${KF_MIN_VERSION} REQUIRED NO_MODULE)
 set (CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
 add_definitions(-DTRANSLATION_DOMAIN="kcron")
@@ -35,7 +35,7 @@ find_package(KF5 REQUIRED COMPONENTS
     I18n
     KIO
 )
-find_package(KF5DocTools ${KF5_MIN_VERSION})
+find_package(KF5DocTools ${KF_MIN_VERSION})
 set_package_properties(KF5DocTools PROPERTIES DESCRIPTION
     "Tools to generate documentation"
     TYPE OPTIONAL
