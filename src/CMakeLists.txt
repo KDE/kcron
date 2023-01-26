@@ -56,11 +56,11 @@ target_sources(kcm_cron PRIVATE
 
 target_link_libraries(kcm_cron 
     Qt${QT_MAJOR_VERSION}::PrintSupport
-    KF5::ConfigWidgets
-    KF5::I18n
-    KF5::KIOWidgets
-    KF5::CoreAddons
-    KF5::AuthCore
+    KF${KF_MAJOR_VERSION}::ConfigWidgets
+    KF${KF_MAJOR_VERSION}::I18n
+    KF${KF_MAJOR_VERSION}::KIOWidgets
+    KF${KF_MAJOR_VERSION}::CoreAddons
+    KF${KF_MAJOR_VERSION}::AuthCore
 )
 
 install(TARGETS  kcm_cron  DESTINATION ${KDE_INSTALL_PLUGINDIR} )
