@@ -588,7 +588,7 @@ msgstr "مجدول المهام"
 #: src/kcmCron.cpp:34
 #, kde-format
 msgid "KDE Task Scheduler"
-msgstr "مجدول المهام لِــ كدي"
+msgstr "مجدول المهام لِــ كِيدِي"
 
 #: src/kcmCron.cpp:36
 #, fuzzy, kde-format
