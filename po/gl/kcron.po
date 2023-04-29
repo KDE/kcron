@@ -3,13 +3,13 @@
 # mvillarino <mvillarino@users.sourceforge.net>, 2006, 2007, 2008, 2009.
 # Xabi G. Feal <xabigf@gmx.net>, 2006.
 # Marce Villarino <mvillarino@kde-espana.es>, 2009, 2012, 2014.
-# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2019.
+# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2019, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-26 00:49+0000\n"
-"PO-Revision-Date: 2019-11-01 16:28+0100\n"
+"PO-Revision-Date: 2023-04-28 19:28+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 19.08.2\n"
+"X-Generator: Lokalize 23.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -85,7 +85,7 @@ msgstr "Non se puido abrir o ficheiro %1."
 #: src/crontablib/ctcron.cpp:304
 #, kde-format
 msgid "KAuth::ExecuteJob Error"
-msgstr ""
+msgstr "Erro de KAuth::ExecuteJob"
 
 #: src/crontablib/ctdom.cpp:22 src/crontablib/ctdow.cpp:44
 #: src/crontablib/cttask.cpp:296
@@ -406,7 +406,7 @@ msgstr "Decembro"
 #: src/crontablib/ctSystemCron.cpp:31
 #, kde-format
 msgid "root"
-msgstr ""
+msgstr "raíz"
 
 #: src/crontablib/cttask.cpp:267
 #, kde-format
@@ -534,18 +534,18 @@ msgstr "Variábeis de contorno"
 #: src/crontabPrinter.cpp:154
 #, kde-format
 msgid "System Crontab"
-msgstr "Táboa Cron do sistema"
+msgstr "Táboa de cron do sistema"
 
 #: src/crontabPrinter.cpp:156
 #, kde-format
 msgid "All Users Crontabs"
-msgstr "Todas as táboas Cron dos usuarios"
+msgstr "Todas as táboas de cron dos usuarios"
 
 #: src/crontabPrinter.cpp:158
 #, kde-format
 msgctxt "Crontab of user login"
 msgid "Crontab of user %1"
-msgstr "Táboa Cron do usuario %1"
+msgstr "Táboa de cron do usuario %1"
 
 #: src/crontabPrinterWidget.cpp:20
 #, kde-format
@@ -565,7 +565,7 @@ msgstr "Imprimir todos os &usuarios"
 #: src/crontabWidget.cpp:86
 #, kde-format
 msgid "Show the following Cron:"
-msgstr "Mostar esta táboa de Cron:"
+msgstr "Mostrar este cron:"
 
 #: src/crontabWidget.cpp:90
 #, kde-format
