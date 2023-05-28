@@ -60,8 +60,8 @@ msgstr ""
 #: src/crontablib/ctcron.cpp:268
 #, kde-format
 msgid ""
-"<p><strong>Command:</strong> %1</p><strong>Standard Output :</strong><pre>"
-"%2</pre><strong>Error Output :</strong><pre>%3</pre>"
+"<p><strong>Command:</strong> %1</p><strong>Standard Output :</"
+"strong><pre>%2</pre><strong>Error Output :</strong><pre>%3</pre>"
 msgstr ""
 
 #: src/crontablib/ctcron.cpp:274
