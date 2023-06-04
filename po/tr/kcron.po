@@ -9,13 +9,13 @@
 # RIDVAN CAN <ridvan@geleceklinux.org>, 2003.
 # obsoleteman <tulliana@gmail.com>, 2007-2009,2011-2012.
 # Volkan Gezer <volkangezer@gmail.com>, 2013, 2017.
-# Emir SARI <emir_sari@icloud.com>, 2022.
+# Emir SARI <emir_sari@icloud.com>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kdeadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-26 00:49+0000\n"
-"PO-Revision-Date: 2022-10-18 05:46+0300\n"
+"PO-Revision-Date: 2023-06-04 01:38+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.08.1\n"
+"X-Generator: Lokalize 23.07.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -666,7 +666,7 @@ msgstr "Bir zamanlanmış görev ekle ya da düzenle"
 #: src/taskEditorDialog.cpp:72 src/taskEditorDialog.cpp:870
 #, kde-format
 msgid "<i>This task will be executed at the specified intervals.</i>"
-msgstr "<i>Bu görev belirlenen aralıklarla çalıştırılacak...</i>"
+msgstr "<i>Bu görev belirlenen aralıklarla yürütülecek...</i>"
 
 #: src/taskEditorDialog.cpp:80
 #, kde-format
@@ -791,12 +791,12 @@ msgstr "<i>Lütfen geçerli bir komut satırı girin...</i>"
 #: src/taskEditorDialog.cpp:750
 #, kde-format
 msgid "<i>Please select an executable program...</i>"
-msgstr "<i>Lütfen çalıştırılabilir bir uygulama seçin...</i>"
+msgstr "<i>Lütfen yürütülebilir bir uygulama seçin...</i>"
 
 #: src/taskEditorDialog.cpp:758 src/taskEditorDialog.cpp:784
 #, kde-format
 msgid "<i>Please browse for a program to execute...</i>"
-msgstr "<i>Lütfen çalıştırmak için bir uygulamaya göz atın...</i>"
+msgstr "<i>Lütfen yürütmek için bir uygulamaya göz atın...</i>"
 
 #: src/taskEditorDialog.cpp:771
 #, kde-format
