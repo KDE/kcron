@@ -13,6 +13,7 @@
   <name xml:lang="de">KCron</name>
   <name xml:lang="el">KCron</name>
   <name xml:lang="en-GB">KCron</name>
+  <name xml:lang="eo">KCron</name>
   <name xml:lang="es">KCron</name>
   <name xml:lang="et">KCron</name>
   <name xml:lang="eu">KCron</name>
@@ -50,6 +51,7 @@
   <summary xml:lang="de">Auftragsplaner</summary>
   <summary xml:lang="el">Χρονοπρογραμματιστής εργασιών</summary>
   <summary xml:lang="en-GB">Task Scheduler</summary>
+  <summary xml:lang="eo">Taskplanilo</summary>
   <summary xml:lang="es">Planificador de tareas</summary>
   <summary xml:lang="et">Tegumihaldur</summary>
   <summary xml:lang="eu">Ataza antolatzailea</summary>
