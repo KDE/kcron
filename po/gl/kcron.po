@@ -565,7 +565,7 @@ msgstr "Imprimir todos os &usuarios"
 #: src/crontabWidget.cpp:86
 #, kde-format
 msgid "Show the following Cron:"
-msgstr "Mostrar este cron:"
+msgstr "Amosar este cron:"
 
 #: src/crontabWidget.cpp:90
 #, kde-format
