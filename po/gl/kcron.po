@@ -844,7 +844,7 @@ msgstr "<b>Tarefas planificadas</b>"
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
-msgstr "Fin da execución do script. Prema Intro ou Ctrl+C para saír."
+msgstr "Fin da execución do guión. Prema Intro ou Ctrl+C para saír."
 
 #: src/tasksWidget.cpp:127
 #, kde-format
