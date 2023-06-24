@@ -9,6 +9,7 @@ Dependencies:
     'frameworks/ki18n': '@latest-kf6'
     'frameworks/kio': '@latest-kf6'
     'frameworks/kdoctools': '@latest-kf6'
+    'frameworks/kcmutils': '@latest-kf6'
 
 - 'on': ['Linux/Qt5', 'FreeBSD/Qt5']
   'require':
@@ -17,6 +18,7 @@ Dependencies:
     'frameworks/ki18n': '@stable'
     'frameworks/kio': '@stable'
     'frameworks/kdoctools': '@stable'
+    'frameworks/kcmutils': '@stable'
 
 Options:
   require-passing-tests-on: [ 'Linux', 'FreeBSD' ]      

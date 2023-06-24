@@ -2,7 +2,7 @@ cmake_minimum_required (VERSION 3.16.0 FATAL_ERROR)
 project(kcron)
 
 set (QT_MIN_VERSION "5.15.2")
-set (KF_MIN_VERSION "5.102.0")
+set (KF_MIN_VERSION "5.105.0")
 
 find_package (ECM ${KF_MIN_VERSION} REQUIRED NO_MODULE)
 set (CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
@@ -41,6 +41,7 @@ find_package(KF${KF_MAJOR_VERSION} REQUIRED COMPONENTS
     Auth
     I18n
     KIO
+    KCMUtils
 )
 find_package(KF${KF_MAJOR_VERSION}DocTools ${KF_MIN_VERSION})
 set_package_properties(KF${KF_MAJOR_VERSION}DocTools PROPERTIES DESCRIPTION

@@ -7,7 +7,7 @@ include_directories(
 )
 
 ########## KCM Module ###############
-add_library(kcm_cron MODULE)
+kcoreaddons_add_plugin(kcm_cron INSTALL_NAMESPACE "plasma/kcms/systemsettings_qwidgets")
 ecm_qt_declare_logging_category(kcm_cron 
     HEADER kcm_cron_debug.h
     IDENTIFIER KCM_CRON_LOG
@@ -61,12 +61,10 @@ target_link_libraries(kcm_cron
     KF${KF_MAJOR_VERSION}::KIOWidgets
     KF${KF_MAJOR_VERSION}::CoreAddons
     KF${KF_MAJOR_VERSION}::AuthCore
+    KF${KF_MAJOR_VERSION}::KCMUtils
 )
 
-install(TARGETS  kcm_cron  DESTINATION ${KDE_INSTALL_PLUGINDIR} )
+kcmutils_generate_desktop_file(kcm_cron)
+
 # For root permissions.
 add_subdirectory(helper)
-
-install(FILES kcm_cron.desktop
-        DESTINATION  ${KDE_INSTALL_KSERVICESDIR}
-)

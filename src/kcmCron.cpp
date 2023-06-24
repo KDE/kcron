@@ -23,37 +23,26 @@
 #include "cttask.h"
 #include "kcm_cron_debug.h"
 
-K_PLUGIN_FACTORY(KCMCronFactory, registerPlugin<KCMCron>();)
+K_PLUGIN_CLASS_WITH_JSON(KCMCron, "kcm_cron.json")
 
+#if QT_VERSION_MAJOR == 5
 KCMCron::KCMCron(QWidget *parent, const QVariantList & /*args*/)
+#else
+KCMCron::KCMCron(QObject *parent)
+#endif
     : KCModule(parent)
 {
-    auto aboutData = new KAboutData(QStringLiteral("kcm_cron"),
-                                    i18n("Task Scheduler"),
-                                    QStringLiteral("5.0"),
-                                    i18n("KDE Task Scheduler"),
-                                    KAboutLicense::GPL,
-                                    i18n("(c) 2008, Nicolas Ternisien\n(c) 1999-2000, Gary Meyer"));
-
-    aboutData->addAuthor(i18n("Nicolas Ternisien"), QString(), QStringLiteral("nicolas.ternisien@gmail.com"));
-    aboutData->addAuthor(i18n("Gary Meyer"), QString(), QStringLiteral("gary@meyer.net"));
-    aboutData->addAuthor(i18n("Robert Berry"), QString(), QStringLiteral("rjmber@ntlworld.com"));
-    aboutData->addAuthor(i18n("James Ots"), QString(), QStringLiteral("code@jamesots.com"));
-    aboutData->addAuthor(i18n("Alberto G. Hierro"), QString(), QStringLiteral("alberto.hierro@kdemail.net"));
-
-    setAboutData(aboutData);
-
     // Initialize document.
     CTInitializationError ctInitializationError;
     mCtHost = new CTHost(findCrontabBinary(), ctInitializationError);
     if (ctInitializationError.hasErrorMessage()) {
-        KMessageBox::error(this,
+        KMessageBox::error(widget(),
                            i18n("The following error occurred while initializing KCron:"
                                 "\n\n%1\n\nKCron will now exit.\n",
                                 ctInitializationError.errorMessage()));
     }
 
-    mCrontabWidget = new CrontabWidget(this, mCtHost);
+    mCrontabWidget = new CrontabWidget(widget(), mCtHost);
 
     qCDebug(KCM_CRON_LOG) << "Crontab Widget initialized";
 
@@ -61,7 +50,7 @@ KCMCron::KCMCron(QWidget *parent, const QVariantList & /*args*/)
     connect(mCrontabWidget->variablesWidget(), SIGNAL(variableModified(bool)), this, SIGNAL(changed(bool)));
 
     // Initialize view.
-    auto layout = new QVBoxLayout(this);
+    auto layout = new QVBoxLayout(widget());
 
     layout->addWidget(mCrontabWidget);
 
@@ -92,7 +81,7 @@ void KCMCron::save()
 
     CTSaveStatus saveStatus = mCtHost->save(mCrontabWidget);
     if (saveStatus.isError()) {
-        KMessageBox::detailedError(this, saveStatus.errorMessage(), saveStatus.detailErrorMessage());
+        KMessageBox::detailedError(widget(), saveStatus.errorMessage(), saveStatus.detailErrorMessage());
     }
     qCDebug(KCM_CRON_LOG) << "saved ct host";
 }
@@ -114,9 +103,8 @@ bool KCMCron::init()
     }
 
     if (taskCount == 0) {
-        show();
         // TODO Add this as a passive popup/message/something else
-        KMessageBox::information(this,
+        KMessageBox::information(widget(),
                                  i18n("You can use this application to schedule programs to run in the background.\nTo schedule a new task now, click on "
                                       "the Tasks folder and select Edit/New from the menu."),
                                  i18n("Welcome to the Task Scheduler"),

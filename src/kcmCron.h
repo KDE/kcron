@@ -29,8 +29,11 @@ class KCMCron : public KCModule
     Q_OBJECT
 
 public:
-    //, const QVariantList& arguments
+#if QT_VERSION_MAJOR == 5
     KCMCron(QWidget *parent, const QVariantList &args);
+#else
+    KCMCron(QObject *parent);
+#endif
 
     ~KCMCron() override;
 
