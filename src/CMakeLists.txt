@@ -63,6 +63,10 @@ target_link_libraries(kcm_cron
     KF${KF_MAJOR_VERSION}::AuthCore
 )
 
+if (QT_MAJOR_VERSION STREQUAL "6")
+    target_link_libraries(kcm_cron KF6::KCMUtils)
+endif()
+
 install(TARGETS  kcm_cron  DESTINATION ${KDE_INSTALL_PLUGINDIR} )
 # For root permissions.
 add_subdirectory(helper)
