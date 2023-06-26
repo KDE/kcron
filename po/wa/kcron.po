@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-26 00:49+0000\n"
+"POT-Creation-Date: 2023-06-26 00:52+0000\n"
 "PO-Revision-Date: 2004-09-05 02:44+0200\n"
 "Last-Translator: Pablo Saratxaga <pablo@walon.org>\n"
 "Language-Team: Walloon <linux-wa@walon.org>\n"
@@ -590,49 +590,7 @@ msgstr ""
 msgid "System Cron"
 msgstr "(Intrêye cron do sistinme)"
 
-#: src/kcmCron.cpp:32
-#, kde-format
-msgid "Task Scheduler"
-msgstr "Programeu des bouyes"
-
-#: src/kcmCron.cpp:34
-#, kde-format
-msgid "KDE Task Scheduler"
-msgstr "Programeu des bouyes di KDE"
-
-#: src/kcmCron.cpp:36
-#, kde-format
-msgid ""
-"(c) 2008, Nicolas Ternisien\n"
-"(c) 1999-2000, Gary Meyer"
-msgstr ""
-
-#: src/kcmCron.cpp:38
-#, kde-format
-msgid "Nicolas Ternisien"
-msgstr ""
-
-#: src/kcmCron.cpp:39
-#, kde-format
-msgid "Gary Meyer"
-msgstr ""
-
 #: src/kcmCron.cpp:40
-#, kde-format
-msgid "Robert Berry"
-msgstr ""
-
-#: src/kcmCron.cpp:41
-#, kde-format
-msgid "James Ots"
-msgstr ""
-
-#: src/kcmCron.cpp:42
-#, kde-format
-msgid "Alberto G. Hierro"
-msgstr ""
-
-#: src/kcmCron.cpp:51
 #, kde-format
 msgid ""
 "The following error occurred while initializing KCron:\n"
@@ -647,7 +605,7 @@ msgstr ""
 "\n"
 "KCron va cwiter asteure.\n"
 
-#: src/kcmCron.cpp:120
+#: src/kcmCron.cpp:108
 #, kde-format
 msgid ""
 "You can use this application to schedule programs to run in the background.\n"
@@ -659,7 +617,7 @@ msgstr ""
 "Po programe ene novele bouye, clitchîz sol ridant des Bouyes eyet "
 "tchoezixhoz Candjî/Novea a pårti di ç' menu la."
 
-#: src/kcmCron.cpp:122
+#: src/kcmCron.cpp:110
 #, kde-format
 msgid "Welcome to the Task Scheduler"
 msgstr "Bénvnowe å programeu des bouyes"
@@ -1064,6 +1022,12 @@ msgstr "Candjî li tchoezeye bouye ou variåve."
 #| msgid "Delete the selected task or variable."
 msgid "Delete the selected variable."
 msgstr "Disfacer li tchoezeye bouye ou variåve."
+
+#~ msgid "Task Scheduler"
+#~ msgstr "Programeu des bouyes"
+
+#~ msgid "KDE Task Scheduler"
+#~ msgstr "Programeu des bouyes di KDE"
 
 #, fuzzy
 #~| msgid "Print &all users"

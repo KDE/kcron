@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-26 00:49+0000\n"
+"POT-Creation-Date: 2023-06-26 00:52+0000\n"
 "PO-Revision-Date: 2011-01-05 20:22+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
@@ -570,51 +570,7 @@ msgstr ""
 msgid "System Cron"
 msgstr "ਸਿਸਟਮ ਕਰੋਨ"
 
-#: src/kcmCron.cpp:32
-#, kde-format
-msgid "Task Scheduler"
-msgstr "ਕੰਮ ਨਿਯਮਤਕਾਰ"
-
-#: src/kcmCron.cpp:34
-#, kde-format
-msgid "KDE Task Scheduler"
-msgstr "KDE ਕੰਮ ਸਮਾਂ-ਸਾਰਣੀ"
-
-#: src/kcmCron.cpp:36
-#, kde-format
-msgid ""
-"(c) 2008, Nicolas Ternisien\n"
-"(c) 1999-2000, Gary Meyer"
-msgstr ""
-"(c) 2008, Nicolas Ternisien\n"
-"(c) 1999-2000, Gary Meyer"
-
-#: src/kcmCron.cpp:38
-#, kde-format
-msgid "Nicolas Ternisien"
-msgstr ""
-
-#: src/kcmCron.cpp:39
-#, kde-format
-msgid "Gary Meyer"
-msgstr "Gary Meyer"
-
 #: src/kcmCron.cpp:40
-#, kde-format
-msgid "Robert Berry"
-msgstr "Robert Berry"
-
-#: src/kcmCron.cpp:41
-#, kde-format
-msgid "James Ots"
-msgstr "James Ots"
-
-#: src/kcmCron.cpp:42
-#, kde-format
-msgid "Alberto G. Hierro"
-msgstr "Alberto G. Hierro"
-
-#: src/kcmCron.cpp:51
 #, kde-format
 msgid ""
 "The following error occurred while initializing KCron:\n"
@@ -624,7 +580,7 @@ msgid ""
 "KCron will now exit.\n"
 msgstr ""
 
-#: src/kcmCron.cpp:120
+#: src/kcmCron.cpp:108
 #, kde-format
 msgid ""
 "You can use this application to schedule programs to run in the background.\n"
@@ -632,7 +588,7 @@ msgid ""
 "from the menu."
 msgstr ""
 
-#: src/kcmCron.cpp:122
+#: src/kcmCron.cpp:110
 #, kde-format
 msgid "Welcome to the Task Scheduler"
 msgstr "ਕੰਮ ਨਿਯਮਤਕਾਰ ਵਲੋਂ ਜੀ ਆਇਆਂ ਨੂੰ"
@@ -1004,6 +960,31 @@ msgstr "ਮੁੱਲ ਸੁਧਾਰ"
 #, kde-format
 msgid "Delete the selected variable."
 msgstr ""
+
+#~ msgid "Task Scheduler"
+#~ msgstr "ਕੰਮ ਨਿਯਮਤਕਾਰ"
+
+#~ msgid "KDE Task Scheduler"
+#~ msgstr "KDE ਕੰਮ ਸਮਾਂ-ਸਾਰਣੀ"
+
+#~ msgid ""
+#~ "(c) 2008, Nicolas Ternisien\n"
+#~ "(c) 1999-2000, Gary Meyer"
+#~ msgstr ""
+#~ "(c) 2008, Nicolas Ternisien\n"
+#~ "(c) 1999-2000, Gary Meyer"
+
+#~ msgid "Gary Meyer"
+#~ msgstr "Gary Meyer"
+
+#~ msgid "Robert Berry"
+#~ msgstr "Robert Berry"
+
+#~ msgid "James Ots"
+#~ msgstr "James Ots"
+
+#~ msgid "Alberto G. Hierro"
+#~ msgstr "Alberto G. Hierro"
 
 #~ msgid "All users"
 #~ msgstr "ਸਭ ਯੂਜ਼ਰ"

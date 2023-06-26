@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron 1.28\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-26 00:49+0000\n"
+"POT-Creation-Date: 2023-06-26 00:52+0000\n"
 "PO-Revision-Date: 2006-01-11 23:33+0800\n"
 "Last-Translator: Walter Cheuk <wwycheuk@netvigator.com>\n"
 "Language-Team: Chinese (Hong Kong) <community@linuxhall.org>\n"
@@ -581,49 +581,7 @@ msgstr ""
 msgid "System Cron"
 msgstr "(系統 Crontab)"
 
-#: src/kcmCron.cpp:32
-#, kde-format
-msgid "Task Scheduler"
-msgstr "工作排程器"
-
-#: src/kcmCron.cpp:34
-#, kde-format
-msgid "KDE Task Scheduler"
-msgstr "KDE 工作排程器"
-
-#: src/kcmCron.cpp:36
-#, kde-format
-msgid ""
-"(c) 2008, Nicolas Ternisien\n"
-"(c) 1999-2000, Gary Meyer"
-msgstr ""
-
-#: src/kcmCron.cpp:38
-#, kde-format
-msgid "Nicolas Ternisien"
-msgstr ""
-
-#: src/kcmCron.cpp:39
-#, kde-format
-msgid "Gary Meyer"
-msgstr ""
-
 #: src/kcmCron.cpp:40
-#, kde-format
-msgid "Robert Berry"
-msgstr ""
-
-#: src/kcmCron.cpp:41
-#, kde-format
-msgid "James Ots"
-msgstr ""
-
-#: src/kcmCron.cpp:42
-#, kde-format
-msgid "Alberto G. Hierro"
-msgstr ""
-
-#: src/kcmCron.cpp:51
 #, kde-format
 msgid ""
 "The following error occurred while initializing KCron:\n"
@@ -638,7 +596,7 @@ msgstr ""
 "\n"
 "KCron 現在會關閉。\n"
 
-#: src/kcmCron.cpp:120
+#: src/kcmCron.cpp:108
 #, kde-format
 msgid ""
 "You can use this application to schedule programs to run in the background.\n"
@@ -648,7 +606,7 @@ msgstr ""
 "你可以使用這個應用程式來安排程式在背景執行。\n"
 "要現在安排新工作，請按下「工作」資料夾並從選單中選擇「編輯」/「新增」。"
 
-#: src/kcmCron.cpp:122
+#: src/kcmCron.cpp:110
 #, kde-format
 msgid "Welcome to the Task Scheduler"
 msgstr "歡迎使用工作排程器"
@@ -1053,6 +1011,12 @@ msgstr "編輯選定的工作或變數。"
 #| msgid "Delete the selected task or variable."
 msgid "Delete the selected variable."
 msgstr "刪除選定的工作或變數。"
+
+#~ msgid "Task Scheduler"
+#~ msgstr "工作排程器"
+
+#~ msgid "KDE Task Scheduler"
+#~ msgstr "KDE 工作排程器"
 
 #, fuzzy
 #~| msgid "Print &all users"

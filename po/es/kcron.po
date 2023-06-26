@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-26 00:49+0000\n"
+"POT-Creation-Date: 2023-06-26 00:52+0000\n"
 "PO-Revision-Date: 2021-10-07 13:47+0200\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -581,51 +581,7 @@ msgstr "Cron personal"
 msgid "System Cron"
 msgstr "Cron del sistema"
 
-#: src/kcmCron.cpp:32
-#, kde-format
-msgid "Task Scheduler"
-msgstr "Organizador de tareas"
-
-#: src/kcmCron.cpp:34
-#, kde-format
-msgid "KDE Task Scheduler"
-msgstr "Organizador de tareas de KDE"
-
-#: src/kcmCron.cpp:36
-#, kde-format
-msgid ""
-"(c) 2008, Nicolas Ternisien\n"
-"(c) 1999-2000, Gary Meyer"
-msgstr ""
-"© 2008, Nicolas Ternisien\n"
-"© 1999-2000, Gary Meyer"
-
-#: src/kcmCron.cpp:38
-#, kde-format
-msgid "Nicolas Ternisien"
-msgstr "Nicolas Ternisien"
-
-#: src/kcmCron.cpp:39
-#, kde-format
-msgid "Gary Meyer"
-msgstr "Gary Meyer"
-
 #: src/kcmCron.cpp:40
-#, kde-format
-msgid "Robert Berry"
-msgstr "Robert Berry"
-
-#: src/kcmCron.cpp:41
-#, kde-format
-msgid "James Ots"
-msgstr "James Ots"
-
-#: src/kcmCron.cpp:42
-#, kde-format
-msgid "Alberto G. Hierro"
-msgstr "Alberto G. Hierro"
-
-#: src/kcmCron.cpp:51
 #, kde-format
 msgid ""
 "The following error occurred while initializing KCron:\n"
@@ -640,7 +596,7 @@ msgstr ""
 "\n"
 "KCron terminará ahora.\n"
 
-#: src/kcmCron.cpp:120
+#: src/kcmCron.cpp:108
 #, kde-format
 msgid ""
 "You can use this application to schedule programs to run in the background.\n"
@@ -652,7 +608,7 @@ msgstr ""
 "Para programar una nueva tarea ahora, pulse en la carpeta de Tareas y "
 "seleccione Editar/Nueva en el menú."
 
-#: src/kcmCron.cpp:122
+#: src/kcmCron.cpp:110
 #, kde-format
 msgid "Welcome to the Task Scheduler"
 msgstr "Bienvenido al organizador de tareas"
@@ -1019,6 +975,34 @@ msgstr "Modificar la variable seleccionada."
 #, kde-format
 msgid "Delete the selected variable."
 msgstr "Borrar la variable seleccionada."
+
+#~ msgid "Task Scheduler"
+#~ msgstr "Organizador de tareas"
+
+#~ msgid "KDE Task Scheduler"
+#~ msgstr "Organizador de tareas de KDE"
+
+#~ msgid ""
+#~ "(c) 2008, Nicolas Ternisien\n"
+#~ "(c) 1999-2000, Gary Meyer"
+#~ msgstr ""
+#~ "© 2008, Nicolas Ternisien\n"
+#~ "© 1999-2000, Gary Meyer"
+
+#~ msgid "Nicolas Ternisien"
+#~ msgstr "Nicolas Ternisien"
+
+#~ msgid "Gary Meyer"
+#~ msgstr "Gary Meyer"
+
+#~ msgid "Robert Berry"
+#~ msgstr "Robert Berry"
+
+#~ msgid "James Ots"
+#~ msgstr "James Ots"
+
+#~ msgid "Alberto G. Hierro"
+#~ msgstr "Alberto G. Hierro"
 
 #~ msgid "All users"
 #~ msgstr "Todos los usuarios"

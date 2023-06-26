@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.3\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-26 00:49+0000\n"
+"POT-Creation-Date: 2023-06-26 00:52+0000\n"
 "PO-Revision-Date: 2011-02-20 16:14+0100\n"
 "Last-Translator: Kristóf Kiszel <ulysses@kubuntu.org>\n"
 "Language-Team: Hungarian <kde-lista@sophia.jpte.hu>\n"
@@ -575,51 +575,7 @@ msgstr "Saját feladatok"
 msgid "System Cron"
 msgstr "Rendszerfeladatok"
 
-#: src/kcmCron.cpp:32
-#, kde-format
-msgid "Task Scheduler"
-msgstr "Időzített feladatok"
-
-#: src/kcmCron.cpp:34
-#, kde-format
-msgid "KDE Task Scheduler"
-msgstr "KDE feladatidőzítő"
-
-#: src/kcmCron.cpp:36
-#, kde-format
-msgid ""
-"(c) 2008, Nicolas Ternisien\n"
-"(c) 1999-2000, Gary Meyer"
-msgstr ""
-"(c) Nicolas Ternisien, 2008.\n"
-"(c) Gary Meyer, 1999-2000."
-
-#: src/kcmCron.cpp:38
-#, kde-format
-msgid "Nicolas Ternisien"
-msgstr "Nicolas Ternisien"
-
-#: src/kcmCron.cpp:39
-#, kde-format
-msgid "Gary Meyer"
-msgstr "Gary Meyer"
-
 #: src/kcmCron.cpp:40
-#, kde-format
-msgid "Robert Berry"
-msgstr "Robert Berry"
-
-#: src/kcmCron.cpp:41
-#, kde-format
-msgid "James Ots"
-msgstr "James Ots"
-
-#: src/kcmCron.cpp:42
-#, kde-format
-msgid "Alberto G. Hierro"
-msgstr "Alberto G. Hierro"
-
-#: src/kcmCron.cpp:51
 #, kde-format
 msgid ""
 "The following error occurred while initializing KCron:\n"
@@ -634,7 +590,7 @@ msgstr ""
 "\n"
 "Kilépés...\n"
 
-#: src/kcmCron.cpp:120
+#: src/kcmCron.cpp:108
 #, kde-format
 msgid ""
 "You can use this application to schedule programs to run in the background.\n"
@@ -646,7 +602,7 @@ msgstr ""
 "Új időzített feladat létrehozásához kattintson a Feladatok mappára és "
 "válassza a Szerkesztés/Új menüpontot."
 
-#: src/kcmCron.cpp:122
+#: src/kcmCron.cpp:110
 #, kde-format
 msgid "Welcome to the Task Scheduler"
 msgstr "Üdvözöljük a Feladatidőzítőben!"
@@ -1012,6 +968,34 @@ msgstr "A kijelölt változó módosítása."
 #, kde-format
 msgid "Delete the selected variable."
 msgstr "A kijelölt változó törlése."
+
+#~ msgid "Task Scheduler"
+#~ msgstr "Időzített feladatok"
+
+#~ msgid "KDE Task Scheduler"
+#~ msgstr "KDE feladatidőzítő"
+
+#~ msgid ""
+#~ "(c) 2008, Nicolas Ternisien\n"
+#~ "(c) 1999-2000, Gary Meyer"
+#~ msgstr ""
+#~ "(c) Nicolas Ternisien, 2008.\n"
+#~ "(c) Gary Meyer, 1999-2000."
+
+#~ msgid "Nicolas Ternisien"
+#~ msgstr "Nicolas Ternisien"
+
+#~ msgid "Gary Meyer"
+#~ msgstr "Gary Meyer"
+
+#~ msgid "Robert Berry"
+#~ msgstr "Robert Berry"
+
+#~ msgid "James Ots"
+#~ msgstr "James Ots"
+
+#~ msgid "Alberto G. Hierro"
+#~ msgstr "Alberto G. Hierro"
 
 #~ msgid "All users"
 #~ msgstr "Minden felhasználó"

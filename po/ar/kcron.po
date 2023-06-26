@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-26 00:49+0000\n"
+"POT-Creation-Date: 2023-06-26 00:52+0000\n"
 "PO-Revision-Date: 2022-01-29 14:21+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -580,49 +580,7 @@ msgstr ""
 msgid "System Cron"
 msgstr "(مهام النظام المجدولة)"
 
-#: src/kcmCron.cpp:32
-#, kde-format
-msgid "Task Scheduler"
-msgstr "مجدول المهام"
-
-#: src/kcmCron.cpp:34
-#, kde-format
-msgid "KDE Task Scheduler"
-msgstr "مجدول المهام لِــ كِيدِي"
-
-#: src/kcmCron.cpp:36
-#, fuzzy, kde-format
-msgid ""
-"(c) 2008, Nicolas Ternisien\n"
-"(c) 1999-2000, Gary Meyer"
-msgstr "c غاري مير"
-
-#: src/kcmCron.cpp:38
-#, kde-format
-msgid "Nicolas Ternisien"
-msgstr "Nicolas Ternisien"
-
-#: src/kcmCron.cpp:39
-#, fuzzy, kde-format
-msgid "Gary Meyer"
-msgstr "غاري مير"
-
 #: src/kcmCron.cpp:40
-#, kde-format
-msgid "Robert Berry"
-msgstr "روبرت بيري"
-
-#: src/kcmCron.cpp:41
-#, fuzzy, kde-format
-msgid "James Ots"
-msgstr "جيمس"
-
-#: src/kcmCron.cpp:42
-#, fuzzy, kde-format
-msgid "Alberto G. Hierro"
-msgstr "ألبيرتو G"
-
-#: src/kcmCron.cpp:51
 #, kde-format
 msgid ""
 "The following error occurred while initializing KCron:\n"
@@ -637,7 +595,7 @@ msgstr ""
 "\n"
 "سينتهي الآن تنفيذ مجدول المهام KCron.\n"
 
-#: src/kcmCron.cpp:120
+#: src/kcmCron.cpp:108
 #, kde-format
 msgid ""
 "You can use this application to schedule programs to run in the background.\n"
@@ -647,7 +605,7 @@ msgstr ""
 "تستطيع استخدام هذا البرنامج لجدولة البرامج كي تنفذ في الخلفية.\n"
 "لجدولة مهمة جديدة الآن، أنقر على مجلّد المهام ، و انتقي حرر/جديد من القائمة."
 
-#: src/kcmCron.cpp:122
+#: src/kcmCron.cpp:110
 #, kde-format
 msgid "Welcome to the Task Scheduler"
 msgstr "مرحباً بك في مجدول المهام"
@@ -1013,6 +971,36 @@ msgstr "حرر المهمة أو المتغير المنتقى."
 #, fuzzy, kde-format
 msgid "Delete the selected variable."
 msgstr "أحذف المهمة أو المتغير المنتقى."
+
+#~ msgid "Task Scheduler"
+#~ msgstr "مجدول المهام"
+
+#~ msgid "KDE Task Scheduler"
+#~ msgstr "مجدول المهام لِــ كِيدِي"
+
+#, fuzzy
+#~ msgid ""
+#~ "(c) 2008, Nicolas Ternisien\n"
+#~ "(c) 1999-2000, Gary Meyer"
+#~ msgstr "c غاري مير"
+
+#~ msgid "Nicolas Ternisien"
+#~ msgstr "Nicolas Ternisien"
+
+#, fuzzy
+#~ msgid "Gary Meyer"
+#~ msgstr "غاري مير"
+
+#~ msgid "Robert Berry"
+#~ msgstr "روبرت بيري"
+
+#, fuzzy
+#~ msgid "James Ots"
+#~ msgstr "جيمس"
+
+#, fuzzy
+#~ msgid "Alberto G. Hierro"
+#~ msgstr "ألبيرتو G"
 
 #, fuzzy
 #~ msgid "All users"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-26 00:49+0000\n"
+"POT-Creation-Date: 2023-06-26 00:52+0000\n"
 "PO-Revision-Date: 2013-09-08 07:05+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -575,51 +575,7 @@ msgstr "شەخسىي پىلان ۋەزىپە"
 msgid "System Cron"
 msgstr "سىستېما پىلان ۋەزىپە"
 
-#: src/kcmCron.cpp:32
-#, kde-format
-msgid "Task Scheduler"
-msgstr "ۋەزىپە پىلانلاش پروگراممىسى"
-
-#: src/kcmCron.cpp:34
-#, kde-format
-msgid "KDE Task Scheduler"
-msgstr "KDE ۋەزىپە پىلانلاش پروگراممىسى"
-
-#: src/kcmCron.cpp:36
-#, kde-format
-msgid ""
-"(c) 2008, Nicolas Ternisien\n"
-"(c) 1999-2000, Gary Meyer"
-msgstr ""
-"(c) 2008, Nicolas Ternisien\n"
-"(c) 1999-2000, Gary Meyer"
-
-#: src/kcmCron.cpp:38
-#, kde-format
-msgid "Nicolas Ternisien"
-msgstr "Nicolas Ternisien"
-
-#: src/kcmCron.cpp:39
-#, kde-format
-msgid "Gary Meyer"
-msgstr "Gary Meyer"
-
 #: src/kcmCron.cpp:40
-#, kde-format
-msgid "Robert Berry"
-msgstr "Robert Berry"
-
-#: src/kcmCron.cpp:41
-#, kde-format
-msgid "James Ots"
-msgstr "James Ots"
-
-#: src/kcmCron.cpp:42
-#, kde-format
-msgid "Alberto G. Hierro"
-msgstr "Alberto G. Hierro"
-
-#: src/kcmCron.cpp:51
 #, kde-format
 msgid ""
 "The following error occurred while initializing KCron:\n"
@@ -634,7 +590,7 @@ msgstr ""
 "\n"
 "KCron چېكىنىدۇ.\n"
 
-#: src/kcmCron.cpp:120
+#: src/kcmCron.cpp:108
 #, kde-format
 msgid ""
 "You can use this application to schedule programs to run in the background.\n"
@@ -645,7 +601,7 @@ msgstr ""
 "پىلانلىيالايسىز. ئەگەر يېڭى بىر ۋەزىپىنى پىلانلىسىڭىز، ۋەزىپە قىسقۇچىدا "
 "يەككە چېكىپ ئاندىن تىزىملىكتىكى «تەھرىر/يېڭى»نى تاللاڭ."
 
-#: src/kcmCron.cpp:122
+#: src/kcmCron.cpp:110
 #, kde-format
 msgid "Welcome to the Task Scheduler"
 msgstr "ۋەزىپە پىلانلىغۇچغا مەرھابا"
@@ -1011,6 +967,34 @@ msgstr "تاللىغان ئۆزگەرگۈچىنى ئۆزگەرتىدۇ."
 #, kde-format
 msgid "Delete the selected variable."
 msgstr "تاللانغان ئۆزگەرگۈچىنى ئۆچۈرىدۇ."
+
+#~ msgid "Task Scheduler"
+#~ msgstr "ۋەزىپە پىلانلاش پروگراممىسى"
+
+#~ msgid "KDE Task Scheduler"
+#~ msgstr "KDE ۋەزىپە پىلانلاش پروگراممىسى"
+
+#~ msgid ""
+#~ "(c) 2008, Nicolas Ternisien\n"
+#~ "(c) 1999-2000, Gary Meyer"
+#~ msgstr ""
+#~ "(c) 2008, Nicolas Ternisien\n"
+#~ "(c) 1999-2000, Gary Meyer"
+
+#~ msgid "Nicolas Ternisien"
+#~ msgstr "Nicolas Ternisien"
+
+#~ msgid "Gary Meyer"
+#~ msgstr "Gary Meyer"
+
+#~ msgid "Robert Berry"
+#~ msgstr "Robert Berry"
+
+#~ msgid "James Ots"
+#~ msgstr "James Ots"
+
+#~ msgid "Alberto G. Hierro"
+#~ msgstr "Alberto G. Hierro"
 
 #~ msgid "All users"
 #~ msgstr "ھەممە ئىشلەتكۈچى"

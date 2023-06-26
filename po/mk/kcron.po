@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-26 00:49+0000\n"
+"POT-Creation-Date: 2023-06-26 00:52+0000\n"
 "PO-Revision-Date: 2006-01-25 19:01+0100\n"
 "Last-Translator: Bozidar Proevski <bobibobi@freemail.com.mk>\n"
 "Language-Team: Macedonian <mkde-l10n@lists.sourceforge.net>\n"
@@ -587,49 +587,7 @@ msgstr ""
 msgid "System Cron"
 msgstr "(Системски Crontab)"
 
-#: src/kcmCron.cpp:32
-#, kde-format
-msgid "Task Scheduler"
-msgstr "Распоредувач на задачи"
-
-#: src/kcmCron.cpp:34
-#, kde-format
-msgid "KDE Task Scheduler"
-msgstr "Распоредувач на задачи во KDE "
-
-#: src/kcmCron.cpp:36
-#, kde-format
-msgid ""
-"(c) 2008, Nicolas Ternisien\n"
-"(c) 1999-2000, Gary Meyer"
-msgstr ""
-
-#: src/kcmCron.cpp:38
-#, kde-format
-msgid "Nicolas Ternisien"
-msgstr ""
-
-#: src/kcmCron.cpp:39
-#, kde-format
-msgid "Gary Meyer"
-msgstr ""
-
 #: src/kcmCron.cpp:40
-#, kde-format
-msgid "Robert Berry"
-msgstr ""
-
-#: src/kcmCron.cpp:41
-#, kde-format
-msgid "James Ots"
-msgstr ""
-
-#: src/kcmCron.cpp:42
-#, kde-format
-msgid "Alberto G. Hierro"
-msgstr ""
-
-#: src/kcmCron.cpp:51
 #, kde-format
 msgid ""
 "The following error occurred while initializing KCron:\n"
@@ -644,7 +602,7 @@ msgstr ""
 "\n"
 "KCron сега ќе се затвори.\n"
 
-#: src/kcmCron.cpp:120
+#: src/kcmCron.cpp:108
 #, kde-format
 msgid ""
 "You can use this application to schedule programs to run in the background.\n"
@@ -656,7 +614,7 @@ msgstr ""
 "За да распоредите нова програма сега, притиснете на папката Задачи и "
 "изберете од менито Уредување/Нова "
 
-#: src/kcmCron.cpp:122
+#: src/kcmCron.cpp:110
 #, kde-format
 msgid "Welcome to the Task Scheduler"
 msgstr "Добредојдовте во Распоредувачот на задачи"
@@ -1061,6 +1019,12 @@ msgstr "Ја менува избраната задача или променл�
 #| msgid "Delete the selected task or variable."
 msgid "Delete the selected variable."
 msgstr "Ја брише избраната задача или променлива."
+
+#~ msgid "Task Scheduler"
+#~ msgstr "Распоредувач на задачи"
+
+#~ msgid "KDE Task Scheduler"
+#~ msgstr "Распоредувач на задачи во KDE "
 
 #, fuzzy
 #~| msgid "Print &all users"

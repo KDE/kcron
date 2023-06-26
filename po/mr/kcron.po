@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-26 00:49+0000\n"
+"POT-Creation-Date: 2023-06-26 00:52+0000\n"
 "PO-Revision-Date: 2013-03-30 15:23+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -568,49 +568,7 @@ msgstr ""
 msgid "System Cron"
 msgstr ""
 
-#: src/kcmCron.cpp:32
-#, kde-format
-msgid "Task Scheduler"
-msgstr "कार्य नियोजक"
-
-#: src/kcmCron.cpp:34
-#, kde-format
-msgid "KDE Task Scheduler"
-msgstr "केडीई कार्य नियोजक"
-
-#: src/kcmCron.cpp:36
-#, kde-format
-msgid ""
-"(c) 2008, Nicolas Ternisien\n"
-"(c) 1999-2000, Gary Meyer"
-msgstr ""
-
-#: src/kcmCron.cpp:38
-#, kde-format
-msgid "Nicolas Ternisien"
-msgstr "निकोलास टर्नीसीयन"
-
-#: src/kcmCron.cpp:39
-#, kde-format
-msgid "Gary Meyer"
-msgstr ""
-
 #: src/kcmCron.cpp:40
-#, kde-format
-msgid "Robert Berry"
-msgstr ""
-
-#: src/kcmCron.cpp:41
-#, kde-format
-msgid "James Ots"
-msgstr ""
-
-#: src/kcmCron.cpp:42
-#, kde-format
-msgid "Alberto G. Hierro"
-msgstr ""
-
-#: src/kcmCron.cpp:51
 #, kde-format
 msgid ""
 "The following error occurred while initializing KCron:\n"
@@ -620,7 +578,7 @@ msgid ""
 "KCron will now exit.\n"
 msgstr ""
 
-#: src/kcmCron.cpp:120
+#: src/kcmCron.cpp:108
 #, kde-format
 msgid ""
 "You can use this application to schedule programs to run in the background.\n"
@@ -628,7 +586,7 @@ msgid ""
 "from the menu."
 msgstr ""
 
-#: src/kcmCron.cpp:122
+#: src/kcmCron.cpp:110
 #, kde-format
 msgid "Welcome to the Task Scheduler"
 msgstr "कार्य नियोजकात स्वागत आहे"
@@ -993,6 +951,15 @@ msgstr ""
 #, kde-format
 msgid "Delete the selected variable."
 msgstr ""
+
+#~ msgid "Task Scheduler"
+#~ msgstr "कार्य नियोजक"
+
+#~ msgid "KDE Task Scheduler"
+#~ msgstr "केडीई कार्य नियोजक"
+
+#~ msgid "Nicolas Ternisien"
+#~ msgstr "निकोलास टर्नीसीयन"
 
 #~ msgid "All users"
 #~ msgstr "सर्व वापरकर्ते"

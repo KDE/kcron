@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mimos\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-26 00:49+0000\n"
+"POT-Creation-Date: 2023-06-26 00:52+0000\n"
 "PO-Revision-Date: 2005-09-22 14:45+0730\n"
 "Last-Translator: MIMOS <opensource@mimos.my>\n"
 "Language-Team: Malay <kedidiemas@yahoogroups.com>\n"
@@ -579,49 +579,7 @@ msgstr ""
 msgid "System Cron"
 msgstr "(Sistem Crontab)"
 
-#: src/kcmCron.cpp:32
-#, kde-format
-msgid "Task Scheduler"
-msgstr "Penjadual Tugas"
-
-#: src/kcmCron.cpp:34
-#, kde-format
-msgid "KDE Task Scheduler"
-msgstr "Penjadual Tugas KDE"
-
-#: src/kcmCron.cpp:36
-#, kde-format
-msgid ""
-"(c) 2008, Nicolas Ternisien\n"
-"(c) 1999-2000, Gary Meyer"
-msgstr ""
-
-#: src/kcmCron.cpp:38
-#, kde-format
-msgid "Nicolas Ternisien"
-msgstr ""
-
-#: src/kcmCron.cpp:39
-#, kde-format
-msgid "Gary Meyer"
-msgstr ""
-
 #: src/kcmCron.cpp:40
-#, kde-format
-msgid "Robert Berry"
-msgstr ""
-
-#: src/kcmCron.cpp:41
-#, kde-format
-msgid "James Ots"
-msgstr ""
-
-#: src/kcmCron.cpp:42
-#, kde-format
-msgid "Alberto G. Hierro"
-msgstr ""
-
-#: src/kcmCron.cpp:51
 #, kde-format
 msgid ""
 "The following error occurred while initializing KCron:\n"
@@ -636,7 +594,7 @@ msgstr ""
 "\n"
 "KCron akan keluar sekarang.\n"
 
-#: src/kcmCron.cpp:120
+#: src/kcmCron.cpp:108
 #, kde-format
 msgid ""
 "You can use this application to schedule programs to run in the background.\n"
@@ -648,7 +606,7 @@ msgstr ""
 "Untuk menjadualkan tugas baru sekarang, klik folder Tugasan dan pilih Edit/"
 "Baru dari menu."
 
-#: src/kcmCron.cpp:122
+#: src/kcmCron.cpp:110
 #, kde-format
 msgid "Welcome to the Task Scheduler"
 msgstr "Selamat datang ke Penjadual Tugas"
@@ -1053,6 +1011,12 @@ msgstr "Edit tugas atau variabel yang dipilih."
 #| msgid "Delete the selected task or variable."
 msgid "Delete the selected variable."
 msgstr "Hapuskan tugas atau variabel yang dipilih."
+
+#~ msgid "Task Scheduler"
+#~ msgstr "Penjadual Tugas"
+
+#~ msgid "KDE Task Scheduler"
+#~ msgstr "Penjadual Tugas KDE"
 
 #, fuzzy
 #~| msgid "Print &all users"

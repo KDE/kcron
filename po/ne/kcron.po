@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-26 00:49+0000\n"
+"POT-Creation-Date: 2023-06-26 00:52+0000\n"
 "PO-Revision-Date: 2007-08-23 17:05+0545\n"
 "Last-Translator: Nabin Gautam <nabin@mpp.org.np>\n"
 "Language-Team: Nepali <info@mpp.org.np>\n"
@@ -592,50 +592,7 @@ msgstr ""
 msgid "System Cron"
 msgstr "(प्रणाली क्रोनट्याब)"
 
-#: src/kcmCron.cpp:32
-#, kde-format
-msgid "Task Scheduler"
-msgstr "कार्य अनुसूचक"
-
-#: src/kcmCron.cpp:34
-#, kde-format
-msgid "KDE Task Scheduler"
-msgstr "केडीई कार्य अनुसूचक"
-
-#: src/kcmCron.cpp:36
-#, fuzzy, kde-format
-#| msgid "(c) 1999-2000, Gary Meyer"
-msgid ""
-"(c) 2008, Nicolas Ternisien\n"
-"(c) 1999-2000, Gary Meyer"
-msgstr "(c) १९९९-२०००, गेरि मेयर"
-
-#: src/kcmCron.cpp:38
-#, kde-format
-msgid "Nicolas Ternisien"
-msgstr ""
-
-#: src/kcmCron.cpp:39
-#, kde-format
-msgid "Gary Meyer"
-msgstr "गेरि मेयर"
-
 #: src/kcmCron.cpp:40
-#, kde-format
-msgid "Robert Berry"
-msgstr "रोबर्ट बेरे"
-
-#: src/kcmCron.cpp:41
-#, kde-format
-msgid "James Ots"
-msgstr "जेम्स अट्स"
-
-#: src/kcmCron.cpp:42
-#, kde-format
-msgid "Alberto G. Hierro"
-msgstr "अल्बर्टो जी हिरेरो"
-
-#: src/kcmCron.cpp:51
 #, kde-format
 msgid ""
 "The following error occurred while initializing KCron:\n"
@@ -650,7 +607,7 @@ msgstr ""
 "\n"
 "केडीई क्रोन अब अन्त्य हुन्छ ।\n"
 
-#: src/kcmCron.cpp:120
+#: src/kcmCron.cpp:108
 #, kde-format
 msgid ""
 "You can use this application to schedule programs to run in the background.\n"
@@ -661,7 +618,7 @@ msgstr ""
 "अहिले नयाँ कार्यको अनुसूची बनाउन, कार्य फोल्डरमा क्लिक गर्नुहोस् र मेनुबाट सम्पादन/नयाँ चयन "
 "गर्नुहोस् ।"
 
-#: src/kcmCron.cpp:122
+#: src/kcmCron.cpp:110
 #, kde-format
 msgid "Welcome to the Task Scheduler"
 msgstr "कार्य अनुसूचकमा स्वागत छ"
@@ -1066,6 +1023,31 @@ msgstr "चयन गरिएको कार्य वा चल सम्प�
 #| msgid "Delete the selected task or variable."
 msgid "Delete the selected variable."
 msgstr "चयन गरिएको कार्य वा चल मेट्नुहोस् ।"
+
+#~ msgid "Task Scheduler"
+#~ msgstr "कार्य अनुसूचक"
+
+#~ msgid "KDE Task Scheduler"
+#~ msgstr "केडीई कार्य अनुसूचक"
+
+#, fuzzy
+#~| msgid "(c) 1999-2000, Gary Meyer"
+#~ msgid ""
+#~ "(c) 2008, Nicolas Ternisien\n"
+#~ "(c) 1999-2000, Gary Meyer"
+#~ msgstr "(c) १९९९-२०००, गेरि मेयर"
+
+#~ msgid "Gary Meyer"
+#~ msgstr "गेरि मेयर"
+
+#~ msgid "Robert Berry"
+#~ msgstr "रोबर्ट बेरे"
+
+#~ msgid "James Ots"
+#~ msgstr "जेम्स अट्स"
+
+#~ msgid "Alberto G. Hierro"
+#~ msgstr "अल्बर्टो जी हिरेरो"
 
 #, fuzzy
 #~| msgid "Print &all users"
