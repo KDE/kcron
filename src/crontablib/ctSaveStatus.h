@@ -24,10 +24,10 @@ public:
     bool isError() const;
 
 private:
-    bool mErrorStatus;
+    bool mErrorStatus = true;
 
-    QString mError;
+    const QString mError;
 
-    QString mDetailError;
+    const QString mDetailError;
 };
 
