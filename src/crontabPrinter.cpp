@@ -18,8 +18,6 @@
 
 #include "crontabWidget.h"
 
-#include "taskWidget.h"
-
 #include "ctcron.h"
 #include "cttask.h"
 #include "ctvariable.h"

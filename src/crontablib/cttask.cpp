@@ -16,8 +16,6 @@
 
 #include "ctHelper.h"
 
-#include "kcm_cron_debug.h"
-
 CTTask::CTTask(const QString &tokenString, const QString &_comment, const QString &_userLogin, bool _systemCrontab)
     : mSystemCrontab(_systemCrontab)
 {

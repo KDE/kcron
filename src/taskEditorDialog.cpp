@@ -29,8 +29,6 @@
 #include <QPushButton>
 #include <kurlrequester.h>
 
-#include "ctcron.h"
-#include "cthost.h"
 #include "cttask.h"
 #include "kcm_cron_debug.h"
 

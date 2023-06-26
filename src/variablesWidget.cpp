@@ -15,7 +15,6 @@
 #include <QIcon>
 
 #include "ctcron.h"
-#include "cttask.h"
 #include "ctvariable.h"
 
 #include "crontabWidget.h"

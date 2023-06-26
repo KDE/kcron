@@ -10,13 +10,9 @@
 
 #include <KLocalizedString>
 
-#include "ctcron.h"
 #include "cttask.h"
 
 #include "crontabWidget.h"
-#include "taskEditorDialog.h"
-
-#include "kcm_cron_debug.h"
 
 TaskWidget::TaskWidget(TasksWidget *_tasksWidget, CTTask *_cttask)
     : QTreeWidgetItem(_tasksWidget->treeWidget())

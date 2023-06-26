@@ -34,7 +34,6 @@
 
 #include "variableWidget.h"
 
-#include "kcmCron.h"
 #include "kcm_cron_debug.h"
 
 CrontabWidget::CrontabWidget(QWidget *parent, CTHost *ctHost)

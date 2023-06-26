@@ -10,8 +10,6 @@
 
 #include <KLocalizedString>
 
-#include "kcm_cron_debug.h"
-
 CTUnit::CTUnit(int _min, int _max, const QString &tokStr)
 {
     mMin = _min;

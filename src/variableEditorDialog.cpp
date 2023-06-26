@@ -14,8 +14,6 @@
 #include <QDialogButtonBox>
 #include <QIcon>
 
-#include "ctcron.h"
-#include "cthost.h"
 #include "ctvariable.h"
 
 #include "crontabWidget.h"

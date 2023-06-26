@@ -14,7 +14,6 @@
 
 #include "ctcron.h"
 #include "cthost.h"
-#include "cttask.h"
 
 #include "crontabWidget.h"
 
