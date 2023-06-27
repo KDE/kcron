@@ -1,7 +1,7 @@
 # Translation of kcron.po to Slovenian
 # KDEADMIN translation to Slovenian language.
 # Copyright (C) 2001,2003, 2004, 2005 Free Software Foundation, Inc.
-# $Id: kcron.po 1654672 2023-06-26 01:36:42Z scripty $
+# $Id: kcron.po 1654755 2023-06-27 01:31:49Z scripty $
 # $Source$
 #
 # Rok Papez <rok@slo.net>, 2000.
@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-26 00:52+0000\n"
+"POT-Creation-Date: 2023-06-27 00:50+0000\n"
 "PO-Revision-Date: 2021-10-20 08:38+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -99,7 +99,7 @@ msgid "KAuth::ExecuteJob Error"
 msgstr "KAuth::ExecuteJob Napaka"
 
 #: src/crontablib/ctdom.cpp:22 src/crontablib/ctdow.cpp:44
-#: src/crontablib/cttask.cpp:296
+#: src/crontablib/cttask.cpp:294
 #, kde-format
 msgid "every day "
 msgstr "vsak dan "
@@ -420,63 +420,63 @@ msgstr "december"
 msgid "root"
 msgstr "koren"
 
-#: src/crontablib/cttask.cpp:267
+#: src/crontablib/cttask.cpp:265
 #, kde-format
 msgid "At system startup"
 msgstr "Ob zagonu sistema"
 
-#: src/crontablib/cttask.cpp:274
+#: src/crontablib/cttask.cpp:272
 #, kde-format
 msgctxt "1:Time Description, 2:Date Description"
 msgid "%1, %2"
 msgstr "%1, %2"
 
-#: src/crontablib/cttask.cpp:279
+#: src/crontablib/cttask.cpp:277
 #, kde-format
 msgctxt "Every 'days of week'"
 msgid "every %1"
 msgstr "vsak(o) %1"
 
-#: src/crontablib/cttask.cpp:284
+#: src/crontablib/cttask.cpp:282
 #, kde-format
 msgctxt "'Days of month' of 'Months'"
 msgid "%1 of %2"
 msgstr "%1 v %2"
 
-#: src/crontablib/cttask.cpp:306
+#: src/crontablib/cttask.cpp:304
 #, kde-format
 msgctxt "1:Day of month, 2:Day of week"
 msgid "%1 as well as %2"
 msgstr "%1 in tudi %2"
 
-#: src/crontablib/cttask.cpp:338
+#: src/crontablib/cttask.cpp:336
 #, kde-format
 msgctxt "1:Hour, 2:Minute"
 msgid "%1:%2"
 msgstr "%1:%2"
 
-#: src/crontablib/cttask.cpp:347
+#: src/crontablib/cttask.cpp:345
 #, kde-format
 msgid ", and "
 msgstr ", in "
 
-#: src/crontablib/cttask.cpp:349 src/crontablib/ctunit.cpp:181
+#: src/crontablib/cttask.cpp:347 src/crontablib/ctunit.cpp:179
 #, kde-format
 msgid " and "
 msgstr " in "
 
-#: src/crontablib/cttask.cpp:353 src/crontablib/ctunit.cpp:184
+#: src/crontablib/cttask.cpp:351 src/crontablib/ctunit.cpp:182
 #, kde-format
 msgid ", "
 msgstr ", "
 
-#: src/crontablib/cttask.cpp:360
+#: src/crontablib/cttask.cpp:358
 #, kde-format
 msgctxt "Hour::Minute list"
 msgid "At %1"
 msgstr "Ob %1"
 
-#: src/crontablib/cttask.cpp:368
+#: src/crontablib/cttask.cpp:366
 #, kde-format
 msgid "Every minute"
 msgid_plural "Every %1 minutes"
@@ -485,7 +485,7 @@ msgstr[1] "Vsaki %1 minuti"
 msgstr[2] "Vsake %1 minute"
 msgstr[3] "Vsakih %1 minut"
 
-#: src/crontablib/ctunit.cpp:179
+#: src/crontablib/ctunit.cpp:177
 #, kde-format
 msgid ","
 msgstr ","
@@ -520,42 +520,42 @@ msgstr "Mesto dinamičnih knjižnic."
 msgid "Local Variable"
 msgstr "Krajevna spremenljivka"
 
-#: src/crontabPrinter.cpp:91
+#: src/crontabPrinter.cpp:89
 #, kde-format
 msgid "Scheduled Tasks"
 msgstr "Razporejena opravila"
 
-#: src/crontabPrinter.cpp:108 src/tasksWidget.cpp:226
+#: src/crontabPrinter.cpp:106 src/tasksWidget.cpp:226
 #, kde-format
 msgid "Scheduling"
 msgstr "Razporejanje"
 
-#: src/crontabPrinter.cpp:108 src/tasksWidget.cpp:228
+#: src/crontabPrinter.cpp:106 src/tasksWidget.cpp:228
 #, kde-format
 msgid "Command"
 msgstr "Ukaz"
 
-#: src/crontabPrinter.cpp:108 src/tasksWidget.cpp:230
+#: src/crontabPrinter.cpp:106 src/tasksWidget.cpp:230
 #, kde-format
 msgid "Description"
 msgstr "Opis"
 
-#: src/crontabPrinter.cpp:129
+#: src/crontabPrinter.cpp:127
 #, kde-format
 msgid "Environment Variables"
 msgstr "Okoljske spremenljivke"
 
-#: src/crontabPrinter.cpp:154
+#: src/crontabPrinter.cpp:152
 #, kde-format
 msgid "System Crontab"
 msgstr "Sistemski Crontab"
 
-#: src/crontabPrinter.cpp:156
+#: src/crontabPrinter.cpp:154
 #, kde-format
 msgid "All Users Crontabs"
 msgstr "Vsi uporabniški Crontabi"
 
-#: src/crontabPrinter.cpp:158
+#: src/crontabPrinter.cpp:156
 #, kde-format
 msgctxt "Crontab of user login"
 msgid "Crontab of user %1"
@@ -576,17 +576,17 @@ msgstr "Natisni Cron&tab"
 msgid "Print &all users"
 msgstr "Natisni vse upor&abnike"
 
-#: src/crontabWidget.cpp:86
+#: src/crontabWidget.cpp:85
 #, kde-format
 msgid "Show the following Cron:"
 msgstr "Prikaži naslednji Cron:"
 
-#: src/crontabWidget.cpp:90
+#: src/crontabWidget.cpp:89
 #, kde-format
 msgid "Personal Cron"
 msgstr "Osebni Cron"
 
-#: src/crontabWidget.cpp:95
+#: src/crontabWidget.cpp:94
 #, kde-format
 msgid "System Cron"
 msgstr "Sistemski Cron"
@@ -606,7 +606,7 @@ msgstr ""
 "\n"
 "KCron se bo sedaj končal.\n"
 
-#: src/kcmCron.cpp:108
+#: src/kcmCron.cpp:113
 #, kde-format
 msgid ""
 "You can use this application to schedule programs to run in the background.\n"
@@ -617,167 +617,167 @@ msgstr ""
 "Da bi razporedili novo opravilo, kliknite na mapo Opravila in iz menija "
 "izberite Uredi/Novo."
 
-#: src/kcmCron.cpp:110
+#: src/kcmCron.cpp:115
 #, kde-format
 msgid "Welcome to the Task Scheduler"
 msgstr "Dobrodošli v razporejevalnik opravil"
 
-#: src/taskEditorDialog.cpp:71
+#: src/taskEditorDialog.cpp:69
 #, kde-format
 msgid "Add or modify a scheduled task"
 msgstr "Dodaj ali spremeni razporejeno opravilo"
 
-#: src/taskEditorDialog.cpp:72 src/taskEditorDialog.cpp:870
+#: src/taskEditorDialog.cpp:70 src/taskEditorDialog.cpp:868
 #, kde-format
 msgid "<i>This task will be executed at the specified intervals.</i>"
 msgstr "<i>To opravilo bo izvedeno v navedenih razmikih.</i>"
 
-#: src/taskEditorDialog.cpp:80
+#: src/taskEditorDialog.cpp:78
 #, kde-format
 msgid "&Command:"
 msgstr "Ukaz:"
 
-#: src/taskEditorDialog.cpp:101 src/variableEditorDialog.cpp:91
+#: src/taskEditorDialog.cpp:99 src/variableEditorDialog.cpp:89
 #, kde-format
 msgid "&Run as:"
 msgstr "Zaženi kot:"
 
-#: src/taskEditorDialog.cpp:118 src/variableEditorDialog.cpp:107
+#: src/taskEditorDialog.cpp:116 src/variableEditorDialog.cpp:105
 #, kde-format
 msgid "Co&mment:"
 msgstr "Opo&mba:"
 
-#: src/taskEditorDialog.cpp:131
+#: src/taskEditorDialog.cpp:129
 #, kde-format
 msgid "&Enable this task"
 msgstr "Omogoči to opravilo"
 
-#: src/taskEditorDialog.cpp:136
+#: src/taskEditorDialog.cpp:134
 #, kde-format
 msgid "Run at system &bootup"
 msgstr "Zaženi ob zagonu sistema"
 
-#: src/taskEditorDialog.cpp:142
+#: src/taskEditorDialog.cpp:140
 #, kde-format
 msgid "Run &every day"
 msgstr "Zaženi vsak dan"
 
-#: src/taskEditorDialog.cpp:245
+#: src/taskEditorDialog.cpp:243
 #, kde-format
 msgid "Days of Month"
 msgstr "Dnevi v mesecu"
 
-#: src/taskEditorDialog.cpp:282
+#: src/taskEditorDialog.cpp:280
 #, kde-format
 msgid "Months"
 msgstr "Meseci"
 
-#: src/taskEditorDialog.cpp:318
+#: src/taskEditorDialog.cpp:316
 #, kde-format
 msgid "Days of Week"
 msgstr "Dnevi v tednu"
 
-#: src/taskEditorDialog.cpp:454
+#: src/taskEditorDialog.cpp:452
 #, kde-format
 msgid "Minutes"
 msgstr "Minute"
 
-#: src/taskEditorDialog.cpp:464
+#: src/taskEditorDialog.cpp:462
 #, kde-format
 msgid "Preselection:"
 msgstr "Predizbor:"
 
-#: src/taskEditorDialog.cpp:471
+#: src/taskEditorDialog.cpp:469
 #, kde-format
 msgid "Clear selection"
 msgstr "Počisti izbor"
 
-#: src/taskEditorDialog.cpp:472
+#: src/taskEditorDialog.cpp:470
 #, kde-format
 msgid "Custom selection"
 msgstr "Izbor po meri"
 
-#: src/taskEditorDialog.cpp:473
+#: src/taskEditorDialog.cpp:471
 #, kde-format
 msgid "Each minute"
 msgstr "Vsako minuto"
 
-#: src/taskEditorDialog.cpp:474
+#: src/taskEditorDialog.cpp:472
 #, kde-format
 msgid "Every 2 minutes"
 msgstr "Vsaki 2 minuti"
 
-#: src/taskEditorDialog.cpp:475
+#: src/taskEditorDialog.cpp:473
 #, kde-format
 msgid "Every 5 minutes"
 msgstr "Vsakih 5 minut"
 
-#: src/taskEditorDialog.cpp:476
+#: src/taskEditorDialog.cpp:474
 #, kde-format
 msgid "Every 10 minutes"
 msgstr "Vsakih 10 minut"
 
-#: src/taskEditorDialog.cpp:477
+#: src/taskEditorDialog.cpp:475
 #, kde-format
 msgid "Every 15 minutes"
 msgstr "Vsakih 15 minut"
 
-#: src/taskEditorDialog.cpp:478
+#: src/taskEditorDialog.cpp:476
 #, kde-format
 msgid "Every 20 minutes"
 msgstr "Vsakih 20 minut"
 
-#: src/taskEditorDialog.cpp:479
+#: src/taskEditorDialog.cpp:477
 #, kde-format
 msgid "Every 30 minutes"
 msgstr "Vsakih 30 minut"
 
-#: src/taskEditorDialog.cpp:518
+#: src/taskEditorDialog.cpp:516
 #, kde-format
 msgid "Hours"
 msgstr "Ure"
 
-#: src/taskEditorDialog.cpp:523
+#: src/taskEditorDialog.cpp:521
 #, kde-format
 msgid "AM:"
 msgstr "Dopoldne:"
 
-#: src/taskEditorDialog.cpp:541
+#: src/taskEditorDialog.cpp:539
 #, kde-format
 msgid "PM:"
 msgstr "Popoldne:"
 
-#: src/taskEditorDialog.cpp:716 src/taskEditorDialog.cpp:726
+#: src/taskEditorDialog.cpp:714 src/taskEditorDialog.cpp:724
 #, kde-format
 msgid "<i>Please type a valid command line...</i>"
 msgstr "<i>Vnesite veljavno ukazno vrstico ...</i>"
 
-#: src/taskEditorDialog.cpp:750
+#: src/taskEditorDialog.cpp:748
 #, kde-format
 msgid "<i>Please select an executable program...</i>"
 msgstr "<i>Izberite izvedljiv program ...</i>"
 
-#: src/taskEditorDialog.cpp:758 src/taskEditorDialog.cpp:784
+#: src/taskEditorDialog.cpp:756 src/taskEditorDialog.cpp:782
 #, kde-format
 msgid "<i>Please browse for a program to execute...</i>"
 msgstr "<i>Brskajte za izbor programa za izvedbo ...</i>"
 
-#: src/taskEditorDialog.cpp:771
+#: src/taskEditorDialog.cpp:769
 #, kde-format
 msgid "<i>This task is disabled.</i>"
 msgstr "<i>To opravilo je onemogočeno.</i>"
 
-#: src/taskEditorDialog.cpp:778
+#: src/taskEditorDialog.cpp:776
 #, kde-format
 msgid "<i>This task will be run on system bootup.</i>"
 msgstr "<i>To opravilo bo zagnano ob zagonu sistema.</i>"
 
-#: src/taskEditorDialog.cpp:805
+#: src/taskEditorDialog.cpp:803
 #, kde-format
 msgid "<i>Please select from the 'Months' section...</i>"
 msgstr "<i>Izberite iz odseka 'Meseci'...</i>"
 
-#: src/taskEditorDialog.cpp:827
+#: src/taskEditorDialog.cpp:825
 #, kde-format
 msgid ""
 "<i>Please select from either the 'Days of Month' or the 'Days of Week' "
@@ -786,22 +786,22 @@ msgstr ""
 "<i>Izberite bodisi iz odseka 'Dnevi v mesecu' bodisi iz odseka 'Dnevi v "
 "tednu'...</i>"
 
-#: src/taskEditorDialog.cpp:844
+#: src/taskEditorDialog.cpp:842
 #, kde-format
 msgid "<i>Please select from the 'Hours' section...</i>"
 msgstr "<i>Izberite iz odseka 'Ure'...</i>"
 
-#: src/taskEditorDialog.cpp:861
+#: src/taskEditorDialog.cpp:859
 #, kde-format
 msgid "<i>Please select from the 'Minutes' section...</i>"
 msgstr "<i>Izberite iz odseka 'Minute'...</i>"
 
-#: src/taskEditorDialog.cpp:1065
+#: src/taskEditorDialog.cpp:1063
 #, kde-format
 msgid "Set All"
 msgstr "Nastavi vse"
 
-#: src/taskEditorDialog.cpp:1067
+#: src/taskEditorDialog.cpp:1065
 #, kde-format
 msgid "Clear All"
 msgstr "Počisti vse"
@@ -827,12 +827,12 @@ msgstr "Novo opravilo"
 msgid "Modify Task"
 msgstr "Spremeni opravilo"
 
-#: src/tasksWidget.cpp:223 src/variablesWidget.cpp:184
+#: src/tasksWidget.cpp:223 src/variablesWidget.cpp:183
 #, kde-format
 msgid "User"
 msgstr "Uporabnik"
 
-#: src/tasksWidget.cpp:229 src/variablesWidget.cpp:189
+#: src/tasksWidget.cpp:229 src/variablesWidget.cpp:188
 #, kde-format
 msgid "Status"
 msgstr "Stanje"
@@ -853,7 +853,7 @@ msgstr "Novo opravilo..."
 msgid "Create a new task."
 msgstr "Ustvari novo opravilo."
 
-#: src/tasksWidget.cpp:261 src/variablesWidget.cpp:210
+#: src/tasksWidget.cpp:261 src/variablesWidget.cpp:209
 #, kde-format
 msgid "M&odify..."
 msgstr "Spremeni..."
@@ -863,7 +863,7 @@ msgstr "Spremeni..."
 msgid "Modify the selected task."
 msgstr "Spremeni izbrano opravilo."
 
-#: src/tasksWidget.cpp:267 src/variablesWidget.cpp:216
+#: src/tasksWidget.cpp:267 src/variablesWidget.cpp:215
 #, kde-format
 msgid "&Delete"
 msgstr "Izbriši"
@@ -883,104 +883,104 @@ msgstr "Zaženi zdaj"
 msgid "Run the selected task now."
 msgstr "Takoj zažene izbrano opravilo."
 
-#: src/taskWidget.cpp:44 src/variableWidget.cpp:41
+#: src/taskWidget.cpp:40 src/variableWidget.cpp:38
 #, kde-format
 msgid "Enabled"
 msgstr "Omogočeno"
 
-#: src/taskWidget.cpp:47 src/variableWidget.cpp:44
+#: src/taskWidget.cpp:43 src/variableWidget.cpp:41
 #, kde-format
 msgid "Disabled"
 msgstr "Onemogočeno"
 
-#: src/variableEditorDialog.cpp:49
+#: src/variableEditorDialog.cpp:47
 #, kde-format
 msgid "Add or modify a variable"
 msgstr "Dodaj ali spremeni spremenljivko"
 
-#: src/variableEditorDialog.cpp:53
+#: src/variableEditorDialog.cpp:51
 #, kde-format
 msgctxt "The environmental variable name ie HOME, MAILTO etc"
 msgid "&Variable:"
 msgstr "Spremenljivka:"
 
-#: src/variableEditorDialog.cpp:82
+#: src/variableEditorDialog.cpp:80
 #, kde-format
 msgid "Va&lue:"
 msgstr "Vrednost:"
 
-#: src/variableEditorDialog.cpp:115
+#: src/variableEditorDialog.cpp:113
 #, kde-format
 msgid "&Enable this variable"
 msgstr "Omogoči to spremenljivko"
 
-#: src/variableEditorDialog.cpp:147
+#: src/variableEditorDialog.cpp:145
 #, kde-format
 msgid "<i>This variable will be used by scheduled tasks.</i>"
 msgstr "<i>To spremenljivko bodo uporabila razporejena opravila.</i>"
 
-#: src/variableEditorDialog.cpp:194
+#: src/variableEditorDialog.cpp:192
 #, kde-format
 msgid "<i>This variable is disabled.</i>"
 msgstr "<i>Ta spremenljivka je onemogočena.</i>"
 
-#: src/variableEditorDialog.cpp:201
+#: src/variableEditorDialog.cpp:199
 #, kde-format
 msgid "<i>Please enter the variable name...</i>"
 msgstr "<i>Vnesite ime spremenljivke ...</i>"
 
-#: src/variableEditorDialog.cpp:208
+#: src/variableEditorDialog.cpp:206
 #, kde-format
 msgid "<i>Please enter the variable value ...</i>"
 msgstr "<i>Vnesite vrednost spremenljivke ...</i>"
 
-#: src/variablesWidget.cpp:30
+#: src/variablesWidget.cpp:29
 #, kde-format
 msgid "<b>Environment Variables</b>"
 msgstr "<b>Okoljske spremenljivke</b>"
 
-#: src/variablesWidget.cpp:63
+#: src/variablesWidget.cpp:62
 #, kde-format
 msgid "Modify Variable"
 msgstr "Spremeni spremenljivko"
 
-#: src/variablesWidget.cpp:143
+#: src/variablesWidget.cpp:142
 #, kde-format
 msgid "New Variable"
 msgstr "Nova spremenljivka"
 
-#: src/variablesWidget.cpp:187
+#: src/variablesWidget.cpp:186
 #, kde-format
 msgid "Variable"
 msgstr "Spremenljivka"
 
-#: src/variablesWidget.cpp:188
+#: src/variablesWidget.cpp:187
 #, kde-format
 msgid "Value"
 msgstr "Vrednost"
 
-#: src/variablesWidget.cpp:190
+#: src/variablesWidget.cpp:189
 #, kde-format
 msgid "Comment"
 msgstr "Opomba"
 
-#: src/variablesWidget.cpp:205
+#: src/variablesWidget.cpp:204
 #, kde-format
 msgctxt "Adds a new variable"
 msgid "New &Variable..."
 msgstr "Nova spremenljivka..."
 
-#: src/variablesWidget.cpp:206
+#: src/variablesWidget.cpp:205
 #, kde-format
 msgid "Create a new variable."
 msgstr "Ustvari novo spremenljivko."
 
-#: src/variablesWidget.cpp:212
+#: src/variablesWidget.cpp:211
 #, kde-format
 msgid "Modify the selected variable."
 msgstr "Spremeni izbrano spremenljivko."
 
-#: src/variablesWidget.cpp:218
+#: src/variablesWidget.cpp:217
 #, kde-format
 msgid "Delete the selected variable."
 msgstr "Izbriše izbrano spremenljivko."

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-26 00:52+0000\n"
+"POT-Creation-Date: 2023-06-27 00:50+0000\n"
 "PO-Revision-Date: 2009-02-21 15:06+0530\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@aol.in>\n"
 "Language-Team: Hindi <kde-i18n-doc@lists.kde.org>\n"
@@ -85,7 +85,7 @@ msgid "KAuth::ExecuteJob Error"
 msgstr ""
 
 #: src/crontablib/ctdom.cpp:22 src/crontablib/ctdow.cpp:44
-#: src/crontablib/cttask.cpp:296
+#: src/crontablib/cttask.cpp:294
 #, kde-format
 msgid "every day "
 msgstr "हर दिन"
@@ -401,70 +401,70 @@ msgstr "दिसम्बर"
 msgid "root"
 msgstr ""
 
-#: src/crontablib/cttask.cpp:267
+#: src/crontablib/cttask.cpp:265
 #, kde-format
 msgid "At system startup"
 msgstr "जब कम्प्यूटर चालू हो"
 
-#: src/crontablib/cttask.cpp:274
+#: src/crontablib/cttask.cpp:272
 #, kde-format
 msgctxt "1:Time Description, 2:Date Description"
 msgid "%1, %2"
 msgstr "%1, %2"
 
-#: src/crontablib/cttask.cpp:279
+#: src/crontablib/cttask.cpp:277
 #, kde-format
 msgctxt "Every 'days of week'"
 msgid "every %1"
 msgstr "हर %1"
 
-#: src/crontablib/cttask.cpp:284
+#: src/crontablib/cttask.cpp:282
 #, kde-format
 msgctxt "'Days of month' of 'Months'"
 msgid "%1 of %2"
 msgstr "%2 मं से %1"
 
-#: src/crontablib/cttask.cpp:306
+#: src/crontablib/cttask.cpp:304
 #, kde-format
 msgctxt "1:Day of month, 2:Day of week"
 msgid "%1 as well as %2"
 msgstr "%1 अउ %2 घलोक"
 
-#: src/crontablib/cttask.cpp:338
+#: src/crontablib/cttask.cpp:336
 #, kde-format
 msgctxt "1:Hour, 2:Minute"
 msgid "%1:%2"
 msgstr "%1:%2"
 
-#: src/crontablib/cttask.cpp:347
+#: src/crontablib/cttask.cpp:345
 #, kde-format
 msgid ", and "
 msgstr ", और"
 
-#: src/crontablib/cttask.cpp:349 src/crontablib/ctunit.cpp:181
+#: src/crontablib/cttask.cpp:347 src/crontablib/ctunit.cpp:179
 #, kde-format
 msgid " and "
 msgstr "और"
 
-#: src/crontablib/cttask.cpp:353 src/crontablib/ctunit.cpp:184
+#: src/crontablib/cttask.cpp:351 src/crontablib/ctunit.cpp:182
 #, kde-format
 msgid ", "
 msgstr ","
 
-#: src/crontablib/cttask.cpp:360
+#: src/crontablib/cttask.cpp:358
 #, kde-format
 msgctxt "Hour::Minute list"
 msgid "At %1"
 msgstr "पर %1"
 
-#: src/crontablib/cttask.cpp:368
+#: src/crontablib/cttask.cpp:366
 #, fuzzy, kde-format
 msgid "Every minute"
 msgid_plural "Every %1 minutes"
 msgstr[0] "हर मिनट"
 msgstr[1] "हर मिनट"
 
-#: src/crontablib/ctunit.cpp:179
+#: src/crontablib/ctunit.cpp:177
 #, kde-format
 msgid ","
 msgstr ","
@@ -499,42 +499,42 @@ msgstr "डायनामिक लाइब्रेरीज लोकेस�
 msgid "Local Variable"
 msgstr "लोकल वेरिएबल"
 
-#: src/crontabPrinter.cpp:91
+#: src/crontabPrinter.cpp:89
 #, kde-format
 msgid "Scheduled Tasks"
 msgstr "नियोजित काम"
 
-#: src/crontabPrinter.cpp:108 src/tasksWidget.cpp:226
+#: src/crontabPrinter.cpp:106 src/tasksWidget.cpp:226
 #, kde-format
 msgid "Scheduling"
 msgstr ""
 
-#: src/crontabPrinter.cpp:108 src/tasksWidget.cpp:228
+#: src/crontabPrinter.cpp:106 src/tasksWidget.cpp:228
 #, kde-format
 msgid "Command"
 msgstr "कमांड"
 
-#: src/crontabPrinter.cpp:108 src/tasksWidget.cpp:230
+#: src/crontabPrinter.cpp:106 src/tasksWidget.cpp:230
 #, kde-format
 msgid "Description"
 msgstr "वर्नन"
 
-#: src/crontabPrinter.cpp:129
+#: src/crontabPrinter.cpp:127
 #, kde-format
 msgid "Environment Variables"
 msgstr "एनवायनमेंट वेरिएबल"
 
-#: src/crontabPrinter.cpp:154
+#: src/crontabPrinter.cpp:152
 #, kde-format
 msgid "System Crontab"
 msgstr "तंत्र क्रानटैब"
 
-#: src/crontabPrinter.cpp:156
+#: src/crontabPrinter.cpp:154
 #, kde-format
 msgid "All Users Crontabs"
 msgstr "सब्बो कमइया क्रानटैब"
 
-#: src/crontabPrinter.cpp:158
+#: src/crontabPrinter.cpp:156
 #, kde-format
 msgctxt "Crontab of user login"
 msgid "Crontab of user %1"
@@ -555,17 +555,17 @@ msgstr "क्रान-टैब छापव (&t)"
 msgid "Print &all users"
 msgstr "सब्बो कमइया छापव (&a)"
 
-#: src/crontabWidget.cpp:86
+#: src/crontabWidget.cpp:85
 #, kde-format
 msgid "Show the following Cron:"
 msgstr "नीचे वाले क्रान देखाव:"
 
-#: src/crontabWidget.cpp:90
+#: src/crontabWidget.cpp:89
 #, kde-format
 msgid "Personal Cron"
 msgstr "निजी क्रान"
 
-#: src/crontabWidget.cpp:95
+#: src/crontabWidget.cpp:94
 #, kde-format
 msgid "System Cron"
 msgstr "तंत्र क्रान"
@@ -585,7 +585,7 @@ msgstr ""
 "\n"
 "के-क्रान अब बाहिर होही.\n"
 
-#: src/kcmCron.cpp:108
+#: src/kcmCron.cpp:113
 #, kde-format
 msgid ""
 "You can use this application to schedule programs to run in the background.\n"
@@ -596,189 +596,189 @@ msgstr ""
 "सकथो .\n"
 "एक नवा काम सारिनीबद्ध करे बर टास्क फोल्डर मं किलिक करव अउ मेन्यू मं से चुनव संपादन/नवा."
 
-#: src/kcmCron.cpp:110
+#: src/kcmCron.cpp:115
 #, kde-format
 msgid "Welcome to the Task Scheduler"
 msgstr "टास्क सेड्यूलर मं आप मन के स्वागत हे"
 
-#: src/taskEditorDialog.cpp:71
+#: src/taskEditorDialog.cpp:69
 #, kde-format
 msgid "Add or modify a scheduled task"
 msgstr "निरधारित काम जोड़व या सुधारव"
 
-#: src/taskEditorDialog.cpp:72 src/taskEditorDialog.cpp:870
+#: src/taskEditorDialog.cpp:70 src/taskEditorDialog.cpp:868
 #, kde-format
 msgid "<i>This task will be executed at the specified intervals.</i>"
 msgstr ""
 
-#: src/taskEditorDialog.cpp:80
+#: src/taskEditorDialog.cpp:78
 #, kde-format
 msgid "&Command:"
 msgstr "कमांड: (&C)"
 
-#: src/taskEditorDialog.cpp:101 src/variableEditorDialog.cpp:91
+#: src/taskEditorDialog.cpp:99 src/variableEditorDialog.cpp:89
 #, kde-format
 msgid "&Run as:"
 msgstr "अइसन चलाव: (&R)"
 
-#: src/taskEditorDialog.cpp:118 src/variableEditorDialog.cpp:107
+#: src/taskEditorDialog.cpp:116 src/variableEditorDialog.cpp:105
 #, kde-format
 msgid "Co&mment:"
 msgstr "टिप्पनीः (&m)"
 
-#: src/taskEditorDialog.cpp:131
+#: src/taskEditorDialog.cpp:129
 #, kde-format
 msgid "&Enable this task"
 msgstr "ए काम ल सक्छम करव (&E)"
 
-#: src/taskEditorDialog.cpp:136
+#: src/taskEditorDialog.cpp:134
 #, kde-format
 msgid "Run at system &bootup"
 msgstr "सिसटम बूट अप के समय चलाव (&b)"
 
-#: src/taskEditorDialog.cpp:142
+#: src/taskEditorDialog.cpp:140
 #, kde-format
 msgid "Run &every day"
 msgstr "रोज चलाव (&e)"
 
-#: src/taskEditorDialog.cpp:245
+#: src/taskEditorDialog.cpp:243
 #, kde-format
 msgid "Days of Month"
 msgstr "महिना के दिन"
 
-#: src/taskEditorDialog.cpp:282
+#: src/taskEditorDialog.cpp:280
 #, kde-format
 msgid "Months"
 msgstr "महिना"
 
-#: src/taskEditorDialog.cpp:318
+#: src/taskEditorDialog.cpp:316
 #, kde-format
 msgid "Days of Week"
 msgstr "हफ्ता के दिन"
 
-#: src/taskEditorDialog.cpp:454
+#: src/taskEditorDialog.cpp:452
 #, kde-format
 msgid "Minutes"
 msgstr "मिनट्स"
 
-#: src/taskEditorDialog.cpp:464
+#: src/taskEditorDialog.cpp:462
 #, kde-format
 msgid "Preselection:"
 msgstr "प्रीसलेक्सन:"
 
-#: src/taskEditorDialog.cpp:471
+#: src/taskEditorDialog.cpp:469
 #, kde-format
 msgid "Clear selection"
 msgstr "चयन हटाव"
 
-#: src/taskEditorDialog.cpp:472
+#: src/taskEditorDialog.cpp:470
 #, kde-format
 msgid "Custom selection"
 msgstr "मनमाफिक चयन"
 
-#: src/taskEditorDialog.cpp:473
+#: src/taskEditorDialog.cpp:471
 #, kde-format
 msgid "Each minute"
 msgstr "हर मिनट"
 
-#: src/taskEditorDialog.cpp:474
+#: src/taskEditorDialog.cpp:472
 #, kde-format
 msgid "Every 2 minutes"
 msgstr "हर २ मिनट"
 
-#: src/taskEditorDialog.cpp:475
+#: src/taskEditorDialog.cpp:473
 #, kde-format
 msgid "Every 5 minutes"
 msgstr "हर ५ मिनट"
 
-#: src/taskEditorDialog.cpp:476
+#: src/taskEditorDialog.cpp:474
 #, kde-format
 msgid "Every 10 minutes"
 msgstr "हर १० मिनट"
 
-#: src/taskEditorDialog.cpp:477
+#: src/taskEditorDialog.cpp:475
 #, kde-format
 msgid "Every 15 minutes"
 msgstr "हर १५ मिनट"
 
-#: src/taskEditorDialog.cpp:478
+#: src/taskEditorDialog.cpp:476
 #, kde-format
 msgid "Every 20 minutes"
 msgstr "हर २० मिनट"
 
-#: src/taskEditorDialog.cpp:479
+#: src/taskEditorDialog.cpp:477
 #, kde-format
 msgid "Every 30 minutes"
 msgstr "हर ३० मिनट"
 
-#: src/taskEditorDialog.cpp:518
+#: src/taskEditorDialog.cpp:516
 #, kde-format
 msgid "Hours"
 msgstr "घंटे"
 
-#: src/taskEditorDialog.cpp:523
+#: src/taskEditorDialog.cpp:521
 #, kde-format
 msgid "AM:"
 msgstr "बिहिनियाँ:"
 
-#: src/taskEditorDialog.cpp:541
+#: src/taskEditorDialog.cpp:539
 #, kde-format
 msgid "PM:"
 msgstr "मंझनियाँ:"
 
-#: src/taskEditorDialog.cpp:716 src/taskEditorDialog.cpp:726
+#: src/taskEditorDialog.cpp:714 src/taskEditorDialog.cpp:724
 #, kde-format
 msgid "<i>Please type a valid command line...</i>"
 msgstr "<i>किरपा करके, वैध कमांड लाइन टाइप करव...</i>"
 
-#: src/taskEditorDialog.cpp:750
+#: src/taskEditorDialog.cpp:748
 #, kde-format
 msgid "<i>Please select an executable program...</i>"
 msgstr "<i>किरपा करके, कोनो चलाय जा सके प्रोग्राम चुनव ...</i>"
 
-#: src/taskEditorDialog.cpp:758 src/taskEditorDialog.cpp:784
+#: src/taskEditorDialog.cpp:756 src/taskEditorDialog.cpp:782
 #, kde-format
 msgid "<i>Please browse for a program to execute...</i>"
 msgstr "<i>प्रोग्राम ल चलाय बर ब्राउज करव ...</i>"
 
-#: src/taskEditorDialog.cpp:771
+#: src/taskEditorDialog.cpp:769
 #, kde-format
 msgid "<i>This task is disabled.</i>"
 msgstr "<i>ये काम अक्छम करे गे हे.</i>"
 
-#: src/taskEditorDialog.cpp:778
+#: src/taskEditorDialog.cpp:776
 #, kde-format
 msgid "<i>This task will be run on system bootup.</i>"
 msgstr "<i>ये काम सिसटम बूटअप मं चलही.</i>"
 
-#: src/taskEditorDialog.cpp:805
+#: src/taskEditorDialog.cpp:803
 #, kde-format
 msgid "<i>Please select from the 'Months' section...</i>"
 msgstr "<i>किरपा करके, 'महिना' खन्ड मं से चुनव ...</i>"
 
-#: src/taskEditorDialog.cpp:827
+#: src/taskEditorDialog.cpp:825
 #, kde-format
 msgid ""
 "<i>Please select from either the 'Days of Month' or the 'Days of Week' "
 "section...</i>"
 msgstr "<i>किरपा करके, या तो 'महिना के दिन' या 'हफ्ता के दिन' खन्ड चुनव ...</i>"
 
-#: src/taskEditorDialog.cpp:844
+#: src/taskEditorDialog.cpp:842
 #, kde-format
 msgid "<i>Please select from the 'Hours' section...</i>"
 msgstr "<i>किरपा करके, 'घंटा' खन्ड मं से चुनव ...</i>"
 
-#: src/taskEditorDialog.cpp:861
+#: src/taskEditorDialog.cpp:859
 #, kde-format
 msgid "<i>Please select from the 'Minutes' section...</i>"
 msgstr "<i>किरपा करके, 'मिनट' खन्ड मं से चुनव ...</i>"
 
-#: src/taskEditorDialog.cpp:1065
+#: src/taskEditorDialog.cpp:1063
 #, kde-format
 msgid "Set All"
 msgstr "सब्बो सेट करव"
 
-#: src/taskEditorDialog.cpp:1067
+#: src/taskEditorDialog.cpp:1065
 #, kde-format
 msgid "Clear All"
 msgstr "सब्बो साफ करव"
@@ -804,12 +804,12 @@ msgstr "नवा काम"
 msgid "Modify Task"
 msgstr "काम सुधारव"
 
-#: src/tasksWidget.cpp:223 src/variablesWidget.cpp:184
+#: src/tasksWidget.cpp:223 src/variablesWidget.cpp:183
 #, kde-format
 msgid "User"
 msgstr ""
 
-#: src/tasksWidget.cpp:229 src/variablesWidget.cpp:189
+#: src/tasksWidget.cpp:229 src/variablesWidget.cpp:188
 #, kde-format
 msgid "Status"
 msgstr "स्थिति"
@@ -830,7 +830,7 @@ msgstr "नवा काम... (&T)"
 msgid "Create a new task."
 msgstr "नवा काम नाव"
 
-#: src/tasksWidget.cpp:261 src/variablesWidget.cpp:210
+#: src/tasksWidget.cpp:261 src/variablesWidget.cpp:209
 #, kde-format
 msgid "M&odify..."
 msgstr "सुधारव... (&o)"
@@ -840,7 +840,7 @@ msgstr "सुधारव... (&o)"
 msgid "Modify the selected task."
 msgstr "चुने गे काम सुधारव"
 
-#: src/tasksWidget.cpp:267 src/variablesWidget.cpp:216
+#: src/tasksWidget.cpp:267 src/variablesWidget.cpp:215
 #, kde-format
 msgid "&Delete"
 msgstr "मेटाव (&D)"
@@ -860,104 +860,104 @@ msgstr "अभी चलाव (&R)"
 msgid "Run the selected task now."
 msgstr "चुने गे काम अभी चलाव."
 
-#: src/taskWidget.cpp:44 src/variableWidget.cpp:41
+#: src/taskWidget.cpp:40 src/variableWidget.cpp:38
 #, kde-format
 msgid "Enabled"
 msgstr "सक्छम"
 
-#: src/taskWidget.cpp:47 src/variableWidget.cpp:44
+#: src/taskWidget.cpp:43 src/variableWidget.cpp:41
 #, kde-format
 msgid "Disabled"
 msgstr "अक्छम"
 
-#: src/variableEditorDialog.cpp:49
+#: src/variableEditorDialog.cpp:47
 #, kde-format
 msgid "Add or modify a variable"
 msgstr "परिवर्तनीय जोड़व या सुधारव"
 
-#: src/variableEditorDialog.cpp:53
+#: src/variableEditorDialog.cpp:51
 #, kde-format
 msgctxt "The environmental variable name ie HOME, MAILTO etc"
 msgid "&Variable:"
 msgstr "वेरिएबलः (&V)"
 
-#: src/variableEditorDialog.cpp:82
+#: src/variableEditorDialog.cpp:80
 #, kde-format
 msgid "Va&lue:"
 msgstr "मूल्यः (&l)"
 
-#: src/variableEditorDialog.cpp:115
+#: src/variableEditorDialog.cpp:113
 #, kde-format
 msgid "&Enable this variable"
 msgstr ""
 
-#: src/variableEditorDialog.cpp:147
+#: src/variableEditorDialog.cpp:145
 #, kde-format
 msgid "<i>This variable will be used by scheduled tasks.</i>"
 msgstr ""
 
-#: src/variableEditorDialog.cpp:194
+#: src/variableEditorDialog.cpp:192
 #, kde-format
 msgid "<i>This variable is disabled.</i>"
 msgstr ""
 
-#: src/variableEditorDialog.cpp:201
+#: src/variableEditorDialog.cpp:199
 #, kde-format
 msgid "<i>Please enter the variable name...</i>"
 msgstr "<i>किरपा करके, परिवर्तनीय (वेरिएबल) नाम भरव ...</i>"
 
-#: src/variableEditorDialog.cpp:208
+#: src/variableEditorDialog.cpp:206
 #, kde-format
 msgid "<i>Please enter the variable value ...</i>"
 msgstr "<i>किरपा करके, परिवर्तनीय (वेरिएबल) मूल्यम भरव ...</i>"
 
-#: src/variablesWidget.cpp:30
+#: src/variablesWidget.cpp:29
 #, kde-format
 msgid "<b>Environment Variables</b>"
 msgstr "<b>एनवायनमेंट वेरिएबल</b>"
 
-#: src/variablesWidget.cpp:63
+#: src/variablesWidget.cpp:62
 #, kde-format
 msgid "Modify Variable"
 msgstr "वेरिएबल सुधारव"
 
-#: src/variablesWidget.cpp:143
+#: src/variablesWidget.cpp:142
 #, kde-format
 msgid "New Variable"
 msgstr "नवा वेरिएबल"
 
-#: src/variablesWidget.cpp:187
+#: src/variablesWidget.cpp:186
 #, kde-format
 msgid "Variable"
 msgstr "वेरिएबल"
 
-#: src/variablesWidget.cpp:188
+#: src/variablesWidget.cpp:187
 #, kde-format
 msgid "Value"
 msgstr "मान"
 
-#: src/variablesWidget.cpp:190
+#: src/variablesWidget.cpp:189
 #, kde-format
 msgid "Comment"
 msgstr "टिप्पनी"
 
-#: src/variablesWidget.cpp:205
+#: src/variablesWidget.cpp:204
 #, kde-format
 msgctxt "Adds a new variable"
 msgid "New &Variable..."
 msgstr "नवा वेरिएबल... (&V)"
 
-#: src/variablesWidget.cpp:206
+#: src/variablesWidget.cpp:205
 #, kde-format
 msgid "Create a new variable."
 msgstr "नवा वेरिएबल बनाव."
 
-#: src/variablesWidget.cpp:212
+#: src/variablesWidget.cpp:211
 #, kde-format
 msgid "Modify the selected variable."
 msgstr "चुने गे वेरिएबल के संपादन करव."
 
-#: src/variablesWidget.cpp:218
+#: src/variablesWidget.cpp:217
 #, kde-format
 msgid "Delete the selected variable."
 msgstr "चुने गे वेरिएबल मेटाव"
