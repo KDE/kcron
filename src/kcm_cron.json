@@ -1,12 +1,14 @@
 {
     "KPlugin": {
         "Description": "Configure and schedule tasks",
+        "Description[bg]": "Задаване и настройване на задачи",
         "Description[ca@valencia]": "Configura i planifica les tasques",
         "Description[ca]": "Configura i planifica les tasques",
         "Description[cs]": "Nastavte a plánujte úlohy",
         "Description[eo]": "Agordi kaj vicigi taskojn",
         "Description[es]": "Configurar y planificar tareas",
         "Description[gl]": "Configura e planifica tarefas",
+        "Description[ia]": "Configura e planifica cargas",
         "Description[ka]": "მოირგეთ და დაგეგმეთ ამოცანები",
         "Description[nl]": "Taken configureren en plannen",
         "Description[pt_BR]": "Configura e agenda tarefas",
