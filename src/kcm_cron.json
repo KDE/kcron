@@ -18,6 +18,7 @@
         "Description[tr]": "Görevleri zamanla ve yapılandır",
         "Description[uk]": "Налаштовування і планування завдань",
         "Description[x-test]": "xxConfigure and schedule tasksxx",
+        "Description[zh_CN]": "配置并调度计划任务",
         "Icon": "preferences-system-time",
         "Name": "Task Scheduler",
         "Name[ar]": "مجدول المهامّ",
@@ -80,7 +81,7 @@
         "Name[uk]": "Планувальник завдань",
         "Name[vi]": "Trình lập lịch tác vụ",
         "Name[x-test]": "xxTask Schedulerxx",
-        "Name[zh_CN]": "任务调度",
+        "Name[zh_CN]": "任务计划程序",
         "Name[zh_TW]": "工作排程器"
     },
     "X-DocPath": "kcontrol5/kcron/index.html",
