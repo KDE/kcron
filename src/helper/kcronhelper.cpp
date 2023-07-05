@@ -67,3 +67,5 @@ ActionReply KcronHelper::save(const QVariantMap &args)
 }
 
 KAUTH_HELPER_MAIN("local.kcron.crontab", KcronHelper)
+
+#include "moc_kcronhelper.cpp"

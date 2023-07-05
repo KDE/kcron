@@ -308,3 +308,5 @@ void CrontabWidget::print()
 
     printer.finish();
 }
+
+#include "moc_crontabWidget.cpp"

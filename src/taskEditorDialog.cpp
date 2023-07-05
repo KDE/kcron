@@ -1135,3 +1135,5 @@ void NumberPushButton::paintEvent(QPaintEvent *)
     }
     p.drawControl(QStyle::CE_PushButton, option);
 }
+
+#include "moc_taskEditorDialog.cpp"

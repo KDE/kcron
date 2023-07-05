@@ -213,3 +213,5 @@ void VariableEditorDialog::slotWizard()
         mOkButton->setEnabled(true);
     }
 }
+
+#include "moc_variableEditorDialog.cpp"

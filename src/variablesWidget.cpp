@@ -261,3 +261,5 @@ void VariablesWidget::changeCurrentSelection()
 
     toggleModificationActions(enabled);
 }
+
+#include "moc_variablesWidget.cpp"

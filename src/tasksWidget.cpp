@@ -343,3 +343,5 @@ void TasksWidget::changeCurrentSelection()
     toggleModificationActions(enabled);
     toggleRunNowAction(enabled);
 }
+
+#include "moc_tasksWidget.cpp"

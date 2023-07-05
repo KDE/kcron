@@ -174,3 +174,5 @@ void GenericListWidget::setActionEnabled(QAction *action, bool enabled)
 
     action->setEnabled(enabled);
 }
+
+#include "moc_genericListWidget.cpp"
