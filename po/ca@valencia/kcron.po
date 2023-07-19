@@ -974,31 +974,3 @@ msgstr "Modifica la variable seleccionada."
 #, kde-format
 msgid "Delete the selected variable."
 msgstr "Suprimix la variable seleccionada."
-
-#~ msgid "Task Scheduler"
-#~ msgstr "Planificador de tasques"
-
-#~ msgid "KDE Task Scheduler"
-#~ msgstr "Planificador de tasques de KDE"
-
-#~ msgid ""
-#~ "(c) 2008, Nicolas Ternisien\n"
-#~ "(c) 1999-2000, Gary Meyer"
-#~ msgstr ""
-#~ "(c) 2008, Nicolas Ternisien\n"
-#~ "(c) 1999-2000, Gary Meyer"
-
-#~ msgid "Nicolas Ternisien"
-#~ msgstr "Nicolas Ternisien"
-
-#~ msgid "Gary Meyer"
-#~ msgstr "Gary Meyer"
-
-#~ msgid "Robert Berry"
-#~ msgstr "Robert Berry"
-
-#~ msgid "James Ots"
-#~ msgstr "James Ots"
-
-#~ msgid "Alberto G. Hierro"
-#~ msgstr "Alberto G. Hierro"
