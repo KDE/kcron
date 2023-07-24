@@ -596,7 +596,7 @@ msgid ""
 "To schedule a new task now, click on the Tasks folder and select Edit/New "
 "from the menu."
 msgstr ""
-"이 프로그램을 사용하면 배경에서 실행될 프로그램을 예약할 수 있습니다.\n"
+"이 앱을 사용하면 배경에서 실행될 앱을 예약할 수 있습니다.\n"
 "새 작업을 예약하시려면 작업 폴더를 클릭한 다음 메뉴에서 편집 또는 새로 만들기"
 "를 선택하십시오."
 
