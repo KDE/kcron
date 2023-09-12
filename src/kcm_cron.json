@@ -28,6 +28,7 @@
         "Description[uk]": "Налаштовування і планування завдань",
         "Description[x-test]": "xxConfigure and schedule tasksxx",
         "Description[zh_CN]": "配置并调度计划任务",
+        "Description[zh_TW]": "設定與排程工作",
         "Icon": "preferences-system-time",
         "Name": "Task Scheduler",
         "Name[ar]": "مجدول المهامّ",
