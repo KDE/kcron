@@ -55,13 +55,13 @@ target_sources(kcm_cron PRIVATE
 
 
 target_link_libraries(kcm_cron 
-    Qt${QT_MAJOR_VERSION}::PrintSupport
-    KF${KF_MAJOR_VERSION}::ConfigWidgets
-    KF${KF_MAJOR_VERSION}::I18n
-    KF${KF_MAJOR_VERSION}::KIOWidgets
-    KF${KF_MAJOR_VERSION}::CoreAddons
-    KF${KF_MAJOR_VERSION}::AuthCore
-    KF${KF_MAJOR_VERSION}::KCMUtils
+    Qt6::PrintSupport
+    KF6::ConfigWidgets
+    KF6::I18n
+    KF6::KIOWidgets
+    KF6::CoreAddons
+    KF6::AuthCore
+    KF6::KCMUtils
 )
 
 kcmutils_generate_desktop_file(kcm_cron)
