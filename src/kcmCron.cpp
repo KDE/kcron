@@ -25,11 +25,7 @@
 
 K_PLUGIN_CLASS_WITH_JSON(KCMCron, "kcm_cron.json")
 
-#if QT_VERSION_MAJOR == 5
-KCMCron::KCMCron(QWidget *parent, const QVariantList & /*args*/)
-#else
 KCMCron::KCMCron(QObject *parent)
-#endif
     : KCModule(parent)
 {
     // Initialize document.
@@ -46,13 +42,8 @@ KCMCron::KCMCron(QObject *parent)
 
     qCDebug(KCM_CRON_LOG) << "Crontab Widget initialized";
 
-#if QT_VERSION_MAJOR == 5
-    connect(mCrontabWidget->tasksWidget(), SIGNAL(taskModified(bool)), this, SIGNAL(changed(bool)));
-    connect(mCrontabWidget->variablesWidget(), SIGNAL(variableModified(bool)), this, SIGNAL(changed(bool)));
-#else
     connect(mCrontabWidget->tasksWidget(), &TasksWidget::taskModified, this, &KCModule::setNeedsSave);
     connect(mCrontabWidget->variablesWidget(), &VariablesWidget::variableModified, this, &KCModule::setNeedsSave);
-#endif
 
     // Initialize view.
     auto layout = new QVBoxLayout(widget());
