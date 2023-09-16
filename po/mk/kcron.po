@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-27 00:50+0000\n"
+"POT-Creation-Date: 2023-09-16 01:56+0000\n"
 "PO-Revision-Date: 2006-01-25 19:01+0100\n"
 "Last-Translator: Bozidar Proevski <bobibobi@freemail.com.mk>\n"
 "Language-Team: Macedonian <mkde-l10n@lists.sourceforge.net>\n"
@@ -587,7 +587,7 @@ msgstr ""
 msgid "System Cron"
 msgstr "(Системски Crontab)"
 
-#: src/kcmCron.cpp:40
+#: src/kcmCron.cpp:36
 #, kde-format
 msgid ""
 "The following error occurred while initializing KCron:\n"
@@ -602,7 +602,7 @@ msgstr ""
 "\n"
 "KCron сега ќе се затвори.\n"
 
-#: src/kcmCron.cpp:113
+#: src/kcmCron.cpp:104
 #, kde-format
 msgid ""
 "You can use this application to schedule programs to run in the background.\n"
@@ -614,7 +614,7 @@ msgstr ""
 "За да распоредите нова програма сега, притиснете на папката Задачи и "
 "изберете од менито Уредување/Нова "
 
-#: src/kcmCron.cpp:115
+#: src/kcmCron.cpp:106
 #, kde-format
 msgid "Welcome to the Task Scheduler"
 msgstr "Добредојдовте во Распоредувачот на задачи"

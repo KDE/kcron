@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-27 00:50+0000\n"
+"POT-Creation-Date: 2023-09-16 01:56+0000\n"
 "PO-Revision-Date: 2014-10-20 19:29+0000\n"
 "Last-Translator: Vedran Ljubovic <vljubovic@smartnet.ba>\n"
 "Language-Team: Bosnian <lokal@lugbih.org>\n"
@@ -581,7 +581,7 @@ msgstr "Personalni Cron"
 msgid "System Cron"
 msgstr "Sistemski Cron"
 
-#: src/kcmCron.cpp:40
+#: src/kcmCron.cpp:36
 #, kde-format
 msgid ""
 "The following error occurred while initializing KCron:\n"
@@ -596,7 +596,7 @@ msgstr ""
 "\n"
 "KCRon će se sada zatvoriti.\n"
 
-#: src/kcmCron.cpp:113
+#: src/kcmCron.cpp:104
 #, kde-format
 msgid ""
 "You can use this application to schedule programs to run in the background.\n"
@@ -607,7 +607,7 @@ msgstr ""
 "Da bi zakazili novi zadatak, kliknite na direktorij Zadaci i izaberite "
 "Izmijeni/Novi iz menija."
 
-#: src/kcmCron.cpp:115
+#: src/kcmCron.cpp:106
 #, kde-format
 msgid "Welcome to the Task Scheduler"
 msgstr "Dobrodošli u program za zakazivanje zadataka"

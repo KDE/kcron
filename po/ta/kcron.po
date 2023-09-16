@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-27 00:50+0000\n"
+"POT-Creation-Date: 2023-09-16 01:56+0000\n"
 "PO-Revision-Date: 2004-10-28 01:41-0800\n"
 "Last-Translator: Tamil PC <tamilpc@ambalam.com>\n"
 "Language-Team: Tamil <en@li.org>\n"
@@ -583,7 +583,7 @@ msgstr ""
 msgid "System Cron"
 msgstr "(அமைப்பு க்ரான்டெப்)"
 
-#: src/kcmCron.cpp:40
+#: src/kcmCron.cpp:36
 #, kde-format
 msgid ""
 "The following error occurred while initializing KCron:\n"
@@ -598,7 +598,7 @@ msgstr ""
 "\n"
 "க்ரொன் நடைமுறைக்கு வந்தது.\n"
 
-#: src/kcmCron.cpp:113
+#: src/kcmCron.cpp:104
 #, kde-format
 msgid ""
 "You can use this application to schedule programs to run in the background.\n"
@@ -609,7 +609,7 @@ msgstr ""
 "இப்போது ஒரு செயலை அட்டவணைப்படுத்த செயல்கள் (Tasks) அடைவை க்ளிக் செய்யவும், பின்பு "
 "பட்டியலிலிருந்து திருத்து/புதிய (Edit/New) என்பதை தேர்ந்தெடுக்கவும்."
 
-#: src/kcmCron.cpp:115
+#: src/kcmCron.cpp:106
 #, kde-format
 msgid "Welcome to the Task Scheduler"
 msgstr "பணி காலமுறைப்படுத்திக்கு நல்வரவு"

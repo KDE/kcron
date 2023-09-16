@@ -1,31 +1,33 @@
 # translation of kcron.po to Esperanto
 # Copyright (C) 2003 Free Software Foundation, Inc.
 # Heiko Evermann <heiko@evermann.de>, 2003.
+# Oliver Kellogg <okellogg@users.sourceforge.net>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-27 00:50+0000\n"
-"PO-Revision-Date: 2023-03-21 22:43+0100\n"
+"POT-Creation-Date: 2023-09-16 01:56+0000\n"
+"PO-Revision-Date: 2023-09-15 23:13+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
-"Language-Team: Esperanto <kde-i18n-eo@mail.kde.org>\n"
+"Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.3\n"
+"X-Generator: translate-po (https://github.com/zcribe/translate-po)\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Wolfram Diestel,Steffen Pietsch"
+msgstr "Wolfram Diestel,Steffen Pietsch,Oliver Kellogg"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "wolfram@steloj.de,Steffen.Pietsch@BerlinOnline.de"
+msgstr ""
+"wolfram@steloj.de,Steffen.Pietsch@BerlinOnline.de,okellogg@users.sf.net"
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -54,6 +56,7 @@ msgid ""
 "<p><strong>Command:</strong> %1</p><strong>Command could not be started</"
 "strong>"
 msgstr ""
+"<p><strong>Komando:</strong> %1</p><strong>Komando ne eblis komenci</strong>"
 
 #: src/crontablib/ctcron.cpp:268
 #, kde-format
@@ -61,6 +64,8 @@ msgid ""
 "<p><strong>Command:</strong> %1</p><strong>Standard Output :</strong><pre>"
 "%2</pre><strong>Error Output :</strong><pre>%3</pre>"
 msgstr ""
+"<p><strong>Komando:</strong> %1</p><strong>Norma Eligo :</strong><pre>%2</"
+"pre><strong>Erara Eligo :</strong><pre> %3</pre>"
 
 #: src/crontablib/ctcron.cpp:274
 #, kde-format
@@ -70,17 +75,17 @@ msgstr "Okazis eraro dum aktualigado la  \"Cron\"-tabelo"
 #: src/crontablib/ctcron.cpp:282
 #, kde-format
 msgid "Unable to open crontab file for writing"
-msgstr ""
+msgstr "Ne eblas malfermi crontab-dosieron por skribi"
 
 #: src/crontablib/ctcron.cpp:282
 #, kde-format
 msgid "The file %1 could not be opened."
-msgstr ""
+msgstr "La dosiero %1 ne povis esti malfermita."
 
 #: src/crontablib/ctcron.cpp:304
 #, kde-format
 msgid "KAuth::ExecuteJob Error"
-msgstr ""
+msgstr "KAuth::Eraro de ExecuteJob"
 
 #: src/crontablib/ctdom.cpp:22 src/crontablib/ctdow.cpp:44
 #: src/crontablib/cttask.cpp:294
@@ -281,12 +286,12 @@ msgstr "Dim"
 #: src/crontablib/ctdow.cpp:61
 #, kde-format
 msgid "Monday"
-msgstr ""
+msgstr "Lundo"
 
 #: src/crontablib/ctdow.cpp:61
 #, kde-format
 msgid "Tuesday"
-msgstr ""
+msgstr "Mardo"
 
 #: src/crontablib/ctdow.cpp:61
 #, kde-format
@@ -301,7 +306,7 @@ msgstr "Jaŭdo"
 #: src/crontablib/ctdow.cpp:61
 #, kde-format
 msgid "Friday"
-msgstr ""
+msgstr "Vendredo"
 
 #: src/crontablib/ctdow.cpp:61
 #, kde-format
@@ -311,12 +316,12 @@ msgstr "Sabato"
 #: src/crontablib/ctdow.cpp:62
 #, kde-format
 msgid "Sunday"
-msgstr ""
+msgstr "Dimanĉo"
 
 #: src/crontablib/ctHelper.cpp:20
 #, kde-format
 msgid "No comment"
-msgstr ""
+msgstr "Sen komento"
 
 #: src/crontablib/cthost.cpp:59
 #, kde-format
@@ -326,6 +331,10 @@ msgid ""
 "\n"
 "Check the crontab man page for further details."
 msgstr ""
+"Vi estis forbarita de uzi KCron\t per aŭ la /etc/cron.allow dosiero aŭ la /"
+"etc/cron.deny dosiero.\t \n"
+"\n"
+"Kontrolu la crontab-man paĝon por pliaj detaloj."
 
 #: src/crontablib/ctmonth.cpp:22
 #, kde-format
@@ -397,12 +406,12 @@ msgstr "Decembro"
 #: src/crontablib/ctSystemCron.cpp:31
 #, kde-format
 msgid "root"
-msgstr ""
+msgstr "radiko"
 
 #: src/crontablib/cttask.cpp:265
 #, kde-format
 msgid "At system startup"
-msgstr ""
+msgstr "Ĉe la ekfunkciiĝo de la sistemo"
 
 #: src/crontablib/cttask.cpp:272
 #, kde-format
@@ -414,19 +423,19 @@ msgstr "%1, %2"
 #, kde-format
 msgctxt "Every 'days of week'"
 msgid "every %1"
-msgstr ""
+msgstr "ĉiun %1"
 
 #: src/crontablib/cttask.cpp:282
 #, kde-format
 msgctxt "'Days of month' of 'Months'"
 msgid "%1 of %2"
-msgstr ""
+msgstr "%1 el %2"
 
 #: src/crontablib/cttask.cpp:304
 #, kde-format
 msgctxt "1:Day of month, 2:Day of week"
 msgid "%1 as well as %2"
-msgstr ""
+msgstr "%1 same kiel %2"
 
 #: src/crontablib/cttask.cpp:336
 #, kde-format
@@ -453,14 +462,14 @@ msgstr ", "
 #, kde-format
 msgctxt "Hour::Minute list"
 msgid "At %1"
-msgstr ""
+msgstr "Je %1"
 
 #: src/crontablib/cttask.cpp:366
 #, kde-format
 msgid "Every minute"
 msgid_plural "Every %1 minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ĉiun minuton"
+msgstr[1] "Ĉiujn %1 minutojn"
 
 #: src/crontablib/ctunit.cpp:177
 #, kde-format
@@ -490,12 +499,12 @@ msgstr "Dosierujoj traserĉendaj je programdosieroj."
 #: src/crontablib/ctvariable.cpp:142
 #, kde-format
 msgid "Dynamic libraries location."
-msgstr ""
+msgstr "Loko de dinamikaj bibliotekoj."
 
 #: src/crontablib/ctvariable.cpp:145
 #, kde-format
 msgid "Local Variable"
-msgstr ""
+msgstr "Loka Variablo"
 
 #: src/crontabPrinter.cpp:89
 #, kde-format
@@ -505,12 +514,12 @@ msgstr "Planitaj taskoj"
 #: src/crontabPrinter.cpp:106 src/tasksWidget.cpp:226
 #, kde-format
 msgid "Scheduling"
-msgstr ""
+msgstr "Planado"
 
 #: src/crontabPrinter.cpp:106 src/tasksWidget.cpp:228
 #, kde-format
 msgid "Command"
-msgstr ""
+msgstr "Komando"
 
 #: src/crontabPrinter.cpp:106 src/tasksWidget.cpp:230
 #, kde-format
@@ -520,7 +529,7 @@ msgstr "Priskribo"
 #: src/crontabPrinter.cpp:127
 #, kde-format
 msgid "Environment Variables"
-msgstr ""
+msgstr "Mediaj Variabloj"
 
 #: src/crontabPrinter.cpp:152
 #, kde-format
@@ -530,13 +539,13 @@ msgstr "Sistema \"Cron\"-tabelo"
 #: src/crontabPrinter.cpp:154
 #, kde-format
 msgid "All Users Crontabs"
-msgstr ""
+msgstr "Ĉiuj Uzantoj Crontabs"
 
 #: src/crontabPrinter.cpp:156
 #, kde-format
 msgctxt "Crontab of user login"
 msgid "Crontab of user %1"
-msgstr ""
+msgstr "Krontabo de uzanto %1"
 
 #: src/crontabPrinterWidget.cpp:20
 #, kde-format
@@ -556,19 +565,19 @@ msgstr "Presu &de ĉiuj uzantoj"
 #: src/crontabWidget.cpp:85
 #, kde-format
 msgid "Show the following Cron:"
-msgstr ""
+msgstr "Montri la sekvan Cron:"
 
 #: src/crontabWidget.cpp:89
 #, kde-format
 msgid "Personal Cron"
-msgstr ""
+msgstr "Persona Cron"
 
 #: src/crontabWidget.cpp:94
 #, kde-format
 msgid "System Cron"
-msgstr ""
+msgstr "Sistem-Cron"
 
-#: src/kcmCron.cpp:40
+#: src/kcmCron.cpp:36
 #, kde-format
 msgid ""
 "The following error occurred while initializing KCron:\n"
@@ -577,8 +586,13 @@ msgid ""
 "\n"
 "KCron will now exit.\n"
 msgstr ""
+"La jena eraro okazis dum pravalorigo de KCron:\n"
+"\n"
+"%1\n"
+"\n"
+"KCron nun eliros.\n"
 
-#: src/kcmCron.cpp:113
+#: src/kcmCron.cpp:104
 #, kde-format
 msgid ""
 "You can use this application to schedule programs to run in the background.\n"
@@ -589,7 +603,7 @@ msgstr ""
 "Por tuj plani taskon, klaku sur la taskujon kaj elektu Redaktu/Nova en la "
 "menuo."
 
-#: src/kcmCron.cpp:115
+#: src/kcmCron.cpp:106
 #, kde-format
 msgid "Welcome to the Task Scheduler"
 msgstr "Bonvenon ĉe la Taskolanĉilo"
@@ -597,17 +611,17 @@ msgstr "Bonvenon ĉe la Taskolanĉilo"
 #: src/taskEditorDialog.cpp:69
 #, kde-format
 msgid "Add or modify a scheduled task"
-msgstr ""
+msgstr "Aldoni aŭ modifi planitan taskon"
 
 #: src/taskEditorDialog.cpp:70 src/taskEditorDialog.cpp:868
 #, kde-format
 msgid "<i>This task will be executed at the specified intervals.</i>"
-msgstr ""
+msgstr "<i>Ĉi tiu tasko estos plenumita laŭ la specifitaj intervaloj.</i>"
 
 #: src/taskEditorDialog.cpp:78
 #, kde-format
 msgid "&Command:"
-msgstr ""
+msgstr "&Komando:"
 
 #: src/taskEditorDialog.cpp:99 src/variableEditorDialog.cpp:89
 #, kde-format
@@ -622,12 +636,12 @@ msgstr "&Komento:"
 #: src/taskEditorDialog.cpp:129
 #, kde-format
 msgid "&Enable this task"
-msgstr ""
+msgstr "&Ebligi ĉi tiun taskon"
 
 #: src/taskEditorDialog.cpp:134
 #, kde-format
 msgid "Run at system &bootup"
-msgstr ""
+msgstr "Ruli ĉe sistema &praŝargo"
 
 #: src/taskEditorDialog.cpp:140
 #, kde-format
@@ -657,52 +671,52 @@ msgstr "Minutoj"
 #: src/taskEditorDialog.cpp:462
 #, kde-format
 msgid "Preselection:"
-msgstr ""
+msgstr "Antaŭelekto:"
 
 #: src/taskEditorDialog.cpp:469
 #, kde-format
 msgid "Clear selection"
-msgstr ""
+msgstr "Viŝi elekton"
 
 #: src/taskEditorDialog.cpp:470
 #, kde-format
 msgid "Custom selection"
-msgstr ""
+msgstr "Propra elekto"
 
 #: src/taskEditorDialog.cpp:471
 #, kde-format
 msgid "Each minute"
-msgstr ""
+msgstr "Ĉiun minuton"
 
 #: src/taskEditorDialog.cpp:472
 #, kde-format
 msgid "Every 2 minutes"
-msgstr ""
+msgstr "Ĉiujn 2 minutojn"
 
 #: src/taskEditorDialog.cpp:473
 #, kde-format
 msgid "Every 5 minutes"
-msgstr ""
+msgstr "Ĉiujn 5 minutojn"
 
 #: src/taskEditorDialog.cpp:474
 #, kde-format
 msgid "Every 10 minutes"
-msgstr ""
+msgstr "Ĉiujn 10 minutojn"
 
 #: src/taskEditorDialog.cpp:475
 #, kde-format
 msgid "Every 15 minutes"
-msgstr ""
+msgstr "Ĉiujn 15 minutojn"
 
 #: src/taskEditorDialog.cpp:476
 #, kde-format
 msgid "Every 20 minutes"
-msgstr ""
+msgstr "Ĉiujn 20 minutojn"
 
 #: src/taskEditorDialog.cpp:477
 #, kde-format
 msgid "Every 30 minutes"
-msgstr ""
+msgstr "Ĉiujn 30 minutojn"
 
 #: src/taskEditorDialog.cpp:516
 #, kde-format
@@ -722,32 +736,32 @@ msgstr "PM:"
 #: src/taskEditorDialog.cpp:714 src/taskEditorDialog.cpp:724
 #, kde-format
 msgid "<i>Please type a valid command line...</i>"
-msgstr ""
+msgstr "<i>Bonvolu tajpi validan komandlinion...</i>"
 
 #: src/taskEditorDialog.cpp:748
 #, kde-format
 msgid "<i>Please select an executable program...</i>"
-msgstr ""
+msgstr "<i>Bonvolu elekti plenumeblan programon...</i>"
 
 #: src/taskEditorDialog.cpp:756 src/taskEditorDialog.cpp:782
 #, kde-format
 msgid "<i>Please browse for a program to execute...</i>"
-msgstr ""
+msgstr "<i>Bonvolu serĉi programon por ekzekuti...</i>"
 
 #: src/taskEditorDialog.cpp:769
 #, kde-format
 msgid "<i>This task is disabled.</i>"
-msgstr ""
+msgstr "<i>Ĉi tiu tasko estas malŝaltita.</i>"
 
 #: src/taskEditorDialog.cpp:776
 #, kde-format
 msgid "<i>This task will be run on system bootup.</i>"
-msgstr ""
+msgstr "<i>Ĉi tiu tasko ruliĝos dum sistema ekfunkciiĝo.</i>"
 
 #: src/taskEditorDialog.cpp:803
 #, kde-format
 msgid "<i>Please select from the 'Months' section...</i>"
-msgstr ""
+msgstr "<i>Bonvolu elekti el la sekcio 'Monatoj'...</i>"
 
 #: src/taskEditorDialog.cpp:825
 #, kde-format
@@ -755,42 +769,44 @@ msgid ""
 "<i>Please select from either the 'Days of Month' or the 'Days of Week' "
 "section...</i>"
 msgstr ""
+"<i>Bonvolu elekti el la sekcio \"Tagoj de Monato\" aŭ \"Tagoj de Semajno\"..."
+"</i>"
 
 #: src/taskEditorDialog.cpp:842
 #, kde-format
 msgid "<i>Please select from the 'Hours' section...</i>"
-msgstr ""
+msgstr "<i>Bonvolu elekti el la sekcio 'Horoj'...</i>"
 
 #: src/taskEditorDialog.cpp:859
 #, kde-format
 msgid "<i>Please select from the 'Minutes' section...</i>"
-msgstr ""
+msgstr "<i>Bonvolu elekti el la sekcio 'Minutoj'...</i>"
 
 #: src/taskEditorDialog.cpp:1063
 #, kde-format
 msgid "Set All"
-msgstr ""
+msgstr "Meti Ĉion"
 
 #: src/taskEditorDialog.cpp:1065
 #, kde-format
 msgid "Clear All"
-msgstr ""
+msgstr "Malmeti Ĉion"
 
 #: src/tasksWidget.cpp:32
 #, kde-format
 msgid "<b>Scheduled Tasks</b>"
-msgstr ""
+msgstr "<b>Planitaj Taskoj</b>"
 
 #: src/tasksWidget.cpp:98
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
-msgstr ""
+msgstr "Fino de skriptrulo. Tajpu Enigu aŭ Ctrl+C por eliri."
 
 #: src/tasksWidget.cpp:127
 #, kde-format
 msgid "New Task"
-msgstr ""
+msgstr "Nova Tasko"
 
 #: src/tasksWidget.cpp:163
 #, kde-format
@@ -805,23 +821,23 @@ msgstr "Uzanto"
 #: src/tasksWidget.cpp:229 src/variablesWidget.cpp:188
 #, kde-format
 msgid "Status"
-msgstr ""
+msgstr "Statuso"
 
 #: src/tasksWidget.cpp:231
 #, kde-format
 msgid "Scheduling Details"
-msgstr ""
+msgstr "Detaloj pri Planado"
 
 #: src/tasksWidget.cpp:256
 #, kde-format
 msgctxt "Adds a new task"
 msgid "New &Task..."
-msgstr ""
+msgstr "Nova &Tasko..."
 
 #: src/tasksWidget.cpp:257
 #, kde-format
 msgid "Create a new task."
-msgstr ""
+msgstr "Krei novan taskon."
 
 #: src/tasksWidget.cpp:261 src/variablesWidget.cpp:209
 #, kde-format
@@ -831,7 +847,7 @@ msgstr "Ŝ&anĝu..."
 #: src/tasksWidget.cpp:263
 #, kde-format
 msgid "Modify the selected task."
-msgstr ""
+msgstr "Modifi la elektitan taskon."
 
 #: src/tasksWidget.cpp:267 src/variablesWidget.cpp:215
 #, kde-format
@@ -841,7 +857,7 @@ msgstr "&Forigi"
 #: src/tasksWidget.cpp:269
 #, kde-format
 msgid "Delete the selected task."
-msgstr ""
+msgstr "Forigi la elektitan taskon."
 
 #: src/tasksWidget.cpp:273
 #, kde-format
@@ -866,7 +882,7 @@ msgstr "Elŝaltita"
 #: src/variableEditorDialog.cpp:47
 #, kde-format
 msgid "Add or modify a variable"
-msgstr ""
+msgstr "Aldoni aŭ modifi variablon"
 
 #: src/variableEditorDialog.cpp:51
 #, kde-format
@@ -882,27 +898,27 @@ msgstr "V&aloro:"
 #: src/variableEditorDialog.cpp:113
 #, kde-format
 msgid "&Enable this variable"
-msgstr ""
+msgstr "&Ebligi ĉi tiun variablon"
 
 #: src/variableEditorDialog.cpp:145
 #, kde-format
 msgid "<i>This variable will be used by scheduled tasks.</i>"
-msgstr ""
+msgstr "<i>Ĉi tiu variablo estos uzata de planitaj taskoj.</i>"
 
 #: src/variableEditorDialog.cpp:192
 #, kde-format
 msgid "<i>This variable is disabled.</i>"
-msgstr ""
+msgstr "<i>Ĉi tiu variablo estas malŝaltita.</i>"
 
 #: src/variableEditorDialog.cpp:199
 #, kde-format
 msgid "<i>Please enter the variable name...</i>"
-msgstr ""
+msgstr "<i>Bonvolu enigi la variablonomon...</i>"
 
 #: src/variableEditorDialog.cpp:206
 #, kde-format
 msgid "<i>Please enter the variable value ...</i>"
-msgstr ""
+msgstr "<i>Bonvolu enigi la variablovaloron ...</i>"
 
 #: src/variablesWidget.cpp:29
 #, kde-format
@@ -954,24 +970,3 @@ msgstr "Modifi la elektitan variablon."
 #, kde-format
 msgid "Delete the selected variable."
 msgstr "Forigi la elektitan variablon."
-
-#~ msgid "Task Scheduler"
-#~ msgstr "Taskolancilo"
-
-#~ msgid "KDE Task Scheduler"
-#~ msgstr "KDEa Taskolanĉilo"
-
-#~ msgid "Nicolas Ternisien"
-#~ msgstr "Nicolas Ternisien"
-
-#~ msgid "Gary Meyer"
-#~ msgstr "Gary Meyer"
-
-#~ msgid "Robert Berry"
-#~ msgstr "Robert Berry"
-
-#~ msgid "James Ots"
-#~ msgstr "James Ots"
-
-#~ msgid "Alberto G. Hierro"
-#~ msgstr "Alberto G. Hierro"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.3\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-27 00:50+0000\n"
+"POT-Creation-Date: 2023-09-16 01:56+0000\n"
 "PO-Revision-Date: 2011-02-20 16:14+0100\n"
 "Last-Translator: Kristóf Kiszel <ulysses@kubuntu.org>\n"
 "Language-Team: Hungarian <kde-lista@sophia.jpte.hu>\n"
@@ -575,7 +575,7 @@ msgstr "Saját feladatok"
 msgid "System Cron"
 msgstr "Rendszerfeladatok"
 
-#: src/kcmCron.cpp:40
+#: src/kcmCron.cpp:36
 #, kde-format
 msgid ""
 "The following error occurred while initializing KCron:\n"
@@ -590,7 +590,7 @@ msgstr ""
 "\n"
 "Kilépés...\n"
 
-#: src/kcmCron.cpp:113
+#: src/kcmCron.cpp:104
 #, kde-format
 msgid ""
 "You can use this application to schedule programs to run in the background.\n"
@@ -602,7 +602,7 @@ msgstr ""
 "Új időzített feladat létrehozásához kattintson a Feladatok mappára és "
 "válassza a Szerkesztés/Új menüpontot."
 
-#: src/kcmCron.cpp:115
+#: src/kcmCron.cpp:106
 #, kde-format
 msgid "Welcome to the Task Scheduler"
 msgstr "Üdvözöljük a Feladatidőzítőben!"

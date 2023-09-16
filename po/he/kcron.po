@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-27 00:50+0000\n"
+"POT-Creation-Date: 2023-09-16 01:56+0000\n"
 "PO-Revision-Date: 2017-05-16 06:58-0400\n"
 "Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
 "Language-Team: Hebrew <kde-i18n-doc@kde.org>\n"
@@ -581,7 +581,7 @@ msgstr "משימות אישיות"
 msgid "System Cron"
 msgstr "(ה־Crontab של המערכת)"
 
-#: src/kcmCron.cpp:40
+#: src/kcmCron.cpp:36
 #, kde-format
 msgid ""
 "The following error occurred while initializing KCron:\n"
@@ -596,7 +596,7 @@ msgstr ""
 "\n"
 "KCron ייצא כעת.\n"
 
-#: src/kcmCron.cpp:113
+#: src/kcmCron.cpp:104
 #, kde-format
 msgid ""
 "You can use this application to schedule programs to run in the background.\n"
@@ -607,7 +607,7 @@ msgstr ""
 "כדי לתזמן משימה חדשה עכשיו, לחץ על תיקיית המשימות ובחר בעריכה\\חדש מתוך "
 "התפריט."
 
-#: src/kcmCron.cpp:115
+#: src/kcmCron.cpp:106
 #, kde-format
 msgid "Welcome to the Task Scheduler"
 msgstr "ברוכים הבאים אל מתזמן המשימות"

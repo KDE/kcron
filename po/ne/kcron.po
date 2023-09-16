@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-27 00:50+0000\n"
+"POT-Creation-Date: 2023-09-16 01:56+0000\n"
 "PO-Revision-Date: 2007-08-23 17:05+0545\n"
 "Last-Translator: Nabin Gautam <nabin@mpp.org.np>\n"
 "Language-Team: Nepali <info@mpp.org.np>\n"
@@ -592,7 +592,7 @@ msgstr ""
 msgid "System Cron"
 msgstr "(प्रणाली क्रोनट्याब)"
 
-#: src/kcmCron.cpp:40
+#: src/kcmCron.cpp:36
 #, kde-format
 msgid ""
 "The following error occurred while initializing KCron:\n"
@@ -607,7 +607,7 @@ msgstr ""
 "\n"
 "केडीई क्रोन अब अन्त्य हुन्छ ।\n"
 
-#: src/kcmCron.cpp:113
+#: src/kcmCron.cpp:104
 #, kde-format
 msgid ""
 "You can use this application to schedule programs to run in the background.\n"
@@ -618,7 +618,7 @@ msgstr ""
 "अहिले नयाँ कार्यको अनुसूची बनाउन, कार्य फोल्डरमा क्लिक गर्नुहोस् र मेनुबाट सम्पादन/नयाँ चयन "
 "गर्नुहोस् ।"
 
-#: src/kcmCron.cpp:115
+#: src/kcmCron.cpp:106
 #, kde-format
 msgid "Welcome to the Task Scheduler"
 msgstr "कार्य अनुसूचकमा स्वागत छ"

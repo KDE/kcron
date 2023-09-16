@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-27 00:50+0000\n"
+"POT-Creation-Date: 2023-09-16 01:56+0000\n"
 "PO-Revision-Date: 2022-06-19 13:47+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
@@ -580,7 +580,7 @@ msgstr "Personleg crontab"
 msgid "System Cron"
 msgstr "System-crontab"
 
-#: src/kcmCron.cpp:40
+#: src/kcmCron.cpp:36
 #, kde-format
 msgid ""
 "The following error occurred while initializing KCron:\n"
@@ -595,7 +595,7 @@ msgstr ""
 "\n"
 "KCron avsluttar no.\n"
 
-#: src/kcmCron.cpp:113
+#: src/kcmCron.cpp:104
 #, kde-format
 msgid ""
 "You can use this application to schedule programs to run in the background.\n"
@@ -605,7 +605,7 @@ msgstr ""
 "Du kan bruka dette programmet for å la program køyra i bakgrunnen.\n"
 "Vel oppgåvemappa og bruk menyvalet Rediger/Ny for å leggja inn ei oppgåve no."
 
-#: src/kcmCron.cpp:115
+#: src/kcmCron.cpp:106
 #, kde-format
 msgid "Welcome to the Task Scheduler"
 msgstr "Velkommen til oppgåveplanleggjaren"

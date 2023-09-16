@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-27 00:50+0000\n"
+"POT-Creation-Date: 2023-09-16 01:56+0000\n"
 "PO-Revision-Date: 2010-06-09 09:24+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer <support@khmeros.info>\n"
@@ -569,7 +569,7 @@ msgstr ""
 msgid "System Cron"
 msgstr "(Crontab ប្រព័ន្ធ)"
 
-#: src/kcmCron.cpp:40
+#: src/kcmCron.cpp:36
 #, fuzzy, kde-format
 msgid ""
 "The following error occurred while initializing KCron:\n"
@@ -584,7 +584,7 @@ msgstr ""
 "\n"
 "KCron នឹង​បិទ​ឥឡូវ ។\n"
 
-#: src/kcmCron.cpp:113
+#: src/kcmCron.cpp:104
 #, fuzzy, kde-format
 msgid ""
 "You can use this application to schedule programs to run in the background.\n"
@@ -594,7 +594,7 @@ msgstr ""
 "អ្នក​អាច​ប្រើ​កម្មវិធី​នេះ​ដើម្បី​កំណត់​ពេល​កម្មវិធី​ដើម្បី​រត់​ក្នុង​ផ្ទៃ​ខាងក្រោយ ។\n"
 "ដើម្បី​កំណត់​ពេល​ភារកិច្ច​ថ្មី​ឥឡូវ​នេះ ចុច​លើ​ថត​ភារកិច្ច និង​ជ្រើស កែ​សម្រួល/ថ្មី ពី​ម៉ឺនុយ ។"
 
-#: src/kcmCron.cpp:115
+#: src/kcmCron.cpp:106
 #, fuzzy, kde-format
 msgid "Welcome to the Task Scheduler"
 msgstr "សូម​ស្វាគមន៍​ចំពោះ​កម្មវិធី​កំណត់​ពេល​ភារកិច្ច"

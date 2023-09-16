@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-27 00:50+0000\n"
+"POT-Creation-Date: 2023-09-16 01:56+0000\n"
 "PO-Revision-Date: 2021-10-08 08:19+0300\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -580,7 +580,7 @@ msgstr "Προσωπικό Cron"
 msgid "System Cron"
 msgstr "Cron του συστήματος"
 
-#: src/kcmCron.cpp:40
+#: src/kcmCron.cpp:36
 #, kde-format
 msgid ""
 "The following error occurred while initializing KCron:\n"
@@ -595,7 +595,7 @@ msgstr ""
 "\n"
 "Το KCron θα τερματίσει τώρα.\n"
 
-#: src/kcmCron.cpp:113
+#: src/kcmCron.cpp:104
 #, kde-format
 msgid ""
 "You can use this application to schedule programs to run in the background.\n"
@@ -607,7 +607,7 @@ msgstr ""
 "Για να προγραμματίσετε νέα εργασία τώρα, κάντε κλικ στο φάκελο Εργασίες και "
 "επιλέξτε Επεξεργασία/Νέα από το μενού."
 
-#: src/kcmCron.cpp:115
+#: src/kcmCron.cpp:106
 #, kde-format
 msgid "Welcome to the Task Scheduler"
 msgstr "Καλώς ήλθατε στο Προγραμματισμό εργασιών"

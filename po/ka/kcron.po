@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-27 00:50+0000\n"
+"POT-Creation-Date: 2023-09-16 01:56+0000\n"
 "PO-Revision-Date: 2022-12-01 08:21+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -577,7 +577,7 @@ msgstr "პერსონალური  Cron"
 msgid "System Cron"
 msgstr "სისტემური Cron"
 
-#: src/kcmCron.cpp:40
+#: src/kcmCron.cpp:36
 #, kde-format
 msgid ""
 "The following error occurred while initializing KCron:\n"
@@ -592,7 +592,7 @@ msgstr ""
 "\n"
 "KCron მუშაობას ამთავრებს.\n"
 
-#: src/kcmCron.cpp:113
+#: src/kcmCron.cpp:104
 #, kde-format
 msgid ""
 "You can use this application to schedule programs to run in the background.\n"
@@ -603,7 +603,7 @@ msgstr ""
 "ახალი ამოცანის დასაგეგმად დააჭირეთ ამოცანების საქაღალდეზე და მენიუდან ახალი/"
 "ჩასწორება აირჩიეთ."
 
-#: src/kcmCron.cpp:115
+#: src/kcmCron.cpp:106
 #, kde-format
 msgid "Welcome to the Task Scheduler"
 msgstr "მოგესალმებით ამოცანების დამგეგმავში"

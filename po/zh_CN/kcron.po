@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-27 00:50+0000\n"
+"POT-Creation-Date: 2023-09-16 01:56+0000\n"
 "PO-Revision-Date: 2023-09-02 02:56\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -572,7 +572,7 @@ msgstr "个人计划任务"
 msgid "System Cron"
 msgstr "(系统计划任务)"
 
-#: src/kcmCron.cpp:40
+#: src/kcmCron.cpp:36
 #, kde-format
 msgid ""
 "The following error occurred while initializing KCron:\n"
@@ -587,7 +587,7 @@ msgstr ""
 "\n"
 "KCron 现在退出。\n"
 
-#: src/kcmCron.cpp:113
+#: src/kcmCron.cpp:104
 #, kde-format
 msgid ""
 "You can use this application to schedule programs to run in the background.\n"
@@ -597,7 +597,7 @@ msgstr ""
 "您可以使用这个程序来调度在后台运行的程序。如果要调度一个新的\n"
 "任务，在“任务”夹上单击，然后选择菜单中的“编辑/新建”。"
 
-#: src/kcmCron.cpp:115
+#: src/kcmCron.cpp:106
 #, kde-format
 msgid "Welcome to the Task Scheduler"
 msgstr "欢迎使用任务调度器"

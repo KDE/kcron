@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-06-27 00:50+0000\n"
+"POT-Creation-Date: 2023-09-16 01:56+0000\n"
 "PO-Revision-Date: 2012-09-03 08:20+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -574,7 +574,7 @@ msgstr "Дербес Cron"
 msgid "System Cron"
 msgstr "Жүйелік Cron"
 
-#: src/kcmCron.cpp:40
+#: src/kcmCron.cpp:36
 #, kde-format
 msgid ""
 "The following error occurred while initializing KCron:\n"
@@ -589,7 +589,7 @@ msgstr ""
 "\n"
 "KCron жабылады.\n"
 
-#: src/kcmCron.cpp:113
+#: src/kcmCron.cpp:104
 #, kde-format
 msgid ""
 "You can use this application to schedule programs to run in the background.\n"
@@ -600,7 +600,7 @@ msgstr ""
 "Жаңа тапсырманы жоспарлау үшін Таспсырмалар қапшығын түртіп, мәзірден "
 "\"Өңдеу->Жаңа\" дегенді таңдаңыз."
 
-#: src/kcmCron.cpp:115
+#: src/kcmCron.cpp:106
 #, kde-format
 msgid "Welcome to the Task Scheduler"
 msgstr "Тапсырма жоспарлағышына қош келдіңіз"
