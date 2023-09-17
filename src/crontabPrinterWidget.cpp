@@ -17,7 +17,7 @@
 CrontabPrinterWidget::CrontabPrinterWidget(bool root)
     : QWidget()
 {
-    setWindowTitle(i18n("Cron Options"));
+    setWindowTitle(i18nc("@title:window", "Cron Options"));
 
     auto main_ = new QVBoxLayout(this);
 
