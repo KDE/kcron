@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-16 01:56+0000\n"
+"POT-Creation-Date: 2023-09-18 02:00+0000\n"
 "PO-Revision-Date: 2012-09-03 08:20+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -545,7 +545,9 @@ msgid "Crontab of user %1"
 msgstr "%1 пайдаланушының Crontab-ы"
 
 #: src/crontabPrinterWidget.cpp:20
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Cron Options"
+msgctxt "@title:window"
 msgid "Cron Options"
 msgstr "Cron параметрлері"
 

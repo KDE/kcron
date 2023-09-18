@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-16 01:56+0000\n"
+"POT-Creation-Date: 2023-09-18 02:00+0000\n"
 "PO-Revision-Date: 2021-10-28 15:38+0200\n"
 "Last-Translator: Phu Hung Nguyen <phu.nguyen@kdemail.net>\n"
 "Language-Team: Vietnamese <kde-l10n-vi@kde.org>\n"
@@ -546,7 +546,9 @@ msgid "Crontab of user %1"
 msgstr "Crontab của người dùng %1"
 
 #: src/crontabPrinterWidget.cpp:20
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Cron Options"
+msgctxt "@title:window"
 msgid "Cron Options"
 msgstr "Các lựa chọn cron"
 

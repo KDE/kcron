@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-16 01:56+0000\n"
+"POT-Creation-Date: 2023-09-18 02:00+0000\n"
 "PO-Revision-Date: 2021-10-26 13:28-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -566,7 +566,9 @@ msgid "Crontab of user %1"
 msgstr "Crontab do usuário %1"
 
 #: src/crontabPrinterWidget.cpp:20
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Cron Options"
+msgctxt "@title:window"
 msgid "Cron Options"
 msgstr "Opções do Cron"
 
