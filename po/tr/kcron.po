@@ -440,7 +440,7 @@ msgstr "%2/%1"
 #, kde-format
 msgctxt "1:Day of month, 2:Day of week"
 msgid "%1 as well as %2"
-msgstr "%2 gibi %1"
+msgstr "%1 ve aynı zamanda %2"
 
 #: src/crontablib/cttask.cpp:336
 #, kde-format
@@ -553,8 +553,7 @@ msgid "Crontab of user %1"
 msgstr "%1 kullanıcısının görevleri"
 
 #: src/crontabPrinterWidget.cpp:20
-#, fuzzy, kde-format
-#| msgid "Cron Options"
+#, kde-format
 msgctxt "@title:window"
 msgid "Cron Options"
 msgstr "Cron Seçenekleri"
@@ -967,55 +966,14 @@ msgstr "Yeni &Değişken..."
 #: src/variablesWidget.cpp:205
 #, kde-format
 msgid "Create a new variable."
-msgstr "Yeni bir değişken oluştur."
+msgstr "Yeni bir değişken oluşturun."
 
 #: src/variablesWidget.cpp:211
 #, kde-format
 msgid "Modify the selected variable."
-msgstr "Seçilen değişkeni düzenle."
+msgstr "Seçili değişkeni düzenleyin."
 
 #: src/variablesWidget.cpp:217
 #, kde-format
 msgid "Delete the selected variable."
-msgstr "Seçilen değişkeni sil."
-
-#~ msgid "Task Scheduler"
-#~ msgstr "Görev Zamanlayıcı"
-
-#~ msgid "KDE Task Scheduler"
-#~ msgstr "KDE Görev Zamanlayıcı"
-
-#~ msgid ""
-#~ "(c) 2008, Nicolas Ternisien\n"
-#~ "(c) 1999-2000, Gary Meyer"
-#~ msgstr ""
-#~ "(c) 2008, Nicolas Ternisien\n"
-#~ "(c) 1999-2000, Gary Meyer"
-
-#~ msgid "Nicolas Ternisien"
-#~ msgstr "Nicolas Ternisien"
-
-#~ msgid "Gary Meyer"
-#~ msgstr "Gary Meyer"
-
-#~ msgid "Robert Berry"
-#~ msgstr "Robert Berry"
-
-#~ msgid "James Ots"
-#~ msgstr "James Ots"
-
-#~ msgid "Alberto G. Hierro"
-#~ msgstr "Alberto G. Hierro"
-
-#~ msgid "All users"
-#~ msgstr "Tüm kullanıcılar"
-
-#~ msgctxt "User login: errorMessage"
-#~ msgid "User %1: %2"
-#~ msgstr "Kullanıcı %1: %2"
-
-#~ msgid "Cron of User:"
-#~ msgstr "Görevin Kullanıcısı:"
-
-#~ msgid "Show All Personal Crons"
-#~ msgstr "Tüm Kişisel Görevleri Göster"
+msgstr "Seçili değişkeni silin."
