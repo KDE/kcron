@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-18 02:00+0000\n"
-"PO-Revision-Date: 2022-12-01 08:21+0100\n"
+"PO-Revision-Date: 2023-09-19 05:15+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -548,11 +548,10 @@ msgid "Crontab of user %1"
 msgstr "%1 მომხმარებლის crontab"
 
 #: src/crontabPrinterWidget.cpp:20
-#, fuzzy, kde-format
-#| msgid "Cron Options"
+#, kde-format
 msgctxt "@title:window"
 msgid "Cron Options"
-msgstr "Cron -ის მორგება"
+msgstr "Cron-ის მორგება"
 
 #: src/crontabPrinterWidget.cpp:24
 #, kde-format
