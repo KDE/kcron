@@ -305,7 +305,7 @@
 ></term>
 <listitem
 ><para
->Per activar o desactivar la tasca, seleccioneu o desseleccioneu aquest botó.</para>
+>Per a activar o desactivar la tasca, seleccioneu o desseleccioneu aquest botó.</para>
 </listitem>
 </varlistentry>
 
@@ -327,7 +327,7 @@
 ></term>
 <listitem>
 <para
->Si voleu planificar la tasca per executar-se diàriament, seleccioneu aquest botó.</para>
+>Si voleu planificar la tasca per a executar-se diàriament, seleccioneu aquest botó.</para>
 </listitem>
 </varlistentry>
 
@@ -428,7 +428,7 @@
 >.</para>
 
 <para
->Utilitzeu els botons a la dreta de la llista de tasques per a modificar, suprimir, imprimir o executar ara una tasca seleccionada. També trobareu totes aquestes accions en el menú contextual. Addicionalment el menú contextual proporciona accions per a retallar, copiar i enganxar les tasques.</para>
+>Utilitzeu els botons a la dreta de la llista de tasques per a modificar, suprimir, imprimir o executar ara una tasca seleccionada. També trobareu totes aquestes accions en el menú contextual. Addicionalment, el menú contextual proporciona accions per a retallar, copiar i enganxar les tasques.</para>
 
 </sect2>
 
@@ -496,7 +496,7 @@
 ></term>
 <listitem
 ><para
->Per enviar el correu de sortida cap a una adreça de correu electrònic diferent de l'adreça per omissió de l'usuari.</para
+>Per a enviar el correu de sortida cap a una adreça de correu electrònic diferent de l'adreça per omissió de l'usuari.</para
 ></listitem>
 </varlistentry>
 
@@ -563,7 +563,7 @@
 ></term>
 <listitem>
 <para
->Per activar o desactivar la variable, seleccioneu o desseleccioneu aquest botó.</para>
+>Per a activar o desactivar la variable, seleccioneu o desseleccioneu aquest botó.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
@@ -608,7 +608,7 @@
 ></note>
 
 <para
->Utilitzeu els botons a la dreta de la llista de variables per a modificar, suprimir, imprimir o executar ara una variable seleccionada. També trobareu totes aquestes accions en el menú contextual. Addicionalment el menú contextual proporciona accions per a retallar, copiar i enganxar les variables.</para>
+>Utilitzeu els botons a la dreta de la llista de variables per a modificar, suprimir, imprimir o executar ara una variable seleccionada. També trobareu totes aquestes accions en el menú contextual. Addicionalment, el menú contextual proporciona accions per a retallar, copiar i enganxar les variables.</para>
 
 </sect2>
 </sect1>
