@@ -549,11 +549,10 @@ msgid "Crontab of user %1"
 msgstr "Crontab uživatele %1"
 
 #: src/crontabPrinterWidget.cpp:20
-#, fuzzy, kde-format
-#| msgid "Cron Options"
+#, kde-format
 msgctxt "@title:window"
 msgid "Cron Options"
-msgstr "Možnosti Cron"
+msgstr ""
 
 #: src/crontabPrinterWidget.cpp:24
 #, kde-format
