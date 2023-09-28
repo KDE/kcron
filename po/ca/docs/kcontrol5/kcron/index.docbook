@@ -529,7 +529,7 @@
 ></term>
 <listitem
 ><para
->La ubicació de les biblioteques dinàmiques. Permet que les tasques del «cron» executin les aplicacions amb les biblioteques necessàries per executar-se instal·lades fora del camí de les biblioteques del sistema.</para
+>La ubicació de les biblioteques dinàmiques. Permet que les tasques del «cron» executin les aplicacions amb les biblioteques necessàries per a executar-se instal·lades fora del camí de les biblioteques del sistema.</para
 ></listitem>
 </varlistentry>
 
