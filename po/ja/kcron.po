@@ -971,31 +971,3 @@ msgstr "選択した変数を編集します。"
 #, kde-format
 msgid "Delete the selected variable."
 msgstr "選択した変数を削除します。"
-
-#~ msgid "Task Scheduler"
-#~ msgstr "タスクスケジューラ"
-
-#~ msgid "KDE Task Scheduler"
-#~ msgstr "KDE タスクスケジューラ"
-
-#~ msgid ""
-#~ "(c) 2008, Nicolas Ternisien\n"
-#~ "(c) 1999-2000, Gary Meyer"
-#~ msgstr ""
-#~ "(c) 2008, Nicolas Ternisien\n"
-#~ "(c) 1999-2000, Gary Meyer"
-
-#~ msgid "Nicolas Ternisien"
-#~ msgstr "Nicolas Ternisien"
-
-#~ msgid "Gary Meyer"
-#~ msgstr "Gary Meyer"
-
-#~ msgid "Robert Berry"
-#~ msgstr "Robert Berry"
-
-#~ msgid "James Ots"
-#~ msgstr "James Ots"
-
-#~ msgid "Alberto G. Hierro"
-#~ msgstr "Alberto G. Hierro"
