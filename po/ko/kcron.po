@@ -1,14 +1,14 @@
 # Translation of kcron to Korean.
 # Copyright (C) 2001, 2007 Free Software Foundation, Inc.
 # hyunsuk shim <hsshim@hancom.com>, 2001.
-# Shinjo Park <kde@peremen.name>, 2007, 2008, 2009, 2011, 2015, 2020, 2021, 2022.
+# Shinjo Park <kde@peremen.name>, 2007, 2008, 2009, 2011, 2015, 2020, 2021, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-18 02:00+0000\n"
-"PO-Revision-Date: 2022-04-16 22:48+0200\n"
+"PO-Revision-Date: 2023-10-08 22:51+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 21.08.1\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -545,11 +545,10 @@ msgid "Crontab of user %1"
 msgstr "사용자 %1의 Crontab"
 
 #: src/crontabPrinterWidget.cpp:20
-#, fuzzy, kde-format
-#| msgid "Cron Options"
+#, kde-format
 msgctxt "@title:window"
 msgid "Cron Options"
-msgstr "Cron 설정"
+msgstr "Cron 옵션"
 
 #: src/crontabPrinterWidget.cpp:24
 #, kde-format
