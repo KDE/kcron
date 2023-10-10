@@ -973,31 +973,3 @@ msgstr "Редактиране на избраната променлива."
 #, kde-format
 msgid "Delete the selected variable."
 msgstr "Изтриване на избраната променлива."
-
-#~ msgid "Task Scheduler"
-#~ msgstr "Диспечер на задачите"
-
-#~ msgid "KDE Task Scheduler"
-#~ msgstr "Диспечер на задачи за KDE"
-
-#~ msgid ""
-#~ "(c) 2008, Nicolas Ternisien\n"
-#~ "(c) 1999-2000, Gary Meyer"
-#~ msgstr ""
-#~ "(c) 2008, Nicolas Ternisien\n"
-#~ "(c) 1999-2000, Gary Meyer"
-
-#~ msgid "Nicolas Ternisien"
-#~ msgstr "Nicolas Ternisien"
-
-#~ msgid "Gary Meyer"
-#~ msgstr "Gary Meyer"
-
-#~ msgid "Robert Berry"
-#~ msgstr "Robert Berry"
-
-#~ msgid "James Ots"
-#~ msgstr "James Ots"
-
-#~ msgid "Alberto G. Hierro"
-#~ msgstr "Alberto G. Hierro"
