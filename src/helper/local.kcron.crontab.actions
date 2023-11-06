@@ -1,5 +1,6 @@
 [Domain]
 Name=Crontab Actions
+Name[ast]=Aiciones de crontab
 Name[bg]=Действия на Crontab
 Name[ca]=Accions de «crontab»
 Name[ca@valencia]=Accions de «crontab»
