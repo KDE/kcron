@@ -161,34 +161,25 @@ void CTCron::parseFile(const QString &fileName)
 void CTCron::parseTextStream(QTextStream *stream)
 {
     QString comment;
-    bool leadingComment = true;
 
     while (!stream->atEnd()) {
         QString line = stream->readLine();
-
+        // skip empty lines, empty lines are space between commented cron expressions
+        if (line.isEmpty()) {
+            comment.clear();
+            continue;
+        }
         // search for comments "#" but not disabled tasks "#\"
-        if (line.indexOf(QLatin1String("#")) == 0 && line.indexOf(QLatin1String("\\")) != 1) {
-            // Skip leading comments with leading spaces, those are not written by KCron
-            if (leadingComment && line.startsWith(QLatin1String("# "))) {
-                continue;
+        // It's always loading comments user added by crontab -e command
+        // or user added by Kcron
+        if (line.startsWith(QLatin1Char('#')) && line.indexOf(QLatin1Char('\\')) != 1) {
+            line = line.mid(1, line.length() - 1);
+            if (comment.isEmpty()) {
+                comment = line.trimmed();
+            } else {
+                comment += QLatin1Char('\n') + line.trimmed();
             }
-            leadingComment = false;
-            // If the first 10 characters don't contain a character, it's probably a disabled entry.
-            int firstText = line.indexOf(QRegularExpression(QLatin1String("\\w")));
-            if (firstText < 0) {
-                continue;
-            }
-
-            if (firstText < 10) {
-                // remove leading pound sign
-                line = line.mid(1, line.length() - 1);
-                if (comment.isEmpty()) {
-                    comment = line.trimmed();
-                } else {
-                    comment += QLatin1String("\n") + line.trimmed();
-                }
-                continue;
-            }
+            continue;
         }
 
         // either a task or a variable
@@ -223,7 +214,6 @@ QString CTCron::exportCron() const
         exportCron += ctVariable->exportVariable();
         exportCron += QLatin1String("\n");
     }
-
     for (CTTask *ctTask : std::as_const(d->task)) {
         exportCron += ctTask->exportTask();
         exportCron += QLatin1String("\n");
@@ -294,6 +284,7 @@ CTSaveStatus CTCron::save()
         qCDebug(KCM_CRON_LOG) << "Attempting to save system cron";
         QVariantMap args;
         args.insert(QStringLiteral("source"), tmp.fileName());
+
         KAuth::Action saveAction(QStringLiteral("local.kcron.crontab.save"));
         saveAction.setHelperId(QStringLiteral("local.kcron.crontab"));
         saveAction.setArguments(args);
