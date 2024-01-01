@@ -97,7 +97,7 @@
         "Name[zh_CN]": "任务计划程序",
         "Name[zh_TW]": "工作排程器"
     },
-    "X-DocPath": "kcontrol5/kcron/index.html",
+    "X-DocPath": "kcontrol/kcron/index.html",
     "X-KDE-Keywords": "cron,crontab,scheduled,tasks,task,schedule,vixie",
     "X-KDE-Keywords[ar]": "cron,crontab,جدولة,مهام,مهمّة,مهمة,كرون",
     "X-KDE-Keywords[bg]": "задачи",
