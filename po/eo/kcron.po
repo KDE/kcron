@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-25 01:34+0000\n"
-"PO-Revision-Date: 2023-11-12 16:39+0100\n"
+"PO-Revision-Date: 2024-01-03 13:03+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -301,7 +301,7 @@ msgstr "Merkredo"
 #: src/crontablib/ctdow.cpp:61
 #, kde-format
 msgid "Thursday"
-msgstr "Jaŭdo"
+msgstr "Ĵaŭdo"
 
 #: src/crontablib/ctdow.cpp:61
 #, kde-format
