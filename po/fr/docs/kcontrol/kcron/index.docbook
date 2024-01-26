@@ -74,7 +74,7 @@
 <keyword
 >crontab</keyword>
 <keyword
->scheduler</keyword>
+>ordonnanceur</keyword>
 </keywordset>
 
 </articleinfo>
@@ -90,9 +90,9 @@
 
 <important
 ><para
->N'oubliez pas de préciser à votre système de démarrer le démon cron <filename
+>N'oubliez pas de préciser à votre système de démarrer le démon de cron <filename
 >crond</filename
-> au préalable, sinon les réglaqes dans ce module ne fonctionneront pas.</para
+> au préalable, sinon les réglages dans ce module ne fonctionneront pas.</para
 ></important>
 
 <sect2 id="kcron-start-up">
@@ -314,7 +314,7 @@
 <varlistentry>
 <term
 ><guibutton
->Lancer au démarrage du systéme</guibutton
+>Lancer au démarrage du système</guibutton
 ></term>
 <listitem>
 <para
@@ -410,7 +410,7 @@
 </variablelist>
 
 <para
->Si vous sélectionnez à la fois les jours du mois et les jours de la semaine, la tâche sera lancée lorsqu'une des conditions sera rencontrée. Par exemple, si vous choisissez le 1er et le 15 ainsi que dimanche, le programme sera lancé tous les 1er et 15ème jour des mois sélectionnés (sans se soucier du jour de la semaine) ainsi que chaque dimanche des mois sélectionnés (sans se soucier du jour du mois).</para>
+>Si vous sélectionnez à la fois les jours du mois et les jours de la semaine, la tâche sera lancée lorsqu'une des conditions sera rencontrée. Par exemple, si vous choisissez le 1er et le 15 ainsi que dimanche, le programme sera lancé tous les 1er et 15 ième jour des mois sélectionnés (sans se soucier du jour de la semaine) ainsi que chaque dimanche des mois sélectionnés (sans se soucier du jour du mois).</para>
 
 <para
 >La tâche planifiée n'est pas initialisée tant que la <filename
@@ -533,7 +533,7 @@
 ></term>
 <listitem
 ><para
->L'emplacement des bibliothèques dynamiques. Ceci permet aux tâches planifiées d'exécuter des applications qui nécessitent pour fonctionner des bibliothèques installées en dehors de l'emplacement système pour les bibilothèques.</para
+>L'emplacement des bibliothèques dynamiques. Ceci permet aux tâches planifiées d'exécuter des applications qui nécessitent pour fonctionner des bibliothèques installées en dehors de l'emplacement système pour les bibliothèques.</para
 ></listitem>
 </varlistentry>
 
