@@ -60,7 +60,7 @@ QString KCMCron::findCrontabBinary()
 
 KCMCron::~KCMCron()
 {
-    delete mCrontabWidget;
+    // mCrontabWidget is parented!
     delete mCtHost;
 }
 
