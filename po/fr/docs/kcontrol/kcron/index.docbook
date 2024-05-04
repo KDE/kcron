@@ -100,7 +100,7 @@
 >Lancement</title>
 
 <para
->Lorsque vous démarrez ce module, vous verrez une vue sommaire des tâches planifiées existantes et des variables d'environnement associées. Si vous l'utilisez en tant que superutilisateur, vous verrez ces rubriques pour tous les utilisateurs de l'ordinateur ainsi que les tâches-système planifiées.</para>
+>Lorsque vous démarrez ce module, vous verrez une vue sommaire des tâches planifiées existantes et des variables d'environnement associées. Si vous l'utilisez en mode administrateur, vous verrez ces rubriques pour tous les utilisateurs de l'ordinateur ainsi que les tâches-système planifiées.</para>
 <!--admin mode-->
 <screenshot>
 <screeninfo
