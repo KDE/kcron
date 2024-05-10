@@ -7,13 +7,13 @@
 # محمد سعد  Mohamed SAAD <metehyi@free.fr>, 2006.
 # Abdulaziz AlSharif <a.a-a.s@hotmail.com>, 2007.
 # Youssef Chahibi <chahibi@gmail.com>, 2007.
-# Zayed Al-Saidi <zayed.alsaidi@gmail.com>, 2022.
+# SPDX-FileCopyrightText: 2022, 2024 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-25 01:34+0000\n"
-"PO-Revision-Date: 2022-01-29 14:21+0400\n"
+"PO-Revision-Date: 2024-05-09 10:51+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-"X-Generator: Lokalize 21.07.70\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -53,7 +53,7 @@ msgstr ""
 #: src/crontablib/ctcron.cpp:249
 #, fuzzy, kde-format
 msgid "<em>No error.</em>"
-msgstr "بلا أخطاء"
+msgstr "لا أخطاء"
 
 #: src/crontablib/ctcron.cpp:256
 #, kde-format
@@ -461,18 +461,18 @@ msgstr "، "
 #, fuzzy, kde-format
 msgctxt "Hour::Minute list"
 msgid "At %1"
-msgstr "<b>%1</b> عند <b>%2</b>"
+msgstr "%1 عند %2"
 
 #: src/crontablib/cttask.cpp:366
-#, fuzzy, kde-format
+#, kde-format
 msgid "Every minute"
 msgid_plural "Every %1 minutes"
 msgstr[0] "كلّ دقيقة"
-msgstr[1] "كلّ 10 دقائق"
-msgstr[2] "كلّ 10 دقائق"
-msgstr[3] "كلّ 10 دقائق"
-msgstr[4] "كلّ 10 دقائق"
-msgstr[5] "كلّ 10 دقائق"
+msgstr[1] "كلّ دقيقة"
+msgstr[2] "كلّ دقيقتين"
+msgstr[3] "كلّ %1دقائق"
+msgstr[4] "كلّ %1دقيقة"
+msgstr[5] "كلّ %1دقيقة"
 
 #: src/crontablib/ctunit.cpp:177
 #, kde-format
@@ -532,7 +532,7 @@ msgstr "الوصف"
 #: src/crontabPrinter.cpp:127
 #, fuzzy, kde-format
 msgid "Environment Variables"
-msgstr "المتغيرات"
+msgstr "المتغيرات البيئية:"
 
 #: src/crontabPrinter.cpp:152
 #, fuzzy, kde-format
@@ -551,8 +551,7 @@ msgid "Crontab of user %1"
 msgstr ""
 
 #: src/crontabPrinterWidget.cpp:20
-#, fuzzy, kde-format
-#| msgid "Cron Options"
+#, kde-format
 msgctxt "@title:window"
 msgid "Cron Options"
 msgstr "خيارات جدول المهام"
@@ -693,34 +692,34 @@ msgid "Each minute"
 msgstr "كل شهر "
 
 #: src/taskEditorDialog.cpp:472
-#, fuzzy, kde-format
+#, kde-format
 msgid "Every 2 minutes"
-msgstr "كلّ 10 دقائق"
+msgstr "كل دقيقتين"
 
 #: src/taskEditorDialog.cpp:473
-#, fuzzy, kde-format
+#, kde-format
 msgid "Every 5 minutes"
-msgstr "كلّ 10 دقائق"
+msgstr "كل 5 دقائق"
 
 #: src/taskEditorDialog.cpp:474
-#, fuzzy, kde-format
+#, kde-format
 msgid "Every 10 minutes"
-msgstr "كلّ 10 دقائق"
+msgstr "كل 10 دقائق"
 
 #: src/taskEditorDialog.cpp:475
-#, fuzzy, kde-format
+#, kde-format
 msgid "Every 15 minutes"
-msgstr "كلّ 10 دقائق"
+msgstr "كل 15 دقيقة"
 
 #: src/taskEditorDialog.cpp:476
-#, fuzzy, kde-format
+#, kde-format
 msgid "Every 20 minutes"
-msgstr "كلّ 10 دقائق"
+msgstr "كل 20 دقيقة"
 
 #: src/taskEditorDialog.cpp:477
-#, fuzzy, kde-format
+#, kde-format
 msgid "Every 30 minutes"
-msgstr "كلّ 10 دقائق"
+msgstr "كل 30 دقيقة"
 
 #: src/taskEditorDialog.cpp:516
 #, kde-format
@@ -730,7 +729,7 @@ msgstr "الساعات"
 #: src/taskEditorDialog.cpp:521
 #, fuzzy, kde-format
 msgid "AM:"
-msgstr "أمهر"
+msgstr "ق‌ظ"
 
 #: src/taskEditorDialog.cpp:539
 #, fuzzy, kde-format
@@ -807,9 +806,9 @@ msgid "End of script execution. Type Enter or Ctrl+C to exit."
 msgstr ""
 
 #: src/tasksWidget.cpp:127
-#, fuzzy, kde-format
+#, kde-format
 msgid "New Task"
-msgstr "المهام"
+msgstr "مهمة جديدة"
 
 #: src/tasksWidget.cpp:163
 #, kde-format
@@ -835,12 +834,12 @@ msgstr "المهام المجدولة"
 #, fuzzy, kde-format
 msgctxt "Adds a new task"
 msgid "New &Task..."
-msgstr "لا يوجد مهام..."
+msgstr "مهمة جديدة…"
 
 #: src/tasksWidget.cpp:257
 #, fuzzy, kde-format
 msgid "Create a new task."
-msgstr "أنشئ مهمة أو متغير جديد."
+msgstr "أنشئ مهمة جديدة…"
 
 #: src/tasksWidget.cpp:261 src/variablesWidget.cpp:209
 #, kde-format
@@ -926,7 +925,7 @@ msgstr "<i>من فضلك ادخل قيمة المتغير ...</i>"
 #: src/variablesWidget.cpp:29
 #, fuzzy, kde-format
 msgid "<b>Environment Variables</b>"
-msgstr "المتغيرات"
+msgstr "المتغيرات البيئية:"
 
 #: src/variablesWidget.cpp:62
 #, kde-format
@@ -934,9 +933,9 @@ msgid "Modify Variable"
 msgstr "عدّل المتغير"
 
 #: src/variablesWidget.cpp:142
-#, fuzzy, kde-format
+#, kde-format
 msgid "New Variable"
-msgstr "المتغيرات"
+msgstr "متغير جديد"
 
 #: src/variablesWidget.cpp:186
 #, kde-format
@@ -957,7 +956,7 @@ msgstr "التعليق"
 #, fuzzy, kde-format
 msgctxt "Adds a new variable"
 msgid "New &Variable..."
-msgstr "لا يوجد متغيرات..."
+msgstr "متغير جديد"
 
 #: src/variablesWidget.cpp:205
 #, fuzzy, kde-format
