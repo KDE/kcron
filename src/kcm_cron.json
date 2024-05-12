@@ -1,6 +1,7 @@
 {
     "KPlugin": {
         "Description": "Configure and schedule tasks",
+        "Description[ar]": "اضبط وجدول المهامّ",
         "Description[bg]": "Задаване и настройване на задачи",
         "Description[ca@valencia]": "Configura i planifica les tasques",
         "Description[ca]": "Configura i planifica les tasques",
