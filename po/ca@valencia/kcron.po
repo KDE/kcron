@@ -749,17 +749,17 @@ msgstr "PM:"
 #: src/taskEditorDialog.cpp:714 src/taskEditorDialog.cpp:724
 #, kde-format
 msgid "<i>Please type a valid command line...</i>"
-msgstr "<i>Introduïu una línia d'ordres vàlida...</i>"
+msgstr "<i>Introduïu una línia d'ordres vàlida…</i>"
 
 #: src/taskEditorDialog.cpp:748
 #, kde-format
 msgid "<i>Please select an executable program...</i>"
-msgstr "<i>Seleccioneu un programa executable...</i>"
+msgstr "<i>Seleccioneu un programa executable…</i>"
 
 #: src/taskEditorDialog.cpp:756 src/taskEditorDialog.cpp:782
 #, kde-format
 msgid "<i>Please browse for a program to execute...</i>"
-msgstr "<i>Exploreu per a trobar el programa que s'ha d'executar...</i>"
+msgstr "<i>Exploreu per a trobar el programa que s'ha d'executar…</i>"
 
 #: src/taskEditorDialog.cpp:769
 #, kde-format
@@ -774,7 +774,7 @@ msgstr "<i>Esta tasca s'executarà en arrancar el sistema.</i>"
 #: src/taskEditorDialog.cpp:803
 #, kde-format
 msgid "<i>Please select from the 'Months' section...</i>"
-msgstr "<i>Seleccioneu des de la secció «Mesos»...</i>"
+msgstr "<i>Seleccioneu des de la secció «Mesos»…</i>"
 
 #: src/taskEditorDialog.cpp:825
 #, kde-format
@@ -782,17 +782,17 @@ msgid ""
 "<i>Please select from either the 'Days of Month' or the 'Days of Week' "
 "section...</i>"
 msgstr ""
-"<i>Seleccioneu des de la secció «Dies del mes» o «Dies de la setmana»...</i>"
+"<i>Seleccioneu des de la secció «Dies del mes» o «Dies de la setmana»…</i>"
 
 #: src/taskEditorDialog.cpp:842
 #, kde-format
 msgid "<i>Please select from the 'Hours' section...</i>"
-msgstr "<i>Seleccioneu des de la secció «Hores»...</i>"
+msgstr "<i>Seleccioneu des de la secció «Hores»…</i>"
 
 #: src/taskEditorDialog.cpp:859
 #, kde-format
 msgid "<i>Please select from the 'Minutes' section...</i>"
-msgstr "<i>Seleccioneu des de la secció «Minuts»...</i>"
+msgstr "<i>Seleccioneu des de la secció «Minuts»…</i>"
 
 #: src/taskEditorDialog.cpp:1063
 #, kde-format
@@ -845,7 +845,7 @@ msgstr "Detalls de la planificació"
 #, kde-format
 msgctxt "Adds a new task"
 msgid "New &Task..."
-msgstr "&Tasca nova..."
+msgstr "&Tasca nova…"
 
 #: src/tasksWidget.cpp:257
 #, kde-format
@@ -855,7 +855,7 @@ msgstr "Crea una tasca nova."
 #: src/tasksWidget.cpp:261 src/variablesWidget.cpp:209
 #, kde-format
 msgid "M&odify..."
-msgstr "M&odifica..."
+msgstr "M&odifica…"
 
 #: src/tasksWidget.cpp:263
 #, kde-format
@@ -926,12 +926,12 @@ msgstr "<i>Esta variable està desactivada.</i>"
 #: src/variableEditorDialog.cpp:199
 #, kde-format
 msgid "<i>Please enter the variable name...</i>"
-msgstr "<i>Introduïu el nom de la variable...</i>"
+msgstr "<i>Introduïu el nom de la variable…</i>"
 
 #: src/variableEditorDialog.cpp:206
 #, kde-format
 msgid "<i>Please enter the variable value ...</i>"
-msgstr "<i>Introduïu el valor de la variable...</i>"
+msgstr "<i>Introduïu el valor de la variable…</i>"
 
 #: src/variablesWidget.cpp:29
 #, kde-format
@@ -967,7 +967,7 @@ msgstr "Comentari"
 #, kde-format
 msgctxt "Adds a new variable"
 msgid "New &Variable..."
-msgstr "&Variable nova..."
+msgstr "&Variable nova…"
 
 #: src/variablesWidget.cpp:205
 #, kde-format
