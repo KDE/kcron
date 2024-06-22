@@ -479,7 +479,7 @@ msgstr "替代默认的主目录。"
 #: src/crontablib/ctvariable.cpp:136
 #, kde-format
 msgid "Email output to specified account."
-msgstr "把输出邮寄给特定的账号。"
+msgstr "把输出邮寄给特定的账户。"
 
 #: src/crontablib/ctvariable.cpp:138
 #, kde-format
