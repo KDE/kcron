@@ -163,10 +163,10 @@ void GenericListWidget::addRightStretch()
 
 void GenericListWidget::setActionEnabled(QAction *action, bool enabled)
 {
-    const auto associatedWidgets = action->associatedWidgets();
-    for (QWidget *widget : associatedWidgets) {
+    const auto associatedObjs = action->associatedObjects();
+    for (auto obj : associatedObjs) {
         // Only change status of associated Buttons
-        auto button = qobject_cast<QPushButton *>(widget);
+        auto button = qobject_cast<QPushButton *>(obj);
         if (button) {
             button->setEnabled(enabled);
         }

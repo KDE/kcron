@@ -2,7 +2,7 @@ cmake_minimum_required (VERSION 3.16.0 FATAL_ERROR)
 project(kcron)
 
 set (QT_MIN_VERSION "6.5.0")
-set (KF_MIN_VERSION "5.240.0")
+set (KF_MIN_VERSION "6.3.0")
 
 find_package (ECM ${KF_MIN_VERSION} REQUIRED NO_MODULE)
 set (CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
@@ -39,8 +39,8 @@ set_package_properties(KF6DocTools PROPERTIES DESCRIPTION
     TYPE OPTIONAL
 )
 
-ecm_set_disabled_deprecation_versions(QT 5.15.2
-    KF 5.240
+ecm_set_disabled_deprecation_versions(QT 6.7.0
+    KF 6.4
 )
 
 
