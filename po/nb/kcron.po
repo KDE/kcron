@@ -556,7 +556,6 @@ msgstr "Crontab for bruker %1"
 
 #: src/crontabPrinterWidget.cpp:20
 #, fuzzy, kde-format
-#| msgid "Cron Options"
 msgctxt "@title:window"
 msgid "Cron Options"
 msgstr "Opsjoner til cron"
