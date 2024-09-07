@@ -3,19 +3,20 @@
 # MaryamSadat Razavi <razavi@itland.ir>, 2006.
 # Tahereh Dadkhahfar <dadkhahfar@itland.ir>, 2006.
 # Nasim Daniarzadeh <daniarzadeh@itland.ir>, 2006.
+# SPDX-FileCopyrightText: 2024 Mohi Mirdamadi <mohi.pub@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-12-25 01:34+0000\n"
-"PO-Revision-Date: 2007-09-02 12:01+0330\n"
-"Last-Translator: Nazanin Kazemi <kazemi@itland.ir>\n"
-"Language-Team: Persian <kde-i18n-fa@kde.org>\n"
+"PO-Revision-Date: 2024-09-06 22:32+0330\n"
+"Last-Translator: Mohi Mirdamadi <mohi.pub@gmail.com>\n"
+"Language-Team: fa\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 23.08.5\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #, kde-format
@@ -403,7 +404,7 @@ msgstr ""
 #: src/crontablib/cttask.cpp:265
 #, kde-format
 msgid "At system startup"
-msgstr "در راه‌اندازی سیستم"
+msgstr "در راه‌اندازی سامانه"
 
 #: src/crontablib/cttask.cpp:272
 #, kde-format
@@ -526,12 +527,12 @@ msgstr "متغیرها"
 #: src/crontabPrinter.cpp:152
 #, fuzzy, kde-format
 msgid "System Crontab"
-msgstr "(Crontab سیستم)"
+msgstr "(Crontab سامانه)"
 
 #: src/crontabPrinter.cpp:154
 #, fuzzy, kde-format
 msgid "All Users Crontabs"
-msgstr "(Crontab سیستم)"
+msgstr "(Crontab سامانه)"
 
 #: src/crontabPrinter.cpp:156
 #, kde-format
@@ -569,7 +570,7 @@ msgstr ""
 #: src/crontabWidget.cpp:94
 #, fuzzy, kde-format
 msgid "System Cron"
-msgstr "(Crontab سیستم)"
+msgstr "(Crontab سامانه)"
 
 #: src/kcmCron.cpp:36
 #, kde-format
@@ -611,7 +612,7 @@ msgstr "افزودن یا تغییر تکلیف Kcron"
 #: src/taskEditorDialog.cpp:70 src/taskEditorDialog.cpp:868
 #, fuzzy, kde-format
 msgid "<i>This task will be executed at the specified intervals.</i>"
-msgstr "<i>این تکلیف هنگام راه‌اندازی سیستم اجرا می‌شود ...</i>"
+msgstr "<i>این تکلیف هنگام راه‌اندازی سامانه اجرا می‌شود ...</i>"
 
 #: src/taskEditorDialog.cpp:78
 #, fuzzy, kde-format
@@ -636,7 +637,7 @@ msgstr ""
 #: src/taskEditorDialog.cpp:134
 #, fuzzy, kde-format
 msgid "Run at system &bootup"
-msgstr "اجرا در راه‌اندازی سیستم"
+msgstr "اجرا در راه‌اندازی سامانه"
 
 #: src/taskEditorDialog.cpp:140
 #, fuzzy, kde-format
@@ -751,7 +752,7 @@ msgstr "<i>این تکلیف دارای پیکربندی معتبری است ...
 #: src/taskEditorDialog.cpp:776
 #, fuzzy, kde-format
 msgid "<i>This task will be run on system bootup.</i>"
-msgstr "<i>این تکلیف هنگام راه‌اندازی سیستم اجرا می‌شود ...</i>"
+msgstr "<i>این تکلیف هنگام راه‌اندازی سامانه اجرا می‌شود ...</i>"
 
 #: src/taskEditorDialog.cpp:803
 #, fuzzy, kde-format
@@ -896,12 +897,12 @@ msgstr ""
 #: src/variableEditorDialog.cpp:145
 #, fuzzy, kde-format
 msgid "<i>This variable will be used by scheduled tasks.</i>"
-msgstr "<i>این تکلیف هنگام راه‌اندازی سیستم اجرا می‌شود ...</i>"
+msgstr "<i>این تکلیف هنگام راه‌اندازی سامانه اجرا می‌شود ...</i>"
 
 #: src/variableEditorDialog.cpp:192
 #, fuzzy, kde-format
 msgid "<i>This variable is disabled.</i>"
-msgstr "<i>این تکلیف هنگام راه‌اندازی سیستم اجرا می‌شود ...</i>"
+msgstr "<i>این تکلیف هنگام راه‌اندازی سامانه اجرا می‌شود ...</i>"
 
 #: src/variableEditorDialog.cpp:199
 #, fuzzy, kde-format
