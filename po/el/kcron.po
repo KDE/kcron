@@ -564,7 +564,7 @@ msgstr "Εκτύπωση του cron&tab"
 #: src/crontabPrinterWidget.cpp:28
 #, kde-format
 msgid "Print &all users"
-msgstr "Εμφάνιση &όλων των χρηστών"
+msgstr "Εμφάνιση όλων των &χρηστών"
 
 #: src/crontabWidget.cpp:85
 #, kde-format
