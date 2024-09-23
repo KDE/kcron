@@ -27,4 +27,3 @@ public:
 
     QString exportUnit() const override;
 };
-

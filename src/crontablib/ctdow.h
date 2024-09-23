@@ -48,4 +48,3 @@ private:
     static QList<QString> shortName;
     static QList<QString> longName;
 };
-

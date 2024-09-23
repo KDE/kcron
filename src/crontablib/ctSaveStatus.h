@@ -30,4 +30,3 @@ private:
 
     const QString mDetailError;
 };
-

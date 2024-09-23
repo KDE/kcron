@@ -71,4 +71,3 @@ private:
     QString mInitialUserLogin;
     bool mInitialEnabled;
 };
-

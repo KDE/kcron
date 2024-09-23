@@ -203,4 +203,3 @@ protected:
     // d probably stands for data.
     CTCronPrivate *const d;
 };
-

@@ -41,4 +41,3 @@ private:
     static void initializeNames();
     static QList<QString> shortName;
 };
-

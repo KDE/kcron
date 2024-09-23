@@ -130,4 +130,3 @@ public:
      */
     static const bool longFormat = true;
 };
-

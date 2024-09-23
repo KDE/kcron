@@ -131,4 +131,3 @@ private:
     bool mInitialEnabled;
     bool mInitialReboot;
 };
-
