@@ -11,7 +11,6 @@
 #include "genericmodel.h"
 
 class CTCron;
-class CTVariable;
 class Variable;
 
 class VariablesModel final : public GenericModel

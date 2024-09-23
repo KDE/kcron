@@ -11,7 +11,6 @@
 #include "genericmodel.h"
 
 class CTCron;
-class CTTask;
 class Task;
 
 class TasksModel final : public GenericModel

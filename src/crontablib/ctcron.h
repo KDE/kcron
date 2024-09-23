@@ -16,7 +16,6 @@ class CTTask;
 class CTVariable;
 class CTInitializationError;
 
-class QFile;
 class QTextStream;
 
 struct passwd;
