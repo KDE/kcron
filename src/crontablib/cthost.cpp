@@ -18,8 +18,6 @@
 
 #include <KLocalizedString>
 
-#include "crontabWidget.h"
-
 #include "ctInitializationError.h"
 #include "ctSystemCron.h"
 #include "ctcron.h"
@@ -123,13 +121,12 @@ bool CTHost::allowDeny(char *name)
     }
 }
 
-CTSaveStatus CTHost::save(CrontabWidget *mCrontabWidget)
+CTSaveStatus CTHost::save(CTCron *ctCron)
 {
     qCDebug(KCM_CRON_LOG) << "Save current cron.";
+
     // Retrieve the current cron to use. This could either be a user cron or a system cron.
     // Implements system cron entry point.
-    CTCron *ctCron = mCrontabWidget->currentCron();
-
     return ctCron->save();
 }
 

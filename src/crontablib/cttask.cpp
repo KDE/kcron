@@ -385,7 +385,6 @@ QIcon CTTask::commandIcon() const
     QUrl commandPath = QUrl::fromLocalFile(completeCommandPath());
 
     QMimeType mimeType = QMimeDatabase().mimeTypeForUrl(commandPath);
-    // qCDebug(KCM_CRON_LOG) << mimeType->name();
     if (mimeType.name() == QLatin1String("application/x-executable") || mimeType.name() == QLatin1String("application/octet-stream")) {
         return QIcon::fromTheme(commandPath.fileName(), QIcon::fromTheme(QLatin1String("system-run")));
     }

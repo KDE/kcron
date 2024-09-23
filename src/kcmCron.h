@@ -2,6 +2,7 @@
     KT icons.
     --------------------------------------------------------------------
     SPDX-FileCopyrightText: 1999 Gary Meyer <gary@meyer.net>
+    SPDX-FileCopyrightText: 2024 Evgeny Chesnokov <echesnokov@astralinux.ru>
     --------------------------------------------------------------------
     SPDX-License-Identifier: GPL-2.0-or-later
 */
@@ -14,50 +15,94 @@
  */
 #define CRONTAB_BINARY "crontab"
 
-#include <QString>
-#include <QVariantList>
-#include <QWidget>
-
-#include <KCModule>
-#include <KSharedConfig>
+#include <KQuickManagedConfigModule>
 
 class CTHost;
-class CrontabWidget;
+class CTCron;
+class TasksModel;
+class Task;
+class VariablesModel;
+class Variable;
+class CronPrinter;
 
-class KCMCron : public KCModule
+class KCMCron : public KQuickManagedConfigModule
 {
     Q_OBJECT
 
-public:
-    KCMCron(QObject *parent);
+    Q_PROPERTY(TasksModel *tasksModel READ tasksModel CONSTANT)
+    Q_PROPERTY(VariablesModel *variablesModel READ variablesModel CONSTANT)
 
+    Q_PROPERTY(bool isPersonalUse READ isPersonalUse WRITE setIsPersonalUse NOTIFY isPersonalUseChanged)
+    Q_PROPERTY(QStringList userList READ userList CONSTANT)
+
+public:
+    KCMCron(QObject *parent, const KPluginMetaData &data);
     ~KCMCron() override;
 
+    Q_INVOKABLE void print();
+
+    /**
+     * Remove the excess pages before pushing new page
+     */
+    Q_INVOKABLE void refreshPages();
+
+public Q_SLOTS:
     void load() override;
     void save() override;
     void defaults() override;
 
-    /**
-     * Additional init
-     */
-    bool init();
+Q_SIGNALS:
+    void isPersonalUseChanged();
+    void showError(const QString &errorString, const QString &details = QString());
+    void showOnboarding();
 
-    /**
-     * Returns a reference to the CTHost.
-     */
-    CTHost *ctHost() const;
+private Q_SLOTS:
+    void addTask(Task *task);
+    void addVariable(Variable *variable);
 
-    QString findCrontabBinary();
+    void modifyTask(Task *task);
+    void modifyVariable(Variable *variable);
+
+    void removeTask(Task *task);
+    void removeVariable(Variable *variable);
+
+    void onMainUiReady();
 
 private:
     /**
-     * Main GUI view/working area.
+     * Additional init
      */
-    CrontabWidget *mCrontabWidget = nullptr;
+    void init();
 
     /**
-     * Document object, here crotab entries.
+     * Registers model roles for use in qml
      */
-    CTHost *mCtHost = nullptr;
-};
+    void registerTypes();
 
+    /**
+     * Returns the current user's data if the "Personal Cron" button is selected, otherwise returns system data
+     */
+    CTCron *currentCron();
+
+    /**
+     * Complete update of data in task and variable models
+     */
+    void refreshCron();
+
+    TasksModel *tasksModel() const noexcept;
+    VariablesModel *variablesModel() const noexcept;
+
+    bool isPersonalUse() const noexcept;
+    void setIsPersonalUse(bool flag);
+
+    QStringList userList() const noexcept;
+
+private:
+    CTHost *mCtHost = nullptr;
+    TasksModel *const mTasksModel;
+    VariablesModel *const mVariablesModel;
+    CronPrinter *const mPrinter;
+
+    bool mIsPersonalUse = true;
+    QStringList mUserList;
+};

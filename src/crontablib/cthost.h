@@ -17,7 +17,6 @@ class CTTask;
 class CTVariable;
 class CTCron;
 class CTInitializationError;
-class CrontabWidget;
 
 struct passwd;
 
@@ -51,7 +50,7 @@ public:
      * Apply changes.
      * return an empty string if no problem ocurred.
      */
-    CTSaveStatus save(CrontabWidget *mCrontabWidget);
+    CTSaveStatus save(CTCron *ctCron);
 
     /**
      * Cancel changes.
@@ -110,4 +109,3 @@ private:
 
     QString mCrontabBinary;
 };
-

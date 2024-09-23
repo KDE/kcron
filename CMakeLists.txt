@@ -21,8 +21,8 @@ kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
 
 find_package (Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     Core
-    Widgets
     PrintSupport
+    Quick
 )
 
 find_package(KF6 REQUIRED COMPONENTS
@@ -32,7 +32,11 @@ find_package(KF6 REQUIRED COMPONENTS
     I18n
     KIO
     KCMUtils
+    Declarative
 )
+
+find_package(KF6KirigamiAddons 0.11.76 REQUIRED)
+
 find_package(KF6DocTools ${KF_MIN_VERSION})
 set_package_properties(KF6DocTools PROPERTIES DESCRIPTION
     "Tools to generate documentation"
@@ -43,8 +47,7 @@ ecm_set_disabled_deprecation_versions(QT 6.7.0
     KF 6.4
 )
 
-
-add_subdirectory(src) 
+add_subdirectory(src)
 
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/org.kde.kcron.metainfo.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 
@@ -53,7 +56,6 @@ ecm_qt_install_logging_categories(
         FILE kcron.categories
         DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
         )
-
 
 kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
 ki18n_install(po)

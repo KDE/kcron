@@ -17,8 +17,6 @@
 #include "cttask.h"
 #include "ctvariable.h"
 
-#include "kcm_cron_debug.h"
-
 CTSystemCron::CTSystemCron(const QString &crontabBinary)
     : CTCron()
 {

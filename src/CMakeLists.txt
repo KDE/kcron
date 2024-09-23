@@ -7,8 +7,8 @@ include_directories(
 )
 
 ########## KCM Module ###############
-kcoreaddons_add_plugin(kcm_cron INSTALL_NAMESPACE "plasma/kcms/systemsettings_qwidgets")
-ecm_qt_declare_logging_category(kcm_cron 
+kcmutils_add_qml_kcm(kcm_cron)
+ecm_qt_declare_logging_category(kcm_cron
     HEADER kcm_cron_debug.h
     IDENTIFIER KCM_CRON_LOG
     CATEGORY_NAME org.kde.kcm.cron
@@ -32,29 +32,23 @@ target_sources(kcm_cron PRIVATE
    crontablib/ctSaveStatus.cpp crontablib/ctSaveStatus.h
    crontablib/ctHelper.cpp crontablib/ctHelper.h
 
-   genericListWidget.cpp genericListWidget.h
-    
-   tasksWidget.cpp tasksWidget.h
-   taskWidget.cpp taskWidget.h 
+   genericmodel.cpp genericmodel.h
 
-   variablesWidget.cpp variablesWidget.h
-   variableWidget.cpp variableWidget.h 
- 
-   taskEditorDialog.cpp taskEditorDialog.h 
-   variableEditorDialog.cpp variableEditorDialog.h
+   variablesmodel.cpp variablesmodel.h
+   variable.cpp variable.h
 
-   crontabWidget.cpp crontabWidget.h 
+   tasksmodel.cpp tasksmodel.h
+   task.cpp task.h
 
-   kcronHelper.cpp kcronHelper.h
-    
-   crontabPrinter.cpp crontabPrinter.h 
-   crontabPrinterWidget.cpp crontabPrinterWidget.h 
+   cronPrinter.cpp cronPrinter.h
+
+   taskvalidator.cpp taskvalidator.h
 
    kcmCron.cpp kcmCron.h 
 )
 
-
-target_link_libraries(kcm_cron 
+target_link_libraries(kcm_cron
+    Qt6::Core
     Qt6::PrintSupport
     KF6::ConfigWidgets
     KF6::I18n
@@ -63,8 +57,6 @@ target_link_libraries(kcm_cron
     KF6::AuthCore
     KF6::KCMUtils
 )
-
-kcmutils_generate_desktop_file(kcm_cron)
 
 # For root permissions.
 add_subdirectory(helper)
