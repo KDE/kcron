@@ -118,7 +118,8 @@ KCM.AbstractKCM {
 
                         Component.onCompleted: {
                             if (main.task) {
-                                taskUser.currentIndex = taskUser.find(main.task.userLogin);
+                                const found = taskUser.find(main.task.userLogin);
+                                taskUser.currentIndex = found >= 0 ? found : 0;
                             }
                         }
                     }
