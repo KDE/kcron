@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-25 01:34+0000\n"
+"POT-Creation-Date: 2024-09-24 00:41+0000\n"
 "PO-Revision-Date: 2017-09-28 17:58+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -21,16 +21,6 @@ msgstr ""
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 "X-Environment: kde\n"
-
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Strahinja Radić,Marko Rosić,Slobodan Simić"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "mr99164@alas.matf.bg.ac.yu,roske@kde.org.yu,slsimic@gmail.com"
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -327,7 +317,7 @@ msgstr "nedelja"
 msgid "No comment"
 msgstr "Nema komentara"
 
-#: src/crontablib/cthost.cpp:59
+#: src/crontablib/cthost.cpp:57
 #, kde-format
 msgid ""
 "You have been blocked from using KCron\t                      by either the /"
@@ -407,7 +397,7 @@ msgstr "novembar"
 msgid "December"
 msgstr "decembar"
 
-#: src/crontablib/ctSystemCron.cpp:31
+#: src/crontablib/ctSystemCron.cpp:29
 #, kde-format
 msgid "root"
 msgstr ""
@@ -513,494 +503,840 @@ msgstr "Lokacija dinamičkih biblioteka."
 msgid "Local Variable"
 msgstr "Lokalna promenljiva"
 
-#: src/crontabPrinter.cpp:89
-#, kde-format
-msgid "Scheduled Tasks"
-msgstr "Raspoređeni zadaci"
-
-# >> @title:column
-#: src/crontabPrinter.cpp:106 src/tasksWidget.cpp:226
-#, kde-format
-msgid "Scheduling"
-msgstr "raspored"
-
-# >> @title:column
-#: src/crontabPrinter.cpp:106 src/tasksWidget.cpp:228
-#, kde-format
-msgid "Command"
-msgstr "naredba"
-
-# >> @title:column
-#: src/crontabPrinter.cpp:106 src/tasksWidget.cpp:230
-#, kde-format
-msgid "Description"
-msgstr "opis"
-
-#: src/crontabPrinter.cpp:127
-#, kde-format
-msgid "Environment Variables"
-msgstr "Promenljive okruženja"
-
-#: src/crontabPrinter.cpp:152
-#, kde-format
-msgid "System Crontab"
-msgstr "sistemski crontab"
-
-#: src/crontabPrinter.cpp:154
-#, kde-format
-msgid "All Users Crontabs"
-msgstr "Crontabovi svih korisnika"
-
-#: src/crontabPrinter.cpp:156
-#, kde-format
-msgctxt "Crontab of user login"
-msgid "Crontab of user %1"
-msgstr "Crontab korisnika %1"
-
-#: src/crontabPrinterWidget.cpp:20
-#, fuzzy, kde-format
-#| msgid "Cron Options"
-msgctxt "@title:window"
-msgid "Cron Options"
-msgstr "Opcije crona"
-
-#: src/crontabPrinterWidget.cpp:24
-#, kde-format
-msgid "Print cron&tab"
-msgstr "&Odštampaj crontab"
-
-#: src/crontabPrinterWidget.cpp:28
-#, kde-format
-msgid "Print &all users"
-msgstr "Odšt&ampaj sve korisnike"
-
-#: src/crontabWidget.cpp:85
-#, kde-format
-msgid "Show the following Cron:"
-msgstr "Prikaži sledeći cron:"
-
-#: src/crontabWidget.cpp:89
-#, kde-format
-msgid "Personal Cron"
-msgstr "lični cron"
-
-#: src/crontabWidget.cpp:94
-#, kde-format
-msgid "System Cron"
-msgstr "sistemski cron"
-
-#: src/kcmCron.cpp:36
-#, kde-format
-msgid ""
-"The following error occurred while initializing KCron:\n"
-"\n"
-"%1\n"
-"\n"
-"KCron will now exit.\n"
-msgstr ""
-"Došlo je do sledeće greške pri pokretanju KCrona:\n"
-"\n"
-"%1\n"
-"\n"
-"KCron će se sad zatvoriti.\n"
-
-#: src/kcmCron.cpp:104
-#, kde-format
-msgid ""
-"You can use this application to schedule programs to run in the background.\n"
-"To schedule a new task now, click on the Tasks folder and select Edit/New "
-"from the menu."
-msgstr ""
-"Ovim programom možete da raspoređujete izvršavanje programâ̂ u pozadini.\n"
-"Novi zadatak dodajete tako što kliknite na fasciklu „Zadaci“ i izaberite "
-"„Uredi“ ili „Novi“ iz menija."
-
-#: src/kcmCron.cpp:106
-#, kde-format
-msgid "Welcome to the Task Scheduler"
-msgstr "Dobro došli u raspoređivač zadataka"
-
-# >> @title:window
-#: src/taskEditorDialog.cpp:69
-#, kde-format
-msgid "Add or modify a scheduled task"
-msgstr "Dodavanje ili menjanje raspoređenog zadatka"
-
-#: src/taskEditorDialog.cpp:70 src/taskEditorDialog.cpp:868
-#, kde-format
-msgid "<i>This task will be executed at the specified intervals.</i>"
-msgstr "<i>Ovaj zadatak biće izvršavan u naznačenim razmacima.</i>"
-
-#: src/taskEditorDialog.cpp:78
-#, kde-format
-msgid "&Command:"
-msgstr "&Naredba:"
-
-#: src/taskEditorDialog.cpp:99 src/variableEditorDialog.cpp:89
-#, kde-format
-msgid "&Run as:"
-msgstr "Pok&reni kao:"
-
-#: src/taskEditorDialog.cpp:116 src/variableEditorDialog.cpp:105
-#, kde-format
-msgid "Co&mment:"
-msgstr "Ko&mentar:"
-
-#: src/taskEditorDialog.cpp:129
-#, kde-format
-msgid "&Enable this task"
-msgstr "&Uključi ovaj zadatak"
-
-#: src/taskEditorDialog.cpp:134
-#, kde-format
-msgid "Run at system &bootup"
-msgstr "Izvrši pri &podizanju sistema"
-
-#: src/taskEditorDialog.cpp:140
-#, kde-format
-msgid "Run &every day"
-msgstr "Izvrši &svakog dana"
-
-#: src/taskEditorDialog.cpp:243
-#, kde-format
-msgid "Days of Month"
-msgstr "Dani u mesecu"
-
-#: src/taskEditorDialog.cpp:280
-#, kde-format
-msgid "Months"
-msgstr "Meseci"
-
-#: src/taskEditorDialog.cpp:316
-#, kde-format
-msgid "Days of Week"
-msgstr "Dani u sedmici"
-
-#: src/taskEditorDialog.cpp:452
-#, kde-format
-msgid "Minutes"
-msgstr "Minuti"
-
-#: src/taskEditorDialog.cpp:462
-#, kde-format
-msgid "Preselection:"
-msgstr "Predizbor:"
-
-# >> @item:inlistbox Preselection:
-#: src/taskEditorDialog.cpp:469
-#, kde-format
-msgid "Clear selection"
-msgstr "očisti izbor"
-
-# >> @item:inlistbox Preselection:
-#: src/taskEditorDialog.cpp:470
-#, kde-format
-msgid "Custom selection"
-msgstr "poseban izbor"
-
-# >> @item:inlistbox Preselection:
-#: src/taskEditorDialog.cpp:471
-#, kde-format
-msgid "Each minute"
-msgstr "svakog minuta"
-
-# >> @item:inlistbox Preselection:
-#: src/taskEditorDialog.cpp:472
-#, kde-format
-msgid "Every 2 minutes"
-msgstr "svaka 2 minuta"
-
-# >> @item:inlistbox Preselection:
-#: src/taskEditorDialog.cpp:473
-#, kde-format
-msgid "Every 5 minutes"
-msgstr "svakih 5 minuta"
-
-# >> @item:inlistbox Preselection:
-#: src/taskEditorDialog.cpp:474
-#, kde-format
-msgid "Every 10 minutes"
-msgstr "svakih 10 minuta"
-
-# >> @item:inlistbox Preselection:
-#: src/taskEditorDialog.cpp:475
-#, kde-format
-msgid "Every 15 minutes"
-msgstr "svakih 15 minuta"
-
-# >> @item:inlistbox Preselection:
-#: src/taskEditorDialog.cpp:476
-#, kde-format
-msgid "Every 20 minutes"
-msgstr "svakih 20 minuta"
-
-# >> @item:inlistbox Preselection:
-#: src/taskEditorDialog.cpp:477
-#, kde-format
-msgid "Every 30 minutes"
-msgstr "svakih 30 minuta"
-
-#: src/taskEditorDialog.cpp:516
-#, kde-format
-msgid "Hours"
-msgstr "Sati"
-
-#: src/taskEditorDialog.cpp:521
-#, kde-format
-msgid "AM:"
-msgstr "Prepodne:"
-
-#: src/taskEditorDialog.cpp:539
-#, kde-format
-msgid "PM:"
-msgstr "Popodne:"
-
-# rewrite-msgid: /valid//
-#: src/taskEditorDialog.cpp:714 src/taskEditorDialog.cpp:724
-#, kde-format
-msgid "<i>Please type a valid command line...</i>"
-msgstr "<i>Unesite komandnu liniju...</i>"
-
-#: src/taskEditorDialog.cpp:748
-#, kde-format
-msgid "<i>Please select an executable program...</i>"
-msgstr "<i>Izaberite izvršni program...</i>"
-
-# rewrite-msgid: /browse/look for/
-#: src/taskEditorDialog.cpp:756 src/taskEditorDialog.cpp:782
-#, kde-format
-msgid "<i>Please browse for a program to execute...</i>"
-msgstr "<i>Potražite program za izvršavanje...</i>"
-
-#: src/taskEditorDialog.cpp:769
-#, kde-format
-msgid "<i>This task is disabled.</i>"
-msgstr "<i>Ovaj zadatak je isključen.</i>"
-
-#: src/taskEditorDialog.cpp:776
-#, kde-format
-msgid "<i>This task will be run on system bootup.</i>"
-msgstr "<i>Ovaj zadatak će biti izvršen pri podizanju sistema.</i>"
-
-#: src/taskEditorDialog.cpp:803
-#, kde-format
-msgid "<i>Please select from the 'Months' section...</i>"
-msgstr "<i>Izaberite iz odeljka <i>Meseci</i>...</i>"
-
-#: src/taskEditorDialog.cpp:825
-#, kde-format
-msgid ""
-"<i>Please select from either the 'Days of Month' or the 'Days of Week' "
-"section...</i>"
-msgstr ""
-"<i>Izaberite iz odeljka <i>Dani u mesecu</i> ili <i>Dani u sedmici</i>...</i>"
-
-#: src/taskEditorDialog.cpp:842
-#, kde-format
-msgid "<i>Please select from the 'Hours' section...</i>"
-msgstr "<i>Izaberite iz odeljka <i>Sati</i>...</i>"
-
-#: src/taskEditorDialog.cpp:859
-#, kde-format
-msgid "<i>Please select from the 'Minutes' section...</i>"
-msgstr "<i>Izaberite iz odeljka <i>Minuti</i>...</i>"
-
-#: src/taskEditorDialog.cpp:1063
-#, kde-format
-msgid "Set All"
-msgstr "Uključi sve"
-
-#: src/taskEditorDialog.cpp:1065
-#, kde-format
-msgid "Clear All"
-msgstr "Očisti sve"
-
-#: src/tasksWidget.cpp:32
-#, kde-format
-msgid "<b>Scheduled Tasks</b>"
-msgstr "<b>Raspoređeni zadaci</b>"
-
-#: src/tasksWidget.cpp:98
+#: src/tasksmodel.cpp:47
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
 msgstr "Kraj izvršavanja skripte. Pritisnite Enter ili Ctrl+C za izlaz."
 
-#: src/tasksWidget.cpp:127
+#: src/taskvalidator.cpp:104 src/taskvalidator.cpp:144
+#, kde-kuit-format
+msgctxt "@info"
+msgid "<message>Choose a program to run</message>"
+msgstr ""
+
+# rewrite-msgid: /valid//
+#: src/taskvalidator.cpp:112 src/taskvalidator.cpp:119
+#, fuzzy, kde-kuit-format
+#| msgid "<i>Please type a valid command line...</i>"
+msgctxt "@info"
+msgid "<message>Please type a valid command line</message>"
+msgstr "<i>Unesite komandnu liniju...</i>"
+
+#: src/taskvalidator.cpp:138
+#, fuzzy, kde-kuit-format
+#| msgid "<i>Please select an executable program...</i>"
+msgctxt "@info"
+msgid "<message>Please select an executable program</message>"
+msgstr "<i>Izaberite izvršni program...</i>"
+
+#: src/taskvalidator.cpp:163
+#, fuzzy, kde-kuit-format
+#| msgid "<i>Please select from the 'Months' section...</i>"
+msgctxt "@info"
+msgid "<message>Please select from the <b>Months</b> section</message>"
+msgstr "<i>Izaberite iz odeljka <i>Meseci</i>...</i>"
+
+#: src/taskvalidator.cpp:188
+#, fuzzy, kde-kuit-format
+#| msgid ""
+#| "<i>Please select from either the 'Days of Month' or the 'Days of Week' "
+#| "section...</i>"
+msgctxt "@info"
+msgid ""
+"<message>Please select from either the <b>Days of Month</b> or the <b>Days "
+"of Week</b> section</message>"
+msgstr ""
+"<i>Izaberite iz odeljka <i>Dani u mesecu</i> ili <i>Dani u sedmici</i>...</i>"
+
+#: src/taskvalidator.cpp:206
+#, fuzzy, kde-kuit-format
+#| msgid "<i>Please select from the 'Hours' section...</i>"
+msgctxt "@info"
+msgid "<message>Please select from the <b>Hours</b> section</message>"
+msgstr "<i>Izaberite iz odeljka <i>Sati</i>...</i>"
+
+#: src/taskvalidator.cpp:224
+#, fuzzy, kde-kuit-format
+#| msgid "<i>Please select from the 'Minutes' section...</i>"
+msgctxt "@info"
+msgid "<message>Please select from the <b>Minutes</b> section</message>"
+msgstr "<i>Izaberite iz odeljka <i>Minuti</i>...</i>"
+
+#: src/ui/main.qml:45
 #, kde-format
+msgctxt "@text"
+msgid "Show:"
+msgstr ""
+
+#: src/ui/main.qml:49
+#, fuzzy, kde-format
+#| msgid "Task Scheduler"
+msgctxt "@title:tab"
+msgid "User Schedule"
+msgstr "Raspoređivač zadataka"
+
+#: src/ui/main.qml:55
+#, fuzzy, kde-format
+#| msgid "Task Scheduler"
+msgctxt "@title:tab"
+msgid "System Schedule"
+msgstr "Raspoređivač zadataka"
+
+#: src/ui/main.qml:64
+#, kde-format
+msgctxt "@action:button"
+msgid "Print"
+msgstr ""
+
+#: src/ui/Onboarding.qml:22
+#, fuzzy, kde-format
+#| msgid "Welcome to the Task Scheduler"
+msgid "Welcome to Task Scheduler!"
+msgstr "Dobro došli u raspoređivač zadataka"
+
+#: src/ui/Onboarding.qml:24
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"Schedule programs to run in the background. Set tasks to run on a fixed "
+"schedule and automate repetitive tasks like downloading files or sending "
+"emails. <link url='%1'>Learn more</link>"
+msgstr ""
+
+#: src/ui/Onboarding.qml:27
+#, kde-format
+msgctxt "@action:button"
+msgid "Go to Dashboard"
+msgstr ""
+
+#: src/ui/TaskPage.qml:22
+#, fuzzy, kde-format
+#| msgid "Modify Task"
+msgctxt "@title"
+msgid "Edit Task"
+msgstr "Izmeni zadatak"
+
+#: src/ui/TaskPage.qml:23
+#, fuzzy, kde-format
+#| msgid "New Task"
+msgctxt "@title"
 msgid "New Task"
 msgstr "Novi zadatak"
 
-#: src/tasksWidget.cpp:163
-#, kde-format
-msgid "Modify Task"
+#: src/ui/TaskPage.qml:33
+#, fuzzy, kde-format
+#| msgid "Modify Task"
+msgctxt "@action:button"
+msgid "Edit Task"
 msgstr "Izmeni zadatak"
 
-# >> @title:column
-#: src/tasksWidget.cpp:223 src/variablesWidget.cpp:183
+#: src/ui/TaskPage.qml:34
+#, fuzzy, kde-format
+#| msgid "Modify Task"
+msgctxt "@action:button accessible"
+msgid "Edit Task"
+msgstr "Izmeni zadatak"
+
+#: src/ui/TaskPage.qml:44
+#, fuzzy, kde-format
+#| msgid "New Task"
+msgctxt "@action:button"
+msgid "New Task"
+msgstr "Novi zadatak"
+
+#: src/ui/TaskPage.qml:45
+#, fuzzy, kde-format
+#| msgid "New Task"
+msgctxt "@action:button accessible"
+msgid "New Task"
+msgstr "Novi zadatak"
+
+#: src/ui/TaskPage.qml:90
+#, fuzzy, kde-format
+#| msgid "&Command:"
+msgctxt "@label:textbox"
+msgid "Command:"
+msgstr "&Naredba:"
+
+#: src/ui/TaskPage.qml:97
 #, kde-format
+msgctxt "@action:button"
+msgid "Browse the Program"
+msgstr ""
+
+#: src/ui/TaskPage.qml:105
+#, fuzzy, kde-format
+#| msgid "&Enable this task"
+msgctxt "@label:checkbox"
+msgid "Enable this task"
+msgstr "&Uključi ovaj zadatak"
+
+# >> @title:column
+#: src/ui/TaskPage.qml:110 src/ui/VariablePage.qml:97
+#, fuzzy, kde-format
+#| msgid "User"
+msgctxt "@label:listbox"
+msgid "User:"
+msgstr "korisnik"
+
+#: src/ui/TaskPage.qml:129 src/ui/VariablePage.qml:119
+#, fuzzy, kde-format
+#| msgid "Co&mment:"
+msgctxt "@label:textbox"
+msgid "Comment:"
+msgstr "Ko&mentar:"
+
+#: src/ui/TaskPage.qml:136
+#, kde-format
+msgctxt "@label:checkbox"
+msgid "Run:"
+msgstr ""
+
+#: src/ui/TaskPage.qml:139
+#, fuzzy, kde-format
+#| msgid "At system startup"
+msgctxt "@label:checkbox"
+msgid "When system starts"
+msgstr "pri pokretanju sistema"
+
+#: src/ui/TaskPage.qml:146
+#, fuzzy, kde-format
+#| msgid "every day "
+msgctxt "@label:checkbox"
+msgid "Every day"
+msgstr "svaki dan "
+
+#: src/ui/TaskPage.qml:152
+#, fuzzy, kde-format
+#| msgid "Months"
+msgctxt "@title:group"
+msgid "Months"
+msgstr "Meseci"
+
+#: src/ui/TaskPage.qml:172
+#, fuzzy, kde-format
+#| msgid "Days of Month"
+msgctxt "@title:group"
+msgid "Days of Month"
+msgstr "Dani u mesecu"
+
+#: src/ui/TaskPage.qml:193
+#, fuzzy, kde-format
+#| msgid "Days of Week"
+msgctxt "@title:group"
+msgid "Days of Week"
+msgstr "Dani u sedmici"
+
+#: src/ui/TaskPage.qml:213
+#, fuzzy, kde-format
+#| msgid "Hours"
+msgctxt "@title:group"
+msgid "Hours"
+msgstr "Sati"
+
+#: src/ui/TaskPage.qml:234
+#, fuzzy, kde-format
+#| msgid "Minutes"
+msgctxt "@title:group"
+msgid "Minutes"
+msgstr "Minuti"
+
+# >> @item:inlistbox Preselection:
+#: src/ui/TaskPage.qml:263
+#, kde-format
+msgid "Custom selection"
+msgstr "poseban izbor"
+
+# >> @item:inlistbox Preselection:
+#: src/ui/TaskPage.qml:264
+#, kde-format
+msgid "Each minute"
+msgstr "svakog minuta"
+
+# >> @item:inlistbox Preselection:
+#: src/ui/TaskPage.qml:265
+#, kde-format
+msgid "Every 2 minutes"
+msgstr "svaka 2 minuta"
+
+# >> @item:inlistbox Preselection:
+#: src/ui/TaskPage.qml:266
+#, kde-format
+msgid "Every 5 minutes"
+msgstr "svakih 5 minuta"
+
+# >> @item:inlistbox Preselection:
+#: src/ui/TaskPage.qml:267
+#, kde-format
+msgid "Every 10 minutes"
+msgstr "svakih 10 minuta"
+
+# >> @item:inlistbox Preselection:
+#: src/ui/TaskPage.qml:268
+#, kde-format
+msgid "Every 15 minutes"
+msgstr "svakih 15 minuta"
+
+# >> @item:inlistbox Preselection:
+#: src/ui/TaskPage.qml:269
+#, kde-format
+msgid "Every 20 minutes"
+msgstr "svakih 20 minuta"
+
+# >> @item:inlistbox Preselection:
+#: src/ui/TaskPage.qml:270
+#, kde-format
+msgid "Every 30 minutes"
+msgstr "svakih 30 minuta"
+
+#: src/ui/TaskPage.qml:312
+#, fuzzy, kde-format
+#| msgid "January"
+msgctxt "@action:button"
+msgid "January"
+msgstr "januar"
+
+#: src/ui/TaskPage.qml:316
+#, fuzzy, kde-format
+#| msgid "February"
+msgctxt "@action:button"
+msgid "February"
+msgstr "februar"
+
+#: src/ui/TaskPage.qml:320
+#, fuzzy, kde-format
+#| msgid "March"
+msgctxt "@action:button"
+msgid "March"
+msgstr "mart"
+
+#: src/ui/TaskPage.qml:324
+#, fuzzy, kde-format
+#| msgid "April"
+msgctxt "@action:button"
+msgid "April"
+msgstr "april"
+
+#: src/ui/TaskPage.qml:328
+#, fuzzy, kde-format
+#| msgctxt "May long"
+#| msgid "May"
+msgctxt "@action:button"
+msgid "May"
+msgstr "maj"
+
+#: src/ui/TaskPage.qml:332
+#, fuzzy, kde-format
+#| msgid "June"
+msgctxt "@action:button"
+msgid "June"
+msgstr "jun"
+
+#: src/ui/TaskPage.qml:336
+#, fuzzy, kde-format
+#| msgctxt "July long"
+#| msgid "July"
+msgctxt "@action:button"
+msgid "July"
+msgstr "jul"
+
+#: src/ui/TaskPage.qml:340
+#, fuzzy, kde-format
+#| msgid "August"
+msgctxt "@action:button"
+msgid "August"
+msgstr "avgust"
+
+#: src/ui/TaskPage.qml:344
+#, fuzzy, kde-format
+#| msgid "September"
+msgctxt "@action:button"
+msgid "September"
+msgstr "septembar"
+
+#: src/ui/TaskPage.qml:348
+#, fuzzy, kde-format
+#| msgid "October"
+msgctxt "@action:button"
+msgid "October"
+msgstr "oktobar"
+
+#: src/ui/TaskPage.qml:352
+#, fuzzy, kde-format
+#| msgid "November"
+msgctxt "@action:button"
+msgid "November"
+msgstr "novembar"
+
+#: src/ui/TaskPage.qml:356
+#, fuzzy, kde-format
+#| msgid "December"
+msgctxt "@action:button"
+msgid "December"
+msgstr "decembar"
+
+#: src/ui/TaskPage.qml:378
+#, fuzzy, kde-format
+#| msgid "Monday"
+msgctxt "@action:button"
+msgid "Monday"
+msgstr "ponedeljak"
+
+#: src/ui/TaskPage.qml:382
+#, fuzzy, kde-format
+#| msgid "Tuesday"
+msgctxt "@action:button"
+msgid "Tuesday"
+msgstr "utorak"
+
+#: src/ui/TaskPage.qml:386
+#, fuzzy, kde-format
+#| msgid "Wednesday"
+msgctxt "@action:button"
+msgid "Wednesday"
+msgstr "sreda"
+
+#: src/ui/TaskPage.qml:390
+#, fuzzy, kde-format
+#| msgid "Thursday"
+msgctxt "@action:button"
+msgid "Thursday"
+msgstr "četvrtak"
+
+#: src/ui/TaskPage.qml:394
+#, fuzzy, kde-format
+#| msgid "Friday"
+msgctxt "@action:button"
+msgid "Friday"
+msgstr "petak"
+
+#: src/ui/TaskPage.qml:398
+#, fuzzy, kde-format
+#| msgid "Saturday"
+msgctxt "@action:button"
+msgid "Saturday"
+msgstr "subota"
+
+#: src/ui/TaskPage.qml:402
+#, fuzzy, kde-format
+#| msgid "Sunday"
+msgctxt "@action:button"
+msgid "Sunday"
+msgstr "nedelja"
+
+#: src/ui/TasksComponent.qml:19
+#, fuzzy, kde-format
+#| msgid "Scheduled Tasks"
+msgctxt "@title:group"
+msgid "Scheduled Tasks"
+msgstr "Raspoređeni zadaci"
+
+# >> @title:column
+#: src/ui/TasksComponent.qml:56 src/ui/VariablesComponent.qml:57
+#, fuzzy, kde-format
+#| msgid "User"
+msgctxt "@title:column"
 msgid "User"
 msgstr "korisnik"
 
 # >> @title:column
-#: src/tasksWidget.cpp:229 src/variablesWidget.cpp:188
-#, kde-format
-msgid "Status"
-msgstr "stanje"
+#: src/ui/TasksComponent.qml:66
+#, fuzzy, kde-format
+#| msgid "Scheduling"
+msgctxt "@title:column"
+msgid "Scheduling"
+msgstr "raspored"
 
 # >> @title:column
-#: src/tasksWidget.cpp:231
-#, kde-format
+#: src/ui/TasksComponent.qml:75
+#, fuzzy, kde-format
+#| msgid "Command"
+msgctxt "@title:column"
+msgid "Command"
+msgstr "naredba"
+
+# >> @title:column
+#: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
+#, fuzzy, kde-format
+#| msgid "Comment"
+msgctxt "@title:column"
+msgid "Comment"
+msgstr "komentar"
+
+# >> @title:column
+#: src/ui/TasksComponent.qml:92
+#, fuzzy, kde-format
+#| msgid "Scheduling Details"
+msgctxt "@title:column"
 msgid "Scheduling Details"
 msgstr "detalji rasporeda"
 
-#: src/tasksWidget.cpp:256
+#: src/ui/TasksComponent.qml:98
 #, kde-format
-msgctxt "Adds a new task"
-msgid "New &Task..."
-msgstr "Novi &zadatak..."
+msgctxt "@action:button"
+msgid "Add Task…"
+msgstr ""
 
-#: src/tasksWidget.cpp:257
-#, kde-format
-msgid "Create a new task."
-msgstr "Napravi novi zadatak."
+#: src/ui/TasksComponent.qml:105
+#, fuzzy, kde-format
+#| msgid "Modify Task"
+msgctxt "@action:button"
+msgid "Edit Task…"
+msgstr "Izmeni zadatak"
 
-#: src/tasksWidget.cpp:261 src/variablesWidget.cpp:209
-#, kde-format
-msgid "M&odify..."
-msgstr "Iz&meni..."
+#: src/ui/TasksComponent.qml:113 src/ui/VariablesComponent.qml:125
+#, fuzzy, kde-format
+#| msgid "Set All"
+msgctxt "@action:button"
+msgid "Select All"
+msgstr "Uključi sve"
 
-#: src/tasksWidget.cpp:263
+#: src/ui/TasksComponent.qml:120 src/ui/VariablesComponent.qml:132
 #, kde-format
-msgid "Modify the selected task."
-msgstr "Izmeni izabrani zadatak."
+msgctxt "@action:button"
+msgid "Copy"
+msgstr ""
 
-#: src/tasksWidget.cpp:267 src/variablesWidget.cpp:215
+#: src/ui/TasksComponent.qml:127 src/ui/VariablesComponent.qml:139
 #, kde-format
-msgid "&Delete"
+msgctxt "@action:button"
+msgid "Cut"
+msgstr ""
+
+#: src/ui/TasksComponent.qml:134 src/ui/VariablesComponent.qml:146
+#, kde-format
+msgctxt "@action:button"
+msgid "Paste"
+msgstr ""
+
+#: src/ui/TasksComponent.qml:142 src/ui/TasksComponent.qml:174
+#: src/ui/VariablesComponent.qml:154 src/ui/VariablesComponent.qml:178
+#, fuzzy, kde-format
+#| msgid "&Delete"
+msgctxt "@action:button"
+msgid "Delete"
 msgstr "&Obriši"
 
-#: src/tasksWidget.cpp:269
-#, kde-format
-msgid "Delete the selected task."
-msgstr "Obriši izabrani zadatak."
+#: src/ui/TasksComponent.qml:150
+#, fuzzy, kde-format
+#| msgid "&Run as:"
+msgctxt "@action:button"
+msgid "Run task"
+msgstr "Pok&reni kao:"
 
-#: src/tasksWidget.cpp:273
+#: src/ui/TasksComponent.qml:162 src/ui/VariablesComponent.qml:166
 #, kde-format
-msgid "&Run Now"
-msgstr "&Izvrši odmah"
+msgctxt "@action:button"
+msgid "Add…"
+msgstr ""
 
-#: src/tasksWidget.cpp:275
+#: src/ui/TasksComponent.qml:168 src/ui/VariablesComponent.qml:172
 #, kde-format
-msgid "Run the selected task now."
-msgstr "Odmah izvrši izabrani zadatak."
+msgctxt "@action:button"
+msgid "Edit…"
+msgstr ""
 
-#: src/taskWidget.cpp:40 src/variableWidget.cpp:38
-#, kde-format
-msgid "Enabled"
-msgstr "uključeno"
+#: src/ui/TasksComponent.qml:180
+#, fuzzy, kde-format
+#| msgid "Sun"
+msgctxt "@action:button"
+msgid "Run"
+msgstr "ned"
 
-#: src/taskWidget.cpp:43 src/variableWidget.cpp:41
+#: src/ui/TimeCard.qml:40
 #, kde-format
-msgid "Disabled"
-msgstr "isključeno"
-
-#: src/variableEditorDialog.cpp:47
-#, kde-format
-msgid "Add or modify a variable"
-msgstr "Dodaj ili izmeni promenljivu"
-
-#: src/variableEditorDialog.cpp:51
-#, kde-format
-msgctxt "The environmental variable name ie HOME, MAILTO etc"
-msgid "&Variable:"
-msgstr "&Promenljiva:"
-
-#: src/variableEditorDialog.cpp:80
-#, kde-format
-msgid "Va&lue:"
-msgstr "&Vrednost:"
-
-#: src/variableEditorDialog.cpp:113
-#, kde-format
-msgid "&Enable this variable"
-msgstr "&Uključi ovu promenljivu"
-
-#: src/variableEditorDialog.cpp:145
-#, kde-format
-msgid "<i>This variable will be used by scheduled tasks.</i>"
-msgstr "<i>Ovu promenljivu će koristiti raspoređeni zadaci.</i>"
-
-#: src/variableEditorDialog.cpp:192
-#, kde-format
-msgid "<i>This variable is disabled.</i>"
-msgstr "<i>Ova promenljiva je isključena.</i>"
-
-#: src/variableEditorDialog.cpp:199
-#, kde-format
-msgid "<i>Please enter the variable name...</i>"
-msgstr "<i>Unesite ime promenljive...</i>"
-
-#: src/variableEditorDialog.cpp:206
-#, kde-format
-msgid "<i>Please enter the variable value ...</i>"
-msgstr "<i>Unesite vrednost promenljive ...</i>"
-
-#: src/variablesWidget.cpp:29
-#, kde-format
-msgid "<b>Environment Variables</b>"
-msgstr "<b>Promenljive okruženja</b>"
+msgctxt "@label:checkbox"
+msgid "Select all"
+msgstr ""
 
 # >> @title:window
-#: src/variablesWidget.cpp:62
-#, kde-format
-msgid "Modify Variable"
+#: src/ui/VariablePage.qml:17
+#, fuzzy, kde-format
+#| msgid "Modify Variable"
+msgctxt "@title"
+msgid "Edit Variable"
 msgstr "Izmena promenljive"
 
 # >> @title:window
-#: src/variablesWidget.cpp:142
-#, kde-format
+#: src/ui/VariablePage.qml:18
+#, fuzzy, kde-format
+#| msgid "New Variable"
+msgctxt "@title"
 msgid "New Variable"
 msgstr "Nova promenljiva"
 
+# >> @title:window
+#: src/ui/VariablePage.qml:27
+#, fuzzy, kde-format
+#| msgid "Modify Variable"
+msgctxt "@action:button"
+msgid "Edit Variable"
+msgstr "Izmena promenljive"
+
+# >> @title:window
+#: src/ui/VariablePage.qml:28
+#, fuzzy, kde-format
+#| msgid "Modify Variable"
+msgctxt "@action:button accessible"
+msgid "Edit Variable"
+msgstr "Izmena promenljive"
+
+# >> @title:window
+#: src/ui/VariablePage.qml:38
+#, fuzzy, kde-format
+#| msgid "New Variable"
+msgctxt "@action:button"
+msgid "New Variable"
+msgstr "Nova promenljiva"
+
+# >> @title:window
+#: src/ui/VariablePage.qml:39
+#, fuzzy, kde-format
+#| msgid "New Variable"
+msgctxt "@action:button accessible"
+msgid "New Variable"
+msgstr "Nova promenljiva"
+
+#: src/ui/VariablePage.qml:57
+#, fuzzy, kde-kuit-format
+#| msgid "<i>Please enter the variable name...</i>"
+msgctxt "@info"
+msgid "<message>Please enter the variable name</message>"
+msgstr "<i>Unesite ime promenljive...</i>"
+
+#: src/ui/VariablePage.qml:59
+#, fuzzy, kde-kuit-format
+#| msgid "<i>Please enter the variable value ...</i>"
+msgctxt "@info"
+msgid "<message>Please enter the variable value</message>"
+msgstr "<i>Unesite vrednost promenljive ...</i>"
+
+#: src/ui/VariablePage.qml:76
+#, fuzzy, kde-format
+#| msgctxt "The environmental variable name ie HOME, MAILTO etc"
+#| msgid "&Variable:"
+msgctxt "@label:listbox"
+msgid "Variable:"
+msgstr "&Promenljiva:"
+
+#: src/ui/VariablePage.qml:112
+#, fuzzy, kde-format
+#| msgid "Va&lue:"
+msgctxt "@label:textbox"
+msgid "Value:"
+msgstr "&Vrednost:"
+
+#: src/ui/VariablePage.qml:126
+#, fuzzy, kde-format
+#| msgid "&Enable this variable"
+msgctxt "@label:checkbox"
+msgid "Enable this variable"
+msgstr "&Uključi ovu promenljivu"
+
+#: src/ui/VariablesComponent.qml:19
+#, fuzzy, kde-format
+#| msgid "Environment Variables"
+msgctxt "@title:group"
+msgid "Environment Variables"
+msgstr "Promenljive okruženja"
+
 # >> @title:column
-#: src/variablesWidget.cpp:186
-#, kde-format
+#: src/ui/VariablesComponent.qml:67
+#, fuzzy, kde-format
+#| msgid "Variable"
+msgctxt "@title:column"
 msgid "Variable"
 msgstr "promenljiva"
 
 # >> @title:column
-#: src/variablesWidget.cpp:187
-#, kde-format
+#: src/ui/VariablesComponent.qml:98
+#, fuzzy, kde-format
+#| msgid "Value"
+msgctxt "@title:column"
 msgid "Value"
 msgstr "vrednost"
 
 # >> @title:column
-#: src/variablesWidget.cpp:189
-#, kde-format
-msgid "Comment"
-msgstr "komentar"
+#: src/ui/VariablesComponent.qml:112
+#, fuzzy, kde-format
+#| msgid "Variable"
+msgctxt "@action:button"
+msgid "Add Variable…"
+msgstr "promenljiva"
 
-#: src/variablesWidget.cpp:204
-#, kde-format
-msgctxt "Adds a new variable"
-msgid "New &Variable..."
-msgstr "Nova &promenljiva..."
+# >> @title:window
+#: src/ui/VariablesComponent.qml:118
+#, fuzzy, kde-format
+#| msgid "Modify Variable"
+msgctxt "@action:button"
+msgid "Edit Variable…"
+msgstr "Izmena promenljive"
 
-#: src/variablesWidget.cpp:205
-#, kde-format
-msgid "Create a new variable."
-msgstr "Napravi novu promenljivu."
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Strahinja Radić,Marko Rosić,Slobodan Simić"
 
-#: src/variablesWidget.cpp:211
-#, kde-format
-msgid "Modify the selected variable."
-msgstr "Izmeni izabranu promenljivu."
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "mr99164@alas.matf.bg.ac.yu,roske@kde.org.yu,slsimic@gmail.com"
 
-#: src/variablesWidget.cpp:217
-#, kde-format
-msgid "Delete the selected variable."
-msgstr "Obriši izabranu promenljivu."
+# >> @title:column
+#~ msgid "Description"
+#~ msgstr "opis"
+
+#~ msgid "System Crontab"
+#~ msgstr "sistemski crontab"
+
+#~ msgid "All Users Crontabs"
+#~ msgstr "Crontabovi svih korisnika"
+
+#~ msgctxt "Crontab of user login"
+#~ msgid "Crontab of user %1"
+#~ msgstr "Crontab korisnika %1"
+
+#, fuzzy
+#~| msgid "Cron Options"
+#~ msgctxt "@title:window"
+#~ msgid "Cron Options"
+#~ msgstr "Opcije crona"
+
+#~ msgid "Print cron&tab"
+#~ msgstr "&Odštampaj crontab"
+
+#~ msgid "Print &all users"
+#~ msgstr "Odšt&ampaj sve korisnike"
+
+#~ msgid "Show the following Cron:"
+#~ msgstr "Prikaži sledeći cron:"
+
+#~ msgid "Personal Cron"
+#~ msgstr "lični cron"
+
+#~ msgid "System Cron"
+#~ msgstr "sistemski cron"
+
+#~ msgid ""
+#~ "The following error occurred while initializing KCron:\n"
+#~ "\n"
+#~ "%1\n"
+#~ "\n"
+#~ "KCron will now exit.\n"
+#~ msgstr ""
+#~ "Došlo je do sledeće greške pri pokretanju KCrona:\n"
+#~ "\n"
+#~ "%1\n"
+#~ "\n"
+#~ "KCron će se sad zatvoriti.\n"
+
+#~ msgid ""
+#~ "You can use this application to schedule programs to run in the "
+#~ "background.\n"
+#~ "To schedule a new task now, click on the Tasks folder and select Edit/New "
+#~ "from the menu."
+#~ msgstr ""
+#~ "Ovim programom možete da raspoređujete izvršavanje programâ̂ u pozadini.\n"
+#~ "Novi zadatak dodajete tako što kliknite na fasciklu „Zadaci“ i izaberite "
+#~ "„Uredi“ ili „Novi“ iz menija."
+
+# >> @title:window
+#~ msgid "Add or modify a scheduled task"
+#~ msgstr "Dodavanje ili menjanje raspoređenog zadatka"
+
+#~ msgid "<i>This task will be executed at the specified intervals.</i>"
+#~ msgstr "<i>Ovaj zadatak biće izvršavan u naznačenim razmacima.</i>"
+
+#~ msgid "Run at system &bootup"
+#~ msgstr "Izvrši pri &podizanju sistema"
+
+#~ msgid "Run &every day"
+#~ msgstr "Izvrši &svakog dana"
+
+#~ msgid "Preselection:"
+#~ msgstr "Predizbor:"
+
+# >> @item:inlistbox Preselection:
+#~ msgid "Clear selection"
+#~ msgstr "očisti izbor"
+
+#~ msgid "AM:"
+#~ msgstr "Prepodne:"
+
+#~ msgid "PM:"
+#~ msgstr "Popodne:"
+
+# rewrite-msgid: /browse/look for/
+#~ msgid "<i>Please browse for a program to execute...</i>"
+#~ msgstr "<i>Potražite program za izvršavanje...</i>"
+
+#~ msgid "<i>This task is disabled.</i>"
+#~ msgstr "<i>Ovaj zadatak je isključen.</i>"
+
+#~ msgid "<i>This task will be run on system bootup.</i>"
+#~ msgstr "<i>Ovaj zadatak će biti izvršen pri podizanju sistema.</i>"
+
+#~ msgid "Clear All"
+#~ msgstr "Očisti sve"
+
+#~ msgid "<b>Scheduled Tasks</b>"
+#~ msgstr "<b>Raspoređeni zadaci</b>"
+
+# >> @title:column
+#~ msgid "Status"
+#~ msgstr "stanje"
+
+#~ msgctxt "Adds a new task"
+#~ msgid "New &Task..."
+#~ msgstr "Novi &zadatak..."
+
+#~ msgid "Create a new task."
+#~ msgstr "Napravi novi zadatak."
+
+#~ msgid "M&odify..."
+#~ msgstr "Iz&meni..."
+
+#~ msgid "Modify the selected task."
+#~ msgstr "Izmeni izabrani zadatak."
+
+#~ msgid "Delete the selected task."
+#~ msgstr "Obriši izabrani zadatak."
+
+#~ msgid "&Run Now"
+#~ msgstr "&Izvrši odmah"
+
+#~ msgid "Run the selected task now."
+#~ msgstr "Odmah izvrši izabrani zadatak."
+
+#~ msgid "Enabled"
+#~ msgstr "uključeno"
+
+#~ msgid "Disabled"
+#~ msgstr "isključeno"
+
+#~ msgid "Add or modify a variable"
+#~ msgstr "Dodaj ili izmeni promenljivu"
+
+#~ msgid "<i>This variable will be used by scheduled tasks.</i>"
+#~ msgstr "<i>Ovu promenljivu će koristiti raspoređeni zadaci.</i>"
+
+#~ msgid "<i>This variable is disabled.</i>"
+#~ msgstr "<i>Ova promenljiva je isključena.</i>"
+
+#~ msgid "<b>Environment Variables</b>"
+#~ msgstr "<b>Promenljive okruženja</b>"
+
+#~ msgctxt "Adds a new variable"
+#~ msgid "New &Variable..."
+#~ msgstr "Nova &promenljiva..."
+
+#~ msgid "Create a new variable."
+#~ msgstr "Napravi novu promenljivu."
+
+#~ msgid "Modify the selected variable."
+#~ msgstr "Izmeni izabranu promenljivu."
+
+#~ msgid "Delete the selected variable."
+#~ msgstr "Obriši izabranu promenljivu."
 
 #~ msgid "All users"
 #~ msgstr "svi korisnici"
@@ -1014,9 +1350,6 @@ msgstr "Obriši izabranu promenljivu."
 
 #~ msgid "Show All Personal Crons"
 #~ msgstr "Prikaži sve lične cronove"
-
-#~ msgid "Task Scheduler"
-#~ msgstr "Raspoređivač zadataka"
 
 #~ msgid "KDE Task Scheduler"
 #~ msgstr "KDE‑ov raspoređivač zadataka"

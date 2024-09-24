@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-25 01:34+0000\n"
+"POT-Creation-Date: 2024-09-24 00:41+0000\n"
 "PO-Revision-Date: 2007-08-23 17:05+0545\n"
 "Last-Translator: Nabin Gautam <nabin@mpp.org.np>\n"
 "Language-Team: Nepali <info@mpp.org.np>\n"
@@ -17,16 +17,6 @@ msgstr ""
 "\n"
 "\n"
 "X-Generator: KBabel 1.11.4\n"
-
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Nabin Gautam"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "nabin@mpp.org.np"
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -320,7 +310,7 @@ msgstr "आइतबार"
 msgid "No comment"
 msgstr "टिप्पणी:"
 
-#: src/crontablib/cthost.cpp:59
+#: src/crontablib/cthost.cpp:57
 #, fuzzy, kde-format
 #| msgid ""
 #| "You have been blocked from using KCron                      by either "
@@ -408,7 +398,7 @@ msgstr "नोभेम्बर"
 msgid "December"
 msgstr "डिसेम्बर"
 
-#: src/crontablib/ctSystemCron.cpp:31
+#: src/crontablib/ctSystemCron.cpp:29
 #, kde-format
 msgid "root"
 msgstr ""
@@ -515,519 +505,833 @@ msgstr ""
 msgid "Local Variable"
 msgstr "चल"
 
-#: src/crontabPrinter.cpp:89
-#, fuzzy, kde-format
-#| msgid "Scheduled Tasks"
-msgid "Scheduled Tasks"
-msgstr "निर्धारित कार्य"
-
-#: src/crontabPrinter.cpp:106 src/tasksWidget.cpp:226
-#, kde-format
-msgid "Scheduling"
-msgstr ""
-
-#: src/crontabPrinter.cpp:106 src/tasksWidget.cpp:228
-#, fuzzy, kde-format
-#| msgid "Modify Task"
-msgid "Command"
-msgstr "कार्य परिमार्जन गर्नुहोस्"
-
-#: src/crontabPrinter.cpp:106 src/tasksWidget.cpp:230
-#, kde-format
-msgid "Description"
-msgstr "वर्णन"
-
-#: src/crontabPrinter.cpp:127
-#, fuzzy, kde-format
-#| msgid "Variables"
-msgid "Environment Variables"
-msgstr "चल"
-
-#: src/crontabPrinter.cpp:152
-#, fuzzy, kde-format
-#| msgid "(System Crontab)"
-msgid "System Crontab"
-msgstr "(प्रणाली क्रोनट्याब)"
-
-#: src/crontabPrinter.cpp:154
-#, fuzzy, kde-format
-#| msgid "(System Crontab)"
-msgid "All Users Crontabs"
-msgstr "(प्रणाली क्रोनट्याब)"
-
-#: src/crontabPrinter.cpp:156
-#, kde-format
-msgctxt "Crontab of user login"
-msgid "Crontab of user %1"
-msgstr ""
-
-#: src/crontabPrinterWidget.cpp:20
-#, fuzzy, kde-format
-#| msgid "Cron Options"
-msgctxt "@title:window"
-msgid "Cron Options"
-msgstr "क्रोन विकल्प"
-
-#: src/crontabPrinterWidget.cpp:24
-#, kde-format
-msgid "Print cron&tab"
-msgstr "क्रोन ट्याब मुद्रण गर्नुहोस्"
-
-#: src/crontabPrinterWidget.cpp:28
-#, kde-format
-msgid "Print &all users"
-msgstr "सबै प्रयोगकर्ता मुद्रण गर्नुहोस्"
-
-#: src/crontabWidget.cpp:85
-#, kde-format
-msgid "Show the following Cron:"
-msgstr ""
-
-#: src/crontabWidget.cpp:89
-#, kde-format
-msgid "Personal Cron"
-msgstr ""
-
-#: src/crontabWidget.cpp:94
-#, fuzzy, kde-format
-#| msgid "(System Crontab)"
-msgid "System Cron"
-msgstr "(प्रणाली क्रोनट्याब)"
-
-#: src/kcmCron.cpp:36
-#, kde-format
-msgid ""
-"The following error occurred while initializing KCron:\n"
-"\n"
-"%1\n"
-"\n"
-"KCron will now exit.\n"
-msgstr ""
-"केडीई क्रोन सुरुआत गर्दा निम्न त्रुटि उत्पन्न भयो:\n"
-"\n"
-"%1\n"
-"\n"
-"केडीई क्रोन अब अन्त्य हुन्छ ।\n"
-
-#: src/kcmCron.cpp:104
-#, kde-format
-msgid ""
-"You can use this application to schedule programs to run in the background.\n"
-"To schedule a new task now, click on the Tasks folder and select Edit/New "
-"from the menu."
-msgstr ""
-"तपाईँले यो अनुप्रयोग पृष्ठभूमिमा चल्ने कार्यक्रमको अनुसूची बनाउन प्रयोग गर्न सक्नुहुन्छ ।\n"
-"अहिले नयाँ कार्यको अनुसूची बनाउन, कार्य फोल्डरमा क्लिक गर्नुहोस् र मेनुबाट सम्पादन/नयाँ चयन "
-"गर्नुहोस् ।"
-
-#: src/kcmCron.cpp:106
-#, kde-format
-msgid "Welcome to the Task Scheduler"
-msgstr "कार्य अनुसूचकमा स्वागत छ"
-
-#: src/taskEditorDialog.cpp:69
-#, fuzzy, kde-format
-#| msgid "Modify Variable"
-msgid "Add or modify a scheduled task"
-msgstr "चल परिमार्जन गर्नुहोस्"
-
-#: src/taskEditorDialog.cpp:70 src/taskEditorDialog.cpp:868
-#, kde-format
-msgid "<i>This task will be executed at the specified intervals.</i>"
-msgstr ""
-
-#: src/taskEditorDialog.cpp:78
-#, fuzzy, kde-format
-#| msgid "Modify Task"
-msgid "&Command:"
-msgstr "कार्य परिमार्जन गर्नुहोस्"
-
-#: src/taskEditorDialog.cpp:99 src/variableEditorDialog.cpp:89
-#, kde-format
-msgid "&Run as:"
-msgstr "यस रूपमा चलाउनुहोस्:"
-
-#: src/taskEditorDialog.cpp:116 src/variableEditorDialog.cpp:105
-#, kde-format
-msgid "Co&mment:"
-msgstr "टिप्पणी:"
-
-#: src/taskEditorDialog.cpp:129
-#, kde-format
-msgid "&Enable this task"
-msgstr ""
-
-#: src/taskEditorDialog.cpp:134
-#, kde-format
-msgid "Run at system &bootup"
-msgstr ""
-
-#: src/taskEditorDialog.cpp:140
-#, fuzzy, kde-format
-#| msgid "Run every day"
-msgid "Run &every day"
-msgstr "प्रत्येक दिन चलाउनुहोस्"
-
-#: src/taskEditorDialog.cpp:243
-#, kde-format
-msgid "Days of Month"
-msgstr "महिनाका दिन"
-
-#: src/taskEditorDialog.cpp:280
-#, kde-format
-msgid "Months"
-msgstr "महिना"
-
-#: src/taskEditorDialog.cpp:316
-#, kde-format
-msgid "Days of Week"
-msgstr "हप्ताका दिन"
-
-#: src/taskEditorDialog.cpp:452
-#, kde-format
-msgid "Minutes"
-msgstr "मिनेट"
-
-#: src/taskEditorDialog.cpp:462
-#, fuzzy, kde-format
-#| msgid "Description:"
-msgid "Preselection:"
-msgstr "वर्णन:"
-
-#: src/taskEditorDialog.cpp:469
-#, kde-format
-msgid "Clear selection"
-msgstr ""
-
-#: src/taskEditorDialog.cpp:470
-#, kde-format
-msgid "Custom selection"
-msgstr ""
-
-#: src/taskEditorDialog.cpp:471
-#, fuzzy, kde-format
-#| msgid "the minutes"
-msgid "Each minute"
-msgstr "मिनेट"
-
-#: src/taskEditorDialog.cpp:472
-#, fuzzy, kde-format
-#| msgid "the minutes"
-msgid "Every 2 minutes"
-msgstr "मिनेट"
-
-#: src/taskEditorDialog.cpp:473
-#, fuzzy, kde-format
-#| msgid "the minutes"
-msgid "Every 5 minutes"
-msgstr "मिनेट"
-
-#: src/taskEditorDialog.cpp:474
-#, fuzzy, kde-format
-#| msgid "the minutes"
-msgid "Every 10 minutes"
-msgstr "मिनेट"
-
-#: src/taskEditorDialog.cpp:475
-#, fuzzy, kde-format
-#| msgid "the minutes"
-msgid "Every 15 minutes"
-msgstr "मिनेट"
-
-#: src/taskEditorDialog.cpp:476
-#, fuzzy, kde-format
-#| msgid "the minutes"
-msgid "Every 20 minutes"
-msgstr "मिनेट"
-
-#: src/taskEditorDialog.cpp:477
-#, fuzzy, kde-format
-#| msgid "the minutes"
-msgid "Every 30 minutes"
-msgstr "मिनेट"
-
-#: src/taskEditorDialog.cpp:516
-#, kde-format
-msgid "Hours"
-msgstr "घण्टा"
-
-#: src/taskEditorDialog.cpp:521
-#, fuzzy, kde-format
-#| msgid "AM"
-msgid "AM:"
-msgstr "पूर्वान्ह"
-
-#: src/taskEditorDialog.cpp:539
-#, fuzzy, kde-format
-#| msgid "PM"
-msgid "PM:"
-msgstr "अपरान्ह"
-
-#: src/taskEditorDialog.cpp:714 src/taskEditorDialog.cpp:724
-#, fuzzy, kde-format
-#| msgid "Please enter the variable name."
-msgid "<i>Please type a valid command line...</i>"
-msgstr "कृपया चल नाम प्रविष्ट गर्नुहोस् ।"
-
-#: src/taskEditorDialog.cpp:748
-#, fuzzy, kde-format
-#| msgid "Please enter the variable name."
-msgid "<i>Please select an executable program...</i>"
-msgstr "कृपया चल नाम प्रविष्ट गर्नुहोस् ।"
-
-#: src/taskEditorDialog.cpp:756 src/taskEditorDialog.cpp:782
-#, kde-format
-msgid "<i>Please browse for a program to execute...</i>"
-msgstr ""
-
-#: src/taskEditorDialog.cpp:769
-#, kde-format
-msgid "<i>This task is disabled.</i>"
-msgstr ""
-
-#: src/taskEditorDialog.cpp:776
-#, kde-format
-msgid "<i>This task will be run on system bootup.</i>"
-msgstr ""
-
-#: src/taskEditorDialog.cpp:803
-#, fuzzy, kde-format
-#| msgid "Please enter the variable name."
-msgid "<i>Please select from the 'Months' section...</i>"
-msgstr "कृपया चल नाम प्रविष्ट गर्नुहोस् ।"
-
-#: src/taskEditorDialog.cpp:825
-#, kde-format
-msgid ""
-"<i>Please select from either the 'Days of Month' or the 'Days of Week' "
-"section...</i>"
-msgstr ""
-
-#: src/taskEditorDialog.cpp:842
-#, fuzzy, kde-format
-#| msgid "Please enter the variable name."
-msgid "<i>Please select from the 'Hours' section...</i>"
-msgstr "कृपया चल नाम प्रविष्ट गर्नुहोस् ।"
-
-#: src/taskEditorDialog.cpp:859
-#, fuzzy, kde-format
-#| msgid "Please enter the variable name."
-msgid "<i>Please select from the 'Minutes' section...</i>"
-msgstr "कृपया चल नाम प्रविष्ट गर्नुहोस् ।"
-
-#: src/taskEditorDialog.cpp:1063
-#, kde-format
-msgid "Set All"
-msgstr "सबै सेट गर्नुहोस्"
-
-#: src/taskEditorDialog.cpp:1065
-#, kde-format
-msgid "Clear All"
-msgstr "सबै खाली गर्नुहोस्"
-
-#: src/tasksWidget.cpp:32
-#, fuzzy, kde-format
-#| msgid "Scheduled Tasks"
-msgid "<b>Scheduled Tasks</b>"
-msgstr "निर्धारित कार्य"
-
-#: src/tasksWidget.cpp:98
+#: src/tasksmodel.cpp:47
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
 msgstr ""
 
-#: src/tasksWidget.cpp:127
+#: src/taskvalidator.cpp:104 src/taskvalidator.cpp:144
+#, kde-kuit-format
+msgctxt "@info"
+msgid "<message>Choose a program to run</message>"
+msgstr ""
+
+#: src/taskvalidator.cpp:112 src/taskvalidator.cpp:119
+#, fuzzy, kde-kuit-format
+#| msgid "Please enter the variable name."
+msgctxt "@info"
+msgid "<message>Please type a valid command line</message>"
+msgstr "कृपया चल नाम प्रविष्ट गर्नुहोस् ।"
+
+#: src/taskvalidator.cpp:138
+#, fuzzy, kde-kuit-format
+#| msgid "Please enter the variable name."
+msgctxt "@info"
+msgid "<message>Please select an executable program</message>"
+msgstr "कृपया चल नाम प्रविष्ट गर्नुहोस् ।"
+
+#: src/taskvalidator.cpp:163
+#, fuzzy, kde-kuit-format
+#| msgid "Please enter the variable name."
+msgctxt "@info"
+msgid "<message>Please select from the <b>Months</b> section</message>"
+msgstr "कृपया चल नाम प्रविष्ट गर्नुहोस् ।"
+
+#: src/taskvalidator.cpp:188
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"<message>Please select from either the <b>Days of Month</b> or the <b>Days "
+"of Week</b> section</message>"
+msgstr ""
+
+#: src/taskvalidator.cpp:206
+#, fuzzy, kde-kuit-format
+#| msgid "Please enter the variable name."
+msgctxt "@info"
+msgid "<message>Please select from the <b>Hours</b> section</message>"
+msgstr "कृपया चल नाम प्रविष्ट गर्नुहोस् ।"
+
+#: src/taskvalidator.cpp:224
+#, fuzzy, kde-kuit-format
+#| msgid "Please enter the variable name."
+msgctxt "@info"
+msgid "<message>Please select from the <b>Minutes</b> section</message>"
+msgstr "कृपया चल नाम प्रविष्ट गर्नुहोस् ।"
+
+#: src/ui/main.qml:45
+#, kde-format
+msgctxt "@text"
+msgid "Show:"
+msgstr ""
+
+#: src/ui/main.qml:49
+#, fuzzy, kde-format
+#| msgid "Task Scheduler"
+msgctxt "@title:tab"
+msgid "User Schedule"
+msgstr "कार्य अनुसूचक"
+
+#: src/ui/main.qml:55
+#, fuzzy, kde-format
+#| msgid "Task Scheduler"
+msgctxt "@title:tab"
+msgid "System Schedule"
+msgstr "कार्य अनुसूचक"
+
+#: src/ui/main.qml:64
+#, fuzzy, kde-format
+#| msgid "Printing..."
+msgctxt "@action:button"
+msgid "Print"
+msgstr "मुद्रण गर्दैछ..."
+
+#: src/ui/Onboarding.qml:22
+#, fuzzy, kde-format
+#| msgid "Welcome to the Task Scheduler"
+msgid "Welcome to Task Scheduler!"
+msgstr "कार्य अनुसूचकमा स्वागत छ"
+
+#: src/ui/Onboarding.qml:24
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"Schedule programs to run in the background. Set tasks to run on a fixed "
+"schedule and automate repetitive tasks like downloading files or sending "
+"emails. <link url='%1'>Learn more</link>"
+msgstr ""
+
+#: src/ui/Onboarding.qml:27
+#, kde-format
+msgctxt "@action:button"
+msgid "Go to Dashboard"
+msgstr ""
+
+#: src/ui/TaskPage.qml:22
+#, fuzzy, kde-format
+#| msgid "Edit Task"
+msgctxt "@title"
+msgid "Edit Task"
+msgstr "कार्य सम्पादन गर्नुहोस्"
+
+#: src/ui/TaskPage.qml:23
 #, fuzzy, kde-format
 #| msgid "Tasks"
+msgctxt "@title"
 msgid "New Task"
 msgstr "कार्य"
 
-#: src/tasksWidget.cpp:163
-#, kde-format
-msgid "Modify Task"
+#: src/ui/TaskPage.qml:33
+#, fuzzy, kde-format
+#| msgid "Edit Task"
+msgctxt "@action:button"
+msgid "Edit Task"
+msgstr "कार्य सम्पादन गर्नुहोस्"
+
+#: src/ui/TaskPage.qml:34
+#, fuzzy, kde-format
+#| msgid "Edit Task"
+msgctxt "@action:button accessible"
+msgid "Edit Task"
+msgstr "कार्य सम्पादन गर्नुहोस्"
+
+#: src/ui/TaskPage.qml:44
+#, fuzzy, kde-format
+#| msgid "Tasks"
+msgctxt "@action:button"
+msgid "New Task"
+msgstr "कार्य"
+
+#: src/ui/TaskPage.qml:45
+#, fuzzy, kde-format
+#| msgid "Tasks"
+msgctxt "@action:button accessible"
+msgid "New Task"
+msgstr "कार्य"
+
+#: src/ui/TaskPage.qml:90
+#, fuzzy, kde-format
+#| msgid "Modify Task"
+msgctxt "@label:textbox"
+msgid "Command:"
 msgstr "कार्य परिमार्जन गर्नुहोस्"
 
-#: src/tasksWidget.cpp:223 src/variablesWidget.cpp:183
+#: src/ui/TaskPage.qml:97
 #, kde-format
+msgctxt "@action:button"
+msgid "Browse the Program"
+msgstr ""
+
+#: src/ui/TaskPage.qml:105
+#, kde-format
+msgctxt "@label:checkbox"
+msgid "Enable this task"
+msgstr ""
+
+#: src/ui/TaskPage.qml:110 src/ui/VariablePage.qml:97
+#, fuzzy, kde-format
+#| msgid "%H:%M"
+msgctxt "@label:listbox"
+msgid "User:"
+msgstr "%H:%M"
+
+#: src/ui/TaskPage.qml:129 src/ui/VariablePage.qml:119
+#, fuzzy, kde-format
+#| msgid "&Comment:"
+msgctxt "@label:textbox"
+msgid "Comment:"
+msgstr "टिप्पणी:"
+
+#: src/ui/TaskPage.qml:136
+#, kde-format
+msgctxt "@label:checkbox"
+msgid "Run:"
+msgstr ""
+
+#: src/ui/TaskPage.qml:139
+#, kde-format
+msgctxt "@label:checkbox"
+msgid "When system starts"
+msgstr ""
+
+#: src/ui/TaskPage.qml:146
+#, fuzzy, kde-format
+#| msgid "every day "
+msgctxt "@label:checkbox"
+msgid "Every day"
+msgstr "प्रत्येक दिन"
+
+#: src/ui/TaskPage.qml:152
+#, fuzzy, kde-format
+#| msgid "Months"
+msgctxt "@title:group"
+msgid "Months"
+msgstr "महिना"
+
+#: src/ui/TaskPage.qml:172
+#, fuzzy, kde-format
+#| msgid "Days of Month"
+msgctxt "@title:group"
+msgid "Days of Month"
+msgstr "महिनाका दिन"
+
+#: src/ui/TaskPage.qml:193
+#, fuzzy, kde-format
+#| msgid "Days of Week"
+msgctxt "@title:group"
+msgid "Days of Week"
+msgstr "हप्ताका दिन"
+
+#: src/ui/TaskPage.qml:213
+#, fuzzy, kde-format
+#| msgid "Hours"
+msgctxt "@title:group"
+msgid "Hours"
+msgstr "घण्टा"
+
+#: src/ui/TaskPage.qml:234
+#, fuzzy, kde-format
+#| msgid "Minutes"
+msgctxt "@title:group"
+msgid "Minutes"
+msgstr "मिनेट"
+
+#: src/ui/TaskPage.qml:263
+#, kde-format
+msgid "Custom selection"
+msgstr ""
+
+#: src/ui/TaskPage.qml:264
+#, fuzzy, kde-format
+#| msgid "the minutes"
+msgid "Each minute"
+msgstr "मिनेट"
+
+#: src/ui/TaskPage.qml:265
+#, fuzzy, kde-format
+#| msgid "the minutes"
+msgid "Every 2 minutes"
+msgstr "मिनेट"
+
+#: src/ui/TaskPage.qml:266
+#, fuzzy, kde-format
+#| msgid "the minutes"
+msgid "Every 5 minutes"
+msgstr "मिनेट"
+
+#: src/ui/TaskPage.qml:267
+#, fuzzy, kde-format
+#| msgid "the minutes"
+msgid "Every 10 minutes"
+msgstr "मिनेट"
+
+#: src/ui/TaskPage.qml:268
+#, fuzzy, kde-format
+#| msgid "the minutes"
+msgid "Every 15 minutes"
+msgstr "मिनेट"
+
+#: src/ui/TaskPage.qml:269
+#, fuzzy, kde-format
+#| msgid "the minutes"
+msgid "Every 20 minutes"
+msgstr "मिनेट"
+
+#: src/ui/TaskPage.qml:270
+#, fuzzy, kde-format
+#| msgid "the minutes"
+msgid "Every 30 minutes"
+msgstr "मिनेट"
+
+#: src/ui/TaskPage.qml:312
+#, fuzzy, kde-format
+#| msgid "January"
+msgctxt "@action:button"
+msgid "January"
+msgstr "जनवरी"
+
+#: src/ui/TaskPage.qml:316
+#, fuzzy, kde-format
+#| msgid "February"
+msgctxt "@action:button"
+msgid "February"
+msgstr "फेब्रुअरी"
+
+#: src/ui/TaskPage.qml:320
+#, fuzzy, kde-format
+#| msgid "March"
+msgctxt "@action:button"
+msgid "March"
+msgstr "मार्च"
+
+#: src/ui/TaskPage.qml:324
+#, fuzzy, kde-format
+#| msgid "April"
+msgctxt "@action:button"
+msgid "April"
+msgstr "अप्रिल"
+
+#: src/ui/TaskPage.qml:328
+#, fuzzy, kde-format
+#| msgctxt "May long"
+#| msgid "May"
+msgctxt "@action:button"
+msgid "May"
+msgstr "मे"
+
+#: src/ui/TaskPage.qml:332
+#, fuzzy, kde-format
+#| msgid "June"
+msgctxt "@action:button"
+msgid "June"
+msgstr "जुन"
+
+#: src/ui/TaskPage.qml:336
+#, fuzzy, kde-format
+#| msgid "July"
+msgctxt "@action:button"
+msgid "July"
+msgstr "जुलाइ"
+
+#: src/ui/TaskPage.qml:340
+#, fuzzy, kde-format
+#| msgid "August"
+msgctxt "@action:button"
+msgid "August"
+msgstr "अगस्ट"
+
+#: src/ui/TaskPage.qml:344
+#, fuzzy, kde-format
+#| msgid "September"
+msgctxt "@action:button"
+msgid "September"
+msgstr "सेप्टेम्बर"
+
+#: src/ui/TaskPage.qml:348
+#, fuzzy, kde-format
+#| msgid "October"
+msgctxt "@action:button"
+msgid "October"
+msgstr "अक्टोबर"
+
+#: src/ui/TaskPage.qml:352
+#, fuzzy, kde-format
+#| msgid "November"
+msgctxt "@action:button"
+msgid "November"
+msgstr "नोभेम्बर"
+
+#: src/ui/TaskPage.qml:356
+#, fuzzy, kde-format
+#| msgid "December"
+msgctxt "@action:button"
+msgid "December"
+msgstr "डिसेम्बर"
+
+#: src/ui/TaskPage.qml:378
+#, fuzzy, kde-format
+#| msgid "Monday"
+msgctxt "@action:button"
+msgid "Monday"
+msgstr "सोमबार"
+
+#: src/ui/TaskPage.qml:382
+#, fuzzy, kde-format
+#| msgid "Tuesday"
+msgctxt "@action:button"
+msgid "Tuesday"
+msgstr "मङ्गलबार"
+
+#: src/ui/TaskPage.qml:386
+#, fuzzy, kde-format
+#| msgid "Wednesday"
+msgctxt "@action:button"
+msgid "Wednesday"
+msgstr "बुधबार"
+
+#: src/ui/TaskPage.qml:390
+#, fuzzy, kde-format
+#| msgid "Thursday"
+msgctxt "@action:button"
+msgid "Thursday"
+msgstr "बिहिबार"
+
+#: src/ui/TaskPage.qml:394
+#, fuzzy, kde-format
+#| msgid "Friday"
+msgctxt "@action:button"
+msgid "Friday"
+msgstr "शुक्रबार"
+
+#: src/ui/TaskPage.qml:398
+#, fuzzy, kde-format
+#| msgid "Saturday"
+msgctxt "@action:button"
+msgid "Saturday"
+msgstr "शनिबार"
+
+#: src/ui/TaskPage.qml:402
+#, fuzzy, kde-format
+#| msgid "Sunday"
+msgctxt "@action:button"
+msgid "Sunday"
+msgstr "आइतबार"
+
+#: src/ui/TasksComponent.qml:19
+#, fuzzy, kde-format
+#| msgid "Scheduled Tasks"
+msgctxt "@title:group"
+msgid "Scheduled Tasks"
+msgstr "निर्धारित कार्य"
+
+#: src/ui/TasksComponent.qml:56 src/ui/VariablesComponent.qml:57
+#, kde-format
+msgctxt "@title:column"
 msgid "User"
 msgstr ""
 
-#: src/tasksWidget.cpp:229 src/variablesWidget.cpp:188
-#, fuzzy, kde-format
-#| msgid "Sat"
-msgid "Status"
-msgstr "शनिबार"
-
-#: src/tasksWidget.cpp:231
+#: src/ui/TasksComponent.qml:66
 #, fuzzy, kde-format
 #| msgid "Scheduled Tasks"
-msgid "Scheduling Details"
+msgctxt "@title:column"
+msgid "Scheduling"
 msgstr "निर्धारित कार्य"
 
-#: src/tasksWidget.cpp:256
+#: src/ui/TasksComponent.qml:75
 #, fuzzy, kde-format
-#| msgid "No tasks..."
-msgctxt "Adds a new task"
-msgid "New &Task..."
-msgstr "कार्य छैन..."
+#| msgid "Modify Task"
+msgctxt "@title:column"
+msgid "Command"
+msgstr "कार्य परिमार्जन गर्नुहोस्"
 
-#: src/tasksWidget.cpp:257
-#, fuzzy, kde-format
-#| msgid "Create a new task or variable."
-msgid "Create a new task."
-msgstr "नयाँ कार्य वा चल सिर्जना गर्नुहोस् ।"
-
-#: src/tasksWidget.cpp:261 src/variablesWidget.cpp:209
-#, kde-format
-msgid "M&odify..."
-msgstr "परिमार्जन गर्नुहोस्..."
-
-#: src/tasksWidget.cpp:263
-#, fuzzy, kde-format
-#| msgid "Run the selected task now."
-msgid "Modify the selected task."
-msgstr "चयन गरिएको कार्य अहिले चलाउनुहोस् ।"
-
-#: src/tasksWidget.cpp:267 src/variablesWidget.cpp:215
-#, kde-format
-msgid "&Delete"
-msgstr "मेट्नुहोस्"
-
-#: src/tasksWidget.cpp:269
-#, fuzzy, kde-format
-#| msgid "Delete the selected task or variable."
-msgid "Delete the selected task."
-msgstr "चयन गरिएको कार्य वा चल मेट्नुहोस् ।"
-
-#: src/tasksWidget.cpp:273
-#, kde-format
-msgid "&Run Now"
-msgstr "अहिले चलाउनुहोस्"
-
-#: src/tasksWidget.cpp:275
-#, kde-format
-msgid "Run the selected task now."
-msgstr "चयन गरिएको कार्य अहिले चलाउनुहोस् ।"
-
-#: src/taskWidget.cpp:40 src/variableWidget.cpp:38
-#, fuzzy, kde-format
-#| msgid "&Enabled"
-msgid "Enabled"
-msgstr "सक्षम"
-
-#: src/taskWidget.cpp:43 src/variableWidget.cpp:41
-#, fuzzy, kde-format
-#| msgid "Disabled"
-msgid "Disabled"
-msgstr "अक्षम"
-
-#: src/variableEditorDialog.cpp:47
-#, fuzzy, kde-format
-#| msgid "Modify Variable"
-msgid "Add or modify a variable"
-msgstr "चल परिमार्जन गर्नुहोस्"
-
-#: src/variableEditorDialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "&Variable:"
-msgctxt "The environmental variable name ie HOME, MAILTO etc"
-msgid "&Variable:"
-msgstr "चल:"
-
-#: src/variableEditorDialog.cpp:80
-#, kde-format
-msgid "Va&lue:"
-msgstr "मान:"
-
-#: src/variableEditorDialog.cpp:113
-#, kde-format
-msgid "&Enable this variable"
-msgstr ""
-
-#: src/variableEditorDialog.cpp:145
-#, kde-format
-msgid "<i>This variable will be used by scheduled tasks.</i>"
-msgstr ""
-
-#: src/variableEditorDialog.cpp:192
-#, kde-format
-msgid "<i>This variable is disabled.</i>"
-msgstr ""
-
-#: src/variableEditorDialog.cpp:199
-#, fuzzy, kde-format
-#| msgid "Please enter the variable name."
-msgid "<i>Please enter the variable name...</i>"
-msgstr "कृपया चल नाम प्रविष्ट गर्नुहोस् ।"
-
-#: src/variableEditorDialog.cpp:206
-#, fuzzy, kde-format
-#| msgid "Please enter the variable value."
-msgid "<i>Please enter the variable value ...</i>"
-msgstr "कृपया चल मान प्रविष्ट गर्नुहोस् ।"
-
-#: src/variablesWidget.cpp:29
-#, fuzzy, kde-format
-#| msgid "Variables"
-msgid "<b>Environment Variables</b>"
-msgstr "चल"
-
-#: src/variablesWidget.cpp:62
-#, kde-format
-msgid "Modify Variable"
-msgstr "चल परिमार्जन गर्नुहोस्"
-
-#: src/variablesWidget.cpp:142
-#, fuzzy, kde-format
-#| msgid "Variables"
-msgid "New Variable"
-msgstr "चल"
-
-#: src/variablesWidget.cpp:186
-#, fuzzy, kde-format
-#| msgid "Variables"
-msgid "Variable"
-msgstr "चल"
-
-#: src/variablesWidget.cpp:187
-#, kde-format
-msgid "Value"
-msgstr "मान"
-
-#: src/variablesWidget.cpp:189
+#: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
 #, fuzzy, kde-format
 #| msgid "Co&mment:"
+msgctxt "@title:column"
 msgid "Comment"
 msgstr "टिप्पणी:"
 
-#: src/variablesWidget.cpp:204
+#: src/ui/TasksComponent.qml:92
 #, fuzzy, kde-format
-#| msgid "No variables..."
-msgctxt "Adds a new variable"
-msgid "New &Variable..."
-msgstr "चल छैन..."
+#| msgid "Scheduled Tasks"
+msgctxt "@title:column"
+msgid "Scheduling Details"
+msgstr "निर्धारित कार्य"
 
-#: src/variablesWidget.cpp:205
+#: src/ui/TasksComponent.qml:98
 #, fuzzy, kde-format
-#| msgid "Create a new task or variable."
-msgid "Create a new variable."
-msgstr "नयाँ कार्य वा चल सिर्जना गर्नुहोस् ।"
+#| msgid "Edit Task"
+msgctxt "@action:button"
+msgid "Add Task…"
+msgstr "कार्य सम्पादन गर्नुहोस्"
 
-#: src/variablesWidget.cpp:211
+#: src/ui/TasksComponent.qml:105
 #, fuzzy, kde-format
-#| msgid "Edit the selected task or variable."
-msgid "Modify the selected variable."
-msgstr "चयन गरिएको कार्य वा चल सम्पादन गर्नुहोस् ।"
+#| msgid "Edit Task"
+msgctxt "@action:button"
+msgid "Edit Task…"
+msgstr "कार्य सम्पादन गर्नुहोस्"
 
-#: src/variablesWidget.cpp:217
+#: src/ui/TasksComponent.qml:113 src/ui/VariablesComponent.qml:125
+#, fuzzy, kde-format
+#| msgid "Set All"
+msgctxt "@action:button"
+msgid "Select All"
+msgstr "सबै सेट गर्नुहोस्"
+
+#: src/ui/TasksComponent.qml:120 src/ui/VariablesComponent.qml:132
+#, kde-format
+msgctxt "@action:button"
+msgid "Copy"
+msgstr ""
+
+#: src/ui/TasksComponent.qml:127 src/ui/VariablesComponent.qml:139
+#, kde-format
+msgctxt "@action:button"
+msgid "Cut"
+msgstr ""
+
+#: src/ui/TasksComponent.qml:134 src/ui/VariablesComponent.qml:146
+#, kde-format
+msgctxt "@action:button"
+msgid "Paste"
+msgstr ""
+
+#: src/ui/TasksComponent.qml:142 src/ui/TasksComponent.qml:174
+#: src/ui/VariablesComponent.qml:154 src/ui/VariablesComponent.qml:178
+#, fuzzy, kde-format
+#| msgid "&Delete"
+msgctxt "@action:button"
+msgid "Delete"
+msgstr "मेट्नुहोस्"
+
+#: src/ui/TasksComponent.qml:150
+#, fuzzy, kde-format
+#| msgid "&Run as:"
+msgctxt "@action:button"
+msgid "Run task"
+msgstr "यस रूपमा चलाउनुहोस्:"
+
+#: src/ui/TasksComponent.qml:162 src/ui/VariablesComponent.qml:166
+#, kde-format
+msgctxt "@action:button"
+msgid "Add…"
+msgstr ""
+
+#: src/ui/TasksComponent.qml:168 src/ui/VariablesComponent.qml:172
+#, kde-format
+msgctxt "@action:button"
+msgid "Edit…"
+msgstr ""
+
+#: src/ui/TasksComponent.qml:180
+#, fuzzy, kde-format
+#| msgid "Sun"
+msgctxt "@action:button"
+msgid "Run"
+msgstr "आइतबार"
+
+#: src/ui/TimeCard.qml:40
+#, kde-format
+msgctxt "@label:checkbox"
+msgid "Select all"
+msgstr ""
+
+#: src/ui/VariablePage.qml:17
+#, fuzzy, kde-format
+#| msgid "Edit Variable"
+msgctxt "@title"
+msgid "Edit Variable"
+msgstr "चल सम्पादन गर्नुहोस्"
+
+#: src/ui/VariablePage.qml:18
+#, fuzzy, kde-format
+#| msgid "Variables"
+msgctxt "@title"
+msgid "New Variable"
+msgstr "चल"
+
+#: src/ui/VariablePage.qml:27
+#, fuzzy, kde-format
+#| msgid "Edit Variable"
+msgctxt "@action:button"
+msgid "Edit Variable"
+msgstr "चल सम्पादन गर्नुहोस्"
+
+#: src/ui/VariablePage.qml:28
+#, fuzzy, kde-format
+#| msgid "Edit Variable"
+msgctxt "@action:button accessible"
+msgid "Edit Variable"
+msgstr "चल सम्पादन गर्नुहोस्"
+
+#: src/ui/VariablePage.qml:38
+#, fuzzy, kde-format
+#| msgid "Variables"
+msgctxt "@action:button"
+msgid "New Variable"
+msgstr "चल"
+
+#: src/ui/VariablePage.qml:39
+#, fuzzy, kde-format
+#| msgid "Variables"
+msgctxt "@action:button accessible"
+msgid "New Variable"
+msgstr "चल"
+
+#: src/ui/VariablePage.qml:57
+#, fuzzy, kde-kuit-format
+#| msgid "Please enter the variable name."
+msgctxt "@info"
+msgid "<message>Please enter the variable name</message>"
+msgstr "कृपया चल नाम प्रविष्ट गर्नुहोस् ।"
+
+#: src/ui/VariablePage.qml:59
+#, fuzzy, kde-kuit-format
+#| msgid "Please enter the variable value."
+msgctxt "@info"
+msgid "<message>Please enter the variable value</message>"
+msgstr "कृपया चल मान प्रविष्ट गर्नुहोस् ।"
+
+#: src/ui/VariablePage.qml:76
+#, fuzzy, kde-format
+#| msgid "Variable:"
+msgctxt "@label:listbox"
+msgid "Variable:"
+msgstr "चल:"
+
+#: src/ui/VariablePage.qml:112
+#, fuzzy, kde-format
+#| msgid "Value:"
+msgctxt "@label:textbox"
+msgid "Value:"
+msgstr "मान:"
+
+#: src/ui/VariablePage.qml:126
 #, fuzzy, kde-format
 #| msgid "Delete the selected task or variable."
-msgid "Delete the selected variable."
+msgctxt "@label:checkbox"
+msgid "Enable this variable"
 msgstr "चयन गरिएको कार्य वा चल मेट्नुहोस् ।"
 
-#~ msgid "Task Scheduler"
-#~ msgstr "कार्य अनुसूचक"
+#: src/ui/VariablesComponent.qml:19
+#, fuzzy, kde-format
+#| msgid "Variables"
+msgctxt "@title:group"
+msgid "Environment Variables"
+msgstr "चल"
+
+#: src/ui/VariablesComponent.qml:67
+#, fuzzy, kde-format
+#| msgid "Variables"
+msgctxt "@title:column"
+msgid "Variable"
+msgstr "चल"
+
+#: src/ui/VariablesComponent.qml:98
+#, fuzzy, kde-format
+#| msgid "Value"
+msgctxt "@title:column"
+msgid "Value"
+msgstr "मान"
+
+#: src/ui/VariablesComponent.qml:112
+#, fuzzy, kde-format
+#| msgid "Edit Variable"
+msgctxt "@action:button"
+msgid "Add Variable…"
+msgstr "चल सम्पादन गर्नुहोस्"
+
+#: src/ui/VariablesComponent.qml:118
+#, fuzzy, kde-format
+#| msgid "Edit Variable"
+msgctxt "@action:button"
+msgid "Edit Variable…"
+msgstr "चल सम्पादन गर्नुहोस्"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Nabin Gautam"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "nabin@mpp.org.np"
+
+#~ msgid "Description"
+#~ msgstr "वर्णन"
+
+#, fuzzy
+#~| msgid "(System Crontab)"
+#~ msgid "System Crontab"
+#~ msgstr "(प्रणाली क्रोनट्याब)"
+
+#, fuzzy
+#~| msgid "(System Crontab)"
+#~ msgid "All Users Crontabs"
+#~ msgstr "(प्रणाली क्रोनट्याब)"
+
+#, fuzzy
+#~| msgid "Cron Options"
+#~ msgctxt "@title:window"
+#~ msgid "Cron Options"
+#~ msgstr "क्रोन विकल्प"
+
+#~ msgid "Print cron&tab"
+#~ msgstr "क्रोन ट्याब मुद्रण गर्नुहोस्"
+
+#~ msgid "Print &all users"
+#~ msgstr "सबै प्रयोगकर्ता मुद्रण गर्नुहोस्"
+
+#, fuzzy
+#~| msgid "(System Crontab)"
+#~ msgid "System Cron"
+#~ msgstr "(प्रणाली क्रोनट्याब)"
+
+#~ msgid ""
+#~ "The following error occurred while initializing KCron:\n"
+#~ "\n"
+#~ "%1\n"
+#~ "\n"
+#~ "KCron will now exit.\n"
+#~ msgstr ""
+#~ "केडीई क्रोन सुरुआत गर्दा निम्न त्रुटि उत्पन्न भयो:\n"
+#~ "\n"
+#~ "%1\n"
+#~ "\n"
+#~ "केडीई क्रोन अब अन्त्य हुन्छ ।\n"
+
+#~ msgid ""
+#~ "You can use this application to schedule programs to run in the "
+#~ "background.\n"
+#~ "To schedule a new task now, click on the Tasks folder and select Edit/New "
+#~ "from the menu."
+#~ msgstr ""
+#~ "तपाईँले यो अनुप्रयोग पृष्ठभूमिमा चल्ने कार्यक्रमको अनुसूची बनाउन प्रयोग गर्न सक्नुहुन्छ ।\n"
+#~ "अहिले नयाँ कार्यको अनुसूची बनाउन, कार्य फोल्डरमा क्लिक गर्नुहोस् र मेनुबाट सम्पादन/नयाँ "
+#~ "चयन गर्नुहोस् ।"
+
+#, fuzzy
+#~| msgid "Modify Variable"
+#~ msgid "Add or modify a scheduled task"
+#~ msgstr "चल परिमार्जन गर्नुहोस्"
+
+#~ msgid "Co&mment:"
+#~ msgstr "टिप्पणी:"
+
+#, fuzzy
+#~| msgid "Run every day"
+#~ msgid "Run &every day"
+#~ msgstr "प्रत्येक दिन चलाउनुहोस्"
+
+#, fuzzy
+#~| msgid "Description:"
+#~ msgid "Preselection:"
+#~ msgstr "वर्णन:"
+
+#, fuzzy
+#~| msgid "AM"
+#~ msgid "AM:"
+#~ msgstr "पूर्वान्ह"
+
+#, fuzzy
+#~| msgid "PM"
+#~ msgid "PM:"
+#~ msgstr "अपरान्ह"
+
+#~ msgid "Clear All"
+#~ msgstr "सबै खाली गर्नुहोस्"
+
+#, fuzzy
+#~| msgid "Scheduled Tasks"
+#~ msgid "<b>Scheduled Tasks</b>"
+#~ msgstr "निर्धारित कार्य"
+
+#~ msgid "Modify Task"
+#~ msgstr "कार्य परिमार्जन गर्नुहोस्"
+
+#, fuzzy
+#~| msgid "Sat"
+#~ msgid "Status"
+#~ msgstr "शनिबार"
+
+#, fuzzy
+#~| msgid "No tasks..."
+#~ msgctxt "Adds a new task"
+#~ msgid "New &Task..."
+#~ msgstr "कार्य छैन..."
+
+#, fuzzy
+#~| msgid "Create a new task or variable."
+#~ msgid "Create a new task."
+#~ msgstr "नयाँ कार्य वा चल सिर्जना गर्नुहोस् ।"
+
+#~ msgid "M&odify..."
+#~ msgstr "परिमार्जन गर्नुहोस्..."
+
+#, fuzzy
+#~| msgid "Run the selected task now."
+#~ msgid "Modify the selected task."
+#~ msgstr "चयन गरिएको कार्य अहिले चलाउनुहोस् ।"
+
+#, fuzzy
+#~| msgid "Delete the selected task or variable."
+#~ msgid "Delete the selected task."
+#~ msgstr "चयन गरिएको कार्य वा चल मेट्नुहोस् ।"
+
+#~ msgid "&Run Now"
+#~ msgstr "अहिले चलाउनुहोस्"
+
+#~ msgid "Run the selected task now."
+#~ msgstr "चयन गरिएको कार्य अहिले चलाउनुहोस् ।"
+
+#, fuzzy
+#~| msgid "&Enabled"
+#~ msgid "Enabled"
+#~ msgstr "सक्षम"
+
+#, fuzzy
+#~| msgid "Disabled"
+#~ msgid "Disabled"
+#~ msgstr "अक्षम"
+
+#, fuzzy
+#~| msgid "Modify Variable"
+#~ msgid "Add or modify a variable"
+#~ msgstr "चल परिमार्जन गर्नुहोस्"
+
+#, fuzzy
+#~| msgid "&Variable:"
+#~ msgctxt "The environmental variable name ie HOME, MAILTO etc"
+#~ msgid "&Variable:"
+#~ msgstr "चल:"
+
+#~ msgid "Va&lue:"
+#~ msgstr "मान:"
+
+#, fuzzy
+#~| msgid "Variables"
+#~ msgid "<b>Environment Variables</b>"
+#~ msgstr "चल"
+
+#~ msgid "Modify Variable"
+#~ msgstr "चल परिमार्जन गर्नुहोस्"
+
+#, fuzzy
+#~| msgid "No variables..."
+#~ msgctxt "Adds a new variable"
+#~ msgid "New &Variable..."
+#~ msgstr "चल छैन..."
+
+#, fuzzy
+#~| msgid "Create a new task or variable."
+#~ msgid "Create a new variable."
+#~ msgstr "नयाँ कार्य वा चल सिर्जना गर्नुहोस् ।"
+
+#, fuzzy
+#~| msgid "Edit the selected task or variable."
+#~ msgid "Modify the selected variable."
+#~ msgstr "चयन गरिएको कार्य वा चल सम्पादन गर्नुहोस् ।"
 
 #~ msgid "KDE Task Scheduler"
 #~ msgstr "केडीई कार्य अनुसूचक"
@@ -1057,12 +1361,6 @@ msgstr "चयन गरिएको कार्य वा चल मेट्�
 #~ msgstr "सबै प्रयोगकर्ता मुद्रण गर्नुहोस्"
 
 #, fuzzy
-#~| msgid "%H:%M"
-#~ msgctxt "User login: errorMessage"
-#~ msgid "User %1: %2"
-#~ msgstr "%H:%M"
-
-#, fuzzy
 #~| msgid "the minutes"
 #~ msgid "Every %1 minutes"
 #~ msgstr "मिनेट"
@@ -1081,9 +1379,6 @@ msgstr "चयन गरिएको कार्य वा चल मेट्�
 
 #~ msgid "&Program:"
 #~ msgstr "कार्यक्रम:"
-
-#~ msgid "&Comment:"
-#~ msgstr "टिप्पणी:"
 
 #~ msgid ""
 #~ "Scheduled tasks have been modified.\n"
@@ -1107,9 +1402,6 @@ msgstr "चयन गरिएको कार्य वा चल मेट्�
 #~ msgid "&Enabled"
 #~ msgstr "सक्षम"
 
-#~ msgid "Printing..."
-#~ msgstr "मुद्रण गर्दैछ..."
-
 #~ msgid "Copying to clipboard..."
 #~ msgstr "क्लिपबोर्डमा प्रतिलिपि गर्दैछ..."
 
@@ -1124,15 +1416,6 @@ msgstr "चयन गरिएको कार्य वा चल मेट्�
 
 #~ msgid "No tasks..."
 #~ msgstr "कार्य छैन..."
-
-#, fuzzy
-#~| msgid "Variable:"
-#~ msgctxt "The environmental variable name ie HOME, MAILTO etc"
-#~ msgid "Variable:"
-#~ msgstr "चल:"
-
-#~ msgid "Value:"
-#~ msgstr "मान:"
 
 #~ msgid "No variables..."
 #~ msgstr "चल छैन..."
@@ -1212,9 +1495,6 @@ msgstr "चयन गरिएको कार्य वा चल मेट्�
 #~ msgid "Disabled"
 #~ msgstr "अक्षम"
 
-#~ msgid "Edit Variable"
-#~ msgstr "चल सम्पादन गर्नुहोस्"
-
 #, fuzzy
 #~| msgid "Users/Tasks/Variables"
 #~ msgid "Users/Tasks/Variable"
@@ -1222,9 +1502,6 @@ msgstr "चयन गरिएको कार्य वा चल मेट्�
 
 #~ msgid "Tasks/Variables"
 #~ msgstr "कार्य/चल"
-
-#~ msgid "Edit Task"
-#~ msgstr "कार्य सम्पादन गर्नुहोस्"
 
 #~ msgid "&Browse..."
 #~ msgstr "ब्राउज गर्नुहोस्..."

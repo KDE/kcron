@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-25 01:34+0000\n"
+"POT-Creation-Date: 2024-09-24 00:41+0000\n"
 "PO-Revision-Date: 2024-05-25 17:31+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: \n"
@@ -23,16 +23,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "عصام بايزيدي,أحمد محمد زواوي,Mohamed SAAD محمد سعد"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "bayazidi@arabeyes.org, azawawi@emirates.net.ae, metehyi@free.fr"
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -325,7 +315,7 @@ msgstr "الأحد"
 msgid "No comment"
 msgstr "لا تعليق"
 
-#: src/crontablib/cthost.cpp:59
+#: src/crontablib/cthost.cpp:57
 #, fuzzy, kde-format
 msgid ""
 "You have been blocked from using KCron\t                      by either the /"
@@ -402,7 +392,7 @@ msgstr "نوفمبر"
 msgid "December"
 msgstr "ديسمبر"
 
-#: src/crontablib/ctSystemCron.cpp:31
+#: src/crontablib/ctSystemCron.cpp:29
 #, kde-format
 msgid "root"
 msgstr "جذر"
@@ -509,472 +499,819 @@ msgstr ""
 msgid "Local Variable"
 msgstr "المتغيرات"
 
-#: src/crontabPrinter.cpp:89
-#, fuzzy, kde-format
-msgid "Scheduled Tasks"
-msgstr "المهام المجدولة"
-
-#: src/crontabPrinter.cpp:106 src/tasksWidget.cpp:226
-#, kde-format
-msgid "Scheduling"
-msgstr "الجدولة"
-
-#: src/crontabPrinter.cpp:106 src/tasksWidget.cpp:228
-#, fuzzy, kde-format
-msgid "Command"
-msgstr "الأمر"
-
-#: src/crontabPrinter.cpp:106 src/tasksWidget.cpp:230
-#, kde-format
-msgid "Description"
-msgstr "الوصف"
-
-#: src/crontabPrinter.cpp:127
-#, fuzzy, kde-format
-msgid "Environment Variables"
-msgstr "المتغيرات البيئية:"
-
-#: src/crontabPrinter.cpp:152
-#, fuzzy, kde-format
-msgid "System Crontab"
-msgstr "(مهام النظام المجدولة)"
-
-#: src/crontabPrinter.cpp:154
-#, fuzzy, kde-format
-msgid "All Users Crontabs"
-msgstr "(مهام النظام المجدولة)"
-
-#: src/crontabPrinter.cpp:156
-#, kde-format
-msgctxt "Crontab of user login"
-msgid "Crontab of user %1"
-msgstr ""
-
-#: src/crontabPrinterWidget.cpp:20
-#, kde-format
-msgctxt "@title:window"
-msgid "Cron Options"
-msgstr "خيارات جدول المهام"
-
-#: src/crontabPrinterWidget.cpp:24
-#, kde-format
-msgid "Print cron&tab"
-msgstr "إطبع جدول ال&مهام"
-
-#: src/crontabPrinterWidget.cpp:28
-#, kde-format
-msgid "Print &all users"
-msgstr "إطبع &كل المستخدمين"
-
-#: src/crontabWidget.cpp:85
-#, kde-format
-msgid "Show the following Cron:"
-msgstr ""
-
-#: src/crontabWidget.cpp:89
-#, kde-format
-msgid "Personal Cron"
-msgstr ""
-
-#: src/crontabWidget.cpp:94
-#, fuzzy, kde-format
-msgid "System Cron"
-msgstr "(مهام النظام المجدولة)"
-
-#: src/kcmCron.cpp:36
-#, kde-format
-msgid ""
-"The following error occurred while initializing KCron:\n"
-"\n"
-"%1\n"
-"\n"
-"KCron will now exit.\n"
-msgstr ""
-"حصل الخطأ التالي عند بدء تشغيل مجدول المهام KCron:\n"
-"\n"
-"%1\n"
-"\n"
-"سينتهي الآن تنفيذ مجدول المهام KCron.\n"
-
-#: src/kcmCron.cpp:104
-#, kde-format
-msgid ""
-"You can use this application to schedule programs to run in the background.\n"
-"To schedule a new task now, click on the Tasks folder and select Edit/New "
-"from the menu."
-msgstr ""
-"تستطيع استخدام هذا البرنامج لجدولة البرامج كي تنفذ في الخلفية.\n"
-"لجدولة مهمة جديدة الآن، أنقر على مجلّد المهام ، و انتقي حرر/جديد من القائمة."
-
-#: src/kcmCron.cpp:106
-#, kde-format
-msgid "Welcome to the Task Scheduler"
-msgstr "مرحباً بك في مجدول المهام"
-
-#: src/taskEditorDialog.cpp:69
-#, fuzzy, kde-format
-msgid "Add or modify a scheduled task"
-msgstr "أضف أو عدّل مهمة مجدولة"
-
-#: src/taskEditorDialog.cpp:70 src/taskEditorDialog.cpp:868
-#, fuzzy, kde-format
-msgid "<i>This task will be executed at the specified intervals.</i>"
-msgstr "<i>هذه المهمة ستنفذ مع بدء إقلاع النظام ...</i>"
-
-#: src/taskEditorDialog.cpp:78
-#, fuzzy, kde-format
-msgid "&Command:"
-msgstr "الأمر"
-
-#: src/taskEditorDialog.cpp:99 src/variableEditorDialog.cpp:89
-#, kde-format
-msgid "&Run as:"
-msgstr "&نفذ كـ:"
-
-#: src/taskEditorDialog.cpp:116 src/variableEditorDialog.cpp:105
-#, kde-format
-msgid "Co&mment:"
-msgstr "الت&عليق:"
-
-#: src/taskEditorDialog.cpp:129
-#, kde-format
-msgid "&Enable this task"
-msgstr ""
-
-#: src/taskEditorDialog.cpp:134
-#, fuzzy, kde-format
-msgid "Run at system &bootup"
-msgstr "نفذ عند بدء إقلاع النظام"
-
-#: src/taskEditorDialog.cpp:140
-#, fuzzy, kde-format
-msgid "Run &every day"
-msgstr "نفذ بشكل يومي"
-
-#: src/taskEditorDialog.cpp:243
-#, kde-format
-msgid "Days of Month"
-msgstr "أيام الشهر"
-
-#: src/taskEditorDialog.cpp:280
-#, kde-format
-msgid "Months"
-msgstr "الأشهر"
-
-#: src/taskEditorDialog.cpp:316
-#, kde-format
-msgid "Days of Week"
-msgstr "أيام الأسبوع"
-
-#: src/taskEditorDialog.cpp:452
-#, kde-format
-msgid "Minutes"
-msgstr "الدقائق"
-
-#: src/taskEditorDialog.cpp:462
-#, kde-format
-msgid "Preselection:"
-msgstr "التحديد مبدئي:"
-
-#: src/taskEditorDialog.cpp:469
-#, kde-format
-msgid "Clear selection"
-msgstr "امحُ التّحديد"
-
-#: src/taskEditorDialog.cpp:470
-#, kde-format
-msgid "Custom selection"
-msgstr ""
-
-#: src/taskEditorDialog.cpp:471
-#, fuzzy, kde-format
-msgid "Each minute"
-msgstr "كل شهر "
-
-#: src/taskEditorDialog.cpp:472
-#, kde-format
-msgid "Every 2 minutes"
-msgstr "كل دقيقتين"
-
-#: src/taskEditorDialog.cpp:473
-#, kde-format
-msgid "Every 5 minutes"
-msgstr "كل 5 دقائق"
-
-#: src/taskEditorDialog.cpp:474
-#, kde-format
-msgid "Every 10 minutes"
-msgstr "كل 10 دقائق"
-
-#: src/taskEditorDialog.cpp:475
-#, kde-format
-msgid "Every 15 minutes"
-msgstr "كل 15 دقيقة"
-
-#: src/taskEditorDialog.cpp:476
-#, kde-format
-msgid "Every 20 minutes"
-msgstr "كل 20 دقيقة"
-
-#: src/taskEditorDialog.cpp:477
-#, kde-format
-msgid "Every 30 minutes"
-msgstr "كل 30 دقيقة"
-
-#: src/taskEditorDialog.cpp:516
-#, kde-format
-msgid "Hours"
-msgstr "الساعات"
-
-#: src/taskEditorDialog.cpp:521
-#, kde-format
-msgid "AM:"
-msgstr "ق‌ظ"
-
-#: src/taskEditorDialog.cpp:539
-#, kde-format
-msgid "PM:"
-msgstr "ب‌ظ"
-
-#: src/taskEditorDialog.cpp:714 src/taskEditorDialog.cpp:724
-#, fuzzy, kde-format
-msgid "<i>Please type a valid command line...</i>"
-msgstr "<i>من فضلك ادخل اسم المتغير ...</i>"
-
-#: src/taskEditorDialog.cpp:748
-#, fuzzy, kde-format
-msgid "<i>Please select an executable program...</i>"
-msgstr "<i>من فضلك انتقي برنامج تنفيذي ...</i>"
-
-#: src/taskEditorDialog.cpp:756 src/taskEditorDialog.cpp:782
-#, fuzzy, kde-format
-msgid "<i>Please browse for a program to execute...</i>"
-msgstr "<i>من فضلك تصفح عن برنامج لتنفيذه ...</i>"
-
-#: src/taskEditorDialog.cpp:769
-#, fuzzy, kde-format
-msgid "<i>This task is disabled.</i>"
-msgstr "<i>هذه المهمة ذات تشكيل غير صالح ...</i>"
-
-#: src/taskEditorDialog.cpp:776
-#, fuzzy, kde-format
-msgid "<i>This task will be run on system bootup.</i>"
-msgstr "<i>هذه المهمة ستنفذ مع بدء إقلاع النظام ...</i>"
-
-#: src/taskEditorDialog.cpp:803
-#, fuzzy, kde-format
-msgid "<i>Please select from the 'Months' section...</i>"
-msgstr "<i>من فضلك انتقي من قسم 'الشهور'  ...</i>"
-
-#: src/taskEditorDialog.cpp:825
-#, fuzzy, kde-format
-msgid ""
-"<i>Please select from either the 'Days of Month' or the 'Days of Week' "
-"section...</i>"
-msgstr ""
-"<i>من فضلك انتقي أيا من قسم 'أيام الشهر' أو 'أيام الأسبوع' section ...</i>"
-
-#: src/taskEditorDialog.cpp:842
-#, fuzzy, kde-format
-msgid "<i>Please select from the 'Hours' section...</i>"
-msgstr "<i>من فضلك انتقي من قسم 'الساعات'  ...</i>"
-
-#: src/taskEditorDialog.cpp:859
-#, fuzzy, kde-format
-msgid "<i>Please select from the 'Minutes' section...</i>"
-msgstr "<i>من فضلك انتقي من قسم 'الدقائق'  ...</i>"
-
-#: src/taskEditorDialog.cpp:1063
-#, kde-format
-msgid "Set All"
-msgstr "عيّن الكل"
-
-#: src/taskEditorDialog.cpp:1065
-#, kde-format
-msgid "Clear All"
-msgstr "امحو الكل"
-
-#: src/tasksWidget.cpp:32
-#, fuzzy, kde-format
-msgid "<b>Scheduled Tasks</b>"
-msgstr "المهام المجدولة"
-
-#: src/tasksWidget.cpp:98
+#: src/tasksmodel.cpp:47
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
 msgstr ""
 
-#: src/tasksWidget.cpp:127
+#: src/taskvalidator.cpp:104 src/taskvalidator.cpp:144
+#, kde-kuit-format
+msgctxt "@info"
+msgid "<message>Choose a program to run</message>"
+msgstr ""
+
+#: src/taskvalidator.cpp:112 src/taskvalidator.cpp:119
+#, fuzzy, kde-kuit-format
+msgctxt "@info"
+msgid "<message>Please type a valid command line</message>"
+msgstr "<i>من فضلك ادخل اسم المتغير ...</i>"
+
+#: src/taskvalidator.cpp:138
+#, fuzzy, kde-kuit-format
+msgctxt "@info"
+msgid "<message>Please select an executable program</message>"
+msgstr "<i>من فضلك انتقي برنامج تنفيذي ...</i>"
+
+#: src/taskvalidator.cpp:163
+#, fuzzy, kde-kuit-format
+msgctxt "@info"
+msgid "<message>Please select from the <b>Months</b> section</message>"
+msgstr "<i>من فضلك انتقي من قسم 'الشهور'  ...</i>"
+
+#: src/taskvalidator.cpp:188
+#, fuzzy, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"<message>Please select from either the <b>Days of Month</b> or the <b>Days "
+"of Week</b> section</message>"
+msgstr ""
+"<i>من فضلك انتقي أيا من قسم 'أيام الشهر' أو 'أيام الأسبوع' section ...</i>"
+
+#: src/taskvalidator.cpp:206
+#, fuzzy, kde-kuit-format
+msgctxt "@info"
+msgid "<message>Please select from the <b>Hours</b> section</message>"
+msgstr "<i>من فضلك انتقي من قسم 'الساعات'  ...</i>"
+
+#: src/taskvalidator.cpp:224
+#, fuzzy, kde-kuit-format
+msgctxt "@info"
+msgid "<message>Please select from the <b>Minutes</b> section</message>"
+msgstr "<i>من فضلك انتقي من قسم 'الدقائق'  ...</i>"
+
+#: src/ui/main.qml:45
 #, kde-format
+msgctxt "@text"
+msgid "Show:"
+msgstr ""
+
+#: src/ui/main.qml:49
+#, fuzzy, kde-format
+#| msgid "Task Scheduler"
+msgctxt "@title:tab"
+msgid "User Schedule"
+msgstr "مجدول المهام"
+
+#: src/ui/main.qml:55
+#, fuzzy, kde-format
+#| msgid "Task Scheduler"
+msgctxt "@title:tab"
+msgid "System Schedule"
+msgstr "مجدول المهام"
+
+#: src/ui/main.qml:64
+#, fuzzy, kde-format
+#| msgid "Printing..."
+msgctxt "@action:button"
+msgid "Print"
+msgstr "جاري الطباعة..."
+
+#: src/ui/Onboarding.qml:22
+#, fuzzy, kde-format
+#| msgid "Welcome to the Task Scheduler"
+msgid "Welcome to Task Scheduler!"
+msgstr "مرحباً بك في مجدول المهام"
+
+#: src/ui/Onboarding.qml:24
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"Schedule programs to run in the background. Set tasks to run on a fixed "
+"schedule and automate repetitive tasks like downloading files or sending "
+"emails. <link url='%1'>Learn more</link>"
+msgstr ""
+
+#: src/ui/Onboarding.qml:27
+#, kde-format
+msgctxt "@action:button"
+msgid "Go to Dashboard"
+msgstr ""
+
+#: src/ui/TaskPage.qml:22
+#, fuzzy, kde-format
+#| msgid "Edit Task"
+msgctxt "@title"
+msgid "Edit Task"
+msgstr "حرر المهمة"
+
+#: src/ui/TaskPage.qml:23
+#, fuzzy, kde-format
+#| msgid "New Task"
+msgctxt "@title"
 msgid "New Task"
 msgstr "مهمة جديدة"
 
-#: src/tasksWidget.cpp:163
-#, kde-format
-msgid "Modify Task"
-msgstr "عدّل المهمة"
+#: src/ui/TaskPage.qml:33
+#, fuzzy, kde-format
+#| msgid "Edit Task"
+msgctxt "@action:button"
+msgid "Edit Task"
+msgstr "حرر المهمة"
 
-#: src/tasksWidget.cpp:223 src/variablesWidget.cpp:183
+#: src/ui/TaskPage.qml:34
+#, fuzzy, kde-format
+#| msgid "Edit Task"
+msgctxt "@action:button accessible"
+msgid "Edit Task"
+msgstr "حرر المهمة"
+
+#: src/ui/TaskPage.qml:44
+#, fuzzy, kde-format
+#| msgid "New Task"
+msgctxt "@action:button"
+msgid "New Task"
+msgstr "مهمة جديدة"
+
+#: src/ui/TaskPage.qml:45
+#, fuzzy, kde-format
+#| msgid "New Task"
+msgctxt "@action:button accessible"
+msgid "New Task"
+msgstr "مهمة جديدة"
+
+#: src/ui/TaskPage.qml:90
+#, fuzzy, kde-format
+msgctxt "@label:textbox"
+msgid "Command:"
+msgstr "الأمر"
+
+#: src/ui/TaskPage.qml:97
 #, kde-format
+msgctxt "@action:button"
+msgid "Browse the Program"
+msgstr ""
+
+#: src/ui/TaskPage.qml:105
+#, kde-format
+msgctxt "@label:checkbox"
+msgid "Enable this task"
+msgstr ""
+
+#: src/ui/TaskPage.qml:110 src/ui/VariablePage.qml:97
+#, fuzzy, kde-format
+#| msgid "User"
+msgctxt "@label:listbox"
+msgid "User:"
+msgstr "المستخدم"
+
+#: src/ui/TaskPage.qml:129 src/ui/VariablePage.qml:119
+#, fuzzy, kde-format
+#| msgid "&Comment:"
+msgctxt "@label:textbox"
+msgid "Comment:"
+msgstr "ال&تعليق:"
+
+#: src/ui/TaskPage.qml:136
+#, kde-format
+msgctxt "@label:checkbox"
+msgid "Run:"
+msgstr ""
+
+#: src/ui/TaskPage.qml:139
+#, fuzzy, kde-format
+#| msgid "At system startup"
+msgctxt "@label:checkbox"
+msgid "When system starts"
+msgstr "عند بدء تشغيل النظام"
+
+#: src/ui/TaskPage.qml:146
+#, fuzzy, kde-format
+#| msgid "every day "
+msgctxt "@label:checkbox"
+msgid "Every day"
+msgstr "كل يوم "
+
+#: src/ui/TaskPage.qml:152
+#, fuzzy, kde-format
+#| msgid "Months"
+msgctxt "@title:group"
+msgid "Months"
+msgstr "الأشهر"
+
+#: src/ui/TaskPage.qml:172
+#, fuzzy, kde-format
+#| msgid "Days of Month"
+msgctxt "@title:group"
+msgid "Days of Month"
+msgstr "أيام الشهر"
+
+#: src/ui/TaskPage.qml:193
+#, fuzzy, kde-format
+#| msgid "Days of Week"
+msgctxt "@title:group"
+msgid "Days of Week"
+msgstr "أيام الأسبوع"
+
+#: src/ui/TaskPage.qml:213
+#, fuzzy, kde-format
+#| msgid "Hours"
+msgctxt "@title:group"
+msgid "Hours"
+msgstr "الساعات"
+
+#: src/ui/TaskPage.qml:234
+#, fuzzy, kde-format
+#| msgid "Minutes"
+msgctxt "@title:group"
+msgid "Minutes"
+msgstr "الدقائق"
+
+#: src/ui/TaskPage.qml:263
+#, kde-format
+msgid "Custom selection"
+msgstr ""
+
+#: src/ui/TaskPage.qml:264
+#, fuzzy, kde-format
+msgid "Each minute"
+msgstr "كل شهر "
+
+#: src/ui/TaskPage.qml:265
+#, kde-format
+msgid "Every 2 minutes"
+msgstr "كل دقيقتين"
+
+#: src/ui/TaskPage.qml:266
+#, kde-format
+msgid "Every 5 minutes"
+msgstr "كل 5 دقائق"
+
+#: src/ui/TaskPage.qml:267
+#, kde-format
+msgid "Every 10 minutes"
+msgstr "كل 10 دقائق"
+
+#: src/ui/TaskPage.qml:268
+#, kde-format
+msgid "Every 15 minutes"
+msgstr "كل 15 دقيقة"
+
+#: src/ui/TaskPage.qml:269
+#, kde-format
+msgid "Every 20 minutes"
+msgstr "كل 20 دقيقة"
+
+#: src/ui/TaskPage.qml:270
+#, kde-format
+msgid "Every 30 minutes"
+msgstr "كل 30 دقيقة"
+
+#: src/ui/TaskPage.qml:312
+#, fuzzy, kde-format
+#| msgid "January"
+msgctxt "@action:button"
+msgid "January"
+msgstr "يناير"
+
+#: src/ui/TaskPage.qml:316
+#, fuzzy, kde-format
+#| msgid "February"
+msgctxt "@action:button"
+msgid "February"
+msgstr "فبراير"
+
+#: src/ui/TaskPage.qml:320
+#, fuzzy, kde-format
+#| msgid "March"
+msgctxt "@action:button"
+msgid "March"
+msgstr "مارس"
+
+#: src/ui/TaskPage.qml:324
+#, fuzzy, kde-format
+#| msgid "April"
+msgctxt "@action:button"
+msgid "April"
+msgstr "أبريل"
+
+#: src/ui/TaskPage.qml:328
+#, fuzzy, kde-format
+#| msgctxt "May long"
+#| msgid "May"
+msgctxt "@action:button"
+msgid "May"
+msgstr "مايو"
+
+#: src/ui/TaskPage.qml:332
+#, fuzzy, kde-format
+#| msgid "June"
+msgctxt "@action:button"
+msgid "June"
+msgstr "يونيو"
+
+#: src/ui/TaskPage.qml:336
+#, fuzzy, kde-format
+#| msgctxt "July long"
+#| msgid "July"
+msgctxt "@action:button"
+msgid "July"
+msgstr "يوليو"
+
+#: src/ui/TaskPage.qml:340
+#, fuzzy, kde-format
+#| msgid "August"
+msgctxt "@action:button"
+msgid "August"
+msgstr "أغسطس"
+
+#: src/ui/TaskPage.qml:344
+#, fuzzy, kde-format
+#| msgid "September"
+msgctxt "@action:button"
+msgid "September"
+msgstr "سبتمبر"
+
+#: src/ui/TaskPage.qml:348
+#, fuzzy, kde-format
+#| msgid "October"
+msgctxt "@action:button"
+msgid "October"
+msgstr "أكتوبر"
+
+#: src/ui/TaskPage.qml:352
+#, fuzzy, kde-format
+#| msgid "November"
+msgctxt "@action:button"
+msgid "November"
+msgstr "نوفمبر"
+
+#: src/ui/TaskPage.qml:356
+#, fuzzy, kde-format
+#| msgid "December"
+msgctxt "@action:button"
+msgid "December"
+msgstr "ديسمبر"
+
+#: src/ui/TaskPage.qml:378
+#, fuzzy, kde-format
+#| msgid "Monday"
+msgctxt "@action:button"
+msgid "Monday"
+msgstr "الإثنين"
+
+#: src/ui/TaskPage.qml:382
+#, fuzzy, kde-format
+#| msgid "Tuesday"
+msgctxt "@action:button"
+msgid "Tuesday"
+msgstr "الثلاثاء"
+
+#: src/ui/TaskPage.qml:386
+#, fuzzy, kde-format
+#| msgid "Wednesday"
+msgctxt "@action:button"
+msgid "Wednesday"
+msgstr "الأربعاء"
+
+#: src/ui/TaskPage.qml:390
+#, fuzzy, kde-format
+#| msgid "Thursday"
+msgctxt "@action:button"
+msgid "Thursday"
+msgstr "الخميس"
+
+#: src/ui/TaskPage.qml:394
+#, fuzzy, kde-format
+#| msgid "Friday"
+msgctxt "@action:button"
+msgid "Friday"
+msgstr "الجمعة"
+
+#: src/ui/TaskPage.qml:398
+#, fuzzy, kde-format
+#| msgid "Saturday"
+msgctxt "@action:button"
+msgid "Saturday"
+msgstr "السبت"
+
+#: src/ui/TaskPage.qml:402
+#, fuzzy, kde-format
+#| msgid "Sunday"
+msgctxt "@action:button"
+msgid "Sunday"
+msgstr "الأحد"
+
+#: src/ui/TasksComponent.qml:19
+#, fuzzy, kde-format
+msgctxt "@title:group"
+msgid "Scheduled Tasks"
+msgstr "المهام المجدولة"
+
+#: src/ui/TasksComponent.qml:56 src/ui/VariablesComponent.qml:57
+#, fuzzy, kde-format
+#| msgid "User"
+msgctxt "@title:column"
 msgid "User"
 msgstr "المستخدم"
 
-#: src/tasksWidget.cpp:229 src/variablesWidget.cpp:188
-#, kde-format
-msgid "Status"
-msgstr "الحالة"
-
-#: src/tasksWidget.cpp:231
+#: src/ui/TasksComponent.qml:66
 #, fuzzy, kde-format
-msgid "Scheduling Details"
-msgstr "المهام المجدولة"
+#| msgid "Scheduling"
+msgctxt "@title:column"
+msgid "Scheduling"
+msgstr "الجدولة"
 
-#: src/tasksWidget.cpp:256
+#: src/ui/TasksComponent.qml:75
 #, fuzzy, kde-format
-msgctxt "Adds a new task"
-msgid "New &Task..."
-msgstr "مهمة جديدة…"
+msgctxt "@title:column"
+msgid "Command"
+msgstr "الأمر"
 
-#: src/tasksWidget.cpp:257
+#: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
 #, fuzzy, kde-format
-msgid "Create a new task."
-msgstr "أنشئ مهمة جديدة…"
-
-#: src/tasksWidget.cpp:261 src/variablesWidget.cpp:209
-#, kde-format
-msgid "M&odify..."
-msgstr "&عدّل..."
-
-#: src/tasksWidget.cpp:263
-#, fuzzy, kde-format
-msgid "Modify the selected task."
-msgstr "نفذ المهمة المنتقاة الآن."
-
-#: src/tasksWidget.cpp:267 src/variablesWidget.cpp:215
-#, kde-format
-msgid "&Delete"
-msgstr "&احذف"
-
-#: src/tasksWidget.cpp:269
-#, fuzzy, kde-format
-msgid "Delete the selected task."
-msgstr "أحذف المهمة أو المتغير المنتقى."
-
-#: src/tasksWidget.cpp:273
-#, kde-format
-msgid "&Run Now"
-msgstr "&نفذ الآن"
-
-#: src/tasksWidget.cpp:275
-#, kde-format
-msgid "Run the selected task now."
-msgstr "نفذ المهمة المنتقاة الآن."
-
-#: src/taskWidget.cpp:40 src/variableWidget.cpp:38
-#, kde-format
-msgid "Enabled"
-msgstr "ممكّن"
-
-#: src/taskWidget.cpp:43 src/variableWidget.cpp:41
-#, kde-format
-msgid "Disabled"
-msgstr "معطّل"
-
-#: src/variableEditorDialog.cpp:47
-#, fuzzy, kde-format
-msgid "Add or modify a variable"
-msgstr "إضافة أو تغيير a متغير"
-
-#: src/variableEditorDialog.cpp:51
-#, kde-format
-msgctxt "The environmental variable name ie HOME, MAILTO etc"
-msgid "&Variable:"
-msgstr "ال&متغير:"
-
-#: src/variableEditorDialog.cpp:80
-#, kde-format
-msgid "Va&lue:"
-msgstr "ال&قيمة:"
-
-#: src/variableEditorDialog.cpp:113
-#, kde-format
-msgid "&Enable this variable"
-msgstr ""
-
-#: src/variableEditorDialog.cpp:145
-#, fuzzy, kde-format
-msgid "<i>This variable will be used by scheduled tasks.</i>"
-msgstr "<i>هذه المهمة ستنفذ مع بدء إقلاع النظام ...</i>"
-
-#: src/variableEditorDialog.cpp:192
-#, fuzzy, kde-format
-msgid "<i>This variable is disabled.</i>"
-msgstr "<i>هذه المهمة ستنفذ مع بدء إقلاع النظام ...</i>"
-
-#: src/variableEditorDialog.cpp:199
-#, fuzzy, kde-format
-msgid "<i>Please enter the variable name...</i>"
-msgstr "<i>من فضلك ادخل اسم المتغير ...</i>"
-
-#: src/variableEditorDialog.cpp:206
-#, kde-format
-msgid "<i>Please enter the variable value ...</i>"
-msgstr "<i>من فضلك ادخل قيمة المتغير ...</i>"
-
-#: src/variablesWidget.cpp:29
-#, fuzzy, kde-format
-msgid "<b>Environment Variables</b>"
-msgstr "المتغيرات البيئية:"
-
-#: src/variablesWidget.cpp:62
-#, kde-format
-msgid "Modify Variable"
-msgstr "عدّل المتغير"
-
-#: src/variablesWidget.cpp:142
-#, kde-format
-msgid "New Variable"
-msgstr "متغير جديد"
-
-#: src/variablesWidget.cpp:186
-#, kde-format
-msgid "Variable"
-msgstr "المتغير"
-
-#: src/variablesWidget.cpp:187
-#, kde-format
-msgid "Value"
-msgstr "القيمة"
-
-#: src/variablesWidget.cpp:189
-#, kde-format
+#| msgid "Comment"
+msgctxt "@title:column"
 msgid "Comment"
 msgstr "التعليق"
 
-#: src/variablesWidget.cpp:204
+#: src/ui/TasksComponent.qml:92
 #, fuzzy, kde-format
-msgctxt "Adds a new variable"
-msgid "New &Variable..."
+msgctxt "@title:column"
+msgid "Scheduling Details"
+msgstr "المهام المجدولة"
+
+#: src/ui/TasksComponent.qml:98
+#, fuzzy, kde-format
+#| msgid "Edit Task"
+msgctxt "@action:button"
+msgid "Add Task…"
+msgstr "حرر المهمة"
+
+#: src/ui/TasksComponent.qml:105
+#, fuzzy, kde-format
+#| msgid "Edit Task"
+msgctxt "@action:button"
+msgid "Edit Task…"
+msgstr "حرر المهمة"
+
+#: src/ui/TasksComponent.qml:113 src/ui/VariablesComponent.qml:125
+#, fuzzy, kde-format
+#| msgid "Set All"
+msgctxt "@action:button"
+msgid "Select All"
+msgstr "عيّن الكل"
+
+#: src/ui/TasksComponent.qml:120 src/ui/VariablesComponent.qml:132
+#, kde-format
+msgctxt "@action:button"
+msgid "Copy"
+msgstr ""
+
+#: src/ui/TasksComponent.qml:127 src/ui/VariablesComponent.qml:139
+#, kde-format
+msgctxt "@action:button"
+msgid "Cut"
+msgstr ""
+
+#: src/ui/TasksComponent.qml:134 src/ui/VariablesComponent.qml:146
+#, kde-format
+msgctxt "@action:button"
+msgid "Paste"
+msgstr ""
+
+#: src/ui/TasksComponent.qml:142 src/ui/TasksComponent.qml:174
+#: src/ui/VariablesComponent.qml:154 src/ui/VariablesComponent.qml:178
+#, fuzzy, kde-format
+#| msgid "&Delete"
+msgctxt "@action:button"
+msgid "Delete"
+msgstr "&احذف"
+
+#: src/ui/TasksComponent.qml:150
+#, fuzzy, kde-format
+#| msgid "&Run as:"
+msgctxt "@action:button"
+msgid "Run task"
+msgstr "&نفذ كـ:"
+
+#: src/ui/TasksComponent.qml:162 src/ui/VariablesComponent.qml:166
+#, kde-format
+msgctxt "@action:button"
+msgid "Add…"
+msgstr ""
+
+#: src/ui/TasksComponent.qml:168 src/ui/VariablesComponent.qml:172
+#, kde-format
+msgctxt "@action:button"
+msgid "Edit…"
+msgstr ""
+
+#: src/ui/TasksComponent.qml:180
+#, fuzzy, kde-format
+#| msgid "Sun"
+msgctxt "@action:button"
+msgid "Run"
+msgstr "الأحد"
+
+#: src/ui/TimeCard.qml:40
+#, kde-format
+msgctxt "@label:checkbox"
+msgid "Select all"
+msgstr ""
+
+#: src/ui/VariablePage.qml:17
+#, fuzzy, kde-format
+#| msgid "Edit Variable"
+msgctxt "@title"
+msgid "Edit Variable"
+msgstr "حرّر المتغير"
+
+#: src/ui/VariablePage.qml:18
+#, fuzzy, kde-format
+#| msgid "New Variable"
+msgctxt "@title"
+msgid "New Variable"
 msgstr "متغير جديد"
 
-#: src/variablesWidget.cpp:205
+#: src/ui/VariablePage.qml:27
 #, fuzzy, kde-format
-msgid "Create a new variable."
-msgstr "أنشئ مهمة أو متغير جديد."
+#| msgid "Edit Variable"
+msgctxt "@action:button"
+msgid "Edit Variable"
+msgstr "حرّر المتغير"
 
-#: src/variablesWidget.cpp:211
+#: src/ui/VariablePage.qml:28
 #, fuzzy, kde-format
-msgid "Modify the selected variable."
-msgstr "حرر المهمة أو المتغير المنتقى."
+#| msgid "Edit Variable"
+msgctxt "@action:button accessible"
+msgid "Edit Variable"
+msgstr "حرّر المتغير"
 
-#: src/variablesWidget.cpp:217
+#: src/ui/VariablePage.qml:38
 #, fuzzy, kde-format
-msgid "Delete the selected variable."
+#| msgid "New Variable"
+msgctxt "@action:button"
+msgid "New Variable"
+msgstr "متغير جديد"
+
+#: src/ui/VariablePage.qml:39
+#, fuzzy, kde-format
+#| msgid "New Variable"
+msgctxt "@action:button accessible"
+msgid "New Variable"
+msgstr "متغير جديد"
+
+#: src/ui/VariablePage.qml:57
+#, fuzzy, kde-kuit-format
+msgctxt "@info"
+msgid "<message>Please enter the variable name</message>"
+msgstr "<i>من فضلك ادخل اسم المتغير ...</i>"
+
+#: src/ui/VariablePage.qml:59
+#, fuzzy, kde-kuit-format
+#| msgid "<i>Please enter the variable value ...</i>"
+msgctxt "@info"
+msgid "<message>Please enter the variable value</message>"
+msgstr "<i>من فضلك ادخل قيمة المتغير ...</i>"
+
+#: src/ui/VariablePage.qml:76
+#, fuzzy, kde-format
+#| msgctxt "The environmental variable name ie HOME, MAILTO etc"
+#| msgid "Variable:"
+msgctxt "@label:listbox"
+msgid "Variable:"
+msgstr "المتغير:"
+
+#: src/ui/VariablePage.qml:112
+#, fuzzy, kde-format
+#| msgid "Value:"
+msgctxt "@label:textbox"
+msgid "Value:"
+msgstr "القيمة:"
+
+#: src/ui/VariablePage.qml:126
+#, fuzzy, kde-format
+msgctxt "@label:checkbox"
+msgid "Enable this variable"
 msgstr "أحذف المهمة أو المتغير المنتقى."
 
-#~ msgid "Task Scheduler"
-#~ msgstr "مجدول المهام"
+#: src/ui/VariablesComponent.qml:19
+#, fuzzy, kde-format
+msgctxt "@title:group"
+msgid "Environment Variables"
+msgstr "المتغيرات البيئية:"
+
+#: src/ui/VariablesComponent.qml:67
+#, fuzzy, kde-format
+#| msgid "Variable"
+msgctxt "@title:column"
+msgid "Variable"
+msgstr "المتغير"
+
+#: src/ui/VariablesComponent.qml:98
+#, fuzzy, kde-format
+#| msgid "Value"
+msgctxt "@title:column"
+msgid "Value"
+msgstr "القيمة"
+
+#: src/ui/VariablesComponent.qml:112
+#, fuzzy, kde-format
+#| msgid "Edit Variable"
+msgctxt "@action:button"
+msgid "Add Variable…"
+msgstr "حرّر المتغير"
+
+#: src/ui/VariablesComponent.qml:118
+#, fuzzy, kde-format
+#| msgid "Edit Variable"
+msgctxt "@action:button"
+msgid "Edit Variable…"
+msgstr "حرّر المتغير"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "عصام بايزيدي,أحمد محمد زواوي,Mohamed SAAD محمد سعد"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "bayazidi@arabeyes.org, azawawi@emirates.net.ae, metehyi@free.fr"
+
+#~ msgid "Description"
+#~ msgstr "الوصف"
+
+#, fuzzy
+#~ msgid "System Crontab"
+#~ msgstr "(مهام النظام المجدولة)"
+
+#, fuzzy
+#~ msgid "All Users Crontabs"
+#~ msgstr "(مهام النظام المجدولة)"
+
+#~ msgctxt "@title:window"
+#~ msgid "Cron Options"
+#~ msgstr "خيارات جدول المهام"
+
+#~ msgid "Print cron&tab"
+#~ msgstr "إطبع جدول ال&مهام"
+
+#~ msgid "Print &all users"
+#~ msgstr "إطبع &كل المستخدمين"
+
+#, fuzzy
+#~ msgid "System Cron"
+#~ msgstr "(مهام النظام المجدولة)"
+
+#~ msgid ""
+#~ "The following error occurred while initializing KCron:\n"
+#~ "\n"
+#~ "%1\n"
+#~ "\n"
+#~ "KCron will now exit.\n"
+#~ msgstr ""
+#~ "حصل الخطأ التالي عند بدء تشغيل مجدول المهام KCron:\n"
+#~ "\n"
+#~ "%1\n"
+#~ "\n"
+#~ "سينتهي الآن تنفيذ مجدول المهام KCron.\n"
+
+#~ msgid ""
+#~ "You can use this application to schedule programs to run in the "
+#~ "background.\n"
+#~ "To schedule a new task now, click on the Tasks folder and select Edit/New "
+#~ "from the menu."
+#~ msgstr ""
+#~ "تستطيع استخدام هذا البرنامج لجدولة البرامج كي تنفذ في الخلفية.\n"
+#~ "لجدولة مهمة جديدة الآن، أنقر على مجلّد المهام ، و انتقي حرر/جديد من "
+#~ "القائمة."
+
+#, fuzzy
+#~ msgid "Add or modify a scheduled task"
+#~ msgstr "أضف أو عدّل مهمة مجدولة"
+
+#, fuzzy
+#~ msgid "<i>This task will be executed at the specified intervals.</i>"
+#~ msgstr "<i>هذه المهمة ستنفذ مع بدء إقلاع النظام ...</i>"
+
+#~ msgid "Co&mment:"
+#~ msgstr "الت&عليق:"
+
+#, fuzzy
+#~ msgid "Run at system &bootup"
+#~ msgstr "نفذ عند بدء إقلاع النظام"
+
+#, fuzzy
+#~ msgid "Run &every day"
+#~ msgstr "نفذ بشكل يومي"
+
+#~ msgid "Preselection:"
+#~ msgstr "التحديد مبدئي:"
+
+#~ msgid "Clear selection"
+#~ msgstr "امحُ التّحديد"
+
+#~ msgid "AM:"
+#~ msgstr "ق‌ظ"
+
+#~ msgid "PM:"
+#~ msgstr "ب‌ظ"
+
+#, fuzzy
+#~ msgid "<i>Please browse for a program to execute...</i>"
+#~ msgstr "<i>من فضلك تصفح عن برنامج لتنفيذه ...</i>"
+
+#, fuzzy
+#~ msgid "<i>This task is disabled.</i>"
+#~ msgstr "<i>هذه المهمة ذات تشكيل غير صالح ...</i>"
+
+#, fuzzy
+#~ msgid "<i>This task will be run on system bootup.</i>"
+#~ msgstr "<i>هذه المهمة ستنفذ مع بدء إقلاع النظام ...</i>"
+
+#~ msgid "Clear All"
+#~ msgstr "امحو الكل"
+
+#, fuzzy
+#~ msgid "<b>Scheduled Tasks</b>"
+#~ msgstr "المهام المجدولة"
+
+#~ msgid "Modify Task"
+#~ msgstr "عدّل المهمة"
+
+#~ msgid "Status"
+#~ msgstr "الحالة"
+
+#, fuzzy
+#~ msgctxt "Adds a new task"
+#~ msgid "New &Task..."
+#~ msgstr "مهمة جديدة…"
+
+#, fuzzy
+#~ msgid "Create a new task."
+#~ msgstr "أنشئ مهمة جديدة…"
+
+#~ msgid "M&odify..."
+#~ msgstr "&عدّل..."
+
+#, fuzzy
+#~ msgid "Modify the selected task."
+#~ msgstr "نفذ المهمة المنتقاة الآن."
+
+#, fuzzy
+#~ msgid "Delete the selected task."
+#~ msgstr "أحذف المهمة أو المتغير المنتقى."
+
+#~ msgid "&Run Now"
+#~ msgstr "&نفذ الآن"
+
+#~ msgid "Run the selected task now."
+#~ msgstr "نفذ المهمة المنتقاة الآن."
+
+#~ msgid "Enabled"
+#~ msgstr "ممكّن"
+
+#~ msgid "Disabled"
+#~ msgstr "معطّل"
+
+#, fuzzy
+#~ msgid "Add or modify a variable"
+#~ msgstr "إضافة أو تغيير a متغير"
+
+#~ msgctxt "The environmental variable name ie HOME, MAILTO etc"
+#~ msgid "&Variable:"
+#~ msgstr "ال&متغير:"
+
+#~ msgid "Va&lue:"
+#~ msgstr "ال&قيمة:"
+
+#, fuzzy
+#~ msgid "<i>This variable will be used by scheduled tasks.</i>"
+#~ msgstr "<i>هذه المهمة ستنفذ مع بدء إقلاع النظام ...</i>"
+
+#, fuzzy
+#~ msgid "<i>This variable is disabled.</i>"
+#~ msgstr "<i>هذه المهمة ستنفذ مع بدء إقلاع النظام ...</i>"
+
+#, fuzzy
+#~ msgid "<b>Environment Variables</b>"
+#~ msgstr "المتغيرات البيئية:"
+
+#~ msgid "Modify Variable"
+#~ msgstr "عدّل المتغير"
+
+#, fuzzy
+#~ msgctxt "Adds a new variable"
+#~ msgid "New &Variable..."
+#~ msgstr "متغير جديد"
+
+#, fuzzy
+#~ msgid "Create a new variable."
+#~ msgstr "أنشئ مهمة أو متغير جديد."
+
+#, fuzzy
+#~ msgid "Modify the selected variable."
+#~ msgstr "حرر المهمة أو المتغير المنتقى."
 
 #~ msgid "KDE Task Scheduler"
 #~ msgstr "مجدول المهام لِــ كِيدِي"
@@ -1029,9 +1366,6 @@ msgstr "أحذف المهمة أو المتغير المنتقى."
 #~ msgid "&Program:"
 #~ msgstr "ال&برنامج:"
 
-#~ msgid "&Comment:"
-#~ msgstr "ال&تعليق:"
-
 #~ msgid ""
 #~ "Scheduled tasks have been modified.\n"
 #~ "Do you want to save changes?"
@@ -1055,9 +1389,6 @@ msgstr "أحذف المهمة أو المتغير المنتقى."
 #~ msgid "&Enabled"
 #~ msgstr "م&مكن"
 
-#~ msgid "Printing..."
-#~ msgstr "جاري الطباعة..."
-
 #~ msgid "Copying to clipboard..."
 #~ msgstr "نسخ إلى الحافظة..."
 
@@ -1077,13 +1408,6 @@ msgstr "أحذف المهمة أو المتغير المنتقى."
 
 #~ msgid "No tasks..."
 #~ msgstr "لا يوجد مهام..."
-
-#~ msgctxt "The environmental variable name ie HOME, MAILTO etc"
-#~ msgid "Variable:"
-#~ msgstr "المتغير:"
-
-#~ msgid "Value:"
-#~ msgstr "القيمة:"
 
 #~ msgid "No variables..."
 #~ msgstr "لا يوجد متغيرات..."
@@ -1155,17 +1479,11 @@ msgstr "أحذف المهمة أو المتغير المنتقى."
 #~ msgid "Disabled"
 #~ msgstr "معطل"
 
-#~ msgid "Edit Variable"
-#~ msgstr "حرّر المتغير"
-
 #~ msgid "Users/Tasks/Variable"
 #~ msgstr "المستخدمون/المهام/المتغيرات"
 
 #~ msgid "Tasks/Variables"
 #~ msgstr "المهام/المتغيرات"
-
-#~ msgid "Edit Task"
-#~ msgstr "حرر المهمة"
 
 #~ msgid "<i>Please check 'Enabled' to edit this variable ...</i>"
 #~ msgstr "<i>من فضلك افحص 'التمكين' لتحرير هذا المتغير ...</i>"

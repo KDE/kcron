@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-25 01:34+0000\n"
+"POT-Creation-Date: 2024-09-24 00:41+0000\n"
 "PO-Revision-Date: 2012-09-03 08:20+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -16,16 +16,6 @@ msgstr ""
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "\n"
-
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Сайран Киккарин"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "sairan@computer.org"
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -321,7 +311,7 @@ msgstr "Жексенбі"
 msgid "No comment"
 msgstr "Түсініктемесі жоқ"
 
-#: src/crontablib/cthost.cpp:59
+#: src/crontablib/cthost.cpp:57
 #, kde-format
 msgid ""
 "You have been blocked from using KCron\t                      by either the /"
@@ -401,7 +391,7 @@ msgstr "Қараша"
 msgid "December"
 msgstr "Желтоқсан"
 
-#: src/crontablib/ctSystemCron.cpp:31
+#: src/crontablib/ctSystemCron.cpp:29
 #, kde-format
 msgid "root"
 msgstr ""
@@ -503,474 +493,828 @@ msgstr "Динамикалық жиын файлдарының орны"
 msgid "Local Variable"
 msgstr "Жергілікті айнымалысы"
 
-#: src/crontabPrinter.cpp:89
-#, kde-format
-msgid "Scheduled Tasks"
-msgstr "Жоспарланған тапсырмалар"
-
-#: src/crontabPrinter.cpp:106 src/tasksWidget.cpp:226
-#, kde-format
-msgid "Scheduling"
-msgstr "Жоспарлау"
-
-#: src/crontabPrinter.cpp:106 src/tasksWidget.cpp:228
-#, kde-format
-msgid "Command"
-msgstr "Команда"
-
-#: src/crontabPrinter.cpp:106 src/tasksWidget.cpp:230
-#, kde-format
-msgid "Description"
-msgstr "Сипаттама"
-
-#: src/crontabPrinter.cpp:127
-#, kde-format
-msgid "Environment Variables"
-msgstr "Орта айнымалылары"
-
-#: src/crontabPrinter.cpp:152
-#, kde-format
-msgid "System Crontab"
-msgstr "Жүйелік Crontab кестесі"
-
-#: src/crontabPrinter.cpp:154
-#, kde-format
-msgid "All Users Crontabs"
-msgstr "Бүкіл пайдаланушылардың Crontab-тары"
-
-#: src/crontabPrinter.cpp:156
-#, kde-format
-msgctxt "Crontab of user login"
-msgid "Crontab of user %1"
-msgstr "%1 пайдаланушының Crontab-ы"
-
-#: src/crontabPrinterWidget.cpp:20
-#, fuzzy, kde-format
-#| msgid "Cron Options"
-msgctxt "@title:window"
-msgid "Cron Options"
-msgstr "Cron параметрлері"
-
-#: src/crontabPrinterWidget.cpp:24
-#, kde-format
-msgid "Print cron&tab"
-msgstr "Cron&tab кестесін басып шығару"
-
-#: src/crontabPrinterWidget.cpp:28
-#, kde-format
-msgid "Print &all users"
-msgstr "Б&арлық пайдаланушыларды басып шығару"
-
-#: src/crontabWidget.cpp:85
-#, kde-format
-msgid "Show the following Cron:"
-msgstr "Келесі Cron көрсетілсін:"
-
-#: src/crontabWidget.cpp:89
-#, kde-format
-msgid "Personal Cron"
-msgstr "Дербес Cron"
-
-#: src/crontabWidget.cpp:94
-#, kde-format
-msgid "System Cron"
-msgstr "Жүйелік Cron"
-
-#: src/kcmCron.cpp:36
-#, kde-format
-msgid ""
-"The following error occurred while initializing KCron:\n"
-"\n"
-"%1\n"
-"\n"
-"KCron will now exit.\n"
-msgstr ""
-"KCron инициализациялауда қате пайда болды:\n"
-"\n"
-"%1\n"
-"\n"
-"KCron жабылады.\n"
-
-#: src/kcmCron.cpp:104
-#, kde-format
-msgid ""
-"You can use this application to schedule programs to run in the background.\n"
-"To schedule a new task now, click on the Tasks folder and select Edit/New "
-"from the menu."
-msgstr ""
-"Бұл қолданба бағдарламаларды ая режімінде орындауын жоспарлауға арналған. "
-"Жаңа тапсырманы жоспарлау үшін Таспсырмалар қапшығын түртіп, мәзірден "
-"\"Өңдеу->Жаңа\" дегенді таңдаңыз."
-
-#: src/kcmCron.cpp:106
-#, kde-format
-msgid "Welcome to the Task Scheduler"
-msgstr "Тапсырма жоспарлағышына қош келдіңіз"
-
-#: src/taskEditorDialog.cpp:69
-#, kde-format
-msgid "Add or modify a scheduled task"
-msgstr "Тапсырманы жоспарлау не өзгерту"
-
-#: src/taskEditorDialog.cpp:70 src/taskEditorDialog.cpp:868
-#, kde-format
-msgid "<i>This task will be executed at the specified intervals.</i>"
-msgstr "<i>Бұл тапсырма көрсетілген мерзім сайын орындалады.</i>"
-
-#: src/taskEditorDialog.cpp:78
-#, kde-format
-msgid "&Command:"
-msgstr "&Команда:"
-
-#: src/taskEditorDialog.cpp:99 src/variableEditorDialog.cpp:89
-#, kde-format
-msgid "&Run as:"
-msgstr "&Басқаның атынан:"
-
-#: src/taskEditorDialog.cpp:116 src/variableEditorDialog.cpp:105
-#, kde-format
-msgid "Co&mment:"
-msgstr "Түсінікте&ме:"
-
-#: src/taskEditorDialog.cpp:129
-#, kde-format
-msgid "&Enable this task"
-msgstr "Тапсырма рұқсат &етілсін"
-
-#: src/taskEditorDialog.cpp:134
-#, kde-format
-msgid "Run at system &bootup"
-msgstr "Жүйе жұмысын &бастағанда орындалсын"
-
-#: src/taskEditorDialog.cpp:140
-#, kde-format
-msgid "Run &every day"
-msgstr "Күнд&е орындалсын"
-
-#: src/taskEditorDialog.cpp:243
-#, kde-format
-msgid "Days of Month"
-msgstr "Ай күндері"
-
-#: src/taskEditorDialog.cpp:280
-#, kde-format
-msgid "Months"
-msgstr "Айлары"
-
-#: src/taskEditorDialog.cpp:316
-#, kde-format
-msgid "Days of Week"
-msgstr "Апта күндері"
-
-#: src/taskEditorDialog.cpp:452
-#, kde-format
-msgid "Minutes"
-msgstr "Минуттары"
-
-#: src/taskEditorDialog.cpp:462
-#, kde-format
-msgid "Preselection:"
-msgstr "Алдын ала таңдауы:"
-
-#: src/taskEditorDialog.cpp:469
-#, kde-format
-msgid "Clear selection"
-msgstr "Таңдаудан айну"
-
-#: src/taskEditorDialog.cpp:470
-#, kde-format
-msgid "Custom selection"
-msgstr "Өзгеше таңдау"
-
-#: src/taskEditorDialog.cpp:471
-#, kde-format
-msgid "Each minute"
-msgstr "Әр минут сайын"
-
-#: src/taskEditorDialog.cpp:472
-#, kde-format
-msgid "Every 2 minutes"
-msgstr "Әр 2 минут сайын"
-
-#: src/taskEditorDialog.cpp:473
-#, kde-format
-msgid "Every 5 minutes"
-msgstr "Әр 5 минут сайын"
-
-#: src/taskEditorDialog.cpp:474
-#, kde-format
-msgid "Every 10 minutes"
-msgstr "Әр 10 минут сайын"
-
-#: src/taskEditorDialog.cpp:475
-#, kde-format
-msgid "Every 15 minutes"
-msgstr "Әр 15 минут сайын "
-
-#: src/taskEditorDialog.cpp:476
-#, kde-format
-msgid "Every 20 minutes"
-msgstr "Әр 20 минут сайын"
-
-#: src/taskEditorDialog.cpp:477
-#, kde-format
-msgid "Every 30 minutes"
-msgstr "Әр 30 минут сайын"
-
-#: src/taskEditorDialog.cpp:516
-#, kde-format
-msgid "Hours"
-msgstr "Сағаттары"
-
-#: src/taskEditorDialog.cpp:521
-#, kde-format
-msgid "AM:"
-msgstr "AM"
-
-#: src/taskEditorDialog.cpp:539
-#, kde-format
-msgid "PM:"
-msgstr "PM"
-
-#: src/taskEditorDialog.cpp:714 src/taskEditorDialog.cpp:724
-#, kde-format
-msgid "<i>Please type a valid command line...</i>"
-msgstr "<i>Дұрыс командасын келтіріңіз...</i>"
-
-#: src/taskEditorDialog.cpp:748
-#, kde-format
-msgid "<i>Please select an executable program...</i>"
-msgstr "<i>Орындалатын бағдарламаны келтіріңіз ...</i>"
-
-#: src/taskEditorDialog.cpp:756 src/taskEditorDialog.cpp:782
-#, kde-format
-msgid "<i>Please browse for a program to execute...</i>"
-msgstr "<i>Орындалатын бағдарламаны тауып көрсетіңіз...</i>"
-
-#: src/taskEditorDialog.cpp:769
-#, kde-format
-msgid "<i>This task is disabled.</i>"
-msgstr "<i>Бұл бұғатталған тапсырма.</i>"
-
-#: src/taskEditorDialog.cpp:776
-#, kde-format
-msgid "<i>This task will be run on system bootup.</i>"
-msgstr "<i>Бұл жүйе жұмысын бастағанда орындалатын тапсырма.</i>"
-
-#: src/taskEditorDialog.cpp:803
-#, kde-format
-msgid "<i>Please select from the 'Months' section...</i>"
-msgstr "<i>'Айлары' бөлімінен таңдап алыңыз...</i>"
-
-#: src/taskEditorDialog.cpp:825
-#, kde-format
-msgid ""
-"<i>Please select from either the 'Days of Month' or the 'Days of Week' "
-"section...</i>"
-msgstr "<i>'Ай күндері' не 'Апта күндері' бөлімінен таңдап алыңыз ...</i>"
-
-#: src/taskEditorDialog.cpp:842
-#, kde-format
-msgid "<i>Please select from the 'Hours' section...</i>"
-msgstr "<i>'Сағаттары' бөлімінен таңдап алыңыз...</i>"
-
-#: src/taskEditorDialog.cpp:859
-#, kde-format
-msgid "<i>Please select from the 'Minutes' section...</i>"
-msgstr "<i>'Минуттары' бөлімінен таңдап алыңыз...</i>"
-
-#: src/taskEditorDialog.cpp:1063
-#, kde-format
-msgid "Set All"
-msgstr "Бүкілін орнату"
-
-#: src/taskEditorDialog.cpp:1065
-#, kde-format
-msgid "Clear All"
-msgstr "Бүкілінен айну"
-
-#: src/tasksWidget.cpp:32
-#, kde-format
-msgid "<b>Scheduled Tasks</b>"
-msgstr "<b>Жоспарланған тапсырмалар</b>"
-
-#: src/tasksWidget.cpp:98
+#: src/tasksmodel.cpp:47
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
 msgstr ""
 "Скрипт орындалуы аяқталды. Шығу үшін Enter не Ctrl+C пернелерді басыңыз."
 
-#: src/tasksWidget.cpp:127
+#: src/taskvalidator.cpp:104 src/taskvalidator.cpp:144
+#, kde-kuit-format
+msgctxt "@info"
+msgid "<message>Choose a program to run</message>"
+msgstr ""
+
+#: src/taskvalidator.cpp:112 src/taskvalidator.cpp:119
+#, fuzzy, kde-kuit-format
+#| msgid "<i>Please type a valid command line...</i>"
+msgctxt "@info"
+msgid "<message>Please type a valid command line</message>"
+msgstr "<i>Дұрыс командасын келтіріңіз...</i>"
+
+#: src/taskvalidator.cpp:138
+#, fuzzy, kde-kuit-format
+#| msgid "<i>Please select an executable program...</i>"
+msgctxt "@info"
+msgid "<message>Please select an executable program</message>"
+msgstr "<i>Орындалатын бағдарламаны келтіріңіз ...</i>"
+
+#: src/taskvalidator.cpp:163
+#, fuzzy, kde-kuit-format
+#| msgid "<i>Please select from the 'Months' section...</i>"
+msgctxt "@info"
+msgid "<message>Please select from the <b>Months</b> section</message>"
+msgstr "<i>'Айлары' бөлімінен таңдап алыңыз...</i>"
+
+#: src/taskvalidator.cpp:188
+#, fuzzy, kde-kuit-format
+#| msgid ""
+#| "<i>Please select from either the 'Days of Month' or the 'Days of Week' "
+#| "section...</i>"
+msgctxt "@info"
+msgid ""
+"<message>Please select from either the <b>Days of Month</b> or the <b>Days "
+"of Week</b> section</message>"
+msgstr "<i>'Ай күндері' не 'Апта күндері' бөлімінен таңдап алыңыз ...</i>"
+
+#: src/taskvalidator.cpp:206
+#, fuzzy, kde-kuit-format
+#| msgid "<i>Please select from the 'Hours' section...</i>"
+msgctxt "@info"
+msgid "<message>Please select from the <b>Hours</b> section</message>"
+msgstr "<i>'Сағаттары' бөлімінен таңдап алыңыз...</i>"
+
+#: src/taskvalidator.cpp:224
+#, fuzzy, kde-kuit-format
+#| msgid "<i>Please select from the 'Minutes' section...</i>"
+msgctxt "@info"
+msgid "<message>Please select from the <b>Minutes</b> section</message>"
+msgstr "<i>'Минуттары' бөлімінен таңдап алыңыз...</i>"
+
+#: src/ui/main.qml:45
 #, kde-format
+msgctxt "@text"
+msgid "Show:"
+msgstr ""
+
+#: src/ui/main.qml:49
+#, fuzzy, kde-format
+#| msgid "Task Scheduler"
+msgctxt "@title:tab"
+msgid "User Schedule"
+msgstr "Тапсырма жоспарлағышы"
+
+#: src/ui/main.qml:55
+#, fuzzy, kde-format
+#| msgid "Task Scheduler"
+msgctxt "@title:tab"
+msgid "System Schedule"
+msgstr "Тапсырма жоспарлағышы"
+
+#: src/ui/main.qml:64
+#, fuzzy, kde-format
+#| msgid "Printing..."
+msgctxt "@action:button"
+msgid "Print"
+msgstr "Басып шығаруда..."
+
+#: src/ui/Onboarding.qml:22
+#, fuzzy, kde-format
+#| msgid "Welcome to the Task Scheduler"
+msgid "Welcome to Task Scheduler!"
+msgstr "Тапсырма жоспарлағышына қош келдіңіз"
+
+#: src/ui/Onboarding.qml:24
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"Schedule programs to run in the background. Set tasks to run on a fixed "
+"schedule and automate repetitive tasks like downloading files or sending "
+"emails. <link url='%1'>Learn more</link>"
+msgstr ""
+
+#: src/ui/Onboarding.qml:27
+#, kde-format
+msgctxt "@action:button"
+msgid "Go to Dashboard"
+msgstr ""
+
+#: src/ui/TaskPage.qml:22
+#, fuzzy, kde-format
+#| msgid "Edit Task"
+msgctxt "@title"
+msgid "Edit Task"
+msgstr "Тапсырманы өңдеу"
+
+#: src/ui/TaskPage.qml:23
+#, fuzzy, kde-format
+#| msgid "New Task"
+msgctxt "@title"
 msgid "New Task"
 msgstr "Жаңа тапсырма"
 
-#: src/tasksWidget.cpp:163
-#, kde-format
-msgid "Modify Task"
-msgstr "Тапсырманы өзгерту"
+#: src/ui/TaskPage.qml:33
+#, fuzzy, kde-format
+#| msgid "Edit Task"
+msgctxt "@action:button"
+msgid "Edit Task"
+msgstr "Тапсырманы өңдеу"
 
-#: src/tasksWidget.cpp:223 src/variablesWidget.cpp:183
+#: src/ui/TaskPage.qml:34
+#, fuzzy, kde-format
+#| msgid "Edit Task"
+msgctxt "@action:button accessible"
+msgid "Edit Task"
+msgstr "Тапсырманы өңдеу"
+
+#: src/ui/TaskPage.qml:44
+#, fuzzy, kde-format
+#| msgid "New Task"
+msgctxt "@action:button"
+msgid "New Task"
+msgstr "Жаңа тапсырма"
+
+#: src/ui/TaskPage.qml:45
+#, fuzzy, kde-format
+#| msgid "New Task"
+msgctxt "@action:button accessible"
+msgid "New Task"
+msgstr "Жаңа тапсырма"
+
+#: src/ui/TaskPage.qml:90
+#, fuzzy, kde-format
+#| msgid "&Command:"
+msgctxt "@label:textbox"
+msgid "Command:"
+msgstr "&Команда:"
+
+#: src/ui/TaskPage.qml:97
 #, kde-format
+msgctxt "@action:button"
+msgid "Browse the Program"
+msgstr ""
+
+#: src/ui/TaskPage.qml:105
+#, fuzzy, kde-format
+#| msgid "&Enable this task"
+msgctxt "@label:checkbox"
+msgid "Enable this task"
+msgstr "Тапсырма рұқсат &етілсін"
+
+#: src/ui/TaskPage.qml:110 src/ui/VariablePage.qml:97
+#, fuzzy, kde-format
+#| msgid "User"
+msgctxt "@label:listbox"
+msgid "User:"
+msgstr "Пайдаланушы"
+
+#: src/ui/TaskPage.qml:129 src/ui/VariablePage.qml:119
+#, fuzzy, kde-format
+#| msgid "&Comment:"
+msgctxt "@label:textbox"
+msgid "Comment:"
+msgstr "&Түсініктеме:"
+
+#: src/ui/TaskPage.qml:136
+#, kde-format
+msgctxt "@label:checkbox"
+msgid "Run:"
+msgstr ""
+
+#: src/ui/TaskPage.qml:139
+#, fuzzy, kde-format
+#| msgid "At system startup"
+msgctxt "@label:checkbox"
+msgid "When system starts"
+msgstr "Жүйе бастағанда"
+
+#: src/ui/TaskPage.qml:146
+#, fuzzy, kde-format
+#| msgid "every day "
+msgctxt "@label:checkbox"
+msgid "Every day"
+msgstr "күн сайын "
+
+#: src/ui/TaskPage.qml:152
+#, fuzzy, kde-format
+#| msgid "Months"
+msgctxt "@title:group"
+msgid "Months"
+msgstr "Айлары"
+
+#: src/ui/TaskPage.qml:172
+#, fuzzy, kde-format
+#| msgid "Days of Month"
+msgctxt "@title:group"
+msgid "Days of Month"
+msgstr "Ай күндері"
+
+#: src/ui/TaskPage.qml:193
+#, fuzzy, kde-format
+#| msgid "Days of Week"
+msgctxt "@title:group"
+msgid "Days of Week"
+msgstr "Апта күндері"
+
+#: src/ui/TaskPage.qml:213
+#, fuzzy, kde-format
+#| msgid "Hours"
+msgctxt "@title:group"
+msgid "Hours"
+msgstr "Сағаттары"
+
+#: src/ui/TaskPage.qml:234
+#, fuzzy, kde-format
+#| msgid "Minutes"
+msgctxt "@title:group"
+msgid "Minutes"
+msgstr "Минуттары"
+
+#: src/ui/TaskPage.qml:263
+#, kde-format
+msgid "Custom selection"
+msgstr "Өзгеше таңдау"
+
+#: src/ui/TaskPage.qml:264
+#, kde-format
+msgid "Each minute"
+msgstr "Әр минут сайын"
+
+#: src/ui/TaskPage.qml:265
+#, kde-format
+msgid "Every 2 minutes"
+msgstr "Әр 2 минут сайын"
+
+#: src/ui/TaskPage.qml:266
+#, kde-format
+msgid "Every 5 minutes"
+msgstr "Әр 5 минут сайын"
+
+#: src/ui/TaskPage.qml:267
+#, kde-format
+msgid "Every 10 minutes"
+msgstr "Әр 10 минут сайын"
+
+#: src/ui/TaskPage.qml:268
+#, kde-format
+msgid "Every 15 minutes"
+msgstr "Әр 15 минут сайын "
+
+#: src/ui/TaskPage.qml:269
+#, kde-format
+msgid "Every 20 minutes"
+msgstr "Әр 20 минут сайын"
+
+#: src/ui/TaskPage.qml:270
+#, kde-format
+msgid "Every 30 minutes"
+msgstr "Әр 30 минут сайын"
+
+#: src/ui/TaskPage.qml:312
+#, fuzzy, kde-format
+#| msgid "January"
+msgctxt "@action:button"
+msgid "January"
+msgstr "Қаңтар"
+
+#: src/ui/TaskPage.qml:316
+#, fuzzy, kde-format
+#| msgid "February"
+msgctxt "@action:button"
+msgid "February"
+msgstr "Ақпан"
+
+#: src/ui/TaskPage.qml:320
+#, fuzzy, kde-format
+#| msgid "March"
+msgctxt "@action:button"
+msgid "March"
+msgstr "Наурыз"
+
+#: src/ui/TaskPage.qml:324
+#, fuzzy, kde-format
+#| msgid "April"
+msgctxt "@action:button"
+msgid "April"
+msgstr "Сәуір"
+
+#: src/ui/TaskPage.qml:328
+#, fuzzy, kde-format
+#| msgctxt "May long"
+#| msgid "May"
+msgctxt "@action:button"
+msgid "May"
+msgstr "Мамыр"
+
+#: src/ui/TaskPage.qml:332
+#, fuzzy, kde-format
+#| msgid "June"
+msgctxt "@action:button"
+msgid "June"
+msgstr "Маусым"
+
+#: src/ui/TaskPage.qml:336
+#, fuzzy, kde-format
+#| msgctxt "July long"
+#| msgid "July"
+msgctxt "@action:button"
+msgid "July"
+msgstr "Шілде"
+
+#: src/ui/TaskPage.qml:340
+#, fuzzy, kde-format
+#| msgid "August"
+msgctxt "@action:button"
+msgid "August"
+msgstr "Тамыз"
+
+#: src/ui/TaskPage.qml:344
+#, fuzzy, kde-format
+#| msgid "September"
+msgctxt "@action:button"
+msgid "September"
+msgstr "Қыркүйек"
+
+#: src/ui/TaskPage.qml:348
+#, fuzzy, kde-format
+#| msgid "October"
+msgctxt "@action:button"
+msgid "October"
+msgstr "Қазан"
+
+#: src/ui/TaskPage.qml:352
+#, fuzzy, kde-format
+#| msgid "November"
+msgctxt "@action:button"
+msgid "November"
+msgstr "Қараша"
+
+#: src/ui/TaskPage.qml:356
+#, fuzzy, kde-format
+#| msgid "December"
+msgctxt "@action:button"
+msgid "December"
+msgstr "Желтоқсан"
+
+#: src/ui/TaskPage.qml:378
+#, fuzzy, kde-format
+#| msgid "Monday"
+msgctxt "@action:button"
+msgid "Monday"
+msgstr "Дүйсенбі"
+
+#: src/ui/TaskPage.qml:382
+#, fuzzy, kde-format
+#| msgid "Tuesday"
+msgctxt "@action:button"
+msgid "Tuesday"
+msgstr "Сейсенбі"
+
+#: src/ui/TaskPage.qml:386
+#, fuzzy, kde-format
+#| msgid "Wednesday"
+msgctxt "@action:button"
+msgid "Wednesday"
+msgstr "Сәрсенбі"
+
+#: src/ui/TaskPage.qml:390
+#, fuzzy, kde-format
+#| msgid "Thursday"
+msgctxt "@action:button"
+msgid "Thursday"
+msgstr "Бейсенбі"
+
+#: src/ui/TaskPage.qml:394
+#, fuzzy, kde-format
+#| msgid "Friday"
+msgctxt "@action:button"
+msgid "Friday"
+msgstr "Жұма"
+
+#: src/ui/TaskPage.qml:398
+#, fuzzy, kde-format
+#| msgid "Saturday"
+msgctxt "@action:button"
+msgid "Saturday"
+msgstr "Сенбі"
+
+#: src/ui/TaskPage.qml:402
+#, fuzzy, kde-format
+#| msgid "Sunday"
+msgctxt "@action:button"
+msgid "Sunday"
+msgstr "Жексенбі"
+
+#: src/ui/TasksComponent.qml:19
+#, fuzzy, kde-format
+#| msgid "Scheduled Tasks"
+msgctxt "@title:group"
+msgid "Scheduled Tasks"
+msgstr "Жоспарланған тапсырмалар"
+
+#: src/ui/TasksComponent.qml:56 src/ui/VariablesComponent.qml:57
+#, fuzzy, kde-format
+#| msgid "User"
+msgctxt "@title:column"
 msgid "User"
 msgstr "Пайдаланушы"
 
-#: src/tasksWidget.cpp:229 src/variablesWidget.cpp:188
-#, kde-format
-msgid "Status"
-msgstr "Күй-жайы"
+#: src/ui/TasksComponent.qml:66
+#, fuzzy, kde-format
+#| msgid "Scheduling"
+msgctxt "@title:column"
+msgid "Scheduling"
+msgstr "Жоспарлау"
 
-#: src/tasksWidget.cpp:231
-#, kde-format
-msgid "Scheduling Details"
-msgstr "Жоспарлаудың егжей-тегжейі"
+#: src/ui/TasksComponent.qml:75
+#, fuzzy, kde-format
+#| msgid "Command"
+msgctxt "@title:column"
+msgid "Command"
+msgstr "Команда"
 
-#: src/tasksWidget.cpp:256
-#, kde-format
-msgctxt "Adds a new task"
-msgid "New &Task..."
-msgstr "Жаңа &тапсырма..."
-
-#: src/tasksWidget.cpp:257
-#, kde-format
-msgid "Create a new task."
-msgstr "Жаңа тапсырманы құру."
-
-#: src/tasksWidget.cpp:261 src/variablesWidget.cpp:209
-#, kde-format
-msgid "M&odify..."
-msgstr "Ө&згерту..."
-
-#: src/tasksWidget.cpp:263
-#, kde-format
-msgid "Modify the selected task."
-msgstr "Таңдалған тапсырманы өзгерту."
-
-#: src/tasksWidget.cpp:267 src/variablesWidget.cpp:215
-#, kde-format
-msgid "&Delete"
-msgstr "Ө&шіру"
-
-#: src/tasksWidget.cpp:269
-#, kde-format
-msgid "Delete the selected task."
-msgstr "Таңдалған тапсырма өшіру."
-
-#: src/tasksWidget.cpp:273
-#, kde-format
-msgid "&Run Now"
-msgstr "Қ&азір орындалсын"
-
-#: src/tasksWidget.cpp:275
-#, kde-format
-msgid "Run the selected task now."
-msgstr "Таңдалған тапсырманы бірден орындау."
-
-#: src/taskWidget.cpp:40 src/variableWidget.cpp:38
-#, kde-format
-msgid "Enabled"
-msgstr "Рұқсат етілген"
-
-#: src/taskWidget.cpp:43 src/variableWidget.cpp:41
-#, kde-format
-msgid "Disabled"
-msgstr "Бұғатталған"
-
-#: src/variableEditorDialog.cpp:47
-#, kde-format
-msgid "Add or modify a variable"
-msgstr "Айнымалыны қосу не өзгерту"
-
-#: src/variableEditorDialog.cpp:51
-#, kde-format
-msgctxt "The environmental variable name ie HOME, MAILTO etc"
-msgid "&Variable:"
-msgstr "&Айнымалы:"
-
-#: src/variableEditorDialog.cpp:80
-#, kde-format
-msgid "Va&lue:"
-msgstr "Мә&ні:"
-
-#: src/variableEditorDialog.cpp:113
-#, kde-format
-msgid "&Enable this variable"
-msgstr "&Айнымалыны рұқсат ету"
-
-#: src/variableEditorDialog.cpp:145
-#, kde-format
-msgid "<i>This variable will be used by scheduled tasks.</i>"
-msgstr "<i>Бұл айнымалыны жоспалаған тапсырмалар қолданады.</i>"
-
-#: src/variableEditorDialog.cpp:192
-#, kde-format
-msgid "<i>This variable is disabled.</i>"
-msgstr "<i>Бұл бұғаталған айнымалы.</i>"
-
-#: src/variableEditorDialog.cpp:199
-#, kde-format
-msgid "<i>Please enter the variable name...</i>"
-msgstr "<i>Айнымалының атауын келтіріңіз...</i>"
-
-#: src/variableEditorDialog.cpp:206
-#, kde-format
-msgid "<i>Please enter the variable value ...</i>"
-msgstr "<i>Айнымалының мәнін келтіріңіз ...</i>"
-
-#: src/variablesWidget.cpp:29
-#, kde-format
-msgid "<b>Environment Variables</b>"
-msgstr "<b>Орта айнымалылары</b>"
-
-#: src/variablesWidget.cpp:62
-#, kde-format
-msgid "Modify Variable"
-msgstr "Айнымалыны өзгерту"
-
-#: src/variablesWidget.cpp:142
-#, kde-format
-msgid "New Variable"
-msgstr "Жаңа айнымалы"
-
-#: src/variablesWidget.cpp:186
-#, kde-format
-msgid "Variable"
-msgstr "Айнымалы"
-
-#: src/variablesWidget.cpp:187
-#, kde-format
-msgid "Value"
-msgstr "Мәні"
-
-#: src/variablesWidget.cpp:189
-#, kde-format
+#: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
+#, fuzzy, kde-format
+#| msgid "Comment"
+msgctxt "@title:column"
 msgid "Comment"
 msgstr "Түсініктеме"
 
-#: src/variablesWidget.cpp:204
-#, kde-format
-msgctxt "Adds a new variable"
-msgid "New &Variable..."
-msgstr "Жаңа а&йнымалы..."
+#: src/ui/TasksComponent.qml:92
+#, fuzzy, kde-format
+#| msgid "Scheduling Details"
+msgctxt "@title:column"
+msgid "Scheduling Details"
+msgstr "Жоспарлаудың егжей-тегжейі"
 
-#: src/variablesWidget.cpp:205
-#, kde-format
-msgid "Create a new variable."
-msgstr "Жаңа айнымалыны құру."
+#: src/ui/TasksComponent.qml:98
+#, fuzzy, kde-format
+#| msgid "Edit Task"
+msgctxt "@action:button"
+msgid "Add Task…"
+msgstr "Тапсырманы өңдеу"
 
-#: src/variablesWidget.cpp:211
-#, kde-format
-msgid "Modify the selected variable."
-msgstr "Таңдалған айнымалыны өзгерту."
+#: src/ui/TasksComponent.qml:105
+#, fuzzy, kde-format
+#| msgid "Edit Task"
+msgctxt "@action:button"
+msgid "Edit Task…"
+msgstr "Тапсырманы өңдеу"
 
-#: src/variablesWidget.cpp:217
-#, kde-format
-msgid "Delete the selected variable."
-msgstr "Таңдалған айнымалыны өшіру."
+#: src/ui/TasksComponent.qml:113 src/ui/VariablesComponent.qml:125
+#, fuzzy, kde-format
+#| msgid "Set All"
+msgctxt "@action:button"
+msgid "Select All"
+msgstr "Бүкілін орнату"
 
-#~ msgid "Task Scheduler"
-#~ msgstr "Тапсырма жоспарлағышы"
+#: src/ui/TasksComponent.qml:120 src/ui/VariablesComponent.qml:132
+#, kde-format
+msgctxt "@action:button"
+msgid "Copy"
+msgstr ""
+
+#: src/ui/TasksComponent.qml:127 src/ui/VariablesComponent.qml:139
+#, kde-format
+msgctxt "@action:button"
+msgid "Cut"
+msgstr ""
+
+#: src/ui/TasksComponent.qml:134 src/ui/VariablesComponent.qml:146
+#, kde-format
+msgctxt "@action:button"
+msgid "Paste"
+msgstr ""
+
+#: src/ui/TasksComponent.qml:142 src/ui/TasksComponent.qml:174
+#: src/ui/VariablesComponent.qml:154 src/ui/VariablesComponent.qml:178
+#, fuzzy, kde-format
+#| msgid "&Delete"
+msgctxt "@action:button"
+msgid "Delete"
+msgstr "Ө&шіру"
+
+#: src/ui/TasksComponent.qml:150
+#, fuzzy, kde-format
+#| msgid "&Run as:"
+msgctxt "@action:button"
+msgid "Run task"
+msgstr "&Басқаның атынан:"
+
+#: src/ui/TasksComponent.qml:162 src/ui/VariablesComponent.qml:166
+#, kde-format
+msgctxt "@action:button"
+msgid "Add…"
+msgstr ""
+
+#: src/ui/TasksComponent.qml:168 src/ui/VariablesComponent.qml:172
+#, kde-format
+msgctxt "@action:button"
+msgid "Edit…"
+msgstr ""
+
+#: src/ui/TasksComponent.qml:180
+#, fuzzy, kde-format
+#| msgid "Sun"
+msgctxt "@action:button"
+msgid "Run"
+msgstr "Жексенбі"
+
+#: src/ui/TimeCard.qml:40
+#, kde-format
+msgctxt "@label:checkbox"
+msgid "Select all"
+msgstr ""
+
+#: src/ui/VariablePage.qml:17
+#, fuzzy, kde-format
+#| msgid "Edit Variable"
+msgctxt "@title"
+msgid "Edit Variable"
+msgstr "Айнымалыны өңдеу"
+
+#: src/ui/VariablePage.qml:18
+#, fuzzy, kde-format
+#| msgid "New Variable"
+msgctxt "@title"
+msgid "New Variable"
+msgstr "Жаңа айнымалы"
+
+#: src/ui/VariablePage.qml:27
+#, fuzzy, kde-format
+#| msgid "Edit Variable"
+msgctxt "@action:button"
+msgid "Edit Variable"
+msgstr "Айнымалыны өңдеу"
+
+#: src/ui/VariablePage.qml:28
+#, fuzzy, kde-format
+#| msgid "Edit Variable"
+msgctxt "@action:button accessible"
+msgid "Edit Variable"
+msgstr "Айнымалыны өңдеу"
+
+#: src/ui/VariablePage.qml:38
+#, fuzzy, kde-format
+#| msgid "New Variable"
+msgctxt "@action:button"
+msgid "New Variable"
+msgstr "Жаңа айнымалы"
+
+#: src/ui/VariablePage.qml:39
+#, fuzzy, kde-format
+#| msgid "New Variable"
+msgctxt "@action:button accessible"
+msgid "New Variable"
+msgstr "Жаңа айнымалы"
+
+#: src/ui/VariablePage.qml:57
+#, fuzzy, kde-kuit-format
+#| msgid "<i>Please enter the variable name...</i>"
+msgctxt "@info"
+msgid "<message>Please enter the variable name</message>"
+msgstr "<i>Айнымалының атауын келтіріңіз...</i>"
+
+#: src/ui/VariablePage.qml:59
+#, fuzzy, kde-kuit-format
+#| msgid "<i>Please enter the variable value ...</i>"
+msgctxt "@info"
+msgid "<message>Please enter the variable value</message>"
+msgstr "<i>Айнымалының мәнін келтіріңіз ...</i>"
+
+#: src/ui/VariablePage.qml:76
+#, fuzzy, kde-format
+#| msgctxt "The environmental variable name ie HOME, MAILTO etc"
+#| msgid "Variable:"
+msgctxt "@label:listbox"
+msgid "Variable:"
+msgstr "Айнымалы:"
+
+#: src/ui/VariablePage.qml:112
+#, fuzzy, kde-format
+#| msgid "Value:"
+msgctxt "@label:textbox"
+msgid "Value:"
+msgstr "Мәні:"
+
+#: src/ui/VariablePage.qml:126
+#, fuzzy, kde-format
+#| msgid "&Enable this variable"
+msgctxt "@label:checkbox"
+msgid "Enable this variable"
+msgstr "&Айнымалыны рұқсат ету"
+
+#: src/ui/VariablesComponent.qml:19
+#, fuzzy, kde-format
+#| msgid "Environment Variables"
+msgctxt "@title:group"
+msgid "Environment Variables"
+msgstr "Орта айнымалылары"
+
+#: src/ui/VariablesComponent.qml:67
+#, fuzzy, kde-format
+#| msgid "Variable"
+msgctxt "@title:column"
+msgid "Variable"
+msgstr "Айнымалы"
+
+#: src/ui/VariablesComponent.qml:98
+#, fuzzy, kde-format
+#| msgid "Value"
+msgctxt "@title:column"
+msgid "Value"
+msgstr "Мәні"
+
+#: src/ui/VariablesComponent.qml:112
+#, fuzzy, kde-format
+#| msgid "Edit Variable"
+msgctxt "@action:button"
+msgid "Add Variable…"
+msgstr "Айнымалыны өңдеу"
+
+#: src/ui/VariablesComponent.qml:118
+#, fuzzy, kde-format
+#| msgid "Edit Variable"
+msgctxt "@action:button"
+msgid "Edit Variable…"
+msgstr "Айнымалыны өңдеу"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Сайран Киккарин"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "sairan@computer.org"
+
+#~ msgid "Description"
+#~ msgstr "Сипаттама"
+
+#~ msgid "System Crontab"
+#~ msgstr "Жүйелік Crontab кестесі"
+
+#~ msgid "All Users Crontabs"
+#~ msgstr "Бүкіл пайдаланушылардың Crontab-тары"
+
+#~ msgctxt "Crontab of user login"
+#~ msgid "Crontab of user %1"
+#~ msgstr "%1 пайдаланушының Crontab-ы"
+
+#, fuzzy
+#~| msgid "Cron Options"
+#~ msgctxt "@title:window"
+#~ msgid "Cron Options"
+#~ msgstr "Cron параметрлері"
+
+#~ msgid "Print cron&tab"
+#~ msgstr "Cron&tab кестесін басып шығару"
+
+#~ msgid "Print &all users"
+#~ msgstr "Б&арлық пайдаланушыларды басып шығару"
+
+#~ msgid "Show the following Cron:"
+#~ msgstr "Келесі Cron көрсетілсін:"
+
+#~ msgid "Personal Cron"
+#~ msgstr "Дербес Cron"
+
+#~ msgid "System Cron"
+#~ msgstr "Жүйелік Cron"
+
+#~ msgid ""
+#~ "The following error occurred while initializing KCron:\n"
+#~ "\n"
+#~ "%1\n"
+#~ "\n"
+#~ "KCron will now exit.\n"
+#~ msgstr ""
+#~ "KCron инициализациялауда қате пайда болды:\n"
+#~ "\n"
+#~ "%1\n"
+#~ "\n"
+#~ "KCron жабылады.\n"
+
+#~ msgid ""
+#~ "You can use this application to schedule programs to run in the "
+#~ "background.\n"
+#~ "To schedule a new task now, click on the Tasks folder and select Edit/New "
+#~ "from the menu."
+#~ msgstr ""
+#~ "Бұл қолданба бағдарламаларды ая режімінде орындауын жоспарлауға арналған. "
+#~ "Жаңа тапсырманы жоспарлау үшін Таспсырмалар қапшығын түртіп, мәзірден "
+#~ "\"Өңдеу->Жаңа\" дегенді таңдаңыз."
+
+#~ msgid "Add or modify a scheduled task"
+#~ msgstr "Тапсырманы жоспарлау не өзгерту"
+
+#~ msgid "<i>This task will be executed at the specified intervals.</i>"
+#~ msgstr "<i>Бұл тапсырма көрсетілген мерзім сайын орындалады.</i>"
+
+#~ msgid "Co&mment:"
+#~ msgstr "Түсінікте&ме:"
+
+#~ msgid "Run at system &bootup"
+#~ msgstr "Жүйе жұмысын &бастағанда орындалсын"
+
+#~ msgid "Run &every day"
+#~ msgstr "Күнд&е орындалсын"
+
+#~ msgid "Preselection:"
+#~ msgstr "Алдын ала таңдауы:"
+
+#~ msgid "Clear selection"
+#~ msgstr "Таңдаудан айну"
+
+#~ msgid "AM:"
+#~ msgstr "AM"
+
+#~ msgid "PM:"
+#~ msgstr "PM"
+
+#~ msgid "<i>Please browse for a program to execute...</i>"
+#~ msgstr "<i>Орындалатын бағдарламаны тауып көрсетіңіз...</i>"
+
+#~ msgid "<i>This task is disabled.</i>"
+#~ msgstr "<i>Бұл бұғатталған тапсырма.</i>"
+
+#~ msgid "<i>This task will be run on system bootup.</i>"
+#~ msgstr "<i>Бұл жүйе жұмысын бастағанда орындалатын тапсырма.</i>"
+
+#~ msgid "Clear All"
+#~ msgstr "Бүкілінен айну"
+
+#~ msgid "<b>Scheduled Tasks</b>"
+#~ msgstr "<b>Жоспарланған тапсырмалар</b>"
+
+#~ msgid "Modify Task"
+#~ msgstr "Тапсырманы өзгерту"
+
+#~ msgid "Status"
+#~ msgstr "Күй-жайы"
+
+#~ msgctxt "Adds a new task"
+#~ msgid "New &Task..."
+#~ msgstr "Жаңа &тапсырма..."
+
+#~ msgid "Create a new task."
+#~ msgstr "Жаңа тапсырманы құру."
+
+#~ msgid "M&odify..."
+#~ msgstr "Ө&згерту..."
+
+#~ msgid "Modify the selected task."
+#~ msgstr "Таңдалған тапсырманы өзгерту."
+
+#~ msgid "Delete the selected task."
+#~ msgstr "Таңдалған тапсырма өшіру."
+
+#~ msgid "&Run Now"
+#~ msgstr "Қ&азір орындалсын"
+
+#~ msgid "Run the selected task now."
+#~ msgstr "Таңдалған тапсырманы бірден орындау."
+
+#~ msgid "Enabled"
+#~ msgstr "Рұқсат етілген"
+
+#~ msgid "Disabled"
+#~ msgstr "Бұғатталған"
+
+#~ msgid "Add or modify a variable"
+#~ msgstr "Айнымалыны қосу не өзгерту"
+
+#~ msgctxt "The environmental variable name ie HOME, MAILTO etc"
+#~ msgid "&Variable:"
+#~ msgstr "&Айнымалы:"
+
+#~ msgid "Va&lue:"
+#~ msgstr "Мә&ні:"
+
+#~ msgid "<i>This variable will be used by scheduled tasks.</i>"
+#~ msgstr "<i>Бұл айнымалыны жоспалаған тапсырмалар қолданады.</i>"
+
+#~ msgid "<i>This variable is disabled.</i>"
+#~ msgstr "<i>Бұл бұғаталған айнымалы.</i>"
+
+#~ msgid "<b>Environment Variables</b>"
+#~ msgstr "<b>Орта айнымалылары</b>"
+
+#~ msgid "Modify Variable"
+#~ msgstr "Айнымалыны өзгерту"
+
+#~ msgctxt "Adds a new variable"
+#~ msgid "New &Variable..."
+#~ msgstr "Жаңа а&йнымалы..."
+
+#~ msgid "Create a new variable."
+#~ msgstr "Жаңа айнымалыны құру."
+
+#~ msgid "Modify the selected variable."
+#~ msgstr "Таңдалған айнымалыны өзгерту."
+
+#~ msgid "Delete the selected variable."
+#~ msgstr "Таңдалған айнымалыны өшіру."
 
 #~ msgid "KDE Task Scheduler"
 #~ msgstr "KDE Тапсырма жоспарлағышы"
@@ -1027,9 +1371,6 @@ msgstr "Таңдалған айнымалыны өшіру."
 #~ msgid "&Program:"
 #~ msgstr "&Бағдарлама:"
 
-#~ msgid "&Comment:"
-#~ msgstr "&Түсініктеме:"
-
 #~ msgid ""
 #~ "Scheduled tasks have been modified.\n"
 #~ "Do you want to save changes?"
@@ -1053,9 +1394,6 @@ msgstr "Таңдалған айнымалыны өшіру."
 #~ msgid "&Enabled"
 #~ msgstr "&Рұқсат етілсін"
 
-#~ msgid "Printing..."
-#~ msgstr "Басып шығаруда..."
-
 #~ msgid "Copying to clipboard..."
 #~ msgstr "Алмасу буферіне көшірмелеуде..."
 
@@ -1070,13 +1408,6 @@ msgstr "Таңдалған айнымалыны өшіру."
 
 #~ msgid "No tasks..."
 #~ msgstr "Тапсырмалар жоқ..."
-
-#~ msgctxt "The environmental variable name ie HOME, MAILTO etc"
-#~ msgid "Variable:"
-#~ msgstr "Айнымалы:"
-
-#~ msgid "Value:"
-#~ msgstr "Мәні:"
 
 #~ msgid "No variables..."
 #~ msgstr "Айнымалылар жоқ..."
@@ -1148,17 +1479,11 @@ msgstr "Таңдалған айнымалыны өшіру."
 #~ msgid "Disabled"
 #~ msgstr "Бұғатталған"
 
-#~ msgid "Edit Variable"
-#~ msgstr "Айнымалыны өңдеу"
-
 #~ msgid "Users/Tasks/Variable"
 #~ msgstr "Пайдаланушылар/Тапсырмалар/Айнымалылар"
 
 #~ msgid "Tasks/Variables"
 #~ msgstr "Тапсырмалар/Айнымалылар"
-
-#~ msgid "Edit Task"
-#~ msgstr "Тапсырманы өңдеу"
 
 #~ msgid "&Browse..."
 #~ msgstr "&Шолу..."

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-25 01:34+0000\n"
+"POT-Creation-Date: 2024-09-24 00:41+0000\n"
 "PO-Revision-Date: 2024-02-09 17:45+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -24,16 +24,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Lokalize 24.01.95\n"
-
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Tuncay Yeniay, Cemal Aslan"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "tuncayyeniay@mynet.com, cemalaslan47@gmail.com"
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -328,7 +318,7 @@ msgstr "Pazar"
 msgid "No comment"
 msgstr "Açıklama yok"
 
-#: src/crontablib/cthost.cpp:59
+#: src/crontablib/cthost.cpp:57
 #, kde-format
 msgid ""
 "You have been blocked from using KCron\t                      by either the /"
@@ -408,7 +398,7 @@ msgstr "Kasım"
 msgid "December"
 msgstr "Aralık"
 
-#: src/crontablib/ctSystemCron.cpp:31
+#: src/crontablib/ctSystemCron.cpp:29
 #, kde-format
 msgid "root"
 msgstr "kök"
@@ -511,469 +501,806 @@ msgstr "Devingen kitaplıkların konumu."
 msgid "Local Variable"
 msgstr "Yerel Değişken"
 
-#: src/crontabPrinter.cpp:89
-#, kde-format
-msgid "Scheduled Tasks"
-msgstr "Zamanlanmış Görevler"
-
-#: src/crontabPrinter.cpp:106 src/tasksWidget.cpp:226
-#, kde-format
-msgid "Scheduling"
-msgstr "Zamanlanıyor"
-
-#: src/crontabPrinter.cpp:106 src/tasksWidget.cpp:228
-#, kde-format
-msgid "Command"
-msgstr "Komut"
-
-#: src/crontabPrinter.cpp:106 src/tasksWidget.cpp:230
-#, kde-format
-msgid "Description"
-msgstr "Tanımlama"
-
-#: src/crontabPrinter.cpp:127
-#, kde-format
-msgid "Environment Variables"
-msgstr "Çevre Değişkenleri"
-
-#: src/crontabPrinter.cpp:152
-#, kde-format
-msgid "System Crontab"
-msgstr "Sistem Görev Listesi"
-
-#: src/crontabPrinter.cpp:154
-#, kde-format
-msgid "All Users Crontabs"
-msgstr "Tüm Kullanıcıların Görevleri"
-
-#: src/crontabPrinter.cpp:156
-#, kde-format
-msgctxt "Crontab of user login"
-msgid "Crontab of user %1"
-msgstr "%1 kullanıcısının görevleri"
-
-#: src/crontabPrinterWidget.cpp:20
-#, kde-format
-msgctxt "@title:window"
-msgid "Cron Options"
-msgstr "Cron Seçenekleri"
-
-#: src/crontabPrinterWidget.cpp:24
-#, kde-format
-msgid "Print cron&tab"
-msgstr "İş &listesini yazdır"
-
-#: src/crontabPrinterWidget.cpp:28
-#, kde-format
-msgid "Print &all users"
-msgstr "&Tüm kullanıcıları yazdır"
-
-#: src/crontabWidget.cpp:85
-#, kde-format
-msgid "Show the following Cron:"
-msgstr "Aşağıdaki görevleri göster:"
-
-#: src/crontabWidget.cpp:89
-#, kde-format
-msgid "Personal Cron"
-msgstr "Kişisel Görev"
-
-#: src/crontabWidget.cpp:94
-#, kde-format
-msgid "System Cron"
-msgstr "Sistem Görevi"
-
-#: src/kcmCron.cpp:36
-#, kde-format
-msgid ""
-"The following error occurred while initializing KCron:\n"
-"\n"
-"%1\n"
-"\n"
-"KCron will now exit.\n"
-msgstr ""
-"KCron çalıştırılırken aşağıdaki hata oluştu:\n"
-"\n"
-"%1\n"
-"\n"
-"KCron sonlandırılacaktır.\n"
-
-#: src/kcmCron.cpp:104
-#, kde-format
-msgid ""
-"You can use this application to schedule programs to run in the background.\n"
-"To schedule a new task now, click on the Tasks folder and select Edit/New "
-"from the menu."
-msgstr ""
-"Arka planda çalışacak programları planlamak için bu uygulamayı "
-"kullanabilirsiniz.\n"
-"Şimdi yeni bir görev tanımlamak için Görevler dizinine tıklayın ve menüden "
-"Düzenle/Yeni’yi seçin."
-
-#: src/kcmCron.cpp:106
-#, kde-format
-msgid "Welcome to the Task Scheduler"
-msgstr "Görev Zamanlayıcıya Hoş Geldiniz"
-
-#: src/taskEditorDialog.cpp:69
-#, kde-format
-msgid "Add or modify a scheduled task"
-msgstr "Bir zamanlanmış görev ekle ya da düzenle"
-
-#: src/taskEditorDialog.cpp:70 src/taskEditorDialog.cpp:868
-#, kde-format
-msgid "<i>This task will be executed at the specified intervals.</i>"
-msgstr "<i>Bu görev belirlenen aralıklarla yürütülecek...</i>"
-
-#: src/taskEditorDialog.cpp:78
-#, kde-format
-msgid "&Command:"
-msgstr "&Komut:"
-
-#: src/taskEditorDialog.cpp:99 src/variableEditorDialog.cpp:89
-#, kde-format
-msgid "&Run as:"
-msgstr "&Farklı çalıştır:"
-
-#: src/taskEditorDialog.cpp:116 src/variableEditorDialog.cpp:105
-#, kde-format
-msgid "Co&mment:"
-msgstr "&Açıklama:"
-
-#: src/taskEditorDialog.cpp:129
-#, kde-format
-msgid "&Enable this task"
-msgstr "Bu &görevi etkinleştir"
-
-#: src/taskEditorDialog.cpp:134
-#, kde-format
-msgid "Run at system &bootup"
-msgstr "Sistem &başlangıcında çalıştır"
-
-#: src/taskEditorDialog.cpp:140
-#, kde-format
-msgid "Run &every day"
-msgstr "Her &gün çalıştır"
-
-#: src/taskEditorDialog.cpp:243
-#, kde-format
-msgid "Days of Month"
-msgstr "Ayın Günleri"
-
-#: src/taskEditorDialog.cpp:280
-#, kde-format
-msgid "Months"
-msgstr "Aylar"
-
-#: src/taskEditorDialog.cpp:316
-#, kde-format
-msgid "Days of Week"
-msgstr "Haftanın Günleri"
-
-#: src/taskEditorDialog.cpp:452
-#, kde-format
-msgid "Minutes"
-msgstr "Dakika"
-
-#: src/taskEditorDialog.cpp:462
-#, kde-format
-msgid "Preselection:"
-msgstr "Önseçim:"
-
-#: src/taskEditorDialog.cpp:469
-#, kde-format
-msgid "Clear selection"
-msgstr "Seçimi temizle"
-
-#: src/taskEditorDialog.cpp:470
-#, kde-format
-msgid "Custom selection"
-msgstr "Özel seçim"
-
-#: src/taskEditorDialog.cpp:471
-#, kde-format
-msgid "Each minute"
-msgstr "Her dakika"
-
-#: src/taskEditorDialog.cpp:472
-#, kde-format
-msgid "Every 2 minutes"
-msgstr "Her 2 dakika"
-
-#: src/taskEditorDialog.cpp:473
-#, kde-format
-msgid "Every 5 minutes"
-msgstr "Her 5 dakika"
-
-#: src/taskEditorDialog.cpp:474
-#, kde-format
-msgid "Every 10 minutes"
-msgstr "Her 10 dakika"
-
-#: src/taskEditorDialog.cpp:475
-#, kde-format
-msgid "Every 15 minutes"
-msgstr "Her 15 dakika"
-
-#: src/taskEditorDialog.cpp:476
-#, kde-format
-msgid "Every 20 minutes"
-msgstr "Her 20 dakika"
-
-#: src/taskEditorDialog.cpp:477
-#, kde-format
-msgid "Every 30 minutes"
-msgstr "Her 30 dakika"
-
-#: src/taskEditorDialog.cpp:516
-#, kde-format
-msgid "Hours"
-msgstr "Saatler"
-
-#: src/taskEditorDialog.cpp:521
-#, kde-format
-msgid "AM:"
-msgstr "ÖÖ:"
-
-#: src/taskEditorDialog.cpp:539
-#, kde-format
-msgid "PM:"
-msgstr "ÖS:"
-
-#: src/taskEditorDialog.cpp:714 src/taskEditorDialog.cpp:724
-#, kde-format
-msgid "<i>Please type a valid command line...</i>"
-msgstr "<i>Lütfen geçerli bir komut satırı girin...</i>"
-
-#: src/taskEditorDialog.cpp:748
-#, kde-format
-msgid "<i>Please select an executable program...</i>"
-msgstr "<i>Lütfen yürütülebilir bir uygulama seçin...</i>"
-
-#: src/taskEditorDialog.cpp:756 src/taskEditorDialog.cpp:782
-#, kde-format
-msgid "<i>Please browse for a program to execute...</i>"
-msgstr "<i>Lütfen yürütmek için bir uygulamaya göz atın...</i>"
-
-#: src/taskEditorDialog.cpp:769
-#, kde-format
-msgid "<i>This task is disabled.</i>"
-msgstr "<i>Bu görev devre dışı bırakıldı.</i>"
-
-#: src/taskEditorDialog.cpp:776
-#, kde-format
-msgid "<i>This task will be run on system bootup.</i>"
-msgstr "<i>Bu görev sistem başlangıcında çalıştırılacak...</i>"
-
-#: src/taskEditorDialog.cpp:803
-#, kde-format
-msgid "<i>Please select from the 'Months' section...</i>"
-msgstr "<i>Lütfen 'Aylar' bölümünden seçin...</i>"
-
-#: src/taskEditorDialog.cpp:825
-#, kde-format
-msgid ""
-"<i>Please select from either the 'Days of Month' or the 'Days of Week' "
-"section...</i>"
-msgstr ""
-"<i>Lütfen 'Ayın Günleri' ya da 'Haftanın Günleri' bölümünden seçin...</i>"
-
-#: src/taskEditorDialog.cpp:842
-#, kde-format
-msgid "<i>Please select from the 'Hours' section...</i>"
-msgstr "<i>Lütfen 'Saat' bölümünden seçin...</i>"
-
-#: src/taskEditorDialog.cpp:859
-#, kde-format
-msgid "<i>Please select from the 'Minutes' section...</i>"
-msgstr "<i>Lütfen 'Dakika' bölümünden seçin...</i>"
-
-#: src/taskEditorDialog.cpp:1063
-#, kde-format
-msgid "Set All"
-msgstr "Tümünü Ayarla"
-
-#: src/taskEditorDialog.cpp:1065
-#, kde-format
-msgid "Clear All"
-msgstr "Tümünü Temizle"
-
-#: src/tasksWidget.cpp:32
-#, kde-format
-msgid "<b>Scheduled Tasks</b>"
-msgstr "<b>Zamanlanmış Görevler</b>"
-
-#: src/tasksWidget.cpp:98
+#: src/tasksmodel.cpp:47
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
 msgstr ""
 "Betik yürütmesinin sonu. Çıkmak için Giriş veya Kontrol+C düğmelerine basın."
 
-#: src/tasksWidget.cpp:127
+#: src/taskvalidator.cpp:104 src/taskvalidator.cpp:144
+#, kde-kuit-format
+msgctxt "@info"
+msgid "<message>Choose a program to run</message>"
+msgstr ""
+
+#: src/taskvalidator.cpp:112 src/taskvalidator.cpp:119
+#, fuzzy, kde-kuit-format
+#| msgid "<i>Please type a valid command line...</i>"
+msgctxt "@info"
+msgid "<message>Please type a valid command line</message>"
+msgstr "<i>Lütfen geçerli bir komut satırı girin...</i>"
+
+#: src/taskvalidator.cpp:138
+#, fuzzy, kde-kuit-format
+#| msgid "<i>Please select an executable program...</i>"
+msgctxt "@info"
+msgid "<message>Please select an executable program</message>"
+msgstr "<i>Lütfen yürütülebilir bir uygulama seçin...</i>"
+
+#: src/taskvalidator.cpp:163
+#, fuzzy, kde-kuit-format
+#| msgid "<i>Please select from the 'Months' section...</i>"
+msgctxt "@info"
+msgid "<message>Please select from the <b>Months</b> section</message>"
+msgstr "<i>Lütfen 'Aylar' bölümünden seçin...</i>"
+
+#: src/taskvalidator.cpp:188
+#, fuzzy, kde-kuit-format
+#| msgid ""
+#| "<i>Please select from either the 'Days of Month' or the 'Days of Week' "
+#| "section...</i>"
+msgctxt "@info"
+msgid ""
+"<message>Please select from either the <b>Days of Month</b> or the <b>Days "
+"of Week</b> section</message>"
+msgstr ""
+"<i>Lütfen 'Ayın Günleri' ya da 'Haftanın Günleri' bölümünden seçin...</i>"
+
+#: src/taskvalidator.cpp:206
+#, fuzzy, kde-kuit-format
+#| msgid "<i>Please select from the 'Hours' section...</i>"
+msgctxt "@info"
+msgid "<message>Please select from the <b>Hours</b> section</message>"
+msgstr "<i>Lütfen 'Saat' bölümünden seçin...</i>"
+
+#: src/taskvalidator.cpp:224
+#, fuzzy, kde-kuit-format
+#| msgid "<i>Please select from the 'Minutes' section...</i>"
+msgctxt "@info"
+msgid "<message>Please select from the <b>Minutes</b> section</message>"
+msgstr "<i>Lütfen 'Dakika' bölümünden seçin...</i>"
+
+#: src/ui/main.qml:45
 #, kde-format
+msgctxt "@text"
+msgid "Show:"
+msgstr ""
+
+#: src/ui/main.qml:49
+#, fuzzy, kde-format
+#| msgid "Scheduling"
+msgctxt "@title:tab"
+msgid "User Schedule"
+msgstr "Zamanlanıyor"
+
+#: src/ui/main.qml:55
+#, kde-format
+msgctxt "@title:tab"
+msgid "System Schedule"
+msgstr ""
+
+#: src/ui/main.qml:64
+#, kde-format
+msgctxt "@action:button"
+msgid "Print"
+msgstr ""
+
+#: src/ui/Onboarding.qml:22
+#, fuzzy, kde-format
+#| msgid "Welcome to the Task Scheduler"
+msgid "Welcome to Task Scheduler!"
+msgstr "Görev Zamanlayıcıya Hoş Geldiniz"
+
+#: src/ui/Onboarding.qml:24
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"Schedule programs to run in the background. Set tasks to run on a fixed "
+"schedule and automate repetitive tasks like downloading files or sending "
+"emails. <link url='%1'>Learn more</link>"
+msgstr ""
+
+#: src/ui/Onboarding.qml:27
+#, kde-format
+msgctxt "@action:button"
+msgid "Go to Dashboard"
+msgstr ""
+
+#: src/ui/TaskPage.qml:22
+#, fuzzy, kde-format
+#| msgid "Modify Task"
+msgctxt "@title"
+msgid "Edit Task"
+msgstr "Görev Düzenle"
+
+#: src/ui/TaskPage.qml:23
+#, fuzzy, kde-format
+#| msgid "New Task"
+msgctxt "@title"
 msgid "New Task"
 msgstr "Yeni Görev"
 
-#: src/tasksWidget.cpp:163
-#, kde-format
-msgid "Modify Task"
+#: src/ui/TaskPage.qml:33
+#, fuzzy, kde-format
+#| msgid "Modify Task"
+msgctxt "@action:button"
+msgid "Edit Task"
 msgstr "Görev Düzenle"
 
-#: src/tasksWidget.cpp:223 src/variablesWidget.cpp:183
+#: src/ui/TaskPage.qml:34
+#, fuzzy, kde-format
+#| msgid "Modify Task"
+msgctxt "@action:button accessible"
+msgid "Edit Task"
+msgstr "Görev Düzenle"
+
+#: src/ui/TaskPage.qml:44
+#, fuzzy, kde-format
+#| msgid "New Task"
+msgctxt "@action:button"
+msgid "New Task"
+msgstr "Yeni Görev"
+
+#: src/ui/TaskPage.qml:45
+#, fuzzy, kde-format
+#| msgid "New Task"
+msgctxt "@action:button accessible"
+msgid "New Task"
+msgstr "Yeni Görev"
+
+#: src/ui/TaskPage.qml:90
+#, fuzzy, kde-format
+#| msgid "&Command:"
+msgctxt "@label:textbox"
+msgid "Command:"
+msgstr "&Komut:"
+
+#: src/ui/TaskPage.qml:97
 #, kde-format
+msgctxt "@action:button"
+msgid "Browse the Program"
+msgstr ""
+
+#: src/ui/TaskPage.qml:105
+#, fuzzy, kde-format
+#| msgid "&Enable this task"
+msgctxt "@label:checkbox"
+msgid "Enable this task"
+msgstr "Bu &görevi etkinleştir"
+
+#: src/ui/TaskPage.qml:110 src/ui/VariablePage.qml:97
+#, fuzzy, kde-format
+#| msgid "User"
+msgctxt "@label:listbox"
+msgid "User:"
+msgstr "Kullanıcı"
+
+#: src/ui/TaskPage.qml:129 src/ui/VariablePage.qml:119
+#, fuzzy, kde-format
+#| msgid "Co&mment:"
+msgctxt "@label:textbox"
+msgid "Comment:"
+msgstr "&Açıklama:"
+
+#: src/ui/TaskPage.qml:136
+#, kde-format
+msgctxt "@label:checkbox"
+msgid "Run:"
+msgstr ""
+
+#: src/ui/TaskPage.qml:139
+#, fuzzy, kde-format
+#| msgid "At system startup"
+msgctxt "@label:checkbox"
+msgid "When system starts"
+msgstr "Başlangıçta"
+
+#: src/ui/TaskPage.qml:146
+#, fuzzy, kde-format
+#| msgid "every day "
+msgctxt "@label:checkbox"
+msgid "Every day"
+msgstr "her gün "
+
+#: src/ui/TaskPage.qml:152
+#, fuzzy, kde-format
+#| msgid "Months"
+msgctxt "@title:group"
+msgid "Months"
+msgstr "Aylar"
+
+#: src/ui/TaskPage.qml:172
+#, fuzzy, kde-format
+#| msgid "Days of Month"
+msgctxt "@title:group"
+msgid "Days of Month"
+msgstr "Ayın Günleri"
+
+#: src/ui/TaskPage.qml:193
+#, fuzzy, kde-format
+#| msgid "Days of Week"
+msgctxt "@title:group"
+msgid "Days of Week"
+msgstr "Haftanın Günleri"
+
+#: src/ui/TaskPage.qml:213
+#, fuzzy, kde-format
+#| msgid "Hours"
+msgctxt "@title:group"
+msgid "Hours"
+msgstr "Saatler"
+
+#: src/ui/TaskPage.qml:234
+#, fuzzy, kde-format
+#| msgid "Minutes"
+msgctxt "@title:group"
+msgid "Minutes"
+msgstr "Dakika"
+
+#: src/ui/TaskPage.qml:263
+#, kde-format
+msgid "Custom selection"
+msgstr "Özel seçim"
+
+#: src/ui/TaskPage.qml:264
+#, kde-format
+msgid "Each minute"
+msgstr "Her dakika"
+
+#: src/ui/TaskPage.qml:265
+#, kde-format
+msgid "Every 2 minutes"
+msgstr "Her 2 dakika"
+
+#: src/ui/TaskPage.qml:266
+#, kde-format
+msgid "Every 5 minutes"
+msgstr "Her 5 dakika"
+
+#: src/ui/TaskPage.qml:267
+#, kde-format
+msgid "Every 10 minutes"
+msgstr "Her 10 dakika"
+
+#: src/ui/TaskPage.qml:268
+#, kde-format
+msgid "Every 15 minutes"
+msgstr "Her 15 dakika"
+
+#: src/ui/TaskPage.qml:269
+#, kde-format
+msgid "Every 20 minutes"
+msgstr "Her 20 dakika"
+
+#: src/ui/TaskPage.qml:270
+#, kde-format
+msgid "Every 30 minutes"
+msgstr "Her 30 dakika"
+
+#: src/ui/TaskPage.qml:312
+#, fuzzy, kde-format
+#| msgid "January"
+msgctxt "@action:button"
+msgid "January"
+msgstr "Ocak"
+
+#: src/ui/TaskPage.qml:316
+#, fuzzy, kde-format
+#| msgid "February"
+msgctxt "@action:button"
+msgid "February"
+msgstr "Şubat"
+
+#: src/ui/TaskPage.qml:320
+#, fuzzy, kde-format
+#| msgid "March"
+msgctxt "@action:button"
+msgid "March"
+msgstr "Mart"
+
+#: src/ui/TaskPage.qml:324
+#, fuzzy, kde-format
+#| msgid "April"
+msgctxt "@action:button"
+msgid "April"
+msgstr "Nisan"
+
+#: src/ui/TaskPage.qml:328
+#, fuzzy, kde-format
+#| msgctxt "May long"
+#| msgid "May"
+msgctxt "@action:button"
+msgid "May"
+msgstr "Mayıs"
+
+#: src/ui/TaskPage.qml:332
+#, fuzzy, kde-format
+#| msgid "June"
+msgctxt "@action:button"
+msgid "June"
+msgstr "Haziran"
+
+#: src/ui/TaskPage.qml:336
+#, fuzzy, kde-format
+#| msgctxt "July long"
+#| msgid "July"
+msgctxt "@action:button"
+msgid "July"
+msgstr "Temmuz"
+
+#: src/ui/TaskPage.qml:340
+#, fuzzy, kde-format
+#| msgid "August"
+msgctxt "@action:button"
+msgid "August"
+msgstr "Ağustos"
+
+#: src/ui/TaskPage.qml:344
+#, fuzzy, kde-format
+#| msgid "September"
+msgctxt "@action:button"
+msgid "September"
+msgstr "Eylül"
+
+#: src/ui/TaskPage.qml:348
+#, fuzzy, kde-format
+#| msgid "October"
+msgctxt "@action:button"
+msgid "October"
+msgstr "Ekim"
+
+#: src/ui/TaskPage.qml:352
+#, fuzzy, kde-format
+#| msgid "November"
+msgctxt "@action:button"
+msgid "November"
+msgstr "Kasım"
+
+#: src/ui/TaskPage.qml:356
+#, fuzzy, kde-format
+#| msgid "December"
+msgctxt "@action:button"
+msgid "December"
+msgstr "Aralık"
+
+#: src/ui/TaskPage.qml:378
+#, fuzzy, kde-format
+#| msgid "Monday"
+msgctxt "@action:button"
+msgid "Monday"
+msgstr "Pazartesi"
+
+#: src/ui/TaskPage.qml:382
+#, fuzzy, kde-format
+#| msgid "Tuesday"
+msgctxt "@action:button"
+msgid "Tuesday"
+msgstr "Salı"
+
+#: src/ui/TaskPage.qml:386
+#, fuzzy, kde-format
+#| msgid "Wednesday"
+msgctxt "@action:button"
+msgid "Wednesday"
+msgstr "Çarşamba"
+
+#: src/ui/TaskPage.qml:390
+#, fuzzy, kde-format
+#| msgid "Thursday"
+msgctxt "@action:button"
+msgid "Thursday"
+msgstr "Perşembe"
+
+#: src/ui/TaskPage.qml:394
+#, fuzzy, kde-format
+#| msgid "Friday"
+msgctxt "@action:button"
+msgid "Friday"
+msgstr "Cuma"
+
+#: src/ui/TaskPage.qml:398
+#, fuzzy, kde-format
+#| msgid "Saturday"
+msgctxt "@action:button"
+msgid "Saturday"
+msgstr "Cumartesi"
+
+#: src/ui/TaskPage.qml:402
+#, fuzzy, kde-format
+#| msgid "Sunday"
+msgctxt "@action:button"
+msgid "Sunday"
+msgstr "Pazar"
+
+#: src/ui/TasksComponent.qml:19
+#, fuzzy, kde-format
+#| msgid "Scheduled Tasks"
+msgctxt "@title:group"
+msgid "Scheduled Tasks"
+msgstr "Zamanlanmış Görevler"
+
+#: src/ui/TasksComponent.qml:56 src/ui/VariablesComponent.qml:57
+#, fuzzy, kde-format
+#| msgid "User"
+msgctxt "@title:column"
 msgid "User"
 msgstr "Kullanıcı"
 
-#: src/tasksWidget.cpp:229 src/variablesWidget.cpp:188
-#, kde-format
-msgid "Status"
-msgstr "Durum"
+#: src/ui/TasksComponent.qml:66
+#, fuzzy, kde-format
+#| msgid "Scheduling"
+msgctxt "@title:column"
+msgid "Scheduling"
+msgstr "Zamanlanıyor"
 
-#: src/tasksWidget.cpp:231
-#, kde-format
-msgid "Scheduling Details"
-msgstr "Zamanlama Ayrıntıları"
+#: src/ui/TasksComponent.qml:75
+#, fuzzy, kde-format
+#| msgid "Command"
+msgctxt "@title:column"
+msgid "Command"
+msgstr "Komut"
 
-#: src/tasksWidget.cpp:256
-#, kde-format
-msgctxt "Adds a new task"
-msgid "New &Task..."
-msgstr "&Yeni Görev..."
-
-#: src/tasksWidget.cpp:257
-#, kde-format
-msgid "Create a new task."
-msgstr "Yeni bir görev oluştur."
-
-#: src/tasksWidget.cpp:261 src/variablesWidget.cpp:209
-#, kde-format
-msgid "M&odify..."
-msgstr "&Değiştir..."
-
-#: src/tasksWidget.cpp:263
-#, kde-format
-msgid "Modify the selected task."
-msgstr "Seçili görevi düzenle."
-
-#: src/tasksWidget.cpp:267 src/variablesWidget.cpp:215
-#, kde-format
-msgid "&Delete"
-msgstr "&Sil"
-
-#: src/tasksWidget.cpp:269
-#, kde-format
-msgid "Delete the selected task."
-msgstr "Seçili görevi sil."
-
-#: src/tasksWidget.cpp:273
-#, kde-format
-msgid "&Run Now"
-msgstr "Şimdi Ç&alıştır"
-
-#: src/tasksWidget.cpp:275
-#, kde-format
-msgid "Run the selected task now."
-msgstr "Seçili görevi şimdi çalıştır."
-
-#: src/taskWidget.cpp:40 src/variableWidget.cpp:38
-#, kde-format
-msgid "Enabled"
-msgstr "Etkin"
-
-#: src/taskWidget.cpp:43 src/variableWidget.cpp:41
-#, kde-format
-msgid "Disabled"
-msgstr "Devre dışı"
-
-#: src/variableEditorDialog.cpp:47
-#, kde-format
-msgid "Add or modify a variable"
-msgstr "Bir değişken ekle ya da düzenle"
-
-#: src/variableEditorDialog.cpp:51
-#, kde-format
-msgctxt "The environmental variable name ie HOME, MAILTO etc"
-msgid "&Variable:"
-msgstr "&Değişken:"
-
-#: src/variableEditorDialog.cpp:80
-#, kde-format
-msgid "Va&lue:"
-msgstr "D&eğer:"
-
-#: src/variableEditorDialog.cpp:113
-#, kde-format
-msgid "&Enable this variable"
-msgstr "&Bu değişkeni etkinleştir"
-
-#: src/variableEditorDialog.cpp:145
-#, kde-format
-msgid "<i>This variable will be used by scheduled tasks.</i>"
-msgstr "<i>Bu değişken zamanlanmış görevler tarafından kullanılacak.</i>"
-
-#: src/variableEditorDialog.cpp:192
-#, kde-format
-msgid "<i>This variable is disabled.</i>"
-msgstr "<i>Bu değişken devre dışı bırakıldı.</i>"
-
-#: src/variableEditorDialog.cpp:199
-#, kde-format
-msgid "<i>Please enter the variable name...</i>"
-msgstr "<i>Lütfen bir değişken adı girin...</i>"
-
-#: src/variableEditorDialog.cpp:206
-#, kde-format
-msgid "<i>Please enter the variable value ...</i>"
-msgstr "<i>Lütfen değişkenin değerini girin ...</i>"
-
-#: src/variablesWidget.cpp:29
-#, kde-format
-msgid "<b>Environment Variables</b>"
-msgstr "<b>Çevre Değişkenleri</b>"
-
-#: src/variablesWidget.cpp:62
-#, kde-format
-msgid "Modify Variable"
-msgstr "Değişkeni Düzenle"
-
-#: src/variablesWidget.cpp:142
-#, kde-format
-msgid "New Variable"
-msgstr "Yeni Değişken"
-
-#: src/variablesWidget.cpp:186
-#, kde-format
-msgid "Variable"
-msgstr "Değişken"
-
-#: src/variablesWidget.cpp:187
-#, kde-format
-msgid "Value"
-msgstr "Değer"
-
-#: src/variablesWidget.cpp:189
-#, kde-format
+#: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
+#, fuzzy, kde-format
+#| msgid "Comment"
+msgctxt "@title:column"
 msgid "Comment"
 msgstr "Açıklama"
 
-#: src/variablesWidget.cpp:204
-#, kde-format
-msgctxt "Adds a new variable"
-msgid "New &Variable..."
-msgstr "Yeni &Değişken..."
+#: src/ui/TasksComponent.qml:92
+#, fuzzy, kde-format
+#| msgid "Scheduling Details"
+msgctxt "@title:column"
+msgid "Scheduling Details"
+msgstr "Zamanlama Ayrıntıları"
 
-#: src/variablesWidget.cpp:205
+#: src/ui/TasksComponent.qml:98
 #, kde-format
-msgid "Create a new variable."
-msgstr "Yeni bir değişken oluşturun."
+msgctxt "@action:button"
+msgid "Add Task…"
+msgstr ""
 
-#: src/variablesWidget.cpp:211
-#, kde-format
-msgid "Modify the selected variable."
-msgstr "Seçili değişkeni düzenleyin."
+#: src/ui/TasksComponent.qml:105
+#, fuzzy, kde-format
+#| msgid "Modify Task"
+msgctxt "@action:button"
+msgid "Edit Task…"
+msgstr "Görev Düzenle"
 
-#: src/variablesWidget.cpp:217
+#: src/ui/TasksComponent.qml:113 src/ui/VariablesComponent.qml:125
+#, fuzzy, kde-format
+#| msgid "Set All"
+msgctxt "@action:button"
+msgid "Select All"
+msgstr "Tümünü Ayarla"
+
+#: src/ui/TasksComponent.qml:120 src/ui/VariablesComponent.qml:132
 #, kde-format
-msgid "Delete the selected variable."
-msgstr "Seçili değişkeni silin."
+msgctxt "@action:button"
+msgid "Copy"
+msgstr ""
+
+#: src/ui/TasksComponent.qml:127 src/ui/VariablesComponent.qml:139
+#, kde-format
+msgctxt "@action:button"
+msgid "Cut"
+msgstr ""
+
+#: src/ui/TasksComponent.qml:134 src/ui/VariablesComponent.qml:146
+#, kde-format
+msgctxt "@action:button"
+msgid "Paste"
+msgstr ""
+
+#: src/ui/TasksComponent.qml:142 src/ui/TasksComponent.qml:174
+#: src/ui/VariablesComponent.qml:154 src/ui/VariablesComponent.qml:178
+#, fuzzy, kde-format
+#| msgid "&Delete"
+msgctxt "@action:button"
+msgid "Delete"
+msgstr "&Sil"
+
+#: src/ui/TasksComponent.qml:150
+#, fuzzy, kde-format
+#| msgid "&Run as:"
+msgctxt "@action:button"
+msgid "Run task"
+msgstr "&Farklı çalıştır:"
+
+#: src/ui/TasksComponent.qml:162 src/ui/VariablesComponent.qml:166
+#, kde-format
+msgctxt "@action:button"
+msgid "Add…"
+msgstr ""
+
+#: src/ui/TasksComponent.qml:168 src/ui/VariablesComponent.qml:172
+#, kde-format
+msgctxt "@action:button"
+msgid "Edit…"
+msgstr ""
+
+#: src/ui/TasksComponent.qml:180
+#, fuzzy, kde-format
+#| msgid "Sun"
+msgctxt "@action:button"
+msgid "Run"
+msgstr "Paz"
+
+#: src/ui/TimeCard.qml:40
+#, kde-format
+msgctxt "@label:checkbox"
+msgid "Select all"
+msgstr ""
+
+#: src/ui/VariablePage.qml:17
+#, fuzzy, kde-format
+#| msgid "Modify Variable"
+msgctxt "@title"
+msgid "Edit Variable"
+msgstr "Değişkeni Düzenle"
+
+#: src/ui/VariablePage.qml:18
+#, fuzzy, kde-format
+#| msgid "New Variable"
+msgctxt "@title"
+msgid "New Variable"
+msgstr "Yeni Değişken"
+
+#: src/ui/VariablePage.qml:27
+#, fuzzy, kde-format
+#| msgid "Modify Variable"
+msgctxt "@action:button"
+msgid "Edit Variable"
+msgstr "Değişkeni Düzenle"
+
+#: src/ui/VariablePage.qml:28
+#, fuzzy, kde-format
+#| msgid "Modify Variable"
+msgctxt "@action:button accessible"
+msgid "Edit Variable"
+msgstr "Değişkeni Düzenle"
+
+#: src/ui/VariablePage.qml:38
+#, fuzzy, kde-format
+#| msgid "New Variable"
+msgctxt "@action:button"
+msgid "New Variable"
+msgstr "Yeni Değişken"
+
+#: src/ui/VariablePage.qml:39
+#, fuzzy, kde-format
+#| msgid "New Variable"
+msgctxt "@action:button accessible"
+msgid "New Variable"
+msgstr "Yeni Değişken"
+
+#: src/ui/VariablePage.qml:57
+#, fuzzy, kde-kuit-format
+#| msgid "<i>Please enter the variable name...</i>"
+msgctxt "@info"
+msgid "<message>Please enter the variable name</message>"
+msgstr "<i>Lütfen bir değişken adı girin...</i>"
+
+#: src/ui/VariablePage.qml:59
+#, fuzzy, kde-kuit-format
+#| msgid "<i>Please enter the variable value ...</i>"
+msgctxt "@info"
+msgid "<message>Please enter the variable value</message>"
+msgstr "<i>Lütfen değişkenin değerini girin ...</i>"
+
+#: src/ui/VariablePage.qml:76
+#, fuzzy, kde-format
+#| msgctxt "The environmental variable name ie HOME, MAILTO etc"
+#| msgid "&Variable:"
+msgctxt "@label:listbox"
+msgid "Variable:"
+msgstr "&Değişken:"
+
+#: src/ui/VariablePage.qml:112
+#, fuzzy, kde-format
+#| msgid "Va&lue:"
+msgctxt "@label:textbox"
+msgid "Value:"
+msgstr "D&eğer:"
+
+#: src/ui/VariablePage.qml:126
+#, fuzzy, kde-format
+#| msgid "&Enable this variable"
+msgctxt "@label:checkbox"
+msgid "Enable this variable"
+msgstr "&Bu değişkeni etkinleştir"
+
+#: src/ui/VariablesComponent.qml:19
+#, fuzzy, kde-format
+#| msgid "Environment Variables"
+msgctxt "@title:group"
+msgid "Environment Variables"
+msgstr "Çevre Değişkenleri"
+
+#: src/ui/VariablesComponent.qml:67
+#, fuzzy, kde-format
+#| msgid "Variable"
+msgctxt "@title:column"
+msgid "Variable"
+msgstr "Değişken"
+
+#: src/ui/VariablesComponent.qml:98
+#, fuzzy, kde-format
+#| msgid "Value"
+msgctxt "@title:column"
+msgid "Value"
+msgstr "Değer"
+
+#: src/ui/VariablesComponent.qml:112
+#, fuzzy, kde-format
+#| msgid "Variable"
+msgctxt "@action:button"
+msgid "Add Variable…"
+msgstr "Değişken"
+
+#: src/ui/VariablesComponent.qml:118
+#, fuzzy, kde-format
+#| msgid "Modify Variable"
+msgctxt "@action:button"
+msgid "Edit Variable…"
+msgstr "Değişkeni Düzenle"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Tuncay Yeniay, Cemal Aslan"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "tuncayyeniay@mynet.com, cemalaslan47@gmail.com"
+
+#~ msgid "Description"
+#~ msgstr "Tanımlama"
+
+#~ msgid "System Crontab"
+#~ msgstr "Sistem Görev Listesi"
+
+#~ msgid "All Users Crontabs"
+#~ msgstr "Tüm Kullanıcıların Görevleri"
+
+#~ msgctxt "Crontab of user login"
+#~ msgid "Crontab of user %1"
+#~ msgstr "%1 kullanıcısının görevleri"
+
+#~ msgctxt "@title:window"
+#~ msgid "Cron Options"
+#~ msgstr "Cron Seçenekleri"
+
+#~ msgid "Print cron&tab"
+#~ msgstr "İş &listesini yazdır"
+
+#~ msgid "Print &all users"
+#~ msgstr "&Tüm kullanıcıları yazdır"
+
+#~ msgid "Show the following Cron:"
+#~ msgstr "Aşağıdaki görevleri göster:"
+
+#~ msgid "Personal Cron"
+#~ msgstr "Kişisel Görev"
+
+#~ msgid "System Cron"
+#~ msgstr "Sistem Görevi"
+
+#~ msgid ""
+#~ "The following error occurred while initializing KCron:\n"
+#~ "\n"
+#~ "%1\n"
+#~ "\n"
+#~ "KCron will now exit.\n"
+#~ msgstr ""
+#~ "KCron çalıştırılırken aşağıdaki hata oluştu:\n"
+#~ "\n"
+#~ "%1\n"
+#~ "\n"
+#~ "KCron sonlandırılacaktır.\n"
+
+#~ msgid ""
+#~ "You can use this application to schedule programs to run in the "
+#~ "background.\n"
+#~ "To schedule a new task now, click on the Tasks folder and select Edit/New "
+#~ "from the menu."
+#~ msgstr ""
+#~ "Arka planda çalışacak programları planlamak için bu uygulamayı "
+#~ "kullanabilirsiniz.\n"
+#~ "Şimdi yeni bir görev tanımlamak için Görevler dizinine tıklayın ve "
+#~ "menüden Düzenle/Yeni’yi seçin."
+
+#~ msgid "Add or modify a scheduled task"
+#~ msgstr "Bir zamanlanmış görev ekle ya da düzenle"
+
+#~ msgid "<i>This task will be executed at the specified intervals.</i>"
+#~ msgstr "<i>Bu görev belirlenen aralıklarla yürütülecek...</i>"
+
+#~ msgid "Run at system &bootup"
+#~ msgstr "Sistem &başlangıcında çalıştır"
+
+#~ msgid "Run &every day"
+#~ msgstr "Her &gün çalıştır"
+
+#~ msgid "Preselection:"
+#~ msgstr "Önseçim:"
+
+#~ msgid "Clear selection"
+#~ msgstr "Seçimi temizle"
+
+#~ msgid "AM:"
+#~ msgstr "ÖÖ:"
+
+#~ msgid "PM:"
+#~ msgstr "ÖS:"
+
+#~ msgid "<i>Please browse for a program to execute...</i>"
+#~ msgstr "<i>Lütfen yürütmek için bir uygulamaya göz atın...</i>"
+
+#~ msgid "<i>This task is disabled.</i>"
+#~ msgstr "<i>Bu görev devre dışı bırakıldı.</i>"
+
+#~ msgid "<i>This task will be run on system bootup.</i>"
+#~ msgstr "<i>Bu görev sistem başlangıcında çalıştırılacak...</i>"
+
+#~ msgid "Clear All"
+#~ msgstr "Tümünü Temizle"
+
+#~ msgid "<b>Scheduled Tasks</b>"
+#~ msgstr "<b>Zamanlanmış Görevler</b>"
+
+#~ msgid "Status"
+#~ msgstr "Durum"
+
+#~ msgctxt "Adds a new task"
+#~ msgid "New &Task..."
+#~ msgstr "&Yeni Görev..."
+
+#~ msgid "Create a new task."
+#~ msgstr "Yeni bir görev oluştur."
+
+#~ msgid "M&odify..."
+#~ msgstr "&Değiştir..."
+
+#~ msgid "Modify the selected task."
+#~ msgstr "Seçili görevi düzenle."
+
+#~ msgid "Delete the selected task."
+#~ msgstr "Seçili görevi sil."
+
+#~ msgid "&Run Now"
+#~ msgstr "Şimdi Ç&alıştır"
+
+#~ msgid "Run the selected task now."
+#~ msgstr "Seçili görevi şimdi çalıştır."
+
+#~ msgid "Enabled"
+#~ msgstr "Etkin"
+
+#~ msgid "Disabled"
+#~ msgstr "Devre dışı"
+
+#~ msgid "Add or modify a variable"
+#~ msgstr "Bir değişken ekle ya da düzenle"
+
+#~ msgid "<i>This variable will be used by scheduled tasks.</i>"
+#~ msgstr "<i>Bu değişken zamanlanmış görevler tarafından kullanılacak.</i>"
+
+#~ msgid "<i>This variable is disabled.</i>"
+#~ msgstr "<i>Bu değişken devre dışı bırakıldı.</i>"
+
+#~ msgid "<b>Environment Variables</b>"
+#~ msgstr "<b>Çevre Değişkenleri</b>"
+
+#~ msgctxt "Adds a new variable"
+#~ msgid "New &Variable..."
+#~ msgstr "Yeni &Değişken..."
+
+#~ msgid "Create a new variable."
+#~ msgstr "Yeni bir değişken oluşturun."
+
+#~ msgid "Modify the selected variable."
+#~ msgstr "Seçili değişkeni düzenleyin."
+
+#~ msgid "Delete the selected variable."
+#~ msgstr "Seçili değişkeni silin."

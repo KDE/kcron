@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-12-25 01:34+0000\n"
+"POT-Creation-Date: 2024-09-24 00:41+0000\n"
 "PO-Revision-Date: 2019-09-29 12:26+0500\n"
 "Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
 "Language-Team: English <kde-i18n-doc@kde.org>\n"
@@ -19,19 +19,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 19.04.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-
-#, kde-format
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr ""
-"НПО \"Имкониятҳои ҷавонон\" ва Khujand Computer Technologies, Inc. USA, "
-"Роҷер Ковакс, Виктор Ибрагимов, Марина Колючева"
-
-#, kde-format
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr ""
-"youth_opportunities@tajikngo.org,,rkovacs@khujand.org,,MarinaKL@tajikngo.org"
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -326,7 +313,7 @@ msgstr "Якшанбе"
 msgid "No comment"
 msgstr "&Шарҳ:"
 
-#: src/crontablib/cthost.cpp:59
+#: src/crontablib/cthost.cpp:57
 #, kde-format
 msgid ""
 "You have been blocked from using KCron\t                      by either the /"
@@ -404,7 +391,7 @@ msgstr "Ноябр"
 msgid "December"
 msgstr "Декабр"
 
-#: src/crontablib/ctSystemCron.cpp:31
+#: src/crontablib/ctSystemCron.cpp:29
 #, kde-format
 msgid "root"
 msgstr ""
@@ -511,520 +498,831 @@ msgstr ""
 msgid "Local Variable"
 msgstr "Таъғиротҳо"
 
-#: src/crontabPrinter.cpp:89
-#, fuzzy, kde-format
-#| msgid "Scheduled Tasks"
-msgid "Scheduled Tasks"
-msgstr "Ба нақша гирифтани масъалаҳо"
-
-#: src/crontabPrinter.cpp:106 src/tasksWidget.cpp:226
-#, kde-format
-msgid "Scheduling"
-msgstr ""
-
-#: src/crontabPrinter.cpp:106 src/tasksWidget.cpp:228
-#, fuzzy, kde-format
-#| msgid "Modify Task"
-msgid "Command"
-msgstr "Мукаммал кардани масъала"
-
-#: src/crontabPrinter.cpp:106 src/tasksWidget.cpp:230
-#, kde-format
-msgid "Description"
-msgstr "Тасвир"
-
-#: src/crontabPrinter.cpp:127
-#, fuzzy, kde-format
-#| msgid "Variables"
-msgid "Environment Variables"
-msgstr "Таъғиротҳо"
-
-#: src/crontabPrinter.cpp:152
-#, fuzzy, kde-format
-#| msgid "(System Crontab)"
-msgid "System Crontab"
-msgstr "(Системаи КронТаб)"
-
-#: src/crontabPrinter.cpp:154
-#, fuzzy, kde-format
-#| msgid "(System Crontab)"
-msgid "All Users Crontabs"
-msgstr "(Системаи КронТаб)"
-
-#: src/crontabPrinter.cpp:156
-#, kde-format
-msgctxt "Crontab of user login"
-msgid "Crontab of user %1"
-msgstr ""
-
-#: src/crontabPrinterWidget.cpp:20
-#, fuzzy, kde-format
-#| msgid "Cron Options"
-msgctxt "@title:window"
-msgid "Cron Options"
-msgstr "Параметрҳои cron"
-
-#: src/crontabPrinterWidget.cpp:24
-#, kde-format
-msgid "Print cron&tab"
-msgstr "Чопи &рӯйхати масъала"
-
-#: src/crontabPrinterWidget.cpp:28
-#, kde-format
-msgid "Print &all users"
-msgstr "Чопи &ҳамаи истифодакунандагон"
-
-#: src/crontabWidget.cpp:85
-#, kde-format
-msgid "Show the following Cron:"
-msgstr ""
-
-#: src/crontabWidget.cpp:89
-#, kde-format
-msgid "Personal Cron"
-msgstr ""
-
-#: src/crontabWidget.cpp:94
-#, fuzzy, kde-format
-#| msgid "(System Crontab)"
-msgid "System Cron"
-msgstr "(Системаи КронТаб)"
-
-#: src/kcmCron.cpp:36
-#, kde-format
-msgid ""
-"The following error occurred while initializing KCron:\n"
-"\n"
-"%1\n"
-"\n"
-"KCron will now exit.\n"
-msgstr ""
-"Хатои сар додани KCron:\n"
-"\n"
-"%1\n"
-"\n"
-"Барномаи Крон ба итмом мерасад.\n"
-
-#: src/kcmCron.cpp:104
-#, kde-format
-msgid ""
-"You can use this application to schedule programs to run in the background.\n"
-"To schedule a new task now, click on the Tasks folder and select Edit/New "
-"from the menu."
-msgstr ""
-"Шумо метавонед ин барномаро истифода кунед барои худкорона сар додани "
-"барномаҳо дар тартиботи замина ва дар вақти дода шуда.\n"
-"Барои тайёрии масъалаи нав, рӯи папкаи масъала пахш кунед ва пункти менюи "
-"Муҳаррирӣ/Навро интихоб кунед."
-
-#: src/kcmCron.cpp:106
-#, kde-format
-msgid "Welcome to the Task Scheduler"
-msgstr "Хуш Омадед ба барномаи сохтмони масъалаҳо"
-
-#: src/taskEditorDialog.cpp:69
-#, fuzzy, kde-format
-#| msgid "Modify Variable"
-msgid "Add or modify a scheduled task"
-msgstr "Таҳрири таъғирот"
-
-#: src/taskEditorDialog.cpp:70 src/taskEditorDialog.cpp:868
-#, kde-format
-msgid "<i>This task will be executed at the specified intervals.</i>"
-msgstr ""
-
-#: src/taskEditorDialog.cpp:78
-#, fuzzy, kde-format
-#| msgid "Modify Task"
-msgid "&Command:"
-msgstr "Мукаммал кардани масъала"
-
-#: src/taskEditorDialog.cpp:99 src/variableEditorDialog.cpp:89
-#, kde-format
-msgid "&Run as:"
-msgstr "&Оғози кардан монанди:"
-
-#: src/taskEditorDialog.cpp:116 src/variableEditorDialog.cpp:105
-#, kde-format
-msgid "Co&mment:"
-msgstr "&Шарҳ:"
-
-#: src/taskEditorDialog.cpp:129
-#, kde-format
-msgid "&Enable this task"
-msgstr ""
-
-#: src/taskEditorDialog.cpp:134
-#, kde-format
-msgid "Run at system &bootup"
-msgstr ""
-
-#: src/taskEditorDialog.cpp:140
-#, fuzzy, kde-format
-#| msgid "Run every day"
-msgid "Run &every day"
-msgstr "Ҳар рӯз сар додан"
-
-#: src/taskEditorDialog.cpp:243
-#, kde-format
-msgid "Days of Month"
-msgstr "Рӯзҳои моҳ"
-
-#: src/taskEditorDialog.cpp:280
-#, kde-format
-msgid "Months"
-msgstr "Моҳҳо"
-
-#: src/taskEditorDialog.cpp:316
-#, kde-format
-msgid "Days of Week"
-msgstr "Рӯзҳои ҳафта"
-
-#: src/taskEditorDialog.cpp:452
-#, kde-format
-msgid "Minutes"
-msgstr "Дақиқаҳо"
-
-#: src/taskEditorDialog.cpp:462
-#, fuzzy, kde-format
-#| msgid "Description:"
-msgid "Preselection:"
-msgstr "Тасвир:"
-
-#: src/taskEditorDialog.cpp:469
-#, kde-format
-msgid "Clear selection"
-msgstr ""
-
-#: src/taskEditorDialog.cpp:470
-#, kde-format
-msgid "Custom selection"
-msgstr ""
-
-#: src/taskEditorDialog.cpp:471
-#, fuzzy, kde-format
-#| msgid "the minutes"
-msgid "Each minute"
-msgstr "дақиқаҳо"
-
-#: src/taskEditorDialog.cpp:472
-#, fuzzy, kde-format
-#| msgid "the minutes"
-msgid "Every 2 minutes"
-msgstr "дақиқаҳо"
-
-#: src/taskEditorDialog.cpp:473
-#, fuzzy, kde-format
-#| msgid "the minutes"
-msgid "Every 5 minutes"
-msgstr "дақиқаҳо"
-
-#: src/taskEditorDialog.cpp:474
-#, fuzzy, kde-format
-#| msgid "the minutes"
-msgid "Every 10 minutes"
-msgstr "дақиқаҳо"
-
-#: src/taskEditorDialog.cpp:475
-#, fuzzy, kde-format
-#| msgid "the minutes"
-msgid "Every 15 minutes"
-msgstr "дақиқаҳо"
-
-#: src/taskEditorDialog.cpp:476
-#, fuzzy, kde-format
-#| msgid "the minutes"
-msgid "Every 20 minutes"
-msgstr "дақиқаҳо"
-
-#: src/taskEditorDialog.cpp:477
-#, fuzzy, kde-format
-#| msgid "the minutes"
-msgid "Every 30 minutes"
-msgstr "дақиқаҳо"
-
-#: src/taskEditorDialog.cpp:516
-#, kde-format
-msgid "Hours"
-msgstr "Соатҳо"
-
-#: src/taskEditorDialog.cpp:521
-#, fuzzy, kde-format
-#| msgid "AM"
-msgid "AM:"
-msgstr "AM"
-
-#: src/taskEditorDialog.cpp:539
-#, fuzzy, kde-format
-#| msgid "PM"
-msgid "PM:"
-msgstr "PM"
-
-#: src/taskEditorDialog.cpp:714 src/taskEditorDialog.cpp:724
-#, fuzzy, kde-format
-#| msgid "Please enter the variable name."
-msgid "<i>Please type a valid command line...</i>"
-msgstr "Номи таъғиротро ворид кунед."
-
-#: src/taskEditorDialog.cpp:748
-#, fuzzy, kde-format
-#| msgid "Please enter the variable name."
-msgid "<i>Please select an executable program...</i>"
-msgstr "Номи таъғиротро ворид кунед."
-
-#: src/taskEditorDialog.cpp:756 src/taskEditorDialog.cpp:782
-#, kde-format
-msgid "<i>Please browse for a program to execute...</i>"
-msgstr ""
-
-#: src/taskEditorDialog.cpp:769
-#, kde-format
-msgid "<i>This task is disabled.</i>"
-msgstr ""
-
-#: src/taskEditorDialog.cpp:776
-#, kde-format
-msgid "<i>This task will be run on system bootup.</i>"
-msgstr ""
-
-#: src/taskEditorDialog.cpp:803
-#, fuzzy, kde-format
-#| msgid "Please enter the variable name."
-msgid "<i>Please select from the 'Months' section...</i>"
-msgstr "Номи таъғиротро ворид кунед."
-
-#: src/taskEditorDialog.cpp:825
-#, kde-format
-msgid ""
-"<i>Please select from either the 'Days of Month' or the 'Days of Week' "
-"section...</i>"
-msgstr ""
-
-#: src/taskEditorDialog.cpp:842
-#, fuzzy, kde-format
-#| msgid "Please enter the variable name."
-msgid "<i>Please select from the 'Hours' section...</i>"
-msgstr "Номи таъғиротро ворид кунед."
-
-#: src/taskEditorDialog.cpp:859
-#, fuzzy, kde-format
-#| msgid "Please enter the variable name."
-msgid "<i>Please select from the 'Minutes' section...</i>"
-msgstr "Номи таъғиротро ворид кунед."
-
-#: src/taskEditorDialog.cpp:1063
-#, kde-format
-msgid "Set All"
-msgstr "Барпосозии Ҳама"
-
-#: src/taskEditorDialog.cpp:1065
-#, fuzzy, kde-format
-msgid "Clear All"
-msgstr "Барпосозии Ҳама"
-
-#: src/tasksWidget.cpp:32
-#, fuzzy, kde-format
-#| msgid "Scheduled Tasks"
-msgid "<b>Scheduled Tasks</b>"
-msgstr "Ба нақша гирифтани масъалаҳо"
-
-#: src/tasksWidget.cpp:98
+#: src/tasksmodel.cpp:47
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
 msgstr ""
 
-#: src/tasksWidget.cpp:127
+#: src/taskvalidator.cpp:104 src/taskvalidator.cpp:144
+#, kde-kuit-format
+msgctxt "@info"
+msgid "<message>Choose a program to run</message>"
+msgstr ""
+
+#: src/taskvalidator.cpp:112 src/taskvalidator.cpp:119
+#, fuzzy, kde-kuit-format
+#| msgid "Please enter the variable name."
+msgctxt "@info"
+msgid "<message>Please type a valid command line</message>"
+msgstr "Номи таъғиротро ворид кунед."
+
+#: src/taskvalidator.cpp:138
+#, fuzzy, kde-kuit-format
+#| msgid "Please enter the variable name."
+msgctxt "@info"
+msgid "<message>Please select an executable program</message>"
+msgstr "Номи таъғиротро ворид кунед."
+
+#: src/taskvalidator.cpp:163
+#, fuzzy, kde-kuit-format
+#| msgid "Please enter the variable name."
+msgctxt "@info"
+msgid "<message>Please select from the <b>Months</b> section</message>"
+msgstr "Номи таъғиротро ворид кунед."
+
+#: src/taskvalidator.cpp:188
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"<message>Please select from either the <b>Days of Month</b> or the <b>Days "
+"of Week</b> section</message>"
+msgstr ""
+
+#: src/taskvalidator.cpp:206
+#, fuzzy, kde-kuit-format
+#| msgid "Please enter the variable name."
+msgctxt "@info"
+msgid "<message>Please select from the <b>Hours</b> section</message>"
+msgstr "Номи таъғиротро ворид кунед."
+
+#: src/taskvalidator.cpp:224
+#, fuzzy, kde-kuit-format
+#| msgid "Please enter the variable name."
+msgctxt "@info"
+msgid "<message>Please select from the <b>Minutes</b> section</message>"
+msgstr "Номи таъғиротро ворид кунед."
+
+#: src/ui/main.qml:45
+#, kde-format
+msgctxt "@text"
+msgid "Show:"
+msgstr ""
+
+#: src/ui/main.qml:49
+#, fuzzy, kde-format
+#| msgid "Task Scheduler"
+msgctxt "@title:tab"
+msgid "User Schedule"
+msgstr "Сохтмони масъалаҳо"
+
+#: src/ui/main.qml:55
+#, fuzzy, kde-format
+#| msgid "Task Scheduler"
+msgctxt "@title:tab"
+msgid "System Schedule"
+msgstr "Сохтмони масъалаҳо"
+
+#: src/ui/main.qml:64
+#, fuzzy, kde-format
+#| msgid "Printing..."
+msgctxt "@action:button"
+msgid "Print"
+msgstr "Чоп..."
+
+#: src/ui/Onboarding.qml:22
+#, fuzzy, kde-format
+#| msgid "Welcome to the Task Scheduler"
+msgid "Welcome to Task Scheduler!"
+msgstr "Хуш Омадед ба барномаи сохтмони масъалаҳо"
+
+#: src/ui/Onboarding.qml:24
+#, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"Schedule programs to run in the background. Set tasks to run on a fixed "
+"schedule and automate repetitive tasks like downloading files or sending "
+"emails. <link url='%1'>Learn more</link>"
+msgstr ""
+
+#: src/ui/Onboarding.qml:27
+#, kde-format
+msgctxt "@action:button"
+msgid "Go to Dashboard"
+msgstr ""
+
+#: src/ui/TaskPage.qml:22
+#, fuzzy, kde-format
+#| msgid "Edit Task"
+msgctxt "@title"
+msgid "Edit Task"
+msgstr "Таҳрири масъала"
+
+#: src/ui/TaskPage.qml:23
 #, fuzzy, kde-format
 #| msgid "Tasks"
+msgctxt "@title"
 msgid "New Task"
 msgstr "Масъала"
 
-#: src/tasksWidget.cpp:163
-#, kde-format
-msgid "Modify Task"
+#: src/ui/TaskPage.qml:33
+#, fuzzy, kde-format
+#| msgid "Edit Task"
+msgctxt "@action:button"
+msgid "Edit Task"
+msgstr "Таҳрири масъала"
+
+#: src/ui/TaskPage.qml:34
+#, fuzzy, kde-format
+#| msgid "Edit Task"
+msgctxt "@action:button accessible"
+msgid "Edit Task"
+msgstr "Таҳрири масъала"
+
+#: src/ui/TaskPage.qml:44
+#, fuzzy, kde-format
+#| msgid "Tasks"
+msgctxt "@action:button"
+msgid "New Task"
+msgstr "Масъала"
+
+#: src/ui/TaskPage.qml:45
+#, fuzzy, kde-format
+#| msgid "Tasks"
+msgctxt "@action:button accessible"
+msgid "New Task"
+msgstr "Масъала"
+
+#: src/ui/TaskPage.qml:90
+#, fuzzy, kde-format
+#| msgid "Modify Task"
+msgctxt "@label:textbox"
+msgid "Command:"
 msgstr "Мукаммал кардани масъала"
 
-#: src/tasksWidget.cpp:223 src/variablesWidget.cpp:183
+#: src/ui/TaskPage.qml:97
 #, kde-format
+msgctxt "@action:button"
+msgid "Browse the Program"
+msgstr ""
+
+#: src/ui/TaskPage.qml:105
+#, kde-format
+msgctxt "@label:checkbox"
+msgid "Enable this task"
+msgstr ""
+
+#: src/ui/TaskPage.qml:110 src/ui/VariablePage.qml:97
+#, fuzzy, kde-format
+#| msgid "%H:%M"
+msgctxt "@label:listbox"
+msgid "User:"
+msgstr "%H:%M"
+
+#: src/ui/TaskPage.qml:129 src/ui/VariablePage.qml:119
+#, fuzzy, kde-format
+#| msgid "&Comment:"
+msgctxt "@label:textbox"
+msgid "Comment:"
+msgstr "&Шарҳ:"
+
+#: src/ui/TaskPage.qml:136
+#, kde-format
+msgctxt "@label:checkbox"
+msgid "Run:"
+msgstr ""
+
+#: src/ui/TaskPage.qml:139
+#, kde-format
+msgctxt "@label:checkbox"
+msgid "When system starts"
+msgstr ""
+
+#: src/ui/TaskPage.qml:146
+#, fuzzy, kde-format
+#| msgid "every day "
+msgctxt "@label:checkbox"
+msgid "Every day"
+msgstr "ҳар рӯз"
+
+#: src/ui/TaskPage.qml:152
+#, fuzzy, kde-format
+#| msgid "Months"
+msgctxt "@title:group"
+msgid "Months"
+msgstr "Моҳҳо"
+
+#: src/ui/TaskPage.qml:172
+#, fuzzy, kde-format
+#| msgid "Days of Month"
+msgctxt "@title:group"
+msgid "Days of Month"
+msgstr "Рӯзҳои моҳ"
+
+#: src/ui/TaskPage.qml:193
+#, fuzzy, kde-format
+#| msgid "Days of Week"
+msgctxt "@title:group"
+msgid "Days of Week"
+msgstr "Рӯзҳои ҳафта"
+
+#: src/ui/TaskPage.qml:213
+#, fuzzy, kde-format
+#| msgid "Hours"
+msgctxt "@title:group"
+msgid "Hours"
+msgstr "Соатҳо"
+
+#: src/ui/TaskPage.qml:234
+#, fuzzy, kde-format
+#| msgid "Minutes"
+msgctxt "@title:group"
+msgid "Minutes"
+msgstr "Дақиқаҳо"
+
+#: src/ui/TaskPage.qml:263
+#, kde-format
+msgid "Custom selection"
+msgstr ""
+
+#: src/ui/TaskPage.qml:264
+#, fuzzy, kde-format
+#| msgid "the minutes"
+msgid "Each minute"
+msgstr "дақиқаҳо"
+
+#: src/ui/TaskPage.qml:265
+#, fuzzy, kde-format
+#| msgid "the minutes"
+msgid "Every 2 minutes"
+msgstr "дақиқаҳо"
+
+#: src/ui/TaskPage.qml:266
+#, fuzzy, kde-format
+#| msgid "the minutes"
+msgid "Every 5 minutes"
+msgstr "дақиқаҳо"
+
+#: src/ui/TaskPage.qml:267
+#, fuzzy, kde-format
+#| msgid "the minutes"
+msgid "Every 10 minutes"
+msgstr "дақиқаҳо"
+
+#: src/ui/TaskPage.qml:268
+#, fuzzy, kde-format
+#| msgid "the minutes"
+msgid "Every 15 minutes"
+msgstr "дақиқаҳо"
+
+#: src/ui/TaskPage.qml:269
+#, fuzzy, kde-format
+#| msgid "the minutes"
+msgid "Every 20 minutes"
+msgstr "дақиқаҳо"
+
+#: src/ui/TaskPage.qml:270
+#, fuzzy, kde-format
+#| msgid "the minutes"
+msgid "Every 30 minutes"
+msgstr "дақиқаҳо"
+
+#: src/ui/TaskPage.qml:312
+#, fuzzy, kde-format
+#| msgid "January"
+msgctxt "@action:button"
+msgid "January"
+msgstr "Январ"
+
+#: src/ui/TaskPage.qml:316
+#, fuzzy, kde-format
+#| msgid "February"
+msgctxt "@action:button"
+msgid "February"
+msgstr "Феврал"
+
+#: src/ui/TaskPage.qml:320
+#, fuzzy, kde-format
+#| msgid "March"
+msgctxt "@action:button"
+msgid "March"
+msgstr "Март"
+
+#: src/ui/TaskPage.qml:324
+#, fuzzy, kde-format
+#| msgid "April"
+msgctxt "@action:button"
+msgid "April"
+msgstr "Апрел"
+
+#: src/ui/TaskPage.qml:328
+#, fuzzy, kde-format
+#| msgctxt "May long"
+#| msgid "May"
+msgctxt "@action:button"
+msgid "May"
+msgstr "Май"
+
+#: src/ui/TaskPage.qml:332
+#, fuzzy, kde-format
+#| msgid "June"
+msgctxt "@action:button"
+msgid "June"
+msgstr "Июн"
+
+#: src/ui/TaskPage.qml:336
+#, fuzzy, kde-format
+#| msgid "July"
+msgctxt "@action:button"
+msgid "July"
+msgstr "Июл"
+
+#: src/ui/TaskPage.qml:340
+#, fuzzy, kde-format
+#| msgid "August"
+msgctxt "@action:button"
+msgid "August"
+msgstr "Август"
+
+#: src/ui/TaskPage.qml:344
+#, fuzzy, kde-format
+#| msgid "September"
+msgctxt "@action:button"
+msgid "September"
+msgstr "Сентябр"
+
+#: src/ui/TaskPage.qml:348
+#, fuzzy, kde-format
+#| msgid "October"
+msgctxt "@action:button"
+msgid "October"
+msgstr "Октябр"
+
+#: src/ui/TaskPage.qml:352
+#, fuzzy, kde-format
+#| msgid "November"
+msgctxt "@action:button"
+msgid "November"
+msgstr "Ноябр"
+
+#: src/ui/TaskPage.qml:356
+#, fuzzy, kde-format
+#| msgid "December"
+msgctxt "@action:button"
+msgid "December"
+msgstr "Декабр"
+
+#: src/ui/TaskPage.qml:378
+#, fuzzy, kde-format
+msgctxt "@action:button"
+msgid "Monday"
+msgstr "Душанбе"
+
+#: src/ui/TaskPage.qml:382
+#, fuzzy, kde-format
+msgctxt "@action:button"
+msgid "Tuesday"
+msgstr "Сешанде"
+
+#: src/ui/TaskPage.qml:386
+#, fuzzy, kde-format
+msgctxt "@action:button"
+msgid "Wednesday"
+msgstr "Сешанде"
+
+#: src/ui/TaskPage.qml:390
+#, fuzzy, kde-format
+msgctxt "@action:button"
+msgid "Thursday"
+msgstr "Сешанде"
+
+#: src/ui/TaskPage.qml:394
+#, fuzzy, kde-format
+msgctxt "@action:button"
+msgid "Friday"
+msgstr "Ҷума"
+
+#: src/ui/TaskPage.qml:398
+#, kde-format
+msgctxt "@action:button"
+msgid "Saturday"
+msgstr ""
+
+#: src/ui/TaskPage.qml:402
+#, fuzzy, kde-format
+msgctxt "@action:button"
+msgid "Sunday"
+msgstr "Якшанбе"
+
+#: src/ui/TasksComponent.qml:19
+#, fuzzy, kde-format
+#| msgid "Scheduled Tasks"
+msgctxt "@title:group"
+msgid "Scheduled Tasks"
+msgstr "Ба нақша гирифтани масъалаҳо"
+
+#: src/ui/TasksComponent.qml:56 src/ui/VariablesComponent.qml:57
+#, kde-format
+msgctxt "@title:column"
 msgid "User"
 msgstr ""
 
-#: src/tasksWidget.cpp:229 src/variablesWidget.cpp:188
-#, fuzzy, kde-format
-#| msgid "Sat"
-msgid "Status"
-msgstr "Шанбе"
-
-#: src/tasksWidget.cpp:231
+#: src/ui/TasksComponent.qml:66
 #, fuzzy, kde-format
 #| msgid "Scheduled Tasks"
-msgid "Scheduling Details"
+msgctxt "@title:column"
+msgid "Scheduling"
 msgstr "Ба нақша гирифтани масъалаҳо"
 
-#: src/tasksWidget.cpp:256
+#: src/ui/TasksComponent.qml:75
 #, fuzzy, kde-format
-#| msgid "No tasks..."
-msgctxt "Adds a new task"
-msgid "New &Task..."
-msgstr "Масъалае нест..."
+#| msgid "Modify Task"
+msgctxt "@title:column"
+msgid "Command"
+msgstr "Мукаммал кардани масъала"
 
-#: src/tasksWidget.cpp:257
-#, fuzzy, kde-format
-#| msgid "Create a new task or variable."
-msgid "Create a new task."
-msgstr "Сохтани масъалаи нав ёки иваз кардан."
-
-#: src/tasksWidget.cpp:261 src/variablesWidget.cpp:209
-#, kde-format
-msgid "M&odify..."
-msgstr "&Дигаргун кунед..."
-
-#: src/tasksWidget.cpp:263
-#, fuzzy, kde-format
-#| msgid "Run the selected task now."
-msgid "Modify the selected task."
-msgstr "Фавран сар додани масъалаи интихоб шуда."
-
-#: src/tasksWidget.cpp:267 src/variablesWidget.cpp:215
-#, kde-format
-msgid "&Delete"
-msgstr ""
-
-#: src/tasksWidget.cpp:269
-#, fuzzy, kde-format
-#| msgid "Delete the selected task or variable."
-msgid "Delete the selected task."
-msgstr "Нобуд кардани масъалаҳои интихоб шуда ёки иваз шуда."
-
-#: src/tasksWidget.cpp:273
-#, kde-format
-msgid "&Run Now"
-msgstr "&Иҷро кардан"
-
-#: src/tasksWidget.cpp:275
-#, kde-format
-msgid "Run the selected task now."
-msgstr "Фавран сар додани масъалаи интихоб шуда."
-
-#: src/taskWidget.cpp:40 src/variableWidget.cpp:38
-#, fuzzy, kde-format
-#| msgid "&Enabled"
-msgid "Enabled"
-msgstr "&Фаъол созед"
-
-#: src/taskWidget.cpp:43 src/variableWidget.cpp:41
-#, fuzzy, kde-format
-#| msgid "Disabled"
-msgid "Disabled"
-msgstr "Ғайри фаъол"
-
-#: src/variableEditorDialog.cpp:47
-#, fuzzy, kde-format
-#| msgid "Modify Variable"
-msgid "Add or modify a variable"
-msgstr "Таҳрири таъғирот"
-
-#: src/variableEditorDialog.cpp:51
-#, fuzzy, kde-format
-#| msgid "&Variable:"
-msgctxt "The environmental variable name ie HOME, MAILTO etc"
-msgid "&Variable:"
-msgstr "&Гуногун:"
-
-#: src/variableEditorDialog.cpp:80
-#, kde-format
-msgid "Va&lue:"
-msgstr "Аҳа&ият:"
-
-#: src/variableEditorDialog.cpp:113
-#, kde-format
-msgid "&Enable this variable"
-msgstr ""
-
-#: src/variableEditorDialog.cpp:145
-#, kde-format
-msgid "<i>This variable will be used by scheduled tasks.</i>"
-msgstr ""
-
-#: src/variableEditorDialog.cpp:192
-#, kde-format
-msgid "<i>This variable is disabled.</i>"
-msgstr ""
-
-#: src/variableEditorDialog.cpp:199
-#, fuzzy, kde-format
-#| msgid "Please enter the variable name."
-msgid "<i>Please enter the variable name...</i>"
-msgstr "Номи таъғиротро ворид кунед."
-
-#: src/variableEditorDialog.cpp:206
-#, fuzzy, kde-format
-#| msgid "Please enter the variable value."
-msgid "<i>Please enter the variable value ...</i>"
-msgstr "Аҳамияти таъғиротро ворид кунед."
-
-#: src/variablesWidget.cpp:29
-#, fuzzy, kde-format
-#| msgid "Variables"
-msgid "<b>Environment Variables</b>"
-msgstr "Таъғиротҳо"
-
-#: src/variablesWidget.cpp:62
-#, kde-format
-msgid "Modify Variable"
-msgstr "Таҳрири таъғирот"
-
-#: src/variablesWidget.cpp:142
-#, fuzzy, kde-format
-#| msgid "Variables"
-msgid "New Variable"
-msgstr "Таъғиротҳо"
-
-#: src/variablesWidget.cpp:186
-#, fuzzy, kde-format
-#| msgid "Variables"
-msgid "Variable"
-msgstr "Таъғиротҳо"
-
-#: src/variablesWidget.cpp:187
-#, kde-format
-msgid "Value"
-msgstr "Аҳамият"
-
-#: src/variablesWidget.cpp:189
+#: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
 #, fuzzy, kde-format
 #| msgid "Co&mment:"
+msgctxt "@title:column"
 msgid "Comment"
 msgstr "&Шарҳ:"
 
-#: src/variablesWidget.cpp:204
+#: src/ui/TasksComponent.qml:92
 #, fuzzy, kde-format
-#| msgid "No variables..."
-msgctxt "Adds a new variable"
-msgid "New &Variable..."
-msgstr "Таъғироте нест..."
+#| msgid "Scheduled Tasks"
+msgctxt "@title:column"
+msgid "Scheduling Details"
+msgstr "Ба нақша гирифтани масъалаҳо"
 
-#: src/variablesWidget.cpp:205
+#: src/ui/TasksComponent.qml:98
 #, fuzzy, kde-format
-#| msgid "Create a new task or variable."
-msgid "Create a new variable."
-msgstr "Сохтани масъалаи нав ёки иваз кардан."
+#| msgid "Edit Task"
+msgctxt "@action:button"
+msgid "Add Task…"
+msgstr "Таҳрири масъала"
 
-#: src/variablesWidget.cpp:211
+#: src/ui/TasksComponent.qml:105
 #, fuzzy, kde-format
-#| msgid "Edit the selected task or variable."
-msgid "Modify the selected variable."
-msgstr "Таҳрир кардани масъалаҳои интихоб шуда ёки иваз шуда."
+#| msgid "Edit Task"
+msgctxt "@action:button"
+msgid "Edit Task…"
+msgstr "Таҳрири масъала"
 
-#: src/variablesWidget.cpp:217
+#: src/ui/TasksComponent.qml:113 src/ui/VariablesComponent.qml:125
+#, fuzzy, kde-format
+#| msgid "Set All"
+msgctxt "@action:button"
+msgid "Select All"
+msgstr "Барпосозии Ҳама"
+
+#: src/ui/TasksComponent.qml:120 src/ui/VariablesComponent.qml:132
+#, kde-format
+msgctxt "@action:button"
+msgid "Copy"
+msgstr ""
+
+#: src/ui/TasksComponent.qml:127 src/ui/VariablesComponent.qml:139
+#, kde-format
+msgctxt "@action:button"
+msgid "Cut"
+msgstr ""
+
+#: src/ui/TasksComponent.qml:134 src/ui/VariablesComponent.qml:146
+#, kde-format
+msgctxt "@action:button"
+msgid "Paste"
+msgstr ""
+
+#: src/ui/TasksComponent.qml:142 src/ui/TasksComponent.qml:174
+#: src/ui/VariablesComponent.qml:154 src/ui/VariablesComponent.qml:178
+#, kde-format
+msgctxt "@action:button"
+msgid "Delete"
+msgstr ""
+
+#: src/ui/TasksComponent.qml:150
+#, fuzzy, kde-format
+#| msgid "&Run as:"
+msgctxt "@action:button"
+msgid "Run task"
+msgstr "&Оғози кардан монанди:"
+
+#: src/ui/TasksComponent.qml:162 src/ui/VariablesComponent.qml:166
+#, kde-format
+msgctxt "@action:button"
+msgid "Add…"
+msgstr ""
+
+#: src/ui/TasksComponent.qml:168 src/ui/VariablesComponent.qml:172
+#, kde-format
+msgctxt "@action:button"
+msgid "Edit…"
+msgstr ""
+
+#: src/ui/TasksComponent.qml:180
+#, fuzzy, kde-format
+#| msgid "Sun"
+msgctxt "@action:button"
+msgid "Run"
+msgstr "Якшанбе"
+
+#: src/ui/TimeCard.qml:40
+#, kde-format
+msgctxt "@label:checkbox"
+msgid "Select all"
+msgstr ""
+
+#: src/ui/VariablePage.qml:17
+#, fuzzy, kde-format
+#| msgid "Edit Variable"
+msgctxt "@title"
+msgid "Edit Variable"
+msgstr "Таҳрири таъғирот"
+
+#: src/ui/VariablePage.qml:18
+#, fuzzy, kde-format
+#| msgid "Variables"
+msgctxt "@title"
+msgid "New Variable"
+msgstr "Таъғиротҳо"
+
+#: src/ui/VariablePage.qml:27
+#, fuzzy, kde-format
+#| msgid "Edit Variable"
+msgctxt "@action:button"
+msgid "Edit Variable"
+msgstr "Таҳрири таъғирот"
+
+#: src/ui/VariablePage.qml:28
+#, fuzzy, kde-format
+#| msgid "Edit Variable"
+msgctxt "@action:button accessible"
+msgid "Edit Variable"
+msgstr "Таҳрири таъғирот"
+
+#: src/ui/VariablePage.qml:38
+#, fuzzy, kde-format
+#| msgid "Variables"
+msgctxt "@action:button"
+msgid "New Variable"
+msgstr "Таъғиротҳо"
+
+#: src/ui/VariablePage.qml:39
+#, fuzzy, kde-format
+#| msgid "Variables"
+msgctxt "@action:button accessible"
+msgid "New Variable"
+msgstr "Таъғиротҳо"
+
+#: src/ui/VariablePage.qml:57
+#, fuzzy, kde-kuit-format
+#| msgid "Please enter the variable name."
+msgctxt "@info"
+msgid "<message>Please enter the variable name</message>"
+msgstr "Номи таъғиротро ворид кунед."
+
+#: src/ui/VariablePage.qml:59
+#, fuzzy, kde-kuit-format
+#| msgid "Please enter the variable value."
+msgctxt "@info"
+msgid "<message>Please enter the variable value</message>"
+msgstr "Аҳамияти таъғиротро ворид кунед."
+
+#: src/ui/VariablePage.qml:76
+#, fuzzy, kde-format
+#| msgid "Variable:"
+msgctxt "@label:listbox"
+msgid "Variable:"
+msgstr "Таъғирот:"
+
+#: src/ui/VariablePage.qml:112
+#, fuzzy, kde-format
+#| msgid "Value:"
+msgctxt "@label:textbox"
+msgid "Value:"
+msgstr "Аҳамият:"
+
+#: src/ui/VariablePage.qml:126
 #, fuzzy, kde-format
 #| msgid "Delete the selected task or variable."
-msgid "Delete the selected variable."
+msgctxt "@label:checkbox"
+msgid "Enable this variable"
 msgstr "Нобуд кардани масъалаҳои интихоб шуда ёки иваз шуда."
 
-#~ msgid "Task Scheduler"
-#~ msgstr "Сохтмони масъалаҳо"
+#: src/ui/VariablesComponent.qml:19
+#, fuzzy, kde-format
+#| msgid "Variables"
+msgctxt "@title:group"
+msgid "Environment Variables"
+msgstr "Таъғиротҳо"
+
+#: src/ui/VariablesComponent.qml:67
+#, fuzzy, kde-format
+#| msgid "Variables"
+msgctxt "@title:column"
+msgid "Variable"
+msgstr "Таъғиротҳо"
+
+#: src/ui/VariablesComponent.qml:98
+#, fuzzy, kde-format
+#| msgid "Value"
+msgctxt "@title:column"
+msgid "Value"
+msgstr "Аҳамият"
+
+#: src/ui/VariablesComponent.qml:112
+#, fuzzy, kde-format
+#| msgid "Edit Variable"
+msgctxt "@action:button"
+msgid "Add Variable…"
+msgstr "Таҳрири таъғирот"
+
+#: src/ui/VariablesComponent.qml:118
+#, fuzzy, kde-format
+#| msgid "Edit Variable"
+msgctxt "@action:button"
+msgid "Edit Variable…"
+msgstr "Таҳрири таъғирот"
+
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr ""
+#~ "НПО \"Имкониятҳои ҷавонон\" ва Khujand Computer Technologies, Inc. USA, "
+#~ "Роҷер Ковакс, Виктор Ибрагимов, Марина Колючева"
+
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr ""
+#~ "youth_opportunities@tajikngo.org,,rkovacs@khujand.org,,MarinaKL@tajikngo."
+#~ "org"
+
+#~ msgid "Description"
+#~ msgstr "Тасвир"
+
+#, fuzzy
+#~| msgid "(System Crontab)"
+#~ msgid "System Crontab"
+#~ msgstr "(Системаи КронТаб)"
+
+#, fuzzy
+#~| msgid "(System Crontab)"
+#~ msgid "All Users Crontabs"
+#~ msgstr "(Системаи КронТаб)"
+
+#, fuzzy
+#~| msgid "Cron Options"
+#~ msgctxt "@title:window"
+#~ msgid "Cron Options"
+#~ msgstr "Параметрҳои cron"
+
+#~ msgid "Print cron&tab"
+#~ msgstr "Чопи &рӯйхати масъала"
+
+#~ msgid "Print &all users"
+#~ msgstr "Чопи &ҳамаи истифодакунандагон"
+
+#, fuzzy
+#~| msgid "(System Crontab)"
+#~ msgid "System Cron"
+#~ msgstr "(Системаи КронТаб)"
+
+#~ msgid ""
+#~ "The following error occurred while initializing KCron:\n"
+#~ "\n"
+#~ "%1\n"
+#~ "\n"
+#~ "KCron will now exit.\n"
+#~ msgstr ""
+#~ "Хатои сар додани KCron:\n"
+#~ "\n"
+#~ "%1\n"
+#~ "\n"
+#~ "Барномаи Крон ба итмом мерасад.\n"
+
+#~ msgid ""
+#~ "You can use this application to schedule programs to run in the "
+#~ "background.\n"
+#~ "To schedule a new task now, click on the Tasks folder and select Edit/New "
+#~ "from the menu."
+#~ msgstr ""
+#~ "Шумо метавонед ин барномаро истифода кунед барои худкорона сар додани "
+#~ "барномаҳо дар тартиботи замина ва дар вақти дода шуда.\n"
+#~ "Барои тайёрии масъалаи нав, рӯи папкаи масъала пахш кунед ва пункти менюи "
+#~ "Муҳаррирӣ/Навро интихоб кунед."
+
+#, fuzzy
+#~| msgid "Modify Variable"
+#~ msgid "Add or modify a scheduled task"
+#~ msgstr "Таҳрири таъғирот"
+
+#~ msgid "Co&mment:"
+#~ msgstr "&Шарҳ:"
+
+#, fuzzy
+#~| msgid "Run every day"
+#~ msgid "Run &every day"
+#~ msgstr "Ҳар рӯз сар додан"
+
+#, fuzzy
+#~| msgid "Description:"
+#~ msgid "Preselection:"
+#~ msgstr "Тасвир:"
+
+#, fuzzy
+#~| msgid "AM"
+#~ msgid "AM:"
+#~ msgstr "AM"
+
+#, fuzzy
+#~| msgid "PM"
+#~ msgid "PM:"
+#~ msgstr "PM"
+
+#, fuzzy
+#~ msgid "Clear All"
+#~ msgstr "Барпосозии Ҳама"
+
+#, fuzzy
+#~| msgid "Scheduled Tasks"
+#~ msgid "<b>Scheduled Tasks</b>"
+#~ msgstr "Ба нақша гирифтани масъалаҳо"
+
+#~ msgid "Modify Task"
+#~ msgstr "Мукаммал кардани масъала"
+
+#, fuzzy
+#~| msgid "Sat"
+#~ msgid "Status"
+#~ msgstr "Шанбе"
+
+#, fuzzy
+#~| msgid "No tasks..."
+#~ msgctxt "Adds a new task"
+#~ msgid "New &Task..."
+#~ msgstr "Масъалае нест..."
+
+#, fuzzy
+#~| msgid "Create a new task or variable."
+#~ msgid "Create a new task."
+#~ msgstr "Сохтани масъалаи нав ёки иваз кардан."
+
+#~ msgid "M&odify..."
+#~ msgstr "&Дигаргун кунед..."
+
+#, fuzzy
+#~| msgid "Run the selected task now."
+#~ msgid "Modify the selected task."
+#~ msgstr "Фавран сар додани масъалаи интихоб шуда."
+
+#, fuzzy
+#~| msgid "Delete the selected task or variable."
+#~ msgid "Delete the selected task."
+#~ msgstr "Нобуд кардани масъалаҳои интихоб шуда ёки иваз шуда."
+
+#~ msgid "&Run Now"
+#~ msgstr "&Иҷро кардан"
+
+#~ msgid "Run the selected task now."
+#~ msgstr "Фавран сар додани масъалаи интихоб шуда."
+
+#, fuzzy
+#~| msgid "&Enabled"
+#~ msgid "Enabled"
+#~ msgstr "&Фаъол созед"
+
+#, fuzzy
+#~| msgid "Disabled"
+#~ msgid "Disabled"
+#~ msgstr "Ғайри фаъол"
+
+#, fuzzy
+#~| msgid "Modify Variable"
+#~ msgid "Add or modify a variable"
+#~ msgstr "Таҳрири таъғирот"
+
+#, fuzzy
+#~| msgid "&Variable:"
+#~ msgctxt "The environmental variable name ie HOME, MAILTO etc"
+#~ msgid "&Variable:"
+#~ msgstr "&Гуногун:"
+
+#~ msgid "Va&lue:"
+#~ msgstr "Аҳа&ият:"
+
+#, fuzzy
+#~| msgid "Variables"
+#~ msgid "<b>Environment Variables</b>"
+#~ msgstr "Таъғиротҳо"
+
+#~ msgid "Modify Variable"
+#~ msgstr "Таҳрири таъғирот"
+
+#, fuzzy
+#~| msgid "No variables..."
+#~ msgctxt "Adds a new variable"
+#~ msgid "New &Variable..."
+#~ msgstr "Таъғироте нест..."
+
+#, fuzzy
+#~| msgid "Create a new task or variable."
+#~ msgid "Create a new variable."
+#~ msgstr "Сохтани масъалаи нав ёки иваз кардан."
+
+#, fuzzy
+#~| msgid "Edit the selected task or variable."
+#~ msgid "Modify the selected variable."
+#~ msgstr "Таҳрир кардани масъалаҳои интихоб шуда ёки иваз шуда."
 
 #~ msgid "KDE Task Scheduler"
 #~ msgstr "Планкаши масъала барои KDE"
@@ -1033,12 +1331,6 @@ msgstr "Нобуд кардани масъалаҳои интихоб шуда �
 #~| msgid "Print &all users"
 #~ msgid "All users"
 #~ msgstr "Чопи &ҳамаи истифодакунандагон"
-
-#, fuzzy
-#~| msgid "%H:%M"
-#~ msgctxt "User login: errorMessage"
-#~ msgid "User %1: %2"
-#~ msgstr "%H:%M"
 
 #, fuzzy
 #~| msgid "the minutes"
@@ -1059,9 +1351,6 @@ msgstr "Нобуд кардани масъалаҳои интихоб шуда �
 
 #~ msgid "&Program:"
 #~ msgstr "&Барнома:"
-
-#~ msgid "&Comment:"
-#~ msgstr "&Шарҳ:"
 
 #~ msgid ""
 #~ "Scheduled tasks have been modified.\n"
@@ -1085,9 +1374,6 @@ msgstr "Нобуд кардани масъалаҳои интихоб шуда �
 #~ msgid "&Enabled"
 #~ msgstr "&Фаъол созед"
 
-#~ msgid "Printing..."
-#~ msgstr "Чоп..."
-
 #~ msgid "Copying to clipboard..."
 #~ msgstr "Нусха бардоштан дар буфери иваз..."
 
@@ -1102,15 +1388,6 @@ msgstr "Нобуд кардани масъалаҳои интихоб шуда �
 
 #~ msgid "No tasks..."
 #~ msgstr "Масъалае нест..."
-
-#, fuzzy
-#~| msgid "Variable:"
-#~ msgctxt "The environmental variable name ie HOME, MAILTO etc"
-#~ msgid "Variable:"
-#~ msgstr "Таъғирот:"
-
-#~ msgid "Value:"
-#~ msgstr "Аҳамият:"
 
 #~ msgid "No variables..."
 #~ msgstr "Таъғироте нест..."
@@ -1190,9 +1467,6 @@ msgstr "Нобуд кардани масъалаҳои интихоб шуда �
 #~ msgid "Disabled"
 #~ msgstr "Ғайри фаъол"
 
-#~ msgid "Edit Variable"
-#~ msgstr "Таҳрири таъғирот"
-
 #, fuzzy
 #~| msgid "Users/Tasks/Variables"
 #~ msgid "Users/Tasks/Variable"
@@ -1200,9 +1474,6 @@ msgstr "Нобуд кардани масъалаҳои интихоб шуда �
 
 #~ msgid "Tasks/Variables"
 #~ msgstr "Масъалаҳо/Таъғириятҳо"
-
-#~ msgid "Edit Task"
-#~ msgstr "Таҳрири масъала"
 
 #~ msgid "&Browse..."
 #~ msgstr "&Намоиш..."
