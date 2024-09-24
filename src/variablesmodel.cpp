@@ -291,7 +291,6 @@ void VariablesModel::refresh(CTCron *ctCron)
     qCDebug(KCM_CRON_LOG) << "Refreshing variables model";
 
     mCtCron = ctCron;
-    Q_EMIT needUserColumnChanged();
 
     this->clear();
 
@@ -299,6 +298,9 @@ void VariablesModel::refresh(CTCron *ctCron)
         Variable *variable = new Variable(ctVariable, this);
         this->add(variable);
     }
+
+    Q_EMIT needUserColumnChanged();
+    Q_EMIT enabledStateChanged();
 }
 
 void VariablesModel::clear()

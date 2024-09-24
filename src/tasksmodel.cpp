@@ -326,7 +326,6 @@ void TasksModel::refresh(CTCron *ctCron)
     qCDebug(KCM_CRON_LOG) << "Refreshing tasks model";
 
     mCtCron = ctCron;
-    Q_EMIT needUserColumnChanged();
 
     this->clear();
 
@@ -334,6 +333,9 @@ void TasksModel::refresh(CTCron *ctCron)
         Task *task = new Task(ctTask, this);
         this->add(task);
     }
+
+    Q_EMIT needUserColumnChanged();
+    Q_EMIT enabledStateChanged();
 }
 
 void TasksModel::clear()
