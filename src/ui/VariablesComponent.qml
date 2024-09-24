@@ -55,7 +55,7 @@ Table {
         minimumWidth: Kirigami.Units.gridUnit * 8
         role: Private.VariablesModel.UserLoginRole
         title: i18nc("@title:column", "User")
-        textRole: "user"
+        textRole: "userLogin"
         visible: main.model.needUserColumn
     }
 
