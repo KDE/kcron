@@ -1,24 +1,24 @@
 # Translation of kcron.po to Catalan (Valencian)
-# Copyright (C) 2000-2023 This_file_is_part_of_KDE
+# Copyright (C) 2000-2024 This_file_is_part_of_KDE
 #
 # Josep Vila (Softcatalà) <linux@softcatala.org>, 2000.
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2002, 2003, 2016, 2020, 2021.
 # Albert Astals Cid <aacid@kde.org>, 2004, 2005.
-# Josep M. Ferrer <txemaq@gmail.com>, 2006, 2007, 2008, 2009, 2010, 2011, 2014, 2015, 2016, 2017, 2018, 2019, 2021, 2023.
+# SPDX-FileCopyrightText: 2006, 2007, 2008, 2009, 2010, 2011, 2014, 2015, 2016, 2017, 2018, 2019, 2021, 2023, 2024 Josep M. Ferrer <txemaq@gmail.com>
 # Manuel Tortosa Moreno <manutortosa@gmail.com>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-09-24 00:41+0000\n"
-"PO-Revision-Date: 2023-09-18 12:43+0200\n"
+"PO-Revision-Date: 2024-09-24 10:58+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 24.08.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 
@@ -518,85 +518,76 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Choose a program to run</message>"
-msgstr ""
+msgstr "<message>Seleccioneu un programa a executar</message>"
 
 #: src/taskvalidator.cpp:112 src/taskvalidator.cpp:119
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please type a valid command line...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please type a valid command line</message>"
-msgstr "<i>Introduïu una línia d'ordres vàlida…</i>"
+msgstr "<message>Introduïu una línia d'ordres vàlida</message>"
 
 #: src/taskvalidator.cpp:138
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please select an executable program...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please select an executable program</message>"
-msgstr "<i>Seleccioneu un programa executable…</i>"
+msgstr "<message>Seleccioneu un programa executable</message>"
 
 #: src/taskvalidator.cpp:163
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please select from the 'Months' section...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please select from the <b>Months</b> section</message>"
-msgstr "<i>Seleccioneu des de la secció «Mesos»…</i>"
+msgstr "<message>Seleccioneu des de la secció <b>Mesos</b></message>"
 
 #: src/taskvalidator.cpp:188
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "<i>Please select from either the 'Days of Month' or the 'Days of Week' "
-#| "section...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from either the <b>Days of Month</b> or the <b>Days "
 "of Week</b> section</message>"
 msgstr ""
-"<i>Seleccioneu des de la secció «Dies del mes» o «Dies de la setmana»…</i>"
+"<message>Seleccioneu des de la secció <b>Dies del mes</b> o <b>Dies de la "
+"setmana</b></message>"
 
 #: src/taskvalidator.cpp:206
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please select from the 'Hours' section...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please select from the <b>Hours</b> section</message>"
-msgstr "<i>Seleccioneu des de la secció «Hores»…</i>"
+msgstr "<message>Seleccioneu des de la secció <b>Hores</b></message>"
 
 #: src/taskvalidator.cpp:224
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please select from the 'Minutes' section...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please select from the <b>Minutes</b> section</message>"
-msgstr "<i>Seleccioneu des de la secció «Minuts»…</i>"
+msgstr "<message>Seleccioneu des de la secció <b>Minuts</b></message>"
 
 #: src/ui/main.qml:45
 #, kde-format
 msgctxt "@text"
 msgid "Show:"
-msgstr ""
+msgstr "Mostra:"
 
 #: src/ui/main.qml:49
-#, fuzzy, kde-format
-#| msgid "Scheduling"
+#, kde-format
 msgctxt "@title:tab"
 msgid "User Schedule"
-msgstr "Planificació"
+msgstr "Planificació de l'usuari"
 
 #: src/ui/main.qml:55
 #, kde-format
 msgctxt "@title:tab"
 msgid "System Schedule"
-msgstr ""
+msgstr "Planificació del sistema"
 
 #: src/ui/main.qml:64
 #, kde-format
 msgctxt "@action:button"
 msgid "Print"
-msgstr ""
+msgstr "Imprimix"
 
 #: src/ui/Onboarding.qml:22
-#, fuzzy, kde-format
-#| msgid "Welcome to the Task Scheduler"
+#, kde-format
 msgid "Welcome to Task Scheduler!"
-msgstr "Us donem la benvinguda al planificador de tasques"
+msgstr "Us donem la benvinguda al planificador de tasques!"
 
 #: src/ui/Onboarding.qml:24
 #, kde-kuit-format
@@ -606,140 +597,127 @@ msgid ""
 "schedule and automate repetitive tasks like downloading files or sending "
 "emails. <link url='%1'>Learn more</link>"
 msgstr ""
+"Programes planificats a executar en segon pla. Establix les tasques a "
+"executar segons una planificació fixada i automatitza les tasques "
+"repetitives com la baixada de fitxers o l'enviament de correus electrònics. "
+"<link url='%1'>Més informació</link>"
 
 #: src/ui/Onboarding.qml:27
 #, kde-format
 msgctxt "@action:button"
 msgid "Go to Dashboard"
-msgstr ""
+msgstr "Ves fins al tauler"
 
 #: src/ui/TaskPage.qml:22
-#, fuzzy, kde-format
-#| msgid "Modify Task"
+#, kde-format
 msgctxt "@title"
 msgid "Edit Task"
-msgstr "Modifica la tasca"
+msgstr "Edició de tasca"
 
 #: src/ui/TaskPage.qml:23
-#, fuzzy, kde-format
-#| msgid "New Task"
+#, kde-format
 msgctxt "@title"
 msgid "New Task"
 msgstr "Tasca nova"
 
 #: src/ui/TaskPage.qml:33
-#, fuzzy, kde-format
-#| msgid "Modify Task"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit Task"
-msgstr "Modifica la tasca"
+msgstr "Edita la tasca"
 
 #: src/ui/TaskPage.qml:34
-#, fuzzy, kde-format
-#| msgid "Modify Task"
+#, kde-format
 msgctxt "@action:button accessible"
 msgid "Edit Task"
-msgstr "Modifica la tasca"
+msgstr "Edita la tasca"
 
 #: src/ui/TaskPage.qml:44
-#, fuzzy, kde-format
-#| msgid "New Task"
+#, kde-format
 msgctxt "@action:button"
 msgid "New Task"
 msgstr "Tasca nova"
 
 #: src/ui/TaskPage.qml:45
-#, fuzzy, kde-format
-#| msgid "New Task"
+#, kde-format
 msgctxt "@action:button accessible"
 msgid "New Task"
 msgstr "Tasca nova"
 
 #: src/ui/TaskPage.qml:90
-#, fuzzy, kde-format
-#| msgid "&Command:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Command:"
-msgstr "&Ordre:"
+msgstr "Ordre:"
 
 #: src/ui/TaskPage.qml:97
 #, kde-format
 msgctxt "@action:button"
 msgid "Browse the Program"
-msgstr ""
+msgstr "Navega cap al programa"
 
 #: src/ui/TaskPage.qml:105
-#, fuzzy, kde-format
-#| msgid "&Enable this task"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable this task"
-msgstr "&Activa esta tasca"
+msgstr "Activa esta tasca"
 
 #: src/ui/TaskPage.qml:110 src/ui/VariablePage.qml:97
-#, fuzzy, kde-format
-#| msgid "User"
+#, kde-format
 msgctxt "@label:listbox"
 msgid "User:"
-msgstr "Usuari"
+msgstr "Usuari:"
 
 #: src/ui/TaskPage.qml:129 src/ui/VariablePage.qml:119
-#, fuzzy, kde-format
-#| msgid "Co&mment:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Comment:"
-msgstr "Co&mentari:"
+msgstr "Comentari:"
 
 #: src/ui/TaskPage.qml:136
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Run:"
-msgstr ""
+msgstr "Executa:"
 
 #: src/ui/TaskPage.qml:139
-#, fuzzy, kde-format
-#| msgid "At system startup"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "When system starts"
 msgstr "En iniciar el sistema"
 
 #: src/ui/TaskPage.qml:146
-#, fuzzy, kde-format
-#| msgid "every day "
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Every day"
-msgstr "cada dia "
+msgstr "Cada dia"
 
 #: src/ui/TaskPage.qml:152
-#, fuzzy, kde-format
-#| msgid "Months"
+#, kde-format
 msgctxt "@title:group"
 msgid "Months"
 msgstr "Mesos"
 
 #: src/ui/TaskPage.qml:172
-#, fuzzy, kde-format
-#| msgid "Days of Month"
+#, kde-format
 msgctxt "@title:group"
 msgid "Days of Month"
 msgstr "Dies del mes"
 
 #: src/ui/TaskPage.qml:193
-#, fuzzy, kde-format
-#| msgid "Days of Week"
+#, kde-format
 msgctxt "@title:group"
 msgid "Days of Week"
 msgstr "Dies de la setmana"
 
 #: src/ui/TaskPage.qml:213
-#, fuzzy, kde-format
-#| msgid "Hours"
+#, kde-format
 msgctxt "@title:group"
 msgid "Hours"
 msgstr "Hores"
 
 #: src/ui/TaskPage.qml:234
-#, fuzzy, kde-format
-#| msgid "Minutes"
+#, kde-format
 msgctxt "@title:group"
 msgid "Minutes"
 msgstr "Minuts"
@@ -785,178 +763,151 @@ msgid "Every 30 minutes"
 msgstr "Cada 30 minuts"
 
 #: src/ui/TaskPage.qml:312
-#, fuzzy, kde-format
-#| msgid "January"
+#, kde-format
 msgctxt "@action:button"
 msgid "January"
 msgstr "gener"
 
 #: src/ui/TaskPage.qml:316
-#, fuzzy, kde-format
-#| msgid "February"
+#, kde-format
 msgctxt "@action:button"
 msgid "February"
 msgstr "febrer"
 
 #: src/ui/TaskPage.qml:320
-#, fuzzy, kde-format
-#| msgid "March"
+#, kde-format
 msgctxt "@action:button"
 msgid "March"
 msgstr "març"
 
 #: src/ui/TaskPage.qml:324
-#, fuzzy, kde-format
-#| msgid "April"
+#, kde-format
 msgctxt "@action:button"
 msgid "April"
 msgstr "abril"
 
 #: src/ui/TaskPage.qml:328
-#, fuzzy, kde-format
-#| msgctxt "May long"
-#| msgid "May"
+#, kde-format
 msgctxt "@action:button"
 msgid "May"
 msgstr "maig"
 
 #: src/ui/TaskPage.qml:332
-#, fuzzy, kde-format
-#| msgid "June"
+#, kde-format
 msgctxt "@action:button"
 msgid "June"
 msgstr "juny"
 
 #: src/ui/TaskPage.qml:336
-#, fuzzy, kde-format
-#| msgctxt "July long"
-#| msgid "July"
+#, kde-format
 msgctxt "@action:button"
 msgid "July"
 msgstr "juliol"
 
 #: src/ui/TaskPage.qml:340
-#, fuzzy, kde-format
-#| msgid "August"
+#, kde-format
 msgctxt "@action:button"
 msgid "August"
 msgstr "agost"
 
 #: src/ui/TaskPage.qml:344
-#, fuzzy, kde-format
-#| msgid "September"
+#, kde-format
 msgctxt "@action:button"
 msgid "September"
 msgstr "setembre"
 
 #: src/ui/TaskPage.qml:348
-#, fuzzy, kde-format
-#| msgid "October"
+#, kde-format
 msgctxt "@action:button"
 msgid "October"
 msgstr "octubre"
 
 #: src/ui/TaskPage.qml:352
-#, fuzzy, kde-format
-#| msgid "November"
+#, kde-format
 msgctxt "@action:button"
 msgid "November"
 msgstr "novembre"
 
 #: src/ui/TaskPage.qml:356
-#, fuzzy, kde-format
-#| msgid "December"
+#, kde-format
 msgctxt "@action:button"
 msgid "December"
 msgstr "desembre"
 
 #: src/ui/TaskPage.qml:378
-#, fuzzy, kde-format
-#| msgid "Monday"
+#, kde-format
 msgctxt "@action:button"
 msgid "Monday"
-msgstr "Dilluns"
+msgstr "dilluns"
 
 #: src/ui/TaskPage.qml:382
-#, fuzzy, kde-format
-#| msgid "Tuesday"
+#, kde-format
 msgctxt "@action:button"
 msgid "Tuesday"
-msgstr "Dimarts"
+msgstr "dimarts"
 
 #: src/ui/TaskPage.qml:386
-#, fuzzy, kde-format
-#| msgid "Wednesday"
+#, kde-format
 msgctxt "@action:button"
 msgid "Wednesday"
-msgstr "Dimecres"
+msgstr "dimecres"
 
 #: src/ui/TaskPage.qml:390
-#, fuzzy, kde-format
-#| msgid "Thursday"
+#, kde-format
 msgctxt "@action:button"
 msgid "Thursday"
-msgstr "Dijous"
+msgstr "dijous"
 
 #: src/ui/TaskPage.qml:394
-#, fuzzy, kde-format
-#| msgid "Friday"
+#, kde-format
 msgctxt "@action:button"
 msgid "Friday"
-msgstr "Divendres"
+msgstr "divendres"
 
 #: src/ui/TaskPage.qml:398
-#, fuzzy, kde-format
-#| msgid "Saturday"
+#, kde-format
 msgctxt "@action:button"
 msgid "Saturday"
-msgstr "Dissabte"
+msgstr "dissabte"
 
 #: src/ui/TaskPage.qml:402
-#, fuzzy, kde-format
-#| msgid "Sunday"
+#, kde-format
 msgctxt "@action:button"
 msgid "Sunday"
-msgstr "Diumenge"
+msgstr "diumenge"
 
 #: src/ui/TasksComponent.qml:19
-#, fuzzy, kde-format
-#| msgid "Scheduled Tasks"
+#, kde-format
 msgctxt "@title:group"
 msgid "Scheduled Tasks"
 msgstr "Tasques planificades"
 
 #: src/ui/TasksComponent.qml:56 src/ui/VariablesComponent.qml:57
-#, fuzzy, kde-format
-#| msgid "User"
+#, kde-format
 msgctxt "@title:column"
 msgid "User"
 msgstr "Usuari"
 
 #: src/ui/TasksComponent.qml:66
-#, fuzzy, kde-format
-#| msgid "Scheduling"
+#, kde-format
 msgctxt "@title:column"
 msgid "Scheduling"
 msgstr "Planificació"
 
 #: src/ui/TasksComponent.qml:75
-#, fuzzy, kde-format
-#| msgid "Command"
+#, kde-format
 msgctxt "@title:column"
 msgid "Command"
 msgstr "Ordre"
 
 #: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
-#, fuzzy, kde-format
-#| msgid "Comment"
+#, kde-format
 msgctxt "@title:column"
 msgid "Comment"
 msgstr "Comentari"
 
 #: src/ui/TasksComponent.qml:92
-#, fuzzy, kde-format
-#| msgid "Scheduling Details"
+#, kde-format
 msgctxt "@title:column"
 msgid "Scheduling Details"
 msgstr "Detalls de la planificació"
@@ -965,349 +916,168 @@ msgstr "Detalls de la planificació"
 #, kde-format
 msgctxt "@action:button"
 msgid "Add Task…"
-msgstr ""
+msgstr "Afig una tasca…"
 
 #: src/ui/TasksComponent.qml:105
-#, fuzzy, kde-format
-#| msgid "Modify Task"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit Task…"
-msgstr "Modifica la tasca"
+msgstr "Edita la tasca…"
 
 #: src/ui/TasksComponent.qml:113 src/ui/VariablesComponent.qml:125
-#, fuzzy, kde-format
-#| msgid "Set All"
+#, kde-format
 msgctxt "@action:button"
 msgid "Select All"
-msgstr "Marca'ls tots"
+msgstr "Selecciona-ho tot"
 
 #: src/ui/TasksComponent.qml:120 src/ui/VariablesComponent.qml:132
 #, kde-format
 msgctxt "@action:button"
 msgid "Copy"
-msgstr ""
+msgstr "Copia"
 
 #: src/ui/TasksComponent.qml:127 src/ui/VariablesComponent.qml:139
 #, kde-format
 msgctxt "@action:button"
 msgid "Cut"
-msgstr ""
+msgstr "Retalla"
 
 #: src/ui/TasksComponent.qml:134 src/ui/VariablesComponent.qml:146
 #, kde-format
 msgctxt "@action:button"
 msgid "Paste"
-msgstr ""
+msgstr "Apega"
 
 #: src/ui/TasksComponent.qml:142 src/ui/TasksComponent.qml:174
 #: src/ui/VariablesComponent.qml:154 src/ui/VariablesComponent.qml:178
-#, fuzzy, kde-format
-#| msgid "&Delete"
+#, kde-format
 msgctxt "@action:button"
 msgid "Delete"
-msgstr "Sup&rimix"
+msgstr "Suprimix"
 
 #: src/ui/TasksComponent.qml:150
-#, fuzzy, kde-format
-#| msgid "&Run as:"
+#, kde-format
 msgctxt "@action:button"
 msgid "Run task"
-msgstr "&Executa com a:"
+msgstr "Executa la tasca"
 
 #: src/ui/TasksComponent.qml:162 src/ui/VariablesComponent.qml:166
 #, kde-format
 msgctxt "@action:button"
 msgid "Add…"
-msgstr ""
+msgstr "Afig…"
 
 #: src/ui/TasksComponent.qml:168 src/ui/VariablesComponent.qml:172
 #, kde-format
 msgctxt "@action:button"
 msgid "Edit…"
-msgstr ""
+msgstr "Edita…"
 
 # skip-rule: punctuation-period-no
 #: src/ui/TasksComponent.qml:180
-#, fuzzy, kde-format
-#| msgid "Sun"
+#, kde-format
 msgctxt "@action:button"
 msgid "Run"
-msgstr "dg."
+msgstr "Executa"
 
 #: src/ui/TimeCard.qml:40
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Select all"
-msgstr ""
+msgstr "Selecciona-ho tot"
 
 #: src/ui/VariablePage.qml:17
-#, fuzzy, kde-format
-#| msgid "Modify Variable"
+#, kde-format
 msgctxt "@title"
 msgid "Edit Variable"
-msgstr "Modifica la variable"
+msgstr "Edició de variable"
 
 #: src/ui/VariablePage.qml:18
-#, fuzzy, kde-format
-#| msgid "New Variable"
+#, kde-format
 msgctxt "@title"
 msgid "New Variable"
 msgstr "Variable nova"
 
 #: src/ui/VariablePage.qml:27
-#, fuzzy, kde-format
-#| msgid "Modify Variable"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit Variable"
-msgstr "Modifica la variable"
+msgstr "Edita la variable"
 
 #: src/ui/VariablePage.qml:28
-#, fuzzy, kde-format
-#| msgid "Modify Variable"
+#, kde-format
 msgctxt "@action:button accessible"
 msgid "Edit Variable"
-msgstr "Modifica la variable"
+msgstr "Edita la variable"
 
 #: src/ui/VariablePage.qml:38
-#, fuzzy, kde-format
-#| msgid "New Variable"
+#, kde-format
 msgctxt "@action:button"
 msgid "New Variable"
 msgstr "Variable nova"
 
 #: src/ui/VariablePage.qml:39
-#, fuzzy, kde-format
-#| msgid "New Variable"
+#, kde-format
 msgctxt "@action:button accessible"
 msgid "New Variable"
 msgstr "Variable nova"
 
 #: src/ui/VariablePage.qml:57
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please enter the variable name...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please enter the variable name</message>"
-msgstr "<i>Introduïu el nom de la variable…</i>"
+msgstr "<message>Introduïu el nom de la variable</message>"
 
 #: src/ui/VariablePage.qml:59
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please enter the variable value ...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please enter the variable value</message>"
-msgstr "<i>Introduïu el valor de la variable…</i>"
+msgstr "<message>Introduïu el valor de la variable</message>"
 
 #: src/ui/VariablePage.qml:76
-#, fuzzy, kde-format
-#| msgctxt "The environmental variable name ie HOME, MAILTO etc"
-#| msgid "&Variable:"
+#, kde-format
 msgctxt "@label:listbox"
 msgid "Variable:"
-msgstr "&Variable:"
+msgstr "Variable:"
 
 #: src/ui/VariablePage.qml:112
-#, fuzzy, kde-format
-#| msgid "Va&lue:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Value:"
-msgstr "Va&lor:"
+msgstr "Valor:"
 
 #: src/ui/VariablePage.qml:126
-#, fuzzy, kde-format
-#| msgid "&Enable this variable"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable this variable"
-msgstr "&Activa esta variable"
+msgstr "Activa esta variable"
 
 #: src/ui/VariablesComponent.qml:19
-#, fuzzy, kde-format
-#| msgid "Environment Variables"
+#, kde-format
 msgctxt "@title:group"
 msgid "Environment Variables"
 msgstr "Variables d'entorn"
 
 #: src/ui/VariablesComponent.qml:67
-#, fuzzy, kde-format
-#| msgid "Variable"
+#, kde-format
 msgctxt "@title:column"
 msgid "Variable"
 msgstr "Variable"
 
 #: src/ui/VariablesComponent.qml:98
-#, fuzzy, kde-format
-#| msgid "Value"
+#, kde-format
 msgctxt "@title:column"
 msgid "Value"
 msgstr "Valor"
 
 #: src/ui/VariablesComponent.qml:112
-#, fuzzy, kde-format
-#| msgid "Variable"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add Variable…"
-msgstr "Variable"
+msgstr "Afig una variable…"
 
 #: src/ui/VariablesComponent.qml:118
-#, fuzzy, kde-format
-#| msgid "Modify Variable"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit Variable…"
-msgstr "Modifica la variable"
-
-#~ msgctxt "NAME OF TRANSLATORS"
-#~ msgid "Your names"
-#~ msgstr "Josep Vila,Antoni Bella"
-
-#~ msgctxt "EMAIL OF TRANSLATORS"
-#~ msgid "Your emails"
-#~ msgstr "linux@softcatala.org,antonibella5@yahoo.com"
-
-#~ msgid "Description"
-#~ msgstr "Descripció"
-
-#~ msgid "System Crontab"
-#~ msgstr "«Crontab» del sistema"
-
-#~ msgid "All Users Crontabs"
-#~ msgstr "Els «crontab» de tots els usuaris"
-
-#~ msgctxt "Crontab of user login"
-#~ msgid "Crontab of user %1"
-#~ msgstr "«Crontab» de l'usuari %1"
-
-#~ msgctxt "@title:window"
-#~ msgid "Cron Options"
-#~ msgstr "Opcions del «cron»"
-
-#~ msgid "Print cron&tab"
-#~ msgstr "Imprimix al cron&tab"
-
-#~ msgid "Print &all users"
-#~ msgstr "Imprimix a &tots els usuaris"
-
-#~ msgid "Show the following Cron:"
-#~ msgstr "Mostra el Cron següent:"
-
-#~ msgid "Personal Cron"
-#~ msgstr "Cron personal"
-
-#~ msgid "System Cron"
-#~ msgstr "Cron del sistema"
-
-#~ msgid ""
-#~ "The following error occurred while initializing KCron:\n"
-#~ "\n"
-#~ "%1\n"
-#~ "\n"
-#~ "KCron will now exit.\n"
-#~ msgstr ""
-#~ "Quan s'inicialitzava KCron ha ocorregut l'error següent:\n"
-#~ "\n"
-#~ "%1\n"
-#~ "\n"
-#~ "KCron eixirà ara.\n"
-
-#~ msgid ""
-#~ "You can use this application to schedule programs to run in the "
-#~ "background.\n"
-#~ "To schedule a new task now, click on the Tasks folder and select Edit/New "
-#~ "from the menu."
-#~ msgstr ""
-#~ "Podeu emprar esta aplicació per a planificar tasques que s'executaran en "
-#~ "segon pla.\n"
-#~ "Per a planificar una nova tasca ara, premeu en la carpeta de Tasques i "
-#~ "seleccioneu Edita/Nova des del menú."
-
-#~ msgid "Add or modify a scheduled task"
-#~ msgstr "Afig o modifica una tasca planificada"
-
-#~ msgid "<i>This task will be executed at the specified intervals.</i>"
-#~ msgstr "<i>Esta tasca s'executarà en els intervals especificats.</i>"
-
-#~ msgid "Run at system &bootup"
-#~ msgstr "Executa en a&rrencar el sistema"
-
-#~ msgid "Run &every day"
-#~ msgstr "Executa &cada dia"
-
-#~ msgid "Preselection:"
-#~ msgstr "Preselecció:"
-
-#~ msgid "Clear selection"
-#~ msgstr "Neteja la selecció"
-
-#~ msgid "AM:"
-#~ msgstr "AM:"
-
-#~ msgid "PM:"
-#~ msgstr "PM:"
-
-#~ msgid "<i>Please browse for a program to execute...</i>"
-#~ msgstr "<i>Exploreu per a trobar el programa que s'ha d'executar…</i>"
-
-#~ msgid "<i>This task is disabled.</i>"
-#~ msgstr "<i>Esta tasca està desactivada.</i>"
-
-#~ msgid "<i>This task will be run on system bootup.</i>"
-#~ msgstr "<i>Esta tasca s'executarà en arrancar el sistema.</i>"
-
-#~ msgid "Clear All"
-#~ msgstr "Neteja-ho tot"
-
-#~ msgid "<b>Scheduled Tasks</b>"
-#~ msgstr "<b>Tasques planificades</b>"
-
-#~ msgid "Status"
-#~ msgstr "Estat"
-
-#~ msgctxt "Adds a new task"
-#~ msgid "New &Task..."
-#~ msgstr "&Tasca nova…"
-
-#~ msgid "Create a new task."
-#~ msgstr "Crea una tasca nova."
-
-#~ msgid "M&odify..."
-#~ msgstr "M&odifica…"
-
-#~ msgid "Modify the selected task."
-#~ msgstr "Modifica la tasca seleccionada."
-
-#~ msgid "Delete the selected task."
-#~ msgstr "Suprimix la tasca seleccionada."
-
-#~ msgid "&Run Now"
-#~ msgstr "E&xecuta ara"
-
-#~ msgid "Run the selected task now."
-#~ msgstr "Executa ara la tasca seleccionada."
-
-#~ msgid "Enabled"
-#~ msgstr "Activada"
-
-#~ msgid "Disabled"
-#~ msgstr "Desactivada"
-
-#~ msgid "Add or modify a variable"
-#~ msgstr "Afig o modifica una variable"
-
-#~ msgid "<i>This variable will be used by scheduled tasks.</i>"
-#~ msgstr "<i>Les tasques planificades utilitzaran esta variable.</i>"
-
-#~ msgid "<i>This variable is disabled.</i>"
-#~ msgstr "<i>Esta variable està desactivada.</i>"
-
-#~ msgid "<b>Environment Variables</b>"
-#~ msgstr "<b>Variables d'entorn</b>"
-
-#~ msgctxt "Adds a new variable"
-#~ msgid "New &Variable..."
-#~ msgstr "&Variable nova…"
-
-#~ msgid "Create a new variable."
-#~ msgstr "Crea una variable nova."
-
-#~ msgid "Modify the selected variable."
-#~ msgstr "Modifica la variable seleccionada."
-
-#~ msgid "Delete the selected variable."
-#~ msgstr "Suprimix la variable seleccionada."
+msgstr "Edita la variable…"
