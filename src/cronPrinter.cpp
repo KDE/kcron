@@ -14,15 +14,16 @@
 
 #include "kcm_cron_debug.h"
 
+#include <KLazyLocalizedString>
 #include <QPrintDialog>
 #include <QPrinter>
 #include <QTextEdit>
 
 namespace HTML
 {
-const static QString html = QStringLiteral("<!DOCTYPE html><html>%1</html>");
-const static QString documentBody = QStringLiteral("<body>%1</body>");
-const static QString documentHead = QStringLiteral(
+static constexpr QLatin1StringView html("<!DOCTYPE html><html>%1</html>");
+static constexpr QLatin1StringView documentBody("<body>%1</body>");
+static constexpr QLatin1StringView documentHead(
     "<head>"
     "<style>"
     ".table {"
@@ -48,18 +49,18 @@ const static QString documentHead = QStringLiteral(
     "</style>"
     "</head>");
 
-const static QString beginTable = QStringLiteral("<table class=\"table\">");
-const static QString beginTableHeader = QStringLiteral("<thead>");
-const static QString endTableHeader = QStringLiteral("</thead>");
-const static QString beginTableBody = QStringLiteral("<tbody>");
-const static QString endTableBody = QStringLiteral("</tbody>");
-const static QString endTable = QStringLiteral("</table>");
-const static QString tableHeader = QStringLiteral("<th>%1</th>");
-const static QString tableRow = QStringLiteral("<tr>%1</tr>");
-const static QString tableData = QStringLiteral("<td><pre>%1</pre></td>");
+static constexpr QLatin1StringView beginTable("<table class=\"table\">");
+static constexpr QLatin1StringView beginTableHeader("<thead>");
+static constexpr QLatin1StringView endTableHeader("</thead>");
+static constexpr QLatin1StringView beginTableBody("<tbody>");
+static constexpr QLatin1StringView endTableBody("</tbody>");
+static constexpr QLatin1StringView endTable("</table>");
+static constexpr QLatin1StringView tableHeader("<th>%1</th>");
+static constexpr QLatin1StringView tableRow("<tr>%1</tr>");
+static constexpr QLatin1StringView tableData("<td><pre>%1</pre></td>");
 
-const static QString tasks = QStringLiteral("<b>Tasks</b>");
-const static QString variables = QStringLiteral("<b>Environment Variables</b>");
+const static auto tasks = kli18nc("@title Note: that is an HTML tag", "<b>Tasks</b>");
+const static auto variables = kli18nc("@title Note: that is an HTML tag", "<b>Environment Variables</b>");
 }
 
 CronPrinter::CronPrinter(QObject *parent)
@@ -87,7 +88,8 @@ void CronPrinter::print(CTCron *cron)
 
     if (dlg->exec() == QDialog::Accepted) {
         QTextEdit textEdit;
-        textEdit.setHtml(HTML::html.arg(HTML::documentHead + HTML::documentBody.arg(title + HTML::tasks + tasksTable + HTML::variables + variablesTable)));
+        textEdit.setHtml(HTML::html.arg(HTML::documentHead
+                                        + HTML::documentBody.arg(title + HTML::tasks.toString() + tasksTable + HTML::variables.toString() + variablesTable)));
         textEdit.print(printer);
     }
 
@@ -97,8 +99,8 @@ void CronPrinter::print(CTCron *cron)
 
 QString CronPrinter::getTasksTable(CTCron *cron)
 {
-    QString header = HTML::tableRow.arg(HTML::tableHeader.arg(QStringLiteral("Scheduling")) + HTML::tableHeader.arg(QStringLiteral("Command"))
-                                        + HTML::tableHeader.arg(QStringLiteral("Description")));
+    QString header = HTML::tableRow.arg(HTML::tableHeader.arg(i18nc("@title:column", "Scheduling")) + HTML::tableHeader.arg(i18nc("@title:column", "Command"))
+                                        + HTML::tableHeader.arg(i18nc("@title:column", "Description")));
 
     QString table = HTML::beginTable + HTML::beginTableHeader + header + HTML::endTableHeader + HTML::beginTableBody;
 
@@ -111,8 +113,8 @@ QString CronPrinter::getTasksTable(CTCron *cron)
 
 QString CronPrinter::getVariablesTable(CTCron *cron)
 {
-    QString header = HTML::tableRow.arg(HTML::tableHeader.arg(QStringLiteral("Variable")) + HTML::tableHeader.arg(QStringLiteral("Value"))
-                                        + HTML::tableHeader.arg(QStringLiteral("Comment")));
+    QString header = HTML::tableRow.arg(HTML::tableHeader.arg(i18nc("@title:column", "Variable")) + HTML::tableHeader.arg(i18nc("@title:column", "Value"))
+                                        + HTML::tableHeader.arg(i18nc("@title:column", "Comment")));
 
     QString table = HTML::beginTable + HTML::beginTableHeader + header + HTML::endTableHeader + HTML::beginTableBody;
     for (CTVariable *variable : cron->variables()) {
@@ -139,10 +141,9 @@ QString CronPrinter::getTitle(CTCron *cron)
     title.append(QStringLiteral("<pre><b>"));
 
     if (cron->isSystemCron()) {
-        title.append(QStringLiteral("System Crontab"));
+        title.append(i18nc("@title", "System Crontab"));
     } else {
-        title.append(QStringLiteral("Crontab of user "));
-        title.append(cron->userLogin());
+        title.append(i18nc("@title", "Crontab of user %1", cron->userLogin()));
     }
 
     title.append(QStringLiteral("\n</b></pre>"));
