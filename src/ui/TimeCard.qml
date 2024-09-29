@@ -9,34 +9,27 @@ import QtQuick.Layouts
 import QtQuick.Controls as QQC2
 
 import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.formcard as FormCard
 
-Kirigami.AbstractCard {
+ColumnLayout {
     id: card
 
-    property string title
+    property alias title: header.title
     property var model
     property real delegateWidth: Kirigami.Units.gridUnit * 5
 
     property alias columns: grid.columns
+    property alias footer: formcard.delegates
 
     signal changed(int index)
     signal allChanged(bool checked)
 
-    Layout.fillWidth: false
-    Layout.alignment: Qt.AlignHCenter
+    spacing: 0
 
-    header: RowLayout {
-        Layout.fillWidth: true
-        spacing: Kirigami.Units.smallSpacing
+    FormCard.FormHeader {
+        id: header
 
-        Kirigami.Heading {
-            level: 3
-            text: card.title
-            type: Kirigami.Heading.Type.Primary
-            Layout.fillWidth: true
-        }
-
-        QQC2.CheckBox {
+        trailing: QQC2.CheckBox {
             text: i18nc("@label:checkbox", "Select all")
             tristate: true
             checkState: card.model.getCheckState()
@@ -48,29 +41,35 @@ Kirigami.AbstractCard {
         }
     }
 
-    // NOTE: Without this item the whole TimeCard breaks and the GridLayout shifts
-    contentItem: Item {
-        implicitHeight: grid.implicitHeight
+    FormCard.FormCard {
+        id: formcard
 
-        GridLayout {
-            id: grid
+        FormCard.AbstractFormDelegate {
+            background: null
+            contentItem: Item {
+                implicitHeight: grid.implicitHeight
 
-            anchors.horizontalCenter: parent.horizontalCenter
-            columnSpacing: Kirigami.Units.smallSpacing
-            rowSpacing: Kirigami.Units.smallSpacing
+                GridLayout {
+                    id: grid
 
-            Repeater {
-                model: card.model
-                delegate: Kirigami.Chip {
-                    closable: false
-                    implicitWidth: card.delegateWidth
-                    text: model.text
-                    checked: model.checked
-                    visible: model.visible ?? true
-                    checkable: true
-                    onToggled: {
-                        card.model.toogle(index)
-                        card.changed(index)
+                    width: parent.width
+                    columnSpacing: Kirigami.Units.smallSpacing
+                    rowSpacing: Kirigami.Units.smallSpacing
+
+                    Repeater {
+                        model: card.model
+                        delegate: Kirigami.Chip {
+                            closable: false
+                            Layout.fillWidth: true
+                            text: model.text
+                            checked: model.checked
+                            visible: model.visible ?? true
+                            checkable: true
+                            onToggled: {
+                                card.model.toogle(index)
+                                card.changed(index)
+                            }
+                        }
                     }
                 }
             }

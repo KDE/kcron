@@ -12,6 +12,7 @@ import QtQuick.Dialogs as QtDialogs
 
 import org.kde.kirigami as Kirigami
 import org.kde.kcmutils as KCM
+import org.kde.kirigamiaddons.formcard as FormCard
 
 import org.kde.private.kcms.cron 1.0 as Private
 
@@ -256,9 +257,13 @@ KCM.AbstractKCM {
                         validator.validate();
                     }
 
-                    footer: QQC2.ComboBox {
+                    footer: FormCard.FormComboBoxDelegate {
                         textRole: "text"
                         valueRole: "value"
+
+                        text: i18nc("@label:listbox", "Selection:")
+
+                        currentIndex: 0
 
                         model: [
                             {"text": i18n("Custom selection"), "value": 0},
