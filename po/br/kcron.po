@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeadmin/kcron.pot\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-24 00:41+0000\n"
+"POT-Creation-Date: 2024-09-30 00:41+0000\n"
 "PO-Revision-Date: 2004-09-27 12:20+0200\n"
 "Last-Translator: Thierry Vignaud <tvignaud@mandriva.com>\n"
 "Language-Team: br <LL@li.org>\n"
@@ -662,143 +662,143 @@ msgctxt "@label:listbox"
 msgid "User:"
 msgstr "%H:%M"
 
-#: src/ui/TaskPage.qml:129 src/ui/VariablePage.qml:119
+#: src/ui/TaskPage.qml:130 src/ui/VariablePage.qml:119
 #, fuzzy, kde-format
 #| msgid "&Comment:"
 msgctxt "@label:textbox"
 msgid "Comment:"
 msgstr "&Askelenn :"
 
-#: src/ui/TaskPage.qml:136
+#: src/ui/TaskPage.qml:137
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Run:"
 msgstr ""
 
-#: src/ui/TaskPage.qml:139
+#: src/ui/TaskPage.qml:140
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "When system starts"
 msgstr ""
 
-#: src/ui/TaskPage.qml:146
+#: src/ui/TaskPage.qml:147
 #, fuzzy, kde-format
 #| msgid "every day "
 msgctxt "@label:checkbox"
 msgid "Every day"
 msgstr "bemdez "
 
-#: src/ui/TaskPage.qml:152
+#: src/ui/TaskPage.qml:153
 #, fuzzy, kde-format
 #| msgid "Months"
 msgctxt "@title:group"
 msgid "Months"
 msgstr "Mizioù"
 
-#: src/ui/TaskPage.qml:172
+#: src/ui/TaskPage.qml:173
 #, fuzzy, kde-format
 #| msgid "Days of Month"
 msgctxt "@title:group"
 msgid "Days of Month"
 msgstr "Deizioù ar miz"
 
-#: src/ui/TaskPage.qml:193
+#: src/ui/TaskPage.qml:194
 #, fuzzy, kde-format
 #| msgid "Days of Week"
 msgctxt "@title:group"
 msgid "Days of Week"
 msgstr "Deizioù ar sizhun"
 
-#: src/ui/TaskPage.qml:213
+#: src/ui/TaskPage.qml:214
 #, fuzzy, kde-format
 #| msgid "Hours"
 msgctxt "@title:group"
 msgid "Hours"
 msgstr "Eurioù"
 
-#: src/ui/TaskPage.qml:234
+#: src/ui/TaskPage.qml:235
 #, fuzzy, kde-format
 #| msgid "Minutes"
 msgctxt "@title:group"
 msgid "Minutes"
 msgstr "Munutoù"
 
-#: src/ui/TaskPage.qml:263
+#: src/ui/TaskPage.qml:264
 #, kde-format
 msgid "Custom selection"
 msgstr ""
 
-#: src/ui/TaskPage.qml:264
+#: src/ui/TaskPage.qml:265
 #, fuzzy, kde-format
 #| msgid "the minutes"
 msgid "Each minute"
 msgstr "ar munutoù"
 
-#: src/ui/TaskPage.qml:265
+#: src/ui/TaskPage.qml:266
 #, fuzzy, kde-format
 #| msgid "the minutes"
 msgid "Every 2 minutes"
 msgstr "ar munutoù"
 
-#: src/ui/TaskPage.qml:266
+#: src/ui/TaskPage.qml:267
 #, fuzzy, kde-format
 #| msgid "the minutes"
 msgid "Every 5 minutes"
 msgstr "ar munutoù"
 
-#: src/ui/TaskPage.qml:267
+#: src/ui/TaskPage.qml:268
 #, fuzzy, kde-format
 #| msgid "the minutes"
 msgid "Every 10 minutes"
 msgstr "ar munutoù"
 
-#: src/ui/TaskPage.qml:268
+#: src/ui/TaskPage.qml:269
 #, fuzzy, kde-format
 #| msgid "the minutes"
 msgid "Every 15 minutes"
 msgstr "ar munutoù"
 
-#: src/ui/TaskPage.qml:269
+#: src/ui/TaskPage.qml:270
 #, fuzzy, kde-format
 #| msgid "the minutes"
 msgid "Every 20 minutes"
 msgstr "ar munutoù"
 
-#: src/ui/TaskPage.qml:270
+#: src/ui/TaskPage.qml:271
 #, fuzzy, kde-format
 #| msgid "the minutes"
 msgid "Every 30 minutes"
 msgstr "ar munutoù"
 
-#: src/ui/TaskPage.qml:312
+#: src/ui/TaskPage.qml:313
 #, fuzzy, kde-format
 #| msgid "January"
 msgctxt "@action:button"
 msgid "January"
 msgstr "Genver"
 
-#: src/ui/TaskPage.qml:316
+#: src/ui/TaskPage.qml:317
 #, fuzzy, kde-format
 #| msgid "February"
 msgctxt "@action:button"
 msgid "February"
 msgstr "C'hwevrer"
 
-#: src/ui/TaskPage.qml:320
+#: src/ui/TaskPage.qml:321
 #, fuzzy, kde-format
 #| msgid "March"
 msgctxt "@action:button"
 msgid "March"
 msgstr "Meurzh"
 
-#: src/ui/TaskPage.qml:324
+#: src/ui/TaskPage.qml:325
 #, fuzzy, kde-format
 #| msgid "April"
 msgctxt "@action:button"
 msgid "April"
 msgstr "Ebrel"
 
-#: src/ui/TaskPage.qml:328
+#: src/ui/TaskPage.qml:329
 #, fuzzy, kde-format
 #| msgctxt "May long"
 #| msgid "May"
@@ -806,98 +806,98 @@ msgctxt "@action:button"
 msgid "May"
 msgstr "Mae"
 
-#: src/ui/TaskPage.qml:332
+#: src/ui/TaskPage.qml:333
 #, fuzzy, kde-format
 #| msgid "June"
 msgctxt "@action:button"
 msgid "June"
 msgstr "Mezheven"
 
-#: src/ui/TaskPage.qml:336
+#: src/ui/TaskPage.qml:337
 #, fuzzy, kde-format
 #| msgid "July"
 msgctxt "@action:button"
 msgid "July"
 msgstr "Gouere"
 
-#: src/ui/TaskPage.qml:340
+#: src/ui/TaskPage.qml:341
 #, fuzzy, kde-format
 #| msgid "August"
 msgctxt "@action:button"
 msgid "August"
 msgstr "Eost"
 
-#: src/ui/TaskPage.qml:344
+#: src/ui/TaskPage.qml:345
 #, fuzzy, kde-format
 #| msgid "September"
 msgctxt "@action:button"
 msgid "September"
 msgstr "Gwengolo"
 
-#: src/ui/TaskPage.qml:348
+#: src/ui/TaskPage.qml:349
 #, fuzzy, kde-format
 #| msgid "October"
 msgctxt "@action:button"
 msgid "October"
 msgstr "Here"
 
-#: src/ui/TaskPage.qml:352
+#: src/ui/TaskPage.qml:353
 #, fuzzy, kde-format
 #| msgid "November"
 msgctxt "@action:button"
 msgid "November"
 msgstr "Du"
 
-#: src/ui/TaskPage.qml:356
+#: src/ui/TaskPage.qml:357
 #, fuzzy, kde-format
 #| msgid "December"
 msgctxt "@action:button"
 msgid "December"
 msgstr "Kerzu"
 
-#: src/ui/TaskPage.qml:378
+#: src/ui/TaskPage.qml:379
 #, fuzzy, kde-format
 #| msgid "Monday"
 msgctxt "@action:button"
 msgid "Monday"
 msgstr "Lun"
 
-#: src/ui/TaskPage.qml:382
+#: src/ui/TaskPage.qml:383
 #, fuzzy, kde-format
 #| msgid "Tuesday"
 msgctxt "@action:button"
 msgid "Tuesday"
 msgstr "Meurzh"
 
-#: src/ui/TaskPage.qml:386
+#: src/ui/TaskPage.qml:387
 #, fuzzy, kde-format
 #| msgid "Wednesday"
 msgctxt "@action:button"
 msgid "Wednesday"
 msgstr "Merc'her"
 
-#: src/ui/TaskPage.qml:390
+#: src/ui/TaskPage.qml:391
 #, fuzzy, kde-format
 #| msgid "Thursday"
 msgctxt "@action:button"
 msgid "Thursday"
 msgstr "Yaou"
 
-#: src/ui/TaskPage.qml:394
+#: src/ui/TaskPage.qml:395
 #, fuzzy, kde-format
 #| msgid "Friday"
 msgctxt "@action:button"
 msgid "Friday"
 msgstr "Gwener"
 
-#: src/ui/TaskPage.qml:398
+#: src/ui/TaskPage.qml:399
 #, fuzzy, kde-format
 #| msgid "Saturday"
 msgctxt "@action:button"
 msgid "Saturday"
 msgstr "Sadorn"
 
-#: src/ui/TaskPage.qml:402
+#: src/ui/TaskPage.qml:403
 #, fuzzy, kde-format
 #| msgid "Sunday"
 msgctxt "@action:button"

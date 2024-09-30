@@ -1,18 +1,18 @@
-# Version: $Revision: 1691242 $
+# Version: $Revision: 1691741 $
 # translation of kcron.po to Polish
 # translation of kcron.po to
 # translation of kcron.po to
 # Copyright (C) 2002, 2003, 2005, 2008, 2009 Free Software Foundation, Inc.
 # Michał Rudolf <mrudolf@kdewebdev.org>, 2002.
 # Michal Rudolf <mrudolf@kdewebdev.org>, 2002, 2003, 2005, 2008, 2009.
-# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2011, 2015, 2016, 2021, 2023.
+# SPDX-FileCopyrightText: 2011, 2015, 2016, 2021, 2023, 2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-24 00:41+0000\n"
-"PO-Revision-Date: 2023-09-24 08:02+0200\n"
+"POT-Creation-Date: 2024-09-30 00:41+0000\n"
+"PO-Revision-Date: 2024-09-29 09:24+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -21,6 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -512,85 +513,76 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Choose a program to run</message>"
-msgstr ""
+msgstr "<message>Wskaż program do uruchomienia</message>"
 
 #: src/taskvalidator.cpp:112 src/taskvalidator.cpp:119
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please type a valid command line...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please type a valid command line</message>"
-msgstr "<i>Proszę podać poprawne polecenie...</i>"
+msgstr "<message>Wpisz poprawny polecenie wiersza poleceń</message>"
 
 #: src/taskvalidator.cpp:138
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please select an executable program...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please select an executable program</message>"
-msgstr "<i>Wybierz plik wykonywalny...</i>"
+msgstr "<message>Wskaż plik do wykonania</message>"
 
 #: src/taskvalidator.cpp:163
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please select from the 'Months' section...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please select from the <b>Months</b> section</message>"
-msgstr "<i>Wybierz miesiąc z listy...</i>"
+msgstr "<message>Wybierz z obszaru <b>Miesięcy</b></message>"
 
 #: src/taskvalidator.cpp:188
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "<i>Please select from either the 'Days of Month' or the 'Days of Week' "
-#| "section...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from either the <b>Days of Month</b> or the <b>Days "
 "of Week</b> section</message>"
-msgstr "<i>Proszę zaznaczyć dni miesiąca albo dni tygodnia...</i>"
+msgstr ""
+"<message>Zaznacz obszar albo <b>Dni miesiąca</b> albo <b>Dni tygodnia</b></"
+"message>"
 
 #: src/taskvalidator.cpp:206
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please select from the 'Hours' section...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please select from the <b>Hours</b> section</message>"
-msgstr "<i>Wybierz godzinę z listy...</i>"
+msgstr "<message>Wybierz z obszaru <b>Godzin</b></message>"
 
 #: src/taskvalidator.cpp:224
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please select from the 'Minutes' section...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please select from the <b>Minutes</b> section</message>"
-msgstr "<i>Wybierz minuty z listy...</i>"
+msgstr "<message>Wybierz z obszaru <b>Minut</b></message>"
 
 #: src/ui/main.qml:45
 #, kde-format
 msgctxt "@text"
 msgid "Show:"
-msgstr ""
+msgstr "Pokaż:"
 
 #: src/ui/main.qml:49
-#, fuzzy, kde-format
-#| msgid "Task Scheduler"
+#, kde-format
 msgctxt "@title:tab"
 msgid "User Schedule"
-msgstr "Harmonogram zadań"
+msgstr "Harmonogram użytkownika"
 
 #: src/ui/main.qml:55
-#, fuzzy, kde-format
-#| msgid "Task Scheduler"
+#, kde-format
 msgctxt "@title:tab"
 msgid "System Schedule"
-msgstr "Harmonogram zadań"
+msgstr "Harmonogram systemu"
 
 #: src/ui/main.qml:64
 #, kde-format
 msgctxt "@action:button"
 msgid "Print"
-msgstr ""
+msgstr "Wydrukuj"
 
 #: src/ui/Onboarding.qml:22
-#, fuzzy, kde-format
-#| msgid "Welcome to the Task Scheduler"
+#, kde-format
 msgid "Welcome to Task Scheduler!"
-msgstr "Witamy w Harmonogramie zadań"
+msgstr "Witaj w Harmonogramie Zadań!"
 
 #: src/ui/Onboarding.qml:24
 #, kde-kuit-format
@@ -600,357 +592,317 @@ msgid ""
 "schedule and automate repetitive tasks like downloading files or sending "
 "emails. <link url='%1'>Learn more</link>"
 msgstr ""
+"Zaplanuj uruchamianie programów w tle. Nastaw zadania do uruchomienia w "
+"ustalonych odstępach czasu i zautomatyzuj zadania takie jak pobieranie "
+"plików lub wysyłanie wiadomości pocztowych. <link url='%1'>Dowiedz się "
+"więcej</link>"
 
 #: src/ui/Onboarding.qml:27
 #, kde-format
 msgctxt "@action:button"
 msgid "Go to Dashboard"
-msgstr ""
+msgstr "Przejdź do tablicy rozdzielczej"
 
 #: src/ui/TaskPage.qml:22
-#, fuzzy, kde-format
-#| msgid "Modify Task"
+#, kde-format
 msgctxt "@title"
 msgid "Edit Task"
 msgstr "Edytuj zadanie"
 
 #: src/ui/TaskPage.qml:23
-#, fuzzy, kde-format
-#| msgid "New Task"
+#, kde-format
 msgctxt "@title"
 msgid "New Task"
 msgstr "Nowe zadanie"
 
 #: src/ui/TaskPage.qml:33
-#, fuzzy, kde-format
-#| msgid "Modify Task"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit Task"
 msgstr "Edytuj zadanie"
 
 #: src/ui/TaskPage.qml:34
-#, fuzzy, kde-format
-#| msgid "Modify Task"
+#, kde-format
 msgctxt "@action:button accessible"
 msgid "Edit Task"
 msgstr "Edytuj zadanie"
 
 #: src/ui/TaskPage.qml:44
-#, fuzzy, kde-format
-#| msgid "New Task"
+#, kde-format
 msgctxt "@action:button"
 msgid "New Task"
 msgstr "Nowe zadanie"
 
 #: src/ui/TaskPage.qml:45
-#, fuzzy, kde-format
-#| msgid "New Task"
+#, kde-format
 msgctxt "@action:button accessible"
 msgid "New Task"
 msgstr "Nowe zadanie"
 
 #: src/ui/TaskPage.qml:90
-#, fuzzy, kde-format
-#| msgid "&Command:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Command:"
-msgstr "Pole&cenie:"
+msgstr "Polecenie:"
 
 #: src/ui/TaskPage.qml:97
 #, kde-format
 msgctxt "@action:button"
 msgid "Browse the Program"
-msgstr ""
+msgstr "Przeglądaj za programem"
 
 #: src/ui/TaskPage.qml:105
-#, fuzzy, kde-format
-#| msgid "&Enable this task"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable this task"
-msgstr "&Włącz to zadanie"
+msgstr "Włącz to zadanie"
 
 #: src/ui/TaskPage.qml:110 src/ui/VariablePage.qml:97
-#, fuzzy, kde-format
-#| msgid "User"
+#, kde-format
 msgctxt "@label:listbox"
 msgid "User:"
-msgstr "Użytkownik"
+msgstr "Użytkownik:"
 
-#: src/ui/TaskPage.qml:129 src/ui/VariablePage.qml:119
-#, fuzzy, kde-format
-#| msgid "Co&mment:"
+#: src/ui/TaskPage.qml:130 src/ui/VariablePage.qml:119
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Comment:"
-msgstr "&Uwagi:"
+msgstr "Komentarz:"
 
-#: src/ui/TaskPage.qml:136
+#: src/ui/TaskPage.qml:137
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Run:"
-msgstr ""
+msgstr "Uruchom:"
 
-#: src/ui/TaskPage.qml:139
-#, fuzzy, kde-format
-#| msgid "At system startup"
+#: src/ui/TaskPage.qml:140
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "When system starts"
-msgstr "Przy uruchamianiu systemu"
+msgstr "Gdy system się uruchamia"
 
-#: src/ui/TaskPage.qml:146
-#, fuzzy, kde-format
-#| msgid "every day "
+#: src/ui/TaskPage.qml:147
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Every day"
-msgstr "codziennie "
+msgstr "Codziennie"
 
-#: src/ui/TaskPage.qml:152
-#, fuzzy, kde-format
-#| msgid "Months"
+#: src/ui/TaskPage.qml:153
+#, kde-format
 msgctxt "@title:group"
 msgid "Months"
 msgstr "Miesiące"
 
-#: src/ui/TaskPage.qml:172
-#, fuzzy, kde-format
-#| msgid "Days of Month"
+#: src/ui/TaskPage.qml:173
+#, kde-format
 msgctxt "@title:group"
 msgid "Days of Month"
 msgstr "Dni miesiąca"
 
-#: src/ui/TaskPage.qml:193
-#, fuzzy, kde-format
-#| msgid "Days of Week"
+#: src/ui/TaskPage.qml:194
+#, kde-format
 msgctxt "@title:group"
 msgid "Days of Week"
 msgstr "Dni tygodnia"
 
-#: src/ui/TaskPage.qml:213
-#, fuzzy, kde-format
-#| msgid "Hours"
+#: src/ui/TaskPage.qml:214
+#, kde-format
 msgctxt "@title:group"
 msgid "Hours"
 msgstr "Godziny"
 
-#: src/ui/TaskPage.qml:234
-#, fuzzy, kde-format
-#| msgid "Minutes"
+#: src/ui/TaskPage.qml:235
+#, kde-format
 msgctxt "@title:group"
 msgid "Minutes"
 msgstr "Minuty"
 
-#: src/ui/TaskPage.qml:263
+#: src/ui/TaskPage.qml:264
 #, kde-format
 msgid "Custom selection"
 msgstr "Własny wybór"
 
-#: src/ui/TaskPage.qml:264
+#: src/ui/TaskPage.qml:265
 #, kde-format
 msgid "Each minute"
 msgstr "Co minutę"
 
-#: src/ui/TaskPage.qml:265
+#: src/ui/TaskPage.qml:266
 #, kde-format
 msgid "Every 2 minutes"
 msgstr "Co 2 minuty"
 
-#: src/ui/TaskPage.qml:266
+#: src/ui/TaskPage.qml:267
 #, kde-format
 msgid "Every 5 minutes"
 msgstr "Co 5 minut"
 
-#: src/ui/TaskPage.qml:267
+#: src/ui/TaskPage.qml:268
 #, kde-format
 msgid "Every 10 minutes"
 msgstr "Co 10 minut"
 
-#: src/ui/TaskPage.qml:268
+#: src/ui/TaskPage.qml:269
 #, kde-format
 msgid "Every 15 minutes"
 msgstr "Co 15 minut"
 
-#: src/ui/TaskPage.qml:269
+#: src/ui/TaskPage.qml:270
 #, kde-format
 msgid "Every 20 minutes"
 msgstr "Co 20 minut"
 
-#: src/ui/TaskPage.qml:270
+#: src/ui/TaskPage.qml:271
 #, kde-format
 msgid "Every 30 minutes"
 msgstr "Co 30 minut"
 
-#: src/ui/TaskPage.qml:312
-#, fuzzy, kde-format
-#| msgid "January"
+#: src/ui/TaskPage.qml:313
+#, kde-format
 msgctxt "@action:button"
 msgid "January"
 msgstr "Styczeń"
 
-#: src/ui/TaskPage.qml:316
-#, fuzzy, kde-format
-#| msgid "February"
+#: src/ui/TaskPage.qml:317
+#, kde-format
 msgctxt "@action:button"
 msgid "February"
 msgstr "Luty"
 
-#: src/ui/TaskPage.qml:320
-#, fuzzy, kde-format
-#| msgid "March"
+#: src/ui/TaskPage.qml:321
+#, kde-format
 msgctxt "@action:button"
 msgid "March"
 msgstr "Marzec"
 
-#: src/ui/TaskPage.qml:324
-#, fuzzy, kde-format
-#| msgid "April"
+#: src/ui/TaskPage.qml:325
+#, kde-format
 msgctxt "@action:button"
 msgid "April"
 msgstr "Kwiecień"
 
-#: src/ui/TaskPage.qml:328
-#, fuzzy, kde-format
-#| msgctxt "May long"
-#| msgid "May"
+#: src/ui/TaskPage.qml:329
+#, kde-format
 msgctxt "@action:button"
 msgid "May"
 msgstr "Maj"
 
-#: src/ui/TaskPage.qml:332
-#, fuzzy, kde-format
-#| msgid "June"
+#: src/ui/TaskPage.qml:333
+#, kde-format
 msgctxt "@action:button"
 msgid "June"
 msgstr "Czerwiec"
 
-#: src/ui/TaskPage.qml:336
-#, fuzzy, kde-format
-#| msgctxt "July long"
-#| msgid "July"
+#: src/ui/TaskPage.qml:337
+#, kde-format
 msgctxt "@action:button"
 msgid "July"
 msgstr "Lipiec"
 
-#: src/ui/TaskPage.qml:340
-#, fuzzy, kde-format
-#| msgid "August"
+#: src/ui/TaskPage.qml:341
+#, kde-format
 msgctxt "@action:button"
 msgid "August"
 msgstr "Sierpień"
 
-#: src/ui/TaskPage.qml:344
-#, fuzzy, kde-format
-#| msgid "September"
+#: src/ui/TaskPage.qml:345
+#, kde-format
 msgctxt "@action:button"
 msgid "September"
 msgstr "Wrzesień"
 
-#: src/ui/TaskPage.qml:348
-#, fuzzy, kde-format
-#| msgid "October"
+#: src/ui/TaskPage.qml:349
+#, kde-format
 msgctxt "@action:button"
 msgid "October"
 msgstr "Październik"
 
-#: src/ui/TaskPage.qml:352
-#, fuzzy, kde-format
-#| msgid "November"
+#: src/ui/TaskPage.qml:353
+#, kde-format
 msgctxt "@action:button"
 msgid "November"
 msgstr "Listopad"
 
-#: src/ui/TaskPage.qml:356
-#, fuzzy, kde-format
-#| msgid "December"
+#: src/ui/TaskPage.qml:357
+#, kde-format
 msgctxt "@action:button"
 msgid "December"
 msgstr "Grudzień"
 
-#: src/ui/TaskPage.qml:378
-#, fuzzy, kde-format
-#| msgid "Monday"
+#: src/ui/TaskPage.qml:379
+#, kde-format
 msgctxt "@action:button"
 msgid "Monday"
 msgstr "Poniedziałek"
 
-#: src/ui/TaskPage.qml:382
-#, fuzzy, kde-format
-#| msgid "Tuesday"
+#: src/ui/TaskPage.qml:383
+#, kde-format
 msgctxt "@action:button"
 msgid "Tuesday"
 msgstr "Wtorek"
 
-#: src/ui/TaskPage.qml:386
-#, fuzzy, kde-format
-#| msgid "Wednesday"
+#: src/ui/TaskPage.qml:387
+#, kde-format
 msgctxt "@action:button"
 msgid "Wednesday"
 msgstr "Środa"
 
-#: src/ui/TaskPage.qml:390
-#, fuzzy, kde-format
-#| msgid "Thursday"
+#: src/ui/TaskPage.qml:391
+#, kde-format
 msgctxt "@action:button"
 msgid "Thursday"
 msgstr "Czwartek"
 
-#: src/ui/TaskPage.qml:394
-#, fuzzy, kde-format
-#| msgid "Friday"
+#: src/ui/TaskPage.qml:395
+#, kde-format
 msgctxt "@action:button"
 msgid "Friday"
 msgstr "Piątek"
 
-#: src/ui/TaskPage.qml:398
-#, fuzzy, kde-format
-#| msgid "Saturday"
+#: src/ui/TaskPage.qml:399
+#, kde-format
 msgctxt "@action:button"
 msgid "Saturday"
 msgstr "Sobota"
 
-#: src/ui/TaskPage.qml:402
-#, fuzzy, kde-format
-#| msgid "Sunday"
+#: src/ui/TaskPage.qml:403
+#, kde-format
 msgctxt "@action:button"
 msgid "Sunday"
 msgstr "Niedziela"
 
 #: src/ui/TasksComponent.qml:19
-#, fuzzy, kde-format
-#| msgid "Scheduled Tasks"
+#, kde-format
 msgctxt "@title:group"
 msgid "Scheduled Tasks"
 msgstr "Zaplanowane zadania"
 
 #: src/ui/TasksComponent.qml:56 src/ui/VariablesComponent.qml:57
-#, fuzzy, kde-format
-#| msgid "User"
+#, kde-format
 msgctxt "@title:column"
 msgid "User"
 msgstr "Użytkownik"
 
 #: src/ui/TasksComponent.qml:66
-#, fuzzy, kde-format
-#| msgid "Scheduling"
+#, kde-format
 msgctxt "@title:column"
 msgid "Scheduling"
 msgstr "Planowanie"
 
 #: src/ui/TasksComponent.qml:75
-#, fuzzy, kde-format
-#| msgid "Command"
+#, kde-format
 msgctxt "@title:column"
 msgid "Command"
 msgstr "Polecenie"
 
 #: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
-#, fuzzy, kde-format
-#| msgid "Comment"
+#, kde-format
 msgctxt "@title:column"
 msgid "Comment"
 msgstr "Komentarz"
 
 #: src/ui/TasksComponent.qml:92
-#, fuzzy, kde-format
-#| msgid "Scheduling Details"
+#, kde-format
 msgctxt "@title:column"
 msgid "Scheduling Details"
 msgstr "Szczegóły planowania"
@@ -959,192 +911,170 @@ msgstr "Szczegóły planowania"
 #, kde-format
 msgctxt "@action:button"
 msgid "Add Task…"
-msgstr ""
+msgstr "Dodaj zadanie…"
 
 #: src/ui/TasksComponent.qml:105
-#, fuzzy, kde-format
-#| msgid "Modify Task"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit Task…"
-msgstr "Edytuj zadanie"
+msgstr "Edytuj zadanie…"
 
 #: src/ui/TasksComponent.qml:113 src/ui/VariablesComponent.qml:125
-#, fuzzy, kde-format
-#| msgid "Set All"
+#, kde-format
 msgctxt "@action:button"
 msgid "Select All"
-msgstr "Zaznacz wszystkie"
+msgstr "Zaznacz wszystko"
 
 #: src/ui/TasksComponent.qml:120 src/ui/VariablesComponent.qml:132
 #, kde-format
 msgctxt "@action:button"
 msgid "Copy"
-msgstr ""
+msgstr "Skopiuj"
 
 #: src/ui/TasksComponent.qml:127 src/ui/VariablesComponent.qml:139
 #, kde-format
 msgctxt "@action:button"
 msgid "Cut"
-msgstr ""
+msgstr "Wytnij"
 
 #: src/ui/TasksComponent.qml:134 src/ui/VariablesComponent.qml:146
 #, kde-format
 msgctxt "@action:button"
 msgid "Paste"
-msgstr ""
+msgstr "Wklej"
 
 #: src/ui/TasksComponent.qml:142 src/ui/TasksComponent.qml:174
 #: src/ui/VariablesComponent.qml:154 src/ui/VariablesComponent.qml:178
-#, fuzzy, kde-format
-#| msgid "&Delete"
+#, kde-format
 msgctxt "@action:button"
 msgid "Delete"
-msgstr "U&suń"
+msgstr "Usuń"
 
 #: src/ui/TasksComponent.qml:150
-#, fuzzy, kde-format
-#| msgid "&Run as:"
+#, kde-format
 msgctxt "@action:button"
 msgid "Run task"
-msgstr "&Wykonaj jako:"
+msgstr "Wykonaj zadanie"
 
 #: src/ui/TasksComponent.qml:162 src/ui/VariablesComponent.qml:166
 #, kde-format
 msgctxt "@action:button"
 msgid "Add…"
-msgstr ""
+msgstr "Dodaj…"
 
 #: src/ui/TasksComponent.qml:168 src/ui/VariablesComponent.qml:172
 #, kde-format
 msgctxt "@action:button"
 msgid "Edit…"
-msgstr ""
+msgstr "Edytuj…"
 
 #: src/ui/TasksComponent.qml:180
-#, fuzzy, kde-format
-#| msgid "Sun"
+#, kde-format
 msgctxt "@action:button"
 msgid "Run"
-msgstr "Nd"
+msgstr "Uruchom"
 
 #: src/ui/TimeCard.qml:40
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Select all"
-msgstr ""
+msgstr "Zaznacz wszystko"
 
 #: src/ui/VariablePage.qml:17
-#, fuzzy, kde-format
-#| msgid "Modify Variable"
+#, kde-format
 msgctxt "@title"
 msgid "Edit Variable"
 msgstr "Edytuj zmienną"
 
 #: src/ui/VariablePage.qml:18
-#, fuzzy, kde-format
-#| msgid "New Variable"
+#, kde-format
 msgctxt "@title"
 msgid "New Variable"
 msgstr "Nowa zmienna"
 
 #: src/ui/VariablePage.qml:27
-#, fuzzy, kde-format
-#| msgid "Modify Variable"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit Variable"
 msgstr "Edytuj zmienną"
 
 #: src/ui/VariablePage.qml:28
-#, fuzzy, kde-format
-#| msgid "Modify Variable"
+#, kde-format
 msgctxt "@action:button accessible"
 msgid "Edit Variable"
 msgstr "Edytuj zmienną"
 
 #: src/ui/VariablePage.qml:38
-#, fuzzy, kde-format
-#| msgid "New Variable"
+#, kde-format
 msgctxt "@action:button"
 msgid "New Variable"
 msgstr "Nowa zmienna"
 
 #: src/ui/VariablePage.qml:39
-#, fuzzy, kde-format
-#| msgid "New Variable"
+#, kde-format
 msgctxt "@action:button accessible"
 msgid "New Variable"
 msgstr "Nowa zmienna"
 
 #: src/ui/VariablePage.qml:57
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please enter the variable name...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please enter the variable name</message>"
-msgstr "<i>Proszę podać nazwę zmiennej...</i>"
+msgstr "<message>Wpisz nazwę zmiennej</message>"
 
 #: src/ui/VariablePage.qml:59
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please enter the variable value ...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please enter the variable value</message>"
-msgstr "<i>Proszę podać wartość zmiennej...</i>"
+msgstr "<message>Wpisz wartość zmiennej</message>"
 
 #: src/ui/VariablePage.qml:76
-#, fuzzy, kde-format
-#| msgctxt "The environmental variable name ie HOME, MAILTO etc"
-#| msgid "&Variable:"
+#, kde-format
 msgctxt "@label:listbox"
 msgid "Variable:"
-msgstr "&Zmienna:"
+msgstr "Zmienna:"
 
 #: src/ui/VariablePage.qml:112
-#, fuzzy, kde-format
-#| msgid "Va&lue:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Value:"
-msgstr "&Wartość:"
+msgstr "Wartość:"
 
 #: src/ui/VariablePage.qml:126
-#, fuzzy, kde-format
-#| msgid "&Enable this variable"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable this variable"
-msgstr "&Włącz tę zmienną"
+msgstr "Włącz tę zmienną"
 
 #: src/ui/VariablesComponent.qml:19
-#, fuzzy, kde-format
-#| msgid "Environment Variables"
+#, kde-format
 msgctxt "@title:group"
 msgid "Environment Variables"
 msgstr "Zmienne środowiskowe"
 
 #: src/ui/VariablesComponent.qml:67
-#, fuzzy, kde-format
-#| msgid "Variable"
+#, kde-format
 msgctxt "@title:column"
 msgid "Variable"
 msgstr "Zmienna"
 
 #: src/ui/VariablesComponent.qml:98
-#, fuzzy, kde-format
-#| msgid "Value"
+#, kde-format
 msgctxt "@title:column"
 msgid "Value"
 msgstr "Wartość"
 
 #: src/ui/VariablesComponent.qml:112
-#, fuzzy, kde-format
-#| msgid "Variable"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add Variable…"
-msgstr "Zmienna"
+msgstr "Dodaj zmienną…"
 
 #: src/ui/VariablesComponent.qml:118
-#, fuzzy, kde-format
-#| msgid "Modify Variable"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit Variable…"
-msgstr "Edytuj zmienną"
+msgstr "Edytuj zmienną…"
 
 #~ msgctxt "NAME OF TRANSLATORS"
 #~ msgid "Your names"

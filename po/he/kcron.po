@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-24 00:41+0000\n"
+"POT-Creation-Date: 2024-09-30 00:41+0000\n"
 "PO-Revision-Date: 2024-09-24 08:11+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -670,209 +670,209 @@ msgctxt "@label:listbox"
 msgid "User:"
 msgstr "משתמש:"
 
-#: src/ui/TaskPage.qml:129 src/ui/VariablePage.qml:119
+#: src/ui/TaskPage.qml:130 src/ui/VariablePage.qml:119
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Comment:"
 msgstr "הערה:"
 
-#: src/ui/TaskPage.qml:136
+#: src/ui/TaskPage.qml:137
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Run:"
 msgstr "הרצה:"
 
-#: src/ui/TaskPage.qml:139
+#: src/ui/TaskPage.qml:140
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "When system starts"
 msgstr "עם עליית המערכת"
 
-#: src/ui/TaskPage.qml:146
+#: src/ui/TaskPage.qml:147
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Every day"
 msgstr "כל יום "
 
-#: src/ui/TaskPage.qml:152
+#: src/ui/TaskPage.qml:153
 #, kde-format
 msgctxt "@title:group"
 msgid "Months"
 msgstr "חודשים"
 
-#: src/ui/TaskPage.qml:172
+#: src/ui/TaskPage.qml:173
 #, kde-format
 msgctxt "@title:group"
 msgid "Days of Month"
 msgstr "ימים בחודש"
 
-#: src/ui/TaskPage.qml:193
+#: src/ui/TaskPage.qml:194
 #, kde-format
 msgctxt "@title:group"
 msgid "Days of Week"
 msgstr "ימים בשבוע"
 
-#: src/ui/TaskPage.qml:213
+#: src/ui/TaskPage.qml:214
 #, kde-format
 msgctxt "@title:group"
 msgid "Hours"
 msgstr "שעות"
 
-#: src/ui/TaskPage.qml:234
+#: src/ui/TaskPage.qml:235
 #, kde-format
 msgctxt "@title:group"
 msgid "Minutes"
 msgstr "דקות"
 
-#: src/ui/TaskPage.qml:263
+#: src/ui/TaskPage.qml:264
 #, kde-format
 msgid "Custom selection"
 msgstr "בחירה מותאמת אישית"
 
-#: src/ui/TaskPage.qml:264
+#: src/ui/TaskPage.qml:265
 #, kde-format
 msgid "Each minute"
 msgstr "כל דקה"
 
-#: src/ui/TaskPage.qml:265
+#: src/ui/TaskPage.qml:266
 #, kde-format
 msgid "Every 2 minutes"
 msgstr "כל 2 דקות"
 
-#: src/ui/TaskPage.qml:266
+#: src/ui/TaskPage.qml:267
 #, kde-format
 msgid "Every 5 minutes"
 msgstr "כל 5 דקות"
 
-#: src/ui/TaskPage.qml:267
+#: src/ui/TaskPage.qml:268
 #, kde-format
 msgid "Every 10 minutes"
 msgstr "כל 10 דקות"
 
-#: src/ui/TaskPage.qml:268
+#: src/ui/TaskPage.qml:269
 #, kde-format
 msgid "Every 15 minutes"
 msgstr "כל רבע שעה"
 
-#: src/ui/TaskPage.qml:269
+#: src/ui/TaskPage.qml:270
 #, kde-format
 msgid "Every 20 minutes"
 msgstr "כל 20 דקות"
 
-#: src/ui/TaskPage.qml:270
+#: src/ui/TaskPage.qml:271
 #, kde-format
 msgid "Every 30 minutes"
 msgstr "כל חצי שעה"
 
-#: src/ui/TaskPage.qml:312
+#: src/ui/TaskPage.qml:313
 #, kde-format
 msgctxt "@action:button"
 msgid "January"
 msgstr "ינואר"
 
-#: src/ui/TaskPage.qml:316
+#: src/ui/TaskPage.qml:317
 #, kde-format
 msgctxt "@action:button"
 msgid "February"
 msgstr "פברואר"
 
-#: src/ui/TaskPage.qml:320
+#: src/ui/TaskPage.qml:321
 #, kde-format
 msgctxt "@action:button"
 msgid "March"
 msgstr "מרץ"
 
-#: src/ui/TaskPage.qml:324
+#: src/ui/TaskPage.qml:325
 #, kde-format
 msgctxt "@action:button"
 msgid "April"
 msgstr "אפריל"
 
-#: src/ui/TaskPage.qml:328
+#: src/ui/TaskPage.qml:329
 #, kde-format
 msgctxt "@action:button"
 msgid "May"
 msgstr "מאי"
 
-#: src/ui/TaskPage.qml:332
+#: src/ui/TaskPage.qml:333
 #, kde-format
 msgctxt "@action:button"
 msgid "June"
 msgstr "יוני"
 
-#: src/ui/TaskPage.qml:336
+#: src/ui/TaskPage.qml:337
 #, kde-format
 msgctxt "@action:button"
 msgid "July"
 msgstr "יולי"
 
-#: src/ui/TaskPage.qml:340
+#: src/ui/TaskPage.qml:341
 #, kde-format
 msgctxt "@action:button"
 msgid "August"
 msgstr "אוגוסט"
 
-#: src/ui/TaskPage.qml:344
+#: src/ui/TaskPage.qml:345
 #, kde-format
 msgctxt "@action:button"
 msgid "September"
 msgstr "ספטמבר"
 
-#: src/ui/TaskPage.qml:348
+#: src/ui/TaskPage.qml:349
 #, kde-format
 msgctxt "@action:button"
 msgid "October"
 msgstr "אוקטובר"
 
-#: src/ui/TaskPage.qml:352
+#: src/ui/TaskPage.qml:353
 #, kde-format
 msgctxt "@action:button"
 msgid "November"
 msgstr "נובמבר"
 
-#: src/ui/TaskPage.qml:356
+#: src/ui/TaskPage.qml:357
 #, kde-format
 msgctxt "@action:button"
 msgid "December"
 msgstr "דצמבר"
 
-#: src/ui/TaskPage.qml:378
+#: src/ui/TaskPage.qml:379
 #, kde-format
 msgctxt "@action:button"
 msgid "Monday"
 msgstr "שני"
 
-#: src/ui/TaskPage.qml:382
+#: src/ui/TaskPage.qml:383
 #, kde-format
 msgctxt "@action:button"
 msgid "Tuesday"
 msgstr "שלישי"
 
-#: src/ui/TaskPage.qml:386
+#: src/ui/TaskPage.qml:387
 #, kde-format
 msgctxt "@action:button"
 msgid "Wednesday"
 msgstr "רביעי"
 
-#: src/ui/TaskPage.qml:390
+#: src/ui/TaskPage.qml:391
 #, kde-format
 msgctxt "@action:button"
 msgid "Thursday"
 msgstr "חמישי"
 
-#: src/ui/TaskPage.qml:394
+#: src/ui/TaskPage.qml:395
 #, kde-format
 msgctxt "@action:button"
 msgid "Friday"
 msgstr "שישי"
 
-#: src/ui/TaskPage.qml:398
+#: src/ui/TaskPage.qml:399
 #, kde-format
 msgctxt "@action:button"
 msgid "Saturday"
 msgstr "שבת"
 
-#: src/ui/TaskPage.qml:402
+#: src/ui/TaskPage.qml:403
 #, kde-format
 msgctxt "@action:button"
 msgid "Sunday"

@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-24 00:41+0000\n"
+"POT-Creation-Date: 2024-09-30 00:41+0000\n"
 "PO-Revision-Date: 2023-12-27 10:05+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -690,137 +690,137 @@ msgctxt "@label:listbox"
 msgid "User:"
 msgstr "Пользователь"
 
-#: src/ui/TaskPage.qml:129 src/ui/VariablePage.qml:119
+#: src/ui/TaskPage.qml:130 src/ui/VariablePage.qml:119
 #, fuzzy, kde-format
 #| msgid "&Comment:"
 msgctxt "@label:textbox"
 msgid "Comment:"
 msgstr "Ко&мментарий:"
 
-#: src/ui/TaskPage.qml:136
+#: src/ui/TaskPage.qml:137
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Run:"
 msgstr ""
 
-#: src/ui/TaskPage.qml:139
+#: src/ui/TaskPage.qml:140
 #, fuzzy, kde-format
 #| msgid "At system startup"
 msgctxt "@label:checkbox"
 msgid "When system starts"
 msgstr "При загрузке системы"
 
-#: src/ui/TaskPage.qml:146
+#: src/ui/TaskPage.qml:147
 #, fuzzy, kde-format
 #| msgid "every day "
 msgctxt "@label:checkbox"
 msgid "Every day"
 msgstr "каждый день "
 
-#: src/ui/TaskPage.qml:152
+#: src/ui/TaskPage.qml:153
 #, fuzzy, kde-format
 #| msgid "Months"
 msgctxt "@title:group"
 msgid "Months"
 msgstr "Месяцы"
 
-#: src/ui/TaskPage.qml:172
+#: src/ui/TaskPage.qml:173
 #, fuzzy, kde-format
 #| msgid "Days of Month"
 msgctxt "@title:group"
 msgid "Days of Month"
 msgstr "Дни месяца"
 
-#: src/ui/TaskPage.qml:193
+#: src/ui/TaskPage.qml:194
 #, fuzzy, kde-format
 #| msgid "Days of Week"
 msgctxt "@title:group"
 msgid "Days of Week"
 msgstr "Дни недели"
 
-#: src/ui/TaskPage.qml:213
+#: src/ui/TaskPage.qml:214
 #, fuzzy, kde-format
 #| msgid "Hours"
 msgctxt "@title:group"
 msgid "Hours"
 msgstr "Часы"
 
-#: src/ui/TaskPage.qml:234
+#: src/ui/TaskPage.qml:235
 #, fuzzy, kde-format
 #| msgid "Minutes"
 msgctxt "@title:group"
 msgid "Minutes"
 msgstr "Минуты"
 
-#: src/ui/TaskPage.qml:263
+#: src/ui/TaskPage.qml:264
 #, kde-format
 msgid "Custom selection"
 msgstr "Нестандартный выбор"
 
-#: src/ui/TaskPage.qml:264
+#: src/ui/TaskPage.qml:265
 #, kde-format
 msgid "Each minute"
 msgstr "Ежеминутно"
 
-#: src/ui/TaskPage.qml:265
+#: src/ui/TaskPage.qml:266
 #, kde-format
 msgid "Every 2 minutes"
 msgstr "Каждые 2 минуты"
 
-#: src/ui/TaskPage.qml:266
+#: src/ui/TaskPage.qml:267
 #, kde-format
 msgid "Every 5 minutes"
 msgstr "Каждые 5 минут"
 
-#: src/ui/TaskPage.qml:267
+#: src/ui/TaskPage.qml:268
 #, kde-format
 msgid "Every 10 minutes"
 msgstr "Каждые 10 минут"
 
-#: src/ui/TaskPage.qml:268
+#: src/ui/TaskPage.qml:269
 #, kde-format
 msgid "Every 15 minutes"
 msgstr "Каждые 15 минут"
 
-#: src/ui/TaskPage.qml:269
+#: src/ui/TaskPage.qml:270
 #, kde-format
 msgid "Every 20 minutes"
 msgstr "Каждые 20 минут"
 
-#: src/ui/TaskPage.qml:270
+#: src/ui/TaskPage.qml:271
 #, kde-format
 msgid "Every 30 minutes"
 msgstr "Каждые 30 минут"
 
-#: src/ui/TaskPage.qml:312
+#: src/ui/TaskPage.qml:313
 #, fuzzy, kde-format
 #| msgid "January"
 msgctxt "@action:button"
 msgid "January"
 msgstr "Январь"
 
-#: src/ui/TaskPage.qml:316
+#: src/ui/TaskPage.qml:317
 #, fuzzy, kde-format
 #| msgid "February"
 msgctxt "@action:button"
 msgid "February"
 msgstr "Февраль"
 
-#: src/ui/TaskPage.qml:320
+#: src/ui/TaskPage.qml:321
 #, fuzzy, kde-format
 #| msgid "March"
 msgctxt "@action:button"
 msgid "March"
 msgstr "Март"
 
-#: src/ui/TaskPage.qml:324
+#: src/ui/TaskPage.qml:325
 #, fuzzy, kde-format
 #| msgid "April"
 msgctxt "@action:button"
 msgid "April"
 msgstr "Апрель"
 
-#: src/ui/TaskPage.qml:328
+#: src/ui/TaskPage.qml:329
 #, fuzzy, kde-format
 #| msgctxt "May long"
 #| msgid "May"
@@ -828,14 +828,14 @@ msgctxt "@action:button"
 msgid "May"
 msgstr "Май"
 
-#: src/ui/TaskPage.qml:332
+#: src/ui/TaskPage.qml:333
 #, fuzzy, kde-format
 #| msgid "June"
 msgctxt "@action:button"
 msgid "June"
 msgstr "Июнь"
 
-#: src/ui/TaskPage.qml:336
+#: src/ui/TaskPage.qml:337
 #, fuzzy, kde-format
 #| msgctxt "July long"
 #| msgid "July"
@@ -843,84 +843,84 @@ msgctxt "@action:button"
 msgid "July"
 msgstr "Июль"
 
-#: src/ui/TaskPage.qml:340
+#: src/ui/TaskPage.qml:341
 #, fuzzy, kde-format
 #| msgid "August"
 msgctxt "@action:button"
 msgid "August"
 msgstr "Август"
 
-#: src/ui/TaskPage.qml:344
+#: src/ui/TaskPage.qml:345
 #, fuzzy, kde-format
 #| msgid "September"
 msgctxt "@action:button"
 msgid "September"
 msgstr "Сентябрь"
 
-#: src/ui/TaskPage.qml:348
+#: src/ui/TaskPage.qml:349
 #, fuzzy, kde-format
 #| msgid "October"
 msgctxt "@action:button"
 msgid "October"
 msgstr "Октябрь"
 
-#: src/ui/TaskPage.qml:352
+#: src/ui/TaskPage.qml:353
 #, fuzzy, kde-format
 #| msgid "November"
 msgctxt "@action:button"
 msgid "November"
 msgstr "Ноябрь"
 
-#: src/ui/TaskPage.qml:356
+#: src/ui/TaskPage.qml:357
 #, fuzzy, kde-format
 #| msgid "December"
 msgctxt "@action:button"
 msgid "December"
 msgstr "Декабрь"
 
-#: src/ui/TaskPage.qml:378
+#: src/ui/TaskPage.qml:379
 #, fuzzy, kde-format
 #| msgid "Monday"
 msgctxt "@action:button"
 msgid "Monday"
 msgstr "Понедельник"
 
-#: src/ui/TaskPage.qml:382
+#: src/ui/TaskPage.qml:383
 #, fuzzy, kde-format
 #| msgid "Tuesday"
 msgctxt "@action:button"
 msgid "Tuesday"
 msgstr "Вторник"
 
-#: src/ui/TaskPage.qml:386
+#: src/ui/TaskPage.qml:387
 #, fuzzy, kde-format
 #| msgid "Wednesday"
 msgctxt "@action:button"
 msgid "Wednesday"
 msgstr "Среда"
 
-#: src/ui/TaskPage.qml:390
+#: src/ui/TaskPage.qml:391
 #, fuzzy, kde-format
 #| msgid "Thursday"
 msgctxt "@action:button"
 msgid "Thursday"
 msgstr "Четверг"
 
-#: src/ui/TaskPage.qml:394
+#: src/ui/TaskPage.qml:395
 #, fuzzy, kde-format
 #| msgid "Friday"
 msgctxt "@action:button"
 msgid "Friday"
 msgstr "Пятница"
 
-#: src/ui/TaskPage.qml:398
+#: src/ui/TaskPage.qml:399
 #, fuzzy, kde-format
 #| msgid "Saturday"
 msgctxt "@action:button"
 msgid "Saturday"
 msgstr "Суббота"
 
-#: src/ui/TaskPage.qml:402
+#: src/ui/TaskPage.qml:403
 #, fuzzy, kde-format
 #| msgid "Sunday"
 msgctxt "@action:button"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-24 00:41+0000\n"
+"POT-Creation-Date: 2024-09-30 00:41+0000\n"
 "PO-Revision-Date: 2024-09-24 08:46+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -655,209 +655,209 @@ msgctxt "@label:listbox"
 msgid "User:"
 msgstr "მომხმარებელი:"
 
-#: src/ui/TaskPage.qml:129 src/ui/VariablePage.qml:119
+#: src/ui/TaskPage.qml:130 src/ui/VariablePage.qml:119
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Comment:"
 msgstr "კომენტარი:"
 
-#: src/ui/TaskPage.qml:136
+#: src/ui/TaskPage.qml:137
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Run:"
 msgstr "გაშვება:"
 
-#: src/ui/TaskPage.qml:139
+#: src/ui/TaskPage.qml:140
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "When system starts"
 msgstr "სისტემის გაშვებისას"
 
-#: src/ui/TaskPage.qml:146
+#: src/ui/TaskPage.qml:147
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Every day"
 msgstr "ყოველდღე"
 
-#: src/ui/TaskPage.qml:152
+#: src/ui/TaskPage.qml:153
 #, kde-format
 msgctxt "@title:group"
 msgid "Months"
 msgstr "თვე"
 
-#: src/ui/TaskPage.qml:172
+#: src/ui/TaskPage.qml:173
 #, kde-format
 msgctxt "@title:group"
 msgid "Days of Month"
 msgstr "თვის დღეები"
 
-#: src/ui/TaskPage.qml:193
+#: src/ui/TaskPage.qml:194
 #, kde-format
 msgctxt "@title:group"
 msgid "Days of Week"
 msgstr "კვირის დღეები"
 
-#: src/ui/TaskPage.qml:213
+#: src/ui/TaskPage.qml:214
 #, kde-format
 msgctxt "@title:group"
 msgid "Hours"
 msgstr "საათი"
 
-#: src/ui/TaskPage.qml:234
+#: src/ui/TaskPage.qml:235
 #, kde-format
 msgctxt "@title:group"
 msgid "Minutes"
 msgstr "წუთი"
 
-#: src/ui/TaskPage.qml:263
+#: src/ui/TaskPage.qml:264
 #, kde-format
 msgid "Custom selection"
 msgstr "ხელით მითითება"
 
-#: src/ui/TaskPage.qml:264
+#: src/ui/TaskPage.qml:265
 #, kde-format
 msgid "Each minute"
 msgstr "ყოველ წუთს"
 
-#: src/ui/TaskPage.qml:265
+#: src/ui/TaskPage.qml:266
 #, kde-format
 msgid "Every 2 minutes"
 msgstr "ყოველ 2 წუთში"
 
-#: src/ui/TaskPage.qml:266
+#: src/ui/TaskPage.qml:267
 #, kde-format
 msgid "Every 5 minutes"
 msgstr "ყოველ 5 წუთში"
 
-#: src/ui/TaskPage.qml:267
+#: src/ui/TaskPage.qml:268
 #, kde-format
 msgid "Every 10 minutes"
 msgstr "ყოველ 10 წუთში"
 
-#: src/ui/TaskPage.qml:268
+#: src/ui/TaskPage.qml:269
 #, kde-format
 msgid "Every 15 minutes"
 msgstr "ყოველ 15 წუთში"
 
-#: src/ui/TaskPage.qml:269
+#: src/ui/TaskPage.qml:270
 #, kde-format
 msgid "Every 20 minutes"
 msgstr "ყოველ 20 წუთში"
 
-#: src/ui/TaskPage.qml:270
+#: src/ui/TaskPage.qml:271
 #, kde-format
 msgid "Every 30 minutes"
 msgstr "ყოველ 30 წუთში"
 
-#: src/ui/TaskPage.qml:312
+#: src/ui/TaskPage.qml:313
 #, kde-format
 msgctxt "@action:button"
 msgid "January"
 msgstr "იანვარი"
 
-#: src/ui/TaskPage.qml:316
+#: src/ui/TaskPage.qml:317
 #, kde-format
 msgctxt "@action:button"
 msgid "February"
 msgstr "თებერვალი"
 
-#: src/ui/TaskPage.qml:320
+#: src/ui/TaskPage.qml:321
 #, kde-format
 msgctxt "@action:button"
 msgid "March"
 msgstr "მარტი"
 
-#: src/ui/TaskPage.qml:324
+#: src/ui/TaskPage.qml:325
 #, kde-format
 msgctxt "@action:button"
 msgid "April"
 msgstr "აპრილი"
 
-#: src/ui/TaskPage.qml:328
+#: src/ui/TaskPage.qml:329
 #, kde-format
 msgctxt "@action:button"
 msgid "May"
 msgstr "მაისი"
 
-#: src/ui/TaskPage.qml:332
+#: src/ui/TaskPage.qml:333
 #, kde-format
 msgctxt "@action:button"
 msgid "June"
 msgstr "ივნისი"
 
-#: src/ui/TaskPage.qml:336
+#: src/ui/TaskPage.qml:337
 #, kde-format
 msgctxt "@action:button"
 msgid "July"
 msgstr "ივლისი"
 
-#: src/ui/TaskPage.qml:340
+#: src/ui/TaskPage.qml:341
 #, kde-format
 msgctxt "@action:button"
 msgid "August"
 msgstr "აგვისტო"
 
-#: src/ui/TaskPage.qml:344
+#: src/ui/TaskPage.qml:345
 #, kde-format
 msgctxt "@action:button"
 msgid "September"
 msgstr "სექტემბერი"
 
-#: src/ui/TaskPage.qml:348
+#: src/ui/TaskPage.qml:349
 #, kde-format
 msgctxt "@action:button"
 msgid "October"
 msgstr "ოქტომბერი"
 
-#: src/ui/TaskPage.qml:352
+#: src/ui/TaskPage.qml:353
 #, kde-format
 msgctxt "@action:button"
 msgid "November"
 msgstr "ნოემბერი"
 
-#: src/ui/TaskPage.qml:356
+#: src/ui/TaskPage.qml:357
 #, kde-format
 msgctxt "@action:button"
 msgid "December"
 msgstr "დეკემბერი"
 
-#: src/ui/TaskPage.qml:378
+#: src/ui/TaskPage.qml:379
 #, kde-format
 msgctxt "@action:button"
 msgid "Monday"
 msgstr "ორშაბათი"
 
-#: src/ui/TaskPage.qml:382
+#: src/ui/TaskPage.qml:383
 #, kde-format
 msgctxt "@action:button"
 msgid "Tuesday"
 msgstr "სამშაბათი"
 
-#: src/ui/TaskPage.qml:386
+#: src/ui/TaskPage.qml:387
 #, kde-format
 msgctxt "@action:button"
 msgid "Wednesday"
 msgstr "ოთხშაბათი"
 
-#: src/ui/TaskPage.qml:390
+#: src/ui/TaskPage.qml:391
 #, kde-format
 msgctxt "@action:button"
 msgid "Thursday"
 msgstr "ხუთშაბათი"
 
-#: src/ui/TaskPage.qml:394
+#: src/ui/TaskPage.qml:395
 #, kde-format
 msgctxt "@action:button"
 msgid "Friday"
 msgstr "პარასკევი"
 
-#: src/ui/TaskPage.qml:398
+#: src/ui/TaskPage.qml:399
 #, kde-format
 msgctxt "@action:button"
 msgid "Saturday"
 msgstr "შაბათი"
 
-#: src/ui/TaskPage.qml:402
+#: src/ui/TaskPage.qml:403
 #, kde-format
 msgctxt "@action:button"
 msgid "Sunday"
