@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-30 00:41+0000\n"
+"POT-Creation-Date: 2024-10-01 00:41+0000\n"
 "PO-Revision-Date: 2024-06-30 15:56+0000\n"
 "Last-Translator: Gummi <gudmundure@gmail.com>\n"
 "Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
@@ -607,131 +607,131 @@ msgctxt "@action:button"
 msgid "Go to Dashboard"
 msgstr ""
 
-#: src/ui/TaskPage.qml:22
+#: src/ui/TaskPage.qml:23
 #, fuzzy, kde-format
 #| msgid "Modify Task"
 msgctxt "@title"
 msgid "Edit Task"
 msgstr "Breyta verki"
 
-#: src/ui/TaskPage.qml:23
+#: src/ui/TaskPage.qml:24
 #, fuzzy, kde-format
 #| msgid "New Task"
 msgctxt "@title"
 msgid "New Task"
 msgstr "Nýtt verk"
-
-#: src/ui/TaskPage.qml:33
-#, fuzzy, kde-format
-#| msgid "Modify Task"
-msgctxt "@action:button"
-msgid "Edit Task"
-msgstr "Breyta verki"
 
 #: src/ui/TaskPage.qml:34
 #, fuzzy, kde-format
 #| msgid "Modify Task"
+msgctxt "@action:button"
+msgid "Edit Task"
+msgstr "Breyta verki"
+
+#: src/ui/TaskPage.qml:35
+#, fuzzy, kde-format
+#| msgid "Modify Task"
 msgctxt "@action:button accessible"
 msgid "Edit Task"
 msgstr "Breyta verki"
 
-#: src/ui/TaskPage.qml:44
+#: src/ui/TaskPage.qml:45
 #, fuzzy, kde-format
 #| msgid "New Task"
 msgctxt "@action:button"
 msgid "New Task"
 msgstr "Nýtt verk"
 
-#: src/ui/TaskPage.qml:45
+#: src/ui/TaskPage.qml:46
 #, fuzzy, kde-format
 #| msgid "New Task"
 msgctxt "@action:button accessible"
 msgid "New Task"
 msgstr "Nýtt verk"
 
-#: src/ui/TaskPage.qml:90
+#: src/ui/TaskPage.qml:91
 #, fuzzy, kde-format
 #| msgid "&Command:"
 msgctxt "@label:textbox"
 msgid "Command:"
 msgstr "&Skipun:"
 
-#: src/ui/TaskPage.qml:97
+#: src/ui/TaskPage.qml:98
 #, kde-format
 msgctxt "@action:button"
 msgid "Browse the Program"
 msgstr ""
 
-#: src/ui/TaskPage.qml:105
+#: src/ui/TaskPage.qml:106
 #, fuzzy, kde-format
 #| msgid "&Enable this task"
 msgctxt "@label:checkbox"
 msgid "Enable this task"
 msgstr "&Virkja þetta verk"
 
-#: src/ui/TaskPage.qml:110 src/ui/VariablePage.qml:97
+#: src/ui/TaskPage.qml:111 src/ui/VariablePage.qml:97
 #, fuzzy, kde-format
 #| msgid "User"
 msgctxt "@label:listbox"
 msgid "User:"
 msgstr "Notandi"
 
-#: src/ui/TaskPage.qml:130 src/ui/VariablePage.qml:119
+#: src/ui/TaskPage.qml:131 src/ui/VariablePage.qml:119
 #, fuzzy, kde-format
 #| msgid "Co&mment:"
 msgctxt "@label:textbox"
 msgid "Comment:"
 msgstr "Athugase&md:"
 
-#: src/ui/TaskPage.qml:137
+#: src/ui/TaskPage.qml:138
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Run:"
 msgstr ""
 
-#: src/ui/TaskPage.qml:140
+#: src/ui/TaskPage.qml:141
 #, fuzzy, kde-format
 #| msgid "At system startup"
 msgctxt "@label:checkbox"
 msgid "When system starts"
 msgstr "Þegar kerfið er ræst"
 
-#: src/ui/TaskPage.qml:147
+#: src/ui/TaskPage.qml:148
 #, fuzzy, kde-format
 #| msgid "every day "
 msgctxt "@label:checkbox"
 msgid "Every day"
 msgstr "á hverjum degi"
 
-#: src/ui/TaskPage.qml:153
+#: src/ui/TaskPage.qml:154
 #, fuzzy, kde-format
 #| msgid "Months"
 msgctxt "@title:group"
 msgid "Months"
 msgstr "Mánuðir"
 
-#: src/ui/TaskPage.qml:173
+#: src/ui/TaskPage.qml:174
 #, fuzzy, kde-format
 #| msgid "Days of Month"
 msgctxt "@title:group"
 msgid "Days of Month"
 msgstr "Mánaðardagar"
 
-#: src/ui/TaskPage.qml:194
+#: src/ui/TaskPage.qml:195
 #, fuzzy, kde-format
 #| msgid "Days of Week"
 msgctxt "@title:group"
 msgid "Days of Week"
 msgstr "Vikudagar"
 
-#: src/ui/TaskPage.qml:214
+#: src/ui/TaskPage.qml:215
 #, fuzzy, kde-format
 #| msgid "Hours"
 msgctxt "@title:group"
 msgid "Hours"
 msgstr "Klukkustundir"
 
-#: src/ui/TaskPage.qml:235
+#: src/ui/TaskPage.qml:236
 #, fuzzy, kde-format
 #| msgid "Minutes"
 msgctxt "@title:group"
@@ -739,74 +739,81 @@ msgid "Minutes"
 msgstr "Mínútur"
 
 #: src/ui/TaskPage.qml:264
+#, fuzzy, kde-format
+#| msgid "Preselection:"
+msgctxt "@label:listbox"
+msgid "Selection:"
+msgstr "Forval:"
+
+#: src/ui/TaskPage.qml:269
 #, kde-format
 msgid "Custom selection"
 msgstr "Sérsniðið val"
 
-#: src/ui/TaskPage.qml:265
+#: src/ui/TaskPage.qml:270
 #, kde-format
 msgid "Each minute"
 msgstr "Á hverri mínútu"
 
-#: src/ui/TaskPage.qml:266
+#: src/ui/TaskPage.qml:271
 #, kde-format
 msgid "Every 2 minutes"
 msgstr "Á 2ja mínútna fresti"
 
-#: src/ui/TaskPage.qml:267
+#: src/ui/TaskPage.qml:272
 #, kde-format
 msgid "Every 5 minutes"
 msgstr "Á 5 mínútna fresti"
 
-#: src/ui/TaskPage.qml:268
+#: src/ui/TaskPage.qml:273
 #, kde-format
 msgid "Every 10 minutes"
 msgstr "Á 10 mínútna fresti"
 
-#: src/ui/TaskPage.qml:269
+#: src/ui/TaskPage.qml:274
 #, kde-format
 msgid "Every 15 minutes"
 msgstr "Á 15 mínútna fresti"
 
-#: src/ui/TaskPage.qml:270
+#: src/ui/TaskPage.qml:275
 #, kde-format
 msgid "Every 20 minutes"
 msgstr "Á 20 mínútna fresti"
 
-#: src/ui/TaskPage.qml:271
+#: src/ui/TaskPage.qml:276
 #, kde-format
 msgid "Every 30 minutes"
 msgstr "Á 30 mínútna fresti"
 
-#: src/ui/TaskPage.qml:313
+#: src/ui/TaskPage.qml:318
 #, fuzzy, kde-format
 #| msgid "January"
 msgctxt "@action:button"
 msgid "January"
 msgstr "janúar"
 
-#: src/ui/TaskPage.qml:317
+#: src/ui/TaskPage.qml:322
 #, fuzzy, kde-format
 #| msgid "February"
 msgctxt "@action:button"
 msgid "February"
 msgstr "febrúar"
 
-#: src/ui/TaskPage.qml:321
+#: src/ui/TaskPage.qml:326
 #, fuzzy, kde-format
 #| msgid "March"
 msgctxt "@action:button"
 msgid "March"
 msgstr "mars"
 
-#: src/ui/TaskPage.qml:325
+#: src/ui/TaskPage.qml:330
 #, fuzzy, kde-format
 #| msgid "April"
 msgctxt "@action:button"
 msgid "April"
 msgstr "apríl"
 
-#: src/ui/TaskPage.qml:329
+#: src/ui/TaskPage.qml:334
 #, fuzzy, kde-format
 #| msgctxt "May long"
 #| msgid "May"
@@ -814,14 +821,14 @@ msgctxt "@action:button"
 msgid "May"
 msgstr "maí"
 
-#: src/ui/TaskPage.qml:333
+#: src/ui/TaskPage.qml:338
 #, fuzzy, kde-format
 #| msgid "June"
 msgctxt "@action:button"
 msgid "June"
 msgstr "júní"
 
-#: src/ui/TaskPage.qml:337
+#: src/ui/TaskPage.qml:342
 #, fuzzy, kde-format
 #| msgctxt "July long"
 #| msgid "July"
@@ -829,84 +836,84 @@ msgctxt "@action:button"
 msgid "July"
 msgstr "júlí"
 
-#: src/ui/TaskPage.qml:341
+#: src/ui/TaskPage.qml:346
 #, fuzzy, kde-format
 #| msgid "August"
 msgctxt "@action:button"
 msgid "August"
 msgstr "ágúst"
 
-#: src/ui/TaskPage.qml:345
+#: src/ui/TaskPage.qml:350
 #, fuzzy, kde-format
 #| msgid "September"
 msgctxt "@action:button"
 msgid "September"
 msgstr "september"
 
-#: src/ui/TaskPage.qml:349
+#: src/ui/TaskPage.qml:354
 #, fuzzy, kde-format
 #| msgid "October"
 msgctxt "@action:button"
 msgid "October"
 msgstr "október"
 
-#: src/ui/TaskPage.qml:353
+#: src/ui/TaskPage.qml:358
 #, fuzzy, kde-format
 #| msgid "November"
 msgctxt "@action:button"
 msgid "November"
 msgstr "nóvember"
 
-#: src/ui/TaskPage.qml:357
+#: src/ui/TaskPage.qml:362
 #, fuzzy, kde-format
 #| msgid "December"
 msgctxt "@action:button"
 msgid "December"
 msgstr "desember"
 
-#: src/ui/TaskPage.qml:379
+#: src/ui/TaskPage.qml:384
 #, fuzzy, kde-format
 #| msgid "Monday"
 msgctxt "@action:button"
 msgid "Monday"
 msgstr "mánudag"
 
-#: src/ui/TaskPage.qml:383
+#: src/ui/TaskPage.qml:388
 #, fuzzy, kde-format
 #| msgid "Tuesday"
 msgctxt "@action:button"
 msgid "Tuesday"
 msgstr "þriðjudag"
 
-#: src/ui/TaskPage.qml:387
+#: src/ui/TaskPage.qml:392
 #, fuzzy, kde-format
 #| msgid "Wednesday"
 msgctxt "@action:button"
 msgid "Wednesday"
 msgstr "miðvikudag"
 
-#: src/ui/TaskPage.qml:391
+#: src/ui/TaskPage.qml:396
 #, fuzzy, kde-format
 #| msgid "Thursday"
 msgctxt "@action:button"
 msgid "Thursday"
 msgstr "fimmtudag"
 
-#: src/ui/TaskPage.qml:395
+#: src/ui/TaskPage.qml:400
 #, fuzzy, kde-format
 #| msgid "Friday"
 msgctxt "@action:button"
 msgid "Friday"
 msgstr "föstudag"
 
-#: src/ui/TaskPage.qml:399
+#: src/ui/TaskPage.qml:404
 #, fuzzy, kde-format
 #| msgid "Saturday"
 msgctxt "@action:button"
 msgid "Saturday"
 msgstr "laugardag"
 
-#: src/ui/TaskPage.qml:403
+#: src/ui/TaskPage.qml:408
 #, fuzzy, kde-format
 #| msgid "Sunday"
 msgctxt "@action:button"
@@ -1027,7 +1034,7 @@ msgctxt "@action:button"
 msgid "Run"
 msgstr "sun"
 
-#: src/ui/TimeCard.qml:40
+#: src/ui/TimeCard.qml:33
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Select all"
@@ -1221,9 +1228,6 @@ msgstr "Breyta breytu"
 
 #~ msgid "Run &every day"
 #~ msgstr "Keyra á &hverjum degi"
-
-#~ msgid "Preselection:"
-#~ msgstr "Forval:"
 
 #~ msgid "Clear selection"
 #~ msgstr "Hreinsa val"

@@ -1,6 +1,6 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# SPDX-FileCopyrightText: 2010, 2011, 2013, 2014, 2023 Vít Pelčák <vit@pelcak.org>
+# SPDX-FileCopyrightText: 2010, 2011, 2013, 2014, 2023, 2024 Vít Pelčák <vit@pelcak.org>
 # Tomáš Chvátal <tomas.chvatal@gmail.com>, 2012, 2013.
 # Vit Pelcak <vit@pelcak.org>, 2021.
 #
@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-09-30 00:41+0000\n"
-"PO-Revision-Date: 2023-10-12 16:38+0200\n"
+"POT-Creation-Date: 2024-10-01 00:41+0000\n"
+"PO-Revision-Date: 2024-09-24 15:22+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 24.08.1\n"
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -510,63 +510,56 @@ msgid "<message>Choose a program to run</message>"
 msgstr ""
 
 #: src/taskvalidator.cpp:112 src/taskvalidator.cpp:119
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please type a valid command line...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please type a valid command line</message>"
-msgstr "<i>Prosím, napište platný příkazový řádek...</i>"
+msgstr "<message>Prosím, napište platný příkazový řádek</message>"
 
 #: src/taskvalidator.cpp:138
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please select an executable program...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please select an executable program</message>"
-msgstr "<i>Prosím, vyberte spustitelný program...</i>"
+msgstr "<message>Prosím, vyberte spustitelný program</message>"
 
 #: src/taskvalidator.cpp:163
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please select from the 'Months' section...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please select from the <b>Months</b> section</message>"
-msgstr "<i>Prosím, vyberte ze sekce 'Měsíce'...</i>"
+msgstr "<message>Prosím, vyberte ze sekce <b>Měsíce</b></message>"
 
 #: src/taskvalidator.cpp:188
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "<i>Please select from either the 'Days of Month' or the 'Days of Week' "
-#| "section...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from either the <b>Days of Month</b> or the <b>Days "
 "of Week</b> section</message>"
-msgstr "<i>Prosím vyberte buďto ze sekce 'Dny měsíce' nebo 'Dny týdne'...</i>"
+msgstr ""
+"<message>Prosím vyberte buďto ze sekce <b>Dny měsíce</b> nebo <b>Dny týdne</"
+"b>.</message>"
 
 #: src/taskvalidator.cpp:206
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please select from the 'Hours' section...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please select from the <b>Hours</b> section</message>"
-msgstr "<i>Prosím, vyberte ze sekce 'Hodiny'...</i>"
+msgstr ""
 
 #: src/taskvalidator.cpp:224
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please select from the 'Minutes' section...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please select from the <b>Minutes</b> section</message>"
-msgstr "<i>Prosím, vyberte ze sekce 'Minuty'...</i>"
+msgstr ""
 
 #: src/ui/main.qml:45
 #, kde-format
 msgctxt "@text"
 msgid "Show:"
-msgstr ""
+msgstr "Zobrazit:"
 
 #: src/ui/main.qml:49
-#, fuzzy, kde-format
-#| msgid "Scheduling"
+#, kde-format
 msgctxt "@title:tab"
 msgid "User Schedule"
-msgstr "Plánování"
+msgstr ""
 
 #: src/ui/main.qml:55
 #, kde-format
@@ -578,13 +571,12 @@ msgstr ""
 #, kde-format
 msgctxt "@action:button"
 msgid "Print"
-msgstr ""
+msgstr "Tisk"
 
 #: src/ui/Onboarding.qml:22
-#, fuzzy, kde-format
-#| msgid "Welcome to the Task Scheduler"
+#, kde-format
 msgid "Welcome to Task Scheduler!"
-msgstr "Vítejte v Plánovači úloh"
+msgstr "Vítejte v Plánovači úloh."
 
 #: src/ui/Onboarding.qml:24
 #, kde-kuit-format
@@ -601,350 +593,313 @@ msgctxt "@action:button"
 msgid "Go to Dashboard"
 msgstr ""
 
-#: src/ui/TaskPage.qml:22
-#, fuzzy, kde-format
-#| msgid "Modify Task"
+#: src/ui/TaskPage.qml:23
+#, kde-format
 msgctxt "@title"
 msgid "Edit Task"
 msgstr "Upravit úlohu"
 
-#: src/ui/TaskPage.qml:23
-#, fuzzy, kde-format
-#| msgid "New Task"
+#: src/ui/TaskPage.qml:24
+#, kde-format
 msgctxt "@title"
 msgid "New Task"
 msgstr "Nová úloha"
-
-#: src/ui/TaskPage.qml:33
-#, fuzzy, kde-format
-#| msgid "Modify Task"
-msgctxt "@action:button"
-msgid "Edit Task"
-msgstr "Upravit úlohu"
 
 #: src/ui/TaskPage.qml:34
-#, fuzzy, kde-format
-#| msgid "Modify Task"
+#, kde-format
+msgctxt "@action:button"
+msgid "Edit Task"
+msgstr "Upravit úlohu"
+
+#: src/ui/TaskPage.qml:35
+#, kde-format
 msgctxt "@action:button accessible"
 msgid "Edit Task"
 msgstr "Upravit úlohu"
 
-#: src/ui/TaskPage.qml:44
-#, fuzzy, kde-format
-#| msgid "New Task"
+#: src/ui/TaskPage.qml:45
+#, kde-format
 msgctxt "@action:button"
 msgid "New Task"
 msgstr "Nová úloha"
 
-#: src/ui/TaskPage.qml:45
-#, fuzzy, kde-format
-#| msgid "New Task"
+#: src/ui/TaskPage.qml:46
+#, kde-format
 msgctxt "@action:button accessible"
 msgid "New Task"
 msgstr "Nová úloha"
 
-#: src/ui/TaskPage.qml:90
-#, fuzzy, kde-format
-#| msgid "&Command:"
+#: src/ui/TaskPage.qml:91
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Command:"
-msgstr "&Příkaz:"
+msgstr "Příkaz:"
 
-#: src/ui/TaskPage.qml:97
+#: src/ui/TaskPage.qml:98
 #, kde-format
 msgctxt "@action:button"
 msgid "Browse the Program"
 msgstr ""
 
-#: src/ui/TaskPage.qml:105
-#, fuzzy, kde-format
-#| msgid "&Enable this task"
+#: src/ui/TaskPage.qml:106
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable this task"
-msgstr "P&ovolit tuto úlohu"
+msgstr "Povolit tuto úlohu"
 
-#: src/ui/TaskPage.qml:110 src/ui/VariablePage.qml:97
-#, fuzzy, kde-format
-#| msgid "User"
+#: src/ui/TaskPage.qml:111 src/ui/VariablePage.qml:97
+#, kde-format
 msgctxt "@label:listbox"
 msgid "User:"
-msgstr "Uživatel"
+msgstr "Uživatel:"
 
-#: src/ui/TaskPage.qml:130 src/ui/VariablePage.qml:119
-#, fuzzy, kde-format
-#| msgid "Co&mment:"
+#: src/ui/TaskPage.qml:131 src/ui/VariablePage.qml:119
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Comment:"
-msgstr "&Komentář:"
+msgstr "Komentář:"
 
-#: src/ui/TaskPage.qml:137
+#: src/ui/TaskPage.qml:138
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Run:"
-msgstr ""
+msgstr "Spustit:"
 
-#: src/ui/TaskPage.qml:140
-#, fuzzy, kde-format
-#| msgid "At system startup"
+#: src/ui/TaskPage.qml:141
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "When system starts"
 msgstr "Při spuštění systému"
 
-#: src/ui/TaskPage.qml:147
-#, fuzzy, kde-format
-#| msgid "every day "
+#: src/ui/TaskPage.qml:148
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Every day"
-msgstr "každý den "
+msgstr "Každý den"
 
-#: src/ui/TaskPage.qml:153
-#, fuzzy, kde-format
-#| msgid "Months"
+#: src/ui/TaskPage.qml:154
+#, kde-format
 msgctxt "@title:group"
 msgid "Months"
 msgstr "Měsíce"
 
-#: src/ui/TaskPage.qml:173
-#, fuzzy, kde-format
-#| msgid "Days of Month"
+#: src/ui/TaskPage.qml:174
+#, kde-format
 msgctxt "@title:group"
 msgid "Days of Month"
 msgstr "Dny měsíce"
 
-#: src/ui/TaskPage.qml:194
-#, fuzzy, kde-format
-#| msgid "Days of Week"
+#: src/ui/TaskPage.qml:195
+#, kde-format
 msgctxt "@title:group"
 msgid "Days of Week"
 msgstr "Dny týdne"
 
-#: src/ui/TaskPage.qml:214
-#, fuzzy, kde-format
-#| msgid "Hours"
+#: src/ui/TaskPage.qml:215
+#, kde-format
 msgctxt "@title:group"
 msgid "Hours"
 msgstr "Hodiny"
 
-#: src/ui/TaskPage.qml:235
-#, fuzzy, kde-format
-#| msgid "Minutes"
+#: src/ui/TaskPage.qml:236
+#, kde-format
 msgctxt "@title:group"
 msgid "Minutes"
 msgstr "Minuty"
 
 #: src/ui/TaskPage.qml:264
+#, fuzzy, kde-format
+#| msgid "Custom selection"
+msgctxt "@label:listbox"
+msgid "Selection:"
+msgstr "Vlastní výběr"
+
+#: src/ui/TaskPage.qml:269
 #, kde-format
 msgid "Custom selection"
 msgstr "Vlastní výběr"
 
-#: src/ui/TaskPage.qml:265
+#: src/ui/TaskPage.qml:270
 #, kde-format
 msgid "Each minute"
 msgstr "Každou minutu"
 
-#: src/ui/TaskPage.qml:266
+#: src/ui/TaskPage.qml:271
 #, kde-format
 msgid "Every 2 minutes"
 msgstr "Každé 2 minuty"
 
-#: src/ui/TaskPage.qml:267
+#: src/ui/TaskPage.qml:272
 #, kde-format
 msgid "Every 5 minutes"
 msgstr "Každých 5 minut"
 
-#: src/ui/TaskPage.qml:268
+#: src/ui/TaskPage.qml:273
 #, kde-format
 msgid "Every 10 minutes"
 msgstr "Každých 10 minut"
 
-#: src/ui/TaskPage.qml:269
+#: src/ui/TaskPage.qml:274
 #, kde-format
 msgid "Every 15 minutes"
 msgstr "Každých 15 minut"
 
-#: src/ui/TaskPage.qml:270
+#: src/ui/TaskPage.qml:275
 #, kde-format
 msgid "Every 20 minutes"
 msgstr "Každých 20 minut"
 
-#: src/ui/TaskPage.qml:271
+#: src/ui/TaskPage.qml:276
 #, kde-format
 msgid "Every 30 minutes"
 msgstr "Každých 30 minut"
 
-#: src/ui/TaskPage.qml:313
-#, fuzzy, kde-format
-#| msgid "January"
+#: src/ui/TaskPage.qml:318
+#, kde-format
 msgctxt "@action:button"
 msgid "January"
 msgstr "Leden"
 
-#: src/ui/TaskPage.qml:317
-#, fuzzy, kde-format
-#| msgid "February"
+#: src/ui/TaskPage.qml:322
+#, kde-format
 msgctxt "@action:button"
 msgid "February"
 msgstr "Únor"
 
-#: src/ui/TaskPage.qml:321
-#, fuzzy, kde-format
-#| msgid "March"
+#: src/ui/TaskPage.qml:326
+#, kde-format
 msgctxt "@action:button"
 msgid "March"
 msgstr "Březen"
 
-#: src/ui/TaskPage.qml:325
-#, fuzzy, kde-format
-#| msgid "April"
+#: src/ui/TaskPage.qml:330
+#, kde-format
 msgctxt "@action:button"
 msgid "April"
 msgstr "Duben"
 
-#: src/ui/TaskPage.qml:329
-#, fuzzy, kde-format
-#| msgctxt "May long"
-#| msgid "May"
+#: src/ui/TaskPage.qml:334
+#, kde-format
 msgctxt "@action:button"
 msgid "May"
 msgstr "Květen"
 
-#: src/ui/TaskPage.qml:333
-#, fuzzy, kde-format
-#| msgid "June"
+#: src/ui/TaskPage.qml:338
+#, kde-format
 msgctxt "@action:button"
 msgid "June"
 msgstr "Červen"
 
-#: src/ui/TaskPage.qml:337
-#, fuzzy, kde-format
-#| msgctxt "July long"
-#| msgid "July"
+#: src/ui/TaskPage.qml:342
+#, kde-format
 msgctxt "@action:button"
 msgid "July"
 msgstr "Červenec"
 
-#: src/ui/TaskPage.qml:341
-#, fuzzy, kde-format
-#| msgid "August"
+#: src/ui/TaskPage.qml:346
+#, kde-format
 msgctxt "@action:button"
 msgid "August"
 msgstr "Srpen"
 
-#: src/ui/TaskPage.qml:345
-#, fuzzy, kde-format
-#| msgid "September"
+#: src/ui/TaskPage.qml:350
+#, kde-format
 msgctxt "@action:button"
 msgid "September"
 msgstr "Září"
 
-#: src/ui/TaskPage.qml:349
-#, fuzzy, kde-format
-#| msgid "October"
+#: src/ui/TaskPage.qml:354
+#, kde-format
 msgctxt "@action:button"
 msgid "October"
 msgstr "Říjen"
 
-#: src/ui/TaskPage.qml:353
-#, fuzzy, kde-format
-#| msgid "November"
+#: src/ui/TaskPage.qml:358
+#, kde-format
 msgctxt "@action:button"
 msgid "November"
 msgstr "Listopad"
 
-#: src/ui/TaskPage.qml:357
-#, fuzzy, kde-format
-#| msgid "December"
+#: src/ui/TaskPage.qml:362
+#, kde-format
 msgctxt "@action:button"
 msgid "December"
 msgstr "Prosinec"
 
-#: src/ui/TaskPage.qml:379
-#, fuzzy, kde-format
-#| msgid "Monday"
+#: src/ui/TaskPage.qml:384
+#, kde-format
 msgctxt "@action:button"
 msgid "Monday"
 msgstr "Pondělí"
 
-#: src/ui/TaskPage.qml:383
-#, fuzzy, kde-format
-#| msgid "Tuesday"
+#: src/ui/TaskPage.qml:388
+#, kde-format
 msgctxt "@action:button"
 msgid "Tuesday"
 msgstr "Úterý"
 
-#: src/ui/TaskPage.qml:387
-#, fuzzy, kde-format
-#| msgid "Wednesday"
+#: src/ui/TaskPage.qml:392
+#, kde-format
 msgctxt "@action:button"
 msgid "Wednesday"
 msgstr "Středa"
 
-#: src/ui/TaskPage.qml:391
-#, fuzzy, kde-format
-#| msgid "Thursday"
+#: src/ui/TaskPage.qml:396
+#, kde-format
 msgctxt "@action:button"
 msgid "Thursday"
 msgstr "Čtvrtek"
 
-#: src/ui/TaskPage.qml:395
-#, fuzzy, kde-format
-#| msgid "Friday"
+#: src/ui/TaskPage.qml:400
+#, kde-format
 msgctxt "@action:button"
 msgid "Friday"
 msgstr "Pátek"
 
-#: src/ui/TaskPage.qml:399
-#, fuzzy, kde-format
-#| msgid "Saturday"
+#: src/ui/TaskPage.qml:404
+#, kde-format
 msgctxt "@action:button"
 msgid "Saturday"
 msgstr "Sobota"
 
-#: src/ui/TaskPage.qml:403
-#, fuzzy, kde-format
-#| msgid "Sunday"
+#: src/ui/TaskPage.qml:408
+#, kde-format
 msgctxt "@action:button"
 msgid "Sunday"
 msgstr "Neděle"
 
 #: src/ui/TasksComponent.qml:19
-#, fuzzy, kde-format
-#| msgid "Scheduled Tasks"
+#, kde-format
 msgctxt "@title:group"
 msgid "Scheduled Tasks"
 msgstr "Naplánované úlohy"
 
 #: src/ui/TasksComponent.qml:56 src/ui/VariablesComponent.qml:57
-#, fuzzy, kde-format
-#| msgid "User"
+#, kde-format
 msgctxt "@title:column"
 msgid "User"
 msgstr "Uživatel"
 
 #: src/ui/TasksComponent.qml:66
-#, fuzzy, kde-format
-#| msgid "Scheduling"
+#, kde-format
 msgctxt "@title:column"
 msgid "Scheduling"
 msgstr "Plánování"
 
 #: src/ui/TasksComponent.qml:75
-#, fuzzy, kde-format
-#| msgid "Command"
+#, kde-format
 msgctxt "@title:column"
 msgid "Command"
 msgstr "Příkaz"
 
 #: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
-#, fuzzy, kde-format
-#| msgid "Comment"
+#, kde-format
 msgctxt "@title:column"
 msgid "Comment"
 msgstr "Komentář"
 
 #: src/ui/TasksComponent.qml:92
-#, fuzzy, kde-format
-#| msgid "Scheduling Details"
+#, kde-format
 msgctxt "@title:column"
 msgid "Scheduling Details"
 msgstr "Podrobnosti plánování"
@@ -953,347 +908,167 @@ msgstr "Podrobnosti plánování"
 #, kde-format
 msgctxt "@action:button"
 msgid "Add Task…"
-msgstr ""
+msgstr "Přidat úlohu…"
 
 #: src/ui/TasksComponent.qml:105
-#, fuzzy, kde-format
-#| msgid "Modify Task"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit Task…"
-msgstr "Upravit úlohu"
+msgstr "Upravit úlohu…"
 
 #: src/ui/TasksComponent.qml:113 src/ui/VariablesComponent.qml:125
-#, fuzzy, kde-format
-#| msgid "Set All"
+#, kde-format
 msgctxt "@action:button"
 msgid "Select All"
-msgstr "Nastavit vše"
+msgstr "Vybrat vše"
 
 #: src/ui/TasksComponent.qml:120 src/ui/VariablesComponent.qml:132
 #, kde-format
 msgctxt "@action:button"
 msgid "Copy"
-msgstr ""
+msgstr "Kopírovat"
 
 #: src/ui/TasksComponent.qml:127 src/ui/VariablesComponent.qml:139
 #, kde-format
 msgctxt "@action:button"
 msgid "Cut"
-msgstr ""
+msgstr "Vyjmout"
 
 #: src/ui/TasksComponent.qml:134 src/ui/VariablesComponent.qml:146
 #, kde-format
 msgctxt "@action:button"
 msgid "Paste"
-msgstr ""
+msgstr "Vložit"
 
 #: src/ui/TasksComponent.qml:142 src/ui/TasksComponent.qml:174
 #: src/ui/VariablesComponent.qml:154 src/ui/VariablesComponent.qml:178
-#, fuzzy, kde-format
-#| msgid "&Delete"
+#, kde-format
 msgctxt "@action:button"
 msgid "Delete"
-msgstr "&Smazat"
+msgstr "Smazat"
 
 #: src/ui/TasksComponent.qml:150
-#, fuzzy, kde-format
-#| msgid "&Run as:"
+#, kde-format
 msgctxt "@action:button"
 msgid "Run task"
-msgstr "S&pustit jako:"
+msgstr "Spustit úlohu"
 
 #: src/ui/TasksComponent.qml:162 src/ui/VariablesComponent.qml:166
 #, kde-format
 msgctxt "@action:button"
 msgid "Add…"
-msgstr ""
+msgstr "Přidat…"
 
 #: src/ui/TasksComponent.qml:168 src/ui/VariablesComponent.qml:172
 #, kde-format
 msgctxt "@action:button"
 msgid "Edit…"
-msgstr ""
+msgstr "Upravit…"
 
 #: src/ui/TasksComponent.qml:180
-#, fuzzy, kde-format
-#| msgid "Sun"
+#, kde-format
 msgctxt "@action:button"
 msgid "Run"
-msgstr "Ne"
+msgstr "Spustit"
 
-#: src/ui/TimeCard.qml:40
+#: src/ui/TimeCard.qml:33
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Select all"
-msgstr ""
+msgstr "Vybrat vše"
 
 #: src/ui/VariablePage.qml:17
-#, fuzzy, kde-format
-#| msgid "Modify Variable"
+#, kde-format
 msgctxt "@title"
 msgid "Edit Variable"
 msgstr "Upravit proměnnou"
 
 #: src/ui/VariablePage.qml:18
-#, fuzzy, kde-format
-#| msgid "New Variable"
+#, kde-format
 msgctxt "@title"
 msgid "New Variable"
 msgstr "Nová proměnná"
 
 #: src/ui/VariablePage.qml:27
-#, fuzzy, kde-format
-#| msgid "Modify Variable"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit Variable"
 msgstr "Upravit proměnnou"
 
 #: src/ui/VariablePage.qml:28
-#, fuzzy, kde-format
-#| msgid "Modify Variable"
+#, kde-format
 msgctxt "@action:button accessible"
 msgid "Edit Variable"
 msgstr "Upravit proměnnou"
 
 #: src/ui/VariablePage.qml:38
-#, fuzzy, kde-format
-#| msgid "New Variable"
+#, kde-format
 msgctxt "@action:button"
 msgid "New Variable"
 msgstr "Nová proměnná"
 
 #: src/ui/VariablePage.qml:39
-#, fuzzy, kde-format
-#| msgid "New Variable"
+#, kde-format
 msgctxt "@action:button accessible"
 msgid "New Variable"
 msgstr "Nová proměnná"
 
 #: src/ui/VariablePage.qml:57
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please enter the variable name...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please enter the variable name</message>"
-msgstr "<i>Prosím, zadejte název proměnné...</i>"
+msgstr "<message>Prosím, zadejte název proměnné...</message>"
 
 #: src/ui/VariablePage.qml:59
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please enter the variable value ...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please enter the variable value</message>"
-msgstr "<i>Prosím, zadejte hodnotu proměnné ...</i>"
+msgstr "<message>Prosím, zadejte hodnotu proměnné</message>"
 
 #: src/ui/VariablePage.qml:76
-#, fuzzy, kde-format
-#| msgctxt "The environmental variable name ie HOME, MAILTO etc"
-#| msgid "&Variable:"
+#, kde-format
 msgctxt "@label:listbox"
 msgid "Variable:"
-msgstr "P&roměnná:"
+msgstr "Proměnná:"
 
 #: src/ui/VariablePage.qml:112
-#, fuzzy, kde-format
-#| msgid "Va&lue:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Value:"
-msgstr "&Hodnota:"
+msgstr "hodnota:"
 
 #: src/ui/VariablePage.qml:126
-#, fuzzy, kde-format
-#| msgid "&Enable this variable"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable this variable"
-msgstr "&Povolit tuto proměnnou"
+msgstr "Povolit tuto proměnnou"
 
 #: src/ui/VariablesComponent.qml:19
-#, fuzzy, kde-format
-#| msgid "Environment Variables"
+#, kde-format
 msgctxt "@title:group"
 msgid "Environment Variables"
 msgstr "Proměnné prostředí"
 
 #: src/ui/VariablesComponent.qml:67
-#, fuzzy, kde-format
-#| msgid "Variable"
+#, kde-format
 msgctxt "@title:column"
 msgid "Variable"
 msgstr "Proměnná"
 
 #: src/ui/VariablesComponent.qml:98
-#, fuzzy, kde-format
-#| msgid "Value"
+#, kde-format
 msgctxt "@title:column"
 msgid "Value"
 msgstr "Hodnota"
 
 #: src/ui/VariablesComponent.qml:112
-#, fuzzy, kde-format
-#| msgid "Variable"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add Variable…"
-msgstr "Proměnná"
+msgstr "Přidat proměnnou…"
 
 #: src/ui/VariablesComponent.qml:118
-#, fuzzy, kde-format
-#| msgid "Modify Variable"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit Variable…"
-msgstr "Upravit proměnnou"
-
-#~ msgctxt "NAME OF TRANSLATORS"
-#~ msgid "Your names"
-#~ msgstr "Martin Vlk,David Kolibáč"
-
-#~ msgctxt "EMAIL OF TRANSLATORS"
-#~ msgid "Your emails"
-#~ msgstr "oro@poetic.com,david@kolibac.cz"
-
-#~ msgid "Description"
-#~ msgstr "Popis"
-
-#~ msgid "System Crontab"
-#~ msgstr "Systémový Crontab"
-
-#~ msgid "All Users Crontabs"
-#~ msgstr "Crontab všech uživatelů"
-
-#~ msgctxt "Crontab of user login"
-#~ msgid "Crontab of user %1"
-#~ msgstr "Crontab uživatele %1"
-
-#~ msgctxt "@title:window"
-#~ msgid "Cron Options"
-#~ msgstr "Možnosti Cron"
-
-#~ msgid "Print cron&tab"
-#~ msgstr "Vytisknout cron&tab"
-
-#~ msgid "Print &all users"
-#~ msgstr "Vytisknout všechny uživ&atele"
-
-#~ msgid "Show the following Cron:"
-#~ msgstr "Zobrazit následující Cron:"
-
-#~ msgid "Personal Cron"
-#~ msgstr "Osobní Cron"
-
-#~ msgid "System Cron"
-#~ msgstr "Systémový Cron"
-
-#~ msgid ""
-#~ "The following error occurred while initializing KCron:\n"
-#~ "\n"
-#~ "%1\n"
-#~ "\n"
-#~ "KCron will now exit.\n"
-#~ msgstr ""
-#~ "Nastala tato chyba při inicializace aplikace KCron:\n"
-#~ "\n"
-#~ "%1\n"
-#~ "\n"
-#~ "KCron bude nyní ukončen.\n"
-
-#~ msgid ""
-#~ "You can use this application to schedule programs to run in the "
-#~ "background.\n"
-#~ "To schedule a new task now, click on the Tasks folder and select Edit/New "
-#~ "from the menu."
-#~ msgstr ""
-#~ "Tuto aplikaci můžete použít k naplánování spuštění programů na pozadí.\n"
-#~ "Přejete-li si nyní naplánovat úlohu, klikněte na složku Úlohy a z nabídky "
-#~ "vyberte Úpravy/Nová."
-
-#~ msgid "Add or modify a scheduled task"
-#~ msgstr "Přidat nebo změnit naplánovanou úlohu"
-
-#~ msgid "<i>This task will be executed at the specified intervals.</i>"
-#~ msgstr "<i>Tato úloha bude spuštěna se stanoveným intervalem.</i>"
-
-#~ msgid "Run at system &bootup"
-#~ msgstr "Spustit při s&tartu systému"
-
-#~ msgid "Run &every day"
-#~ msgstr "Spouštět každý d&en"
-
-#~ msgid "Preselection:"
-#~ msgstr "Výchozí výběr:"
-
-#~ msgid "Clear selection"
-#~ msgstr "Vyčistit výběr"
-
-#~ msgid "AM:"
-#~ msgstr "Dop.:"
-
-#~ msgid "PM:"
-#~ msgstr "Odp.:"
-
-#~ msgid "<i>Please browse for a program to execute...</i>"
-#~ msgstr "<i>Prosím, vyhledejte program ke spuštění...</i>"
-
-#~ msgid "<i>This task is disabled.</i>"
-#~ msgstr "<i>Tato úloha je vypnuta.</i>"
-
-#~ msgid "<i>This task will be run on system bootup.</i>"
-#~ msgstr "<i>Tato úloha bude spuštěna při startu systému.</i>"
-
-#~ msgid "Clear All"
-#~ msgstr "Vyčistit vše"
-
-#~ msgid "<b>Scheduled Tasks</b>"
-#~ msgstr "<b>Naplánované úlohy</b>"
-
-#~ msgid "Status"
-#~ msgstr "Stav"
-
-#~ msgctxt "Adds a new task"
-#~ msgid "New &Task..."
-#~ msgstr "Nová ú&loha..."
-
-#~ msgid "Create a new task."
-#~ msgstr "Vytvořit novou úlohu."
-
-#~ msgid "M&odify..."
-#~ msgstr "&Změnit..."
-
-#~ msgid "Modify the selected task."
-#~ msgstr "Upravit vybranou úlohu."
-
-#~ msgid "Delete the selected task."
-#~ msgstr "Smazat vybranou úlohu."
-
-#~ msgid "&Run Now"
-#~ msgstr "S&pustit nyní"
-
-#~ msgid "Run the selected task now."
-#~ msgstr "Okamžitě spustit vybranou úlohu."
-
-#~ msgid "Enabled"
-#~ msgstr "Povoleno"
-
-#~ msgid "Disabled"
-#~ msgstr "Zakázáno"
-
-#~ msgid "Add or modify a variable"
-#~ msgstr "Přidat nebo upravit proměnnou"
-
-#~ msgid "<i>This variable will be used by scheduled tasks.</i>"
-#~ msgstr "<i>Tato proměnná bude použita naplánovanými úlohami.</i>"
-
-#~ msgid "<i>This variable is disabled.</i>"
-#~ msgstr "<i>Tato proměnná je zakázána.</i>"
-
-#~ msgid "<b>Environment Variables</b>"
-#~ msgstr "<b>Proměnné prostředí</b>"
-
-#~ msgctxt "Adds a new variable"
-#~ msgid "New &Variable..."
-#~ msgstr "No&vá proměnná..."
-
-#~ msgid "Create a new variable."
-#~ msgstr "Vytvořit novou proměnnou."
-
-#~ msgid "Modify the selected variable."
-#~ msgstr "Upravit vybranou proměnnou."
-
-#~ msgid "Delete the selected variable."
-#~ msgstr "Smazat vybranou proměnnou."
+msgstr "Upravit proměnnou…"
