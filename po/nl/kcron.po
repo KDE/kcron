@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-01 00:41+0000\n"
-"PO-Revision-Date: 2024-09-24 11:30+0200\n"
+"PO-Revision-Date: 2024-10-01 17:59+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -722,11 +722,10 @@ msgid "Minutes"
 msgstr "Minuten"
 
 #: src/ui/TaskPage.qml:264
-#, fuzzy, kde-format
-#| msgid "Preselection:"
+#, kde-format
 msgctxt "@label:listbox"
 msgid "Selection:"
-msgstr "Voorselectie:"
+msgstr "Selectie:"
 
 #: src/ui/TaskPage.qml:269
 #, kde-format

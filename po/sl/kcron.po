@@ -1,7 +1,7 @@
 # Translation of kcron.po to Slovenian
 # KDEADMIN translation to Slovenian language.
 # Copyright (C) 2001,2003, 2004, 2005 Free Software Foundation, Inc.
-# $Id: kcron.po 1691822 2024-10-01 01:14:37Z scripty $
+# $Id: kcron.po 1691906 2024-10-02 01:15:25Z scripty $
 # $Source$
 #
 # Rok Papez <rok@slo.net>, 2000.
@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-01 00:41+0000\n"
-"PO-Revision-Date: 2024-09-24 07:13+0200\n"
+"PO-Revision-Date: 2024-10-01 07:26+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -723,11 +723,10 @@ msgid "Minutes"
 msgstr "Minute"
 
 #: src/ui/TaskPage.qml:264
-#, fuzzy, kde-format
-#| msgid "Preselection:"
+#, kde-format
 msgctxt "@label:listbox"
 msgid "Selection:"
-msgstr "Predizbor:"
+msgstr "Izbira:"
 
 #: src/ui/TaskPage.qml:269
 #, kde-format
