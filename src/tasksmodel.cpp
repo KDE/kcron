@@ -27,6 +27,7 @@ TasksModel::TasksModel(QObject *parent) noexcept
     : GenericModel(parent)
     , mTmpTask(new Task(new CTTask(QStringLiteral(""), QStringLiteral(""), QStringLiteral("")), this))
 {
+    mProxyModel->setSortRole(Roles::CommandRole);
     mProxyModel->sort(0, Qt::AscendingOrder);
 }
 

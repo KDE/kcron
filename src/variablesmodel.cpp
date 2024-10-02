@@ -23,6 +23,7 @@ VariablesModel::VariablesModel(QObject *parent) noexcept
     : GenericModel(parent)
     , mTmpVariable(new Variable(new CTVariable(QStringLiteral(""), QStringLiteral(""), QStringLiteral("")), this))
 {
+    mProxyModel->setSortRole(Roles::NameRole);
     mProxyModel->sort(0, Qt::AscendingOrder);
 }
 

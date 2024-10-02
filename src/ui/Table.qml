@@ -59,7 +59,14 @@ ColumnLayout {
 
                 onRowDoubleClicked: (row, mouse) => main.edit()
 
+                sortOrder: Qt.AscendingOrder
+                sortRole: table.model.sortRole
+
                 onColumnClicked: function (index, headerComponent) {
+                    if (table.model.sortRole === headerComponent.role) {
+                        table.sortOrder = table.sortOrder === Qt.DescendingOrder ? Qt.AscendingOrder : Qt.DescendingOrder;
+                    }
+
                     table.model.sortRole = headerComponent.role;
                     table.model.sort(0, table.sortOrder);
                     __resetSelection();
