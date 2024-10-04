@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.3\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-01 00:41+0000\n"
+"POT-Creation-Date: 2024-10-04 00:42+0000\n"
 "PO-Revision-Date: 2024-01-09 11:19+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -17,6 +17,78 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 23.08.4\n"
+
+#: src/cronPrinter.cpp:62
+#, fuzzy
+#| msgid "<b>Scheduled Tasks</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Tasks</b>"
+msgstr "<b>Időzített feladatok</b>"
+
+#: src/cronPrinter.cpp:63
+#, fuzzy
+#| msgid "<b>Environment Variables</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Environment Variables</b>"
+msgstr "<b>Environment Variables</b>"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:66
+#, fuzzy, kde-format
+#| msgid "Scheduling"
+msgctxt "@title:column"
+msgid "Scheduling"
+msgstr "Időzítés"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:75
+#, fuzzy, kde-format
+#| msgid "Command"
+msgctxt "@title:column"
+msgid "Command"
+msgstr "Parancs"
+
+#: src/cronPrinter.cpp:103
+#, fuzzy, kde-format
+#| msgid "Description"
+msgctxt "@title:column"
+msgid "Description"
+msgstr "Leírás"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:67
+#, fuzzy, kde-format
+#| msgid "Variable"
+msgctxt "@title:column"
+msgid "Variable"
+msgstr "Változó"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:98
+#, fuzzy, kde-format
+#| msgid "Value"
+msgctxt "@title:column"
+msgid "Value"
+msgstr "Érték"
+
+#: src/cronPrinter.cpp:117 src/ui/TasksComponent.qml:84
+#: src/ui/VariablesComponent.qml:106
+#, fuzzy, kde-format
+#| msgid "Comment"
+msgctxt "@title:column"
+msgid "Comment"
+msgstr "Megjegyzés"
+
+#: src/cronPrinter.cpp:144
+#, fuzzy, kde-format
+#| msgid "System Crontab"
+msgctxt "@title"
+msgid "System Crontab"
+msgstr "Rendszerfeladatok"
+
+#: src/cronPrinter.cpp:146
+#, fuzzy, kde-format
+#| msgctxt "Crontab of user login"
+#| msgid "Crontab of user %1"
+msgctxt "@title"
+msgid "Crontab of user %1"
+msgstr "%1 feladatai"
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -495,7 +567,7 @@ msgstr "Az osztott programkönyvtárak helye."
 msgid "Local Variable"
 msgstr "Helyi változó"
 
-#: src/tasksmodel.cpp:47
+#: src/tasksmodel.cpp:48
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
@@ -928,27 +1000,6 @@ msgctxt "@title:column"
 msgid "User"
 msgstr "Felhasználó"
 
-#: src/ui/TasksComponent.qml:66
-#, fuzzy, kde-format
-#| msgid "Scheduling"
-msgctxt "@title:column"
-msgid "Scheduling"
-msgstr "Időzítés"
-
-#: src/ui/TasksComponent.qml:75
-#, fuzzy, kde-format
-#| msgid "Command"
-msgctxt "@title:column"
-msgid "Command"
-msgstr "Parancs"
-
-#: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
-#, fuzzy, kde-format
-#| msgid "Comment"
-msgctxt "@title:column"
-msgid "Comment"
-msgstr "Megjegyzés"
-
 #: src/ui/TasksComponent.qml:92
 #, fuzzy, kde-format
 #| msgid "Scheduling Details"
@@ -1119,20 +1170,6 @@ msgctxt "@title:group"
 msgid "Environment Variables"
 msgstr "Környezeti változók"
 
-#: src/ui/VariablesComponent.qml:67
-#, fuzzy, kde-format
-#| msgid "Variable"
-msgctxt "@title:column"
-msgid "Variable"
-msgstr "Változó"
-
-#: src/ui/VariablesComponent.qml:98
-#, fuzzy, kde-format
-#| msgid "Value"
-msgctxt "@title:column"
-msgid "Value"
-msgstr "Érték"
-
 #: src/ui/VariablesComponent.qml:112
 #, fuzzy, kde-format
 #| msgid "Variable"
@@ -1155,18 +1192,8 @@ msgstr "Változó módosítása"
 #~ msgid "Your emails"
 #~ msgstr "ulysses@fsf.hu"
 
-#~ msgid "Description"
-#~ msgstr "Leírás"
-
-#~ msgid "System Crontab"
-#~ msgstr "Rendszerfeladatok"
-
 #~ msgid "All Users Crontabs"
 #~ msgstr "Felhasználói feladatok"
-
-#~ msgctxt "Crontab of user login"
-#~ msgid "Crontab of user %1"
-#~ msgstr "%1 feladatai"
 
 #~ msgctxt "@title:window"
 #~ msgid "Cron Options"
@@ -1244,9 +1271,6 @@ msgstr "Változó módosítása"
 #~ msgid "Clear All"
 #~ msgstr "Teljes törlés"
 
-#~ msgid "<b>Scheduled Tasks</b>"
-#~ msgstr "<b>Időzített feladatok</b>"
-
 #~ msgid "Status"
 #~ msgstr "Állapot"
 
@@ -1286,9 +1310,6 @@ msgstr "Változó módosítása"
 
 #~ msgid "<i>This variable is disabled.</i>"
 #~ msgstr "<i>A változó le van tiltva.</i>"
-
-#~ msgid "<b>Environment Variables</b>"
-#~ msgstr "<b>Environment Variables</b>"
 
 #~ msgctxt "Adds a new variable"
 #~ msgid "New &Variable..."

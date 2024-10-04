@@ -1,7 +1,7 @@
 # Translation of kcron.po to Slovenian
 # KDEADMIN translation to Slovenian language.
 # Copyright (C) 2001,2003, 2004, 2005 Free Software Foundation, Inc.
-# $Id: kcron.po 1691906 2024-10-02 01:15:25Z scripty $
+# $Id: kcron.po 1692054 2024-10-04 01:14:59Z scripty $
 # $Source$
 #
 # Rok Papez <rok@slo.net>, 2000.
@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-01 00:41+0000\n"
+"POT-Creation-Date: 2024-10-04 00:42+0000\n"
 "PO-Revision-Date: 2024-10-01 07:26+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -27,6 +27,73 @@ msgstr ""
 "%100==4 ? 3 : 0);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
 "X-Generator: Poedit 3.5\n"
+
+#: src/cronPrinter.cpp:62
+#, fuzzy
+#| msgid "<b>Scheduled Tasks</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Tasks</b>"
+msgstr "<b>Načrtovana opravila</b>"
+
+#: src/cronPrinter.cpp:63
+#, fuzzy
+#| msgid "<b>Environment Variables</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Environment Variables</b>"
+msgstr "<b>Okoljske spremenljivke</b>"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:66
+#, kde-format
+msgctxt "@title:column"
+msgid "Scheduling"
+msgstr "Razporejanje"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:75
+#, kde-format
+msgctxt "@title:column"
+msgid "Command"
+msgstr "Ukaz"
+
+#: src/cronPrinter.cpp:103
+#, fuzzy, kde-format
+#| msgid "Description"
+msgctxt "@title:column"
+msgid "Description"
+msgstr "Opis"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:67
+#, kde-format
+msgctxt "@title:column"
+msgid "Variable"
+msgstr "Spremenljivka"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:98
+#, kde-format
+msgctxt "@title:column"
+msgid "Value"
+msgstr "Vrednost"
+
+#: src/cronPrinter.cpp:117 src/ui/TasksComponent.qml:84
+#: src/ui/VariablesComponent.qml:106
+#, kde-format
+msgctxt "@title:column"
+msgid "Comment"
+msgstr "Opomba"
+
+#: src/cronPrinter.cpp:144
+#, fuzzy, kde-format
+#| msgid "System Crontab"
+msgctxt "@title"
+msgid "System Crontab"
+msgstr "Sistemski Crontab"
+
+#: src/cronPrinter.cpp:146
+#, fuzzy, kde-format
+#| msgctxt "Crontab of user login"
+#| msgid "Crontab of user %1"
+msgctxt "@title"
+msgid "Crontab of user %1"
+msgstr "Crontab uporabnika %1"
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -508,7 +575,7 @@ msgstr "Mesto dinamičnih knjižnic."
 msgid "Local Variable"
 msgstr "Krajevna spremenljivka"
 
-#: src/tasksmodel.cpp:47
+#: src/tasksmodel.cpp:48
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
@@ -894,24 +961,6 @@ msgctxt "@title:column"
 msgid "User"
 msgstr "Uporabnik"
 
-#: src/ui/TasksComponent.qml:66
-#, kde-format
-msgctxt "@title:column"
-msgid "Scheduling"
-msgstr "Razporejanje"
-
-#: src/ui/TasksComponent.qml:75
-#, kde-format
-msgctxt "@title:column"
-msgid "Command"
-msgstr "Ukaz"
-
-#: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
-#, kde-format
-msgctxt "@title:column"
-msgid "Comment"
-msgstr "Opomba"
-
 #: src/ui/TasksComponent.qml:92
 #, kde-format
 msgctxt "@title:column"
@@ -1063,18 +1112,6 @@ msgctxt "@title:group"
 msgid "Environment Variables"
 msgstr "Spremenljivke okolja"
 
-#: src/ui/VariablesComponent.qml:67
-#, kde-format
-msgctxt "@title:column"
-msgid "Variable"
-msgstr "Spremenljivka"
-
-#: src/ui/VariablesComponent.qml:98
-#, kde-format
-msgctxt "@title:column"
-msgid "Value"
-msgstr "Vrednost"
-
 #: src/ui/VariablesComponent.qml:112
 #, kde-format
 msgctxt "@action:button"
@@ -1097,18 +1134,8 @@ msgstr "Uredi spremenljivko…"
 #~ "rok@slo.net,gregor.rakar@kiss.si,gregor.fajdiga@telemach.net,"
 #~ "andrejm@ubuntu.si,matjaz.jeran@amis.net"
 
-#~ msgid "Description"
-#~ msgstr "Opis"
-
-#~ msgid "System Crontab"
-#~ msgstr "Sistemski Crontab"
-
 #~ msgid "All Users Crontabs"
 #~ msgstr "Vsi uporabniški Crontabi"
-
-#~ msgctxt "Crontab of user login"
-#~ msgid "Crontab of user %1"
-#~ msgstr "Crontab uporabnika %1"
 
 #~ msgctxt "@title:window"
 #~ msgid "Cron Options"
@@ -1185,9 +1212,6 @@ msgstr "Uredi spremenljivko…"
 #~ msgid "Clear All"
 #~ msgstr "Počisti vse"
 
-#~ msgid "<b>Scheduled Tasks</b>"
-#~ msgstr "<b>Načrtovana opravila</b>"
-
 #~ msgid "Status"
 #~ msgstr "Stanje"
 
@@ -1227,9 +1251,6 @@ msgstr "Uredi spremenljivko…"
 
 #~ msgid "<i>This variable is disabled.</i>"
 #~ msgstr "<i>Ta spremenljivka je onemogočena.</i>"
-
-#~ msgid "<b>Environment Variables</b>"
-#~ msgstr "<b>Okoljske spremenljivke</b>"
 
 #~ msgctxt "Adds a new variable"
 #~ msgid "New &Variable..."

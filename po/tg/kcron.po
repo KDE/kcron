@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-01 00:41+0000\n"
+"POT-Creation-Date: 2024-10-04 00:42+0000\n"
 "PO-Revision-Date: 2019-09-29 12:26+0500\n"
 "Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
 "Language-Team: English <kde-i18n-doc@kde.org>\n"
@@ -19,6 +19,76 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 19.04.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: src/cronPrinter.cpp:62
+#, fuzzy
+#| msgid "Scheduled Tasks"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Tasks</b>"
+msgstr "Ба нақша гирифтани масъалаҳо"
+
+#: src/cronPrinter.cpp:63
+#, fuzzy
+#| msgid "Variables"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Environment Variables</b>"
+msgstr "Таъғиротҳо"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:66
+#, fuzzy, kde-format
+#| msgid "Scheduled Tasks"
+msgctxt "@title:column"
+msgid "Scheduling"
+msgstr "Ба нақша гирифтани масъалаҳо"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:75
+#, fuzzy, kde-format
+#| msgid "Modify Task"
+msgctxt "@title:column"
+msgid "Command"
+msgstr "Мукаммал кардани масъала"
+
+#: src/cronPrinter.cpp:103
+#, fuzzy, kde-format
+#| msgid "Description"
+msgctxt "@title:column"
+msgid "Description"
+msgstr "Тасвир"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:67
+#, fuzzy, kde-format
+#| msgid "Variables"
+msgctxt "@title:column"
+msgid "Variable"
+msgstr "Таъғиротҳо"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:98
+#, fuzzy, kde-format
+#| msgid "Value"
+msgctxt "@title:column"
+msgid "Value"
+msgstr "Аҳамият"
+
+#: src/cronPrinter.cpp:117 src/ui/TasksComponent.qml:84
+#: src/ui/VariablesComponent.qml:106
+#, fuzzy, kde-format
+#| msgid "Co&mment:"
+msgctxt "@title:column"
+msgid "Comment"
+msgstr "&Шарҳ:"
+
+#: src/cronPrinter.cpp:144
+#, fuzzy, kde-format
+#| msgid "(System Crontab)"
+msgctxt "@title"
+msgid "System Crontab"
+msgstr "(Системаи КронТаб)"
+
+#: src/cronPrinter.cpp:146
+#, kde-format
+msgctxt "@title"
+msgid "Crontab of user %1"
+msgstr ""
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -498,7 +568,7 @@ msgstr ""
 msgid "Local Variable"
 msgstr "Таъғиротҳо"
 
-#: src/tasksmodel.cpp:47
+#: src/tasksmodel.cpp:48
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
@@ -924,27 +994,6 @@ msgctxt "@title:column"
 msgid "User"
 msgstr ""
 
-#: src/ui/TasksComponent.qml:66
-#, fuzzy, kde-format
-#| msgid "Scheduled Tasks"
-msgctxt "@title:column"
-msgid "Scheduling"
-msgstr "Ба нақша гирифтани масъалаҳо"
-
-#: src/ui/TasksComponent.qml:75
-#, fuzzy, kde-format
-#| msgid "Modify Task"
-msgctxt "@title:column"
-msgid "Command"
-msgstr "Мукаммал кардани масъала"
-
-#: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
-#, fuzzy, kde-format
-#| msgid "Co&mment:"
-msgctxt "@title:column"
-msgid "Comment"
-msgstr "&Шарҳ:"
-
 #: src/ui/TasksComponent.qml:92
 #, fuzzy, kde-format
 #| msgid "Scheduled Tasks"
@@ -1114,20 +1163,6 @@ msgctxt "@title:group"
 msgid "Environment Variables"
 msgstr "Таъғиротҳо"
 
-#: src/ui/VariablesComponent.qml:67
-#, fuzzy, kde-format
-#| msgid "Variables"
-msgctxt "@title:column"
-msgid "Variable"
-msgstr "Таъғиротҳо"
-
-#: src/ui/VariablesComponent.qml:98
-#, fuzzy, kde-format
-#| msgid "Value"
-msgctxt "@title:column"
-msgid "Value"
-msgstr "Аҳамият"
-
 #: src/ui/VariablesComponent.qml:112
 #, fuzzy, kde-format
 #| msgid "Edit Variable"
@@ -1153,14 +1188,6 @@ msgstr "Таҳрири таъғирот"
 #~ msgstr ""
 #~ "youth_opportunities@tajikngo.org,,rkovacs@khujand.org,,MarinaKL@tajikngo."
 #~ "org"
-
-#~ msgid "Description"
-#~ msgstr "Тасвир"
-
-#, fuzzy
-#~| msgid "(System Crontab)"
-#~ msgid "System Crontab"
-#~ msgstr "(Системаи КронТаб)"
 
 #, fuzzy
 #~| msgid "(System Crontab)"
@@ -1235,11 +1262,6 @@ msgstr "Таҳрири таъғирот"
 #~ msgid "Clear All"
 #~ msgstr "Барпосозии Ҳама"
 
-#, fuzzy
-#~| msgid "Scheduled Tasks"
-#~ msgid "<b>Scheduled Tasks</b>"
-#~ msgstr "Ба нақша гирифтани масъалаҳо"
-
 #~ msgid "Modify Task"
 #~ msgstr "Мукаммал кардани масъала"
 
@@ -1301,11 +1323,6 @@ msgstr "Таҳрири таъғирот"
 
 #~ msgid "Va&lue:"
 #~ msgstr "Аҳа&ият:"
-
-#, fuzzy
-#~| msgid "Variables"
-#~ msgid "<b>Environment Variables</b>"
-#~ msgstr "Таъғиротҳо"
 
 #~ msgid "Modify Variable"
 #~ msgstr "Таҳрири таъғирот"

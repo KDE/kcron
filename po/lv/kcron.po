@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-01 00:41+0000\n"
+"POT-Creation-Date: 2024-10-04 00:42+0000\n"
 "PO-Revision-Date: 2009-05-16 09:02+0300\n"
 "Last-Translator: Viesturs Zariņš <viesturs.zarins@mii.lu.lv>\n"
 "Language-Team: Latvian <locale@laka.lv>\n"
@@ -18,6 +18,78 @@ msgstr ""
 "X-Generator: Lokalize 0.3\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
+
+#: src/cronPrinter.cpp:62
+#, fuzzy
+#| msgid "<b>Scheduled Tasks</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Tasks</b>"
+msgstr "<b>Ieplānotie uzdevumi</b>"
+
+#: src/cronPrinter.cpp:63
+#, fuzzy
+#| msgid "<b>Environment Variables</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Environment Variables</b>"
+msgstr "<b>Vides mainīgie</b>"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:66
+#, fuzzy, kde-format
+#| msgid "Scheduling"
+msgctxt "@title:column"
+msgid "Scheduling"
+msgstr "Plānošana"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:75
+#, fuzzy, kde-format
+#| msgid "Command"
+msgctxt "@title:column"
+msgid "Command"
+msgstr "Komanda"
+
+#: src/cronPrinter.cpp:103
+#, fuzzy, kde-format
+#| msgid "Description"
+msgctxt "@title:column"
+msgid "Description"
+msgstr "Apraksts"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:67
+#, fuzzy, kde-format
+#| msgid "Variable"
+msgctxt "@title:column"
+msgid "Variable"
+msgstr "Mainīgais"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:98
+#, fuzzy, kde-format
+#| msgid "Value"
+msgctxt "@title:column"
+msgid "Value"
+msgstr "Vērtība"
+
+#: src/cronPrinter.cpp:117 src/ui/TasksComponent.qml:84
+#: src/ui/VariablesComponent.qml:106
+#, fuzzy, kde-format
+#| msgid "Comment"
+msgctxt "@title:column"
+msgid "Comment"
+msgstr "Komentārs"
+
+#: src/cronPrinter.cpp:144
+#, fuzzy, kde-format
+#| msgid "System Crontab"
+msgctxt "@title"
+msgid "System Crontab"
+msgstr "Sistēmas Crontabula"
+
+#: src/cronPrinter.cpp:146
+#, fuzzy, kde-format
+#| msgctxt "Crontab of user login"
+#| msgid "Crontab of user %1"
+msgctxt "@title"
+msgid "Crontab of user %1"
+msgstr "Lietotāja %1 Crontabula"
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -501,7 +573,7 @@ msgstr "Dinamisko bibliotēku atrašanās vieta."
 msgid "Local Variable"
 msgstr "Lokālais mainīgais"
 
-#: src/tasksmodel.cpp:47
+#: src/tasksmodel.cpp:48
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
@@ -933,27 +1005,6 @@ msgctxt "@title:column"
 msgid "User"
 msgstr "Lietotājs"
 
-#: src/ui/TasksComponent.qml:66
-#, fuzzy, kde-format
-#| msgid "Scheduling"
-msgctxt "@title:column"
-msgid "Scheduling"
-msgstr "Plānošana"
-
-#: src/ui/TasksComponent.qml:75
-#, fuzzy, kde-format
-#| msgid "Command"
-msgctxt "@title:column"
-msgid "Command"
-msgstr "Komanda"
-
-#: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
-#, fuzzy, kde-format
-#| msgid "Comment"
-msgctxt "@title:column"
-msgid "Comment"
-msgstr "Komentārs"
-
 #: src/ui/TasksComponent.qml:92
 #, fuzzy, kde-format
 #| msgid "Scheduling Details"
@@ -1124,20 +1175,6 @@ msgctxt "@title:group"
 msgid "Environment Variables"
 msgstr "Vides mainīgie"
 
-#: src/ui/VariablesComponent.qml:67
-#, fuzzy, kde-format
-#| msgid "Variable"
-msgctxt "@title:column"
-msgid "Variable"
-msgstr "Mainīgais"
-
-#: src/ui/VariablesComponent.qml:98
-#, fuzzy, kde-format
-#| msgid "Value"
-msgctxt "@title:column"
-msgid "Value"
-msgstr "Vērtība"
-
 #: src/ui/VariablesComponent.qml:112
 #, fuzzy, kde-format
 #| msgid "Variable"
@@ -1160,18 +1197,8 @@ msgstr "Rediģēt mainīgo"
 #~ msgid "Your emails"
 #~ msgstr "andris.m@delfi.lv,gintam@inbox.lv, viesturs.zarins@mi.lu.lv"
 
-#~ msgid "Description"
-#~ msgstr "Apraksts"
-
-#~ msgid "System Crontab"
-#~ msgstr "Sistēmas Crontabula"
-
 #~ msgid "All Users Crontabs"
 #~ msgstr "Visu lietotāju Crontabulas"
-
-#~ msgctxt "Crontab of user login"
-#~ msgid "Crontab of user %1"
-#~ msgstr "Lietotāja %1 Crontabula"
 
 #, fuzzy
 #~| msgid "Cron Options"
@@ -1250,9 +1277,6 @@ msgstr "Rediģēt mainīgo"
 #~ msgid "Clear All"
 #~ msgstr "Tīrīt visu"
 
-#~ msgid "<b>Scheduled Tasks</b>"
-#~ msgstr "<b>Ieplānotie uzdevumi</b>"
-
 #~ msgid "Status"
 #~ msgstr "Statuss"
 
@@ -1292,9 +1316,6 @@ msgstr "Rediģēt mainīgo"
 
 #~ msgid "<i>This variable is disabled.</i>"
 #~ msgstr "<i>Šis uzdevums ir atslēgts.</i>"
-
-#~ msgid "<b>Environment Variables</b>"
-#~ msgstr "<b>Vides mainīgie</b>"
 
 #~ msgctxt "Adds a new variable"
 #~ msgid "New &Variable..."

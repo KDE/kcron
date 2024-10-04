@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-01 00:41+0000\n"
+"POT-Creation-Date: 2024-10-04 00:42+0000\n"
 "PO-Revision-Date: 2023-12-27 10:05+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -30,6 +30,78 @@ msgstr ""
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
+
+#: src/cronPrinter.cpp:62
+#, fuzzy
+#| msgid "<b>Scheduled Tasks</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Tasks</b>"
+msgstr "<b>Запланированные задания</b>"
+
+#: src/cronPrinter.cpp:63
+#, fuzzy
+#| msgid "<b>Environment Variables</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Environment Variables</b>"
+msgstr "<b>Переменные среды</b>"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:66
+#, fuzzy, kde-format
+#| msgid "Scheduling"
+msgctxt "@title:column"
+msgid "Scheduling"
+msgstr "Периодичность"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:75
+#, fuzzy, kde-format
+#| msgid "Command"
+msgctxt "@title:column"
+msgid "Command"
+msgstr "Команда"
+
+#: src/cronPrinter.cpp:103
+#, fuzzy, kde-format
+#| msgid "Description"
+msgctxt "@title:column"
+msgid "Description"
+msgstr "Описание"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:67
+#, fuzzy, kde-format
+#| msgid "Variable"
+msgctxt "@title:column"
+msgid "Variable"
+msgstr "Переменная"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:98
+#, fuzzy, kde-format
+#| msgid "Value"
+msgctxt "@title:column"
+msgid "Value"
+msgstr "Значение"
+
+#: src/cronPrinter.cpp:117 src/ui/TasksComponent.qml:84
+#: src/ui/VariablesComponent.qml:106
+#, fuzzy, kde-format
+#| msgid "Comment"
+msgctxt "@title:column"
+msgid "Comment"
+msgstr "Комментарий"
+
+#: src/cronPrinter.cpp:144
+#, fuzzy, kde-format
+#| msgid "System Crontab"
+msgctxt "@title"
+msgid "System Crontab"
+msgstr "Системная таблица заданий"
+
+#: src/cronPrinter.cpp:146
+#, fuzzy, kde-format
+#| msgctxt "Crontab of user login"
+#| msgid "Crontab of user %1"
+msgctxt "@title"
+msgid "Crontab of user %1"
+msgstr "Задания пользователя %1"
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -514,7 +586,7 @@ msgstr "Расположение динамических библиотек."
 msgid "Local Variable"
 msgstr "Локальная переменная"
 
-#: src/tasksmodel.cpp:47
+#: src/tasksmodel.cpp:48
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
@@ -948,27 +1020,6 @@ msgctxt "@title:column"
 msgid "User"
 msgstr "Пользователь"
 
-#: src/ui/TasksComponent.qml:66
-#, fuzzy, kde-format
-#| msgid "Scheduling"
-msgctxt "@title:column"
-msgid "Scheduling"
-msgstr "Периодичность"
-
-#: src/ui/TasksComponent.qml:75
-#, fuzzy, kde-format
-#| msgid "Command"
-msgctxt "@title:column"
-msgid "Command"
-msgstr "Команда"
-
-#: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
-#, fuzzy, kde-format
-#| msgid "Comment"
-msgctxt "@title:column"
-msgid "Comment"
-msgstr "Комментарий"
-
 #: src/ui/TasksComponent.qml:92
 #, fuzzy, kde-format
 #| msgid "Scheduling Details"
@@ -1140,20 +1191,6 @@ msgctxt "@title:group"
 msgid "Environment Variables"
 msgstr "Переменные среды"
 
-#: src/ui/VariablesComponent.qml:67
-#, fuzzy, kde-format
-#| msgid "Variable"
-msgctxt "@title:column"
-msgid "Variable"
-msgstr "Переменная"
-
-#: src/ui/VariablesComponent.qml:98
-#, fuzzy, kde-format
-#| msgid "Value"
-msgctxt "@title:column"
-msgid "Value"
-msgstr "Значение"
-
 #: src/ui/VariablesComponent.qml:112
 #, fuzzy, kde-format
 #| msgid "Edit Variable"
@@ -1176,18 +1213,8 @@ msgstr "Изменить переменную"
 #~ msgid "Your emails"
 #~ msgstr "vitls@chat.ru,mokhin@bog.msu.ru,sergo@bk.ru"
 
-#~ msgid "Description"
-#~ msgstr "Описание"
-
-#~ msgid "System Crontab"
-#~ msgstr "Системная таблица заданий"
-
 #~ msgid "All Users Crontabs"
 #~ msgstr "Таблицы заданий всех пользователей"
-
-#~ msgctxt "Crontab of user login"
-#~ msgid "Crontab of user %1"
-#~ msgstr "Задания пользователя %1"
 
 #~ msgctxt "@title:window"
 #~ msgid "Cron Options"
@@ -1269,9 +1296,6 @@ msgstr "Изменить переменную"
 #~ msgid "Clear All"
 #~ msgstr "Очистить все"
 
-#~ msgid "<b>Scheduled Tasks</b>"
-#~ msgstr "<b>Запланированные задания</b>"
-
 #~ msgid "Modify Task"
 #~ msgstr "Редактирование задания"
 
@@ -1321,9 +1345,6 @@ msgstr "Изменить переменную"
 
 #~ msgid "<i>This variable is disabled.</i>"
 #~ msgstr "<i>Эта переменная деактивирована.</i>"
-
-#~ msgid "<b>Environment Variables</b>"
-#~ msgstr "<b>Переменные среды</b>"
 
 #~ msgid "Modify Variable"
 #~ msgstr "Редактирование переменной"

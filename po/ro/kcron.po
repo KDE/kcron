@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-01 00:41+0000\n"
+"POT-Creation-Date: 2024-10-04 00:42+0000\n"
 "PO-Revision-Date: 2024-01-07 14:14+0000\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -19,6 +19,78 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
 "X-Generator: Lokalize 21.12.3\n"
+
+#: src/cronPrinter.cpp:62
+#, fuzzy
+#| msgid "<b>Scheduled Tasks</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Tasks</b>"
+msgstr "<b>Sarcini planificate</b>"
+
+#: src/cronPrinter.cpp:63
+#, fuzzy
+#| msgid "<b>Environment Variables</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Environment Variables</b>"
+msgstr "<b>Variabile de mediu</b>"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:66
+#, fuzzy, kde-format
+#| msgid "Scheduling"
+msgctxt "@title:column"
+msgid "Scheduling"
+msgstr "Planificare"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:75
+#, fuzzy, kde-format
+#| msgid "Command"
+msgctxt "@title:column"
+msgid "Command"
+msgstr "Comandă"
+
+#: src/cronPrinter.cpp:103
+#, fuzzy, kde-format
+#| msgid "Description"
+msgctxt "@title:column"
+msgid "Description"
+msgstr "Descriere"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:67
+#, fuzzy, kde-format
+#| msgid "Variable"
+msgctxt "@title:column"
+msgid "Variable"
+msgstr "Variabilă"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:98
+#, fuzzy, kde-format
+#| msgid "Value"
+msgctxt "@title:column"
+msgid "Value"
+msgstr "Valoare"
+
+#: src/cronPrinter.cpp:117 src/ui/TasksComponent.qml:84
+#: src/ui/VariablesComponent.qml:106
+#, fuzzy, kde-format
+#| msgid "Comment"
+msgctxt "@title:column"
+msgid "Comment"
+msgstr "Comentariu"
+
+#: src/cronPrinter.cpp:144
+#, fuzzy, kde-format
+#| msgid "System Crontab"
+msgctxt "@title"
+msgid "System Crontab"
+msgstr "Crontab de sistem"
+
+#: src/cronPrinter.cpp:146
+#, fuzzy, kde-format
+#| msgctxt "Crontab of user login"
+#| msgid "Crontab of user %1"
+msgctxt "@title"
+msgid "Crontab of user %1"
+msgstr "Crontab-ul utilizatorului %1"
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -499,7 +571,7 @@ msgstr "Locația bilbiotecilor dinamice."
 msgid "Local Variable"
 msgstr "Variabilă locală"
 
-#: src/tasksmodel.cpp:47
+#: src/tasksmodel.cpp:48
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
@@ -933,27 +1005,6 @@ msgctxt "@title:column"
 msgid "User"
 msgstr "Utilizator"
 
-#: src/ui/TasksComponent.qml:66
-#, fuzzy, kde-format
-#| msgid "Scheduling"
-msgctxt "@title:column"
-msgid "Scheduling"
-msgstr "Planificare"
-
-#: src/ui/TasksComponent.qml:75
-#, fuzzy, kde-format
-#| msgid "Command"
-msgctxt "@title:column"
-msgid "Command"
-msgstr "Comandă"
-
-#: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
-#, fuzzy, kde-format
-#| msgid "Comment"
-msgctxt "@title:column"
-msgid "Comment"
-msgstr "Comentariu"
-
 #: src/ui/TasksComponent.qml:92
 #, fuzzy, kde-format
 #| msgid "Scheduling Details"
@@ -1124,20 +1175,6 @@ msgctxt "@title:group"
 msgid "Environment Variables"
 msgstr "Variabile de mediu"
 
-#: src/ui/VariablesComponent.qml:67
-#, fuzzy, kde-format
-#| msgid "Variable"
-msgctxt "@title:column"
-msgid "Variable"
-msgstr "Variabilă"
-
-#: src/ui/VariablesComponent.qml:98
-#, fuzzy, kde-format
-#| msgid "Value"
-msgctxt "@title:column"
-msgid "Value"
-msgstr "Valoare"
-
 #: src/ui/VariablesComponent.qml:112
 #, fuzzy, kde-format
 #| msgid "Edit Variable"
@@ -1160,18 +1197,8 @@ msgstr "Editare variabilă"
 #~ msgid "Your emails"
 #~ msgstr ",sergiu@cip.md"
 
-#~ msgid "Description"
-#~ msgstr "Descriere"
-
-#~ msgid "System Crontab"
-#~ msgstr "Crontab de sistem"
-
 #~ msgid "All Users Crontabs"
 #~ msgstr "Toate crontab-urile utilizatorilor"
-
-#~ msgctxt "Crontab of user login"
-#~ msgid "Crontab of user %1"
-#~ msgstr "Crontab-ul utilizatorului %1"
 
 #~ msgctxt "@title:window"
 #~ msgid "Cron Options"
@@ -1251,9 +1278,6 @@ msgstr "Editare variabilă"
 #~ msgid "Clear All"
 #~ msgstr "Curăță tot"
 
-#~ msgid "<b>Scheduled Tasks</b>"
-#~ msgstr "<b>Sarcini planificate</b>"
-
 #~ msgid "Modify Task"
 #~ msgstr "Modifică sarcina"
 
@@ -1303,9 +1327,6 @@ msgstr "Editare variabilă"
 
 #~ msgid "<i>This variable is disabled.</i>"
 #~ msgstr "<i>Această variabilă este dezactivată.</i>"
-
-#~ msgid "<b>Environment Variables</b>"
-#~ msgstr "<b>Variabile de mediu</b>"
 
 #~ msgid "Modify Variable"
 #~ msgstr "Modifică variabila"

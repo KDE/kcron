@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-01 00:41+0000\n"
+"POT-Creation-Date: 2024-10-04 00:42+0000\n"
 "PO-Revision-Date: 2023-10-21 17:07+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -22,6 +22,78 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 23.11.70\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/cronPrinter.cpp:62
+#, fuzzy
+#| msgid "<b>Scheduled Tasks</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Tasks</b>"
+msgstr "<b>已排程工作</b>"
+
+#: src/cronPrinter.cpp:63
+#, fuzzy
+#| msgid "<b>Environment Variables</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Environment Variables</b>"
+msgstr "<b>環境變數</b>"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:66
+#, fuzzy, kde-format
+#| msgid "Scheduling"
+msgctxt "@title:column"
+msgid "Scheduling"
+msgstr "排程"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:75
+#, fuzzy, kde-format
+#| msgid "Command"
+msgctxt "@title:column"
+msgid "Command"
+msgstr "指令"
+
+#: src/cronPrinter.cpp:103
+#, fuzzy, kde-format
+#| msgid "Description"
+msgctxt "@title:column"
+msgid "Description"
+msgstr "描述"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:67
+#, fuzzy, kde-format
+#| msgid "Variable"
+msgctxt "@title:column"
+msgid "Variable"
+msgstr "變數"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:98
+#, fuzzy, kde-format
+#| msgid "Value"
+msgctxt "@title:column"
+msgid "Value"
+msgstr "數值"
+
+#: src/cronPrinter.cpp:117 src/ui/TasksComponent.qml:84
+#: src/ui/VariablesComponent.qml:106
+#, fuzzy, kde-format
+#| msgid "Comment"
+msgctxt "@title:column"
+msgid "Comment"
+msgstr "註解"
+
+#: src/cronPrinter.cpp:144
+#, fuzzy, kde-format
+#| msgid "System Crontab"
+msgctxt "@title"
+msgid "System Crontab"
+msgstr "系統排程"
+
+#: src/cronPrinter.cpp:146
+#, fuzzy, kde-format
+#| msgctxt "Crontab of user login"
+#| msgid "Crontab of user %1"
+msgctxt "@title"
+msgid "Crontab of user %1"
+msgstr "使用者 %1 的排程"
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -498,7 +570,7 @@ msgstr "動態函式庫位置。"
 msgid "Local Variable"
 msgstr "本地變數"
 
-#: src/tasksmodel.cpp:47
+#: src/tasksmodel.cpp:48
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
@@ -930,27 +1002,6 @@ msgctxt "@title:column"
 msgid "User"
 msgstr "使用者"
 
-#: src/ui/TasksComponent.qml:66
-#, fuzzy, kde-format
-#| msgid "Scheduling"
-msgctxt "@title:column"
-msgid "Scheduling"
-msgstr "排程"
-
-#: src/ui/TasksComponent.qml:75
-#, fuzzy, kde-format
-#| msgid "Command"
-msgctxt "@title:column"
-msgid "Command"
-msgstr "指令"
-
-#: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
-#, fuzzy, kde-format
-#| msgid "Comment"
-msgctxt "@title:column"
-msgid "Comment"
-msgstr "註解"
-
 #: src/ui/TasksComponent.qml:92
 #, fuzzy, kde-format
 #| msgid "Scheduling Details"
@@ -1121,20 +1172,6 @@ msgctxt "@title:group"
 msgid "Environment Variables"
 msgstr "環境變數"
 
-#: src/ui/VariablesComponent.qml:67
-#, fuzzy, kde-format
-#| msgid "Variable"
-msgctxt "@title:column"
-msgid "Variable"
-msgstr "變數"
-
-#: src/ui/VariablesComponent.qml:98
-#, fuzzy, kde-format
-#| msgid "Value"
-msgctxt "@title:column"
-msgid "Value"
-msgstr "數值"
-
 #: src/ui/VariablesComponent.qml:112
 #, fuzzy, kde-format
 #| msgid "Variable"
@@ -1157,18 +1194,8 @@ msgstr "編輯變數"
 #~ msgid "Your emails"
 #~ msgstr "franklin@goodhorse.idv.tw"
 
-#~ msgid "Description"
-#~ msgstr "描述"
-
-#~ msgid "System Crontab"
-#~ msgstr "系統排程"
-
 #~ msgid "All Users Crontabs"
 #~ msgstr "所有使用者排程"
-
-#~ msgctxt "Crontab of user login"
-#~ msgid "Crontab of user %1"
-#~ msgstr "使用者 %1 的排程"
 
 #~ msgctxt "@title:window"
 #~ msgid "Cron Options"
@@ -1244,9 +1271,6 @@ msgstr "編輯變數"
 #~ msgid "Clear All"
 #~ msgstr "全部清除"
 
-#~ msgid "<b>Scheduled Tasks</b>"
-#~ msgstr "<b>已排程工作</b>"
-
 #~ msgid "Status"
 #~ msgstr "狀態"
 
@@ -1286,9 +1310,6 @@ msgstr "編輯變數"
 
 #~ msgid "<i>This variable is disabled.</i>"
 #~ msgstr "<i>這個變數已被關閉。</i>"
-
-#~ msgid "<b>Environment Variables</b>"
-#~ msgstr "<b>環境變數</b>"
 
 #~ msgctxt "Adds a new variable"
 #~ msgid "New &Variable..."

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-01 00:41+0000\n"
+"POT-Creation-Date: 2024-10-04 00:42+0000\n"
 "PO-Revision-Date: 2024-09-24 15:22+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -18,6 +18,68 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Lokalize 24.08.1\n"
+
+#: src/cronPrinter.cpp:62
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Tasks</b>"
+msgstr ""
+
+#: src/cronPrinter.cpp:63
+#, fuzzy
+#| msgctxt "@title:group"
+#| msgid "Environment Variables"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Environment Variables</b>"
+msgstr "Proměnné prostředí"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:66
+#, kde-format
+msgctxt "@title:column"
+msgid "Scheduling"
+msgstr "Plánování"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:75
+#, kde-format
+msgctxt "@title:column"
+msgid "Command"
+msgstr "Příkaz"
+
+#: src/cronPrinter.cpp:103
+#, kde-format
+msgctxt "@title:column"
+msgid "Description"
+msgstr ""
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:67
+#, kde-format
+msgctxt "@title:column"
+msgid "Variable"
+msgstr "Proměnná"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:98
+#, kde-format
+msgctxt "@title:column"
+msgid "Value"
+msgstr "Hodnota"
+
+#: src/cronPrinter.cpp:117 src/ui/TasksComponent.qml:84
+#: src/ui/VariablesComponent.qml:106
+#, kde-format
+msgctxt "@title:column"
+msgid "Comment"
+msgstr "Komentář"
+
+#: src/cronPrinter.cpp:144
+#, kde-format
+msgctxt "@title"
+msgid "System Crontab"
+msgstr ""
+
+#: src/cronPrinter.cpp:146
+#, kde-format
+msgctxt "@title"
+msgid "Crontab of user %1"
+msgstr ""
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -497,7 +559,7 @@ msgstr "Umístění dynamických knihoven."
 msgid "Local Variable"
 msgstr "Lokální proměnné"
 
-#: src/tasksmodel.cpp:47
+#: src/tasksmodel.cpp:48
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
@@ -880,24 +942,6 @@ msgctxt "@title:column"
 msgid "User"
 msgstr "Uživatel"
 
-#: src/ui/TasksComponent.qml:66
-#, kde-format
-msgctxt "@title:column"
-msgid "Scheduling"
-msgstr "Plánování"
-
-#: src/ui/TasksComponent.qml:75
-#, kde-format
-msgctxt "@title:column"
-msgid "Command"
-msgstr "Příkaz"
-
-#: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
-#, kde-format
-msgctxt "@title:column"
-msgid "Comment"
-msgstr "Komentář"
-
 #: src/ui/TasksComponent.qml:92
 #, kde-format
 msgctxt "@title:column"
@@ -1048,18 +1092,6 @@ msgstr "Povolit tuto proměnnou"
 msgctxt "@title:group"
 msgid "Environment Variables"
 msgstr "Proměnné prostředí"
-
-#: src/ui/VariablesComponent.qml:67
-#, kde-format
-msgctxt "@title:column"
-msgid "Variable"
-msgstr "Proměnná"
-
-#: src/ui/VariablesComponent.qml:98
-#, kde-format
-msgctxt "@title:column"
-msgid "Value"
-msgstr "Hodnota"
 
 #: src/ui/VariablesComponent.qml:112
 #, kde-format

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-01 00:41+0000\n"
+"POT-Creation-Date: 2024-10-04 00:42+0000\n"
 "PO-Revision-Date: 2024-10-01 23:42+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -23,6 +23,73 @@ msgstr ""
 "X-Generator: Lokalize 23.04.3\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+
+#: src/cronPrinter.cpp:62
+#, fuzzy
+#| msgid "<b>Scheduled Tasks</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Tasks</b>"
+msgstr "<b>Заплановані завдання</b>"
+
+#: src/cronPrinter.cpp:63
+#, fuzzy
+#| msgid "<b>Environment Variables</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Environment Variables</b>"
+msgstr "<b>Змінні середовища</b>"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:66
+#, kde-format
+msgctxt "@title:column"
+msgid "Scheduling"
+msgstr "Планування"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:75
+#, kde-format
+msgctxt "@title:column"
+msgid "Command"
+msgstr "Команда"
+
+#: src/cronPrinter.cpp:103
+#, fuzzy, kde-format
+#| msgid "Description"
+msgctxt "@title:column"
+msgid "Description"
+msgstr "Опис"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:67
+#, kde-format
+msgctxt "@title:column"
+msgid "Variable"
+msgstr "Змінна"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:98
+#, kde-format
+msgctxt "@title:column"
+msgid "Value"
+msgstr "Значення"
+
+#: src/cronPrinter.cpp:117 src/ui/TasksComponent.qml:84
+#: src/ui/VariablesComponent.qml:106
+#, kde-format
+msgctxt "@title:column"
+msgid "Comment"
+msgstr "Коментар"
+
+#: src/cronPrinter.cpp:144
+#, fuzzy, kde-format
+#| msgid "System Crontab"
+msgctxt "@title"
+msgid "System Crontab"
+msgstr "Системний Crontab"
+
+#: src/cronPrinter.cpp:146
+#, fuzzy, kde-format
+#| msgctxt "Crontab of user login"
+#| msgid "Crontab of user %1"
+msgctxt "@title"
+msgid "Crontab of user %1"
+msgstr "Crontab користувача %1"
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -504,7 +571,7 @@ msgstr "Адреса динамічних бібліотек."
 msgid "Local Variable"
 msgstr "Локальна змінна"
 
-#: src/tasksmodel.cpp:47
+#: src/tasksmodel.cpp:48
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
@@ -890,24 +957,6 @@ msgctxt "@title:column"
 msgid "User"
 msgstr "Користувач"
 
-#: src/ui/TasksComponent.qml:66
-#, kde-format
-msgctxt "@title:column"
-msgid "Scheduling"
-msgstr "Планування"
-
-#: src/ui/TasksComponent.qml:75
-#, kde-format
-msgctxt "@title:column"
-msgid "Command"
-msgstr "Команда"
-
-#: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
-#, kde-format
-msgctxt "@title:column"
-msgid "Comment"
-msgstr "Коментар"
-
 #: src/ui/TasksComponent.qml:92
 #, kde-format
 msgctxt "@title:column"
@@ -1059,18 +1108,6 @@ msgctxt "@title:group"
 msgid "Environment Variables"
 msgstr "Змінні середовища"
 
-#: src/ui/VariablesComponent.qml:67
-#, kde-format
-msgctxt "@title:column"
-msgid "Variable"
-msgstr "Змінна"
-
-#: src/ui/VariablesComponent.qml:98
-#, kde-format
-msgctxt "@title:column"
-msgid "Value"
-msgstr "Значення"
-
 #: src/ui/VariablesComponent.qml:112
 #, kde-format
 msgctxt "@action:button"
@@ -1091,18 +1128,8 @@ msgstr "Змінити змінну…"
 #~ msgid "Your emails"
 #~ msgstr "rysin@kde.org,romanl@white-star.com,iip@telus.net"
 
-#~ msgid "Description"
-#~ msgstr "Опис"
-
-#~ msgid "System Crontab"
-#~ msgstr "Системний Crontab"
-
 #~ msgid "All Users Crontabs"
 #~ msgstr "Всі користувацькі Crontab-и"
-
-#~ msgctxt "Crontab of user login"
-#~ msgid "Crontab of user %1"
-#~ msgstr "Crontab користувача %1"
 
 #~ msgctxt "@title:window"
 #~ msgid "Cron Options"
@@ -1180,9 +1207,6 @@ msgstr "Змінити змінну…"
 #~ msgid "Clear All"
 #~ msgstr "Очистити все"
 
-#~ msgid "<b>Scheduled Tasks</b>"
-#~ msgstr "<b>Заплановані завдання</b>"
-
 #~ msgid "Status"
 #~ msgstr "Стан"
 
@@ -1223,9 +1247,6 @@ msgstr "Змінити змінну…"
 
 #~ msgid "<i>This variable is disabled.</i>"
 #~ msgstr "<i>Цю змінну вимкнено.</i>"
-
-#~ msgid "<b>Environment Variables</b>"
-#~ msgstr "<b>Змінні середовища</b>"
 
 #~ msgctxt "Adds a new variable"
 #~ msgid "New &Variable..."

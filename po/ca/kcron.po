@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-01 00:41+0000\n"
+"POT-Creation-Date: 2024-10-04 00:42+0000\n"
 "PO-Revision-Date: 2024-10-01 10:03+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -21,6 +21,73 @@ msgstr ""
 "X-Generator: Lokalize 24.08.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
+
+#: src/cronPrinter.cpp:62
+#, fuzzy
+#| msgid "<b>Scheduled Tasks</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Tasks</b>"
+msgstr "<b>Tasques planificades</b>"
+
+#: src/cronPrinter.cpp:63
+#, fuzzy
+#| msgid "<b>Environment Variables</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Environment Variables</b>"
+msgstr "<b>Variables d'entorn</b>"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:66
+#, kde-format
+msgctxt "@title:column"
+msgid "Scheduling"
+msgstr "Planificació"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:75
+#, kde-format
+msgctxt "@title:column"
+msgid "Command"
+msgstr "Ordre"
+
+#: src/cronPrinter.cpp:103
+#, fuzzy, kde-format
+#| msgid "Description"
+msgctxt "@title:column"
+msgid "Description"
+msgstr "Descripció"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:67
+#, kde-format
+msgctxt "@title:column"
+msgid "Variable"
+msgstr "Variable"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:98
+#, kde-format
+msgctxt "@title:column"
+msgid "Value"
+msgstr "Valor"
+
+#: src/cronPrinter.cpp:117 src/ui/TasksComponent.qml:84
+#: src/ui/VariablesComponent.qml:106
+#, kde-format
+msgctxt "@title:column"
+msgid "Comment"
+msgstr "Comentari"
+
+#: src/cronPrinter.cpp:144
+#, fuzzy, kde-format
+#| msgid "System Crontab"
+msgctxt "@title"
+msgid "System Crontab"
+msgstr "«Crontab» del sistema"
+
+#: src/cronPrinter.cpp:146
+#, fuzzy, kde-format
+#| msgctxt "Crontab of user login"
+#| msgid "Crontab of user %1"
+msgctxt "@title"
+msgid "Crontab of user %1"
+msgstr "«Crontab» de l'usuari %1"
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -507,7 +574,7 @@ msgstr "Ubicació de les biblioteques dinàmiques."
 msgid "Local Variable"
 msgstr "Variable local"
 
-#: src/tasksmodel.cpp:47
+#: src/tasksmodel.cpp:48
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
@@ -894,24 +961,6 @@ msgctxt "@title:column"
 msgid "User"
 msgstr "Usuari"
 
-#: src/ui/TasksComponent.qml:66
-#, kde-format
-msgctxt "@title:column"
-msgid "Scheduling"
-msgstr "Planificació"
-
-#: src/ui/TasksComponent.qml:75
-#, kde-format
-msgctxt "@title:column"
-msgid "Command"
-msgstr "Ordre"
-
-#: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
-#, kde-format
-msgctxt "@title:column"
-msgid "Comment"
-msgstr "Comentari"
-
 #: src/ui/TasksComponent.qml:92
 #, kde-format
 msgctxt "@title:column"
@@ -1064,18 +1113,6 @@ msgctxt "@title:group"
 msgid "Environment Variables"
 msgstr "Variables d'entorn"
 
-#: src/ui/VariablesComponent.qml:67
-#, kde-format
-msgctxt "@title:column"
-msgid "Variable"
-msgstr "Variable"
-
-#: src/ui/VariablesComponent.qml:98
-#, kde-format
-msgctxt "@title:column"
-msgid "Value"
-msgstr "Valor"
-
 #: src/ui/VariablesComponent.qml:112
 #, kde-format
 msgctxt "@action:button"
@@ -1096,18 +1133,8 @@ msgstr "Edita la variable…"
 #~ msgid "Your emails"
 #~ msgstr "linux@softcatala.org,antonibella5@yahoo.com"
 
-#~ msgid "Description"
-#~ msgstr "Descripció"
-
-#~ msgid "System Crontab"
-#~ msgstr "«Crontab» del sistema"
-
 #~ msgid "All Users Crontabs"
 #~ msgstr "Els «crontab» de tots els usuaris"
-
-#~ msgctxt "Crontab of user login"
-#~ msgid "Crontab of user %1"
-#~ msgstr "«Crontab» de l'usuari %1"
 
 #~ msgctxt "@title:window"
 #~ msgid "Cron Options"
@@ -1185,9 +1212,6 @@ msgstr "Edita la variable…"
 #~ msgid "Clear All"
 #~ msgstr "Neteja-ho tot"
 
-#~ msgid "<b>Scheduled Tasks</b>"
-#~ msgstr "<b>Tasques planificades</b>"
-
 #~ msgid "Status"
 #~ msgstr "Estat"
 
@@ -1227,9 +1251,6 @@ msgstr "Edita la variable…"
 
 #~ msgid "<i>This variable is disabled.</i>"
 #~ msgstr "<i>Aquesta variable està desactivada.</i>"
-
-#~ msgid "<b>Environment Variables</b>"
-#~ msgstr "<b>Variables d'entorn</b>"
 
 #~ msgctxt "Adds a new variable"
 #~ msgid "New &Variable..."

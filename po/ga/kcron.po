@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeadmin/kcron.po\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-01 00:41+0000\n"
+"POT-Creation-Date: 2024-10-04 00:42+0000\n"
 "PO-Revision-Date: 2004-12-03 14:52-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -16,6 +16,78 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n < 11 ? "
 "3 : 4\n"
+
+#: src/cronPrinter.cpp:62
+#, fuzzy
+#| msgid "<b>Tasks</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Tasks</b>"
+msgstr "<b>Tascanna</b>"
+
+#: src/cronPrinter.cpp:63
+#, fuzzy
+#| msgid "<b>Environment Variables</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Environment Variables</b>"
+msgstr "<b>Athróga Timpeallachta</b>"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:66
+#, fuzzy, kde-format
+#| msgid "Scheduling"
+msgctxt "@title:column"
+msgid "Scheduling"
+msgstr "Sceidealadh"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:75
+#, fuzzy, kde-format
+#| msgid "Command"
+msgctxt "@title:column"
+msgid "Command"
+msgstr "Ordú"
+
+#: src/cronPrinter.cpp:103
+#, fuzzy, kde-format
+#| msgid "Description"
+msgctxt "@title:column"
+msgid "Description"
+msgstr "Cur Síos"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:67
+#, fuzzy, kde-format
+#| msgid "Variable"
+msgctxt "@title:column"
+msgid "Variable"
+msgstr "Athróg"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:98
+#, fuzzy, kde-format
+#| msgid "Value"
+msgctxt "@title:column"
+msgid "Value"
+msgstr "Luach"
+
+#: src/cronPrinter.cpp:117 src/ui/TasksComponent.qml:84
+#: src/ui/VariablesComponent.qml:106
+#, fuzzy, kde-format
+#| msgid "Comment"
+msgctxt "@title:column"
+msgid "Comment"
+msgstr "Nóta"
+
+#: src/cronPrinter.cpp:144
+#, fuzzy, kde-format
+#| msgid "System Crontab"
+msgctxt "@title"
+msgid "System Crontab"
+msgstr "Crontab an Chórais"
+
+#: src/cronPrinter.cpp:146
+#, fuzzy, kde-format
+#| msgctxt "Crontab of user login"
+#| msgid "Crontab of user %1"
+msgctxt "@title"
+msgid "Crontab of user %1"
+msgstr "Crontab d'úsáideoir %1"
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -498,7 +570,7 @@ msgstr "Suíomh na leabharlann dinimiciúla."
 msgid "Local Variable"
 msgstr "Athróg Logánta"
 
-#: src/tasksmodel.cpp:47
+#: src/tasksmodel.cpp:48
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
@@ -933,27 +1005,6 @@ msgctxt "@title:column"
 msgid "User"
 msgstr "Úsáideoir"
 
-#: src/ui/TasksComponent.qml:66
-#, fuzzy, kde-format
-#| msgid "Scheduling"
-msgctxt "@title:column"
-msgid "Scheduling"
-msgstr "Sceidealadh"
-
-#: src/ui/TasksComponent.qml:75
-#, fuzzy, kde-format
-#| msgid "Command"
-msgctxt "@title:column"
-msgid "Command"
-msgstr "Ordú"
-
-#: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
-#, fuzzy, kde-format
-#| msgid "Comment"
-msgctxt "@title:column"
-msgid "Comment"
-msgstr "Nóta"
-
 #: src/ui/TasksComponent.qml:92
 #, fuzzy, kde-format
 #| msgid "Scheduling Details"
@@ -1125,20 +1176,6 @@ msgctxt "@title:group"
 msgid "Environment Variables"
 msgstr "Athróga Timpeallachta"
 
-#: src/ui/VariablesComponent.qml:67
-#, fuzzy, kde-format
-#| msgid "Variable"
-msgctxt "@title:column"
-msgid "Variable"
-msgstr "Athróg"
-
-#: src/ui/VariablesComponent.qml:98
-#, fuzzy, kde-format
-#| msgid "Value"
-msgctxt "@title:column"
-msgid "Value"
-msgstr "Luach"
-
 #: src/ui/VariablesComponent.qml:112
 #, fuzzy, kde-format
 #| msgid "Variable"
@@ -1161,18 +1198,8 @@ msgstr "Mionathraigh Athróg"
 #~ msgid "Your emails"
 #~ msgstr "seoc@iolfree.ie,kscanne@gmail.com"
 
-#~ msgid "Description"
-#~ msgstr "Cur Síos"
-
-#~ msgid "System Crontab"
-#~ msgstr "Crontab an Chórais"
-
 #~ msgid "All Users Crontabs"
 #~ msgstr "Crontab gach Úsáideora"
-
-#~ msgctxt "Crontab of user login"
-#~ msgid "Crontab of user %1"
-#~ msgstr "Crontab d'úsáideoir %1"
 
 #, fuzzy
 #~| msgid "Cron Options"
@@ -1307,9 +1334,6 @@ msgstr "Mionathraigh Athróg"
 #~ msgid "<i>This variable is disabled.</i>"
 #~ msgstr "<i>Díchumasaíodh an athróg seo.</i>"
 
-#~ msgid "<b>Environment Variables</b>"
-#~ msgstr "<b>Athróga Timpeallachta</b>"
-
 #~ msgctxt "Adds a new variable"
 #~ msgid "New &Variable..."
 #~ msgstr "&Athróg Nua..."
@@ -1384,9 +1408,6 @@ msgstr "Mionathraigh Athróg"
 
 #~ msgid "(System Crontab)"
 #~ msgstr "(Crontab an Chórais)"
-
-#~ msgid "<b>Tasks</b>"
-#~ msgstr "<b>Tascanna</b>"
 
 #~ msgctxt "Ready for user input"
 #~ msgid " Ready."

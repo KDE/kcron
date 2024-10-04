@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-01 00:41+0000\n"
+"POT-Creation-Date: 2024-10-04 00:42+0000\n"
 "PO-Revision-Date: 2007-09-02 12:01+0330\n"
 "Last-Translator: Nazanin Kazemi <kazemi@itland.ir>\n"
 "Language-Team: Persian <kde-i18n-fa@kde.org>\n"
@@ -17,6 +17,69 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: src/cronPrinter.cpp:62
+#, fuzzy
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Tasks</b>"
+msgstr "تکالیف زمان‌بندی‌شده"
+
+#: src/cronPrinter.cpp:63
+#, fuzzy
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Environment Variables</b>"
+msgstr "متغیرها"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:66
+#, fuzzy, kde-format
+msgctxt "@title:column"
+msgid "Scheduling"
+msgstr "تکالیف زمان‌بندی‌شده"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:75
+#, fuzzy, kde-format
+msgctxt "@title:column"
+msgid "Command"
+msgstr "تغییر تکلیف"
+
+#: src/cronPrinter.cpp:103
+#, fuzzy, kde-format
+#| msgid "Description"
+msgctxt "@title:column"
+msgid "Description"
+msgstr "توصیف"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:67
+#, fuzzy, kde-format
+msgctxt "@title:column"
+msgid "Variable"
+msgstr "متغیرها"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:98
+#, fuzzy, kde-format
+#| msgid "Value"
+msgctxt "@title:column"
+msgid "Value"
+msgstr "مقدار"
+
+#: src/cronPrinter.cpp:117 src/ui/TasksComponent.qml:84
+#: src/ui/VariablesComponent.qml:106
+#, fuzzy, kde-format
+msgctxt "@title:column"
+msgid "Comment"
+msgstr "&توضیح:‌"
+
+#: src/cronPrinter.cpp:144
+#, fuzzy, kde-format
+msgctxt "@title"
+msgid "System Crontab"
+msgstr "(Crontab سیستم)"
+
+#: src/cronPrinter.cpp:146
+#, kde-format
+msgctxt "@title"
+msgid "Crontab of user %1"
+msgstr ""
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -488,7 +551,7 @@ msgstr ""
 msgid "Local Variable"
 msgstr "متغیرها"
 
-#: src/tasksmodel.cpp:47
+#: src/tasksmodel.cpp:48
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
@@ -905,24 +968,6 @@ msgctxt "@title:column"
 msgid "User"
 msgstr ""
 
-#: src/ui/TasksComponent.qml:66
-#, fuzzy, kde-format
-msgctxt "@title:column"
-msgid "Scheduling"
-msgstr "تکالیف زمان‌بندی‌شده"
-
-#: src/ui/TasksComponent.qml:75
-#, fuzzy, kde-format
-msgctxt "@title:column"
-msgid "Command"
-msgstr "تغییر تکلیف"
-
-#: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
-#, fuzzy, kde-format
-msgctxt "@title:column"
-msgid "Comment"
-msgstr "&توضیح:‌"
-
 #: src/ui/TasksComponent.qml:92
 #, fuzzy, kde-format
 msgctxt "@title:column"
@@ -1087,19 +1132,6 @@ msgctxt "@title:group"
 msgid "Environment Variables"
 msgstr "متغیرها"
 
-#: src/ui/VariablesComponent.qml:67
-#, fuzzy, kde-format
-msgctxt "@title:column"
-msgid "Variable"
-msgstr "متغیرها"
-
-#: src/ui/VariablesComponent.qml:98
-#, fuzzy, kde-format
-#| msgid "Value"
-msgctxt "@title:column"
-msgid "Value"
-msgstr "مقدار"
-
 #: src/ui/VariablesComponent.qml:112
 #, fuzzy, kde-format
 #| msgid "Edit Variable"
@@ -1121,13 +1153,6 @@ msgstr "ویرایش متغیر"
 #~ msgctxt "EMAIL OF TRANSLATORS"
 #~ msgid "Your emails"
 #~ msgstr "kazemi@itland.ir"
-
-#~ msgid "Description"
-#~ msgstr "توصیف"
-
-#, fuzzy
-#~ msgid "System Crontab"
-#~ msgstr "(Crontab سیستم)"
 
 #, fuzzy
 #~ msgid "All Users Crontabs"
@@ -1215,10 +1240,6 @@ msgstr "ویرایش متغیر"
 #~ msgid "Clear All"
 #~ msgstr "پاک کردن همه"
 
-#, fuzzy
-#~ msgid "<b>Scheduled Tasks</b>"
-#~ msgstr "تکالیف زمان‌بندی‌شده"
-
 #~ msgid "Modify Task"
 #~ msgstr "تغییر تکلیف"
 
@@ -1278,10 +1299,6 @@ msgstr "ویرایش متغیر"
 #, fuzzy
 #~ msgid "<i>This variable is disabled.</i>"
 #~ msgstr "<i>این تکلیف هنگام راه‌اندازی سیستم اجرا می‌شود ...</i>"
-
-#, fuzzy
-#~ msgid "<b>Environment Variables</b>"
-#~ msgstr "متغیرها"
 
 #~ msgid "Modify Variable"
 #~ msgstr "تغییر متغیر"

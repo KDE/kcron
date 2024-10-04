@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-01 00:41+0000\n"
+"POT-Creation-Date: 2024-10-04 00:42+0000\n"
 "PO-Revision-Date: 2006-01-25 19:01+0100\n"
 "Last-Translator: Bozidar Proevski <bobibobi@freemail.com.mk>\n"
 "Language-Team: Macedonian <mkde-l10n@lists.sourceforge.net>\n"
@@ -21,6 +21,76 @@ msgstr ""
 "X-Generator: KBabel 1.11\n"
 "Plural-Forms: Plural-Forms: nplurals=3; plural=n%10==1 ? 0 : n%10==2 ? 1 : "
 "2;\n"
+
+#: src/cronPrinter.cpp:62
+#, fuzzy
+#| msgid "Scheduled Tasks"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Tasks</b>"
+msgstr "Распоредени задачи"
+
+#: src/cronPrinter.cpp:63
+#, fuzzy
+#| msgid "Variables"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Environment Variables</b>"
+msgstr "Променливи"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:66
+#, fuzzy, kde-format
+#| msgid "Scheduled Tasks"
+msgctxt "@title:column"
+msgid "Scheduling"
+msgstr "Распоредени задачи"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:75
+#, fuzzy, kde-format
+#| msgid "Modify Task"
+msgctxt "@title:column"
+msgid "Command"
+msgstr "Измена на задача"
+
+#: src/cronPrinter.cpp:103
+#, fuzzy, kde-format
+#| msgid "Description"
+msgctxt "@title:column"
+msgid "Description"
+msgstr "Опис"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:67
+#, fuzzy, kde-format
+#| msgid "Variables"
+msgctxt "@title:column"
+msgid "Variable"
+msgstr "Променливи"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:98
+#, fuzzy, kde-format
+#| msgid "Value"
+msgctxt "@title:column"
+msgid "Value"
+msgstr "Вредност"
+
+#: src/cronPrinter.cpp:117 src/ui/TasksComponent.qml:84
+#: src/ui/VariablesComponent.qml:106
+#, fuzzy, kde-format
+#| msgid "Co&mment:"
+msgctxt "@title:column"
+msgid "Comment"
+msgstr "Ко&ментар:"
+
+#: src/cronPrinter.cpp:144
+#, fuzzy, kde-format
+#| msgid "(System Crontab)"
+msgctxt "@title"
+msgid "System Crontab"
+msgstr "(Системски Crontab)"
+
+#: src/cronPrinter.cpp:146
+#, kde-format
+msgctxt "@title"
+msgid "Crontab of user %1"
+msgstr ""
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -500,7 +570,7 @@ msgstr ""
 msgid "Local Variable"
 msgstr "Променливи"
 
-#: src/tasksmodel.cpp:47
+#: src/tasksmodel.cpp:48
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
@@ -926,27 +996,6 @@ msgctxt "@title:column"
 msgid "User"
 msgstr ""
 
-#: src/ui/TasksComponent.qml:66
-#, fuzzy, kde-format
-#| msgid "Scheduled Tasks"
-msgctxt "@title:column"
-msgid "Scheduling"
-msgstr "Распоредени задачи"
-
-#: src/ui/TasksComponent.qml:75
-#, fuzzy, kde-format
-#| msgid "Modify Task"
-msgctxt "@title:column"
-msgid "Command"
-msgstr "Измена на задача"
-
-#: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
-#, fuzzy, kde-format
-#| msgid "Co&mment:"
-msgctxt "@title:column"
-msgid "Comment"
-msgstr "Ко&ментар:"
-
 #: src/ui/TasksComponent.qml:92
 #, fuzzy, kde-format
 #| msgid "Scheduled Tasks"
@@ -1116,20 +1165,6 @@ msgctxt "@title:group"
 msgid "Environment Variables"
 msgstr "Променливи"
 
-#: src/ui/VariablesComponent.qml:67
-#, fuzzy, kde-format
-#| msgid "Variables"
-msgctxt "@title:column"
-msgid "Variable"
-msgstr "Променливи"
-
-#: src/ui/VariablesComponent.qml:98
-#, fuzzy, kde-format
-#| msgid "Value"
-msgctxt "@title:column"
-msgid "Value"
-msgstr "Вредност"
-
 #: src/ui/VariablesComponent.qml:112
 #, fuzzy, kde-format
 #| msgid "Edit Variable"
@@ -1151,14 +1186,6 @@ msgstr "Уреди променлива"
 #~ msgctxt "EMAIL OF TRANSLATORS"
 #~ msgid "Your emails"
 #~ msgstr "bobibobi@freemail.com.mk,ivan_tph@hotmail.com"
-
-#~ msgid "Description"
-#~ msgstr "Опис"
-
-#, fuzzy
-#~| msgid "(System Crontab)"
-#~ msgid "System Crontab"
-#~ msgstr "(Системски Crontab)"
 
 #, fuzzy
 #~| msgid "(System Crontab)"
@@ -1233,11 +1260,6 @@ msgstr "Уреди променлива"
 #~ msgid "Clear All"
 #~ msgstr "Постави ги сите"
 
-#, fuzzy
-#~| msgid "Scheduled Tasks"
-#~ msgid "<b>Scheduled Tasks</b>"
-#~ msgstr "Распоредени задачи"
-
 #~ msgid "Modify Task"
 #~ msgstr "Измена на задача"
 
@@ -1299,11 +1321,6 @@ msgstr "Уреди променлива"
 
 #~ msgid "Va&lue:"
 #~ msgstr "Вре&дност:"
-
-#, fuzzy
-#~| msgid "Variables"
-#~ msgid "<b>Environment Variables</b>"
-#~ msgstr "Променливи"
 
 #~ msgid "Modify Variable"
 #~ msgstr "Измени променлива"

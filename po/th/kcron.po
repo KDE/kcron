@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-01 00:41+0000\n"
+"POT-Creation-Date: 2024-10-04 00:42+0000\n"
 "PO-Revision-Date: 2010-03-25 13:22+0700\n"
 "Last-Translator: Thanomsub Noppaburana <donga.nb@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -17,6 +17,78 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/cronPrinter.cpp:62
+#, fuzzy
+#| msgid "<b>Scheduled Tasks</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Tasks</b>"
+msgstr "<b>ตารางการทำงาน</b>"
+
+#: src/cronPrinter.cpp:63
+#, fuzzy
+#| msgid "<b>Environment Variables</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Environment Variables</b>"
+msgstr "<b>ตัวแปรสภาพแวดล้อม</b>"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:66
+#, fuzzy, kde-format
+#| msgid "Scheduling"
+msgctxt "@title:column"
+msgid "Scheduling"
+msgstr "ตารางงาน"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:75
+#, fuzzy, kde-format
+#| msgid "Command"
+msgctxt "@title:column"
+msgid "Command"
+msgstr "คำสั่ง"
+
+#: src/cronPrinter.cpp:103
+#, fuzzy, kde-format
+#| msgid "Description"
+msgctxt "@title:column"
+msgid "Description"
+msgstr "คำอธิบาย"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:67
+#, fuzzy, kde-format
+#| msgid "Variable"
+msgctxt "@title:column"
+msgid "Variable"
+msgstr "ตัวแปร"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:98
+#, fuzzy, kde-format
+#| msgid "Value"
+msgctxt "@title:column"
+msgid "Value"
+msgstr "ค่า"
+
+#: src/cronPrinter.cpp:117 src/ui/TasksComponent.qml:84
+#: src/ui/VariablesComponent.qml:106
+#, fuzzy, kde-format
+#| msgid "Comment"
+msgctxt "@title:column"
+msgid "Comment"
+msgstr "หมายเหตุ"
+
+#: src/cronPrinter.cpp:144
+#, fuzzy, kde-format
+#| msgid "System Crontab"
+msgctxt "@title"
+msgid "System Crontab"
+msgstr "ตารางงานของระบบ"
+
+#: src/cronPrinter.cpp:146
+#, fuzzy, kde-format
+#| msgctxt "Crontab of user login"
+#| msgid "Crontab of user %1"
+msgctxt "@title"
+msgid "Crontab of user %1"
+msgstr "ตารางงานของผู้ใช้ %1"
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -498,7 +570,7 @@ msgstr "ตำแหน่งของไลบรารีแบบใช้ร
 msgid "Local Variable"
 msgstr "ตัวแปรภายใน"
 
-#: src/tasksmodel.cpp:47
+#: src/tasksmodel.cpp:48
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
@@ -930,27 +1002,6 @@ msgctxt "@title:column"
 msgid "User"
 msgstr "ผู้ใช้"
 
-#: src/ui/TasksComponent.qml:66
-#, fuzzy, kde-format
-#| msgid "Scheduling"
-msgctxt "@title:column"
-msgid "Scheduling"
-msgstr "ตารางงาน"
-
-#: src/ui/TasksComponent.qml:75
-#, fuzzy, kde-format
-#| msgid "Command"
-msgctxt "@title:column"
-msgid "Command"
-msgstr "คำสั่ง"
-
-#: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
-#, fuzzy, kde-format
-#| msgid "Comment"
-msgctxt "@title:column"
-msgid "Comment"
-msgstr "หมายเหตุ"
-
 #: src/ui/TasksComponent.qml:92
 #, fuzzy, kde-format
 #| msgid "Scheduling Details"
@@ -1121,20 +1172,6 @@ msgctxt "@title:group"
 msgid "Environment Variables"
 msgstr "ตัวแปรแวดล้อม"
 
-#: src/ui/VariablesComponent.qml:67
-#, fuzzy, kde-format
-#| msgid "Variable"
-msgctxt "@title:column"
-msgid "Variable"
-msgstr "ตัวแปร"
-
-#: src/ui/VariablesComponent.qml:98
-#, fuzzy, kde-format
-#| msgid "Value"
-msgctxt "@title:column"
-msgid "Value"
-msgstr "ค่า"
-
 #: src/ui/VariablesComponent.qml:112
 #, fuzzy, kde-format
 #| msgid "Variable"
@@ -1157,18 +1194,8 @@ msgstr "แก้ไขตัวแปร"
 #~ msgid "Your emails"
 #~ msgstr "donga.nb@gmail.com"
 
-#~ msgid "Description"
-#~ msgstr "คำอธิบาย"
-
-#~ msgid "System Crontab"
-#~ msgstr "ตารางงานของระบบ"
-
 #~ msgid "All Users Crontabs"
 #~ msgstr "ตารางงานทั้งหมดของผู้ใช้"
-
-#~ msgctxt "Crontab of user login"
-#~ msgid "Crontab of user %1"
-#~ msgstr "ตารางงานของผู้ใช้ %1"
 
 #, fuzzy
 #~| msgid "Cron Options"
@@ -1246,9 +1273,6 @@ msgstr "แก้ไขตัวแปร"
 #~ msgid "Clear All"
 #~ msgstr "ล้างทั้งหมด"
 
-#~ msgid "<b>Scheduled Tasks</b>"
-#~ msgstr "<b>ตารางการทำงาน</b>"
-
 #~ msgid "Status"
 #~ msgstr "สถานะ"
 
@@ -1288,9 +1312,6 @@ msgstr "แก้ไขตัวแปร"
 
 #~ msgid "<i>This variable is disabled.</i>"
 #~ msgstr "<i>ตัวแปรนี้ถูกปิดการใช้งานไว้</i>"
-
-#~ msgid "<b>Environment Variables</b>"
-#~ msgstr "<b>ตัวแปรสภาพแวดล้อม</b>"
 
 #~ msgctxt "Adds a new variable"
 #~ msgid "New &Variable..."

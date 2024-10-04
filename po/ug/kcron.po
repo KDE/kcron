@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-01 00:41+0000\n"
+"POT-Creation-Date: 2024-10-04 00:42+0000\n"
 "PO-Revision-Date: 2013-09-08 07:05+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -16,6 +16,78 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/cronPrinter.cpp:62
+#, fuzzy
+#| msgid "<b>Scheduled Tasks</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Tasks</b>"
+msgstr "<b>پىلانلانغان ۋەزىپىلەر</b>"
+
+#: src/cronPrinter.cpp:63
+#, fuzzy
+#| msgid "<b>Environment Variables</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Environment Variables</b>"
+msgstr "<b>مۇھىت ئۆزگىرىشچان مىقدارى</b>"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:66
+#, fuzzy, kde-format
+#| msgid "Scheduling"
+msgctxt "@title:column"
+msgid "Scheduling"
+msgstr "پىلان"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:75
+#, fuzzy, kde-format
+#| msgid "Command"
+msgctxt "@title:column"
+msgid "Command"
+msgstr "بۇيرۇق"
+
+#: src/cronPrinter.cpp:103
+#, fuzzy, kde-format
+#| msgid "Description"
+msgctxt "@title:column"
+msgid "Description"
+msgstr "چۈشەندۈرۈش"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:67
+#, fuzzy, kde-format
+#| msgid "Variable"
+msgctxt "@title:column"
+msgid "Variable"
+msgstr "ئۆزگىرىشچان"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:98
+#, fuzzy, kde-format
+#| msgid "Value"
+msgctxt "@title:column"
+msgid "Value"
+msgstr "قىممەت"
+
+#: src/cronPrinter.cpp:117 src/ui/TasksComponent.qml:84
+#: src/ui/VariablesComponent.qml:106
+#, fuzzy, kde-format
+#| msgid "Comment"
+msgctxt "@title:column"
+msgid "Comment"
+msgstr "ئىزاھات"
+
+#: src/cronPrinter.cpp:144
+#, fuzzy, kde-format
+#| msgid "System Crontab"
+msgctxt "@title"
+msgid "System Crontab"
+msgstr "سىستېما پىلان ۋەزىپىسى"
+
+#: src/cronPrinter.cpp:146
+#, fuzzy, kde-format
+#| msgctxt "Crontab of user login"
+#| msgid "Crontab of user %1"
+msgctxt "@title"
+msgid "Crontab of user %1"
+msgstr "ئىشلەتكۈچى %1 نىڭ ۋەزىپە پىلانى"
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -494,7 +566,7 @@ msgstr "ھەرىكەتچان ئامبار ئورنى."
 msgid "Local Variable"
 msgstr "يەرلىك ئۆزگەرگۈچى"
 
-#: src/tasksmodel.cpp:47
+#: src/tasksmodel.cpp:48
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
@@ -927,27 +999,6 @@ msgctxt "@title:column"
 msgid "User"
 msgstr "ئىشلەتكۈچى"
 
-#: src/ui/TasksComponent.qml:66
-#, fuzzy, kde-format
-#| msgid "Scheduling"
-msgctxt "@title:column"
-msgid "Scheduling"
-msgstr "پىلان"
-
-#: src/ui/TasksComponent.qml:75
-#, fuzzy, kde-format
-#| msgid "Command"
-msgctxt "@title:column"
-msgid "Command"
-msgstr "بۇيرۇق"
-
-#: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
-#, fuzzy, kde-format
-#| msgid "Comment"
-msgctxt "@title:column"
-msgid "Comment"
-msgstr "ئىزاھات"
-
 #: src/ui/TasksComponent.qml:92
 #, fuzzy, kde-format
 #| msgid "Scheduling Details"
@@ -1118,20 +1169,6 @@ msgctxt "@title:group"
 msgid "Environment Variables"
 msgstr "مۇھىت ئۆزگەرگۈچى مىقدار"
 
-#: src/ui/VariablesComponent.qml:67
-#, fuzzy, kde-format
-#| msgid "Variable"
-msgctxt "@title:column"
-msgid "Variable"
-msgstr "ئۆزگىرىشچان"
-
-#: src/ui/VariablesComponent.qml:98
-#, fuzzy, kde-format
-#| msgid "Value"
-msgctxt "@title:column"
-msgid "Value"
-msgstr "قىممەت"
-
 #: src/ui/VariablesComponent.qml:112
 #, fuzzy, kde-format
 #| msgid "Variable"
@@ -1154,18 +1191,8 @@ msgstr "ئۆزگەرگۈچىنى ئۆزگەرت"
 #~ msgid "Your emails"
 #~ msgstr "sahran.ug@gmail.com,  gheyret@gmail.com"
 
-#~ msgid "Description"
-#~ msgstr "چۈشەندۈرۈش"
-
-#~ msgid "System Crontab"
-#~ msgstr "سىستېما پىلان ۋەزىپىسى"
-
 #~ msgid "All Users Crontabs"
 #~ msgstr "ھەممە ئىشلەتكۈچىنىڭ ۋەزىپە پىلانى"
-
-#~ msgctxt "Crontab of user login"
-#~ msgid "Crontab of user %1"
-#~ msgstr "ئىشلەتكۈچى %1 نىڭ ۋەزىپە پىلانى"
 
 #, fuzzy
 #~| msgid "Cron Options"
@@ -1244,9 +1271,6 @@ msgstr "ئۆزگەرگۈچىنى ئۆزگەرت"
 #~ msgid "Clear All"
 #~ msgstr "ھەممىنى تازىلا"
 
-#~ msgid "<b>Scheduled Tasks</b>"
-#~ msgstr "<b>پىلانلانغان ۋەزىپىلەر</b>"
-
 #~ msgid "Status"
 #~ msgstr "ھالىتى"
 
@@ -1286,9 +1310,6 @@ msgstr "ئۆزگەرگۈچىنى ئۆزگەرت"
 
 #~ msgid "<i>This variable is disabled.</i>"
 #~ msgstr "<i>بۇ ئۆزگەرگۈچى چەكلەندى.</i>"
-
-#~ msgid "<b>Environment Variables</b>"
-#~ msgstr "<b>مۇھىت ئۆزگىرىشچان مىقدارى</b>"
 
 #~ msgctxt "Adds a new variable"
 #~ msgid "New &Variable..."

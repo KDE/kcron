@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-01 00:41+0000\n"
+"POT-Creation-Date: 2024-10-04 00:42+0000\n"
 "PO-Revision-Date: 2012-09-03 08:20+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -16,6 +16,78 @@ msgstr ""
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "\n"
+
+#: src/cronPrinter.cpp:62
+#, fuzzy
+#| msgid "<b>Scheduled Tasks</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Tasks</b>"
+msgstr "<b>Жоспарланған тапсырмалар</b>"
+
+#: src/cronPrinter.cpp:63
+#, fuzzy
+#| msgid "<b>Environment Variables</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Environment Variables</b>"
+msgstr "<b>Орта айнымалылары</b>"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:66
+#, fuzzy, kde-format
+#| msgid "Scheduling"
+msgctxt "@title:column"
+msgid "Scheduling"
+msgstr "Жоспарлау"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:75
+#, fuzzy, kde-format
+#| msgid "Command"
+msgctxt "@title:column"
+msgid "Command"
+msgstr "Команда"
+
+#: src/cronPrinter.cpp:103
+#, fuzzy, kde-format
+#| msgid "Description"
+msgctxt "@title:column"
+msgid "Description"
+msgstr "Сипаттама"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:67
+#, fuzzy, kde-format
+#| msgid "Variable"
+msgctxt "@title:column"
+msgid "Variable"
+msgstr "Айнымалы"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:98
+#, fuzzy, kde-format
+#| msgid "Value"
+msgctxt "@title:column"
+msgid "Value"
+msgstr "Мәні"
+
+#: src/cronPrinter.cpp:117 src/ui/TasksComponent.qml:84
+#: src/ui/VariablesComponent.qml:106
+#, fuzzy, kde-format
+#| msgid "Comment"
+msgctxt "@title:column"
+msgid "Comment"
+msgstr "Түсініктеме"
+
+#: src/cronPrinter.cpp:144
+#, fuzzy, kde-format
+#| msgid "System Crontab"
+msgctxt "@title"
+msgid "System Crontab"
+msgstr "Жүйелік Crontab кестесі"
+
+#: src/cronPrinter.cpp:146
+#, fuzzy, kde-format
+#| msgctxt "Crontab of user login"
+#| msgid "Crontab of user %1"
+msgctxt "@title"
+msgid "Crontab of user %1"
+msgstr "%1 пайдаланушының Crontab-ы"
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -493,7 +565,7 @@ msgstr "Динамикалық жиын файлдарының орны"
 msgid "Local Variable"
 msgstr "Жергілікті айнымалысы"
 
-#: src/tasksmodel.cpp:47
+#: src/tasksmodel.cpp:48
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
@@ -927,27 +999,6 @@ msgctxt "@title:column"
 msgid "User"
 msgstr "Пайдаланушы"
 
-#: src/ui/TasksComponent.qml:66
-#, fuzzy, kde-format
-#| msgid "Scheduling"
-msgctxt "@title:column"
-msgid "Scheduling"
-msgstr "Жоспарлау"
-
-#: src/ui/TasksComponent.qml:75
-#, fuzzy, kde-format
-#| msgid "Command"
-msgctxt "@title:column"
-msgid "Command"
-msgstr "Команда"
-
-#: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
-#, fuzzy, kde-format
-#| msgid "Comment"
-msgctxt "@title:column"
-msgid "Comment"
-msgstr "Түсініктеме"
-
 #: src/ui/TasksComponent.qml:92
 #, fuzzy, kde-format
 #| msgid "Scheduling Details"
@@ -1119,20 +1170,6 @@ msgctxt "@title:group"
 msgid "Environment Variables"
 msgstr "Орта айнымалылары"
 
-#: src/ui/VariablesComponent.qml:67
-#, fuzzy, kde-format
-#| msgid "Variable"
-msgctxt "@title:column"
-msgid "Variable"
-msgstr "Айнымалы"
-
-#: src/ui/VariablesComponent.qml:98
-#, fuzzy, kde-format
-#| msgid "Value"
-msgctxt "@title:column"
-msgid "Value"
-msgstr "Мәні"
-
 #: src/ui/VariablesComponent.qml:112
 #, fuzzy, kde-format
 #| msgid "Edit Variable"
@@ -1155,18 +1192,8 @@ msgstr "Айнымалыны өңдеу"
 #~ msgid "Your emails"
 #~ msgstr "sairan@computer.org"
 
-#~ msgid "Description"
-#~ msgstr "Сипаттама"
-
-#~ msgid "System Crontab"
-#~ msgstr "Жүйелік Crontab кестесі"
-
 #~ msgid "All Users Crontabs"
 #~ msgstr "Бүкіл пайдаланушылардың Crontab-тары"
-
-#~ msgctxt "Crontab of user login"
-#~ msgid "Crontab of user %1"
-#~ msgstr "%1 пайдаланушының Crontab-ы"
 
 #, fuzzy
 #~| msgid "Cron Options"
@@ -1248,9 +1275,6 @@ msgstr "Айнымалыны өңдеу"
 #~ msgid "Clear All"
 #~ msgstr "Бүкілінен айну"
 
-#~ msgid "<b>Scheduled Tasks</b>"
-#~ msgstr "<b>Жоспарланған тапсырмалар</b>"
-
 #~ msgid "Modify Task"
 #~ msgstr "Тапсырманы өзгерту"
 
@@ -1300,9 +1324,6 @@ msgstr "Айнымалыны өңдеу"
 
 #~ msgid "<i>This variable is disabled.</i>"
 #~ msgstr "<i>Бұл бұғаталған айнымалы.</i>"
-
-#~ msgid "<b>Environment Variables</b>"
-#~ msgstr "<b>Орта айнымалылары</b>"
 
 #~ msgid "Modify Variable"
 #~ msgstr "Айнымалыны өзгерту"

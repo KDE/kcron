@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-01 00:41+0000\n"
+"POT-Creation-Date: 2024-10-04 00:42+0000\n"
 "PO-Revision-Date: 2002-11-01 10:20SAST\n"
 "Last-Translator: Lwandle Mgidlana <lwandle@translate.org.za>\n"
 "Language-Team: Xhosa <xhosa@translate.org.za>\n"
@@ -18,6 +18,76 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.0beta2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: src/cronPrinter.cpp:62
+#, fuzzy
+#| msgid "Scheduled Tasks"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Tasks</b>"
+msgstr "Imisebenzi Ecwangcxisiweyo"
+
+#: src/cronPrinter.cpp:63
+#, fuzzy
+#| msgid "Variables"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Environment Variables</b>"
+msgstr "Izahluko"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:66
+#, fuzzy, kde-format
+#| msgid "Scheduled Tasks"
+msgctxt "@title:column"
+msgid "Scheduling"
+msgstr "Imisebenzi Ecwangcxisiweyo"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:75
+#, fuzzy, kde-format
+#| msgid "Modify Task"
+msgctxt "@title:column"
+msgid "Command"
+msgstr "Guqula kancinane Umsebenzi"
+
+#: src/cronPrinter.cpp:103
+#, fuzzy, kde-format
+#| msgid "Description"
+msgctxt "@title:column"
+msgid "Description"
+msgstr "Inkcazelo"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:67
+#, fuzzy, kde-format
+#| msgid "Variables"
+msgctxt "@title:column"
+msgid "Variable"
+msgstr "Izahluko"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:98
+#, fuzzy, kde-format
+#| msgid "Value"
+msgctxt "@title:column"
+msgid "Value"
+msgstr "Ixabiso"
+
+#: src/cronPrinter.cpp:117 src/ui/TasksComponent.qml:84
+#: src/ui/VariablesComponent.qml:106
+#, fuzzy, kde-format
+#| msgid "Co&mment:"
+msgctxt "@title:column"
+msgid "Comment"
+msgstr "Gqa&baza:"
+
+#: src/cronPrinter.cpp:144
+#, fuzzy, kde-format
+#| msgid "(System Crontab)"
+msgctxt "@title"
+msgid "System Crontab"
+msgstr "(Indlela yokusebenza ye Crontab)"
+
+#: src/cronPrinter.cpp:146
+#, kde-format
+msgctxt "@title"
+msgid "Crontab of user %1"
+msgstr ""
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -496,7 +566,7 @@ msgstr ""
 msgid "Local Variable"
 msgstr "Izahluko"
 
-#: src/tasksmodel.cpp:47
+#: src/tasksmodel.cpp:48
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
@@ -922,27 +992,6 @@ msgctxt "@title:column"
 msgid "User"
 msgstr ""
 
-#: src/ui/TasksComponent.qml:66
-#, fuzzy, kde-format
-#| msgid "Scheduled Tasks"
-msgctxt "@title:column"
-msgid "Scheduling"
-msgstr "Imisebenzi Ecwangcxisiweyo"
-
-#: src/ui/TasksComponent.qml:75
-#, fuzzy, kde-format
-#| msgid "Modify Task"
-msgctxt "@title:column"
-msgid "Command"
-msgstr "Guqula kancinane Umsebenzi"
-
-#: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
-#, fuzzy, kde-format
-#| msgid "Co&mment:"
-msgctxt "@title:column"
-msgid "Comment"
-msgstr "Gqa&baza:"
-
 #: src/ui/TasksComponent.qml:92
 #, fuzzy, kde-format
 #| msgid "Scheduled Tasks"
@@ -1111,20 +1160,6 @@ msgctxt "@title:group"
 msgid "Environment Variables"
 msgstr "Izahluko"
 
-#: src/ui/VariablesComponent.qml:67
-#, fuzzy, kde-format
-#| msgid "Variables"
-msgctxt "@title:column"
-msgid "Variable"
-msgstr "Izahluko"
-
-#: src/ui/VariablesComponent.qml:98
-#, fuzzy, kde-format
-#| msgid "Value"
-msgctxt "@title:column"
-msgid "Value"
-msgstr "Ixabiso"
-
 #: src/ui/VariablesComponent.qml:112
 #, fuzzy, kde-format
 #| msgid "Edit Variable"
@@ -1146,14 +1181,6 @@ msgstr "Hlela Umahluko"
 #~ msgctxt "EMAIL OF TRANSLATORS"
 #~ msgid "Your emails"
 #~ msgstr "lwandle@translate.org.za"
-
-#~ msgid "Description"
-#~ msgstr "Inkcazelo"
-
-#, fuzzy
-#~| msgid "(System Crontab)"
-#~ msgid "System Crontab"
-#~ msgstr "(Indlela yokusebenza ye Crontab)"
 
 #, fuzzy
 #~| msgid "(System Crontab)"
@@ -1224,11 +1251,6 @@ msgstr "Hlela Umahluko"
 #~ msgid "PM:"
 #~ msgstr "EMVA KWEMINI"
 
-#, fuzzy
-#~| msgid "Scheduled Tasks"
-#~ msgid "<b>Scheduled Tasks</b>"
-#~ msgstr "Imisebenzi Ecwangcxisiweyo"
-
 #~ msgid "Modify Task"
 #~ msgstr "Guqula kancinane Umsebenzi"
 
@@ -1290,11 +1312,6 @@ msgstr "Hlela Umahluko"
 
 #~ msgid "Va&lue:"
 #~ msgstr "Ixa&biso:"
-
-#, fuzzy
-#~| msgid "Variables"
-#~ msgid "<b>Environment Variables</b>"
-#~ msgstr "Izahluko"
 
 #~ msgid "Modify Variable"
 #~ msgstr "Guqula kancinane Umahluko"

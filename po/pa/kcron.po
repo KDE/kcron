@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-01 00:41+0000\n"
+"POT-Creation-Date: 2024-10-04 00:42+0000\n"
 "PO-Revision-Date: 2011-01-05 20:22+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
@@ -17,6 +17,76 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: src/cronPrinter.cpp:62
+#, fuzzy
+#| msgid "<b>Scheduled Tasks</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Tasks</b>"
+msgstr "<b>ਸ਼ੈਡਿਊਲ ਟਾਸਕ</b>"
+
+#: src/cronPrinter.cpp:63
+#, fuzzy
+#| msgid "<b>Environment Variables</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Environment Variables</b>"
+msgstr "<b>ਇੰਵਾਇਨਮੇਂਟ ਵੇਰੀਬਲ</b>"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:66
+#, fuzzy, kde-format
+#| msgid "Scheduling Details"
+msgctxt "@title:column"
+msgid "Scheduling"
+msgstr "ਸ਼ੈਡਿਊਲ ਵੇਰਵਾ"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:75
+#, fuzzy, kde-format
+#| msgid "Command"
+msgctxt "@title:column"
+msgid "Command"
+msgstr "ਕਮਾਂਡ"
+
+#: src/cronPrinter.cpp:103
+#, fuzzy, kde-format
+#| msgid "Description"
+msgctxt "@title:column"
+msgid "Description"
+msgstr "ਵੇਰਵਾ"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:67
+#, fuzzy, kde-format
+#| msgid "Variables"
+msgctxt "@title:column"
+msgid "Variable"
+msgstr "ਵੇਰੀਬਲ"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:98
+#, fuzzy, kde-format
+#| msgid "Value"
+msgctxt "@title:column"
+msgid "Value"
+msgstr "ਮੁੱਲ"
+
+#: src/cronPrinter.cpp:117 src/ui/TasksComponent.qml:84
+#: src/ui/VariablesComponent.qml:106
+#, fuzzy, kde-format
+#| msgid "Comment"
+msgctxt "@title:column"
+msgid "Comment"
+msgstr "ਟਿੱਪਣੀ"
+
+#: src/cronPrinter.cpp:144
+#, fuzzy, kde-format
+#| msgid "System Crontab"
+msgctxt "@title"
+msgid "System Crontab"
+msgstr "ਸਿਸਟਮ ਕਰੋਨਟੈਬ"
+
+#: src/cronPrinter.cpp:146
+#, kde-format
+msgctxt "@title"
+msgid "Crontab of user %1"
+msgstr ""
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -488,7 +558,7 @@ msgstr ""
 msgid "Local Variable"
 msgstr "ਲੋਕਲ ਵੇਰੀਬਲ"
 
-#: src/tasksmodel.cpp:47
+#: src/tasksmodel.cpp:48
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
@@ -912,27 +982,6 @@ msgctxt "@title:column"
 msgid "User"
 msgstr ""
 
-#: src/ui/TasksComponent.qml:66
-#, fuzzy, kde-format
-#| msgid "Scheduling Details"
-msgctxt "@title:column"
-msgid "Scheduling"
-msgstr "ਸ਼ੈਡਿਊਲ ਵੇਰਵਾ"
-
-#: src/ui/TasksComponent.qml:75
-#, fuzzy, kde-format
-#| msgid "Command"
-msgctxt "@title:column"
-msgid "Command"
-msgstr "ਕਮਾਂਡ"
-
-#: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
-#, fuzzy, kde-format
-#| msgid "Comment"
-msgctxt "@title:column"
-msgid "Comment"
-msgstr "ਟਿੱਪਣੀ"
-
 #: src/ui/TasksComponent.qml:92
 #, fuzzy, kde-format
 #| msgid "Scheduling Details"
@@ -1101,20 +1150,6 @@ msgctxt "@title:group"
 msgid "Environment Variables"
 msgstr "ਇੰਵਾਇਨਮੇਂਟ ਵੇਰੀਬਲ"
 
-#: src/ui/VariablesComponent.qml:67
-#, fuzzy, kde-format
-#| msgid "Variables"
-msgctxt "@title:column"
-msgid "Variable"
-msgstr "ਵੇਰੀਬਲ"
-
-#: src/ui/VariablesComponent.qml:98
-#, fuzzy, kde-format
-#| msgid "Value"
-msgctxt "@title:column"
-msgid "Value"
-msgstr "ਮੁੱਲ"
-
 #: src/ui/VariablesComponent.qml:112
 #, fuzzy, kde-format
 #| msgid "Edit Variable"
@@ -1136,12 +1171,6 @@ msgstr "ਮੁੱਲ ਸੋਧ"
 #~ msgctxt "EMAIL OF TRANSLATORS"
 #~ msgid "Your emails"
 #~ msgstr "aalam@users.sf.net"
-
-#~ msgid "Description"
-#~ msgstr "ਵੇਰਵਾ"
-
-#~ msgid "System Crontab"
-#~ msgstr "ਸਿਸਟਮ ਕਰੋਨਟੈਬ"
 
 #~ msgid "All Users Crontabs"
 #~ msgstr "ਸਭ ਯੂਜ਼ਰ ਕਰੋਨਟੈਬ"
@@ -1186,9 +1215,6 @@ msgstr "ਮੁੱਲ ਸੋਧ"
 #~ msgid "Clear All"
 #~ msgstr "ਸਭ ਸਾਫ਼ ਕਰੋ"
 
-#~ msgid "<b>Scheduled Tasks</b>"
-#~ msgstr "<b>ਸ਼ੈਡਿਊਲ ਟਾਸਕ</b>"
-
 #~ msgid "Modify Task"
 #~ msgstr "ਕੰਮ ਸੋਧ"
 
@@ -1227,9 +1253,6 @@ msgstr "ਮੁੱਲ ਸੋਧ"
 
 #~ msgid "Va&lue:"
 #~ msgstr "ਮੁੱਲ(&l):"
-
-#~ msgid "<b>Environment Variables</b>"
-#~ msgstr "<b>ਇੰਵਾਇਨਮੇਂਟ ਵੇਰੀਬਲ</b>"
 
 #~ msgid "Modify Variable"
 #~ msgstr "ਮੁੱਲ ਸੁਧਾਰ"

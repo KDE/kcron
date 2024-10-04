@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-01 00:41+0000\n"
+"POT-Creation-Date: 2024-10-04 00:42+0000\n"
 "PO-Revision-Date: 2023-09-26 10:38+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -26,6 +26,78 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-POT-Import-Date: 2012-12-01 22:22:40+0000\n"
 "X-Generator: Lokalize 22.12.3\n"
+
+#: src/cronPrinter.cpp:62
+#, fuzzy
+#| msgid "<b>Scheduled Tasks</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Tasks</b>"
+msgstr "<b>Ajastetut tehtävät</b>"
+
+#: src/cronPrinter.cpp:63
+#, fuzzy
+#| msgid "<b>Environment Variables</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Environment Variables</b>"
+msgstr "<b>Ympäristömuuttujat</b>"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:66
+#, fuzzy, kde-format
+#| msgid "Scheduling"
+msgctxt "@title:column"
+msgid "Scheduling"
+msgstr "Aikataulutus"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:75
+#, fuzzy, kde-format
+#| msgid "Command"
+msgctxt "@title:column"
+msgid "Command"
+msgstr "Komento"
+
+#: src/cronPrinter.cpp:103
+#, fuzzy, kde-format
+#| msgid "Description"
+msgctxt "@title:column"
+msgid "Description"
+msgstr "Kuvaus"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:67
+#, fuzzy, kde-format
+#| msgid "Variable"
+msgctxt "@title:column"
+msgid "Variable"
+msgstr "Muuttuja"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:98
+#, fuzzy, kde-format
+#| msgid "Value"
+msgctxt "@title:column"
+msgid "Value"
+msgstr "Arvo"
+
+#: src/cronPrinter.cpp:117 src/ui/TasksComponent.qml:84
+#: src/ui/VariablesComponent.qml:106
+#, fuzzy, kde-format
+#| msgid "Comment"
+msgctxt "@title:column"
+msgid "Comment"
+msgstr "Kommentti"
+
+#: src/cronPrinter.cpp:144
+#, fuzzy, kde-format
+#| msgid "System Crontab"
+msgctxt "@title"
+msgid "System Crontab"
+msgstr "Järjestelmän crontab"
+
+#: src/cronPrinter.cpp:146
+#, fuzzy, kde-format
+#| msgctxt "Crontab of user login"
+#| msgid "Crontab of user %1"
+msgctxt "@title"
+msgid "Crontab of user %1"
+msgstr "Käyttäjän %1 crontab"
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -506,7 +578,7 @@ msgstr "Dynaaminen kirjastojen sijainti."
 msgid "Local Variable"
 msgstr "Paikallinen muuttuja"
 
-#: src/tasksmodel.cpp:47
+#: src/tasksmodel.cpp:48
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
@@ -938,27 +1010,6 @@ msgctxt "@title:column"
 msgid "User"
 msgstr "Käyttäjä"
 
-#: src/ui/TasksComponent.qml:66
-#, fuzzy, kde-format
-#| msgid "Scheduling"
-msgctxt "@title:column"
-msgid "Scheduling"
-msgstr "Aikataulutus"
-
-#: src/ui/TasksComponent.qml:75
-#, fuzzy, kde-format
-#| msgid "Command"
-msgctxt "@title:column"
-msgid "Command"
-msgstr "Komento"
-
-#: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
-#, fuzzy, kde-format
-#| msgid "Comment"
-msgctxt "@title:column"
-msgid "Comment"
-msgstr "Kommentti"
-
 #: src/ui/TasksComponent.qml:92
 #, fuzzy, kde-format
 #| msgid "Scheduling Details"
@@ -1129,20 +1180,6 @@ msgctxt "@title:group"
 msgid "Environment Variables"
 msgstr "Ympäristömuuttujat"
 
-#: src/ui/VariablesComponent.qml:67
-#, fuzzy, kde-format
-#| msgid "Variable"
-msgctxt "@title:column"
-msgid "Variable"
-msgstr "Muuttuja"
-
-#: src/ui/VariablesComponent.qml:98
-#, fuzzy, kde-format
-#| msgid "Value"
-msgctxt "@title:column"
-msgid "Value"
-msgstr "Arvo"
-
 #: src/ui/VariablesComponent.qml:112
 #, fuzzy, kde-format
 #| msgid "Variable"
@@ -1168,18 +1205,8 @@ msgstr "Muuta muuttujaa"
 #~ "kim.enkovaara@iki.fi, ilpo@iki.fi, mikko.piippo@helsinki.fi, elias."
 #~ "julkunen@gmail.com, karvonen.jorma@gmail.com"
 
-#~ msgid "Description"
-#~ msgstr "Kuvaus"
-
-#~ msgid "System Crontab"
-#~ msgstr "Järjestelmän crontab"
-
 #~ msgid "All Users Crontabs"
 #~ msgstr "Kaikkien käyttäjien crontabit"
-
-#~ msgctxt "Crontab of user login"
-#~ msgid "Crontab of user %1"
-#~ msgstr "Käyttäjän %1 crontab"
 
 #~ msgctxt "@title:window"
 #~ msgid "Cron Options"
@@ -1256,9 +1283,6 @@ msgstr "Muuta muuttujaa"
 #~ msgid "Clear All"
 #~ msgstr "Tyhjennä kaikki"
 
-#~ msgid "<b>Scheduled Tasks</b>"
-#~ msgstr "<b>Ajastetut tehtävät</b>"
-
 #~ msgid "Status"
 #~ msgstr "Tila"
 
@@ -1298,9 +1322,6 @@ msgstr "Muuta muuttujaa"
 
 #~ msgid "<i>This variable is disabled.</i>"
 #~ msgstr "<i>Tätä muuttujaa ei käytetä.</i>"
-
-#~ msgid "<b>Environment Variables</b>"
-#~ msgstr "<b>Ympäristömuuttujat</b>"
 
 #~ msgctxt "Adds a new variable"
 #~ msgid "New &Variable..."

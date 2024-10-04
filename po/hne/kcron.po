@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-01 00:41+0000\n"
+"POT-Creation-Date: 2024-10-04 00:42+0000\n"
 "PO-Revision-Date: 2009-02-21 15:06+0530\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@aol.in>\n"
 "Language-Team: Hindi <kde-i18n-doc@lists.kde.org>\n"
@@ -18,6 +18,77 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 0.2\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: src/cronPrinter.cpp:62
+#, fuzzy
+#| msgid "<b>Scheduled Tasks</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Tasks</b>"
+msgstr "<b>नियोजित काम</b>"
+
+#: src/cronPrinter.cpp:63
+#, fuzzy
+#| msgid "<b>Environment Variables</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Environment Variables</b>"
+msgstr "<b>एनवायनमेंट वेरिएबल</b>"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:66
+#, fuzzy, kde-format
+#| msgid "Scheduling Details"
+msgctxt "@title:column"
+msgid "Scheduling"
+msgstr "सेड्यूलिंग विवरन"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:75
+#, fuzzy, kde-format
+#| msgid "Command"
+msgctxt "@title:column"
+msgid "Command"
+msgstr "कमांड"
+
+#: src/cronPrinter.cpp:103
+#, fuzzy, kde-format
+#| msgid "Description"
+msgctxt "@title:column"
+msgid "Description"
+msgstr "वर्नन"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:67
+#, fuzzy, kde-format
+#| msgid "Variable"
+msgctxt "@title:column"
+msgid "Variable"
+msgstr "वेरिएबल"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:98
+#, fuzzy, kde-format
+#| msgid "Value"
+msgctxt "@title:column"
+msgid "Value"
+msgstr "मान"
+
+#: src/cronPrinter.cpp:117 src/ui/TasksComponent.qml:84
+#: src/ui/VariablesComponent.qml:106
+#, fuzzy, kde-format
+#| msgid "Comment"
+msgctxt "@title:column"
+msgid "Comment"
+msgstr "टिप्पनी"
+
+#: src/cronPrinter.cpp:144
+#, fuzzy, kde-format
+#| msgid "System Crontab"
+msgctxt "@title"
+msgid "System Crontab"
+msgstr "तंत्र क्रानटैब"
+
+#: src/cronPrinter.cpp:146
+#, fuzzy, kde-format
+#| msgid "Cron of User:"
+msgctxt "@title"
+msgid "Crontab of user %1"
+msgstr "कमइया के क्रान:"
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -489,7 +560,7 @@ msgstr "डायनामिक लाइब्रेरीज लोकेस�
 msgid "Local Variable"
 msgstr "लोकल वेरिएबल"
 
-#: src/tasksmodel.cpp:47
+#: src/tasksmodel.cpp:48
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
@@ -922,27 +993,6 @@ msgctxt "@title:column"
 msgid "User"
 msgstr ""
 
-#: src/ui/TasksComponent.qml:66
-#, fuzzy, kde-format
-#| msgid "Scheduling Details"
-msgctxt "@title:column"
-msgid "Scheduling"
-msgstr "सेड्यूलिंग विवरन"
-
-#: src/ui/TasksComponent.qml:75
-#, fuzzy, kde-format
-#| msgid "Command"
-msgctxt "@title:column"
-msgid "Command"
-msgstr "कमांड"
-
-#: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
-#, fuzzy, kde-format
-#| msgid "Comment"
-msgctxt "@title:column"
-msgid "Comment"
-msgstr "टिप्पनी"
-
 #: src/ui/TasksComponent.qml:92
 #, fuzzy, kde-format
 #| msgid "Scheduling Details"
@@ -1114,20 +1164,6 @@ msgctxt "@title:group"
 msgid "Environment Variables"
 msgstr "एनवायनमेंट वेरिएबल"
 
-#: src/ui/VariablesComponent.qml:67
-#, fuzzy, kde-format
-#| msgid "Variable"
-msgctxt "@title:column"
-msgid "Variable"
-msgstr "वेरिएबल"
-
-#: src/ui/VariablesComponent.qml:98
-#, fuzzy, kde-format
-#| msgid "Value"
-msgctxt "@title:column"
-msgid "Value"
-msgstr "मान"
-
 #: src/ui/VariablesComponent.qml:112
 #, fuzzy, kde-format
 #| msgid "Edit Variable"
@@ -1149,12 +1185,6 @@ msgstr "वेरिएबल संपादन"
 #~ msgctxt "EMAIL OF TRANSLATORS"
 #~ msgid "Your emails"
 #~ msgstr "raviratlami@aol.in,"
-
-#~ msgid "Description"
-#~ msgstr "वर्नन"
-
-#~ msgid "System Crontab"
-#~ msgstr "तंत्र क्रानटैब"
 
 #~ msgid "All Users Crontabs"
 #~ msgstr "सब्बो कमइया क्रानटैब"
@@ -1237,9 +1267,6 @@ msgstr "वेरिएबल संपादन"
 #~ msgid "Clear All"
 #~ msgstr "सब्बो साफ करव"
 
-#~ msgid "<b>Scheduled Tasks</b>"
-#~ msgstr "<b>नियोजित काम</b>"
-
 #~ msgid "Modify Task"
 #~ msgstr "काम सुधारव"
 
@@ -1284,9 +1311,6 @@ msgstr "वेरिएबल संपादन"
 #~ msgid "Va&lue:"
 #~ msgstr "मूल्यः (&l)"
 
-#~ msgid "<b>Environment Variables</b>"
-#~ msgstr "<b>एनवायनमेंट वेरिएबल</b>"
-
 #~ msgid "Modify Variable"
 #~ msgstr "वेरिएबल सुधारव"
 
@@ -1330,9 +1354,6 @@ msgstr "वेरिएबल संपादन"
 
 #~ msgid "All users"
 #~ msgstr "सब्बो कमइया"
-
-#~ msgid "Cron of User:"
-#~ msgstr "कमइया के क्रान:"
 
 #~ msgid "Show All Personal Crons"
 #~ msgstr "सब्बो निजी क्रान देखाव"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-01 00:41+0000\n"
+"POT-Creation-Date: 2024-10-04 00:42+0000\n"
 "PO-Revision-Date: 2002-11-07 11:26+0200\n"
 "Last-Translator: WEB-Translator <http://kde.af.org.za>\n"
 "Language-Team: AFRIKAANS <AF@lia.org.za>\n"
@@ -15,6 +15,76 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: src/cronPrinter.cpp:62
+#, fuzzy
+#| msgid "Scheduled Tasks"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Tasks</b>"
+msgstr "Geskeduleerd Take"
+
+#: src/cronPrinter.cpp:63
+#, fuzzy
+#| msgid "Variables"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Environment Variables</b>"
+msgstr "Veranderlikes"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:66
+#, fuzzy, kde-format
+#| msgid "Scheduled Tasks"
+msgctxt "@title:column"
+msgid "Scheduling"
+msgstr "Geskeduleerd Take"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:75
+#, fuzzy, kde-format
+#| msgid "Modify Task"
+msgctxt "@title:column"
+msgid "Command"
+msgstr "Verander Opdrag"
+
+#: src/cronPrinter.cpp:103
+#, fuzzy, kde-format
+#| msgid "Description"
+msgctxt "@title:column"
+msgid "Description"
+msgstr "Beskrywing"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:67
+#, fuzzy, kde-format
+#| msgid "Variables"
+msgctxt "@title:column"
+msgid "Variable"
+msgstr "Veranderlikes"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:98
+#, fuzzy, kde-format
+#| msgid "Value"
+msgctxt "@title:column"
+msgid "Value"
+msgstr "Waarde"
+
+#: src/cronPrinter.cpp:117 src/ui/TasksComponent.qml:84
+#: src/ui/VariablesComponent.qml:106
+#, fuzzy, kde-format
+#| msgid "Co&mment:"
+msgctxt "@title:column"
+msgid "Comment"
+msgstr "Kommentaar:"
+
+#: src/cronPrinter.cpp:144
+#, fuzzy, kde-format
+#| msgid "(System Crontab)"
+msgctxt "@title"
+msgid "System Crontab"
+msgstr "(Stelsel Crontab)"
+
+#: src/cronPrinter.cpp:146
+#, kde-format
+msgctxt "@title"
+msgid "Crontab of user %1"
+msgstr ""
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -493,7 +563,7 @@ msgstr ""
 msgid "Local Variable"
 msgstr "Veranderlikes"
 
-#: src/tasksmodel.cpp:47
+#: src/tasksmodel.cpp:48
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
@@ -919,27 +989,6 @@ msgctxt "@title:column"
 msgid "User"
 msgstr ""
 
-#: src/ui/TasksComponent.qml:66
-#, fuzzy, kde-format
-#| msgid "Scheduled Tasks"
-msgctxt "@title:column"
-msgid "Scheduling"
-msgstr "Geskeduleerd Take"
-
-#: src/ui/TasksComponent.qml:75
-#, fuzzy, kde-format
-#| msgid "Modify Task"
-msgctxt "@title:column"
-msgid "Command"
-msgstr "Verander Opdrag"
-
-#: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
-#, fuzzy, kde-format
-#| msgid "Co&mment:"
-msgctxt "@title:column"
-msgid "Comment"
-msgstr "Kommentaar:"
-
 #: src/ui/TasksComponent.qml:92
 #, fuzzy, kde-format
 #| msgid "Scheduled Tasks"
@@ -1108,20 +1157,6 @@ msgctxt "@title:group"
 msgid "Environment Variables"
 msgstr "Veranderlikes"
 
-#: src/ui/VariablesComponent.qml:67
-#, fuzzy, kde-format
-#| msgid "Variables"
-msgctxt "@title:column"
-msgid "Variable"
-msgstr "Veranderlikes"
-
-#: src/ui/VariablesComponent.qml:98
-#, fuzzy, kde-format
-#| msgid "Value"
-msgctxt "@title:column"
-msgid "Value"
-msgstr "Waarde"
-
 #: src/ui/VariablesComponent.qml:112
 #, fuzzy, kde-format
 #| msgid "Edit Variable"
@@ -1143,14 +1178,6 @@ msgstr "Redigeer Veranderlike"
 #~ msgctxt "EMAIL OF TRANSLATORS"
 #~ msgid "Your emails"
 #~ msgstr "frix@expertron.co.za"
-
-#~ msgid "Description"
-#~ msgstr "Beskrywing"
-
-#, fuzzy
-#~| msgid "(System Crontab)"
-#~ msgid "System Crontab"
-#~ msgstr "(Stelsel Crontab)"
 
 #, fuzzy
 #~| msgid "(System Crontab)"
@@ -1221,11 +1248,6 @@ msgstr "Redigeer Veranderlike"
 #~ msgid "PM:"
 #~ msgstr "Nm"
 
-#, fuzzy
-#~| msgid "Scheduled Tasks"
-#~ msgid "<b>Scheduled Tasks</b>"
-#~ msgstr "Geskeduleerd Take"
-
 #~ msgid "Modify Task"
 #~ msgstr "Verander Opdrag"
 
@@ -1287,11 +1309,6 @@ msgstr "Redigeer Veranderlike"
 
 #~ msgid "Va&lue:"
 #~ msgstr "Waarde:"
-
-#, fuzzy
-#~| msgid "Variables"
-#~ msgid "<b>Environment Variables</b>"
-#~ msgstr "Veranderlikes"
 
 #~ msgid "Modify Variable"
 #~ msgstr "Verander Veranderlike"

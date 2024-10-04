@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-01 00:41+0000\n"
+"POT-Creation-Date: 2024-10-04 00:42+0000\n"
 "PO-Revision-Date: 2010-06-09 09:24+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer <support@khmeros.info>\n"
@@ -18,6 +18,67 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/cronPrinter.cpp:62
+#, fuzzy
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Tasks</b>"
+msgstr "ភារកិច្ច​ដែល​បាន​កំណត់​ពេល"
+
+#: src/cronPrinter.cpp:63
+#, fuzzy
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Environment Variables</b>"
+msgstr "អថេរ"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:66
+#, fuzzy, kde-format
+msgctxt "@title:column"
+msgid "Scheduling"
+msgstr "ភារកិច្ច​ដែល​បាន​កំណត់​ពេល"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:75
+#, fuzzy, kde-format
+msgctxt "@title:column"
+msgid "Command"
+msgstr "កែប្រែ​ភារកិច្ច"
+
+#: src/cronPrinter.cpp:103
+#, fuzzy, kde-format
+msgctxt "@title:column"
+msgid "Description"
+msgstr "ការពិពណ៌នា"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:67
+#, fuzzy, kde-format
+msgctxt "@title:column"
+msgid "Variable"
+msgstr "អថេរ"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:98
+#, fuzzy, kde-format
+msgctxt "@title:column"
+msgid "Value"
+msgstr "តម្លៃ"
+
+#: src/cronPrinter.cpp:117 src/ui/TasksComponent.qml:84
+#: src/ui/VariablesComponent.qml:106
+#, fuzzy, kde-format
+msgctxt "@title:column"
+msgid "Comment"
+msgstr "សេចក្តី​អធិប្បាយ ៖"
+
+#: src/cronPrinter.cpp:144
+#, fuzzy, kde-format
+msgctxt "@title"
+msgid "System Crontab"
+msgstr "(Crontab ប្រព័ន្ធ)"
+
+#: src/cronPrinter.cpp:146
+#, kde-format
+msgctxt "@title"
+msgid "Crontab of user %1"
+msgstr ""
 
 #: src/crontablib/ctcron.cpp:85
 #, fuzzy, kde-format
@@ -488,7 +549,7 @@ msgstr ""
 msgid "Local Variable"
 msgstr "អថេរ"
 
-#: src/tasksmodel.cpp:47
+#: src/tasksmodel.cpp:48
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
@@ -868,24 +929,6 @@ msgctxt "@title:column"
 msgid "User"
 msgstr ""
 
-#: src/ui/TasksComponent.qml:66
-#, fuzzy, kde-format
-msgctxt "@title:column"
-msgid "Scheduling"
-msgstr "ភារកិច្ច​ដែល​បាន​កំណត់​ពេល"
-
-#: src/ui/TasksComponent.qml:75
-#, fuzzy, kde-format
-msgctxt "@title:column"
-msgid "Command"
-msgstr "កែប្រែ​ភារកិច្ច"
-
-#: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
-#, fuzzy, kde-format
-msgctxt "@title:column"
-msgid "Comment"
-msgstr "សេចក្តី​អធិប្បាយ ៖"
-
 #: src/ui/TasksComponent.qml:92
 #, fuzzy, kde-format
 msgctxt "@title:column"
@@ -1037,18 +1080,6 @@ msgctxt "@title:group"
 msgid "Environment Variables"
 msgstr "អថេរ"
 
-#: src/ui/VariablesComponent.qml:67
-#, fuzzy, kde-format
-msgctxt "@title:column"
-msgid "Variable"
-msgstr "អថេរ"
-
-#: src/ui/VariablesComponent.qml:98
-#, fuzzy, kde-format
-msgctxt "@title:column"
-msgid "Value"
-msgstr "តម្លៃ"
-
 #: src/ui/VariablesComponent.qml:112
 #, fuzzy, kde-format
 msgctxt "@action:button"
@@ -1071,14 +1102,6 @@ msgstr "កែប្រែ​អថេរ"
 #~ msgid "Your emails"
 #~ msgstr ""
 #~ "khoemsokhem@khmeros.info,​evannak@khmeros.info,piseth_dv@khmeros.info"
-
-#, fuzzy
-#~ msgid "Description"
-#~ msgstr "ការពិពណ៌នា"
-
-#, fuzzy
-#~ msgid "System Crontab"
-#~ msgstr "(Crontab ប្រព័ន្ធ)"
 
 #, fuzzy
 #~ msgid "All Users Crontabs"
@@ -1146,10 +1169,6 @@ msgstr "កែប្រែ​អថេរ"
 #~ msgstr "ជម្រះ​ទាំង​អស់"
 
 #, fuzzy
-#~ msgid "<b>Scheduled Tasks</b>"
-#~ msgstr "ភារកិច្ច​ដែល​បាន​កំណត់​ពេល"
-
-#, fuzzy
 #~ msgid "Status"
 #~ msgstr "ស"
 
@@ -1193,10 +1212,6 @@ msgstr "កែប្រែ​អថេរ"
 #, fuzzy
 #~ msgid "Add or modify a variable"
 #~ msgstr "កែប្រែ​អថេរ"
-
-#, fuzzy
-#~ msgid "<b>Environment Variables</b>"
-#~ msgstr "អថេរ"
 
 #, fuzzy
 #~ msgctxt "Adds a new variable"

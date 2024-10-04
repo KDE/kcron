@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-01 00:41+0000\n"
+"POT-Creation-Date: 2024-10-04 00:42+0000\n"
 "PO-Revision-Date: 2024-10-01 22:02+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -24,6 +24,73 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Lokalize 24.11.70\n"
+
+#: src/cronPrinter.cpp:62
+#, fuzzy
+#| msgid "<b>Scheduled Tasks</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Tasks</b>"
+msgstr "<b>Zamanlanmış Görevler</b>"
+
+#: src/cronPrinter.cpp:63
+#, fuzzy
+#| msgid "<b>Environment Variables</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Environment Variables</b>"
+msgstr "<b>Çevre Değişkenleri</b>"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:66
+#, kde-format
+msgctxt "@title:column"
+msgid "Scheduling"
+msgstr "Planlanıyor"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:75
+#, kde-format
+msgctxt "@title:column"
+msgid "Command"
+msgstr "Komut"
+
+#: src/cronPrinter.cpp:103
+#, fuzzy, kde-format
+#| msgid "Description"
+msgctxt "@title:column"
+msgid "Description"
+msgstr "Tanımlama"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:67
+#, kde-format
+msgctxt "@title:column"
+msgid "Variable"
+msgstr "Değişken"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:98
+#, kde-format
+msgctxt "@title:column"
+msgid "Value"
+msgstr "Değer"
+
+#: src/cronPrinter.cpp:117 src/ui/TasksComponent.qml:84
+#: src/ui/VariablesComponent.qml:106
+#, kde-format
+msgctxt "@title:column"
+msgid "Comment"
+msgstr "Açıklama"
+
+#: src/cronPrinter.cpp:144
+#, fuzzy, kde-format
+#| msgid "System Crontab"
+msgctxt "@title"
+msgid "System Crontab"
+msgstr "Sistem Görev Listesi"
+
+#: src/cronPrinter.cpp:146
+#, fuzzy, kde-format
+#| msgctxt "Crontab of user login"
+#| msgid "Crontab of user %1"
+msgctxt "@title"
+msgid "Crontab of user %1"
+msgstr "%1 kullanıcısının görevleri"
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -501,7 +568,7 @@ msgstr "Devingen kitaplıkların konumu."
 msgid "Local Variable"
 msgstr "Yerel Değişken"
 
-#: src/tasksmodel.cpp:47
+#: src/tasksmodel.cpp:48
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
@@ -888,24 +955,6 @@ msgctxt "@title:column"
 msgid "User"
 msgstr "Kullanıcı"
 
-#: src/ui/TasksComponent.qml:66
-#, kde-format
-msgctxt "@title:column"
-msgid "Scheduling"
-msgstr "Planlanıyor"
-
-#: src/ui/TasksComponent.qml:75
-#, kde-format
-msgctxt "@title:column"
-msgid "Command"
-msgstr "Komut"
-
-#: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
-#, kde-format
-msgctxt "@title:column"
-msgid "Comment"
-msgstr "Açıklama"
-
 #: src/ui/TasksComponent.qml:92
 #, kde-format
 msgctxt "@title:column"
@@ -1057,18 +1106,6 @@ msgctxt "@title:group"
 msgid "Environment Variables"
 msgstr "Çevre Değişkenleri"
 
-#: src/ui/VariablesComponent.qml:67
-#, kde-format
-msgctxt "@title:column"
-msgid "Variable"
-msgstr "Değişken"
-
-#: src/ui/VariablesComponent.qml:98
-#, kde-format
-msgctxt "@title:column"
-msgid "Value"
-msgstr "Değer"
-
 #: src/ui/VariablesComponent.qml:112
 #, kde-format
 msgctxt "@action:button"
@@ -1089,18 +1126,8 @@ msgstr "Değişkeni Düzenle…"
 #~ msgid "Your emails"
 #~ msgstr "tuncayyeniay@mynet.com, cemalaslan47@gmail.com"
 
-#~ msgid "Description"
-#~ msgstr "Tanımlama"
-
-#~ msgid "System Crontab"
-#~ msgstr "Sistem Görev Listesi"
-
 #~ msgid "All Users Crontabs"
 #~ msgstr "Tüm Kullanıcıların Görevleri"
-
-#~ msgctxt "Crontab of user login"
-#~ msgid "Crontab of user %1"
-#~ msgstr "%1 kullanıcısının görevleri"
 
 #~ msgctxt "@title:window"
 #~ msgid "Cron Options"
@@ -1178,9 +1205,6 @@ msgstr "Değişkeni Düzenle…"
 #~ msgid "Clear All"
 #~ msgstr "Tümünü Temizle"
 
-#~ msgid "<b>Scheduled Tasks</b>"
-#~ msgstr "<b>Zamanlanmış Görevler</b>"
-
 #~ msgid "Status"
 #~ msgstr "Durum"
 
@@ -1220,9 +1244,6 @@ msgstr "Değişkeni Düzenle…"
 
 #~ msgid "<i>This variable is disabled.</i>"
 #~ msgstr "<i>Bu değişken devre dışı bırakıldı.</i>"
-
-#~ msgid "<b>Environment Variables</b>"
-#~ msgstr "<b>Çevre Değişkenleri</b>"
 
 #~ msgctxt "Adds a new variable"
 #~ msgid "New &Variable..."

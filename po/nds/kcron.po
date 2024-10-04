@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-01 00:41+0000\n"
+"POT-Creation-Date: 2024-10-04 00:42+0000\n"
 "PO-Revision-Date: 2010-10-29 06:53+0200\n"
 "Last-Translator: Manfred Wiese <m.j.wiese@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -17,6 +17,78 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: src/cronPrinter.cpp:62
+#, fuzzy
+#| msgid "<b>Scheduled Tasks</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Tasks</b>"
+msgstr "<b>Plaant Opgaven</b>"
+
+#: src/cronPrinter.cpp:63
+#, fuzzy
+#| msgid "<b>Environment Variables</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Environment Variables</b>"
+msgstr "<b>Ümgeven-Variabeln</b>"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:66
+#, fuzzy, kde-format
+#| msgid "Scheduling"
+msgctxt "@title:column"
+msgid "Scheduling"
+msgstr "Planen"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:75
+#, fuzzy, kde-format
+#| msgid "Command"
+msgctxt "@title:column"
+msgid "Command"
+msgstr "Befehl"
+
+#: src/cronPrinter.cpp:103
+#, fuzzy, kde-format
+#| msgid "Description"
+msgctxt "@title:column"
+msgid "Description"
+msgstr "Beschrieven"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:67
+#, fuzzy, kde-format
+#| msgid "Variable"
+msgctxt "@title:column"
+msgid "Variable"
+msgstr "Variabel"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:98
+#, fuzzy, kde-format
+#| msgid "Value"
+msgctxt "@title:column"
+msgid "Value"
+msgstr "Weert"
+
+#: src/cronPrinter.cpp:117 src/ui/TasksComponent.qml:84
+#: src/ui/VariablesComponent.qml:106
+#, fuzzy, kde-format
+#| msgid "Comment"
+msgctxt "@title:column"
+msgid "Comment"
+msgstr "Kommentar"
+
+#: src/cronPrinter.cpp:144
+#, fuzzy, kde-format
+#| msgid "System Crontab"
+msgctxt "@title"
+msgid "System Crontab"
+msgstr "Systeem-Opgaventabell"
+
+#: src/cronPrinter.cpp:146
+#, fuzzy, kde-format
+#| msgctxt "Crontab of user login"
+#| msgid "Crontab of user %1"
+msgctxt "@title"
+msgid "Crontab of user %1"
+msgstr "Opgaven-Tabell för Bruker \"%1\""
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -496,7 +568,7 @@ msgstr "Steed vun de dünaamschen Bibliotheken"
 msgid "Local Variable"
 msgstr "Lokaal Variabel"
 
-#: src/tasksmodel.cpp:47
+#: src/tasksmodel.cpp:48
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
@@ -929,27 +1001,6 @@ msgctxt "@title:column"
 msgid "User"
 msgstr "Bruker"
 
-#: src/ui/TasksComponent.qml:66
-#, fuzzy, kde-format
-#| msgid "Scheduling"
-msgctxt "@title:column"
-msgid "Scheduling"
-msgstr "Planen"
-
-#: src/ui/TasksComponent.qml:75
-#, fuzzy, kde-format
-#| msgid "Command"
-msgctxt "@title:column"
-msgid "Command"
-msgstr "Befehl"
-
-#: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
-#, fuzzy, kde-format
-#| msgid "Comment"
-msgctxt "@title:column"
-msgid "Comment"
-msgstr "Kommentar"
-
 #: src/ui/TasksComponent.qml:92
 #, fuzzy, kde-format
 #| msgid "Scheduling Details"
@@ -1121,20 +1172,6 @@ msgctxt "@title:group"
 msgid "Environment Variables"
 msgstr "Ümgeven-Variabeln"
 
-#: src/ui/VariablesComponent.qml:67
-#, fuzzy, kde-format
-#| msgid "Variable"
-msgctxt "@title:column"
-msgid "Variable"
-msgstr "Variabel"
-
-#: src/ui/VariablesComponent.qml:98
-#, fuzzy, kde-format
-#| msgid "Value"
-msgctxt "@title:column"
-msgid "Value"
-msgstr "Weert"
-
 #: src/ui/VariablesComponent.qml:112
 #, fuzzy, kde-format
 #| msgid "Edit Variable"
@@ -1157,18 +1194,8 @@ msgstr "Variable bewerken"
 #~ msgid "Your emails"
 #~ msgstr "heiko@evermann.de, m.j.wiese@web.de"
 
-#~ msgid "Description"
-#~ msgstr "Beschrieven"
-
-#~ msgid "System Crontab"
-#~ msgstr "Systeem-Opgaventabell"
-
 #~ msgid "All Users Crontabs"
 #~ msgstr "(Systeem-Opgaventabell)"
-
-#~ msgctxt "Crontab of user login"
-#~ msgid "Crontab of user %1"
-#~ msgstr "Opgaven-Tabell för Bruker \"%1\""
 
 #, fuzzy
 #~| msgid "Cron Options"
@@ -1251,9 +1278,6 @@ msgstr "Variable bewerken"
 #~ msgid "Clear All"
 #~ msgstr "All leddig maken"
 
-#~ msgid "<b>Scheduled Tasks</b>"
-#~ msgstr "<b>Plaant Opgaven</b>"
-
 #~ msgid "Modify Task"
 #~ msgstr "Opgaav ännern"
 
@@ -1303,9 +1327,6 @@ msgstr "Variable bewerken"
 
 #~ msgid "<i>This variable is disabled.</i>"
 #~ msgstr "<i>Disse Variabel is utmaakt.</i>"
-
-#~ msgid "<b>Environment Variables</b>"
-#~ msgstr "<b>Ümgeven-Variabeln</b>"
 
 #~ msgid "Modify Variable"
 #~ msgstr "Variable ännern"

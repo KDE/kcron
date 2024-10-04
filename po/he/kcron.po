@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-01 00:41+0000\n"
+"POT-Creation-Date: 2024-10-04 00:42+0000\n"
 "PO-Revision-Date: 2024-09-24 08:11+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -31,6 +31,73 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
 "X-Generator: Lokalize 24.05.2\n"
+
+#: src/cronPrinter.cpp:62
+#, fuzzy
+#| msgid "<b>Scheduled Tasks</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Tasks</b>"
+msgstr "<b>משימות מתוזמנות</b>"
+
+#: src/cronPrinter.cpp:63
+#, fuzzy
+#| msgid "<b>Environment Variables</b>"
+msgctxt "@title Note: that is an HTML tag"
+msgid "<b>Environment Variables</b>"
+msgstr "<b>משתנים סביבתיים</b>"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:66
+#, kde-format
+msgctxt "@title:column"
+msgid "Scheduling"
+msgstr "תזמון"
+
+#: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:75
+#, kde-format
+msgctxt "@title:column"
+msgid "Command"
+msgstr "פקודה"
+
+#: src/cronPrinter.cpp:103
+#, fuzzy, kde-format
+#| msgid "Description"
+msgctxt "@title:column"
+msgid "Description"
+msgstr "תיאור"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:67
+#, kde-format
+msgctxt "@title:column"
+msgid "Variable"
+msgstr "משתנה"
+
+#: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:98
+#, kde-format
+msgctxt "@title:column"
+msgid "Value"
+msgstr "ערך"
+
+#: src/cronPrinter.cpp:117 src/ui/TasksComponent.qml:84
+#: src/ui/VariablesComponent.qml:106
+#, kde-format
+msgctxt "@title:column"
+msgid "Comment"
+msgstr "הערה"
+
+#: src/cronPrinter.cpp:144
+#, fuzzy, kde-format
+#| msgid "System Crontab"
+msgctxt "@title"
+msgid "System Crontab"
+msgstr "ה־Crontab של המערכת"
+
+#: src/cronPrinter.cpp:146
+#, fuzzy, kde-format
+#| msgctxt "Crontab of user login"
+#| msgid "Crontab of user %1"
+msgctxt "@title"
+msgid "Crontab of user %1"
+msgstr "Crontab למשתמש %1"
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -511,7 +578,7 @@ msgstr "מקום ספריות דינמיות."
 msgid "Local Variable"
 msgstr "משתנה מקומי"
 
-#: src/tasksmodel.cpp:47
+#: src/tasksmodel.cpp:48
 #, kde-format
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
@@ -897,24 +964,6 @@ msgctxt "@title:column"
 msgid "User"
 msgstr "משתמש"
 
-#: src/ui/TasksComponent.qml:66
-#, kde-format
-msgctxt "@title:column"
-msgid "Scheduling"
-msgstr "תזמון"
-
-#: src/ui/TasksComponent.qml:75
-#, kde-format
-msgctxt "@title:column"
-msgid "Command"
-msgstr "פקודה"
-
-#: src/ui/TasksComponent.qml:84 src/ui/VariablesComponent.qml:106
-#, kde-format
-msgctxt "@title:column"
-msgid "Comment"
-msgstr "הערה"
-
 #: src/ui/TasksComponent.qml:92
 #, kde-format
 msgctxt "@title:column"
@@ -1066,18 +1115,6 @@ msgctxt "@title:group"
 msgid "Environment Variables"
 msgstr "משתני סביבה"
 
-#: src/ui/VariablesComponent.qml:67
-#, kde-format
-msgctxt "@title:column"
-msgid "Variable"
-msgstr "משתנה"
-
-#: src/ui/VariablesComponent.qml:98
-#, kde-format
-msgctxt "@title:column"
-msgid "Value"
-msgstr "ערך"
-
 #: src/ui/VariablesComponent.qml:112
 #, kde-format
 msgctxt "@action:button"
@@ -1098,18 +1135,8 @@ msgstr "עריכת משתנה…"
 #~ msgid "Your emails"
 #~ msgstr "kde-l10n-he@kde.org"
 
-#~ msgid "Description"
-#~ msgstr "תיאור"
-
-#~ msgid "System Crontab"
-#~ msgstr "ה־Crontab של המערכת"
-
 #~ msgid "All Users Crontabs"
 #~ msgstr "ה־Crontab של כלל המשתמשים"
-
-#~ msgctxt "Crontab of user login"
-#~ msgid "Crontab of user %1"
-#~ msgstr "Crontab למשתמש %1"
 
 #~ msgctxt "@title:window"
 #~ msgid "Cron Options"
@@ -1186,9 +1213,6 @@ msgstr "עריכת משתנה…"
 #~ msgid "Clear All"
 #~ msgstr "לפנות הכול"
 
-#~ msgid "<b>Scheduled Tasks</b>"
-#~ msgstr "<b>משימות מתוזמנות</b>"
-
 #~ msgid "Status"
 #~ msgstr "מצב"
 
@@ -1228,9 +1252,6 @@ msgstr "עריכת משתנה…"
 
 #~ msgid "<i>This variable is disabled.</i>"
 #~ msgstr "<i>המשתנה מושבת.</i>"
-
-#~ msgid "<b>Environment Variables</b>"
-#~ msgstr "<b>משתנים סביבתיים</b>"
 
 #~ msgctxt "Adds a new variable"
 #~ msgid "New &Variable..."
