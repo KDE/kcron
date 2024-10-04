@@ -1,5 +1,6 @@
 [Domain]
 Name=Crontab Actions
+Name[ar]=إجراءات كرونتاب
 Name[ast]=Aiciones de crontab
 Name[bg]=Действия на Crontab
 Name[ca]=Accions de «crontab»
@@ -42,6 +43,7 @@ Persistence=session
 
 [local.kcron.crontab.save]
 Name=Write Crontab
+Name[ar]=اكتب كرونتاب
 Name[bg]=Запис в Crontab
 Name[ca]=Escriu el «contrab»
 Name[ca@valencia]=Escriu el «contrab»
@@ -79,6 +81,7 @@ Name[x-test]=xxWrite Crontabxx
 Name[zh_CN]=编写 Crontab
 Name[zh_TW]=寫入 crontab
 Description=Write into the system crontab file
+Description[ar]=اكتب في ملف كرونتاب النظام
 Description[bg]=Запис в системна таблица на задачите
 Description[ca]=Escriu dins del fitxer «contrab» del sistema
 Description[ca@valencia]=Escriu dins del fitxer «contrab» del sistema
