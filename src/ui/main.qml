@@ -61,7 +61,7 @@ KCM.AbstractKCM {
 
     actions: [
         Kirigami.Action {
-            text: i18nc("@action:button", "Print")
+            text: i18nc("@action:button", "Print Summary…")
             icon.name: "cups"
             onTriggered: kcm.print()
         }
