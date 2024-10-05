@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: kdeadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-04 00:42+0000\n"
-"PO-Revision-Date: 2024-10-01 22:02+0300\n"
+"PO-Revision-Date: 2024-10-05 01:27+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -26,15 +26,11 @@ msgstr ""
 "X-Generator: Lokalize 24.11.70\n"
 
 #: src/cronPrinter.cpp:62
-#, fuzzy
-#| msgid "<b>Scheduled Tasks</b>"
 msgctxt "@title Note: that is an HTML tag"
 msgid "<b>Tasks</b>"
-msgstr "<b>Zamanlanmış Görevler</b>"
+msgstr "<b>Görevler</b>"
 
 #: src/cronPrinter.cpp:63
-#, fuzzy
-#| msgid "<b>Environment Variables</b>"
 msgctxt "@title Note: that is an HTML tag"
 msgid "<b>Environment Variables</b>"
 msgstr "<b>Çevre Değişkenleri</b>"
@@ -52,11 +48,10 @@ msgid "Command"
 msgstr "Komut"
 
 #: src/cronPrinter.cpp:103
-#, fuzzy, kde-format
-#| msgid "Description"
+#, kde-format
 msgctxt "@title:column"
 msgid "Description"
-msgstr "Tanımlama"
+msgstr "Açıklama"
 
 #: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:67
 #, kde-format
@@ -78,19 +73,16 @@ msgid "Comment"
 msgstr "Açıklama"
 
 #: src/cronPrinter.cpp:144
-#, fuzzy, kde-format
-#| msgid "System Crontab"
+#, kde-format
 msgctxt "@title"
 msgid "System Crontab"
-msgstr "Sistem Görev Listesi"
+msgstr "Sistem Crontab’i"
 
 #: src/cronPrinter.cpp:146
-#, fuzzy, kde-format
-#| msgctxt "Crontab of user login"
-#| msgid "Crontab of user %1"
+#, kde-format
 msgctxt "@title"
 msgid "Crontab of user %1"
-msgstr "%1 kullanıcısının görevleri"
+msgstr "%1 Kullanıcısının Crontab’i"
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format

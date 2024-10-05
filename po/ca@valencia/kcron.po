@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-04 00:42+0000\n"
-"PO-Revision-Date: 2024-09-24 10:58+0200\n"
+"PO-Revision-Date: 2024-10-04 10:38+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -25,15 +25,12 @@ msgstr ""
 #: src/cronPrinter.cpp:62
 msgctxt "@title Note: that is an HTML tag"
 msgid "<b>Tasks</b>"
-msgstr ""
+msgstr "<b>Tasques</b>"
 
 #: src/cronPrinter.cpp:63
-#, fuzzy
-#| msgctxt "@title:group"
-#| msgid "Environment Variables"
 msgctxt "@title Note: that is an HTML tag"
 msgid "<b>Environment Variables</b>"
-msgstr "Variables d'entorn"
+msgstr "<b>Variables d'entorn</b>"
 
 #: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:66
 #, kde-format
@@ -51,7 +48,7 @@ msgstr "Ordre"
 #, kde-format
 msgctxt "@title:column"
 msgid "Description"
-msgstr ""
+msgstr "Descripció"
 
 #: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:67
 #, kde-format
@@ -76,13 +73,13 @@ msgstr "Comentari"
 #, kde-format
 msgctxt "@title"
 msgid "System Crontab"
-msgstr ""
+msgstr "«Crontab» del sistema"
 
 #: src/cronPrinter.cpp:146
 #, kde-format
 msgctxt "@title"
 msgid "Crontab of user %1"
-msgstr ""
+msgstr "«Crontab» de l'usuari %1"
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -785,11 +782,10 @@ msgid "Minutes"
 msgstr "Minuts"
 
 #: src/ui/TaskPage.qml:264
-#, fuzzy, kde-format
-#| msgid "Custom selection"
+#, kde-format
 msgctxt "@label:listbox"
 msgid "Selection:"
-msgstr "Selecció personalitzada"
+msgstr "Selecció:"
 
 #: src/ui/TaskPage.qml:269
 #, kde-format
