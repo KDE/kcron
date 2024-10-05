@@ -104,6 +104,7 @@
     },
     "X-DocPath": "kcontrol/kcron/index.html",
     "X-KDE-Keywords": "cron,crontab,scheduled,tasks,task,schedule,vixie",
+    "X-KDE-Keywords[ar]": "cron,كرونتاب,جدولة,مهام,مهمّة,مهمة,كرون",
     "X-KDE-Keywords[bg]": "cron,crontab,планирани задачи,задачи,vixie",
     "X-KDE-Keywords[bs]": "cron,crontab,scheduled,tasks,raspoređeni,zadaci,zadato, redoslijed,task,schedule,vixie",
     "X-KDE-Keywords[ca@valencia]": "cron,crontab,planificació,planificat,planificada,tasques,tasca,planificació,vixie",
