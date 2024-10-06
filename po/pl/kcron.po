@@ -1,4 +1,4 @@
-# Version: $Revision: 1692054 $
+# Version: $Revision: 1692178 $
 # translation of kcron.po to Polish
 # translation of kcron.po to
 # translation of kcron.po to
@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-04 00:42+0000\n"
-"PO-Revision-Date: 2024-09-29 09:24+0200\n"
+"PO-Revision-Date: 2024-10-05 12:39+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -24,15 +24,11 @@ msgstr ""
 "X-Generator: Lokalize 23.08.5\n"
 
 #: src/cronPrinter.cpp:62
-#, fuzzy
-#| msgid "<b>Scheduled Tasks</b>"
 msgctxt "@title Note: that is an HTML tag"
 msgid "<b>Tasks</b>"
-msgstr "<b>Zaplanowane zadania</b>"
+msgstr "<b>Zadania</b>"
 
 #: src/cronPrinter.cpp:63
-#, fuzzy
-#| msgid "<b>Environment Variables</b>"
 msgctxt "@title Note: that is an HTML tag"
 msgid "<b>Environment Variables</b>"
 msgstr "<b>Zmienne środowiskowe</b>"
@@ -50,8 +46,7 @@ msgid "Command"
 msgstr "Polecenie"
 
 #: src/cronPrinter.cpp:103
-#, fuzzy, kde-format
-#| msgid "Description"
+#, kde-format
 msgctxt "@title:column"
 msgid "Description"
 msgstr "Opis"
@@ -76,16 +71,13 @@ msgid "Comment"
 msgstr "Komentarz"
 
 #: src/cronPrinter.cpp:144
-#, fuzzy, kde-format
-#| msgid "System Crontab"
+#, kde-format
 msgctxt "@title"
 msgid "System Crontab"
 msgstr "Harmonogram systemowy"
 
 #: src/cronPrinter.cpp:146
-#, fuzzy, kde-format
-#| msgctxt "Crontab of user login"
-#| msgid "Crontab of user %1"
+#, kde-format
 msgctxt "@title"
 msgid "Crontab of user %1"
 msgstr "Harmonogram użytkownika %1"
@@ -785,11 +777,10 @@ msgid "Minutes"
 msgstr "Minuty"
 
 #: src/ui/TaskPage.qml:264
-#, fuzzy, kde-format
-#| msgid "Preselection:"
+#, kde-format
 msgctxt "@label:listbox"
 msgid "Selection:"
-msgstr "Nastawa:"
+msgstr "Zaznaczenie:"
 
 #: src/ui/TaskPage.qml:269
 #, kde-format

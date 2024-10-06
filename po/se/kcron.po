@@ -1111,11 +1111,3 @@ msgstr ""
 msgctxt "@action:button"
 msgid "Edit Variable…"
 msgstr ""
-
-#~ msgctxt "NAME OF TRANSLATORS"
-#~ msgid "Your names"
-#~ msgstr "Børre Gaup"
-
-#~ msgctxt "EMAIL OF TRANSLATORS"
-#~ msgid "Your emails"
-#~ msgstr "boerre@skolelinux.no"
