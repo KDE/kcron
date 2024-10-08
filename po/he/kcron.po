@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-04 00:42+0000\n"
-"PO-Revision-Date: 2024-09-24 08:11+0300\n"
+"PO-Revision-Date: 2024-10-07 07:01+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -33,15 +33,11 @@ msgstr ""
 "X-Generator: Lokalize 24.05.2\n"
 
 #: src/cronPrinter.cpp:62
-#, fuzzy
-#| msgid "<b>Scheduled Tasks</b>"
 msgctxt "@title Note: that is an HTML tag"
 msgid "<b>Tasks</b>"
-msgstr "<b>משימות מתוזמנות</b>"
+msgstr "<b>משימות</b>"
 
 #: src/cronPrinter.cpp:63
-#, fuzzy
-#| msgid "<b>Environment Variables</b>"
 msgctxt "@title Note: that is an HTML tag"
 msgid "<b>Environment Variables</b>"
 msgstr "<b>משתנים סביבתיים</b>"
@@ -59,8 +55,7 @@ msgid "Command"
 msgstr "פקודה"
 
 #: src/cronPrinter.cpp:103
-#, fuzzy, kde-format
-#| msgid "Description"
+#, kde-format
 msgctxt "@title:column"
 msgid "Description"
 msgstr "תיאור"
@@ -85,16 +80,13 @@ msgid "Comment"
 msgstr "הערה"
 
 #: src/cronPrinter.cpp:144
-#, fuzzy, kde-format
-#| msgid "System Crontab"
+#, kde-format
 msgctxt "@title"
 msgid "System Crontab"
 msgstr "ה־Crontab של המערכת"
 
 #: src/cronPrinter.cpp:146
-#, fuzzy, kde-format
-#| msgctxt "Crontab of user login"
-#| msgid "Crontab of user %1"
+#, kde-format
 msgctxt "@title"
 msgid "Crontab of user %1"
 msgstr "Crontab למשתמש %1"
@@ -792,8 +784,7 @@ msgid "Minutes"
 msgstr "דקות"
 
 #: src/ui/TaskPage.qml:264
-#, fuzzy, kde-format
-#| msgid "Preselection:"
+#, kde-format
 msgctxt "@label:listbox"
 msgid "Selection:"
 msgstr "בחירה מראש:"

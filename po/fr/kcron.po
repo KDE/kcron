@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-04 00:42+0000\n"
-"PO-Revision-Date: 2024-10-02 09:07+0200\n"
+"PO-Revision-Date: 2024-10-05 08:22+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: French <French <kde-francophone@kde.org>>\n"
 "Language: fr\n"
@@ -31,15 +31,11 @@ msgstr ""
 "X-Text-Markup: kde4\n"
 
 #: src/cronPrinter.cpp:62
-#, fuzzy
-#| msgid "<b>Scheduled Tasks</b>"
 msgctxt "@title Note: that is an HTML tag"
 msgid "<b>Tasks</b>"
-msgstr "<b>Tâches planifiées</b>"
+msgstr "<b>Tâches</b>"
 
 #: src/cronPrinter.cpp:63
-#, fuzzy
-#| msgid "<b>Environment Variables</b>"
 msgctxt "@title Note: that is an HTML tag"
 msgid "<b>Environment Variables</b>"
 msgstr "<b>Variables d'environnement</b>"
@@ -57,8 +53,7 @@ msgid "Command"
 msgstr "Commande"
 
 #: src/cronPrinter.cpp:103
-#, fuzzy, kde-format
-#| msgid "Description"
+#, kde-format
 msgctxt "@title:column"
 msgid "Description"
 msgstr "Description"
@@ -83,19 +78,16 @@ msgid "Comment"
 msgstr "Commentaire"
 
 #: src/cronPrinter.cpp:144
-#, fuzzy, kde-format
-#| msgid "System Crontab"
+#, kde-format
 msgctxt "@title"
 msgid "System Crontab"
-msgstr "Liste des tâches du système"
+msgstr "Liste des tâches Crontab du système"
 
 #: src/cronPrinter.cpp:146
-#, fuzzy, kde-format
-#| msgctxt "Crontab of user login"
-#| msgid "Crontab of user %1"
+#, kde-format
 msgctxt "@title"
 msgid "Crontab of user %1"
-msgstr "Liste des tâches de l'utilisateur « %1 »"
+msgstr "Liste des tâches Crontab pour l'utilisateur « %1 »"
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
