@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-04 00:42+0000\n"
+"POT-Creation-Date: 2024-10-10 00:41+0000\n"
 "PO-Revision-Date: 2004-01-16 22:17+0000\n"
 "Last-Translator: KD at KGyfieithu <kyfieithu@dotmon.com>\n"
 "Language-Team: Cymraeg <cy@li.org>\n"
@@ -639,11 +639,10 @@ msgid "System Schedule"
 msgstr "Trefnlennydd Tasgau"
 
 #: src/ui/main.qml:64
-#, fuzzy, kde-format
-#| msgid "Printing..."
+#, kde-format
 msgctxt "@action:button"
-msgid "Print"
-msgstr "Argraffu..."
+msgid "Print Summary…"
+msgstr ""
 
 #: src/ui/Onboarding.qml:22
 #, fuzzy, kde-format
@@ -1169,6 +1168,12 @@ msgstr "Golygu Newidyn"
 msgctxt "@action:button"
 msgid "Edit Variable…"
 msgstr "Golygu Newidyn"
+
+#, fuzzy
+#~| msgid "Printing..."
+#~ msgctxt "@action:button"
+#~ msgid "Print"
+#~ msgstr "Argraffu..."
 
 #~ msgctxt "NAME OF TRANSLATORS"
 #~ msgid "Your names"

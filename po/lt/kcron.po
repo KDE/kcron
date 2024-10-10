@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-04 00:42+0000\n"
+"POT-Creation-Date: 2024-10-10 00:41+0000\n"
 "PO-Revision-Date: 2015-12-30 18:15+0200\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: lt <kde-i18n-lt@kde.org>\n"
@@ -656,7 +656,7 @@ msgstr "Užduočių planuoklis"
 #: src/ui/main.qml:64
 #, kde-format
 msgctxt "@action:button"
-msgid "Print"
+msgid "Print Summary…"
 msgstr ""
 
 #: src/ui/Onboarding.qml:22

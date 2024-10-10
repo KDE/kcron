@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-04 00:42+0000\n"
+"POT-Creation-Date: 2024-10-10 00:41+0000\n"
 "PO-Revision-Date: 2024-10-07 07:01+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -643,8 +643,8 @@ msgstr "לו״ז המערכת"
 #: src/ui/main.qml:64
 #, kde-format
 msgctxt "@action:button"
-msgid "Print"
-msgstr "הדפסה"
+msgid "Print Summary…"
+msgstr ""
 
 #: src/ui/Onboarding.qml:22
 #, kde-format
@@ -1117,6 +1117,10 @@ msgstr "הוספת משתנה…"
 msgctxt "@action:button"
 msgid "Edit Variable…"
 msgstr "עריכת משתנה…"
+
+#~ msgctxt "@action:button"
+#~ msgid "Print"
+#~ msgstr "הדפסה"
 
 #~ msgctxt "NAME OF TRANSLATORS"
 #~ msgid "Your names"

@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-04 00:42+0000\n"
+"POT-Creation-Date: 2024-10-10 00:41+0000\n"
 "PO-Revision-Date: 2023-12-27 10:05+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -666,11 +666,10 @@ msgid "System Schedule"
 msgstr "Планировщик заданий"
 
 #: src/ui/main.qml:64
-#, fuzzy, kde-format
-#| msgid "Printing..."
+#, kde-format
 msgctxt "@action:button"
-msgid "Print"
-msgstr "Идёт печать..."
+msgid "Print Summary…"
+msgstr ""
 
 #: src/ui/Onboarding.qml:22
 #, fuzzy, kde-format
@@ -1204,6 +1203,12 @@ msgstr "Изменить переменную"
 msgctxt "@action:button"
 msgid "Edit Variable…"
 msgstr "Изменить переменную"
+
+#, fuzzy
+#~| msgid "Printing..."
+#~ msgctxt "@action:button"
+#~ msgid "Print"
+#~ msgstr "Идёт печать..."
 
 #~ msgctxt "NAME OF TRANSLATORS"
 #~ msgid "Your names"

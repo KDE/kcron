@@ -1,7 +1,7 @@
 # Translation of kcron.po to Slovenian
 # KDEADMIN translation to Slovenian language.
 # Copyright (C) 2001,2003, 2004, 2005 Free Software Foundation, Inc.
-# $Id: kcron.po 1692054 2024-10-04 01:14:59Z scripty $
+# $Id: kcron.po 1692525 2024-10-10 01:15:03Z scripty $
 # $Source$
 #
 # Rok Papez <rok@slo.net>, 2000.
@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-04 00:42+0000\n"
+"POT-Creation-Date: 2024-10-10 00:41+0000\n"
 "PO-Revision-Date: 2024-10-01 07:26+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -648,8 +648,8 @@ msgstr "Sistemski urnik"
 #: src/ui/main.qml:64
 #, kde-format
 msgctxt "@action:button"
-msgid "Print"
-msgstr "Tiskaj"
+msgid "Print Summary…"
+msgstr ""
 
 #: src/ui/Onboarding.qml:22
 #, kde-format
@@ -1123,6 +1123,10 @@ msgstr "Dodaj spremenljivko…"
 msgctxt "@action:button"
 msgid "Edit Variable…"
 msgstr "Uredi spremenljivko…"
+
+#~ msgctxt "@action:button"
+#~ msgid "Print"
+#~ msgstr "Tiskaj"
 
 #~ msgctxt "NAME OF TRANSLATORS"
 #~ msgid "Your names"

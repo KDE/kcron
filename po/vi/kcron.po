@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-04 00:42+0000\n"
+"POT-Creation-Date: 2024-10-10 00:41+0000\n"
 "PO-Revision-Date: 2021-10-28 15:38+0200\n"
 "Last-Translator: Phu Hung Nguyen <phu.nguyen@kdemail.net>\n"
 "Language-Team: Vietnamese <kde-l10n-vi@kde.org>\n"
@@ -648,7 +648,7 @@ msgstr "Trình lập lịch tác vụ"
 #: src/ui/main.qml:64
 #, kde-format
 msgctxt "@action:button"
-msgid "Print"
+msgid "Print Summary…"
 msgstr ""
 
 #: src/ui/Onboarding.qml:22

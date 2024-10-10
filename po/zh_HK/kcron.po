@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron 1.28\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-04 00:42+0000\n"
+"POT-Creation-Date: 2024-10-10 00:41+0000\n"
 "PO-Revision-Date: 2006-01-11 23:33+0800\n"
 "Last-Translator: Walter Cheuk <wwycheuk@netvigator.com>\n"
 "Language-Team: Chinese (Hong Kong) <community@linuxhall.org>\n"
@@ -640,11 +640,10 @@ msgid "System Schedule"
 msgstr "工作排程器"
 
 #: src/ui/main.qml:64
-#, fuzzy, kde-format
-#| msgid "Printing..."
+#, kde-format
 msgctxt "@action:button"
-msgid "Print"
-msgstr "正在列印..."
+msgid "Print Summary…"
+msgstr ""
 
 #: src/ui/Onboarding.qml:22
 #, fuzzy, kde-format
@@ -1172,6 +1171,12 @@ msgstr "編輯變數"
 msgctxt "@action:button"
 msgid "Edit Variable…"
 msgstr "編輯變數"
+
+#, fuzzy
+#~| msgid "Printing..."
+#~ msgctxt "@action:button"
+#~ msgid "Print"
+#~ msgstr "正在列印..."
 
 #~ msgctxt "NAME OF TRANSLATORS"
 #~ msgid "Your names"

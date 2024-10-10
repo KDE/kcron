@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-04 00:42+0000\n"
+"POT-Creation-Date: 2024-10-10 00:41+0000\n"
 "PO-Revision-Date: 2004-10-28 01:41-0800\n"
 "Last-Translator: Tamil PC <tamilpc@ambalam.com>\n"
 "Language-Team: Tamil <en@li.org>\n"
@@ -639,11 +639,10 @@ msgid "System Schedule"
 msgstr "பணி காலமுறைப்படுத்தி"
 
 #: src/ui/main.qml:64
-#, fuzzy, kde-format
-#| msgid "Printing..."
+#, kde-format
 msgctxt "@action:button"
-msgid "Print"
-msgstr "அச்சிடுகின்றது...."
+msgid "Print Summary…"
+msgstr ""
 
 #: src/ui/Onboarding.qml:22
 #, fuzzy, kde-format
@@ -1171,6 +1170,12 @@ msgstr "மாறிகளை மாற்றுக"
 msgctxt "@action:button"
 msgid "Edit Variable…"
 msgstr "மாறிகளை மாற்றுக"
+
+#, fuzzy
+#~| msgid "Printing..."
+#~ msgctxt "@action:button"
+#~ msgid "Print"
+#~ msgstr "அச்சிடுகின்றது...."
 
 #~ msgctxt "NAME OF TRANSLATORS"
 #~ msgid "Your names"

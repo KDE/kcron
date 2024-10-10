@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-04 00:42+0000\n"
+"POT-Creation-Date: 2024-10-10 00:41+0000\n"
 "PO-Revision-Date: 2024-10-05 17:48+0200\n"
 "Last-Translator: Valter Mura <valtermura@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -629,8 +629,8 @@ msgstr "Pianificazione del sistema"
 #: src/ui/main.qml:64
 #, kde-format
 msgctxt "@action:button"
-msgid "Print"
-msgstr "Stampa"
+msgid "Print Summary…"
+msgstr ""
 
 #: src/ui/Onboarding.qml:22
 #, kde-format
@@ -1104,6 +1104,10 @@ msgstr "Aggiungi variabile…"
 msgctxt "@action:button"
 msgid "Edit Variable…"
 msgstr "Modifica variabile…"
+
+#~ msgctxt "@action:button"
+#~ msgid "Print"
+#~ msgstr "Stampa"
 
 #~ msgctxt "NAME OF TRANSLATORS"
 #~ msgid "Your names"

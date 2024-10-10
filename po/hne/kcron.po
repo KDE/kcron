@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-04 00:42+0000\n"
+"POT-Creation-Date: 2024-10-10 00:41+0000\n"
 "PO-Revision-Date: 2009-02-21 15:06+0530\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@aol.in>\n"
 "Language-Team: Hindi <kde-i18n-doc@lists.kde.org>\n"
@@ -639,11 +639,10 @@ msgid "System Schedule"
 msgstr "काम जमइया"
 
 #: src/ui/main.qml:64
-#, fuzzy, kde-format
-#| msgid "Printing..."
+#, kde-format
 msgctxt "@action:button"
-msgid "Print"
-msgstr "छापत हे..."
+msgid "Print Summary…"
+msgstr ""
 
 #: src/ui/Onboarding.qml:22
 #, fuzzy, kde-format
@@ -1177,6 +1176,12 @@ msgstr "वेरिएबल संपादन"
 msgctxt "@action:button"
 msgid "Edit Variable…"
 msgstr "वेरिएबल संपादन"
+
+#, fuzzy
+#~| msgid "Printing..."
+#~ msgctxt "@action:button"
+#~ msgid "Print"
+#~ msgstr "छापत हे..."
 
 #~ msgctxt "NAME OF TRANSLATORS"
 #~ msgid "Your names"

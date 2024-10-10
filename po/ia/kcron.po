@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-04 00:42+0000\n"
+"POT-Creation-Date: 2024-10-10 00:41+0000\n"
 "PO-Revision-Date: 2024-10-04 17:44+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
@@ -628,8 +628,8 @@ msgstr "Planificator de Systema"
 #: src/ui/main.qml:64
 #, kde-format
 msgctxt "@action:button"
-msgid "Print"
-msgstr "Imprime"
+msgid "Print Summary…"
+msgstr ""
 
 #: src/ui/Onboarding.qml:22
 #, kde-format
@@ -1102,6 +1102,10 @@ msgstr "Adde variabile…"
 msgctxt "@action:button"
 msgid "Edit Variable…"
 msgstr "Modifica variabile…"
+
+#~ msgctxt "@action:button"
+#~ msgid "Print"
+#~ msgstr "Imprime"
 
 #~ msgctxt "NAME OF TRANSLATORS"
 #~ msgid "Your names"

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-10-04 00:42+0000\n"
+"POT-Creation-Date: 2024-10-10 00:41+0000\n"
 "PO-Revision-Date: 2007-08-23 17:05+0545\n"
 "Last-Translator: Nabin Gautam <nabin@mpp.org.np>\n"
 "Language-Team: Nepali <info@mpp.org.np>\n"
@@ -651,11 +651,10 @@ msgid "System Schedule"
 msgstr "कार्य अनुसूचक"
 
 #: src/ui/main.qml:64
-#, fuzzy, kde-format
-#| msgid "Printing..."
+#, kde-format
 msgctxt "@action:button"
-msgid "Print"
-msgstr "मुद्रण गर्दैछ..."
+msgid "Print Summary…"
+msgstr ""
 
 #: src/ui/Onboarding.qml:22
 #, fuzzy, kde-format
@@ -1191,6 +1190,12 @@ msgstr "चल सम्पादन गर्नुहोस्"
 msgctxt "@action:button"
 msgid "Edit Variable…"
 msgstr "चल सम्पादन गर्नुहोस्"
+
+#, fuzzy
+#~| msgid "Printing..."
+#~ msgctxt "@action:button"
+#~ msgid "Print"
+#~ msgstr "मुद्रण गर्दैछ..."
 
 #~ msgctxt "NAME OF TRANSLATORS"
 #~ msgid "Your names"
