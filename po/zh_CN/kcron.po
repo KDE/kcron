@@ -18,73 +18,60 @@ msgstr ""
 "X-Crowdin-File-ID: 44989\n"
 
 #: src/cronPrinter.cpp:62
-#, fuzzy
-#| msgid "<b>Scheduled Tasks</b>"
 msgctxt "@title Note: that is an HTML tag"
 msgid "<b>Tasks</b>"
-msgstr "<b>计划任务</b>"
+msgstr "<b>任务</b>"
 
 #: src/cronPrinter.cpp:63
-#, fuzzy
-#| msgid "<b>Environment Variables</b>"
 msgctxt "@title Note: that is an HTML tag"
 msgid "<b>Environment Variables</b>"
 msgstr "<b>环境变量</b>"
 
 #: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:66
-#, fuzzy, kde-format
-#| msgid "Scheduling"
+#, kde-format
 msgctxt "@title:column"
 msgid "Scheduling"
 msgstr "调度安排"
 
 #: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:75
-#, fuzzy, kde-format
-#| msgid "Command"
+#, kde-format
 msgctxt "@title:column"
 msgid "Command"
 msgstr "命令"
 
 #: src/cronPrinter.cpp:103
-#, fuzzy, kde-format
-#| msgid "Description"
+#, kde-format
 msgctxt "@title:column"
 msgid "Description"
 msgstr "描述"
 
 #: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:67
-#, fuzzy, kde-format
-#| msgid "Variable"
+#, kde-format
 msgctxt "@title:column"
 msgid "Variable"
 msgstr "变量"
 
 #: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:98
-#, fuzzy, kde-format
-#| msgid "Value"
+#, kde-format
 msgctxt "@title:column"
 msgid "Value"
 msgstr "值"
 
 #: src/cronPrinter.cpp:117 src/ui/TasksComponent.qml:84
 #: src/ui/VariablesComponent.qml:106
-#, fuzzy, kde-format
-#| msgid "Comment"
+#, kde-format
 msgctxt "@title:column"
 msgid "Comment"
 msgstr "注释"
 
 #: src/cronPrinter.cpp:144
-#, fuzzy, kde-format
-#| msgid "System Crontab"
+#, kde-format
 msgctxt "@title"
 msgid "System Crontab"
 msgstr "(系统计划任务)"
 
 #: src/cronPrinter.cpp:146
-#, fuzzy, kde-format
-#| msgctxt "Crontab of user login"
-#| msgid "Crontab of user %1"
+#, kde-format
 msgctxt "@title"
 msgid "Crontab of user %1"
 msgstr "用户 %1 的计划任务"
@@ -573,72 +560,63 @@ msgstr "脚本执行完毕。请键入回车或 Ctrl+C 键退出。"
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Choose a program to run</message>"
-msgstr ""
+msgstr "<message>选择要运行的程序</message>"
 
 #: src/taskvalidator.cpp:112 src/taskvalidator.cpp:119
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please type a valid command line...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please type a valid command line</message>"
-msgstr "<i>请输入有效的命令行...</i>"
+msgstr "<message>请输入有效的命令行</message>"
 
 #: src/taskvalidator.cpp:138
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please select an executable program...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please select an executable program</message>"
-msgstr "<i>请选择一个可执行程序。</i>"
+msgstr "<message>请选择可执行程序</message>"
 
 #: src/taskvalidator.cpp:163
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please select from the 'Months' section...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please select from the <b>Months</b> section</message>"
-msgstr "<i>请从“月”区段中选择项目。</i>"
+msgstr "<message>请从 <b>月</b> 区段中选择</message>"
 
 #: src/taskvalidator.cpp:188
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "<i>Please select from either the 'Days of Month' or the 'Days of Week' "
-#| "section...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from either the <b>Days of Month</b> or the <b>Days "
 "of Week</b> section</message>"
-msgstr "<i>请从“月中的天”或“周中的天”任一区段中选择项目。</i>"
+msgstr "<message>请从 <b>月日期</b> 或者 <b>周日期</b> 区段选择</message>"
 
 #: src/taskvalidator.cpp:206
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please select from the 'Hours' section...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please select from the <b>Hours</b> section</message>"
-msgstr "<i>请从“小时”区段中选择项目。</i>"
+msgstr "<message>请从 <b>小时</b> 区段选择</message>"
 
 #: src/taskvalidator.cpp:224
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please select from the 'Minutes' section...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please select from the <b>Minutes</b> section</message>"
-msgstr "<i>请从“分钟”区段中选择项目。</i>"
+msgstr "<message>请从 <b>分钟</b> 区段选择</message>"
 
 #: src/ui/main.qml:45
 #, kde-format
 msgctxt "@text"
 msgid "Show:"
-msgstr ""
+msgstr "显示："
 
 #: src/ui/main.qml:49
-#, fuzzy, kde-format
-#| msgid "Scheduling"
+#, kde-format
 msgctxt "@title:tab"
 msgid "User Schedule"
-msgstr "调度安排"
+msgstr "用户计划"
 
 #: src/ui/main.qml:55
 #, kde-format
 msgctxt "@title:tab"
 msgid "System Schedule"
-msgstr ""
+msgstr "系统计划"
 
 #: src/ui/main.qml:64
 #, kde-format
@@ -647,10 +625,9 @@ msgid "Print Summary…"
 msgstr ""
 
 #: src/ui/Onboarding.qml:22
-#, fuzzy, kde-format
-#| msgid "Welcome to the Task Scheduler"
+#, kde-format
 msgid "Welcome to Task Scheduler!"
-msgstr "欢迎使用任务调度器"
+msgstr "欢迎使用计划任务程序！"
 
 #: src/ui/Onboarding.qml:24
 #, kde-kuit-format
@@ -660,150 +637,134 @@ msgid ""
 "schedule and automate repetitive tasks like downloading files or sending "
 "emails. <link url='%1'>Learn more</link>"
 msgstr ""
+"制定在后台运行程序的计划。设置按照固定时间表运行的任务和自动重复任务，例如下"
+"载文件或者发送电子邮件。<link url='%1'>查看更多详情</link>"
 
 #: src/ui/Onboarding.qml:27
 #, kde-format
 msgctxt "@action:button"
 msgid "Go to Dashboard"
-msgstr ""
+msgstr "转到仪表板"
 
 #: src/ui/TaskPage.qml:23
-#, fuzzy, kde-format
-#| msgid "Modify Task"
+#, kde-format
 msgctxt "@title"
 msgid "Edit Task"
-msgstr "修改任务"
+msgstr "编辑任务"
 
 #: src/ui/TaskPage.qml:24
-#, fuzzy, kde-format
-#| msgid "New Task"
+#, kde-format
 msgctxt "@title"
 msgid "New Task"
 msgstr "新建任务"
 
 #: src/ui/TaskPage.qml:34
-#, fuzzy, kde-format
-#| msgid "Modify Task"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit Task"
-msgstr "修改任务"
+msgstr "编辑任务"
 
 #: src/ui/TaskPage.qml:35
-#, fuzzy, kde-format
-#| msgid "Modify Task"
+#, kde-format
 msgctxt "@action:button accessible"
 msgid "Edit Task"
-msgstr "修改任务"
+msgstr "编辑任务"
 
 #: src/ui/TaskPage.qml:45
-#, fuzzy, kde-format
-#| msgid "New Task"
+#, kde-format
 msgctxt "@action:button"
 msgid "New Task"
 msgstr "新建任务"
 
 #: src/ui/TaskPage.qml:46
-#, fuzzy, kde-format
-#| msgid "New Task"
+#, kde-format
 msgctxt "@action:button accessible"
 msgid "New Task"
 msgstr "新建任务"
 
 #: src/ui/TaskPage.qml:91
-#, fuzzy, kde-format
-#| msgid "&Command:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Command:"
-msgstr "命令(&C)："
+msgstr "命令："
 
 #: src/ui/TaskPage.qml:98
 #, kde-format
 msgctxt "@action:button"
 msgid "Browse the Program"
-msgstr ""
+msgstr "浏览程序"
 
 #: src/ui/TaskPage.qml:106
-#, fuzzy, kde-format
-#| msgid "&Enable this task"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable this task"
-msgstr "启用此任务(&E)"
+msgstr "启用此任务"
 
 #: src/ui/TaskPage.qml:111 src/ui/VariablePage.qml:97
-#, fuzzy, kde-format
-#| msgid "User"
+#, kde-format
 msgctxt "@label:listbox"
 msgid "User:"
-msgstr "用户"
+msgstr "用户："
 
 #: src/ui/TaskPage.qml:131 src/ui/VariablePage.qml:119
-#, fuzzy, kde-format
-#| msgid "Co&mment:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Comment:"
-msgstr "注释(&M)："
+msgstr "注释："
 
 #: src/ui/TaskPage.qml:138
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Run:"
-msgstr ""
+msgstr "运行："
 
 #: src/ui/TaskPage.qml:141
-#, fuzzy, kde-format
-#| msgid "At system startup"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "When system starts"
-msgstr "在系统启动时"
+msgstr "系统启动时"
 
 #: src/ui/TaskPage.qml:148
-#, fuzzy, kde-format
-#| msgid "every day "
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Every day"
-msgstr "每天 "
+msgstr "每天"
 
 #: src/ui/TaskPage.qml:154
-#, fuzzy, kde-format
-#| msgid "Months"
+#, kde-format
 msgctxt "@title:group"
 msgid "Months"
 msgstr "月"
 
 #: src/ui/TaskPage.qml:174
-#, fuzzy, kde-format
-#| msgid "Days of Month"
+#, kde-format
 msgctxt "@title:group"
 msgid "Days of Month"
 msgstr "月中的天"
 
 #: src/ui/TaskPage.qml:195
-#, fuzzy, kde-format
-#| msgid "Days of Week"
+#, kde-format
 msgctxt "@title:group"
 msgid "Days of Week"
 msgstr "周中的天"
 
 #: src/ui/TaskPage.qml:215
-#, fuzzy, kde-format
-#| msgid "Hours"
+#, kde-format
 msgctxt "@title:group"
 msgid "Hours"
 msgstr "小时"
 
 #: src/ui/TaskPage.qml:236
-#, fuzzy, kde-format
-#| msgid "Minutes"
+#, kde-format
 msgctxt "@title:group"
 msgid "Minutes"
 msgstr "分钟"
 
 #: src/ui/TaskPage.qml:264
-#, fuzzy, kde-format
-#| msgid "Preselection:"
+#, kde-format
 msgctxt "@label:listbox"
 msgid "Selection:"
-msgstr "预选取："
+msgstr "选定区间："
 
 #: src/ui/TaskPage.qml:269
 #, kde-format
@@ -846,157 +807,133 @@ msgid "Every 30 minutes"
 msgstr "每三十分钟 "
 
 #: src/ui/TaskPage.qml:318
-#, fuzzy, kde-format
-#| msgid "January"
+#, kde-format
 msgctxt "@action:button"
 msgid "January"
 msgstr "一月"
 
 #: src/ui/TaskPage.qml:322
-#, fuzzy, kde-format
-#| msgid "February"
+#, kde-format
 msgctxt "@action:button"
 msgid "February"
 msgstr "二月"
 
 #: src/ui/TaskPage.qml:326
-#, fuzzy, kde-format
-#| msgid "March"
+#, kde-format
 msgctxt "@action:button"
 msgid "March"
 msgstr "三月"
 
 #: src/ui/TaskPage.qml:330
-#, fuzzy, kde-format
-#| msgid "April"
+#, kde-format
 msgctxt "@action:button"
 msgid "April"
 msgstr "四月"
 
 #: src/ui/TaskPage.qml:334
-#, fuzzy, kde-format
-#| msgctxt "May long"
-#| msgid "May"
+#, kde-format
 msgctxt "@action:button"
 msgid "May"
 msgstr "五月"
 
 #: src/ui/TaskPage.qml:338
-#, fuzzy, kde-format
-#| msgid "June"
+#, kde-format
 msgctxt "@action:button"
 msgid "June"
 msgstr "六月"
 
 #: src/ui/TaskPage.qml:342
-#, fuzzy, kde-format
-#| msgctxt "July long"
-#| msgid "July"
+#, kde-format
 msgctxt "@action:button"
 msgid "July"
 msgstr "七月"
 
 #: src/ui/TaskPage.qml:346
-#, fuzzy, kde-format
-#| msgid "August"
+#, kde-format
 msgctxt "@action:button"
 msgid "August"
 msgstr "八月"
 
 #: src/ui/TaskPage.qml:350
-#, fuzzy, kde-format
-#| msgid "September"
+#, kde-format
 msgctxt "@action:button"
 msgid "September"
 msgstr "九月"
 
 #: src/ui/TaskPage.qml:354
-#, fuzzy, kde-format
-#| msgid "October"
+#, kde-format
 msgctxt "@action:button"
 msgid "October"
 msgstr "十月"
 
 #: src/ui/TaskPage.qml:358
-#, fuzzy, kde-format
-#| msgid "November"
+#, kde-format
 msgctxt "@action:button"
 msgid "November"
 msgstr "十一月"
 
 #: src/ui/TaskPage.qml:362
-#, fuzzy, kde-format
-#| msgid "December"
+#, kde-format
 msgctxt "@action:button"
 msgid "December"
 msgstr "十二月"
 
 #: src/ui/TaskPage.qml:384
-#, fuzzy, kde-format
-#| msgid "Monday"
+#, kde-format
 msgctxt "@action:button"
 msgid "Monday"
 msgstr "星期一"
 
 #: src/ui/TaskPage.qml:388
-#, fuzzy, kde-format
-#| msgid "Tuesday"
+#, kde-format
 msgctxt "@action:button"
 msgid "Tuesday"
 msgstr "星期二"
 
 #: src/ui/TaskPage.qml:392
-#, fuzzy, kde-format
-#| msgid "Wednesday"
+#, kde-format
 msgctxt "@action:button"
 msgid "Wednesday"
 msgstr "星期三"
 
 #: src/ui/TaskPage.qml:396
-#, fuzzy, kde-format
-#| msgid "Thursday"
+#, kde-format
 msgctxt "@action:button"
 msgid "Thursday"
 msgstr "星期四"
 
 #: src/ui/TaskPage.qml:400
-#, fuzzy, kde-format
-#| msgid "Friday"
+#, kde-format
 msgctxt "@action:button"
 msgid "Friday"
 msgstr "星期五"
 
 #: src/ui/TaskPage.qml:404
-#, fuzzy, kde-format
-#| msgid "Saturday"
+#, kde-format
 msgctxt "@action:button"
 msgid "Saturday"
 msgstr "星期六"
 
 #: src/ui/TaskPage.qml:408
-#, fuzzy, kde-format
-#| msgid "Sunday"
+#, kde-format
 msgctxt "@action:button"
 msgid "Sunday"
 msgstr "星期日"
 
 #: src/ui/TasksComponent.qml:19
-#, fuzzy, kde-format
-#| msgid "Scheduled Tasks"
+#, kde-format
 msgctxt "@title:group"
 msgid "Scheduled Tasks"
 msgstr "计划任务"
 
 #: src/ui/TasksComponent.qml:56 src/ui/VariablesComponent.qml:57
-#, fuzzy, kde-format
-#| msgid "User"
+#, kde-format
 msgctxt "@title:column"
 msgid "User"
 msgstr "用户"
 
 #: src/ui/TasksComponent.qml:92
-#, fuzzy, kde-format
-#| msgid "Scheduling Details"
+#, kde-format
 msgctxt "@title:column"
 msgid "Scheduling Details"
 msgstr "调度细节"
@@ -1005,313 +942,155 @@ msgstr "调度细节"
 #, kde-format
 msgctxt "@action:button"
 msgid "Add Task…"
-msgstr ""
+msgstr "添加任务…"
 
 #: src/ui/TasksComponent.qml:105
-#, fuzzy, kde-format
-#| msgid "Modify Task"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit Task…"
-msgstr "修改任务"
+msgstr "编辑任务…"
 
 #: src/ui/TasksComponent.qml:113 src/ui/VariablesComponent.qml:125
-#, fuzzy, kde-format
-#| msgid "Set All"
+#, kde-format
 msgctxt "@action:button"
 msgid "Select All"
-msgstr "全部设置"
+msgstr "选择全部"
 
 #: src/ui/TasksComponent.qml:120 src/ui/VariablesComponent.qml:132
 #, kde-format
 msgctxt "@action:button"
 msgid "Copy"
-msgstr ""
+msgstr "复制"
 
 #: src/ui/TasksComponent.qml:127 src/ui/VariablesComponent.qml:139
 #, kde-format
 msgctxt "@action:button"
 msgid "Cut"
-msgstr ""
+msgstr "剪切"
 
 #: src/ui/TasksComponent.qml:134 src/ui/VariablesComponent.qml:146
 #, kde-format
 msgctxt "@action:button"
 msgid "Paste"
-msgstr ""
+msgstr "粘贴"
 
 #: src/ui/TasksComponent.qml:142 src/ui/TasksComponent.qml:174
 #: src/ui/VariablesComponent.qml:154 src/ui/VariablesComponent.qml:178
-#, fuzzy, kde-format
-#| msgid "&Delete"
+#, kde-format
 msgctxt "@action:button"
 msgid "Delete"
-msgstr "删除(&D)"
+msgstr "删除"
 
 #: src/ui/TasksComponent.qml:150
-#, fuzzy, kde-format
-#| msgid "&Run as:"
+#, kde-format
 msgctxt "@action:button"
 msgid "Run task"
-msgstr "运行身份(&R)："
+msgstr "运行任务"
 
 #: src/ui/TasksComponent.qml:162 src/ui/VariablesComponent.qml:166
 #, kde-format
 msgctxt "@action:button"
 msgid "Add…"
-msgstr ""
+msgstr "添加…"
 
 #: src/ui/TasksComponent.qml:168 src/ui/VariablesComponent.qml:172
 #, kde-format
 msgctxt "@action:button"
 msgid "Edit…"
-msgstr ""
+msgstr "编辑…"
 
 #: src/ui/TasksComponent.qml:180
-#, fuzzy, kde-format
-#| msgid "Sun"
+#, kde-format
 msgctxt "@action:button"
 msgid "Run"
-msgstr "周日"
+msgstr "运行"
 
 #: src/ui/TimeCard.qml:33
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Select all"
-msgstr ""
+msgstr "选择全部"
 
 #: src/ui/VariablePage.qml:17
-#, fuzzy, kde-format
-#| msgid "Modify Variable"
+#, kde-format
 msgctxt "@title"
 msgid "Edit Variable"
-msgstr "修改变量"
+msgstr "编辑变量"
 
 #: src/ui/VariablePage.qml:18
-#, fuzzy, kde-format
-#| msgid "New Variable"
+#, kde-format
 msgctxt "@title"
 msgid "New Variable"
 msgstr "新建变量"
 
 #: src/ui/VariablePage.qml:27
-#, fuzzy, kde-format
-#| msgid "Modify Variable"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit Variable"
-msgstr "修改变量"
+msgstr "编辑变量"
 
 #: src/ui/VariablePage.qml:28
-#, fuzzy, kde-format
-#| msgid "Modify Variable"
+#, kde-format
 msgctxt "@action:button accessible"
 msgid "Edit Variable"
-msgstr "修改变量"
+msgstr "编辑变量"
 
 #: src/ui/VariablePage.qml:38
-#, fuzzy, kde-format
-#| msgid "New Variable"
+#, kde-format
 msgctxt "@action:button"
 msgid "New Variable"
 msgstr "新建变量"
 
 #: src/ui/VariablePage.qml:39
-#, fuzzy, kde-format
-#| msgid "New Variable"
+#, kde-format
 msgctxt "@action:button accessible"
 msgid "New Variable"
 msgstr "新建变量"
 
 #: src/ui/VariablePage.qml:57
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please enter the variable name...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please enter the variable name</message>"
-msgstr "<i>请输入变量名...</i>"
+msgstr "<message>请输入变量的名称</message>"
 
 #: src/ui/VariablePage.qml:59
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please enter the variable value ...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please enter the variable value</message>"
-msgstr "<i>请输入变量值...</i>"
+msgstr "<message>请输入变量的值</message>"
 
 #: src/ui/VariablePage.qml:76
-#, fuzzy, kde-format
-#| msgctxt "The environmental variable name ie HOME, MAILTO etc"
-#| msgid "&Variable:"
+#, kde-format
 msgctxt "@label:listbox"
 msgid "Variable:"
-msgstr "变量(&V)："
+msgstr "变量："
 
 #: src/ui/VariablePage.qml:112
-#, fuzzy, kde-format
-#| msgid "Va&lue:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Value:"
-msgstr "值(&L)："
+msgstr "值："
 
 #: src/ui/VariablePage.qml:126
-#, fuzzy, kde-format
-#| msgid "&Enable this variable"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable this variable"
-msgstr "启用此变量(&E)"
+msgstr "启用此变量"
 
 #: src/ui/VariablesComponent.qml:19
-#, fuzzy, kde-format
-#| msgid "Environment Variables"
+#, kde-format
 msgctxt "@title:group"
 msgid "Environment Variables"
 msgstr "环境变量"
 
 #: src/ui/VariablesComponent.qml:112
-#, fuzzy, kde-format
-#| msgid "Variable"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add Variable…"
-msgstr "变量"
+msgstr "添加变量…"
 
 #: src/ui/VariablesComponent.qml:118
-#, fuzzy, kde-format
-#| msgid "Modify Variable"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit Variable…"
-msgstr "修改变量"
-
-#~ msgctxt "NAME OF TRANSLATORS"
-#~ msgid "Your names"
-#~ msgstr "KDE 中国"
-
-#~ msgctxt "EMAIL OF TRANSLATORS"
-#~ msgid "Your emails"
-#~ msgstr "kde-china@kde.org"
-
-#~ msgid "All Users Crontabs"
-#~ msgstr "(全部用户计划任务)"
-
-#~ msgctxt "@title:window"
-#~ msgid "Cron Options"
-#~ msgstr "计划任务选项"
-
-#~ msgid "Print cron&tab"
-#~ msgstr "打印计划任务表(&T)"
-
-#~ msgid "Print &all users"
-#~ msgstr "打印全部用户(&A)"
-
-#~ msgid "Show the following Cron:"
-#~ msgstr "显示以下计划任务："
-
-#~ msgid "Personal Cron"
-#~ msgstr "个人计划任务"
-
-#~ msgid "System Cron"
-#~ msgstr "(系统计划任务)"
-
-#~ msgid ""
-#~ "The following error occurred while initializing KCron:\n"
-#~ "\n"
-#~ "%1\n"
-#~ "\n"
-#~ "KCron will now exit.\n"
-#~ msgstr ""
-#~ "初始化 KCron 时发生了下列错误：\n"
-#~ "\n"
-#~ "%1\n"
-#~ "\n"
-#~ "KCron 现在退出。\n"
-
-#~ msgid ""
-#~ "You can use this application to schedule programs to run in the "
-#~ "background.\n"
-#~ "To schedule a new task now, click on the Tasks folder and select Edit/New "
-#~ "from the menu."
-#~ msgstr ""
-#~ "您可以使用这个程序来调度在后台运行的程序。如果要调度一个新的\n"
-#~ "任务，在“任务”夹上单击，然后选择菜单中的“编辑/新建”。"
-
-#~ msgid "Add or modify a scheduled task"
-#~ msgstr "添加或修改一个计划任务"
-
-#~ msgid "<i>This task will be executed at the specified intervals.</i>"
-#~ msgstr "<i>此任务将按指定的定期规则执行。</i>"
-
-#~ msgid "Run at system &bootup"
-#~ msgstr "在系统启动时运行(&B)"
-
-#~ msgid "Run &every day"
-#~ msgstr "每天运行(&E)"
-
-#~ msgid "Clear selection"
-#~ msgstr "清除选区"
-
-#~ msgid "AM:"
-#~ msgstr "AM："
-
-#~ msgid "PM:"
-#~ msgstr "PM："
-
-#~ msgid "<i>Please browse for a program to execute...</i>"
-#~ msgstr "<i>请浏览定位一个要执行的程序。</i>"
-
-#~ msgid "<i>This task is disabled.</i>"
-#~ msgstr "<i>此任务已禁用。</i>"
-
-#~ msgid "<i>This task will be run on system bootup.</i>"
-#~ msgstr "<i>此任务会在系统启动时运行。</i>"
-
-#~ msgid "Clear All"
-#~ msgstr "全部清除"
-
-#~ msgid "Status"
-#~ msgstr "状态"
-
-#~ msgctxt "Adds a new task"
-#~ msgid "New &Task..."
-#~ msgstr "新建任务(&T)..."
-
-#~ msgid "Create a new task."
-#~ msgstr "建立一个新的任务。"
-
-#~ msgid "M&odify..."
-#~ msgstr "修改(&O)..."
-
-#~ msgid "Modify the selected task."
-#~ msgstr "修改选中的任务。"
-
-#~ msgid "Delete the selected task."
-#~ msgstr "删除选中的任务。"
-
-#~ msgid "&Run Now"
-#~ msgstr "现在运行(&R)"
-
-#~ msgid "Run the selected task now."
-#~ msgstr "运行选中的任务。"
-
-#~ msgid "Enabled"
-#~ msgstr "已启用"
-
-#~ msgid "Disabled"
-#~ msgstr "已禁用"
-
-#~ msgid "Add or modify a variable"
-#~ msgstr "添加或修改一个变量"
-
-#~ msgid "<i>This variable will be used by scheduled tasks.</i>"
-#~ msgstr "<i>此变量供计划任务使用。</i>"
-
-#~ msgid "<i>This variable is disabled.</i>"
-#~ msgstr "<i>此变量已禁用。</i>"
-
-#~ msgctxt "Adds a new variable"
-#~ msgid "New &Variable..."
-#~ msgstr "新建变量(&V)..."
-
-#~ msgid "Create a new variable."
-#~ msgstr "建立一个新的变量。"
-
-#~ msgid "Modify the selected variable."
-#~ msgstr "修改选中的变量。"
-
-#~ msgid "Delete the selected variable."
-#~ msgstr "删除选中的变量。"
+msgstr "编辑变量…"

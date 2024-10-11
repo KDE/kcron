@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-10 00:41+0000\n"
-"PO-Revision-Date: 2024-10-03 13:08+0400\n"
+"PO-Revision-Date: 2024-10-10 09:01+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -26,16 +26,14 @@ msgstr ""
 "X-Generator: Lokalize 23.08.5\n"
 
 #: src/cronPrinter.cpp:62
-#, fuzzy
 msgctxt "@title Note: that is an HTML tag"
 msgid "<b>Tasks</b>"
-msgstr "المهام المجدولة"
+msgstr "<b>المهام</b>"
 
 #: src/cronPrinter.cpp:63
-#, fuzzy
 msgctxt "@title Note: that is an HTML tag"
 msgid "<b>Environment Variables</b>"
-msgstr "المتغيرات البيئية:"
+msgstr "<b>المتغيرات البيئية</b>"
 
 #: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:66
 #, kde-format
@@ -50,8 +48,7 @@ msgid "Command"
 msgstr "الأمر"
 
 #: src/cronPrinter.cpp:103
-#, fuzzy, kde-format
-#| msgid "Description"
+#, kde-format
 msgctxt "@title:column"
 msgid "Description"
 msgstr "الوصف"
@@ -76,16 +73,16 @@ msgid "Comment"
 msgstr "التعليق"
 
 #: src/cronPrinter.cpp:144
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title"
 msgid "System Crontab"
-msgstr "(مهام النظام المجدولة)"
+msgstr "كرونتاب النظام"
 
 #: src/cronPrinter.cpp:146
 #, kde-format
 msgctxt "@title"
 msgid "Crontab of user %1"
-msgstr ""
+msgstr "ملف كرونتاب للمستخدم %1"
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format

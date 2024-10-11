@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-10 00:41+0000\n"
-"PO-Revision-Date: 2024-10-07 07:01+0300\n"
+"PO-Revision-Date: 2024-10-10 06:53+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -644,7 +644,7 @@ msgstr "לו״ז המערכת"
 #, kde-format
 msgctxt "@action:button"
 msgid "Print Summary…"
-msgstr ""
+msgstr "הדפסת תקציר…"
 
 #: src/ui/Onboarding.qml:22
 #, kde-format

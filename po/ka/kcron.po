@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-10 00:41+0000\n"
-"PO-Revision-Date: 2024-10-04 05:29+0200\n"
+"PO-Revision-Date: 2024-10-10 05:04+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -629,7 +629,7 @@ msgstr "სისტემის განრიგი"
 #, kde-format
 msgctxt "@action:button"
 msgid "Print Summary…"
-msgstr ""
+msgstr "შეჯამების დაბეჭდვა…"
 
 #: src/ui/Onboarding.qml:22
 #, kde-format

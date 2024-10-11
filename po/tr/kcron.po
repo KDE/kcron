@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: kdeadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-10 00:41+0000\n"
-"PO-Revision-Date: 2024-10-05 01:27+0300\n"
+"PO-Revision-Date: 2024-10-10 12:05+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -635,7 +635,7 @@ msgstr "Sistem Planlaması"
 #, kde-format
 msgctxt "@action:button"
 msgid "Print Summary…"
-msgstr ""
+msgstr "Özeti Yazdır…"
 
 #: src/ui/Onboarding.qml:22
 #, kde-format
