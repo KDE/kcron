@@ -150,6 +150,7 @@
     "X-KDE-Keywords[tr]": "cron,crontab,zamanlanmış,görevler,görev,zaman,vixie",
     "X-KDE-Keywords[uk]": "cron,crontab,scheduled,tasks,task,schedule,vixie,таблиця планування,список планування,завдання,план,запуск",
     "X-KDE-Keywords[vi]": "cron,crontab,scheduled,tasks,task,schedule,vixie,lập lịch,tác vụ",
+    "X-KDE-Keywords[zh_CN]": "cron,crontab,scheduled,tasks,task,schedule,vixie,jihua,jihuarenwu,renwu,计划,计划任务,任务",
     "X-KDE-Keywords[zh_TW]": "cron,crontab,scheduled,tasks,task,schedule,vixie",
     "X-KDE-ParentApp": "kcontrol",
     "X-KDE-System-Settings-Parent-Category": "session"
