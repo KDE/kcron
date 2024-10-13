@@ -1,4 +1,4 @@
-# Version: $Revision: 1692525 $
+# Version: $Revision: 1692709 $
 # translation of kcron.po to Polish
 # translation of kcron.po to
 # translation of kcron.po to
@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-10 00:41+0000\n"
-"PO-Revision-Date: 2024-10-05 12:39+0200\n"
+"PO-Revision-Date: 2024-10-12 10:24+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -636,7 +636,7 @@ msgstr "Harmonogram systemu"
 #, kde-format
 msgctxt "@action:button"
 msgid "Print Summary…"
-msgstr ""
+msgstr "Wypisz podsumowanie…"
 
 #: src/ui/Onboarding.qml:22
 #, kde-format
