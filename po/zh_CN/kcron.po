@@ -622,7 +622,7 @@ msgstr "系统计划"
 #, kde-format
 msgctxt "@action:button"
 msgid "Print Summary…"
-msgstr ""
+msgstr "打印概要…"
 
 #: src/ui/Onboarding.qml:22
 #, kde-format
