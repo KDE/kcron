@@ -30,8 +30,6 @@ msgid "<b>Tasks</b>"
 msgstr "<b>Προγραμματισμένες εργασίες</b>"
 
 #: src/cronPrinter.cpp:63
-#, fuzzy
-#| msgid "<b>Environment Variables</b>"
 msgctxt "@title Note: that is an HTML tag"
 msgid "<b>Environment Variables</b>"
 msgstr "<b>Μεταβλητές περιβάλλοντος</b>"
@@ -49,8 +47,7 @@ msgid "Command"
 msgstr "Εντολή"
 
 #: src/cronPrinter.cpp:103
-#, fuzzy, kde-format
-#| msgid "Description"
+#, kde-format
 msgctxt "@title:column"
 msgid "Description"
 msgstr "Περιγραφή"
@@ -75,16 +72,13 @@ msgid "Comment"
 msgstr "Σχόλιο"
 
 #: src/cronPrinter.cpp:144
-#, fuzzy, kde-format
-#| msgid "System Crontab"
+#, kde-format
 msgctxt "@title"
 msgid "System Crontab"
 msgstr "Crontab του συστήματος"
 
 #: src/cronPrinter.cpp:146
-#, fuzzy, kde-format
-#| msgctxt "Crontab of user login"
-#| msgid "Crontab of user %1"
+#, kde-format
 msgctxt "@title"
 msgid "Crontab of user %1"
 msgstr "Crontab του χρήστη %1"
