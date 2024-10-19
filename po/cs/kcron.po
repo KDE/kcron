@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-10 00:41+0000\n"
-"PO-Revision-Date: 2024-09-24 15:22+0200\n"
+"PO-Revision-Date: 2024-10-18 11:27+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -17,20 +17,17 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 24.08.1\n"
+"X-Generator: Lokalize 24.08.2\n"
 
 #: src/cronPrinter.cpp:62
 msgctxt "@title Note: that is an HTML tag"
 msgid "<b>Tasks</b>"
-msgstr ""
+msgstr "<b>Úlohy</b>"
 
 #: src/cronPrinter.cpp:63
-#, fuzzy
-#| msgctxt "@title:group"
-#| msgid "Environment Variables"
 msgctxt "@title Note: that is an HTML tag"
 msgid "<b>Environment Variables</b>"
-msgstr "Proměnné prostředí"
+msgstr "<b>Proměnné prostředí</b>"
 
 #: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:66
 #, kde-format
@@ -48,7 +45,7 @@ msgstr "Příkaz"
 #, kde-format
 msgctxt "@title:column"
 msgid "Description"
-msgstr ""
+msgstr "Popis"
 
 #: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:67
 #, kde-format
@@ -73,13 +70,13 @@ msgstr "Komentář"
 #, kde-format
 msgctxt "@title"
 msgid "System Crontab"
-msgstr ""
+msgstr "Systémový Crontab"
 
 #: src/cronPrinter.cpp:146
 #, kde-format
 msgctxt "@title"
 msgid "Crontab of user %1"
-msgstr ""
+msgstr "Crontab uživatele %1"
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -569,7 +566,7 @@ msgstr "Konec běhu skriptu. Stiskněte Enter, nebo Ctrl+C pro ukončení."
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Choose a program to run</message>"
-msgstr ""
+msgstr "<message>Vyberte program, který si přejete spustit</message>"
 
 #: src/taskvalidator.cpp:112 src/taskvalidator.cpp:119
 #, kde-kuit-format
@@ -603,13 +600,13 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please select from the <b>Hours</b> section</message>"
-msgstr ""
+msgstr "<message>Prosím, vyberte ze sekce <b>Hodiny</b>...</message>"
 
 #: src/taskvalidator.cpp:224
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please select from the <b>Minutes</b> section</message>"
-msgstr ""
+msgstr "<message>Prosím, vyberte ze sekce <b>Minuty</b>...</message>"
 
 #: src/ui/main.qml:45
 #, kde-format
@@ -621,19 +618,19 @@ msgstr "Zobrazit:"
 #, kde-format
 msgctxt "@title:tab"
 msgid "User Schedule"
-msgstr ""
+msgstr "Plán uživatele"
 
 #: src/ui/main.qml:55
 #, kde-format
 msgctxt "@title:tab"
 msgid "System Schedule"
-msgstr ""
+msgstr "Plán systému"
 
 #: src/ui/main.qml:64
 #, kde-format
 msgctxt "@action:button"
 msgid "Print Summary…"
-msgstr ""
+msgstr "Vypsat shrnutí..."
 
 #: src/ui/Onboarding.qml:22
 #, kde-format
@@ -653,7 +650,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action:button"
 msgid "Go to Dashboard"
-msgstr ""
+msgstr "Přejít na přístrojovou desku"
 
 #: src/ui/TaskPage.qml:23
 #, kde-format
@@ -701,7 +698,7 @@ msgstr "Příkaz:"
 #, kde-format
 msgctxt "@action:button"
 msgid "Browse the Program"
-msgstr ""
+msgstr "Procházet program"
 
 #: src/ui/TaskPage.qml:106
 #, kde-format
@@ -770,11 +767,10 @@ msgid "Minutes"
 msgstr "Minuty"
 
 #: src/ui/TaskPage.qml:264
-#, fuzzy, kde-format
-#| msgid "Custom selection"
+#, kde-format
 msgctxt "@label:listbox"
 msgid "Selection:"
-msgstr "Vlastní výběr"
+msgstr "Výběr:"
 
 #: src/ui/TaskPage.qml:269
 #, kde-format
@@ -1104,7 +1100,3 @@ msgstr "Přidat proměnnou…"
 msgctxt "@action:button"
 msgid "Edit Variable…"
 msgstr "Upravit proměnnou…"
-
-#~ msgctxt "@action:button"
-#~ msgid "Print"
-#~ msgstr "Tisk"
