@@ -32,7 +32,6 @@ find_package(KF6 REQUIRED COMPONENTS
     I18n
     KIO
     KCMUtils
-    Declarative
 )
 
 find_package(KF6KirigamiAddons 0.11.76 REQUIRED)
