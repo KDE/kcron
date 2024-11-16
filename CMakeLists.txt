@@ -30,7 +30,6 @@ find_package(KF6 REQUIRED COMPONENTS
     CoreAddons
     Auth
     I18n
-    KIO
     KCMUtils
 )
 

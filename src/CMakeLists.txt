@@ -52,7 +52,6 @@ target_link_libraries(kcm_cron
     Qt6::PrintSupport
     KF6::ConfigWidgets
     KF6::I18n
-    KF6::KIOWidgets
     KF6::CoreAddons
     KF6::AuthCore
     KF6::KCMUtils
