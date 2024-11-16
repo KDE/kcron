@@ -12,7 +12,6 @@ Dependencies:
     'frameworks/kio': '@latest-kf6'
     'frameworks/kdoctools': '@latest-kf6'
     'frameworks/kcmutils': '@latest-kf6'
-    'frameworks/kdeclarative': '@latest-kf6'
     'libraries/kirigami-addons': '@latest-kf6'
 
 
