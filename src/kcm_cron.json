@@ -2,6 +2,7 @@
     "KPlugin": {
         "Description": "Configure and schedule tasks",
         "Description[ar]": "اضبط وجدول المهامّ",
+        "Description[be]": "Наладжванне і планаванне задач",
         "Description[bg]": "Задаване и настройване на задачи",
         "Description[ca@valencia]": "Configura i planifica les tasques",
         "Description[ca]": "Configura i planifica les tasques",
@@ -41,6 +42,7 @@
         "Icon": "preferences-system-time",
         "Name": "Task Scheduler",
         "Name[ar]": "مجدول المهامّ",
+        "Name[be]": "Планіроўшчык задач",
         "Name[bg]": "Диспечер на задачи",
         "Name[bs]": "Raspored Zadataka",
         "Name[ca@valencia]": "Planificador de tasques",
@@ -107,6 +109,7 @@
     "X-DocPath": "kcontrol/kcron/index.html",
     "X-KDE-Keywords": "cron,crontab,scheduled,tasks,task,schedule,vixie",
     "X-KDE-Keywords[ar]": "cron,كرونتاب,جدولة,مهام,مهمّة,مهمة,كرون",
+    "X-KDE-Keywords[be]": "cron,crontab,запланавана,задачы,задача,расклад,vixie",
     "X-KDE-Keywords[bg]": "cron,crontab,планирани задачи,задачи,vixie",
     "X-KDE-Keywords[bs]": "cron,crontab,scheduled,tasks,raspoređeni,zadaci,zadato, redoslijed,task,schedule,vixie",
     "X-KDE-Keywords[ca@valencia]": "cron,crontab,planificació,planificat,planificada,tasques,tasca,planificació,vixie",
