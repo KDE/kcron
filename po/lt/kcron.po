@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-10 00:41+0000\n"
-"PO-Revision-Date: 2015-12-30 18:15+0200\n"
+"PO-Revision-Date: 2024-11-25 00:16+0200\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: lt <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -18,79 +18,66 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: src/cronPrinter.cpp:62
-#, fuzzy
-#| msgid "<b>Scheduled Tasks</b>"
 msgctxt "@title Note: that is an HTML tag"
 msgid "<b>Tasks</b>"
-msgstr "<b>Suplanuotos užduotys</b>"
+msgstr "<b>Užduotys</b>"
 
 #: src/cronPrinter.cpp:63
-#, fuzzy
-#| msgid "<b>Environment Variables</b>"
 msgctxt "@title Note: that is an HTML tag"
 msgid "<b>Environment Variables</b>"
 msgstr "<b>Aplinkos kintamieji</b>"
 
 #: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:66
-#, fuzzy, kde-format
-#| msgid "Scheduling"
+#, kde-format
 msgctxt "@title:column"
 msgid "Scheduling"
 msgstr "Planavimas"
 
 #: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:75
-#, fuzzy, kde-format
-#| msgid "Command"
+#, kde-format
 msgctxt "@title:column"
 msgid "Command"
 msgstr "Komanda"
 
 #: src/cronPrinter.cpp:103
-#, fuzzy, kde-format
-#| msgid "Description"
+#, kde-format
 msgctxt "@title:column"
 msgid "Description"
 msgstr "Aprašas"
 
 #: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:67
-#, fuzzy, kde-format
-#| msgid "Variable"
+#, kde-format
 msgctxt "@title:column"
 msgid "Variable"
 msgstr "Kintamasis"
 
 #: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:98
-#, fuzzy, kde-format
-#| msgid "Value"
+#, kde-format
 msgctxt "@title:column"
 msgid "Value"
-msgstr "Vertė"
+msgstr "Reikšmė"
 
 #: src/cronPrinter.cpp:117 src/ui/TasksComponent.qml:84
 #: src/ui/VariablesComponent.qml:106
-#, fuzzy, kde-format
-#| msgid "Comment"
+#, kde-format
 msgctxt "@title:column"
 msgid "Comment"
 msgstr "Komentaras"
 
 #: src/cronPrinter.cpp:144
-#, fuzzy, kde-format
-#| msgid "System Crontab"
+#, kde-format
 msgctxt "@title"
 msgid "System Crontab"
-msgstr "Sistemos Crontab"
+msgstr "Sistemos crontab"
 
 #: src/cronPrinter.cpp:146
-#, fuzzy, kde-format
-#| msgctxt "Crontab of user login"
-#| msgid "Crontab of user %1"
+#, kde-format
 msgctxt "@title"
 msgid "Crontab of user %1"
-msgstr "Naudotojo %1 Crontab'as"
+msgstr "Naudotojo %1 crontab"
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -119,7 +106,7 @@ msgid ""
 "<p><strong>Command:</strong> %1</p><strong>Command could not be started</"
 "strong>"
 msgstr ""
-"<p><strong>Komanda:</strong> %1</p><strong>Komanda negali būti paleista</"
+"<p><strong>Komanda:</strong> %1</p><strong>Nepavyko paleisti komandos</"
 "strong>"
 
 #: src/crontablib/ctcron.cpp:258
@@ -134,7 +121,7 @@ msgstr ""
 #: src/crontablib/ctcron.cpp:264
 #, kde-format
 msgid "An error occurred while updating crontab."
-msgstr "Atnaujinant crontab, įvyko klaida."
+msgstr "Atnaujinant crontab įvyko klaida."
 
 #: src/crontablib/ctcron.cpp:272
 #, kde-format
@@ -144,12 +131,12 @@ msgstr "Nepavyko atverti crontab failo rašymui"
 #: src/crontablib/ctcron.cpp:272
 #, kde-format
 msgid "The file %1 could not be opened."
-msgstr "Nepavyko atidaryti failo %1."
+msgstr "Nepavyko atverti failo %1."
 
 #: src/crontablib/ctcron.cpp:295
 #, kde-format
 msgid "KAuth::ExecuteJob Error"
-msgstr ""
+msgstr "KAuth::ExecuteJob klaida"
 
 #: src/crontablib/ctdom.cpp:22 src/crontablib/ctdow.cpp:44
 #: src/crontablib/cttask.cpp:294
@@ -165,7 +152,7 @@ msgstr "1-mą"
 #: src/crontablib/ctdom.cpp:34
 #, kde-format
 msgid "2nd"
-msgstr "2-ą"
+msgstr "2-rą"
 
 #: src/crontablib/ctdom.cpp:34
 #, kde-format
@@ -350,37 +337,37 @@ msgstr "Sk"
 #: src/crontablib/ctdow.cpp:61
 #, kde-format
 msgid "Monday"
-msgstr "pirmadienis"
+msgstr "Pirmadienis"
 
 #: src/crontablib/ctdow.cpp:61
 #, kde-format
 msgid "Tuesday"
-msgstr "antradienis"
+msgstr "Antradienis"
 
 #: src/crontablib/ctdow.cpp:61
 #, kde-format
 msgid "Wednesday"
-msgstr "trečiadienis"
+msgstr "Trečiadienis"
 
 #: src/crontablib/ctdow.cpp:61
 #, kde-format
 msgid "Thursday"
-msgstr "ketvirtadienis"
+msgstr "Ketvirtadienis"
 
 #: src/crontablib/ctdow.cpp:61
 #, kde-format
 msgid "Friday"
-msgstr "penktadienis"
+msgstr "Penktadienis"
 
 #: src/crontablib/ctdow.cpp:61
 #, kde-format
 msgid "Saturday"
-msgstr "šeštadienis"
+msgstr "Šeštadienis"
 
 #: src/crontablib/ctdow.cpp:62
 #, kde-format
 msgid "Sunday"
-msgstr "sekmadienis"
+msgstr "Sekmadienis"
 
 #: src/crontablib/ctHelper.cpp:20
 #, kde-format
@@ -395,8 +382,8 @@ msgid ""
 "\n"
 "Check the crontab man page for further details."
 msgstr ""
-"Jums uždrausta naudotis KCron\t                      tai nurodyta arba /etc/"
-"cron.allow faile, arba /etc/cron.deny faile.\t                      \n"
+"Jums uždrausta naudotis KCron,\t                      nes tai nurodyta arba /"
+"etc/cron.allow faile, arba /etc/cron.deny faile.\t                      \n"
 "\n"
 "Daugiau informacijos rasite crontab dokumentacijoje."
 
@@ -408,69 +395,69 @@ msgstr "kiekvieną mėnesį "
 #: src/crontablib/ctmonth.cpp:34
 #, kde-format
 msgid "January"
-msgstr "Sausis"
+msgstr "Sausio"
 
 #: src/crontablib/ctmonth.cpp:34
 #, kde-format
 msgid "February"
-msgstr "Vasaris"
+msgstr "Vasario"
 
 #: src/crontablib/ctmonth.cpp:34
 #, kde-format
 msgid "March"
-msgstr "Kovas"
+msgstr "Kovo"
 
 #: src/crontablib/ctmonth.cpp:34
 #, kde-format
 msgid "April"
-msgstr "Balandis"
+msgstr "Balandžio"
 
 #: src/crontablib/ctmonth.cpp:34
 #, kde-format
 msgctxt "May long"
 msgid "May"
-msgstr "Gegužė"
+msgstr "Gegužės"
 
 #: src/crontablib/ctmonth.cpp:34
 #, kde-format
 msgid "June"
-msgstr "Birželis"
+msgstr "Birželio"
 
 #: src/crontablib/ctmonth.cpp:35
 #, kde-format
 msgctxt "July long"
 msgid "July"
-msgstr "Liepa"
+msgstr "Liepos"
 
 #: src/crontablib/ctmonth.cpp:35
 #, kde-format
 msgid "August"
-msgstr "Rugpjūtis"
+msgstr "Rugpjūčio"
 
 #: src/crontablib/ctmonth.cpp:35
 #, kde-format
 msgid "September"
-msgstr "Rugsėjis"
+msgstr "Rugsėjo"
 
 #: src/crontablib/ctmonth.cpp:35
 #, kde-format
 msgid "October"
-msgstr "Spalis"
+msgstr "Spalio"
 
 #: src/crontablib/ctmonth.cpp:35
 #, kde-format
 msgid "November"
-msgstr "Lapkritis"
+msgstr "Lapkričio"
 
 #: src/crontablib/ctmonth.cpp:35
 #, kde-format
 msgid "December"
-msgstr "Gruodis"
+msgstr "Gruodžio"
 
 #: src/crontablib/ctSystemCron.cpp:29
 #, kde-format
 msgid "root"
-msgstr ""
+msgstr "šaknis"
 
 #: src/crontablib/cttask.cpp:265
 #, kde-format
@@ -493,13 +480,13 @@ msgstr "kiekvieną %1"
 #, kde-format
 msgctxt "'Days of month' of 'Months'"
 msgid "%1 of %2"
-msgstr "%1 iš %2"
+msgstr "%2 %1"
 
 #: src/crontablib/cttask.cpp:304
 #, kde-format
 msgctxt "1:Day of month, 2:Day of week"
 msgid "%1 as well as %2"
-msgstr "%1 kaip ir %2"
+msgstr "%1, o taip pat ir %2"
 
 #: src/crontablib/cttask.cpp:336
 #, kde-format
@@ -526,7 +513,7 @@ msgstr ", "
 #, kde-format
 msgctxt "Hour::Minute list"
 msgid "At %1"
-msgstr "Laiku %1"
+msgstr "Ties %1"
 
 #: src/crontablib/cttask.cpp:366
 #, kde-format
@@ -545,22 +532,22 @@ msgstr ","
 #: src/crontablib/ctvariable.cpp:134
 #, kde-format
 msgid "Override default home folder."
-msgstr "Nepaisyti įprasto namų aplanko."
+msgstr "Nustelbti numatytąjį namų aplanką."
 
 #: src/crontablib/ctvariable.cpp:136
 #, kde-format
 msgid "Email output to specified account."
-msgstr "Išvestį nusiųsti el. paštu į nurodytą sąskaitą."
+msgstr "Siųsti išvestį el. paštu į nurodytą paskyrą."
 
 #: src/crontablib/ctvariable.cpp:138
 #, kde-format
 msgid "Override default shell."
-msgstr "Nepaisyti įprasto apvalkalo."
+msgstr "Nustelbti numatytąjį apvalkalą."
 
 #: src/crontablib/ctvariable.cpp:140
 #, kde-format
 msgid "Folders to search for program files."
-msgstr "Aplankai, kuriuose ieškomos programų failų."
+msgstr "Aplankai, kuriuose ieškoti programų failų."
 
 #: src/crontablib/ctvariable.cpp:142
 #, kde-format
@@ -577,93 +564,83 @@ msgstr "Vietinis kintamasis"
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
 msgstr ""
-"Scenarijaus vykdymo pabaiga. Norėdami išeiti spauskite Įvesti arba Vald+C."
+"Scenarijaus vykdymo pabaiga. Norėdami išeiti paspauskite Įvedimo mygtuką "
+"arba Vald+C."
 
 #: src/taskvalidator.cpp:104 src/taskvalidator.cpp:144
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Choose a program to run</message>"
-msgstr ""
+msgstr "<message>Pasirinkite programą, kurią paleisti</message>"
 
 #: src/taskvalidator.cpp:112 src/taskvalidator.cpp:119
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please type a valid command line...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please type a valid command line</message>"
-msgstr "<i>Prašau įveskite teisingą komandinę eilutę...</i>"
+msgstr "<message>Įrašykite tinkamą komandų eilutę</message>"
 
 #: src/taskvalidator.cpp:138
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please select an executable program...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please select an executable program</message>"
-msgstr "<i>Prašome parinkti vykdomąją programą...</i>"
+msgstr "<message>Pasirinkite vykdomąją programą</message>"
 
 #: src/taskvalidator.cpp:163
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please select from the 'Months' section...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please select from the <b>Months</b> section</message>"
-msgstr "<i>Prašau parinkite iš „mėnesių“ dalies...</i>"
+msgstr "<message>Pasirinkite <b>mėnesių</b> skiltyje</message>"
 
 #: src/taskvalidator.cpp:188
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "<i>Please select from either the 'Days of Month' or the 'Days of Week' "
-#| "section...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from either the <b>Days of Month</b> or the <b>Days "
 "of Week</b> section</message>"
 msgstr ""
-"<i>Prašau parinkite arba „mėnesio dienos“ arba „savaitės dienos“ skiltį...</"
-"i>"
+"<message>Pasirinkite <b>mėnesio dienų</b> ar <b>savaitės dienų</b> skiltyje</"
+"message>"
 
 #: src/taskvalidator.cpp:206
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please select from the 'Hours' section...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please select from the <b>Hours</b> section</message>"
-msgstr "<i>Prašau parinkite „valandų“ skiltyje...</i>"
+msgstr "<message>Pasirinkite <b>valandų</b> skiltyje</message>"
 
 #: src/taskvalidator.cpp:224
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please select from the 'Minutes' section...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please select from the <b>Minutes</b> section</message>"
-msgstr "<i>Prašau parinkite „minučių“ skiltyje...</i>"
+msgstr "<message>Pasirinkite <b>minučių</b> skiltyje</message>"
 
 #: src/ui/main.qml:45
 #, kde-format
 msgctxt "@text"
 msgid "Show:"
-msgstr ""
+msgstr "Rodyti:"
 
 #: src/ui/main.qml:49
-#, fuzzy, kde-format
-#| msgid "Task Scheduler"
+#, kde-format
 msgctxt "@title:tab"
 msgid "User Schedule"
-msgstr "Užduočių planuoklis"
+msgstr "Naudotojo planas"
 
 #: src/ui/main.qml:55
-#, fuzzy, kde-format
-#| msgid "Task Scheduler"
+#, kde-format
 msgctxt "@title:tab"
 msgid "System Schedule"
-msgstr "Užduočių planuoklis"
+msgstr "Sistemos planas"
 
 #: src/ui/main.qml:64
 #, kde-format
 msgctxt "@action:button"
 msgid "Print Summary…"
-msgstr ""
+msgstr "Spaudinti santrauką…"
 
 #: src/ui/Onboarding.qml:22
-#, fuzzy, kde-format
-#| msgid "Welcome to the Task Scheduler"
+#, kde-format
 msgid "Welcome to Task Scheduler!"
-msgstr "Sveiki atvykę į užduočių planuoklį"
+msgstr "Sveiki atvykę į užduočių planuoklę!"
 
 #: src/ui/Onboarding.qml:24
 #, kde-kuit-format
@@ -673,155 +650,141 @@ msgid ""
 "schedule and automate repetitive tasks like downloading files or sending "
 "emails. <link url='%1'>Learn more</link>"
 msgstr ""
+"Suplanuokite fone paleidžiamas programas. Nustatykite paleisti užduotis "
+"nustatytu tvarkaraščiu ir automatizuokite pasikartojančias užduotis, tokias "
+"kaip failų atsiuntimas ar el. laiškų siuntimas. <link url='%1'>Sužinokite "
+"daugiau</link>"
 
 #: src/ui/Onboarding.qml:27
 #, kde-format
 msgctxt "@action:button"
 msgid "Go to Dashboard"
-msgstr ""
+msgstr "Eiti į skydelį"
 
 #: src/ui/TaskPage.qml:23
-#, fuzzy, kde-format
-#| msgid "Modify Task"
+#, kde-format
 msgctxt "@title"
 msgid "Edit Task"
-msgstr "Modifikuoti užduotį"
+msgstr "Taisyti užduotį"
 
 #: src/ui/TaskPage.qml:24
-#, fuzzy, kde-format
-#| msgid "New Task"
+#, kde-format
 msgctxt "@title"
 msgid "New Task"
 msgstr "Nauja užduotis"
 
 #: src/ui/TaskPage.qml:34
-#, fuzzy, kde-format
-#| msgid "Modify Task"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit Task"
-msgstr "Modifikuoti užduotį"
+msgstr "Taisyti užduotį"
 
 #: src/ui/TaskPage.qml:35
-#, fuzzy, kde-format
-#| msgid "Modify Task"
+#, kde-format
 msgctxt "@action:button accessible"
 msgid "Edit Task"
-msgstr "Modifikuoti užduotį"
+msgstr "Taisyti užduotį"
 
 #: src/ui/TaskPage.qml:45
-#, fuzzy, kde-format
-#| msgid "New Task"
+#, kde-format
 msgctxt "@action:button"
 msgid "New Task"
 msgstr "Nauja užduotis"
 
 #: src/ui/TaskPage.qml:46
-#, fuzzy, kde-format
-#| msgid "New Task"
+#, kde-format
 msgctxt "@action:button accessible"
 msgid "New Task"
 msgstr "Nauja užduotis"
 
 #: src/ui/TaskPage.qml:91
-#, fuzzy, kde-format
-#| msgid "&Command:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Command:"
-msgstr "&Komanda:"
+msgstr "Komanda:"
 
 #: src/ui/TaskPage.qml:98
 #, kde-format
 msgctxt "@action:button"
 msgid "Browse the Program"
-msgstr ""
+msgstr "Naršyti programą"
 
 #: src/ui/TaskPage.qml:106
-#, fuzzy, kde-format
-#| msgid "&Enable this task"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable this task"
-msgstr "Įj&ungti šią užduotį"
+msgstr "Įjungti šią užduotį"
 
 #: src/ui/TaskPage.qml:111 src/ui/VariablePage.qml:97
-#, fuzzy, kde-format
-#| msgid "User"
+#, kde-format
 msgctxt "@label:listbox"
 msgid "User:"
-msgstr "Naudotojas"
+msgstr "Naudotojas:"
 
 #: src/ui/TaskPage.qml:131 src/ui/VariablePage.qml:119
-#, fuzzy, kde-format
-#| msgid "Co&mment:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Comment:"
-msgstr "Ko&mentaras:"
+msgstr "Komentaras:"
 
 #: src/ui/TaskPage.qml:138
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Run:"
-msgstr ""
+msgstr "Paleisti:"
 
 #: src/ui/TaskPage.qml:141
-#, fuzzy, kde-format
-#| msgid "At system startup"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "When system starts"
 msgstr "Sistemos paleidimo metu"
 
 #: src/ui/TaskPage.qml:148
-#, fuzzy, kde-format
-#| msgid "every day "
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Every day"
-msgstr "kiekvieną dieną "
+msgstr "Kiekvieną dieną"
 
 #: src/ui/TaskPage.qml:154
-#, fuzzy, kde-format
-#| msgid "Months"
+#, kde-format
 msgctxt "@title:group"
 msgid "Months"
 msgstr "Mėnesiai"
 
 #: src/ui/TaskPage.qml:174
-#, fuzzy, kde-format
-#| msgid "Days of Month"
+#, kde-format
 msgctxt "@title:group"
 msgid "Days of Month"
 msgstr "Mėnesio dienos"
 
 #: src/ui/TaskPage.qml:195
-#, fuzzy, kde-format
-#| msgid "Days of Week"
+#, kde-format
 msgctxt "@title:group"
 msgid "Days of Week"
 msgstr "Savaitės dienos"
 
 #: src/ui/TaskPage.qml:215
-#, fuzzy, kde-format
-#| msgid "Hours"
+#, kde-format
 msgctxt "@title:group"
 msgid "Hours"
 msgstr "Valandos"
 
 #: src/ui/TaskPage.qml:236
-#, fuzzy, kde-format
-#| msgid "Minutes"
+#, kde-format
 msgctxt "@title:group"
 msgid "Minutes"
 msgstr "Minutės"
 
 #: src/ui/TaskPage.qml:264
-#, fuzzy, kde-format
-#| msgid "Preselection:"
+#, kde-format
 msgctxt "@label:listbox"
 msgid "Selection:"
-msgstr "Parinkimas:"
+msgstr "Žymėjimas:"
 
 #: src/ui/TaskPage.qml:269
 #, kde-format
 msgid "Custom selection"
-msgstr "Savas pažymėjimas"
+msgstr "Tinkintas žymėjimas"
 
 #: src/ui/TaskPage.qml:270
 #, kde-format
@@ -859,337 +822,293 @@ msgid "Every 30 minutes"
 msgstr "Kas 30 minučių"
 
 #: src/ui/TaskPage.qml:318
-#, fuzzy, kde-format
-#| msgid "January"
+#, kde-format
 msgctxt "@action:button"
 msgid "January"
 msgstr "Sausis"
 
 #: src/ui/TaskPage.qml:322
-#, fuzzy, kde-format
-#| msgid "February"
+#, kde-format
 msgctxt "@action:button"
 msgid "February"
 msgstr "Vasaris"
 
 #: src/ui/TaskPage.qml:326
-#, fuzzy, kde-format
-#| msgid "March"
+#, kde-format
 msgctxt "@action:button"
 msgid "March"
 msgstr "Kovas"
 
 #: src/ui/TaskPage.qml:330
-#, fuzzy, kde-format
-#| msgid "April"
+#, kde-format
 msgctxt "@action:button"
 msgid "April"
 msgstr "Balandis"
 
 #: src/ui/TaskPage.qml:334
-#, fuzzy, kde-format
-#| msgctxt "May long"
-#| msgid "May"
+#, kde-format
 msgctxt "@action:button"
 msgid "May"
 msgstr "Gegužė"
 
 #: src/ui/TaskPage.qml:338
-#, fuzzy, kde-format
-#| msgid "June"
+#, kde-format
 msgctxt "@action:button"
 msgid "June"
 msgstr "Birželis"
 
 #: src/ui/TaskPage.qml:342
-#, fuzzy, kde-format
-#| msgctxt "July long"
-#| msgid "July"
+#, kde-format
 msgctxt "@action:button"
 msgid "July"
 msgstr "Liepa"
 
 #: src/ui/TaskPage.qml:346
-#, fuzzy, kde-format
-#| msgid "August"
+#, kde-format
 msgctxt "@action:button"
 msgid "August"
 msgstr "Rugpjūtis"
 
 #: src/ui/TaskPage.qml:350
-#, fuzzy, kde-format
-#| msgid "September"
+#, kde-format
 msgctxt "@action:button"
 msgid "September"
 msgstr "Rugsėjis"
 
 #: src/ui/TaskPage.qml:354
-#, fuzzy, kde-format
-#| msgid "October"
+#, kde-format
 msgctxt "@action:button"
 msgid "October"
 msgstr "Spalis"
 
 #: src/ui/TaskPage.qml:358
-#, fuzzy, kde-format
-#| msgid "November"
+#, kde-format
 msgctxt "@action:button"
 msgid "November"
 msgstr "Lapkritis"
 
 #: src/ui/TaskPage.qml:362
-#, fuzzy, kde-format
-#| msgid "December"
+#, kde-format
 msgctxt "@action:button"
 msgid "December"
 msgstr "Gruodis"
 
 #: src/ui/TaskPage.qml:384
-#, fuzzy, kde-format
-#| msgid "Monday"
+#, kde-format
 msgctxt "@action:button"
 msgid "Monday"
-msgstr "pirmadienis"
+msgstr "Pirmadienis"
 
 #: src/ui/TaskPage.qml:388
-#, fuzzy, kde-format
-#| msgid "Tuesday"
+#, kde-format
 msgctxt "@action:button"
 msgid "Tuesday"
-msgstr "antradienis"
+msgstr "Antradienis"
 
 #: src/ui/TaskPage.qml:392
-#, fuzzy, kde-format
-#| msgid "Wednesday"
+#, kde-format
 msgctxt "@action:button"
 msgid "Wednesday"
-msgstr "trečiadienis"
+msgstr "Trečiadienis"
 
 #: src/ui/TaskPage.qml:396
-#, fuzzy, kde-format
-#| msgid "Thursday"
+#, kde-format
 msgctxt "@action:button"
 msgid "Thursday"
-msgstr "ketvirtadienis"
+msgstr "Ketvirtadienis"
 
 #: src/ui/TaskPage.qml:400
-#, fuzzy, kde-format
-#| msgid "Friday"
+#, kde-format
 msgctxt "@action:button"
 msgid "Friday"
-msgstr "penktadienis"
+msgstr "Penktadienis"
 
 #: src/ui/TaskPage.qml:404
-#, fuzzy, kde-format
-#| msgid "Saturday"
+#, kde-format
 msgctxt "@action:button"
 msgid "Saturday"
-msgstr "šeštadienis"
+msgstr "Šeštadienis"
 
 #: src/ui/TaskPage.qml:408
-#, fuzzy, kde-format
-#| msgid "Sunday"
+#, kde-format
 msgctxt "@action:button"
 msgid "Sunday"
-msgstr "sekmadienis"
+msgstr "Sekmadienis"
 
 #: src/ui/TasksComponent.qml:19
-#, fuzzy, kde-format
-#| msgid "Scheduled Tasks"
+#, kde-format
 msgctxt "@title:group"
 msgid "Scheduled Tasks"
 msgstr "Suplanuotos užduotys"
 
 #: src/ui/TasksComponent.qml:56 src/ui/VariablesComponent.qml:57
-#, fuzzy, kde-format
-#| msgid "User"
+#, kde-format
 msgctxt "@title:column"
 msgid "User"
 msgstr "Naudotojas"
 
 #: src/ui/TasksComponent.qml:92
-#, fuzzy, kde-format
-#| msgid "Scheduling Details"
+#, kde-format
 msgctxt "@title:column"
 msgid "Scheduling Details"
-msgstr "Planavimo detalės"
+msgstr "Išsamiau apie planavimą"
 
 #: src/ui/TasksComponent.qml:98
 #, kde-format
 msgctxt "@action:button"
 msgid "Add Task…"
-msgstr ""
+msgstr "Pridėti užduotį…"
 
 #: src/ui/TasksComponent.qml:105
-#, fuzzy, kde-format
-#| msgid "Modify Task"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit Task…"
-msgstr "Modifikuoti užduotį"
+msgstr "Taisyti užduotį…"
 
 #: src/ui/TasksComponent.qml:113 src/ui/VariablesComponent.qml:125
-#, fuzzy, kde-format
-#| msgid "Set All"
+#, kde-format
 msgctxt "@action:button"
 msgid "Select All"
-msgstr "Nustatyti viską"
+msgstr "Žymėti viską"
 
 #: src/ui/TasksComponent.qml:120 src/ui/VariablesComponent.qml:132
 #, kde-format
 msgctxt "@action:button"
 msgid "Copy"
-msgstr ""
+msgstr "Kopijuoti"
 
 #: src/ui/TasksComponent.qml:127 src/ui/VariablesComponent.qml:139
 #, kde-format
 msgctxt "@action:button"
 msgid "Cut"
-msgstr ""
+msgstr "Iškirpti"
 
 #: src/ui/TasksComponent.qml:134 src/ui/VariablesComponent.qml:146
 #, kde-format
 msgctxt "@action:button"
 msgid "Paste"
-msgstr ""
+msgstr "Įdėti"
 
 #: src/ui/TasksComponent.qml:142 src/ui/TasksComponent.qml:174
 #: src/ui/VariablesComponent.qml:154 src/ui/VariablesComponent.qml:178
-#, fuzzy, kde-format
-#| msgid "&Delete"
+#, kde-format
 msgctxt "@action:button"
 msgid "Delete"
-msgstr "Paša&linti"
+msgstr "Ištrinti"
 
 #: src/ui/TasksComponent.qml:150
-#, fuzzy, kde-format
-#| msgid "&Run as:"
+#, kde-format
 msgctxt "@action:button"
 msgid "Run task"
-msgstr "P&aleisti kaip:"
+msgstr "Paleisti užduotį"
 
 #: src/ui/TasksComponent.qml:162 src/ui/VariablesComponent.qml:166
 #, kde-format
 msgctxt "@action:button"
 msgid "Add…"
-msgstr ""
+msgstr "Pridėti…"
 
 #: src/ui/TasksComponent.qml:168 src/ui/VariablesComponent.qml:172
 #, kde-format
 msgctxt "@action:button"
 msgid "Edit…"
-msgstr ""
+msgstr "Taisyti…"
 
 #: src/ui/TasksComponent.qml:180
-#, fuzzy, kde-format
-#| msgid "Sun"
+#, kde-format
 msgctxt "@action:button"
 msgid "Run"
-msgstr "Sk"
+msgstr "Paleisti"
 
 #: src/ui/TimeCard.qml:33
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Select all"
-msgstr ""
+msgstr "Žymėti viską"
 
 #: src/ui/VariablePage.qml:17
-#, fuzzy, kde-format
-#| msgid "Modify Variable"
+#, kde-format
 msgctxt "@title"
 msgid "Edit Variable"
-msgstr "Modifikuoti kintamąjį"
+msgstr "Taisyti kintamąjį"
 
 #: src/ui/VariablePage.qml:18
-#, fuzzy, kde-format
-#| msgid "New Variable"
+#, kde-format
 msgctxt "@title"
 msgid "New Variable"
 msgstr "Naujas kintamasis"
 
 #: src/ui/VariablePage.qml:27
-#, fuzzy, kde-format
-#| msgid "Modify Variable"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit Variable"
-msgstr "Modifikuoti kintamąjį"
+msgstr "Taisyti kintamąjį"
 
 #: src/ui/VariablePage.qml:28
-#, fuzzy, kde-format
-#| msgid "Modify Variable"
+#, kde-format
 msgctxt "@action:button accessible"
 msgid "Edit Variable"
-msgstr "Modifikuoti kintamąjį"
+msgstr "Taisyti kintamąjį"
 
 #: src/ui/VariablePage.qml:38
-#, fuzzy, kde-format
-#| msgid "New Variable"
+#, kde-format
 msgctxt "@action:button"
 msgid "New Variable"
 msgstr "Naujas kintamasis"
 
 #: src/ui/VariablePage.qml:39
-#, fuzzy, kde-format
-#| msgid "New Variable"
+#, kde-format
 msgctxt "@action:button accessible"
 msgid "New Variable"
 msgstr "Naujas kintamasis"
 
 #: src/ui/VariablePage.qml:57
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please enter the variable name...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please enter the variable name</message>"
-msgstr "<i>Prašome įvesti kintamojo pavadinimą...</i>"
+msgstr "<message>Įveskite kintamojo pavadinimą</message>"
 
 #: src/ui/VariablePage.qml:59
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please enter the variable value ...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please enter the variable value</message>"
-msgstr "<i>Prašome įvesti kintamojo reikšmę...</i>"
+msgstr "<message>Įveskite kintamojo reikšmę</message>"
 
 #: src/ui/VariablePage.qml:76
-#, fuzzy, kde-format
-#| msgctxt "The environmental variable name ie HOME, MAILTO etc"
-#| msgid "&Variable:"
+#, kde-format
 msgctxt "@label:listbox"
 msgid "Variable:"
-msgstr "&Kintamasis:"
+msgstr "Kintamasis:"
 
 #: src/ui/VariablePage.qml:112
-#, fuzzy, kde-format
-#| msgid "Va&lue:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Value:"
-msgstr "Ve&rtė:"
+msgstr "Reikšmė:"
 
 #: src/ui/VariablePage.qml:126
-#, fuzzy, kde-format
-#| msgid "&Enable this variable"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable this variable"
-msgstr "Įj&ungti šį kintamąjį"
+msgstr "Įjungti šį kintamąjį"
 
 #: src/ui/VariablesComponent.qml:19
-#, fuzzy, kde-format
-#| msgid "Environment Variables"
+#, kde-format
 msgctxt "@title:group"
 msgid "Environment Variables"
 msgstr "Aplinkos kintamieji"
 
 #: src/ui/VariablesComponent.qml:112
-#, fuzzy, kde-format
-#| msgid "Variable"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add Variable…"
-msgstr "Kintamasis"
+msgstr "Pridėti kintamąjį…"
 
 #: src/ui/VariablesComponent.qml:118
-#, fuzzy, kde-format
-#| msgid "Modify Variable"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit Variable…"
-msgstr "Modifikuoti kintamąjį"
+msgstr "Taisyti kintamąjį…"
 
 #~ msgctxt "NAME OF TRANSLATORS"
 #~ msgid "Your names"
