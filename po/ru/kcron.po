@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-10 00:41+0000\n"
-"PO-Revision-Date: 2024-12-05 17:16+0300\n"
+"PO-Revision-Date: 2024-12-06 10:30+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
@@ -589,13 +589,13 @@ msgstr "<message>Выберите программу для запуска</mess
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please type a valid command line</message>"
-msgstr "<i>Введите правильное название команды</i>"
+msgstr "<message>Введите правильное название команды</message>"
 
 #: src/taskvalidator.cpp:138
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please select an executable program</message>"
-msgstr "<i>Выберите исполняемую программу</i>"
+msgstr "<message>Выберите исполняемую программу</message>"
 
 #: src/taskvalidator.cpp:163
 #, kde-kuit-format
@@ -662,12 +662,16 @@ msgid ""
 "schedule and automate repetitive tasks like downloading files or sending "
 "emails. <link url='%1'>Learn more</link>"
 msgstr ""
+"Запланируйте запуск программ в фоновом режиме. Настройте выполнение заданий "
+"по постоянному расписанию и автоматизируйте повторяющиеся задания (например, "
+"загрузку файлов или отправку писем). <link url='%1'>Дополнительные сведения</"
+"link>"
 
 #: src/ui/Onboarding.qml:27
 #, kde-format
 msgctxt "@action:button"
 msgid "Go to Dashboard"
-msgstr ""
+msgstr "Перейти на страницу обзора"
 
 #: src/ui/TaskPage.qml:23
 #, kde-format
@@ -676,11 +680,10 @@ msgid "Edit Task"
 msgstr "Изменение задания"
 
 #: src/ui/TaskPage.qml:24
-#, fuzzy, kde-format
-#| msgid "New Task"
+#, kde-format
 msgctxt "@title"
 msgid "New Task"
-msgstr "Создание нового задания"
+msgstr "Новое задание"
 
 #: src/ui/TaskPage.qml:34
 #, kde-format
@@ -695,52 +698,46 @@ msgid "Edit Task"
 msgstr "Изменить задание"
 
 #: src/ui/TaskPage.qml:45
-#, fuzzy, kde-format
-#| msgid "New Task"
+#, kde-format
 msgctxt "@action:button"
 msgid "New Task"
-msgstr "Создание нового задания"
+msgstr "Создать задание"
 
 #: src/ui/TaskPage.qml:46
-#, fuzzy, kde-format
-#| msgid "New Task"
+#, kde-format
 msgctxt "@action:button accessible"
 msgid "New Task"
-msgstr "Создание нового задания"
+msgstr "Создать задание"
 
 #: src/ui/TaskPage.qml:91
-#, fuzzy, kde-format
-#| msgid "&Command:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Command:"
-msgstr "&Команда:"
+msgstr "Команда:"
 
 #: src/ui/TaskPage.qml:98
 #, kde-format
 msgctxt "@action:button"
 msgid "Browse the Program"
-msgstr ""
+msgstr "Обзор программы"
 
 #: src/ui/TaskPage.qml:106
-#, fuzzy, kde-format
-#| msgid "&Enable this task"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable this task"
-msgstr "&Активировать это задание"
+msgstr "Активировать это задание"
 
 #: src/ui/TaskPage.qml:111 src/ui/VariablePage.qml:97
-#, fuzzy, kde-format
-#| msgid "User"
+#, kde-format
 msgctxt "@label:listbox"
 msgid "User:"
-msgstr "Пользователь"
+msgstr "Пользователь:"
 
 #: src/ui/TaskPage.qml:131 src/ui/VariablePage.qml:119
-#, fuzzy, kde-format
-#| msgid "&Comment:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Comment:"
-msgstr "Ко&мментарий:"
+msgstr "Комментарий:"
 
 #: src/ui/TaskPage.qml:138
 #, kde-format
@@ -749,50 +746,43 @@ msgid "Run:"
 msgstr "Запустить:"
 
 #: src/ui/TaskPage.qml:141
-#, fuzzy, kde-format
-#| msgid "At system startup"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "When system starts"
 msgstr "При загрузке системы"
 
 #: src/ui/TaskPage.qml:148
-#, fuzzy, kde-format
-#| msgid "every day "
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Every day"
-msgstr "каждый день "
+msgstr "Каждый день "
 
 #: src/ui/TaskPage.qml:154
-#, fuzzy, kde-format
-#| msgid "Months"
+#, kde-format
 msgctxt "@title:group"
 msgid "Months"
 msgstr "Месяцы"
 
 #: src/ui/TaskPage.qml:174
-#, fuzzy, kde-format
-#| msgid "Days of Month"
+#, kde-format
 msgctxt "@title:group"
 msgid "Days of Month"
 msgstr "Дни месяца"
 
 #: src/ui/TaskPage.qml:195
-#, fuzzy, kde-format
-#| msgid "Days of Week"
+#, kde-format
 msgctxt "@title:group"
 msgid "Days of Week"
 msgstr "Дни недели"
 
 #: src/ui/TaskPage.qml:215
-#, fuzzy, kde-format
-#| msgid "Hours"
+#, kde-format
 msgctxt "@title:group"
 msgid "Hours"
 msgstr "Часы"
 
 #: src/ui/TaskPage.qml:236
-#, fuzzy, kde-format
-#| msgid "Minutes"
+#, kde-format
 msgctxt "@title:group"
 msgid "Minutes"
 msgstr "Минуты"
@@ -1085,18 +1075,16 @@ msgid "New Variable"
 msgstr "Добавить переменную"
 
 #: src/ui/VariablePage.qml:57
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please enter the variable name...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please enter the variable name</message>"
-msgstr "<i>Введите имя переменной...</i>"
+msgstr "<message>Введите имя переменной</message>"
 
 #: src/ui/VariablePage.qml:59
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please enter the variable value ...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please enter the variable value</message>"
-msgstr "<i>Введите значение переменной...</i>"
+msgstr "<message>Введите значение переменной</message>"
 
 #: src/ui/VariablePage.qml:76
 #, kde-format
@@ -1111,11 +1099,10 @@ msgid "Value:"
 msgstr "Значение:"
 
 #: src/ui/VariablePage.qml:126
-#, fuzzy, kde-format
-#| msgid "&Enable this variable"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable this variable"
-msgstr "&Активировать эту переменную"
+msgstr "Активировать эту переменную"
 
 #: src/ui/VariablesComponent.qml:19
 #, kde-format
@@ -1124,18 +1111,16 @@ msgid "Environment Variables"
 msgstr "Переменные среды"
 
 #: src/ui/VariablesComponent.qml:112
-#, fuzzy, kde-format
-#| msgid "Edit Variable"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add Variable…"
-msgstr "Изменить переменную"
+msgstr "Добавить переменную…"
 
 #: src/ui/VariablesComponent.qml:118
-#, fuzzy, kde-format
-#| msgid "Edit Variable"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit Variable…"
-msgstr "Изменить переменную"
+msgstr "Изменить переменную…"
 
 #, fuzzy
 #~| msgid "Printing..."
