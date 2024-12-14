@@ -38,6 +38,7 @@
   <name xml:lang="pt-BR">KCron</name>
   <name xml:lang="ro">KCron</name>
   <name xml:lang="ru">KCron</name>
+  <name xml:lang="sa">केक्रोन</name>
   <name xml:lang="sk">KCron</name>
   <name xml:lang="sl">KCron</name>
   <name xml:lang="sv">Kcron</name>
@@ -80,6 +81,7 @@
   <summary xml:lang="pt-BR">Agendador de Tarefas</summary>
   <summary xml:lang="ro">Planificator de sarcini</summary>
   <summary xml:lang="ru">Планировщик заданий</summary>
+  <summary xml:lang="sa">कार्यनिर्माता</summary>
   <summary xml:lang="sk">Plánovač úloh</summary>
   <summary xml:lang="sl">Razporejevalnik opravil (Task scheduler)</summary>
   <summary xml:lang="sv">Jobbschemaläggare</summary>
@@ -121,6 +123,7 @@
     <p xml:lang="pt-BR">O Agendador de Tarefas é uma interface gráfica para o utilitário padrão "cron". Com ele, os comandos (ou "tarefas") poderão ser executados em horários específicos, em uma determinada data ou dia da semana, ou ainda em intervalos específicos (períodos de tempo entre execuções).</p>
     <p xml:lang="ro">Planificatorul de Sarcini e o interfață grafică pentru utilitarul standard „cron”. Cu el, comenzi (sau „sarcini”) pot fi rulate la anumite ore, într-o anumită zi sau dată, sau la intervale anumite (durată între executări).</p>
     <p xml:lang="ru">Планировщик задач — графическая оболочка к стандартной программе cron. Приложение Планировщик задач позволяет запланировать запуск программ (задач) указанное количество раз в указанное время и дату или через указанный интервал времени.</p>
+    <p xml:lang="sa">कार्यनिर्माता मानक "cron" उपयोगितायाः चित्रात्मकः अग्रभागः अस्ति । तेन सह आदेशाः (अथवा "कार्यं") विशिष्टसमये, निश्चितदिने वा तिथौ, अथवा विशिष्टान्तरेषु (निष्पादनान्तरसमये) चालयितुं शक्यन्ते ।</p>
     <p xml:lang="sk">Plánovač úloh je grafický frontend pre štandardnú utilitu "cron". Príkazy alebo úlohy sa dajú spúšťať v určenom čase alebo v určenom dátume, prípadne v špecifických intervaloch (časom medzi spusteniami).</p>
     <p xml:lang="sl">Task scheduler (Razporejevalnik opravil) je grafični vmesnik standardnega pomožnega programa "cron". Z njim lahko dosežemo, da se ukazi (oz. opravila) sprožijo ob določenem času, na določen dan ali datum ali ponovljeno v določenih intervalih (z določenim časom med proženji).</p>
     <p xml:lang="sv">Jobbschemaläggare är ett grafiskt gränssnitt för det vanliga verktyget "cron". Med det kan kommandon (eller "aktiviteter") köras vid specifika tider, en viss dag eller ett visst datum, eller med specifika intervall (tid mellan körningar).</p>
