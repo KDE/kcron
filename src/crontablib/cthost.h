@@ -62,11 +62,6 @@ public:
      */
     bool isDirty();
 
-    /**
-     * Indicates whether or not the user is the root user.
-     */
-    bool isRootUser() const;
-
     CTCron *findCurrentUserCron() const;
     CTCron *findSystemCron() const;
     CTCron *findUserCron(const QString &userLogin) const;
