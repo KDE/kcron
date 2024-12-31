@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-10 00:41+0000\n"
-"PO-Revision-Date: 2024-12-28 20:45+0100\n"
+"PO-Revision-Date: 2024-12-20 16:53+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -564,7 +564,7 @@ msgstr "Fino de skriptrulo. Tajpu Enigu aŭ Ctrl+C por eliri."
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Choose a program to run</message>"
-msgstr ""
+msgstr "<message>Elektu programon lanĉendan</message>"
 
 #: src/taskvalidator.cpp:112 src/taskvalidator.cpp:119
 #, kde-kuit-format
@@ -643,12 +643,15 @@ msgid ""
 "schedule and automate repetitive tasks like downloading files or sending "
 "emails. <link url='%1'>Learn more</link>"
 msgstr ""
+"Planu programojn rulendajn en la fono. Metu taskojn rulendajn je fiksa plano "
+"kaj aŭtomatigu ripetecajn taskojn kiel elŝutado de dosieroj aŭ sendado de "
+"retpoŝtoj. <link url='%1'>Eksciu pli</link>"
 
 #: src/ui/Onboarding.qml:27
 #, kde-format
 msgctxt "@action:button"
 msgid "Go to Dashboard"
-msgstr ""
+msgstr "Iri al Panelo"
 
 #: src/ui/TaskPage.qml:23
 #, kde-format
