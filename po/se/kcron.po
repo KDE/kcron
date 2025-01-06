@@ -43,7 +43,6 @@ msgstr ""
 
 #: src/cronPrinter.cpp:103
 #, fuzzy, kde-format
-#| msgid "Description"
 msgctxt "@title:column"
 msgid "Description"
 msgstr "Válddahus"
@@ -56,7 +55,6 @@ msgstr ""
 
 #: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:98
 #, fuzzy, kde-format
-#| msgid "Value"
 msgctxt "@title:column"
 msgid "Value"
 msgstr "Árvu"
@@ -64,7 +62,6 @@ msgstr "Árvu"
 #: src/cronPrinter.cpp:117 src/ui/TasksComponent.qml:84
 #: src/ui/VariablesComponent.qml:106
 #, fuzzy, kde-format
-#| msgid "Co&mment:"
 msgctxt "@title:column"
 msgid "Comment"
 msgstr "&Kommeanta:"
@@ -707,7 +704,6 @@ msgstr ""
 
 #: src/ui/TaskPage.qml:131 src/ui/VariablePage.qml:119
 #, fuzzy, kde-format
-#| msgid "Co&mment:"
 msgctxt "@label:textbox"
 msgid "Comment:"
 msgstr "&Kommeanta:"
@@ -732,7 +728,6 @@ msgstr ""
 
 #: src/ui/TaskPage.qml:154
 #, fuzzy, kde-format
-#| msgid "Months"
 msgctxt "@title:group"
 msgid "Months"
 msgstr "Mánut"
@@ -751,14 +746,12 @@ msgstr ""
 
 #: src/ui/TaskPage.qml:215
 #, fuzzy, kde-format
-#| msgid "Hours"
 msgctxt "@title:group"
 msgid "Hours"
 msgstr "Diimmut"
 
 #: src/ui/TaskPage.qml:236
 #, fuzzy, kde-format
-#| msgid "Minutes"
 msgctxt "@title:group"
 msgid "Minutes"
 msgstr "Minuhtat"
@@ -811,43 +804,36 @@ msgstr ""
 
 #: src/ui/TaskPage.qml:318
 #, fuzzy, kde-format
-#| msgid "January"
 msgctxt "@action:button"
 msgid "January"
 msgstr "Ođđajagemánnu"
 
 #: src/ui/TaskPage.qml:322
 #, fuzzy, kde-format
-#| msgid "February"
 msgctxt "@action:button"
 msgid "February"
 msgstr "Guovvamánnu"
 
 #: src/ui/TaskPage.qml:326
 #, fuzzy, kde-format
-#| msgid "March"
 msgctxt "@action:button"
 msgid "March"
 msgstr "Njukčamánnu"
 
 #: src/ui/TaskPage.qml:330
 #, fuzzy, kde-format
-#| msgid "April"
 msgctxt "@action:button"
 msgid "April"
 msgstr "Cuoŋománnu"
 
 #: src/ui/TaskPage.qml:334
 #, fuzzy, kde-format
-#| msgctxt "May long"
-#| msgid "May"
 msgctxt "@action:button"
 msgid "May"
 msgstr "Miessemánnu"
 
 #: src/ui/TaskPage.qml:338
 #, fuzzy, kde-format
-#| msgid "June"
 msgctxt "@action:button"
 msgid "June"
 msgstr "Geassemánnu"
@@ -860,35 +846,30 @@ msgstr ""
 
 #: src/ui/TaskPage.qml:346
 #, fuzzy, kde-format
-#| msgid "August"
 msgctxt "@action:button"
 msgid "August"
 msgstr "Borgemánnu"
 
 #: src/ui/TaskPage.qml:350
 #, fuzzy, kde-format
-#| msgid "September"
 msgctxt "@action:button"
 msgid "September"
 msgstr "Čakčamánnu"
 
 #: src/ui/TaskPage.qml:354
 #, fuzzy, kde-format
-#| msgid "October"
 msgctxt "@action:button"
 msgid "October"
 msgstr "Golggotmánnu"
 
 #: src/ui/TaskPage.qml:358
 #, fuzzy, kde-format
-#| msgid "November"
 msgctxt "@action:button"
 msgid "November"
 msgstr "Skábmamánnu"
 
 #: src/ui/TaskPage.qml:362
 #, fuzzy, kde-format
-#| msgid "December"
 msgctxt "@action:button"
 msgid "December"
 msgstr "Juovlamánnu"
@@ -1016,7 +997,6 @@ msgstr ""
 
 #: src/ui/TasksComponent.qml:180
 #, fuzzy, kde-format
-#| msgid "Sun"
 msgctxt "@action:button"
 msgid "Run"
 msgstr "Sotn"
@@ -1083,7 +1063,6 @@ msgstr ""
 
 #: src/ui/VariablePage.qml:112
 #, fuzzy, kde-format
-#| msgid "Value"
 msgctxt "@label:textbox"
 msgid "Value:"
 msgstr "Árvu"
