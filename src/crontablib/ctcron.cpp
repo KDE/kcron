@@ -49,8 +49,8 @@ CommandLineStatus CommandLine::execute()
 
     commandLineStatus.commandLine = commandLine + QLatin1String(" ") + parameters.join(QLatin1String(" "));
 
-    commandLineStatus.standardOutput = QLatin1String(process.readAllStandardOutput());
-    commandLineStatus.standardError = QLatin1String(process.readAllStandardError());
+    commandLineStatus.standardOutput = QString::fromUtf8(process.readAllStandardOutput());
+    commandLineStatus.standardError = QString::fromUtf8(process.readAllStandardError());
     commandLineStatus.exitCode = exitCode;
 
     return commandLineStatus;
