@@ -1,17 +1,19 @@
-# Translation of kcron to Spanish
+# Spanish translations for kcron.po package.
+# Copyright (C) 2003-2025 This file is copyright:
+# This file is distributed under the same license as the kcron package.
 #
 # SPDX-FileCopyrightText: 2003 Juan Luis Montore Parera <jlm@ict.es>
 # SPDX-FileCopyrightText: 2003, 2004, 2005 Juan Luis Montore Parera <jlm@montore.net>
 # SPDX-FileCopyrightText: 2006 Santiago Fernandez Sancho <santi@kde-es.org>
 # SPDX-FileCopyrightText: 2008 jeffrey steve borbon sanabria <jeffto@aclibre.org>
-# SPDX-FileCopyrightText: 2010, 2012, 2021, 2023, 2024 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2010, 2012, 2021, 2023, 2024, 2025 Eloy Cuadra <ecuadra@eloihr.net>
 # SPDX-FileCopyrightText: 2011 David Paul <eodos0@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-10-10 00:41+0000\n"
-"PO-Revision-Date: 2024-10-12 17:00+0200\n"
+"PO-Revision-Date: 2025-05-12 13:37+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -633,7 +635,7 @@ msgstr "Programación del sistema"
 #, kde-format
 msgctxt "@action:button"
 msgid "Print Summary…"
-msgstr "Mostrar resumen..."
+msgstr "Mostrar resumen…"
 
 #: src/ui/Onboarding.qml:22
 #, kde-format
@@ -955,13 +957,13 @@ msgstr "Detalles de la programación"
 #, kde-format
 msgctxt "@action:button"
 msgid "Add Task…"
-msgstr "Añadir tarea..."
+msgstr "Añadir tarea…"
 
 #: src/ui/TasksComponent.qml:105
 #, kde-format
 msgctxt "@action:button"
 msgid "Edit Task…"
-msgstr "Editar tarea..."
+msgstr "Editar tarea…"
 
 #: src/ui/TasksComponent.qml:113 src/ui/VariablesComponent.qml:125
 #, kde-format
@@ -1004,13 +1006,13 @@ msgstr "Ejecutar tarea"
 #, kde-format
 msgctxt "@action:button"
 msgid "Add…"
-msgstr "Añadir..."
+msgstr "Añadir…"
 
 #: src/ui/TasksComponent.qml:168 src/ui/VariablesComponent.qml:172
 #, kde-format
 msgctxt "@action:button"
 msgid "Edit…"
-msgstr "Editar..."
+msgstr "Editar…"
 
 #: src/ui/TasksComponent.qml:180
 #, kde-format
@@ -1100,195 +1102,10 @@ msgstr "Variables de entorno"
 #, kde-format
 msgctxt "@action:button"
 msgid "Add Variable…"
-msgstr "Añadir variable..."
+msgstr "Añadir variable…"
 
 #: src/ui/VariablesComponent.qml:118
 #, kde-format
 msgctxt "@action:button"
 msgid "Edit Variable…"
-msgstr "Editar variable..."
-
-#~ msgctxt "@action:button"
-#~ msgid "Print"
-#~ msgstr "Imprimir"
-
-#~ msgctxt "NAME OF TRANSLATORS"
-#~ msgid "Your names"
-#~ msgstr "Juan Luis Montore Parera"
-
-#~ msgctxt "EMAIL OF TRANSLATORS"
-#~ msgid "Your emails"
-#~ msgstr "jlm@montore.net"
-
-#~ msgid "All Users Crontabs"
-#~ msgstr "Crontabs de todos los usuarios"
-
-#~ msgctxt "@title:window"
-#~ msgid "Cron Options"
-#~ msgstr "Opciones de Cron"
-
-#~ msgid "Print cron&tab"
-#~ msgstr "Imprimir cron&tab"
-
-#~ msgid "Print &all users"
-#~ msgstr "Imprimir &todos los usuarios"
-
-#~ msgid "Show the following Cron:"
-#~ msgstr "Mostrar el siguiente Cron:"
-
-#~ msgid "Personal Cron"
-#~ msgstr "Cron personal"
-
-#~ msgid "System Cron"
-#~ msgstr "Cron del sistema"
-
-#~ msgid ""
-#~ "The following error occurred while initializing KCron:\n"
-#~ "\n"
-#~ "%1\n"
-#~ "\n"
-#~ "KCron will now exit.\n"
-#~ msgstr ""
-#~ "Ha ocurrido el siguiente error al inicializar KCron:\n"
-#~ "\n"
-#~ "%1\n"
-#~ "\n"
-#~ "KCron terminará ahora.\n"
-
-#~ msgid ""
-#~ "You can use this application to schedule programs to run in the "
-#~ "background.\n"
-#~ "To schedule a new task now, click on the Tasks folder and select Edit/New "
-#~ "from the menu."
-#~ msgstr ""
-#~ "Puede usar esta aplicación para programar tareas que se ejecutarán de "
-#~ "fondo.\n"
-#~ "Para programar una nueva tarea ahora, pulse en la carpeta de Tareas y "
-#~ "seleccione Editar/Nueva en el menú."
-
-#~ msgid "Add or modify a scheduled task"
-#~ msgstr "Agregar o modificar una tarea planificada"
-
-#~ msgid "<i>This task will be executed at the specified intervals.</i>"
-#~ msgstr "<i>Esta tarea será ejecutada en los intervalos especificados.</i>"
-
-#~ msgid "Run at system &bootup"
-#~ msgstr "Ejecutar al &iniciar el sistema"
-
-#~ msgid "Run &every day"
-#~ msgstr "Ejecutar &cada día"
-
-#~ msgid "Clear selection"
-#~ msgstr "Limpiar selección"
-
-#~ msgid "AM:"
-#~ msgstr "AM:"
-
-#~ msgid "PM:"
-#~ msgstr "PM:"
-
-#~ msgid "<i>Please browse for a program to execute...</i>"
-#~ msgstr "<i>Por favor, busque un programa a ejecutar...</i>"
-
-#~ msgid "<i>This task is disabled.</i>"
-#~ msgstr "<i>Esta tarea está desactivada.</i>"
-
-#~ msgid "<i>This task will be run on system bootup.</i>"
-#~ msgstr "<i>Esta tarea debe ser ejecutada al iniciar el sistema.</i>"
-
-#~ msgid "Clear All"
-#~ msgstr "Borrar todo"
-
-#~ msgid "Status"
-#~ msgstr "Estado"
-
-#~ msgctxt "Adds a new task"
-#~ msgid "New &Task..."
-#~ msgstr "Nueva &tarea..."
-
-#~ msgid "Create a new task."
-#~ msgstr "Crear nueva tarea."
-
-#~ msgid "M&odify..."
-#~ msgstr "M&odificar..."
-
-#~ msgid "Modify the selected task."
-#~ msgstr "Modificar la tarea seleccionada."
-
-#~ msgid "Delete the selected task."
-#~ msgstr "Borrar la tarea seleccionada."
-
-#~ msgid "&Run Now"
-#~ msgstr "&Ejecutar ahora"
-
-#~ msgid "Run the selected task now."
-#~ msgstr "Ejecutar la tarea seleccionada ahora."
-
-#~ msgid "Enabled"
-#~ msgstr "Activado"
-
-#~ msgid "Disabled"
-#~ msgstr "Desactivado"
-
-#~ msgid "Add or modify a variable"
-#~ msgstr "Agregar o modificar una variable"
-
-#~ msgid "<i>This variable will be used by scheduled tasks.</i>"
-#~ msgstr "<i>Esta variable será usada por las tareas planificadas.</i>"
-
-#~ msgid "<i>This variable is disabled.</i>"
-#~ msgstr "<i>Esta variable está desactivada.</i>"
-
-#~ msgctxt "Adds a new variable"
-#~ msgid "New &Variable..."
-#~ msgstr "Nueva &variable..."
-
-#~ msgid "Create a new variable."
-#~ msgstr "Crear una nueva variable."
-
-#~ msgid "Modify the selected variable."
-#~ msgstr "Modificar la variable seleccionada."
-
-#~ msgid "Delete the selected variable."
-#~ msgstr "Borrar la variable seleccionada."
-
-#~ msgid "KDE Task Scheduler"
-#~ msgstr "Organizador de tareas de KDE"
-
-#~ msgid ""
-#~ "(c) 2008, Nicolas Ternisien\n"
-#~ "(c) 1999-2000, Gary Meyer"
-#~ msgstr ""
-#~ "© 2008, Nicolas Ternisien\n"
-#~ "© 1999-2000, Gary Meyer"
-
-#~ msgid "Nicolas Ternisien"
-#~ msgstr "Nicolas Ternisien"
-
-#~ msgid "Gary Meyer"
-#~ msgstr "Gary Meyer"
-
-#~ msgid "Robert Berry"
-#~ msgstr "Robert Berry"
-
-#~ msgid "James Ots"
-#~ msgstr "James Ots"
-
-#~ msgid "Alberto G. Hierro"
-#~ msgstr "Alberto G. Hierro"
-
-#~ msgid "All users"
-#~ msgstr "Todos los usuarios"
-
-#~ msgctxt "User login: errorMessage"
-#~ msgid "User %1: %2"
-#~ msgstr "Usuario %1: %2"
-
-#~ msgid "Cron of User:"
-#~ msgstr "Cron del usuario:"
-
-#~ msgid "Show All Personal Crons"
-#~ msgstr "Mostrar todos los Cron personales"
-
-#~ msgid "Every %1 minutes"
-#~ msgstr "Cada %1 minutos"
+msgstr "Editar variable…"
