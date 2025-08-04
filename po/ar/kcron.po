@@ -87,7 +87,7 @@ msgstr "ملف كرونتاب للمستخدم %1"
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
 msgid "No password entry found for uid '%1'"
-msgstr "لم أجد خانة كلمة المرور لرقم تعريف المستخدم '%1'"
+msgstr "لم أجد خانة كلمة السر لرقم تعريف المستخدم '%1'"
 
 #: src/crontablib/ctcron.cpp:224
 #, kde-format
