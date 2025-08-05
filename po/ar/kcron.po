@@ -537,7 +537,7 @@ msgstr "،"
 #: src/crontablib/ctvariable.cpp:134
 #, kde-format
 msgid "Override default home folder."
-msgstr "تجاوز مجلّد المنزل الافتراضي."
+msgstr "تجاوز مجلّد المنزل المبدئي."
 
 #: src/crontablib/ctvariable.cpp:136
 #, kde-format
@@ -653,7 +653,7 @@ msgid ""
 "emails. <link url='%1'>Learn more</link>"
 msgstr ""
 "جدول البرامج لتشغيلها في الخلفية. ضبط المهام لتشغيلها وفقًا لجدول زمني ثابت "
-"والتشغيل الآلي للمهام المتكررة مثل تنزيل الملفات أو إرسال رسائل البريد "
+"والتشغيل الآليّ للمهام المتكررة مثل تنزيل الملفات أو إرسال رسائل البريد "
 "الإلكتروني. <link url='%1'>لمعرفة المزيد</link>"
 
 #: src/ui/Onboarding.qml:27
