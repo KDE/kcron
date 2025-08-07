@@ -1,7 +1,7 @@
 # Translation of kcron.po to Slovenian
 # KDEADMIN translation to Slovenian language.
 # Copyright (C) 2001,2003, 2004, 2005 Free Software Foundation, Inc.
-# $Id: kcron.po 1692675 2024-10-12 01:14:15Z scripty $
+# $Id: kcm_kcron.po 1715382 2025-08-07 12:35:26Z ltoscano $
 # $Source$
 #
 # Rok Papez <rok@slo.net>, 2000.
