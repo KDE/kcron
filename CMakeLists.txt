@@ -7,7 +7,7 @@ set (KF_MIN_VERSION "6.11.0")
 find_package (ECM ${KF_MIN_VERSION} REQUIRED NO_MODULE)
 set (CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
-add_definitions(-DTRANSLATION_DOMAIN="kcron")
+add_definitions(-DTRANSLATION_DOMAIN="kcm_kcron")
 
 include(KDEInstallDirs)
 include(KDECompilerSettings NO_POLICY_SCOPE)
