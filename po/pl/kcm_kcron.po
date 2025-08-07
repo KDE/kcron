@@ -1,4 +1,4 @@
-# Version: $Revision: 1709616 $
+# Version: $Revision: 1715381 $
 # translation of kcron.po to Polish
 # translation of kcron.po to
 # translation of kcron.po to
