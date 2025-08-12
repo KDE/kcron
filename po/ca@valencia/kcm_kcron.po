@@ -1,4 +1,4 @@
-# Translation of kcron.po to Catalan (Valencian)
+# Translation of kcm_kcron.po to Catalan (Valencian)
 # Copyright (C) 2000-2024 This_file_is_part_of_KDE
 #
 # Josep Vila (Softcatalà) <linux@softcatala.org>, 2000.
@@ -577,7 +577,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Choose a program to run</message>"
-msgstr "<message>Seleccioneu un programa a executar</message>"
+msgstr "<message>Trieu un programa que s'haja d'executar</message>"
 
 #: src/taskvalidator.cpp:112 src/taskvalidator.cpp:119
 #, kde-kuit-format
