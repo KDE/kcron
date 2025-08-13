@@ -1,4 +1,4 @@
-# Translation of kcron to Norwegian Bokmål
+# Translation of kcm_kcron to Norwegian Bokmål
 #
 # Hans Petter Bieker <bieker@kde.org>, 2000.
 # Jo Øiongen <jo-oiongen@sensewave.com>, 2002.
