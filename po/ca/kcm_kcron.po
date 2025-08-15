@@ -1,4 +1,4 @@
-# Translation of kcron.po to Catalan
+# Translation of kcm_kcron.po to Catalan
 # Copyright (C) 2000-2024 This_file_is_part_of_KDE
 #
 # Josep Vila (Softcatalà) <linux@softcatala.org>, 2000.
