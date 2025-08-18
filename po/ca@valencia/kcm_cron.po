@@ -1,4 +1,4 @@
-# Translation of kcm_kcron.po to Catalan (Valencian)
+# Translation of kcm_cron.po to Catalan (Valencian)
 # Copyright (C) 2000-2024 This_file_is_part_of_KDE
 #
 # Josep Vila (Softcatalà) <linux@softcatala.org>, 2000.
@@ -589,13 +589,13 @@ msgstr "<message>Introduïu una línia d'ordres vàlida</message>"
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please select an executable program</message>"
-msgstr "<message>Seleccioneu un programa executable</message>"
+msgstr "<message>Trieu un programa executable</message>"
 
 #: src/taskvalidator.cpp:163
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please select from the <b>Months</b> section</message>"
-msgstr "<message>Seleccioneu des de la secció <b>Mesos</b></message>"
+msgstr "<message>Trieu des de la secció <b>Mesos</b></message>"
 
 #: src/taskvalidator.cpp:188
 #, kde-kuit-format
@@ -604,20 +604,20 @@ msgid ""
 "<message>Please select from either the <b>Days of Month</b> or the <b>Days "
 "of Week</b> section</message>"
 msgstr ""
-"<message>Seleccioneu des de la secció <b>Dies del mes</b> o <b>Dies de la "
-"setmana</b></message>"
+"<message>Trieu des de la secció <b>Dies del mes</b> o <b>Dies de la setmana</"
+"b></message>"
 
 #: src/taskvalidator.cpp:206
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please select from the <b>Hours</b> section</message>"
-msgstr "<message>Seleccioneu des de la secció <b>Hores</b></message>"
+msgstr "<message>Trieu des de la secció <b>Hores</b></message>"
 
 #: src/taskvalidator.cpp:224
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please select from the <b>Minutes</b> section</message>"
-msgstr "<message>Seleccioneu des de la secció <b>Minuts</b></message>"
+msgstr "<message>Trieu des de la secció <b>Minuts</b></message>"
 
 #: src/ui/main.qml:45
 #, kde-format
@@ -975,7 +975,7 @@ msgstr "Edita la tasca…"
 #, kde-format
 msgctxt "@action:button"
 msgid "Select All"
-msgstr "Selecciona-ho tot"
+msgstr "Tria-ho tot"
 
 #: src/ui/TasksComponent.qml:120 src/ui/VariablesComponent.qml:132
 #, kde-format
@@ -1031,7 +1031,7 @@ msgstr "Executa"
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Select all"
-msgstr "Selecciona-ho tot"
+msgstr "Tria-ho tot"
 
 #: src/ui/VariablePage.qml:17
 #, kde-format
