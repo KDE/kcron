@@ -1,4 +1,4 @@
-# Translation of kcm_kcron to Norwegian Nynorsk
+# Translation of kcm_cron to Norwegian Nynorsk
 #
 # Gaute Hvoslef Kvalnes <gaute@verdsveven.com>, 2000, 2002, 2004.
 # Eirik U. Birkeland <eirbir@gmail.com>, 2008.
