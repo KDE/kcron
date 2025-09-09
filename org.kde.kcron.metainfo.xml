@@ -45,7 +45,6 @@
   <name xml:lang="tr">KCron</name>
   <name xml:lang="uk">KCron</name>
   <name xml:lang="vi">KCron</name>
-  <name xml:lang="x-test">xxKCronxx</name>
   <name xml:lang="zh-CN">KCron 任务计划程序</name>
   <name xml:lang="zh-TW">KCron</name>
   <summary>Task Scheduler</summary>
@@ -88,7 +87,6 @@
   <summary xml:lang="tr">Görev Zamanlayıcı</summary>
   <summary xml:lang="uk">Планувальник завдань</summary>
   <summary xml:lang="vi">Trình lập lịch tác vụ</summary>
-  <summary xml:lang="x-test">xxTask Schedulerxx</summary>
   <summary xml:lang="zh-CN">任务计划程序</summary>
   <summary xml:lang="zh-TW">工作排程工具</summary>
   <description>
@@ -130,7 +128,6 @@
     <p xml:lang="tr">Görev Zamanlayıcı, standart "cron" izlencesi için grafik bir ön uçtur. Bu programla, komutlar (veya "görevler"), belirli zamanlarda, belli bir gün veya tarihte veya belirli aralıklarla çalıştırılabilir.</p>
     <p xml:lang="uk">Планувальник завдань є графічною оболонкою до стандартної програми «cron». За його допомогою можна віддавати команди (або виконувати «завдання») у певні моменти часу, у певні дні або дати або з певним інтервалом (часом між послідовними виконаннями).</p>
     <p xml:lang="vi">Trình lập lịch tác vụ là một tiền phương đồ hoạ cho tiện ích "cron" tiêu chuẩn. Với nó, các lệnh (hay còn gọi là "các tác vụ") có thể được chạy vào những lúc cụ thể, vào một ngày nhất định, hoặc ở các khoảng thời gian được chỉ định (thời gian giữa các lần chạy).</p>
-    <p xml:lang="x-test">xxTask Scheduler is a graphical front end to the standard "cron" utility. With it, commands (or "tasks") can be run at specific times, on a certain day or date, or at specific intervals (time between execution).xx</p>
     <p xml:lang="zh-CN">KCron 任务计划程序是标准“cron”实用程序的图形前端程序。您可以通过它计划命令 (即“任务”) 在特定时间、特定日期或以特定间隔 (执行间隔时间) 运行。</p>
     <p xml:lang="zh-TW">《工作排程工具》是標準 cron 工具程式的圖形前端。使用這工具，指令（或「工作」）可以執行指定次數、特定的日期，或特定的間隔（執行間隔時間）。</p>
   </description>
