@@ -38,7 +38,6 @@
         "Description[sv]": "Anpassa och schemalägg jobb",
         "Description[tr]": "Görevleri zamanla ve yapılandır",
         "Description[uk]": "Налаштовування і планування завдань",
-        "Description[x-test]": "xxConfigure and schedule tasksxx",
         "Description[zh_CN]": "配置和计划任务",
         "Description[zh_TW]": "設定與排程工作",
         "Icon": "preferences-system-time",
@@ -105,7 +104,6 @@
         "Name[ug]": "ۋەزىپە پىلانلاش پروگراممىسى",
         "Name[uk]": "Планувальник завдань",
         "Name[vi]": "Trình lập lịch tác vụ",
-        "Name[x-test]": "xxTask Schedulerxx",
         "Name[zh_CN]": "任务计划程序",
         "Name[zh_TW]": "工作排程器"
     },
@@ -161,7 +159,6 @@
     "X-KDE-Keywords[tr]": "cron,crontab,zamanlanmış,görevler,görev,zaman,vixie",
     "X-KDE-Keywords[uk]": "cron,crontab,scheduled,tasks,task,schedule,vixie,таблиця планування,список планування,завдання,план,запуск",
     "X-KDE-Keywords[vi]": "cron,crontab,scheduled,tasks,task,schedule,vixie,lập lịch,tác vụ",
-    "X-KDE-Keywords[x-test]": "xxcronxx,xxcrontabxx,xxscheduledxx,xxtasksxx,xxtaskxx,xxschedulexx,xxvixiexx",
     "X-KDE-Keywords[zh_CN]": "cron,crontab,scheduled,tasks,task,schedule,vixie,jihua,jihuarenwu,renwu,计划,任务计划,任务",
     "X-KDE-Keywords[zh_TW]": "cron,crontab,scheduled,tasks,task,schedule,vixie",
     "X-KDE-ParentApp": "kcontrol",
