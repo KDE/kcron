@@ -250,17 +250,17 @@
 <para
 >Pour créer une nouvelle tâche planifiée, cliquez sur le bouton <guibutton
 >Nouvelle tâche…</guibutton
->. Vous pouvez également choisir cette action dans le menu contextuel qui apparaît avec un clic <mousebutton
+>. Vous pouvez également choisir cette action dans le menu contextuel qui apparait avec un clic <mousebutton
 >droit</mousebutton
 > de la souris.</para>
 
 <sect3>
 <title
->La boîte de dialogue de modification de tâche</title>
+>La boite de dialogue de modification de tâche</title>
 
 <screenshot>
 <screeninfo
->La boîte de dialogue <guilabel
+>La boite de dialogue <guilabel
 >Modifier la tâche</guilabel
 >.</screeninfo>
 <mediaobject>
@@ -268,7 +268,7 @@
 ><imagedata fileref="newtask.png" format="PNG"/></imageobject>
 <textobject
 ><phrase
->La boîte de dialogue <guilabel
+>La boite de dialogue <guilabel
 >Modifier la tâche</guilabel
 ></phrase
 ></textobject>
@@ -450,11 +450,11 @@
 
 <sect3>
 <title
->La boîte de dialogue de modification de variable</title>
+>La boite de dialogue de modification de variable</title>
 
 <screenshot>
 <screeninfo
->La boîte de dialogue <guilabel
+>La boite de dialogue <guilabel
 >Modifier la variable</guilabel
 >.</screeninfo>
 <mediaobject>
@@ -462,7 +462,7 @@
 ><imagedata fileref="newvariable.png" format="PNG"/></imageobject>
 <textobject
 ><phrase
->La boîte de dialogue <guilabel
+>La boite de dialogue <guilabel
 >Modifier la variable</guilabel
 >.</phrase
 ></textobject>
