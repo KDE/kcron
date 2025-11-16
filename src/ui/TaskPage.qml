@@ -89,8 +89,20 @@ KCM.AbstractKCM {
                     Kirigami.ActionTextField {
                         id: taskCommand
                         Kirigami.FormData.label: i18nc("@label:textbox", "Command:")
-                        text: main.task.command
-                        onTextChanged: main.task.command = text
+
+                        Binding {
+                            target: taskCommand
+                            property: "text"
+                            value: main.task.command ? main.__unquoteCommandForDisplay(main.task.command) : ""
+                            when: !taskCommand.activeFocus
+                        }
+
+                        onEditingFinished: {
+                            const quotedCommand = main.__quoteCommandForStorage(text);
+                            if (quotedCommand !== main.task.command) {
+                                main.task.command = quotedCommand;
+                            }
+                        }
 
                         rightActions: [
                             Kirigami.Action {
@@ -303,7 +315,9 @@ KCM.AbstractKCM {
             currentFolder: StandardPaths.standardLocations(StandardPaths.HomeLocation)[0]
 
             onAccepted: {
-                taskCommand.text = Qt.resolvedUrl(selectedFile).toString().replace("file://", "")
+                let path = Qt.resolvedUrl(selectedFile).toString().replace("file://", "")
+                // Only update the model - the binding will handle UI update
+                main.task.command = main.__quoteCommandForStorage(path)
                 destroy()
             }
             onRejected: destroy()
@@ -473,5 +487,41 @@ KCM.AbstractKCM {
         }
 
         validator.validate();
+    }
+
+    // Helper function to remove quotes from command for display
+    function __unquoteCommandForDisplay(command): string {
+        if (!command) return "";
+        command = command.trim();
+
+        // Check if command starts and ends with quotes
+        if ((command.startsWith('"') && command.includes('"', 1)) ||
+            (command.startsWith("'") && command.includes("'", 1))) {
+            const quote = command[0];
+            const endQuote = command.indexOf(quote, 1);
+            if (endQuote > 0) {
+                // Return unquoted portion for display
+                return command.substring(1, endQuote);
+            }
+        }
+        return command;
+    }
+
+    // Helper function to add quotes to command if it contains spaces
+    function __quoteCommandForStorage(command): string {
+        if (!command) return "";
+        command = command.trim();
+
+        // Don't re-quote if already quoted
+        if (command.startsWith('"') || command.startsWith("'")) {
+            return command;
+        }
+
+        // Quote if contains spaces
+        if (command.includes(" ")) {
+            return '"' + command + '"';
+        }
+
+        return command;
     }
 }

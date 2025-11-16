@@ -419,7 +419,7 @@ QString CTTask::decryptBinaryCommand(const QString &command) const
 
     bool found = false;
     for (int i = 0; i < command.length(); ++i) {
-        if (command.at(i) == QLatin1Char(' ') && command.at(i - 1) != QLatin1Char('\\')) {
+        if (command.at(i) == QLatin1Char(' ') && (i == 0 || command.at(i - 1) != QLatin1Char('\\'))) {
             fullCommand = command.left(i);
             found = true;
             break;
