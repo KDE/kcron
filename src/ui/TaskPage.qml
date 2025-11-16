@@ -31,9 +31,9 @@ KCM.AbstractKCM {
 
     actions: [
         Kirigami.Action {
-            text: i18nc("@action:button", "Edit Task")
-            Accessible.name: i18nc("@action:button accessible", "Edit Task")
-            icon.name: "document-open-symbolic"
+            text: i18nc("@action:button", "Save")
+            Accessible.name: i18nc("@action:button accessible", "Save")
+            icon.name: "document-save-symbolic"
             enabled: !errorMessage.visible
             visible: main.edited
             onTriggered: {
@@ -42,8 +42,8 @@ KCM.AbstractKCM {
             }
         },
         Kirigami.Action {
-            text: i18nc("@action:button", "New Task")
-            Accessible.name: i18nc("@action:button accessible", "New Task")
+            text: i18nc("@action:button", "Create")
+            Accessible.name: i18nc("@action:button accessible", "Create")
             icon.name: "document-new-symbolic"
             enabled: !errorMessage.visible
             visible: !main.edited
