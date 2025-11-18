@@ -489,28 +489,22 @@ KCM.AbstractKCM {
         validator.validate();
     }
 
-    // Helper function to remove quotes from command for display
     function __unquoteCommandForDisplay(command): string {
-        if (!command) return "";
         command = command.trim();
+        if (!command) return "";
 
-        // Check if command starts and ends with quotes
-        if ((command.startsWith('"') && command.includes('"', 1)) ||
-            (command.startsWith("'") && command.includes("'", 1))) {
-            const quote = command[0];
-            const endQuote = command.indexOf(quote, 1);
-            if (endQuote > 0) {
-                // Return unquoted portion for display
-                return command.substring(1, endQuote);
-            }
+        // Check if command is quoted (starts and ends with matching quotes)
+        const firstChar = command[0];
+        const lastChar = command[command.length - 1];
+        if ((firstChar === '"' || firstChar === "'") && firstChar === lastChar && command.length > 1) {
+            return command.substring(1, command.length - 1);
         }
         return command;
     }
 
-    // Helper function to add quotes to command if it contains spaces
     function __quoteCommandForStorage(command): string {
-        if (!command) return "";
         command = command.trim();
+        if (!command) return "";
 
         // Don't re-quote if already quoted
         if (command.startsWith('"') || command.startsWith("'")) {
