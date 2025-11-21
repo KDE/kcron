@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fc57ad16a28d02dea100ceb1c60de14e\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:54+0000\n"
+"POT-Creation-Date: 2025-11-21 00:45+0000\n"
 "PO-Revision-Date: 2024-11-20 20:40\n"
 "Last-Translator: Darafei Praliaskouski <komzpa@licei2.com>\n"
 "Language-Team: Belarusian\n"
@@ -672,26 +672,26 @@ msgstr "Новая задача"
 #: src/ui/TaskPage.qml:34
 #, kde-format
 msgctxt "@action:button"
-msgid "Edit Task"
-msgstr "Рэдагаваць задачу"
+msgid "Save"
+msgstr ""
 
 #: src/ui/TaskPage.qml:35
 #, kde-format
 msgctxt "@action:button accessible"
-msgid "Edit Task"
-msgstr "Рэдагаваць задачу"
+msgid "Save"
+msgstr ""
 
 #: src/ui/TaskPage.qml:45
 #, kde-format
 msgctxt "@action:button"
-msgid "New Task"
-msgstr "Новая задача"
+msgid "Create"
+msgstr ""
 
 #: src/ui/TaskPage.qml:46
 #, kde-format
 msgctxt "@action:button accessible"
-msgid "New Task"
-msgstr "Новая задача"
+msgid "Create"
+msgstr ""
 
 #: src/ui/TaskPage.qml:91
 #, kde-format
@@ -1105,6 +1105,22 @@ msgstr "Дадаць зменную…"
 msgctxt "@action:button"
 msgid "Edit Variable…"
 msgstr "Рэдагаваць зменную…"
+
+#~ msgctxt "@action:button"
+#~ msgid "Edit Task"
+#~ msgstr "Рэдагаваць задачу"
+
+#~ msgctxt "@action:button accessible"
+#~ msgid "Edit Task"
+#~ msgstr "Рэдагаваць задачу"
+
+#~ msgctxt "@action:button"
+#~ msgid "New Task"
+#~ msgstr "Новая задача"
+
+#~ msgctxt "@action:button accessible"
+#~ msgid "New Task"
+#~ msgstr "Новая задача"
 
 #~ msgctxt "NAME OF TRANSLATORS"
 #~ msgid "Your names"

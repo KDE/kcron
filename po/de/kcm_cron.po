@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:54+0000\n"
+"POT-Creation-Date: 2025-11-21 00:45+0000\n"
 "PO-Revision-Date: 2025-10-19 19:50+0200\n"
 "Last-Translator: Alois Spitzbart <spitz234@hotmail.com>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -684,26 +684,26 @@ msgstr "Neuer Auftrag"
 #: src/ui/TaskPage.qml:34
 #, kde-format
 msgctxt "@action:button"
-msgid "Edit Task"
-msgstr "Auftrag bearbeiten"
+msgid "Save"
+msgstr ""
 
 #: src/ui/TaskPage.qml:35
 #, kde-format
 msgctxt "@action:button accessible"
-msgid "Edit Task"
-msgstr "Auftrag bearbeiten"
+msgid "Save"
+msgstr ""
 
 #: src/ui/TaskPage.qml:45
 #, kde-format
 msgctxt "@action:button"
-msgid "New Task"
-msgstr "Neuer Auftrag"
+msgid "Create"
+msgstr ""
 
 #: src/ui/TaskPage.qml:46
 #, kde-format
 msgctxt "@action:button accessible"
-msgid "New Task"
-msgstr "Neuer Auftrag"
+msgid "Create"
+msgstr ""
 
 #: src/ui/TaskPage.qml:91
 #, kde-format
@@ -1124,6 +1124,22 @@ msgstr "Variable"
 msgctxt "@action:button"
 msgid "Edit Variable…"
 msgstr "Variable bearbeiten …"
+
+#~ msgctxt "@action:button"
+#~ msgid "Edit Task"
+#~ msgstr "Auftrag bearbeiten"
+
+#~ msgctxt "@action:button accessible"
+#~ msgid "Edit Task"
+#~ msgstr "Auftrag bearbeiten"
+
+#~ msgctxt "@action:button"
+#~ msgid "New Task"
+#~ msgstr "Neuer Auftrag"
+
+#~ msgctxt "@action:button accessible"
+#~ msgid "New Task"
+#~ msgstr "Neuer Auftrag"
 
 #, fuzzy
 #~| msgid "Printing..."

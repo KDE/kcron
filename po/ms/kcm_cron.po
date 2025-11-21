@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mimos\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:54+0000\n"
+"POT-Creation-Date: 2025-11-21 00:45+0000\n"
 "PO-Revision-Date: 2005-09-22 14:45+0730\n"
 "Last-Translator: MIMOS <opensource@mimos.my>\n"
 "Language-Team: Malay <kedidiemas@yahoogroups.com>\n"
@@ -679,32 +679,28 @@ msgid "New Task"
 msgstr "Tugas"
 
 #: src/ui/TaskPage.qml:34
-#, fuzzy, kde-format
-#| msgid "Edit Task"
+#, kde-format
 msgctxt "@action:button"
-msgid "Edit Task"
-msgstr "Edit Tugas"
+msgid "Save"
+msgstr ""
 
 #: src/ui/TaskPage.qml:35
-#, fuzzy, kde-format
-#| msgid "Edit Task"
+#, kde-format
 msgctxt "@action:button accessible"
-msgid "Edit Task"
-msgstr "Edit Tugas"
+msgid "Save"
+msgstr ""
 
 #: src/ui/TaskPage.qml:45
-#, fuzzy, kde-format
-#| msgid "Tasks"
+#, kde-format
 msgctxt "@action:button"
-msgid "New Task"
-msgstr "Tugas"
+msgid "Create"
+msgstr ""
 
 #: src/ui/TaskPage.qml:46
-#, fuzzy, kde-format
-#| msgid "Tasks"
+#, kde-format
 msgctxt "@action:button accessible"
-msgid "New Task"
-msgstr "Tugas"
+msgid "Create"
+msgstr ""
 
 #: src/ui/TaskPage.qml:91
 #, fuzzy, kde-format
@@ -1169,6 +1165,30 @@ msgstr "Edit Variabel"
 msgctxt "@action:button"
 msgid "Edit Variable…"
 msgstr "Edit Variabel"
+
+#, fuzzy
+#~| msgid "Edit Task"
+#~ msgctxt "@action:button"
+#~ msgid "Edit Task"
+#~ msgstr "Edit Tugas"
+
+#, fuzzy
+#~| msgid "Edit Task"
+#~ msgctxt "@action:button accessible"
+#~ msgid "Edit Task"
+#~ msgstr "Edit Tugas"
+
+#, fuzzy
+#~| msgid "Tasks"
+#~ msgctxt "@action:button"
+#~ msgid "New Task"
+#~ msgstr "Tugas"
+
+#, fuzzy
+#~| msgid "Tasks"
+#~ msgctxt "@action:button accessible"
+#~ msgid "New Task"
+#~ msgstr "Tugas"
 
 #, fuzzy
 #~| msgid "Printing..."

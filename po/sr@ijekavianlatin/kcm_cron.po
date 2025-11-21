@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:54+0000\n"
+"POT-Creation-Date: 2025-11-21 00:45+0000\n"
 "PO-Revision-Date: 2017-09-28 17:58+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -704,32 +704,28 @@ msgid "New Task"
 msgstr "Novi zadatak"
 
 #: src/ui/TaskPage.qml:34
-#, fuzzy, kde-format
-#| msgid "Modify Task"
+#, kde-format
 msgctxt "@action:button"
-msgid "Edit Task"
-msgstr "Izmijeni zadatak"
+msgid "Save"
+msgstr ""
 
 #: src/ui/TaskPage.qml:35
-#, fuzzy, kde-format
-#| msgid "Modify Task"
+#, kde-format
 msgctxt "@action:button accessible"
-msgid "Edit Task"
-msgstr "Izmijeni zadatak"
+msgid "Save"
+msgstr ""
 
 #: src/ui/TaskPage.qml:45
-#, fuzzy, kde-format
-#| msgid "New Task"
+#, kde-format
 msgctxt "@action:button"
-msgid "New Task"
-msgstr "Novi zadatak"
+msgid "Create"
+msgstr ""
 
 #: src/ui/TaskPage.qml:46
-#, fuzzy, kde-format
-#| msgid "New Task"
+#, kde-format
 msgctxt "@action:button accessible"
-msgid "New Task"
-msgstr "Novi zadatak"
+msgid "Create"
+msgstr ""
 
 #: src/ui/TaskPage.qml:91
 #, fuzzy, kde-format
@@ -1218,6 +1214,30 @@ msgstr "promjenljiva"
 msgctxt "@action:button"
 msgid "Edit Variable…"
 msgstr "Izmjena promjenljive"
+
+#, fuzzy
+#~| msgid "Modify Task"
+#~ msgctxt "@action:button"
+#~ msgid "Edit Task"
+#~ msgstr "Izmijeni zadatak"
+
+#, fuzzy
+#~| msgid "Modify Task"
+#~ msgctxt "@action:button accessible"
+#~ msgid "Edit Task"
+#~ msgstr "Izmijeni zadatak"
+
+#, fuzzy
+#~| msgid "New Task"
+#~ msgctxt "@action:button"
+#~ msgid "New Task"
+#~ msgstr "Novi zadatak"
+
+#, fuzzy
+#~| msgid "New Task"
+#~ msgctxt "@action:button accessible"
+#~ msgid "New Task"
+#~ msgstr "Novi zadatak"
 
 #~ msgctxt "NAME OF TRANSLATORS"
 #~ msgid "Your names"

@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:54+0000\n"
+"POT-Creation-Date: 2025-11-21 00:45+0000\n"
 "PO-Revision-Date: 2024-10-10 06:53+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -684,26 +684,26 @@ msgstr "משימה חדשה"
 #: src/ui/TaskPage.qml:34
 #, kde-format
 msgctxt "@action:button"
-msgid "Edit Task"
-msgstr "עריכת משימה"
+msgid "Save"
+msgstr ""
 
 #: src/ui/TaskPage.qml:35
 #, kde-format
 msgctxt "@action:button accessible"
-msgid "Edit Task"
-msgstr "עריכת משימה"
+msgid "Save"
+msgstr ""
 
 #: src/ui/TaskPage.qml:45
 #, kde-format
 msgctxt "@action:button"
-msgid "New Task"
-msgstr "משימה חדשה"
+msgid "Create"
+msgstr ""
 
 #: src/ui/TaskPage.qml:46
 #, kde-format
 msgctxt "@action:button accessible"
-msgid "New Task"
-msgstr "משימה חדשה"
+msgid "Create"
+msgstr ""
 
 #: src/ui/TaskPage.qml:91
 #, kde-format
@@ -1117,6 +1117,22 @@ msgstr "הוספת משתנה…"
 msgctxt "@action:button"
 msgid "Edit Variable…"
 msgstr "עריכת משתנה…"
+
+#~ msgctxt "@action:button"
+#~ msgid "Edit Task"
+#~ msgstr "עריכת משימה"
+
+#~ msgctxt "@action:button accessible"
+#~ msgid "Edit Task"
+#~ msgstr "עריכת משימה"
+
+#~ msgctxt "@action:button"
+#~ msgid "New Task"
+#~ msgstr "משימה חדשה"
+
+#~ msgctxt "@action:button accessible"
+#~ msgid "New Task"
+#~ msgstr "משימה חדשה"
 
 #~ msgctxt "@action:button"
 #~ msgid "Print"

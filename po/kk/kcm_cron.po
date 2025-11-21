@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:54+0000\n"
+"POT-Creation-Date: 2025-11-21 00:45+0000\n"
 "PO-Revision-Date: 2012-09-03 08:20+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -686,32 +686,28 @@ msgid "New Task"
 msgstr "Жаңа тапсырма"
 
 #: src/ui/TaskPage.qml:34
-#, fuzzy, kde-format
-#| msgid "Edit Task"
+#, kde-format
 msgctxt "@action:button"
-msgid "Edit Task"
-msgstr "Тапсырманы өңдеу"
+msgid "Save"
+msgstr ""
 
 #: src/ui/TaskPage.qml:35
-#, fuzzy, kde-format
-#| msgid "Edit Task"
+#, kde-format
 msgctxt "@action:button accessible"
-msgid "Edit Task"
-msgstr "Тапсырманы өңдеу"
+msgid "Save"
+msgstr ""
 
 #: src/ui/TaskPage.qml:45
-#, fuzzy, kde-format
-#| msgid "New Task"
+#, kde-format
 msgctxt "@action:button"
-msgid "New Task"
-msgstr "Жаңа тапсырма"
+msgid "Create"
+msgstr ""
 
 #: src/ui/TaskPage.qml:46
-#, fuzzy, kde-format
-#| msgid "New Task"
+#, kde-format
 msgctxt "@action:button accessible"
-msgid "New Task"
-msgstr "Жаңа тапсырма"
+msgid "Create"
+msgstr ""
 
 #: src/ui/TaskPage.qml:91
 #, fuzzy, kde-format
@@ -1182,6 +1178,30 @@ msgstr "Айнымалыны өңдеу"
 msgctxt "@action:button"
 msgid "Edit Variable…"
 msgstr "Айнымалыны өңдеу"
+
+#, fuzzy
+#~| msgid "Edit Task"
+#~ msgctxt "@action:button"
+#~ msgid "Edit Task"
+#~ msgstr "Тапсырманы өңдеу"
+
+#, fuzzy
+#~| msgid "Edit Task"
+#~ msgctxt "@action:button accessible"
+#~ msgid "Edit Task"
+#~ msgstr "Тапсырманы өңдеу"
+
+#, fuzzy
+#~| msgid "New Task"
+#~ msgctxt "@action:button"
+#~ msgid "New Task"
+#~ msgstr "Жаңа тапсырма"
+
+#, fuzzy
+#~| msgid "New Task"
+#~ msgctxt "@action:button accessible"
+#~ msgid "New Task"
+#~ msgstr "Жаңа тапсырма"
 
 #, fuzzy
 #~| msgid "Printing..."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:54+0000\n"
+"POT-Creation-Date: 2025-11-21 00:45+0000\n"
 "PO-Revision-Date: 2024-10-10 05:04+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -669,26 +669,26 @@ msgstr "ახალი ამოცანა"
 #: src/ui/TaskPage.qml:34
 #, kde-format
 msgctxt "@action:button"
-msgid "Edit Task"
-msgstr "ამოცანის ჩასწორება"
+msgid "Save"
+msgstr ""
 
 #: src/ui/TaskPage.qml:35
 #, kde-format
 msgctxt "@action:button accessible"
-msgid "Edit Task"
-msgstr "ამოცანის ჩასწორება"
+msgid "Save"
+msgstr ""
 
 #: src/ui/TaskPage.qml:45
 #, kde-format
 msgctxt "@action:button"
-msgid "New Task"
-msgstr "ახალი ამოცანა"
+msgid "Create"
+msgstr ""
 
 #: src/ui/TaskPage.qml:46
 #, kde-format
 msgctxt "@action:button accessible"
-msgid "New Task"
-msgstr "ახალი ამოცანა"
+msgid "Create"
+msgstr ""
 
 #: src/ui/TaskPage.qml:91
 #, kde-format
@@ -1102,6 +1102,22 @@ msgstr "ცვლადის დამატება…"
 msgctxt "@action:button"
 msgid "Edit Variable…"
 msgstr "ცვლადის ჩასწორება…"
+
+#~ msgctxt "@action:button"
+#~ msgid "Edit Task"
+#~ msgstr "ამოცანის ჩასწორება"
+
+#~ msgctxt "@action:button accessible"
+#~ msgid "Edit Task"
+#~ msgstr "ამოცანის ჩასწორება"
+
+#~ msgctxt "@action:button"
+#~ msgid "New Task"
+#~ msgstr "ახალი ამოცანა"
+
+#~ msgctxt "@action:button accessible"
+#~ msgid "New Task"
+#~ msgstr "ახალი ამოცანა"
 
 #~ msgctxt "@action:button"
 #~ msgid "Print"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:54+0000\n"
+"POT-Creation-Date: 2025-11-21 00:45+0000\n"
 "PO-Revision-Date: 2004-10-28 01:41-0800\n"
 "Last-Translator: Tamil PC <tamilpc@ambalam.com>\n"
 "Language-Team: Tamil <en@li.org>\n"
@@ -680,32 +680,28 @@ msgid "New Task"
 msgstr "பணிகள்"
 
 #: src/ui/TaskPage.qml:34
-#, fuzzy, kde-format
-#| msgid "Edit Task"
+#, kde-format
 msgctxt "@action:button"
-msgid "Edit Task"
-msgstr "பணியை மாற்று"
+msgid "Save"
+msgstr ""
 
 #: src/ui/TaskPage.qml:35
-#, fuzzy, kde-format
-#| msgid "Edit Task"
+#, kde-format
 msgctxt "@action:button accessible"
-msgid "Edit Task"
-msgstr "பணியை மாற்று"
+msgid "Save"
+msgstr ""
 
 #: src/ui/TaskPage.qml:45
-#, fuzzy, kde-format
-#| msgid "Tasks"
+#, kde-format
 msgctxt "@action:button"
-msgid "New Task"
-msgstr "பணிகள்"
+msgid "Create"
+msgstr ""
 
 #: src/ui/TaskPage.qml:46
-#, fuzzy, kde-format
-#| msgid "Tasks"
+#, kde-format
 msgctxt "@action:button accessible"
-msgid "New Task"
-msgstr "பணிகள்"
+msgid "Create"
+msgstr ""
 
 #: src/ui/TaskPage.qml:91
 #, fuzzy, kde-format
@@ -1170,6 +1166,30 @@ msgstr "மாறிகளை மாற்றுக"
 msgctxt "@action:button"
 msgid "Edit Variable…"
 msgstr "மாறிகளை மாற்றுக"
+
+#, fuzzy
+#~| msgid "Edit Task"
+#~ msgctxt "@action:button"
+#~ msgid "Edit Task"
+#~ msgstr "பணியை மாற்று"
+
+#, fuzzy
+#~| msgid "Edit Task"
+#~ msgctxt "@action:button accessible"
+#~ msgid "Edit Task"
+#~ msgstr "பணியை மாற்று"
+
+#, fuzzy
+#~| msgid "Tasks"
+#~ msgctxt "@action:button"
+#~ msgid "New Task"
+#~ msgstr "பணிகள்"
+
+#, fuzzy
+#~| msgid "Tasks"
+#~ msgctxt "@action:button accessible"
+#~ msgid "New Task"
+#~ msgstr "பணிகள்"
 
 #, fuzzy
 #~| msgid "Printing..."

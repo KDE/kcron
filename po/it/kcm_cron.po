@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:54+0000\n"
+"POT-Creation-Date: 2025-11-21 00:45+0000\n"
 "PO-Revision-Date: 2024-10-12 19:49+0200\n"
 "Last-Translator: Valter Mura <valtermura@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -671,26 +671,26 @@ msgstr "Nuova operazione"
 #: src/ui/TaskPage.qml:34
 #, kde-format
 msgctxt "@action:button"
-msgid "Edit Task"
-msgstr "Modifica operazione"
+msgid "Save"
+msgstr ""
 
 #: src/ui/TaskPage.qml:35
 #, kde-format
 msgctxt "@action:button accessible"
-msgid "Edit Task"
-msgstr "Modifica operazione"
+msgid "Save"
+msgstr ""
 
 #: src/ui/TaskPage.qml:45
 #, kde-format
 msgctxt "@action:button"
-msgid "New Task"
-msgstr "Nuova operazione"
+msgid "Create"
+msgstr ""
 
 #: src/ui/TaskPage.qml:46
 #, kde-format
 msgctxt "@action:button accessible"
-msgid "New Task"
-msgstr "Nuova operazione"
+msgid "Create"
+msgstr ""
 
 #: src/ui/TaskPage.qml:91
 #, kde-format
@@ -1104,6 +1104,22 @@ msgstr "Aggiungi variabile…"
 msgctxt "@action:button"
 msgid "Edit Variable…"
 msgstr "Modifica variabile…"
+
+#~ msgctxt "@action:button"
+#~ msgid "Edit Task"
+#~ msgstr "Modifica operazione"
+
+#~ msgctxt "@action:button accessible"
+#~ msgid "Edit Task"
+#~ msgstr "Modifica operazione"
+
+#~ msgctxt "@action:button"
+#~ msgid "New Task"
+#~ msgstr "Nuova operazione"
+
+#~ msgctxt "@action:button accessible"
+#~ msgid "New Task"
+#~ msgstr "Nuova operazione"
 
 #~ msgctxt "@action:button"
 #~ msgid "Print"

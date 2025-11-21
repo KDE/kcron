@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:54+0000\n"
+"POT-Creation-Date: 2025-11-21 00:45+0000\n"
 "PO-Revision-Date: 2010-06-09 09:24+0700\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer <support@khmeros.info>\n"
@@ -656,28 +656,28 @@ msgid "New Task"
 msgstr "ភារកិច្ច"
 
 #: src/ui/TaskPage.qml:34
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:button"
-msgid "Edit Task"
-msgstr "កែប្រែ​ភារកិច្ច"
+msgid "Save"
+msgstr ""
 
 #: src/ui/TaskPage.qml:35
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:button accessible"
-msgid "Edit Task"
-msgstr "កែប្រែ​ភារកិច្ច"
+msgid "Save"
+msgstr ""
 
 #: src/ui/TaskPage.qml:45
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:button"
-msgid "New Task"
-msgstr "ភារកិច្ច"
+msgid "Create"
+msgstr ""
 
 #: src/ui/TaskPage.qml:46
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:button accessible"
-msgid "New Task"
-msgstr "ភារកិច្ច"
+msgid "Create"
+msgstr ""
 
 #: src/ui/TaskPage.qml:91
 #, fuzzy, kde-format
@@ -1091,6 +1091,26 @@ msgstr "អថេរ"
 msgctxt "@action:button"
 msgid "Edit Variable…"
 msgstr "កែប្រែ​អថេរ"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Edit Task"
+#~ msgstr "កែប្រែ​ភារកិច្ច"
+
+#, fuzzy
+#~ msgctxt "@action:button accessible"
+#~ msgid "Edit Task"
+#~ msgstr "កែប្រែ​ភារកិច្ច"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "New Task"
+#~ msgstr "ភារកិច្ច"
+
+#, fuzzy
+#~ msgctxt "@action:button accessible"
+#~ msgid "New Task"
+#~ msgstr "ភារកិច្ច"
 
 #, fuzzy
 #~ msgctxt "NAME OF TRANSLATORS"

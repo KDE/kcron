@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:54+0000\n"
+"POT-Creation-Date: 2025-11-21 00:45+0000\n"
 "PO-Revision-Date: 2021-10-28 15:38+0200\n"
 "Last-Translator: Phu Hung Nguyen <phu.nguyen@kdemail.net>\n"
 "Language-Team: Vietnamese <kde-l10n-vi@kde.org>\n"
@@ -687,32 +687,28 @@ msgid "New Task"
 msgstr "Tác vụ mới"
 
 #: src/ui/TaskPage.qml:34
-#, fuzzy, kde-format
-#| msgid "Modify Task"
+#, kde-format
 msgctxt "@action:button"
-msgid "Edit Task"
-msgstr "Chỉnh sửa tác vụ"
+msgid "Save"
+msgstr ""
 
 #: src/ui/TaskPage.qml:35
-#, fuzzy, kde-format
-#| msgid "Modify Task"
+#, kde-format
 msgctxt "@action:button accessible"
-msgid "Edit Task"
-msgstr "Chỉnh sửa tác vụ"
+msgid "Save"
+msgstr ""
 
 #: src/ui/TaskPage.qml:45
-#, fuzzy, kde-format
-#| msgid "New Task"
+#, kde-format
 msgctxt "@action:button"
-msgid "New Task"
-msgstr "Tác vụ mới"
+msgid "Create"
+msgstr ""
 
 #: src/ui/TaskPage.qml:46
-#, fuzzy, kde-format
-#| msgid "New Task"
+#, kde-format
 msgctxt "@action:button accessible"
-msgid "New Task"
-msgstr "Tác vụ mới"
+msgid "Create"
+msgstr ""
 
 #: src/ui/TaskPage.qml:91
 #, fuzzy, kde-format
@@ -1182,6 +1178,30 @@ msgstr "Biến"
 msgctxt "@action:button"
 msgid "Edit Variable…"
 msgstr "Chỉnh sửa biến"
+
+#, fuzzy
+#~| msgid "Modify Task"
+#~ msgctxt "@action:button"
+#~ msgid "Edit Task"
+#~ msgstr "Chỉnh sửa tác vụ"
+
+#, fuzzy
+#~| msgid "Modify Task"
+#~ msgctxt "@action:button accessible"
+#~ msgid "Edit Task"
+#~ msgstr "Chỉnh sửa tác vụ"
+
+#, fuzzy
+#~| msgid "New Task"
+#~ msgctxt "@action:button"
+#~ msgid "New Task"
+#~ msgstr "Tác vụ mới"
+
+#, fuzzy
+#~| msgid "New Task"
+#~ msgctxt "@action:button accessible"
+#~ msgid "New Task"
+#~ msgstr "Tác vụ mới"
 
 #~ msgctxt "NAME OF TRANSLATORS"
 #~ msgid "Your names"

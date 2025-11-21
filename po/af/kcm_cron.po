@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:54+0000\n"
+"POT-Creation-Date: 2025-11-21 00:45+0000\n"
 "PO-Revision-Date: 2002-11-07 11:26+0200\n"
 "Last-Translator: WEB-Translator <http://kde.af.org.za>\n"
 "Language-Team: AFRIKAANS <AF@lia.org.za>\n"
@@ -680,32 +680,28 @@ msgid "New Task"
 msgstr "Take"
 
 #: src/ui/TaskPage.qml:34
-#, fuzzy, kde-format
-#| msgid "Edit Task"
+#, kde-format
 msgctxt "@action:button"
-msgid "Edit Task"
-msgstr "Redigeer Opdrag"
+msgid "Save"
+msgstr ""
 
 #: src/ui/TaskPage.qml:35
-#, fuzzy, kde-format
-#| msgid "Edit Task"
+#, kde-format
 msgctxt "@action:button accessible"
-msgid "Edit Task"
-msgstr "Redigeer Opdrag"
+msgid "Save"
+msgstr ""
 
 #: src/ui/TaskPage.qml:45
-#, fuzzy, kde-format
-#| msgid "Tasks"
+#, kde-format
 msgctxt "@action:button"
-msgid "New Task"
-msgstr "Take"
+msgid "Create"
+msgstr ""
 
 #: src/ui/TaskPage.qml:46
-#, fuzzy, kde-format
-#| msgid "Tasks"
+#, kde-format
 msgctxt "@action:button accessible"
-msgid "New Task"
-msgstr "Take"
+msgid "Create"
+msgstr ""
 
 #: src/ui/TaskPage.qml:91
 #, fuzzy, kde-format
@@ -1169,6 +1165,30 @@ msgstr "Redigeer Veranderlike"
 msgctxt "@action:button"
 msgid "Edit Variable…"
 msgstr "Redigeer Veranderlike"
+
+#, fuzzy
+#~| msgid "Edit Task"
+#~ msgctxt "@action:button"
+#~ msgid "Edit Task"
+#~ msgstr "Redigeer Opdrag"
+
+#, fuzzy
+#~| msgid "Edit Task"
+#~ msgctxt "@action:button accessible"
+#~ msgid "Edit Task"
+#~ msgstr "Redigeer Opdrag"
+
+#, fuzzy
+#~| msgid "Tasks"
+#~ msgctxt "@action:button"
+#~ msgid "New Task"
+#~ msgstr "Take"
+
+#, fuzzy
+#~| msgid "Tasks"
+#~ msgctxt "@action:button accessible"
+#~ msgid "New Task"
+#~ msgstr "Take"
 
 #, fuzzy
 #~| msgid "Printing..."

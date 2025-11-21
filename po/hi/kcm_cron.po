@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:54+0000\n"
+"POT-Creation-Date: 2025-11-21 00:45+0000\n"
 "PO-Revision-Date: 2021-06-29 20:35+0530\n"
 "Last-Translator: Raghavendra Kamath <raghu@raghukamath.com>\n"
 "Language-Team: kde-hindi\n"
@@ -685,32 +685,28 @@ msgid "New Task"
 msgstr "कार्य"
 
 #: src/ui/TaskPage.qml:34
-#, fuzzy, kde-format
-#| msgid "Edit Task"
+#, kde-format
 msgctxt "@action:button"
-msgid "Edit Task"
-msgstr "कार्य संपादन"
+msgid "Save"
+msgstr ""
 
 #: src/ui/TaskPage.qml:35
-#, fuzzy, kde-format
-#| msgid "Edit Task"
+#, kde-format
 msgctxt "@action:button accessible"
-msgid "Edit Task"
-msgstr "कार्य संपादन"
+msgid "Save"
+msgstr ""
 
 #: src/ui/TaskPage.qml:45
-#, fuzzy, kde-format
-#| msgid "Tasks"
+#, kde-format
 msgctxt "@action:button"
-msgid "New Task"
-msgstr "कार्य"
+msgid "Create"
+msgstr ""
 
 #: src/ui/TaskPage.qml:46
-#, fuzzy, kde-format
-#| msgid "Tasks"
+#, kde-format
 msgctxt "@action:button accessible"
-msgid "New Task"
-msgstr "कार्य"
+msgid "Create"
+msgstr ""
 
 #: src/ui/TaskPage.qml:91
 #, fuzzy, kde-format
@@ -1186,6 +1182,30 @@ msgstr "वेरिएबल संपादन"
 msgctxt "@action:button"
 msgid "Edit Variable…"
 msgstr "वेरिएबल संपादन"
+
+#, fuzzy
+#~| msgid "Edit Task"
+#~ msgctxt "@action:button"
+#~ msgid "Edit Task"
+#~ msgstr "कार्य संपादन"
+
+#, fuzzy
+#~| msgid "Edit Task"
+#~ msgctxt "@action:button accessible"
+#~ msgid "Edit Task"
+#~ msgstr "कार्य संपादन"
+
+#, fuzzy
+#~| msgid "Tasks"
+#~ msgctxt "@action:button"
+#~ msgid "New Task"
+#~ msgstr "कार्य"
+
+#, fuzzy
+#~| msgid "Tasks"
+#~ msgctxt "@action:button accessible"
+#~ msgid "New Task"
+#~ msgstr "कार्य"
 
 #, fuzzy
 #~| msgid "Printing..."

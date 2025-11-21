@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:54+0000\n"
+"POT-Creation-Date: 2025-11-21 00:45+0000\n"
 "PO-Revision-Date: 2010-10-29 12:51+0200\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <l10n-no@lister.huftis.org>\n"
@@ -669,28 +669,28 @@ msgid "New Task"
 msgstr "Ny oppgave"
 
 #: src/ui/TaskPage.qml:34
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:button"
-msgid "Edit Task"
-msgstr "Rediger oppgave"
+msgid "Save"
+msgstr ""
 
 #: src/ui/TaskPage.qml:35
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:button accessible"
-msgid "Edit Task"
-msgstr "Rediger oppgave"
+msgid "Save"
+msgstr ""
 
 #: src/ui/TaskPage.qml:45
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:button"
-msgid "New Task"
-msgstr "Ny oppgave"
+msgid "Create"
+msgstr ""
 
 #: src/ui/TaskPage.qml:46
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:button accessible"
-msgid "New Task"
-msgstr "Ny oppgave"
+msgid "Create"
+msgstr ""
 
 #: src/ui/TaskPage.qml:91
 #, fuzzy, kde-format
@@ -1104,3 +1104,23 @@ msgstr "Variabel"
 msgctxt "@action:button"
 msgid "Edit Variable…"
 msgstr "Rediger variabel"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "Edit Task"
+#~ msgstr "Rediger oppgave"
+
+#, fuzzy
+#~ msgctxt "@action:button accessible"
+#~ msgid "Edit Task"
+#~ msgstr "Rediger oppgave"
+
+#, fuzzy
+#~ msgctxt "@action:button"
+#~ msgid "New Task"
+#~ msgstr "Ny oppgave"
+
+#, fuzzy
+#~ msgctxt "@action:button accessible"
+#~ msgid "New Task"
+#~ msgstr "Ny oppgave"
