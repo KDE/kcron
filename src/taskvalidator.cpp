@@ -8,6 +8,7 @@
 
 #include "taskvalidator.h"
 
+#include <QFileInfo>
 #include <QStandardPaths>
 
 #include <KLocalizedString>
@@ -126,8 +127,22 @@ bool TaskValidator::validateCommand()
 
     bool found = false;
     bool exec = false;
-    if (!QStandardPaths::findExecutable(binaryCommand, QStringList() << path).isEmpty() || mSpecialValidCommands.contains(binaryCommand)) {
-        found = true;
+
+    // For absolute paths, check the file directly to provide specific error messages
+    // (file not found vs not executable) rather than the generic "command not found".
+    if (commandQuoted.first.startsWith(QLatin1Char('/'))) {
+        QFileInfo fileInfo(commandQuoted.first);
+        if (fileInfo.exists() && fileInfo.isExecutable()) {
+            found = true;
+        }
+    }
+
+    // If not found via direct check, try the standard path resolution
+    if (!found) {
+        QString foundPath = QStandardPaths::findExecutable(binaryCommand, QStringList() << path);
+        if (!foundPath.isEmpty() || mSpecialValidCommands.contains(binaryCommand)) {
+            found = true;
+        }
     }
 
     if (found) {
