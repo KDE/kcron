@@ -316,8 +316,9 @@ KCM.AbstractKCM {
 
             onAccepted: {
                 let path = Qt.resolvedUrl(selectedFile).toString().replace("file://", "")
-                // Only update the model - the binding will handle UI update
                 main.task.command = main.__quoteCommandForStorage(path)
+                // Revalidate in case file permissions were changed
+                validator.validate()
                 destroy()
             }
             onRejected: destroy()

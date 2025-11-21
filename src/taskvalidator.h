@@ -29,8 +29,7 @@ public:
     Task *task() const noexcept;
     void setTask(Task *task);
 
-public Q_SLOTS:
-    bool validate();
+    Q_INVOKABLE bool validate();
 
 Q_SIGNALS:
     void errorStringChanged();

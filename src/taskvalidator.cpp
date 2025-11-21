@@ -125,43 +125,34 @@ bool TaskValidator::validateCommand()
     const QString &path = pathCommand.at(0);
     const QString &binaryCommand = pathCommand.at(1);
 
-    bool found = false;
-    bool exec = false;
-
     // For absolute paths, check the file directly to provide specific error messages
     // (file not found vs not executable) rather than the generic "command not found".
     if (commandQuoted.first.startsWith(QLatin1Char('/'))) {
         QFileInfo fileInfo(commandQuoted.first);
-        if (fileInfo.exists() && fileInfo.isExecutable()) {
-            found = true;
+        if (fileInfo.exists()) {
+            if (fileInfo.isExecutable()) {
+                return true;
+            } else {
+                mErrorString = xi18nc("@info", "<message>File exists but is not executable: <filename>%1</filename></message>", commandQuoted.first);
+                Q_EMIT errorStringChanged();
+                return false;
+            }
+        } else {
+            mErrorString = xi18nc("@info", "<message>File not found: <filename>%1</filename></message>", commandQuoted.first);
+            Q_EMIT errorStringChanged();
+            return false;
         }
     }
 
     // If not found via direct check, try the standard path resolution
-    if (!found) {
-        QString foundPath = QStandardPaths::findExecutable(binaryCommand, QStringList() << path);
-        if (!foundPath.isEmpty() || mSpecialValidCommands.contains(binaryCommand)) {
-            found = true;
-        }
+    QString foundPath = QStandardPaths::findExecutable(binaryCommand, QStringList() << path);
+    if (!foundPath.isEmpty() || mSpecialValidCommands.contains(binaryCommand)) {
+        return true;
     }
 
-    if (found) {
-        exec = true;
-    }
-
-    if (found && !exec) {
-        mErrorString = xi18nc("@info", "<message>Please select an executable program</message>");
-        Q_EMIT errorStringChanged();
-        return false;
-    }
-
-    if (!found) {
-        mErrorString = xi18nc("@info", "<message>Choose a program to run</message>");
-        Q_EMIT errorStringChanged();
-        return false;
-    }
-
-    return true;
+    mErrorString = xi18nc("@info", "<message>Command not found: <command>%1</command></message>", binaryCommand);
+    Q_EMIT errorStringChanged();
+    return false;
 }
 
 bool TaskValidator::validateMonth()
