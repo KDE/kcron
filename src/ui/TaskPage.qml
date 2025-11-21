@@ -75,6 +75,7 @@ KCM.AbstractKCM {
         }
 
         contentItem: Flickable {
+            topMargin: Kirigami.Units.largeSpacing
             bottomMargin: Kirigami.Units.largeSpacing
             contentHeight: content.height
             clip: true
