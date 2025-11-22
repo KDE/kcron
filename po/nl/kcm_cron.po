@@ -11,21 +11,21 @@
 # Rinse de Vries <rinsedevries@kde.nl>, 2004, 2007, 2008, 2009.
 # Tom Albers <tomalbers@kde.nl>, 2004.
 # Tom Albers <toma@kovoks.nl>, 2004.
-# SPDX-FileCopyrightText: 2009, 2023, 2024 Freek de Kruijf <f.de.kruijf@hetnet.nl>
+# SPDX-FileCopyrightText: 2009, 2023, 2024, 2025 Freek de Kruijf <f.de.kruijf@hetnet.nl>
 # Freek de Kruijf <freekdekruijf@kde.nl>, 2010, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-21 00:45+0000\n"
-"PO-Revision-Date: 2024-10-11 16:41+0200\n"
+"PO-Revision-Date: 2025-11-21 13:38+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.08.1\n"
+"X-Generator: Lokalize 25.08.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: src/cronPrinter.cpp:62
@@ -682,25 +682,25 @@ msgstr "Nieuwe taak"
 #, kde-format
 msgctxt "@action:button"
 msgid "Save"
-msgstr ""
+msgstr "Opslaan"
 
 #: src/ui/TaskPage.qml:35
 #, kde-format
 msgctxt "@action:button accessible"
 msgid "Save"
-msgstr ""
+msgstr "Opslaan"
 
 #: src/ui/TaskPage.qml:45
 #, kde-format
 msgctxt "@action:button"
 msgid "Create"
-msgstr ""
+msgstr "Aanmaken"
 
 #: src/ui/TaskPage.qml:46
 #, kde-format
 msgctxt "@action:button accessible"
 msgid "Create"
-msgstr ""
+msgstr "Aanmaken"
 
 #: src/ui/TaskPage.qml:91
 #, kde-format
