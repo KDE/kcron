@@ -1096,19 +1096,3 @@ msgstr "新增变量…"
 msgctxt "@action:button"
 msgid "Edit Variable…"
 msgstr "编辑变量…"
-
-#~ msgctxt "@action:button"
-#~ msgid "Edit Task"
-#~ msgstr "编辑任务"
-
-#~ msgctxt "@action:button accessible"
-#~ msgid "Edit Task"
-#~ msgstr "编辑任务"
-
-#~ msgctxt "@action:button"
-#~ msgid "New Task"
-#~ msgstr "新建任务"
-
-#~ msgctxt "@action:button accessible"
-#~ msgid "New Task"
-#~ msgstr "新建任务"

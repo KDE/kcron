@@ -1,4 +1,4 @@
-# Spanish translations for kcron.po package.
+# Spanish translations for kcm_cron.po package.
 # Copyright (C) 2003-2025 This file is copyright:
 # This file is distributed under the same license as the kcron package.
 #
@@ -10,10 +10,10 @@
 # SPDX-FileCopyrightText: 2011 David Paul <eodos0@gmail.com>
 msgid ""
 msgstr ""
-"Project-Id-Version: kcron\n"
+"Project-Id-Version: kcm_cron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-21 00:45+0000\n"
-"PO-Revision-Date: 2025-05-12 14:20+0100\n"
+"PO-Revision-Date: 2025-11-22 11:56+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "First-Translator: Boris Wesslowski <Boris@Wesslowski.com>\n"
-"X-Generator: Lokalize 24.08.1\n"
+"X-Generator: Lokalize 25.08.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: src/cronPrinter.cpp:62
@@ -677,25 +677,25 @@ msgstr "Nueva tarea"
 #, kde-format
 msgctxt "@action:button"
 msgid "Save"
-msgstr ""
+msgstr "Guardar"
 
 #: src/ui/TaskPage.qml:35
 #, kde-format
 msgctxt "@action:button accessible"
 msgid "Save"
-msgstr ""
+msgstr "Guardar"
 
 #: src/ui/TaskPage.qml:45
 #, kde-format
 msgctxt "@action:button"
 msgid "Create"
-msgstr ""
+msgstr "Crear"
 
 #: src/ui/TaskPage.qml:46
 #, kde-format
 msgctxt "@action:button accessible"
 msgid "Create"
-msgstr ""
+msgstr "Crear"
 
 #: src/ui/TaskPage.qml:91
 #, kde-format
@@ -1109,19 +1109,3 @@ msgstr "Añadir variable…"
 msgctxt "@action:button"
 msgid "Edit Variable…"
 msgstr "Editar variable…"
-
-#~ msgctxt "@action:button"
-#~ msgid "Edit Task"
-#~ msgstr "Editar tarea"
-
-#~ msgctxt "@action:button accessible"
-#~ msgid "Edit Task"
-#~ msgstr "Editar tarea"
-
-#~ msgctxt "@action:button"
-#~ msgid "New Task"
-#~ msgstr "Nueva tarea"
-
-#~ msgctxt "@action:button accessible"
-#~ msgid "New Task"
-#~ msgstr "Nueva tarea"
