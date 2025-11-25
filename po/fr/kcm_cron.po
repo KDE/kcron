@@ -8,7 +8,7 @@
 # Guillaume Pujol <guill.p@gmail.com>, 2007.
 # Mickael Sibelle <kimael@gmail.com>, 2008.
 # Nicolas Ternisien <nicolas.ternisien@gmail.com>, 2008.
-# SPDX-FileCopyrightText: 2013, 2024 Xavier Besnard <xavier.besnard@kde.org>
+# SPDX-FileCopyrightText: 2013, 2024, 2025 Xavier Besnard <xavier.besnard@kde.org>
 # SPDX-FileCopyrightText: 2021, 2023 Xavier Besnard <xavier.besnard@kde.org>
 # Xavier Besnard <xavier.besnard@kde.org>, 2023.
 #
@@ -27,7 +27,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Accelerator-Marker: &\n"
 "X-Environment: kde\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 25.11.80\n"
 "X-Text-Markup: kde4\n"
 
 #: src/cronPrinter.cpp:62
