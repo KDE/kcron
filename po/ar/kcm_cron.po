@@ -1,6 +1,6 @@
 # translation of kcron.po to
 # Copyright (C) 2002,2003, 2004, 2006, 2007 Free Software Foundation, Inc.
-# SPDX-FileCopyrightText: 2022, 2024 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
+# SPDX-FileCopyrightText: 2022, 2024, 2025 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
 # Isam Bayazidi <bayazidi@arabeyes.org>, 2002.
 # Nuriddin S. Aminagha <nuriddin5@msn.com>, 2003.
 # Ahmad M. Zawawi <azawawi@emirates.net.ae>, 2004.
