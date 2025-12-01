@@ -26,6 +26,7 @@
   <name xml:lang="he">KCron</name>
   <name xml:lang="hu">KCron</name>
   <name xml:lang="ia">KCron</name>
+  <name xml:lang="is">KCron</name>
   <name xml:lang="it">KCron</name>
   <name xml:lang="ka">KCron</name>
   <name xml:lang="ko">KCron</name>
@@ -68,6 +69,7 @@
   <summary xml:lang="he">מתזמן משימות</summary>
   <summary xml:lang="hu">Feladatüzemező</summary>
   <summary xml:lang="ia">Planificator de Cargas</summary>
+  <summary xml:lang="is">Verkáætlun</summary>
   <summary xml:lang="it">Pianificatore di operazioni</summary>
   <summary xml:lang="ka">ამოცანების დამგეგმავი</summary>
   <summary xml:lang="ko">작업 스케줄러</summary>
@@ -109,6 +111,7 @@
     <p xml:lang="he">מתזמן המשימות הוא ממשק משתמש חזותי לכלי התקני „cron”. אפשר להריץ בעזרתו פקודות (או „משימות”) במועדים מסוימים, ביום או תאריך מסוימים או בהפרשים קבועים (זמן בין הפעלה להפעלה).</p>
     <p xml:lang="hu">A Feladatüzemető egy grafikus előtétprogram a „cron” segédprogramhoz. Ezzel parancsok (vagy „feladatok”) futtathatóak adott időpontban, egy bizonyos napon vagy dátumon, vagy adott időközönként (két végrehajtás között).</p>
     <p xml:lang="ia">Planificator de carga (Task Scheduler) es uninterfacie graphic al utilitate standard "cron". Con illo, commandos (or "tasks",i.e.cargas) pote esser executate a tempores specific, a un certe data o die, o a intervallos specific (tempore intra execution).</p>
+    <p xml:lang="is">Verkáætlun er myndrænt viðmót fyrir staðlaða "cron" tólið. Með því má keyra skipanir (eða "verk") á tilteknum tímasetningum, á tilteknum degi eða dögum eða með tilteknum tímabilum (tíma sem líður á milli).</p>
     <p xml:lang="it">Il pianificatore di operazioni è un'interfaccia grafica al programma «cron». Con esso i comandi (o «processi») possono essere avviati ad orari specifici, in certi giorni o in certe date, oppure ad intervalli specifici (tempo tra le esecuzioni).</p>
     <p xml:lang="ka">ამოცანების დამგეგმავი გრაფიკული წინაბოლოა სტანდარტული "cron" პროგრამისთვის. მისი გამოყენებით ბრძანებები (ან "ამოცანები") შეგიძლიათ მითითებულ დროს გაუშვათ, ან კონკრეტულ დღეს ან თარიღზე, ან მითითებულ ინტერვალში (დრო გაშვებებს შორის) ერთხელ.</p>
     <p xml:lang="ko">작업 스케줄러는 "cron" 유틸리티의 그래픽 프론트엔드입니다. 명령(혹은 "작업")을 지정한 시간, 지정한 요일이나 날짜, 또는 지정한 시간 간격마다 실행시킬 수 있습니다.</p>
