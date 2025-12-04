@@ -128,7 +128,7 @@ bool TaskValidator::validateCommand()
     // For absolute paths, check the file directly to provide specific error messages
     // (file not found vs not executable) rather than the generic "command not found".
     if (commandQuoted.first.startsWith(QLatin1Char('/'))) {
-        QFileInfo fileInfo(commandQuoted.first);
+        const QFileInfo fileInfo(commandQuoted.first);
         if (fileInfo.exists()) {
             if (fileInfo.isExecutable()) {
                 return true;
@@ -145,7 +145,7 @@ bool TaskValidator::validateCommand()
     }
 
     // If not found via direct check, try the standard path resolution
-    QString foundPath = QStandardPaths::findExecutable(binaryCommand, QStringList() << path);
+    const QString foundPath = QStandardPaths::findExecutable(binaryCommand, QStringList() << path);
     if (!foundPath.isEmpty() || mSpecialValidCommands.contains(binaryCommand)) {
         return true;
     }
