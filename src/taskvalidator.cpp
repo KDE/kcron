@@ -145,7 +145,15 @@ bool TaskValidator::validateCommand()
     }
 
     // If not found via direct check, try the standard path resolution
-    const QString foundPath = QStandardPaths::findExecutable(binaryCommand, QStringList() << path);
+    // When path is empty, search in system PATH (e.g., for commands like 'ls', 'cat').
+    // When path is not empty, search only in the specified directory.
+    QString foundPath;
+    if (path.isEmpty()) {
+        foundPath = QStandardPaths::findExecutable(binaryCommand);
+    } else {
+        foundPath = QStandardPaths::findExecutable(binaryCommand, QStringList() << path);
+    }
+
     if (!foundPath.isEmpty() || mSpecialValidCommands.contains(binaryCommand)) {
         return true;
     }

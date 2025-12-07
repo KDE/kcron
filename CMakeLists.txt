@@ -47,6 +47,9 @@ ecm_set_disabled_deprecation_versions(QT 6.10.0
 
 add_subdirectory(src)
 
+include(CTest)
+add_subdirectory(autotests)
+
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/org.kde.kcron.metainfo.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 
 ecm_qt_install_logging_categories(
