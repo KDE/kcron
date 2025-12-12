@@ -1100,19 +1100,3 @@ msgstr "Přidat proměnnou…"
 msgctxt "@action:button"
 msgid "Edit Variable…"
 msgstr "Upravit proměnnou…"
-
-#~ msgctxt "@action:button"
-#~ msgid "Edit Task"
-#~ msgstr "Upravit úlohu"
-
-#~ msgctxt "@action:button accessible"
-#~ msgid "Edit Task"
-#~ msgstr "Upravit úlohu"
-
-#~ msgctxt "@action:button"
-#~ msgid "New Task"
-#~ msgstr "Nová úloha"
-
-#~ msgctxt "@action:button accessible"
-#~ msgid "New Task"
-#~ msgstr "Nová úloha"
