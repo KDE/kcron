@@ -664,25 +664,25 @@ msgstr "新建任务"
 #, kde-format
 msgctxt "@action:button"
 msgid "Save"
-msgstr ""
+msgstr "保存"
 
 #: src/ui/TaskPage.qml:35
 #, kde-format
 msgctxt "@action:button accessible"
 msgid "Save"
-msgstr ""
+msgstr "保存"
 
 #: src/ui/TaskPage.qml:45
 #, kde-format
 msgctxt "@action:button"
 msgid "Create"
-msgstr ""
+msgstr "新建"
 
 #: src/ui/TaskPage.qml:46
 #, kde-format
 msgctxt "@action:button accessible"
 msgid "Create"
-msgstr ""
+msgstr "新建"
 
 #: src/ui/TaskPage.qml:91
 #, kde-format
