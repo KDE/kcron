@@ -1104,23 +1104,3 @@ msgstr "Variabel"
 msgctxt "@action:button"
 msgid "Edit Variable…"
 msgstr "Rediger variabel"
-
-#, fuzzy
-#~ msgctxt "@action:button"
-#~ msgid "Edit Task"
-#~ msgstr "Rediger oppgave"
-
-#, fuzzy
-#~ msgctxt "@action:button accessible"
-#~ msgid "Edit Task"
-#~ msgstr "Rediger oppgave"
-
-#, fuzzy
-#~ msgctxt "@action:button"
-#~ msgid "New Task"
-#~ msgstr "Ny oppgave"
-
-#, fuzzy
-#~ msgctxt "@action:button accessible"
-#~ msgid "New Task"
-#~ msgstr "Ny oppgave"
