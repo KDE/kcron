@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-21 00:45+0000\n"
+"POT-Creation-Date: 2026-01-05 00:45+0000\n"
 "PO-Revision-Date: 2023-11-07 21:26+0100\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: \n"
@@ -552,31 +552,44 @@ msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
 msgstr ""
 
-#: src/taskvalidator.cpp:104 src/taskvalidator.cpp:144
+#: src/taskvalidator.cpp:105
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Choose a program to run</message>"
 msgstr ""
 
-#: src/taskvalidator.cpp:112 src/taskvalidator.cpp:119
+#: src/taskvalidator.cpp:113 src/taskvalidator.cpp:120
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please type a valid command line</message>"
 msgstr ""
 
-#: src/taskvalidator.cpp:138
+#: src/taskvalidator.cpp:136
 #, kde-kuit-format
 msgctxt "@info"
-msgid "<message>Please select an executable program</message>"
+msgid ""
+"<message>File exists but is not executable: <filename>%1</filename></message>"
 msgstr ""
 
-#: src/taskvalidator.cpp:163
+#: src/taskvalidator.cpp:141
+#, kde-kuit-format
+msgctxt "@info"
+msgid "<message>File not found: <filename>%1</filename></message>"
+msgstr ""
+
+#: src/taskvalidator.cpp:161
+#, kde-kuit-format
+msgctxt "@info"
+msgid "<message>Command not found: <command>%1</command></message>"
+msgstr ""
+
+#: src/taskvalidator.cpp:177
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please select from the <b>Months</b> section</message>"
 msgstr ""
 
-#: src/taskvalidator.cpp:188
+#: src/taskvalidator.cpp:202
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -584,13 +597,13 @@ msgid ""
 "of Week</b> section</message>"
 msgstr ""
 
-#: src/taskvalidator.cpp:206
+#: src/taskvalidator.cpp:220
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please select from the <b>Hours</b> section</message>"
 msgstr ""
 
-#: src/taskvalidator.cpp:224
+#: src/taskvalidator.cpp:238
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please select from the <b>Minutes</b> section</message>"
@@ -676,239 +689,239 @@ msgctxt "@action:button accessible"
 msgid "Create"
 msgstr ""
 
-#: src/ui/TaskPage.qml:91
+#: src/ui/TaskPage.qml:92
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Command:"
 msgstr ""
 
-#: src/ui/TaskPage.qml:98
+#: src/ui/TaskPage.qml:111
 #, kde-format
 msgctxt "@action:button"
 msgid "Browse the Program"
 msgstr ""
 
-#: src/ui/TaskPage.qml:106
+#: src/ui/TaskPage.qml:119
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable this task"
 msgstr ""
 
-#: src/ui/TaskPage.qml:111 src/ui/VariablePage.qml:97
+#: src/ui/TaskPage.qml:124 src/ui/VariablePage.qml:97
 #, kde-format
 msgctxt "@label:listbox"
 msgid "User:"
 msgstr ""
 
-#: src/ui/TaskPage.qml:131 src/ui/VariablePage.qml:119
+#: src/ui/TaskPage.qml:144 src/ui/VariablePage.qml:119
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Comment:"
 msgstr ""
 
-#: src/ui/TaskPage.qml:138
+#: src/ui/TaskPage.qml:151
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Run:"
 msgstr ""
 
-#: src/ui/TaskPage.qml:141
+#: src/ui/TaskPage.qml:154
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "When system starts"
 msgstr ""
 
-#: src/ui/TaskPage.qml:148
+#: src/ui/TaskPage.qml:161
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Every day"
 msgstr ""
 
-#: src/ui/TaskPage.qml:154
+#: src/ui/TaskPage.qml:167
 #, kde-format
 msgctxt "@title:group"
 msgid "Months"
 msgstr ""
 
-#: src/ui/TaskPage.qml:174
+#: src/ui/TaskPage.qml:187
 #, kde-format
 msgctxt "@title:group"
 msgid "Days of Month"
 msgstr ""
 
-#: src/ui/TaskPage.qml:195
+#: src/ui/TaskPage.qml:208
 #, kde-format
 msgctxt "@title:group"
 msgid "Days of Week"
 msgstr ""
 
-#: src/ui/TaskPage.qml:215
+#: src/ui/TaskPage.qml:228
 #, kde-format
 msgctxt "@title:group"
 msgid "Hours"
 msgstr ""
 
-#: src/ui/TaskPage.qml:236
+#: src/ui/TaskPage.qml:249
 #, kde-format
 msgctxt "@title:group"
 msgid "Minutes"
 msgstr ""
 
-#: src/ui/TaskPage.qml:264
+#: src/ui/TaskPage.qml:277
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Selection:"
 msgstr ""
 
-#: src/ui/TaskPage.qml:269
+#: src/ui/TaskPage.qml:282
 #, kde-format
 msgid "Custom selection"
 msgstr ""
 
-#: src/ui/TaskPage.qml:270
+#: src/ui/TaskPage.qml:283
 #, kde-format
 msgid "Each minute"
 msgstr ""
 
-#: src/ui/TaskPage.qml:271
+#: src/ui/TaskPage.qml:284
 #, kde-format
 msgid "Every 2 minutes"
 msgstr ""
 
-#: src/ui/TaskPage.qml:272
+#: src/ui/TaskPage.qml:285
 #, kde-format
 msgid "Every 5 minutes"
 msgstr ""
 
-#: src/ui/TaskPage.qml:273
+#: src/ui/TaskPage.qml:286
 #, kde-format
 msgid "Every 10 minutes"
 msgstr ""
 
-#: src/ui/TaskPage.qml:274
+#: src/ui/TaskPage.qml:287
 #, kde-format
 msgid "Every 15 minutes"
 msgstr ""
 
-#: src/ui/TaskPage.qml:275
+#: src/ui/TaskPage.qml:288
 #, kde-format
 msgid "Every 20 minutes"
 msgstr ""
 
-#: src/ui/TaskPage.qml:276
+#: src/ui/TaskPage.qml:289
 #, kde-format
 msgid "Every 30 minutes"
-msgstr ""
-
-#: src/ui/TaskPage.qml:318
-#, kde-format
-msgctxt "@action:button"
-msgid "January"
-msgstr ""
-
-#: src/ui/TaskPage.qml:322
-#, kde-format
-msgctxt "@action:button"
-msgid "February"
-msgstr ""
-
-#: src/ui/TaskPage.qml:326
-#, kde-format
-msgctxt "@action:button"
-msgid "March"
-msgstr ""
-
-#: src/ui/TaskPage.qml:330
-#, kde-format
-msgctxt "@action:button"
-msgid "April"
 msgstr ""
 
 #: src/ui/TaskPage.qml:334
 #, kde-format
 msgctxt "@action:button"
-msgid "May"
+msgid "January"
 msgstr ""
 
 #: src/ui/TaskPage.qml:338
 #, kde-format
 msgctxt "@action:button"
-msgid "June"
+msgid "February"
 msgstr ""
 
 #: src/ui/TaskPage.qml:342
 #, kde-format
 msgctxt "@action:button"
-msgid "July"
+msgid "March"
 msgstr ""
 
 #: src/ui/TaskPage.qml:346
 #, kde-format
 msgctxt "@action:button"
-msgid "August"
+msgid "April"
 msgstr ""
 
 #: src/ui/TaskPage.qml:350
 #, kde-format
 msgctxt "@action:button"
-msgid "September"
+msgid "May"
 msgstr ""
 
 #: src/ui/TaskPage.qml:354
 #, kde-format
 msgctxt "@action:button"
-msgid "October"
+msgid "June"
 msgstr ""
 
 #: src/ui/TaskPage.qml:358
 #, kde-format
 msgctxt "@action:button"
-msgid "November"
+msgid "July"
 msgstr ""
 
 #: src/ui/TaskPage.qml:362
 #, kde-format
 msgctxt "@action:button"
+msgid "August"
+msgstr ""
+
+#: src/ui/TaskPage.qml:366
+#, kde-format
+msgctxt "@action:button"
+msgid "September"
+msgstr ""
+
+#: src/ui/TaskPage.qml:370
+#, kde-format
+msgctxt "@action:button"
+msgid "October"
+msgstr ""
+
+#: src/ui/TaskPage.qml:374
+#, kde-format
+msgctxt "@action:button"
+msgid "November"
+msgstr ""
+
+#: src/ui/TaskPage.qml:378
+#, kde-format
+msgctxt "@action:button"
 msgid "December"
-msgstr ""
-
-#: src/ui/TaskPage.qml:384
-#, kde-format
-msgctxt "@action:button"
-msgid "Monday"
-msgstr ""
-
-#: src/ui/TaskPage.qml:388
-#, kde-format
-msgctxt "@action:button"
-msgid "Tuesday"
-msgstr ""
-
-#: src/ui/TaskPage.qml:392
-#, kde-format
-msgctxt "@action:button"
-msgid "Wednesday"
-msgstr ""
-
-#: src/ui/TaskPage.qml:396
-#, kde-format
-msgctxt "@action:button"
-msgid "Thursday"
 msgstr ""
 
 #: src/ui/TaskPage.qml:400
 #, kde-format
 msgctxt "@action:button"
-msgid "Friday"
+msgid "Monday"
 msgstr ""
 
 #: src/ui/TaskPage.qml:404
 #, kde-format
 msgctxt "@action:button"
-msgid "Saturday"
+msgid "Tuesday"
 msgstr ""
 
 #: src/ui/TaskPage.qml:408
+#, kde-format
+msgctxt "@action:button"
+msgid "Wednesday"
+msgstr ""
+
+#: src/ui/TaskPage.qml:412
+#, kde-format
+msgctxt "@action:button"
+msgid "Thursday"
+msgstr ""
+
+#: src/ui/TaskPage.qml:416
+#, kde-format
+msgctxt "@action:button"
+msgid "Friday"
+msgstr ""
+
+#: src/ui/TaskPage.qml:420
+#, kde-format
+msgctxt "@action:button"
+msgid "Saturday"
+msgstr ""
+
+#: src/ui/TaskPage.qml:424
 #, kde-format
 msgctxt "@action:button"
 msgid "Sunday"

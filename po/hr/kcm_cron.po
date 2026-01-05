@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron 0\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-21 00:45+0000\n"
+"POT-Creation-Date: 2026-01-05 00:45+0000\n"
 "PO-Revision-Date: 2011-07-18 11:49+0200\n"
 "Last-Translator: Marko Dimjašević <marko@dimjasevic.net>\n"
 "Language-Team: Croatian <kde-croatia-list@lists.sourceforge.net>\n"
@@ -582,34 +582,49 @@ msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
 msgstr "Završite izvršavanje skripte. Pritisnite Enter ili Ctrl+C za izlaz."
 
-#: src/taskvalidator.cpp:104 src/taskvalidator.cpp:144
+#: src/taskvalidator.cpp:105
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Choose a program to run</message>"
 msgstr ""
 
-#: src/taskvalidator.cpp:112 src/taskvalidator.cpp:119
+#: src/taskvalidator.cpp:113 src/taskvalidator.cpp:120
 #, fuzzy, kde-kuit-format
 #| msgid "<i>Please type a valid command line...</i>"
 msgctxt "@info"
 msgid "<message>Please type a valid command line</message>"
 msgstr "<i>Molim vas da unesete valjan naredbeni redak…</i>"
 
-#: src/taskvalidator.cpp:138
+#: src/taskvalidator.cpp:136
 #, fuzzy, kde-kuit-format
 #| msgid "<i>Please select an executable program...</i>"
 msgctxt "@info"
-msgid "<message>Please select an executable program</message>"
+msgid ""
+"<message>File exists but is not executable: <filename>%1</filename></message>"
 msgstr "<i>Molim vas da odaberete izvršni program…</i>"
 
-#: src/taskvalidator.cpp:163
+#: src/taskvalidator.cpp:141
+#, fuzzy, kde-kuit-format
+#| msgid "<i>Please enter the variable name...</i>"
+msgctxt "@info"
+msgid "<message>File not found: <filename>%1</filename></message>"
+msgstr "<i>Molim vas da unesete ime varijable…</i>"
+
+#: src/taskvalidator.cpp:161
+#, fuzzy, kde-kuit-format
+#| msgid "<i>Please type a valid command line...</i>"
+msgctxt "@info"
+msgid "<message>Command not found: <command>%1</command></message>"
+msgstr "<i>Molim vas da unesete valjan naredbeni redak…</i>"
+
+#: src/taskvalidator.cpp:177
 #, fuzzy, kde-kuit-format
 #| msgid "Please enter the variable name."
 msgctxt "@info"
 msgid "<message>Please select from the <b>Months</b> section</message>"
 msgstr "Unesite naziv varijable."
 
-#: src/taskvalidator.cpp:188
+#: src/taskvalidator.cpp:202
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -617,14 +632,14 @@ msgid ""
 "of Week</b> section</message>"
 msgstr ""
 
-#: src/taskvalidator.cpp:206
+#: src/taskvalidator.cpp:220
 #, fuzzy, kde-kuit-format
 #| msgid "Please enter the variable name."
 msgctxt "@info"
 msgid "<message>Please select from the <b>Hours</b> section</message>"
 msgstr "Unesite naziv varijable."
 
-#: src/taskvalidator.cpp:224
+#: src/taskvalidator.cpp:238
 #, fuzzy, kde-kuit-format
 #| msgid "Please enter the variable name."
 msgctxt "@info"
@@ -716,171 +731,171 @@ msgctxt "@action:button accessible"
 msgid "Create"
 msgstr ""
 
-#: src/ui/TaskPage.qml:91
+#: src/ui/TaskPage.qml:92
 #, fuzzy, kde-format
 #| msgid "&Command:"
 msgctxt "@label:textbox"
 msgid "Command:"
 msgstr "&Naredba:"
 
-#: src/ui/TaskPage.qml:98
+#: src/ui/TaskPage.qml:111
 #, kde-format
 msgctxt "@action:button"
 msgid "Browse the Program"
 msgstr ""
 
-#: src/ui/TaskPage.qml:106
+#: src/ui/TaskPage.qml:119
 #, fuzzy, kde-format
 #| msgid "&Enable this task"
 msgctxt "@label:checkbox"
 msgid "Enable this task"
 msgstr "&Omogući ovaj zadatak"
 
-#: src/ui/TaskPage.qml:111 src/ui/VariablePage.qml:97
+#: src/ui/TaskPage.qml:124 src/ui/VariablePage.qml:97
 #, fuzzy, kde-format
 #| msgid "User"
 msgctxt "@label:listbox"
 msgid "User:"
 msgstr "Korisnik"
 
-#: src/ui/TaskPage.qml:131 src/ui/VariablePage.qml:119
+#: src/ui/TaskPage.qml:144 src/ui/VariablePage.qml:119
 #, fuzzy, kde-format
 #| msgid "&Comment:"
 msgctxt "@label:textbox"
 msgid "Comment:"
 msgstr "&Komentar:"
 
-#: src/ui/TaskPage.qml:138
+#: src/ui/TaskPage.qml:151
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Run:"
 msgstr ""
 
-#: src/ui/TaskPage.qml:141
+#: src/ui/TaskPage.qml:154
 #, fuzzy, kde-format
 #| msgid "At system startup"
 msgctxt "@label:checkbox"
 msgid "When system starts"
 msgstr "Prilikom pokretanja sustava"
 
-#: src/ui/TaskPage.qml:148
+#: src/ui/TaskPage.qml:161
 #, fuzzy, kde-format
 #| msgid "every day "
 msgctxt "@label:checkbox"
 msgid "Every day"
 msgstr "svaki dan"
 
-#: src/ui/TaskPage.qml:154
+#: src/ui/TaskPage.qml:167
 #, fuzzy, kde-format
 #| msgid "Months"
 msgctxt "@title:group"
 msgid "Months"
 msgstr "Mjeseci"
 
-#: src/ui/TaskPage.qml:174
+#: src/ui/TaskPage.qml:187
 #, fuzzy, kde-format
 #| msgid "Days of Month"
 msgctxt "@title:group"
 msgid "Days of Month"
 msgstr "Dani u mjesecu"
 
-#: src/ui/TaskPage.qml:195
+#: src/ui/TaskPage.qml:208
 #, fuzzy, kde-format
 #| msgid "Days of Week"
 msgctxt "@title:group"
 msgid "Days of Week"
 msgstr "Dani u tjednu"
 
-#: src/ui/TaskPage.qml:215
+#: src/ui/TaskPage.qml:228
 #, fuzzy, kde-format
 #| msgid "Hours"
 msgctxt "@title:group"
 msgid "Hours"
 msgstr "Sati"
 
-#: src/ui/TaskPage.qml:236
+#: src/ui/TaskPage.qml:249
 #, fuzzy, kde-format
 #| msgid "Minutes"
 msgctxt "@title:group"
 msgid "Minutes"
 msgstr "Minute"
 
-#: src/ui/TaskPage.qml:264
+#: src/ui/TaskPage.qml:277
 #, fuzzy, kde-format
 #| msgid "Preselection:"
 msgctxt "@label:listbox"
 msgid "Selection:"
 msgstr "Predodabir:"
 
-#: src/ui/TaskPage.qml:269
+#: src/ui/TaskPage.qml:282
 #, kde-format
 msgid "Custom selection"
 msgstr "Prilagođen odabir"
 
-#: src/ui/TaskPage.qml:270
+#: src/ui/TaskPage.qml:283
 #, kde-format
 msgid "Each minute"
 msgstr "Svake minute"
 
-#: src/ui/TaskPage.qml:271
+#: src/ui/TaskPage.qml:284
 #, kde-format
 msgid "Every 2 minutes"
 msgstr "Svake 2 minute"
 
-#: src/ui/TaskPage.qml:272
+#: src/ui/TaskPage.qml:285
 #, kde-format
 msgid "Every 5 minutes"
 msgstr "Svakih 5 minuta"
 
-#: src/ui/TaskPage.qml:273
+#: src/ui/TaskPage.qml:286
 #, kde-format
 msgid "Every 10 minutes"
 msgstr "Svakih 10 minuta"
 
-#: src/ui/TaskPage.qml:274
+#: src/ui/TaskPage.qml:287
 #, kde-format
 msgid "Every 15 minutes"
 msgstr "Svakih 15 minuta"
 
-#: src/ui/TaskPage.qml:275
+#: src/ui/TaskPage.qml:288
 #, kde-format
 msgid "Every 20 minutes"
 msgstr "Svakih 20 minuta"
 
-#: src/ui/TaskPage.qml:276
+#: src/ui/TaskPage.qml:289
 #, kde-format
 msgid "Every 30 minutes"
 msgstr "Svakih 30 minuta"
 
-#: src/ui/TaskPage.qml:318
+#: src/ui/TaskPage.qml:334
 #, fuzzy, kde-format
 #| msgid "January"
 msgctxt "@action:button"
 msgid "January"
 msgstr "Siječanj"
 
-#: src/ui/TaskPage.qml:322
+#: src/ui/TaskPage.qml:338
 #, fuzzy, kde-format
 #| msgid "February"
 msgctxt "@action:button"
 msgid "February"
 msgstr "Veljača"
 
-#: src/ui/TaskPage.qml:326
+#: src/ui/TaskPage.qml:342
 #, fuzzy, kde-format
 #| msgid "March"
 msgctxt "@action:button"
 msgid "March"
 msgstr "Ožujak"
 
-#: src/ui/TaskPage.qml:330
+#: src/ui/TaskPage.qml:346
 #, fuzzy, kde-format
 #| msgid "April"
 msgctxt "@action:button"
 msgid "April"
 msgstr "Travanj"
 
-#: src/ui/TaskPage.qml:334
+#: src/ui/TaskPage.qml:350
 #, fuzzy, kde-format
 #| msgctxt "May long"
 #| msgid "May"
@@ -888,14 +903,14 @@ msgctxt "@action:button"
 msgid "May"
 msgstr "Svibanj"
 
-#: src/ui/TaskPage.qml:338
+#: src/ui/TaskPage.qml:354
 #, fuzzy, kde-format
 #| msgid "June"
 msgctxt "@action:button"
 msgid "June"
 msgstr "Lipanj"
 
-#: src/ui/TaskPage.qml:342
+#: src/ui/TaskPage.qml:358
 #, fuzzy, kde-format
 #| msgctxt "July long"
 #| msgid "July"
@@ -903,84 +918,84 @@ msgctxt "@action:button"
 msgid "July"
 msgstr "Srpanj"
 
-#: src/ui/TaskPage.qml:346
+#: src/ui/TaskPage.qml:362
 #, fuzzy, kde-format
 #| msgid "August"
 msgctxt "@action:button"
 msgid "August"
 msgstr "Kolovoz"
 
-#: src/ui/TaskPage.qml:350
+#: src/ui/TaskPage.qml:366
 #, fuzzy, kde-format
 #| msgid "September"
 msgctxt "@action:button"
 msgid "September"
 msgstr "Rujan"
 
-#: src/ui/TaskPage.qml:354
+#: src/ui/TaskPage.qml:370
 #, fuzzy, kde-format
 #| msgid "October"
 msgctxt "@action:button"
 msgid "October"
 msgstr "Listopad"
 
-#: src/ui/TaskPage.qml:358
+#: src/ui/TaskPage.qml:374
 #, fuzzy, kde-format
 #| msgid "November"
 msgctxt "@action:button"
 msgid "November"
 msgstr "Studeni"
 
-#: src/ui/TaskPage.qml:362
+#: src/ui/TaskPage.qml:378
 #, fuzzy, kde-format
 #| msgid "December"
 msgctxt "@action:button"
 msgid "December"
 msgstr "Prosinac"
 
-#: src/ui/TaskPage.qml:384
+#: src/ui/TaskPage.qml:400
 #, fuzzy, kde-format
 #| msgid "Monday"
 msgctxt "@action:button"
 msgid "Monday"
 msgstr "Ponedjeljak"
 
-#: src/ui/TaskPage.qml:388
+#: src/ui/TaskPage.qml:404
 #, fuzzy, kde-format
 #| msgid "Tuesday"
 msgctxt "@action:button"
 msgid "Tuesday"
 msgstr "Utorak"
 
-#: src/ui/TaskPage.qml:392
+#: src/ui/TaskPage.qml:408
 #, fuzzy, kde-format
 #| msgid "Wednesday"
 msgctxt "@action:button"
 msgid "Wednesday"
 msgstr "srijeda"
 
-#: src/ui/TaskPage.qml:396
+#: src/ui/TaskPage.qml:412
 #, fuzzy, kde-format
 #| msgid "Thursday"
 msgctxt "@action:button"
 msgid "Thursday"
 msgstr "Četvrtak"
 
-#: src/ui/TaskPage.qml:400
+#: src/ui/TaskPage.qml:416
 #, fuzzy, kde-format
 #| msgid "Friday"
 msgctxt "@action:button"
 msgid "Friday"
 msgstr "petak"
 
-#: src/ui/TaskPage.qml:404
+#: src/ui/TaskPage.qml:420
 #, fuzzy, kde-format
 #| msgid "Saturday"
 msgctxt "@action:button"
 msgid "Saturday"
 msgstr "Subota"
 
-#: src/ui/TaskPage.qml:408
+#: src/ui/TaskPage.qml:424
 #, fuzzy, kde-format
 #| msgid "Sunday"
 msgctxt "@action:button"
