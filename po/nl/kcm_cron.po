@@ -11,21 +11,21 @@
 # Rinse de Vries <rinsedevries@kde.nl>, 2004, 2007, 2008, 2009.
 # Tom Albers <tomalbers@kde.nl>, 2004.
 # Tom Albers <toma@kovoks.nl>, 2004.
-# SPDX-FileCopyrightText: 2009, 2023, 2024, 2025 Freek de Kruijf <f.de.kruijf@hetnet.nl>
+# SPDX-FileCopyrightText: 2009, 2023, 2024, 2025, 2026 Freek de Kruijf <f.de.kruijf@hetnet.nl>
 # Freek de Kruijf <freekdekruijf@kde.nl>, 2010, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-05 00:45+0000\n"
-"PO-Revision-Date: 2025-11-21 13:38+0100\n"
+"PO-Revision-Date: 2026-01-05 11:32+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.08.3\n"
+"X-Generator: Lokalize 25.12.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: src/cronPrinter.cpp:62
@@ -585,29 +585,25 @@ msgid "<message>Please type a valid command line</message>"
 msgstr "<message>Voer een geldige opdrachtregel in</message>"
 
 #: src/taskvalidator.cpp:136
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select an executable program</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>File exists but is not executable: <filename>%1</filename></message>"
-msgstr "<message>Kies een uitvoerbaar programma</message>"
+msgstr ""
+"<message>Bestand bestaat maar is niet uitvoerbaar: <filename>%1</filename></"
+"message>"
 
 #: src/taskvalidator.cpp:141
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please enter the variable name</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>File not found: <filename>%1</filename></message>"
-msgstr "<message>Voer de naam van de variabele in</message>"
+msgstr "<message>Bestand niet gevonden: <filename>%1</filename></message>"
 
 #: src/taskvalidator.cpp:161
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please type a valid command line</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Command not found: <command>%1</command></message>"
-msgstr "<message>Voer een geldige opdrachtregel in</message>"
+msgstr "<message>Opdracht niet gevonden: <command>%1</command></message>"
 
 #: src/taskvalidator.cpp:177
 #, kde-kuit-format

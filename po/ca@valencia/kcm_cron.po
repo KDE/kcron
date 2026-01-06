@@ -1,24 +1,24 @@
 # Translation of kcm_cron.po to Catalan (Valencian)
-# Copyright (C) 2000-2025 This_file_is_part_of_KDE
+# Copyright (C) 2000-2026 This_file_is_part_of_KDE
 #
 # SPDX-FileCopyrightText: 2000 Josep Vila (Softcatalà) <linux@softcatala.org>
 # SPDX-FileCopyrightText: 2002, 2003, 2016, 2020, 2021 Antoni Bella Pérez <antonibella5@yahoo.com>
 # SPDX-FileCopyrightText: 2004, 2005 Albert Astals Cid <aacid@kde.org>
-# SPDX-FileCopyrightText: 2006, 2007, 2008, 2009, 2010, 2011, 2014, 2015, 2016, 2017, 2018, 2019, 2021, 2023, 2024, 2025 Josep M. Ferrer <txemaq@gmail.com>
+# SPDX-FileCopyrightText: 2006, 2007, 2008, 2009, 2010, 2011, 2014, 2015, 2016, 2017, 2018, 2019, 2021, 2023, 2024, 2025, 2026 Josep M. Ferrer <txemaq@gmail.com>
 # SPDX-FileCopyrightText: 2009 Manuel Tortosa Moreno <manutortosa@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-05 00:45+0000\n"
-"PO-Revision-Date: 2025-11-21 09:07+0100\n"
+"PO-Revision-Date: 2026-01-05 08:38+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.04.0\n"
+"X-Generator: Lokalize 25.12.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Accelerator-Marker: &\n"
 
@@ -586,29 +586,25 @@ msgid "<message>Please type a valid command line</message>"
 msgstr "<message>Introduïu una línia d'ordres vàlida</message>"
 
 #: src/taskvalidator.cpp:136
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select an executable program</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>File exists but is not executable: <filename>%1</filename></message>"
-msgstr "<message>Trieu un programa executable</message>"
+msgstr ""
+"<message>El fitxer existix però no és executable: <filename>%1</filename></"
+"message>"
 
 #: src/taskvalidator.cpp:141
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please enter the variable name</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>File not found: <filename>%1</filename></message>"
-msgstr "<message>Introduïu el nom de la variable</message>"
+msgstr "<message>No s'ha trobat el fitxer: <filename>%1</filename></message>"
 
 #: src/taskvalidator.cpp:161
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please type a valid command line</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Command not found: <command>%1</command></message>"
-msgstr "<message>Introduïu una línia d'ordres vàlida</message>"
+msgstr "<message>No s'ha trobat l'ordre: <command>%1</command></message>"
 
 #: src/taskvalidator.cpp:177
 #, kde-kuit-format

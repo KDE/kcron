@@ -7,13 +7,13 @@
 # Andriy Rysin <rysin@kde.org>, 2002, 2003.
 # Eugene Onischenko <oneugene@ukr.net>, 2003, 2004.
 # Ivan Petrouchtchak <fr.ivan@ukrainian-orthodox.org>, 2004, 2005, 2007, 2008.
-# Yuri Chornoivan <yurchor@ukr.net>, 2008, 2009, 2010, 2013, 2018, 2021, 2023, 2024, 2025.
+# Yuri Chornoivan <yurchor@ukr.net>, 2008, 2009, 2010, 2013, 2018, 2021, 2023, 2024, 2025, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-05 00:45+0000\n"
-"PO-Revision-Date: 2025-11-21 13:00+0200\n"
+"PO-Revision-Date: 2026-01-05 10:09+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -582,29 +582,24 @@ msgid "<message>Please type a valid command line</message>"
 msgstr "<message>Будь ласка, введіть коректну команду</message>"
 
 #: src/taskvalidator.cpp:136
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select an executable program</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>File exists but is not executable: <filename>%1</filename></message>"
-msgstr "<message>Будь ласка, виберіть програму для виконання</message>"
+msgstr ""
+"<message>Файл існує, але не є виконуваним: <filename>%1</filename></message>"
 
 #: src/taskvalidator.cpp:141
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please enter the variable name</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>File not found: <filename>%1</filename></message>"
-msgstr "<message>Будь ласка, введіть назву змінної</message>"
+msgstr "<message>Файл не знайдено: <filename>%1</filename></message>"
 
 #: src/taskvalidator.cpp:161
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please type a valid command line</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Command not found: <command>%1</command></message>"
-msgstr "<message>Будь ласка, введіть коректну команду</message>"
+msgstr "<message>Команду не знайдено: <command>%1</command></message>"
 
 #: src/taskvalidator.cpp:177
 #, kde-kuit-format

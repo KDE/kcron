@@ -1,7 +1,7 @@
 # Translation of kcron.po to Slovenian
 # KDEADMIN translation to Slovenian language.
 # Copyright (C) 2001,2003, 2004, 2005 Free Software Foundation, Inc.
-# $Id: kcm_cron.po 1726566 2026-01-05 01:26:06Z scripty $
+# $Id: kcm_cron.po 1726726 2026-01-06 01:26:56Z scripty $
 # $Source$
 #
 # Rok Papez <rok@slo.net>, 2000.
@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-05 00:45+0000\n"
-"PO-Revision-Date: 2025-11-21 07:00+0100\n"
+"PO-Revision-Date: 2026-01-05 07:07+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -586,29 +586,25 @@ msgid "<message>Please type a valid command line</message>"
 msgstr "<message>Vnesite veljavno ukazno vrstico</message>"
 
 #: src/taskvalidator.cpp:136
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select an executable program</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>File exists but is not executable: <filename>%1</filename></message>"
-msgstr "<message>Izberite izvedljiv program</message>"
+msgstr ""
+"<message>Datoteka obstaja, a ni izvedljiv program:<filename>%1</filename></"
+"message>"
 
 #: src/taskvalidator.cpp:141
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please enter the variable name</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>File not found: <filename>%1</filename></message>"
-msgstr "<message>Vnesite ime spremenljivke</message>"
+msgstr "<message>Datoteke ni najdene: <filename>%1</filename></message>"
 
 #: src/taskvalidator.cpp:161
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please type a valid command line</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Command not found: <command>%1</command></message>"
-msgstr "<message>Vnesite veljavno ukazno vrstico</message>"
+msgstr "<message>Ukaza ni najdenega: <command>%1</command></message>"
 
 #: src/taskvalidator.cpp:177
 #, kde-kuit-format
