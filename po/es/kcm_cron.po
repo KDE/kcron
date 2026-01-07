@@ -1,19 +1,19 @@
 # Spanish translations for kcm_cron.po package.
-# Copyright (C) 2003-2025 This file is copyright:
+# Copyright (C) 2003-2026 This file is copyright:
 # This file is distributed under the same license as the kcron package.
 #
 # SPDX-FileCopyrightText: 2003 Juan Luis Montore Parera <jlm@ict.es>
 # SPDX-FileCopyrightText: 2003, 2004, 2005 Juan Luis Montore Parera <jlm@montore.net>
 # SPDX-FileCopyrightText: 2006 Santiago Fernandez Sancho <santi@kde-es.org>
 # SPDX-FileCopyrightText: 2008 jeffrey steve borbon sanabria <jeffto@aclibre.org>
-# SPDX-FileCopyrightText: 2010, 2012, 2021, 2023, 2024, 2025 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2010, 2012, 2021, 2023, 2024, 2025, 2026 Eloy Cuadra <ecuadra@eloihr.net>
 # SPDX-FileCopyrightText: 2011 David Paul <eodos0@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_cron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-05 00:45+0000\n"
-"PO-Revision-Date: 2025-11-22 11:56+0100\n"
+"PO-Revision-Date: 2026-01-06 01:57+0100\n"
 "Last-Translator: Eloy Cuadra <ecuadra@eloihr.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "First-Translator: Boris Wesslowski <Boris@Wesslowski.com>\n"
-"X-Generator: Lokalize 25.08.3\n"
+"X-Generator: Lokalize 25.12.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: src/cronPrinter.cpp:62
@@ -580,29 +580,25 @@ msgid "<message>Please type a valid command line</message>"
 msgstr "<message>Escriba una línea de ordenes válida</message>"
 
 #: src/taskvalidator.cpp:136
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select an executable program</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>File exists but is not executable: <filename>%1</filename></message>"
-msgstr "<message>Seleccione un programa ejecutable</message>"
+msgstr ""
+"<message>El archivo existe, pero no es ejecutable: <filename>%1</filename></"
+"message>"
 
 #: src/taskvalidator.cpp:141
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please enter the variable name</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>File not found: <filename>%1</filename></message>"
-msgstr "<message>Introduzca el nombre de la variable</message>"
+msgstr "<message>Archivo no encontrado: <filename>%1</filename></message>"
 
 #: src/taskvalidator.cpp:161
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please type a valid command line</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Command not found: <command>%1</command></message>"
-msgstr "<message>Escriba una línea de ordenes válida</message>"
+msgstr "<message>Orden no encontrada: <command>%1</command></message>"
 
 #: src/taskvalidator.cpp:177
 #, kde-kuit-format
