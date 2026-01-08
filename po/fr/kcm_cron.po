@@ -8,7 +8,7 @@
 # Guillaume Pujol <guill.p@gmail.com>, 2007.
 # Mickael Sibelle <kimael@gmail.com>, 2008.
 # Nicolas Ternisien <nicolas.ternisien@gmail.com>, 2008.
-# SPDX-FileCopyrightText: 2013, 2024, 2025 Xavier Besnard <xavier.besnard@kde.org>
+# SPDX-FileCopyrightText: 2013, 2024, 2025, 2026 Xavier Besnard <xavier.besnard@kde.org>
 # SPDX-FileCopyrightText: 2021, 2023 Xavier Besnard <xavier.besnard@kde.org>
 # Xavier Besnard <xavier.besnard@kde.org>, 2023.
 #
@@ -17,9 +17,9 @@ msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-05 00:45+0000\n"
-"PO-Revision-Date: 2025-11-22 18:15+0100\n"
+"PO-Revision-Date: 2026-01-06 13:22+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
-"Language-Team: French <French <kde-francophone@kde.org>>\n"
+"Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Accelerator-Marker: &\n"
 "X-Environment: kde\n"
-"X-Generator: Lokalize 25.11.80\n"
+"X-Generator: Lokalize 25.12.0\n"
 "X-Text-Markup: kde4\n"
 
 #: src/cronPrinter.cpp:62
@@ -588,29 +588,25 @@ msgid "<message>Please type a valid command line</message>"
 msgstr "<message>Veuillez saisir une ligne valable de commandes...</message>"
 
 #: src/taskvalidator.cpp:136
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select an executable program</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>File exists but is not executable: <filename>%1</filename></message>"
-msgstr "<message>Veuillez sélectionner un programme exécutable...</message>"
+msgstr ""
+"<message>Le fichier existe mais n'est pas un programme exécutable : "
+"<filename>%1</filename></message>"
 
 #: src/taskvalidator.cpp:141
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please enter the variable name</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>File not found: <filename>%1</filename></message>"
-msgstr "<message>Veuillez saisir le nom de la variable...</message>"
+msgstr "<message>Fichier non trouvé : <filename>%1</filename></message>"
 
 #: src/taskvalidator.cpp:161
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please type a valid command line</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Command not found: <command>%1</command></message>"
-msgstr "<message>Veuillez saisir une ligne valable de commandes...</message>"
+msgstr "<message>Commande non trouvée : <command>%1</command></message>"
 
 #: src/taskvalidator.cpp:177
 #, kde-kuit-format
