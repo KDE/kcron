@@ -1,6 +1,6 @@
 # translation of kcron.po to
 # Copyright (C) 2002,2003, 2004, 2006, 2007 Free Software Foundation, Inc.
-# SPDX-FileCopyrightText: 2022, 2024, 2025 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
+# SPDX-FileCopyrightText: 2022, 2024, 2025, 2026 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
 # Isam Bayazidi <bayazidi@arabeyes.org>, 2002.
 # Nuriddin S. Aminagha <nuriddin5@msn.com>, 2003.
 # Ahmad M. Zawawi <azawawi@emirates.net.ae>, 2004.
@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-05 00:45+0000\n"
-"PO-Revision-Date: 2025-11-26 10:44+0400\n"
+"PO-Revision-Date: 2026-01-07 19:09+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -583,29 +583,25 @@ msgid "<message>Please type a valid command line</message>"
 msgstr "<message>رجاء اكتب سطر الأوامر صحيحا…</message>"
 
 #: src/taskvalidator.cpp:136
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select an executable program</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>File exists but is not executable: <filename>%1</filename></message>"
-msgstr "<message>من فضلك حدد برنامج تنفيذي …</message>"
+msgstr ""
+"<message>الملف موجود ولكنه غير قابل للتنفيذ: <filename>%1</filename></"
+"message>"
 
 #: src/taskvalidator.cpp:141
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please enter the variable name</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>File not found: <filename>%1</filename></message>"
-msgstr "<message>من فضلك أدخل اسم المتغير</message>"
+msgstr "<message>لم يُعثر على الملف: <filename>%1</filename></message>"
 
 #: src/taskvalidator.cpp:161
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please type a valid command line</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Command not found: <command>%1</command></message>"
-msgstr "<message>رجاء اكتب سطر الأوامر صحيحا…</message>"
+msgstr "<message>لم يُعثر على الأمر: <command>%1</command></message>"
 
 #: src/taskvalidator.cpp:177
 #, kde-kuit-format

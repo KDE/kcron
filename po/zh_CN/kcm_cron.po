@@ -574,19 +574,19 @@ msgstr "<message>请输入有效的命令行</message>"
 msgctxt "@info"
 msgid ""
 "<message>File exists but is not executable: <filename>%1</filename></message>"
-msgstr ""
+msgstr "<message>文件存在但不可执行：<filename>%1</filename></message>"
 
 #: src/taskvalidator.cpp:141
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>File not found: <filename>%1</filename></message>"
-msgstr ""
+msgstr "<message>找不到文件：<filename>%1</filename></message>"
 
 #: src/taskvalidator.cpp:161
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Command not found: <command>%1</command></message>"
-msgstr ""
+msgstr "<message>找不到命令：<command>%1</command></message>"
 
 #: src/taskvalidator.cpp:177
 #, kde-kuit-format
