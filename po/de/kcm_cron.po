@@ -7,27 +7,26 @@
 # SPDX-FileCopyrightText: 2009, 2010 Panagiotis Papadopoulos <pano_90@gmx.net>
 # SPDX-FileCopyrightText: 2010, 2022 Frederik Schwarzer <schwarzer@kde.org>
 # SPDX-FileCopyrightText: 2025 Alois Spitzbart <spitz234@hotmail.com>
+# SPDX-FileCopyrightText: 2026 Philipp Kiemle <l10n.daphipz@fastmail.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 14:42+0000\n"
-"PO-Revision-Date: 2025-10-19 19:50+0200\n"
-"Last-Translator: Alois Spitzbart <spitz234@hotmail.com>\n"
+"PO-Revision-Date: 2026-01-06 16:40+0100\n"
+"Last-Translator: Philipp Kiemle <l10n.daphipz@fastmail.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.08.1\n"
+"X-Generator: Lokalize 25.08.3\n"
 
 #: src/cronPrinter.cpp:62
-#, fuzzy
-#| msgid "<b>Scheduled Tasks</b>"
 msgctxt "@title Note: that is an HTML tag"
 msgid "<b>Tasks</b>"
-msgstr "<b>Geplanter Auftrag</b>"
+msgstr "<b>Aufträge</b>"
 
 #: src/cronPrinter.cpp:63
 msgctxt "@title Note: that is an HTML tag"
@@ -574,7 +573,7 @@ msgstr ""
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Choose a program to run</message>"
-msgstr ""
+msgstr "<message>Wählen Sie ein auszuführendes Programm aus</message>"
 
 #: src/taskvalidator.cpp:112 src/taskvalidator.cpp:119
 #, kde-kuit-format
@@ -626,33 +625,30 @@ msgstr ""
 #, kde-format
 msgctxt "@text"
 msgid "Show:"
-msgstr ""
+msgstr "Anzeigen:"
 
 #: src/ui/main.qml:49
-#, fuzzy, kde-format
-#| msgid "Task Scheduler"
+#, kde-format
 msgctxt "@title:tab"
 msgid "User Schedule"
-msgstr "Auftragsplaner"
+msgstr "Auftragsplan (Benutzer)"
 
 #: src/ui/main.qml:55
-#, fuzzy, kde-format
-#| msgid "Task Scheduler"
+#, kde-format
 msgctxt "@title:tab"
 msgid "System Schedule"
-msgstr "Auftragsplaner"
+msgstr "Auftragsplan (System)"
 
 #: src/ui/main.qml:64
 #, kde-format
 msgctxt "@action:button"
 msgid "Print Summary…"
-msgstr ""
+msgstr "Zusammenfassung drucken …"
 
 #: src/ui/Onboarding.qml:22
-#, fuzzy, kde-format
-#| msgid "Welcome to the Task Scheduler"
+#, kde-format
 msgid "Welcome to Task Scheduler!"
-msgstr "Willkommen beim Auftragsplaner"
+msgstr "Willkommen beim Auftragsplaner!"
 
 #: src/ui/Onboarding.qml:24
 #, kde-kuit-format
@@ -662,12 +658,16 @@ msgid ""
 "schedule and automate repetitive tasks like downloading files or sending "
 "emails. <link url='%1'>Learn more</link>"
 msgstr ""
+"Planen Sie die Ausführung von Anwendungen im Hintergrund. Legen Sie feste "
+"Zeitpläne für Aufträge fest und automatisieren Sie sich wiederholende "
+"Tätigkeiten wie das Herunterladen von Dateien oder das Versenden von E-"
+"Mails. <link url='%1'>Weitere Informationen</link>"
 
 #: src/ui/Onboarding.qml:27
 #, kde-format
 msgctxt "@action:button"
 msgid "Go to Dashboard"
-msgstr ""
+msgstr "Zur Übersichtsseite gehen"
 
 #: src/ui/TaskPage.qml:23
 #, kde-format
@@ -715,7 +715,7 @@ msgstr "Befehl:"
 #, kde-format
 msgctxt "@action:button"
 msgid "Browse the Program"
-msgstr ""
+msgstr "Das Programm suchen"
 
 #: src/ui/TaskPage.qml:106
 #, kde-format
@@ -739,14 +739,13 @@ msgstr "Kommentar:"
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Run:"
-msgstr ""
+msgstr "Ausführen:"
 
 #: src/ui/TaskPage.qml:141
-#, fuzzy, kde-format
-#| msgid "At system startup"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "When system starts"
-msgstr "während des Systemstarts"
+msgstr "Wenn das System startet"
 
 #: src/ui/TaskPage.qml:148
 #, kde-format
@@ -785,11 +784,10 @@ msgid "Minutes"
 msgstr "Minuten"
 
 #: src/ui/TaskPage.qml:264
-#, fuzzy, kde-format
-#| msgid "Preselection:"
+#, kde-format
 msgctxt "@label:listbox"
 msgid "Selection:"
-msgstr "Vorauswahl:"
+msgstr "Auswahl:"
 
 #: src/ui/TaskPage.qml:269
 #, kde-format
@@ -964,42 +962,40 @@ msgid "Scheduling Details"
 msgstr "Planungsdetails"
 
 #: src/ui/TasksComponent.qml:98
-#, fuzzy, kde-format
-#| msgid "Edit Task"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add Task…"
-msgstr "Aufgabe bearbeiten"
+msgstr "Auftrag hinzufügen …"
 
 #: src/ui/TasksComponent.qml:105
 #, kde-format
 msgctxt "@action:button"
 msgid "Edit Task…"
-msgstr "Auftrag bearbeiten …"
+msgstr "Auftrag bearbeiten …"
 
 #: src/ui/TasksComponent.qml:113 src/ui/VariablesComponent.qml:125
-#, fuzzy, kde-format
-#| msgid "Set All"
+#, kde-format
 msgctxt "@action:button"
 msgid "Select All"
-msgstr "Alle setzen"
+msgstr "Alles auswählen"
 
 #: src/ui/TasksComponent.qml:120 src/ui/VariablesComponent.qml:132
 #, kde-format
 msgctxt "@action:button"
 msgid "Copy"
-msgstr ""
+msgstr "Kopieren"
 
 #: src/ui/TasksComponent.qml:127 src/ui/VariablesComponent.qml:139
 #, kde-format
 msgctxt "@action:button"
 msgid "Cut"
-msgstr ""
+msgstr "Ausschneiden"
 
 #: src/ui/TasksComponent.qml:134 src/ui/VariablesComponent.qml:146
 #, kde-format
 msgctxt "@action:button"
 msgid "Paste"
-msgstr ""
+msgstr "Einfügen"
 
 #: src/ui/TasksComponent.qml:142 src/ui/TasksComponent.qml:174
 #: src/ui/VariablesComponent.qml:154 src/ui/VariablesComponent.qml:178
@@ -1009,36 +1005,34 @@ msgid "Delete"
 msgstr "Löschen"
 
 #: src/ui/TasksComponent.qml:150
-#, fuzzy, kde-format
-#| msgid "&Run as:"
+#, kde-format
 msgctxt "@action:button"
 msgid "Run task"
-msgstr "Aus&führen als:"
+msgstr "Auftrag ausführen"
 
 #: src/ui/TasksComponent.qml:162 src/ui/VariablesComponent.qml:166
 #, kde-format
 msgctxt "@action:button"
 msgid "Add…"
-msgstr ""
+msgstr "Hinzufügen …"
 
 #: src/ui/TasksComponent.qml:168 src/ui/VariablesComponent.qml:172
 #, kde-format
 msgctxt "@action:button"
 msgid "Edit…"
-msgstr ""
+msgstr "Bearbeiten …"
 
 #: src/ui/TasksComponent.qml:180
-#, fuzzy, kde-format
-#| msgid "Sun"
+#, kde-format
 msgctxt "@action:button"
 msgid "Run"
-msgstr "So"
+msgstr "Ausführen"
 
 #: src/ui/TimeCard.qml:33
 #, kde-format
 msgctxt "@label:checkbox"
 msgid "Select all"
-msgstr ""
+msgstr "Alle auswählen"
 
 #: src/ui/VariablePage.qml:17
 #, kde-format
@@ -1113,17 +1107,16 @@ msgid "Environment Variables"
 msgstr "Umgebungsvariablen"
 
 #: src/ui/VariablesComponent.qml:112
-#, fuzzy, kde-format
-#| msgid "Variable"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add Variable…"
-msgstr "Variable"
+msgstr "Variable hinzufügen …"
 
 #: src/ui/VariablesComponent.qml:118
 #, kde-format
 msgctxt "@action:button"
 msgid "Edit Variable…"
-msgstr "Variable bearbeiten …"
+msgstr "Variable bearbeiten …"
 
 #, fuzzy
 #~| msgid "Printing..."
