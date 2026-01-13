@@ -82,7 +82,7 @@ Q_SIGNALS:
     void rebootChanged();
     void systemCronChanged();
 
-    void applyed();
+    void applied();
     void canceled();
 
 private:

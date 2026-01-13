@@ -136,7 +136,7 @@ void Task::updateTask(CTTask *task) noexcept
 void Task::apply()
 {
     mTask->apply();
-    Q_EMIT applyed();
+    Q_EMIT applied();
 }
 
 void Task::cancel()

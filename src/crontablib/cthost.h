@@ -48,7 +48,7 @@ public:
 
     /**
      * Apply changes.
-     * return an empty string if no problem ocurred.
+     * return an empty string if no problem occurred.
      */
     CTSaveStatus save(CTCron *ctCron);
 

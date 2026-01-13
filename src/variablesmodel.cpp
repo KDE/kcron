@@ -339,7 +339,7 @@ void VariablesModel::add(Variable *variable)
     endInsertRows();
 
     QModelIndex modelIndex = index(mVariables.count() - 1, 0);
-    QObject::connect(variable, &Variable::applyed, this, [this, modelIndex, variable]() -> void {
+    QObject::connect(variable, &Variable::applied, this, [this, modelIndex, variable]() -> void {
         Q_EMIT dataChanged(modelIndex, modelIndex, {});
         Q_EMIT modifyVariable(variable);
         Q_EMIT enabledStateChanged();

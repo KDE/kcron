@@ -189,9 +189,9 @@ this button.</para>
 </varlistentry>
 
 <varlistentry>
-<term><guibutton>Run at system bootup</guibutton></term>
+<term><guibutton>Run at system boot-up</guibutton></term>
 <listitem>
-<para>Check this button to run the task at system bootup.</para>
+<para>Check this button to run the task at system boot-up.</para>
 </listitem>
 </varlistentry>
 

@@ -134,7 +134,7 @@ void Variable::updateVariable(CTVariable *variable) noexcept
 void Variable::apply()
 {
     mVariable->apply();
-    Q_EMIT applyed();
+    Q_EMIT applied();
 }
 
 void Variable::cancel()

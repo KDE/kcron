@@ -374,7 +374,7 @@ void TasksModel::add(Task *task)
     endInsertRows();
 
     QModelIndex modelIndex = index(mTasks.count() - 1, 0);
-    QObject::connect(task, &Task::applyed, this, [this, modelIndex, task]() -> void {
+    QObject::connect(task, &Task::applied, this, [this, modelIndex, task]() -> void {
         Q_EMIT dataChanged(modelIndex, modelIndex, {});
         Q_EMIT modifyTask(task);
         Q_EMIT enabledStateChanged();

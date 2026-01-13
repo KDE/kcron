@@ -28,7 +28,7 @@ ListModel {
         return Qt.PartiallyChecked;
     }
 
-    function toogle(index): void {
+    function toggle(index): void {
         setProperty(index, "checked", !get(index)["checked"]);
     }
 

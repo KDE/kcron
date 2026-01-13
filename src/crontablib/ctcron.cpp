@@ -125,7 +125,7 @@ CTCron &CTCron::operator=(const CTCron &source)
         return *this;
     }
 
-    // Not sure when this would tigger.
+    // Not sure when this would trigger.
     if (source.isSystemCron()) {
         qCDebug(KCM_CRON_LOG) << "Affect the system cron";
     }

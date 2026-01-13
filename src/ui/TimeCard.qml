@@ -66,7 +66,7 @@ ColumnLayout {
                             visible: model.visible ?? true
                             checkable: true
                             onToggled: {
-                                card.model.toogle(index)
+                                card.model.toggle(index)
                                 card.changed(index)
                             }
                         }

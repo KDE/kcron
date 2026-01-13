@@ -67,7 +67,7 @@ Q_SIGNALS:
     void userLoginChanged();
     void enabledChanged();
 
-    void applyed();
+    void applied();
     void canceled();
 
 private:
