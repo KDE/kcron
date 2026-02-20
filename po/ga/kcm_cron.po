@@ -18,76 +18,63 @@ msgstr ""
 "3 : 4\n"
 
 #: src/cronPrinter.cpp:62
-#, fuzzy
-#| msgid "<b>Tasks</b>"
 msgctxt "@title Note: that is an HTML tag"
 msgid "<b>Tasks</b>"
-msgstr "<b>Tascanna</b>"
+msgstr ""
 
 #: src/cronPrinter.cpp:63
-#, fuzzy
-#| msgid "<b>Environment Variables</b>"
 msgctxt "@title Note: that is an HTML tag"
 msgid "<b>Environment Variables</b>"
-msgstr "<b>Athróga Timpeallachta</b>"
+msgstr ""
 
 #: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:66
-#, fuzzy, kde-format
-#| msgid "Scheduling"
+#, kde-format
 msgctxt "@title:column"
 msgid "Scheduling"
-msgstr "Sceidealadh"
+msgstr ""
 
 #: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:75
-#, fuzzy, kde-format
-#| msgid "Command"
+#, kde-format
 msgctxt "@title:column"
 msgid "Command"
-msgstr "Ordú"
+msgstr ""
 
 #: src/cronPrinter.cpp:103
-#, fuzzy, kde-format
-#| msgid "Description"
+#, kde-format
 msgctxt "@title:column"
 msgid "Description"
-msgstr "Cur Síos"
+msgstr ""
 
 #: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:67
-#, fuzzy, kde-format
-#| msgid "Variable"
+#, kde-format
 msgctxt "@title:column"
 msgid "Variable"
-msgstr "Athróg"
+msgstr ""
 
 #: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:98
-#, fuzzy, kde-format
-#| msgid "Value"
+#, kde-format
 msgctxt "@title:column"
 msgid "Value"
-msgstr "Luach"
+msgstr ""
 
 #: src/cronPrinter.cpp:117 src/ui/TasksComponent.qml:84
 #: src/ui/VariablesComponent.qml:106
-#, fuzzy, kde-format
-#| msgid "Comment"
+#, kde-format
 msgctxt "@title:column"
 msgid "Comment"
-msgstr "Nóta"
+msgstr ""
 
 #: src/cronPrinter.cpp:144
-#, fuzzy, kde-format
-#| msgid "System Crontab"
+#, kde-format
 msgctxt "@title"
 msgid "System Crontab"
-msgstr "Crontab an Chórais"
+msgstr ""
 
 #: src/cronPrinter.cpp:146
-#, fuzzy, kde-format
-#| msgctxt "Crontab of user login"
-#| msgid "Crontab of user %1"
+#, kde-format
 msgctxt "@title"
 msgid "Crontab of user %1"
-msgstr "Crontab d'úsáideoir %1"
+msgstr ""
 
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
@@ -583,67 +570,55 @@ msgid "<message>Choose a program to run</message>"
 msgstr ""
 
 #: src/taskvalidator.cpp:113 src/taskvalidator.cpp:120
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please type a valid command line...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please type a valid command line</message>"
-msgstr "<i>Iontráil líne bhailí ordaithe...</i>"
+msgstr ""
 
 #: src/taskvalidator.cpp:136
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please select an executable program...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>File exists but is not executable: <filename>%1</filename></message>"
-msgstr "<i>Roghnaigh ríomhchlár inrite...</i>"
+msgstr ""
 
 #: src/taskvalidator.cpp:141
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please enter the variable name...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>File not found: <filename>%1</filename></message>"
-msgstr "<i>Iontráil ainm na hathróige...</i>"
+msgstr ""
 
 #: src/taskvalidator.cpp:161
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please type a valid command line...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Command not found: <command>%1</command></message>"
-msgstr "<i>Iontráil líne bhailí ordaithe...</i>"
+msgstr ""
 
 #: src/taskvalidator.cpp:177
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please select from the 'Months' section...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please select from the <b>Months</b> section</message>"
-msgstr "<i>Roghnaigh ón rannán 'Mionna'...</i>"
+msgstr ""
 
 #: src/taskvalidator.cpp:202
-#, fuzzy, kde-kuit-format
-#| msgid ""
-#| "<i>Please select from either the 'Days of Month' or the 'Days of Week' "
-#| "section...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from either the <b>Days of Month</b> or the <b>Days "
 "of Week</b> section</message>"
 msgstr ""
-"<i>Roghnaigh ó rannán 'Laethanta na Míosa' nó 'Laethanta na Seachtaine'...</"
-"i>"
 
 #: src/taskvalidator.cpp:220
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please select from the 'Hours' section...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please select from the <b>Hours</b> section</message>"
-msgstr "<i>Roghnaigh ón rannán 'Uaireanta'...</i>"
+msgstr ""
 
 #: src/taskvalidator.cpp:238
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please select from the 'Minutes' section...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please select from the <b>Minutes</b> section</message>"
-msgstr "<i>Roghnaigh ón rannán 'Nóiméid'...</i>"
+msgstr ""
 
 #: src/ui/main.qml:45
 #, kde-format
@@ -652,18 +627,16 @@ msgid "Show:"
 msgstr ""
 
 #: src/ui/main.qml:49
-#, fuzzy, kde-format
-#| msgid "Task Scheduler"
+#, kde-format
 msgctxt "@title:tab"
 msgid "User Schedule"
-msgstr "Sceidealóir na dTascanna"
+msgstr ""
 
 #: src/ui/main.qml:55
-#, fuzzy, kde-format
-#| msgid "Task Scheduler"
+#, kde-format
 msgctxt "@title:tab"
 msgid "System Schedule"
-msgstr "Sceidealóir na dTascanna"
+msgstr ""
 
 #: src/ui/main.qml:64
 #, kde-format
@@ -672,10 +645,9 @@ msgid "Print Summary…"
 msgstr ""
 
 #: src/ui/Onboarding.qml:22
-#, fuzzy, kde-format
-#| msgid "Welcome to the Task Scheduler"
+#, kde-format
 msgid "Welcome to Task Scheduler!"
-msgstr "Fáilte go Sceidealóir na dTascanna"
+msgstr ""
 
 #: src/ui/Onboarding.qml:24
 #, kde-kuit-format
@@ -693,18 +665,16 @@ msgid "Go to Dashboard"
 msgstr ""
 
 #: src/ui/TaskPage.qml:23
-#, fuzzy, kde-format
-#| msgid "Edit Task"
+#, kde-format
 msgctxt "@title"
 msgid "Edit Task"
-msgstr "Cuir Tasc in Eagar"
+msgstr ""
 
 #: src/ui/TaskPage.qml:24
-#, fuzzy, kde-format
-#| msgid "New Task"
+#, kde-format
 msgctxt "@title"
 msgid "New Task"
-msgstr "Tasc Nua"
+msgstr ""
 
 #: src/ui/TaskPage.qml:34
 #, kde-format
@@ -731,11 +701,10 @@ msgid "Create"
 msgstr ""
 
 #: src/ui/TaskPage.qml:92
-#, fuzzy, kde-format
-#| msgid "&Command:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Command:"
-msgstr "&Ordú:"
+msgstr ""
 
 #: src/ui/TaskPage.qml:111
 #, kde-format
@@ -744,25 +713,22 @@ msgid "Browse the Program"
 msgstr ""
 
 #: src/ui/TaskPage.qml:119
-#, fuzzy, kde-format
-#| msgid "&Enable this task"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable this task"
-msgstr "&Cumasaigh an tasc seo"
+msgstr ""
 
 #: src/ui/TaskPage.qml:124 src/ui/VariablePage.qml:97
-#, fuzzy, kde-format
-#| msgid "User"
+#, kde-format
 msgctxt "@label:listbox"
 msgid "User:"
-msgstr "Úsáideoir"
+msgstr ""
 
 #: src/ui/TaskPage.qml:144 src/ui/VariablePage.qml:119
-#, fuzzy, kde-format
-#| msgid "&Comment:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Comment:"
-msgstr "&Nóta:"
+msgstr ""
 
 #: src/ui/TaskPage.qml:151
 #, kde-format
@@ -771,60 +737,52 @@ msgid "Run:"
 msgstr ""
 
 #: src/ui/TaskPage.qml:154
-#, fuzzy, kde-format
-#| msgid "At system startup"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "When system starts"
-msgstr "Ag am thosú an chórais"
+msgstr ""
 
 #: src/ui/TaskPage.qml:161
-#, fuzzy, kde-format
-#| msgid "every day "
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Every day"
-msgstr "gach lá "
+msgstr ""
 
 #: src/ui/TaskPage.qml:167
-#, fuzzy, kde-format
-#| msgid "Months"
+#, kde-format
 msgctxt "@title:group"
 msgid "Months"
-msgstr "Míonna"
+msgstr ""
 
 #: src/ui/TaskPage.qml:187
-#, fuzzy, kde-format
-#| msgid "Days of Month"
+#, kde-format
 msgctxt "@title:group"
 msgid "Days of Month"
-msgstr "Laethanta na Míosa"
+msgstr ""
 
 #: src/ui/TaskPage.qml:208
-#, fuzzy, kde-format
-#| msgid "Days of Week"
+#, kde-format
 msgctxt "@title:group"
 msgid "Days of Week"
-msgstr "Laethanta na Seachtaine"
+msgstr ""
 
 #: src/ui/TaskPage.qml:228
-#, fuzzy, kde-format
-#| msgid "Hours"
+#, kde-format
 msgctxt "@title:group"
 msgid "Hours"
-msgstr "Uaireanta"
+msgstr ""
 
 #: src/ui/TaskPage.qml:249
-#, fuzzy, kde-format
-#| msgid "Minutes"
+#, kde-format
 msgctxt "@title:group"
 msgid "Minutes"
-msgstr "Nóiméid"
+msgstr ""
 
 #: src/ui/TaskPage.qml:277
-#, fuzzy, kde-format
-#| msgid "Preselection:"
+#, kde-format
 msgctxt "@label:listbox"
 msgid "Selection:"
-msgstr "Réamhroghnú:"
+msgstr ""
 
 #: src/ui/TaskPage.qml:282
 #, kde-format
@@ -867,181 +825,154 @@ msgid "Every 30 minutes"
 msgstr "Gach 30 nóiméad"
 
 #: src/ui/TaskPage.qml:334
-#, fuzzy, kde-format
-#| msgid "January"
+#, kde-format
 msgctxt "@action:button"
 msgid "January"
-msgstr "Eanáir"
+msgstr ""
 
 #: src/ui/TaskPage.qml:338
-#, fuzzy, kde-format
-#| msgid "February"
+#, kde-format
 msgctxt "@action:button"
 msgid "February"
-msgstr "Feabhra"
+msgstr ""
 
 #: src/ui/TaskPage.qml:342
-#, fuzzy, kde-format
-#| msgid "March"
+#, kde-format
 msgctxt "@action:button"
 msgid "March"
-msgstr "Márta"
+msgstr ""
 
 #: src/ui/TaskPage.qml:346
-#, fuzzy, kde-format
-#| msgid "April"
+#, kde-format
 msgctxt "@action:button"
 msgid "April"
-msgstr "Aibreán"
+msgstr ""
 
 #: src/ui/TaskPage.qml:350
-#, fuzzy, kde-format
-#| msgctxt "May long"
-#| msgid "May"
+#, kde-format
 msgctxt "@action:button"
 msgid "May"
-msgstr "Bealtaine"
+msgstr ""
 
 #: src/ui/TaskPage.qml:354
-#, fuzzy, kde-format
-#| msgid "June"
+#, kde-format
 msgctxt "@action:button"
 msgid "June"
-msgstr "Meitheamh"
+msgstr ""
 
 #: src/ui/TaskPage.qml:358
-#, fuzzy, kde-format
-#| msgctxt "July long"
-#| msgid "July"
+#, kde-format
 msgctxt "@action:button"
 msgid "July"
-msgstr "Iúil"
+msgstr ""
 
 #: src/ui/TaskPage.qml:362
-#, fuzzy, kde-format
-#| msgid "August"
+#, kde-format
 msgctxt "@action:button"
 msgid "August"
-msgstr "Lúnasa"
+msgstr ""
 
 #: src/ui/TaskPage.qml:366
-#, fuzzy, kde-format
-#| msgid "September"
+#, kde-format
 msgctxt "@action:button"
 msgid "September"
-msgstr "Meán Fómhair"
+msgstr ""
 
 #: src/ui/TaskPage.qml:370
-#, fuzzy, kde-format
-#| msgid "October"
+#, kde-format
 msgctxt "@action:button"
 msgid "October"
-msgstr "Deireadh Fómhair"
+msgstr ""
 
 #: src/ui/TaskPage.qml:374
-#, fuzzy, kde-format
-#| msgid "November"
+#, kde-format
 msgctxt "@action:button"
 msgid "November"
-msgstr "Mí na Samhna"
+msgstr ""
 
 #: src/ui/TaskPage.qml:378
-#, fuzzy, kde-format
-#| msgid "December"
+#, kde-format
 msgctxt "@action:button"
 msgid "December"
-msgstr "Mí na Nollag"
+msgstr ""
 
 #: src/ui/TaskPage.qml:400
-#, fuzzy, kde-format
-#| msgid "Monday"
+#, kde-format
 msgctxt "@action:button"
 msgid "Monday"
-msgstr "Luan"
+msgstr ""
 
 #: src/ui/TaskPage.qml:404
-#, fuzzy, kde-format
-#| msgid "Tuesday"
+#, kde-format
 msgctxt "@action:button"
 msgid "Tuesday"
-msgstr "Máirt"
+msgstr ""
 
 #: src/ui/TaskPage.qml:408
-#, fuzzy, kde-format
-#| msgid "Wednesday"
+#, kde-format
 msgctxt "@action:button"
 msgid "Wednesday"
-msgstr "Céadaoin"
+msgstr ""
 
 #: src/ui/TaskPage.qml:412
-#, fuzzy, kde-format
-#| msgid "Thursday"
+#, kde-format
 msgctxt "@action:button"
 msgid "Thursday"
-msgstr "Déardaoin"
+msgstr ""
 
 #: src/ui/TaskPage.qml:416
-#, fuzzy, kde-format
-#| msgid "Friday"
+#, kde-format
 msgctxt "@action:button"
 msgid "Friday"
-msgstr "Aoine"
+msgstr ""
 
 #: src/ui/TaskPage.qml:420
-#, fuzzy, kde-format
-#| msgid "Saturday"
+#, kde-format
 msgctxt "@action:button"
 msgid "Saturday"
-msgstr "Satharn"
+msgstr ""
 
 #: src/ui/TaskPage.qml:424
-#, fuzzy, kde-format
-#| msgid "Sunday"
+#, kde-format
 msgctxt "@action:button"
 msgid "Sunday"
-msgstr "Domhnach"
+msgstr ""
 
 #: src/ui/TasksComponent.qml:19
-#, fuzzy, kde-format
-#| msgid "Scheduled Tasks"
+#, kde-format
 msgctxt "@title:group"
 msgid "Scheduled Tasks"
-msgstr "Tascanna Sceidealta"
+msgstr ""
 
 #: src/ui/TasksComponent.qml:56 src/ui/VariablesComponent.qml:57
-#, fuzzy, kde-format
-#| msgid "User"
+#, kde-format
 msgctxt "@title:column"
 msgid "User"
-msgstr "Úsáideoir"
+msgstr ""
 
 #: src/ui/TasksComponent.qml:92
-#, fuzzy, kde-format
-#| msgid "Scheduling Details"
+#, kde-format
 msgctxt "@title:column"
 msgid "Scheduling Details"
-msgstr "Mionsonraí Sceidealta"
+msgstr ""
 
 #: src/ui/TasksComponent.qml:98
-#, fuzzy, kde-format
-#| msgid "Edit Task"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add Task…"
-msgstr "Cuir Tasc in Eagar"
+msgstr ""
 
 #: src/ui/TasksComponent.qml:105
-#, fuzzy, kde-format
-#| msgid "Edit Task"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit Task…"
-msgstr "Cuir Tasc in Eagar"
+msgstr ""
 
 #: src/ui/TasksComponent.qml:113 src/ui/VariablesComponent.qml:125
-#, fuzzy, kde-format
-#| msgid "Set All"
+#, kde-format
 msgctxt "@action:button"
 msgid "Select All"
-msgstr "Socraigh Uile"
+msgstr ""
 
 #: src/ui/TasksComponent.qml:120 src/ui/VariablesComponent.qml:132
 #, kde-format
@@ -1063,18 +994,16 @@ msgstr ""
 
 #: src/ui/TasksComponent.qml:142 src/ui/TasksComponent.qml:174
 #: src/ui/VariablesComponent.qml:154 src/ui/VariablesComponent.qml:178
-#, fuzzy, kde-format
-#| msgid "&Delete"
+#, kde-format
 msgctxt "@action:button"
 msgid "Delete"
-msgstr "&Scrios"
+msgstr ""
 
 #: src/ui/TasksComponent.qml:150
-#, fuzzy, kde-format
-#| msgid "&Run as:"
+#, kde-format
 msgctxt "@action:button"
 msgid "Run task"
-msgstr "&Rith mar:"
+msgstr ""
 
 #: src/ui/TasksComponent.qml:162 src/ui/VariablesComponent.qml:166
 #, kde-format
@@ -1089,11 +1018,10 @@ msgid "Edit…"
 msgstr ""
 
 #: src/ui/TasksComponent.qml:180
-#, fuzzy, kde-format
-#| msgid "Sun"
+#, kde-format
 msgctxt "@action:button"
 msgid "Run"
-msgstr "Domh"
+msgstr ""
 
 #: src/ui/TimeCard.qml:33
 #, kde-format
@@ -1102,498 +1030,85 @@ msgid "Select all"
 msgstr ""
 
 #: src/ui/VariablePage.qml:17
-#, fuzzy, kde-format
-#| msgid "Modify Variable"
+#, kde-format
 msgctxt "@title"
 msgid "Edit Variable"
-msgstr "Mionathraigh Athróg"
+msgstr ""
 
 #: src/ui/VariablePage.qml:18
-#, fuzzy, kde-format
-#| msgid "New Variable"
+#, kde-format
 msgctxt "@title"
 msgid "New Variable"
-msgstr "Athróg Nua"
+msgstr ""
 
 #: src/ui/VariablePage.qml:27
-#, fuzzy, kde-format
-#| msgid "Modify Variable"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit Variable"
-msgstr "Mionathraigh Athróg"
+msgstr ""
 
 #: src/ui/VariablePage.qml:28
-#, fuzzy, kde-format
-#| msgid "Modify Variable"
+#, kde-format
 msgctxt "@action:button accessible"
 msgid "Edit Variable"
-msgstr "Mionathraigh Athróg"
+msgstr ""
 
 #: src/ui/VariablePage.qml:38
-#, fuzzy, kde-format
-#| msgid "New Variable"
+#, kde-format
 msgctxt "@action:button"
 msgid "New Variable"
-msgstr "Athróg Nua"
+msgstr ""
 
 #: src/ui/VariablePage.qml:39
-#, fuzzy, kde-format
-#| msgid "New Variable"
+#, kde-format
 msgctxt "@action:button accessible"
 msgid "New Variable"
-msgstr "Athróg Nua"
+msgstr ""
 
 #: src/ui/VariablePage.qml:57
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please enter the variable name...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please enter the variable name</message>"
-msgstr "<i>Iontráil ainm na hathróige...</i>"
+msgstr ""
 
 #: src/ui/VariablePage.qml:59
-#, fuzzy, kde-kuit-format
-#| msgid "<i>Please enter the variable value ...</i>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please enter the variable value</message>"
-msgstr "<i>Iontráil luach na hathróige ...</i>"
+msgstr ""
 
 #: src/ui/VariablePage.qml:76
-#, fuzzy, kde-format
-#| msgctxt "The environmental variable name ie HOME, MAILTO etc"
-#| msgid "Variable:"
+#, kde-format
 msgctxt "@label:listbox"
 msgid "Variable:"
-msgstr "Athróg:"
+msgstr ""
 
 #: src/ui/VariablePage.qml:112
-#, fuzzy, kde-format
-#| msgid "Value:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Value:"
-msgstr "Luach:"
+msgstr ""
 
 #: src/ui/VariablePage.qml:126
-#, fuzzy, kde-format
-#| msgid "&Enable this variable"
+#, kde-format
 msgctxt "@label:checkbox"
 msgid "Enable this variable"
-msgstr "&Cumasaigh an athróg seo"
+msgstr ""
 
 #: src/ui/VariablesComponent.qml:19
-#, fuzzy, kde-format
-#| msgid "Environment Variables"
+#, kde-format
 msgctxt "@title:group"
 msgid "Environment Variables"
-msgstr "Athróga Timpeallachta"
+msgstr ""
 
 #: src/ui/VariablesComponent.qml:112
-#, fuzzy, kde-format
-#| msgid "Variable"
+#, kde-format
 msgctxt "@action:button"
 msgid "Add Variable…"
-msgstr "Athróg"
+msgstr ""
 
 #: src/ui/VariablesComponent.qml:118
-#, fuzzy, kde-format
-#| msgid "Modify Variable"
+#, kde-format
 msgctxt "@action:button"
 msgid "Edit Variable…"
-msgstr "Mionathraigh Athróg"
-
-#, fuzzy
-#~| msgid "Edit Task"
-#~ msgctxt "@action:button"
-#~ msgid "Edit Task"
-#~ msgstr "Cuir Tasc in Eagar"
-
-#, fuzzy
-#~| msgid "Edit Task"
-#~ msgctxt "@action:button accessible"
-#~ msgid "Edit Task"
-#~ msgstr "Cuir Tasc in Eagar"
-
-#, fuzzy
-#~| msgid "New Task"
-#~ msgctxt "@action:button"
-#~ msgid "New Task"
-#~ msgstr "Tasc Nua"
-
-#, fuzzy
-#~| msgid "New Task"
-#~ msgctxt "@action:button accessible"
-#~ msgid "New Task"
-#~ msgstr "Tasc Nua"
-
-#, fuzzy
-#~| msgid "Printing..."
-#~ msgctxt "@action:button"
-#~ msgid "Print"
-#~ msgstr "Á Phriontáil..."
-
-#~ msgctxt "NAME OF TRANSLATORS"
-#~ msgid "Your names"
-#~ msgstr "Séamus Ó Ciardhuáin,Kevin Scannell"
-
-#~ msgctxt "EMAIL OF TRANSLATORS"
-#~ msgid "Your emails"
-#~ msgstr "seoc@iolfree.ie,kscanne@gmail.com"
-
-#~ msgid "All Users Crontabs"
-#~ msgstr "Crontab gach Úsáideora"
-
-#, fuzzy
-#~| msgid "Cron Options"
-#~ msgctxt "@title:window"
-#~ msgid "Cron Options"
-#~ msgstr "Roghanna Cron"
-
-#~ msgid "Print cron&tab"
-#~ msgstr "Priontáil comhad cron&tab"
-
-#~ msgid "Print &all users"
-#~ msgstr "Priontáil &gach úsáideoir"
-
-#~ msgid "Show the following Cron:"
-#~ msgstr "Taispeáin an Cron seo a leanas:"
-
-#~ msgid "Personal Cron"
-#~ msgstr "Cron Pearsanta"
-
-#~ msgid "System Cron"
-#~ msgstr "Cron an Chórais"
-
-#~ msgid ""
-#~ "The following error occurred while initializing KCron:\n"
-#~ "\n"
-#~ "%1\n"
-#~ "\n"
-#~ "KCron will now exit.\n"
-#~ msgstr ""
-#~ "Tharla an earráid seo a leanas agus KCron á thúsú:\n"
-#~ "\n"
-#~ "%1\n"
-#~ "\n"
-#~ "Scoirfidh KCron anois.\n"
-
-#~ msgid ""
-#~ "You can use this application to schedule programs to run in the "
-#~ "background.\n"
-#~ "To schedule a new task now, click on the Tasks folder and select Edit/New "
-#~ "from the menu."
-#~ msgstr ""
-#~ "Is féidir leat an feidhmchlár seo a úsáid chun ríomhchláir a rith sa "
-#~ "chúlra ag amanna áirithe.  Chun tasc nua a sceidealadh anois, cliceáil an "
-#~ "fillteán 'Tascanna' agus roghnaigh 'Eagar/Nua' ón roghchlár."
-
-#~ msgid "Add or modify a scheduled task"
-#~ msgstr "Cuir tasc nua sceidealta leis, nó athraigh tasc atá ann"
-
-#~ msgid "<i>This task will be executed at the specified intervals.</i>"
-#~ msgstr "<i>Rithfear an tasc seo ag na hamanna sonraithe.</i>"
-
-#~ msgid "Co&mment:"
-#~ msgstr "&Nóta:"
-
-#~ msgid "Run at system &bootup"
-#~ msgstr "Rith ag am &thosú an chórais"
-
-#~ msgid "Run &every day"
-#~ msgstr "Rith &gach lá"
-
-#~ msgid "Clear selection"
-#~ msgstr "Glan roghnúchán"
-
-#~ msgid "AM:"
-#~ msgstr "AM:"
-
-#~ msgid "PM:"
-#~ msgstr "PM:"
-
-#~ msgid "<i>Please browse for a program to execute...</i>"
-#~ msgstr "<i>Brabhsáil agus aimsigh ríomhchlár le rith...</i>"
-
-#~ msgid "<i>This task is disabled.</i>"
-#~ msgstr "<i>Díchumasaíodh an tasc seo.</i>"
-
-#~ msgid "<i>This task will be run on system bootup.</i>"
-#~ msgstr "<i>Rithfear an tasc seo ag am thosú an chórais.</i>"
-
-#~ msgid "Clear All"
-#~ msgstr "Glan Gach Rud"
-
-#~ msgid "<b>Scheduled Tasks</b>"
-#~ msgstr "<b>Tascanna Sceidealta</b>"
-
-#~ msgid "Modify Task"
-#~ msgstr "Mionathraigh Tasc"
-
-#~ msgid "Status"
-#~ msgstr "Stádas"
-
-#~ msgctxt "Adds a new task"
-#~ msgid "New &Task..."
-#~ msgstr "&Tasc Nua..."
-
-#~ msgid "Create a new task."
-#~ msgstr "Cruthaigh tasc nua."
-
-#~ msgid "M&odify..."
-#~ msgstr "A&thraigh..."
-
-#~ msgid "Modify the selected task."
-#~ msgstr "Athraigh an tasc roghnaithe."
-
-#~ msgid "Delete the selected task."
-#~ msgstr "Scrios an tasc roghnaithe."
-
-#~ msgid "&Run Now"
-#~ msgstr "&Rith Anois"
-
-#~ msgid "Run the selected task now."
-#~ msgstr "Rith an tasc roghnaithe anois."
-
-#~ msgid "Enabled"
-#~ msgstr "Cumasaithe"
-
-#~ msgid "Disabled"
-#~ msgstr "Díchumasaithe"
-
-#~ msgid "Add or modify a variable"
-#~ msgstr "Cuir athróg leis, nó athraigh athróg atá ann"
-
-#~ msgctxt "The environmental variable name ie HOME, MAILTO etc"
-#~ msgid "&Variable:"
-#~ msgstr "&Athróg:"
-
-#~ msgid "Va&lue:"
-#~ msgstr "Lu&ach:"
-
-#~ msgid "<i>This variable will be used by scheduled tasks.</i>"
-#~ msgstr "<i>Beidh an athróg seo úsáidte ag tascanna sceidealta.</i>"
-
-#~ msgid "<i>This variable is disabled.</i>"
-#~ msgstr "<i>Díchumasaíodh an athróg seo.</i>"
-
-#~ msgctxt "Adds a new variable"
-#~ msgid "New &Variable..."
-#~ msgstr "&Athróg Nua..."
-
-#~ msgid "Create a new variable."
-#~ msgstr "Cruthaigh athróg nua."
-
-#~ msgid "Modify the selected variable."
-#~ msgstr "Athraigh an athróg roghnaithe."
-
-#~ msgid "Delete the selected variable."
-#~ msgstr "Scrios an athróg roghnaithe."
-
-#~ msgid "KDE Task Scheduler"
-#~ msgstr "Sceidealóir Tascanna KDE"
-
-#~ msgid ""
-#~ "(c) 2008, Nicolas Ternisien\n"
-#~ "(c) 1999-2000, Gary Meyer"
-#~ msgstr ""
-#~ "© 2008, Nicolas Ternisien\n"
-#~ "© 1999-2000, Gary Meyer"
-
-#~ msgid "Nicolas Ternisien"
-#~ msgstr "Nicolas Ternisien"
-
-#~ msgid "Gary Meyer"
-#~ msgstr "Gary Meyer"
-
-#~ msgid "Robert Berry"
-#~ msgstr "Robert Berry"
-
-#~ msgid "James Ots"
-#~ msgstr "James Ots"
-
-#~ msgid "Alberto G. Hierro"
-#~ msgstr "Alberto G. Hierro"
-
-#~ msgid "All users"
-#~ msgstr "Gach úsáideoir"
-
-#~ msgctxt "User login: errorMessage"
-#~ msgid "User %1: %2"
-#~ msgstr "Úsáideoir %1: %2"
-
-#~ msgid "Cron of User:"
-#~ msgstr "Cron d'Úsáideoir:"
-
-#~ msgid "Show All Personal Crons"
-#~ msgstr "Taispeáin Gach Cron Pearsanta"
-
-#~ msgid "Every %1 minutes"
-#~ msgstr "Gach %1 nóiméad"
-
-#~ msgctxt "Saving the file to the hard drive"
-#~ msgid "Saving..."
-#~ msgstr "Á Shábháil..."
-
-#~ msgctxt "Ready for user input"
-#~ msgid "Ready."
-#~ msgstr "Réidh."
-
-#~ msgid "&Program:"
-#~ msgstr "&Clár:"
-
-#~ msgid ""
-#~ "Scheduled tasks have been modified.\n"
-#~ "Do you want to save changes?"
-#~ msgstr ""
-#~ "Athraíodh tascanna sceidealta.\n"
-#~ "An bhfuil fonn ort na hathruithe a shábháil?"
-
-#~ msgid "(System Crontab)"
-#~ msgstr "(Crontab an Chórais)"
-
-#~ msgctxt "Ready for user input"
-#~ msgid " Ready."
-#~ msgstr " Réidh."
-
-#~ msgid "Copying to clipboard..."
-#~ msgstr "Cóipeáil go dtí an ghearrthaisce..."
-
-#~ msgid "Pasting from clipboard..."
-#~ msgstr "Greamú ón ghearrthaisce..."
-
-#~ msgid "KCron"
-#~ msgstr "KCron"
-
-#~ msgid "&Enabled"
-#~ msgstr "&Cumasaithe"
-
-#~ msgid "No password entry found for user '%1'"
-#~ msgstr "Níor aimsíodh focal faire le haghaidh úsáideoir '%1'"
-
-#~ msgid "Task name:"
-#~ msgstr "Ainm an tasc:"
-
-#~ msgid "Program:"
-#~ msgstr "Clár:"
-
-#~ msgid "No tasks..."
-#~ msgstr "Gan tascanna..."
-
-#~ msgid "No variables..."
-#~ msgstr "Gan athróga..."
-
-#~ msgctxt "The cron task had been disabled"
-#~ msgid "Disabled."
-#~ msgstr "Díchumasaithe."
-
-#~ msgid "Print Cron Tab"
-#~ msgstr "Priontáil Comhad crontab"
-
-#~ msgctxt "The cron variable has been disabled"
-#~ msgid "Disabled."
-#~ msgstr "Díchumasaithe."
-
-#~ msgctxt "Adds a new task or variable"
-#~ msgid "&New..."
-#~ msgstr "&Nua..."
-
-#~ msgid "Cutting to clipboard..."
-#~ msgstr "Gearradh go dtí an ghearrthaisce..."
-
-#~ msgid "Adding new entry..."
-#~ msgstr "Iontráil nua á cur leis..."
-
-#~ msgid "Modifying entry..."
-#~ msgstr "Iontráil á hathrú..."
-
-#~ msgid "Deleting entry..."
-#~ msgstr "Iontráil á scriosadh..."
-
-#~ msgid "Disabling entry..."
-#~ msgstr "Iontráil á díchumasú..."
-
-#~ msgid "Enabling entry..."
-#~ msgstr "Iontráil á cumasú..."
-
-#~ msgid "Running command..."
-#~ msgstr "Ordú á rith..."
-
-#~ msgid "Enable/disable the selected task or variable."
-#~ msgstr "Cumasaigh/díchumasaigh an tasc nó athróg roghnaithe."
-
-#~ msgctxt ""
-#~ "Please translator, read the README.translators file in kcron's source code"
-#~ msgid "DAYS_OF_MONTH of MONTHS"
-#~ msgstr "DAYS_OF_MONTH de MONTHS"
-
-#~ msgctxt "Really, read that file"
-#~ msgid "every DAYS_OF_WEEK"
-#~ msgstr "gach DAYS_OF_WEEK"
-
-#~ msgid "DOM_FORMAT as well as DOW_FORMAT"
-#~ msgstr "DOM_FORMAT chomh maith le DOW_FORMAT"
-
-#~ msgid "At TIME"
-#~ msgstr "Ag TIME"
-
-#~ msgid "TIME_FORMAT, DATE_FORMAT"
-#~ msgstr "TIME_FORMAT, DATE_FORMAT"
-
-#~ msgid "weekday "
-#~ msgstr "lá oibre "
-
-#~ msgctxt "The cron task had been disabled"
-#~ msgid "Disabled"
-#~ msgstr "Díchumasaithe"
-
-#~ msgid "Users/Tasks/Variable"
-#~ msgstr "Úsáideoirí/Tascanna/Athróg"
-
-#~ msgid "Tasks/Variables"
-#~ msgstr "Tascanna/Athróga"
-
-#~ msgctxt "user on host"
-#~ msgid "%1 <placeholder>%2</placeholder> on %3"
-#~ msgstr "%1 <placeholder>%2</placeholder> ar %3"
-
-#~ msgid "<i>Please check 'Enabled' to edit this variable ...</i>"
-#~ msgstr ""
-#~ "<i>Cuir tic le 'Cumasaithe' chun an athróg seo a chur in eagar...</i>"
-
-#~ msgid "&Browse..."
-#~ msgstr "&Brabhsáil..."
-
-#~ msgid "KCron Information"
-#~ msgstr "Eolas faoi KCron"
-
-#~ msgid "<i>Please check 'Enabled' to edit this task ...</i>"
-#~ msgstr "<i>Cuir tic le 'Cumasaithe' chun an tasc seo a chur in eagar...</i>"
-
-#~ msgid "Only local or mounted files can be executed by crontab."
-#~ msgstr ""
-#~ "Ní cheadaítear do crontab ach comhaid logánta nó comhaid fheistithe a "
-#~ "rith."
-
-#~ msgctxt "Every day of the week"
-#~ msgid "Daily"
-#~ msgstr "Go Laethúil"
-
-#~ msgctxt "user on host"
-#~ msgid "%1 <%2> on %3"
-#~ msgstr "%1 <%2> ar %3"
-
-#~ msgid "&Silent"
-#~ msgstr "To&st"
-
-#~ msgid "the program to run"
-#~ msgstr "ríomhchlár le rith"
-
-#~ msgid "an executable program to run"
-#~ msgstr "clár inrite le rith"
-
-#~ msgid "a valid program to run"
-#~ msgstr "clár bailí le rith"
-
-#~ msgid "the months"
-#~ msgstr "na míonna"
-
-#~ msgid "the hours"
-#~ msgstr "na huaireanta"
+msgstr ""
