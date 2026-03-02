@@ -7,14 +7,14 @@ msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-01-05 00:45+0000\n"
-"PO-Revision-Date: 2024-07-21 14:21+0200\n"
+"PO-Revision-Date: 2026-03-01 11:38+0100\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 26.03.70\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
@@ -23,22 +23,21 @@ msgstr ""
 #: src/cronPrinter.cpp:62
 msgctxt "@title Note: that is an HTML tag"
 msgid "<b>Tasks</b>"
-msgstr ""
+msgstr "<b>Oppgåver</b>"
 
 #: src/cronPrinter.cpp:63
-#, fuzzy
 msgctxt "@title Note: that is an HTML tag"
 msgid "<b>Environment Variables</b>"
-msgstr "Miljøvariablar"
+msgstr "<b>Miljøvariablar</b>"
 
 #: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:66
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:column"
 msgid "Scheduling"
 msgstr "Planlegging"
 
 #: src/cronPrinter.cpp:102 src/ui/TasksComponent.qml:75
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:column"
 msgid "Command"
 msgstr "Kommando"
@@ -47,23 +46,23 @@ msgstr "Kommando"
 #, kde-format
 msgctxt "@title:column"
 msgid "Description"
-msgstr ""
+msgstr "Skildring"
 
 #: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:67
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:column"
 msgid "Variable"
 msgstr "Variabel"
 
 #: src/cronPrinter.cpp:116 src/ui/VariablesComponent.qml:98
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:column"
 msgid "Value"
 msgstr "Verdi"
 
 #: src/cronPrinter.cpp:117 src/ui/TasksComponent.qml:84
 #: src/ui/VariablesComponent.qml:106
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:column"
 msgid "Comment"
 msgstr "Kommentar"
