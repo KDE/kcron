@@ -657,7 +657,7 @@ msgstr "اطبع الملخص…"
 #: src/ui/Onboarding.qml:22
 #, kde-format
 msgid "Welcome to Task Scheduler!"
-msgstr "مرحباً بك في مجدول المهام!"
+msgstr "مرحبًا بك في مجدول المهام!"
 
 #: src/ui/Onboarding.qml:24
 #, kde-kuit-format
