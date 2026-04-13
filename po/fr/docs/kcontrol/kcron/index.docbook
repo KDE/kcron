@@ -314,11 +314,11 @@
 <varlistentry>
 <term
 ><guibutton
->Lancer au démarrage du système</guibutton
+>Run at system bootup</guibutton
 ></term>
 <listitem>
 <para
->Veuillez cocher ce bouton pour lancer la tâche au démarrage du système.</para>
+>Check this button to run the task at system bootup.</para>
 </listitem>
 </varlistentry>
 
