@@ -10,7 +10,7 @@
 
 #include <QIcon>
 #include <QPair>
-#include <QString>
+
 #include <QStringList>
 
 #include "ctdom.h"
