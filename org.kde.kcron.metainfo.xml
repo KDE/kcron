@@ -148,6 +148,7 @@
   </categories>
   <icon type="stock">preferences-system-time</icon>
   <releases>
+    <release version="26.04.1" date="2026-05-07"/>
     <release version="26.04.0" date="2026-04-16"/>
   </releases>
 </component>
