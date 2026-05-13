@@ -39,6 +39,7 @@ private:
     bool validateCommand();
     bool validateMonth();
     bool validateDays();
+    bool validateWeekdays();
     bool validateHours();
     bool validateMinutes();
 

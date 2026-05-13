@@ -85,6 +85,10 @@ bool TaskValidator::validate()
         return false;
     }
 
+    if (!this->validateWeekdays()) {
+        return false;
+    }
+
     if (!this->validateHours()) {
         return false;
     }
@@ -191,6 +195,17 @@ bool TaskValidator::validateDays()
         }
     }
 
+    if (!isValid) {
+        mErrorString = xi18nc("@info", "<message>Please select from the <b>Days of Month</b> section</message>");
+        Q_EMIT errorStringChanged();
+    }
+
+    return isValid;
+}
+
+bool TaskValidator::validateWeekdays()
+{
+    bool isValid = false;
     for (int dw = CTDayOfWeek::MINIMUM; dw <= CTDayOfWeek::MAXIMUM; dw++) {
         if (mTask->isWeekDayEnabled(dw)) {
             isValid = true;
@@ -199,7 +214,7 @@ bool TaskValidator::validateDays()
     }
 
     if (!isValid) {
-        mErrorString = xi18nc("@info", "<message>Please select from either the <b>Days of Month</b> or the <b>Days of Week</b> section</message>");
+        mErrorString = xi18nc("@info", "<message>Please select from the <b>Days of Week</b> section</message>");
         Q_EMIT errorStringChanged();
     }
 
