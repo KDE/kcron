@@ -178,7 +178,7 @@ bool TaskValidator::validateMonth()
     }
 
     if (!isValid) {
-        mErrorString = xi18nc("@info", "<message>Please select from the <b>Months</b> section</message>");
+        mErrorString = xi18nc("@info", "<message>Please select from the <emphasis strong=\"1\">Months</emphasis> section</message>");
         Q_EMIT errorStringChanged();
     }
 
@@ -196,7 +196,7 @@ bool TaskValidator::validateDays()
     }
 
     if (!isValid) {
-        mErrorString = xi18nc("@info", "<message>Please select from the <b>Days of Month</b> section</message>");
+        mErrorString = xi18nc("@info", "<message>Please select from the <emphasis strong=\"1\">Days of Month</emphasis> section</message>");
         Q_EMIT errorStringChanged();
     }
 
@@ -214,7 +214,7 @@ bool TaskValidator::validateWeekdays()
     }
 
     if (!isValid) {
-        mErrorString = xi18nc("@info", "<message>Please select from the <b>Days of Week</b> section</message>");
+        mErrorString = xi18nc("@info", "<message>Please select from the <emphasis strong=\"1\">Days of Week</emphasis> section</message>");
         Q_EMIT errorStringChanged();
     }
 
@@ -232,7 +232,7 @@ bool TaskValidator::validateHours()
     }
 
     if (!isValid) {
-        mErrorString = xi18nc("@info", "<message>Please select from the <b>Hours</b> section</message>");
+        mErrorString = xi18nc("@info", "<message>Please select from the <emphasis strong=\"1\">Hours</emphasis> section</message>");
         Q_EMIT errorStringChanged();
     }
 
@@ -250,7 +250,7 @@ bool TaskValidator::validateMinutes()
     }
 
     if (!isValid) {
-        mErrorString = xi18nc("@info", "<message>Please select from the <b>Minutes</b> section</message>");
+        mErrorString = xi18nc("@info", "<message>Please select from the <emphasis strong=\"1\">Minutes</emphasis> section</message>");
         Q_EMIT errorStringChanged();
     }
 
