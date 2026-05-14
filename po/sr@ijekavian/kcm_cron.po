@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-05 00:45+0000\n"
+"POT-Creation-Date: 2026-05-14 00:46+0000\n"
 "PO-Revision-Date: 2017-09-28 17:58+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -587,21 +587,21 @@ msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
 msgstr "Крај извршавања скрипте. Притисните Enter или Ctrl+C за излаз."
 
-#: src/taskvalidator.cpp:105
+#: src/taskvalidator.cpp:109
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Choose a program to run</message>"
 msgstr ""
 
 # rewrite-msgid: /valid//
-#: src/taskvalidator.cpp:113 src/taskvalidator.cpp:120
+#: src/taskvalidator.cpp:117 src/taskvalidator.cpp:124
 #, fuzzy, kde-kuit-format
 #| msgid "<i>Please type a valid command line...</i>"
 msgctxt "@info"
 msgid "<message>Please type a valid command line</message>"
 msgstr "<i>Унесите командну линију...</i>"
 
-#: src/taskvalidator.cpp:136
+#: src/taskvalidator.cpp:140
 #, fuzzy, kde-kuit-format
 #| msgid "<i>Please select an executable program...</i>"
 msgctxt "@info"
@@ -609,7 +609,7 @@ msgid ""
 "<message>File exists but is not executable: <filename>%1</filename></message>"
 msgstr "<i>Изаберите извршни програм...</i>"
 
-#: src/taskvalidator.cpp:141
+#: src/taskvalidator.cpp:145
 #, fuzzy, kde-kuit-format
 #| msgid "<i>Please enter the variable name...</i>"
 msgctxt "@info"
@@ -617,45 +617,60 @@ msgid "<message>File not found: <filename>%1</filename></message>"
 msgstr "<i>Унесите име промјенљиве...</i>"
 
 # rewrite-msgid: /valid//
-#: src/taskvalidator.cpp:161
+#: src/taskvalidator.cpp:165
 #, fuzzy, kde-kuit-format
 #| msgid "<i>Please type a valid command line...</i>"
 msgctxt "@info"
 msgid "<message>Command not found: <command>%1</command></message>"
 msgstr "<i>Унесите командну линију...</i>"
 
-#: src/taskvalidator.cpp:177
+#: src/taskvalidator.cpp:181
 #, fuzzy, kde-kuit-format
 #| msgid "<i>Please select from the 'Months' section...</i>"
 msgctxt "@info"
-msgid "<message>Please select from the <b>Months</b> section</message>"
+msgid ""
+"<message>Please select from the <emphasis strong=\"1\">Months</emphasis> "
+"section</message>"
 msgstr "<i>Изаберите из одијељка <i>Мјесеци</i>...</i>"
 
-#: src/taskvalidator.cpp:202
+#: src/taskvalidator.cpp:199
+#, fuzzy, kde-kuit-format
+#| msgid "<i>Please select from the 'Months' section...</i>"
+msgctxt "@info"
+msgid ""
+"<message>Please select from the <emphasis strong=\"1\">Days of Month</"
+"emphasis> section</message>"
+msgstr "<i>Изаберите из одијељка <i>Мјесеци</i>...</i>"
+
+#: src/taskvalidator.cpp:217
 #, fuzzy, kde-kuit-format
 #| msgid ""
 #| "<i>Please select from either the 'Days of Month' or the 'Days of Week' "
 #| "section...</i>"
 msgctxt "@info"
 msgid ""
-"<message>Please select from either the <b>Days of Month</b> or the <b>Days "
-"of Week</b> section</message>"
+"<message>Please select from the <emphasis strong=\"1\">Days of Week</"
+"emphasis> section</message>"
 msgstr ""
 "<i>Изаберите из одијељка <i>Дани у месецу</i> или <i>Дани у седмици</i>...</"
 "i>"
 
-#: src/taskvalidator.cpp:220
+#: src/taskvalidator.cpp:235
 #, fuzzy, kde-kuit-format
 #| msgid "<i>Please select from the 'Hours' section...</i>"
 msgctxt "@info"
-msgid "<message>Please select from the <b>Hours</b> section</message>"
+msgid ""
+"<message>Please select from the <emphasis strong=\"1\">Hours</emphasis> "
+"section</message>"
 msgstr "<i>Изаберите из одијељка <i>Сати</i>...</i>"
 
-#: src/taskvalidator.cpp:238
+#: src/taskvalidator.cpp:253
 #, fuzzy, kde-kuit-format
 #| msgid "<i>Please select from the 'Minutes' section...</i>"
 msgctxt "@info"
-msgid "<message>Please select from the <b>Minutes</b> section</message>"
+msgid ""
+"<message>Please select from the <emphasis strong=\"1\">Minutes</emphasis> "
+"section</message>"
 msgstr "<i>Изаберите из одијељка <i>Минути</i>...</i>"
 
 #: src/ui/main.qml:45

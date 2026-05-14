@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-05 00:45+0000\n"
+"POT-Creation-Date: 2026-05-14 00:46+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -557,62 +557,88 @@ msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
 msgstr "脚本执行结束。请按回车或 Ctrl+C 键退出。"
 
-#: src/taskvalidator.cpp:105
+#: src/taskvalidator.cpp:109
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Choose a program to run</message>"
 msgstr "<message>请选择要运行的程序</message>"
 
-#: src/taskvalidator.cpp:113 src/taskvalidator.cpp:120
+#: src/taskvalidator.cpp:117 src/taskvalidator.cpp:124
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please type a valid command line</message>"
 msgstr "<message>请输入有效的命令行</message>"
 
-#: src/taskvalidator.cpp:136
+#: src/taskvalidator.cpp:140
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>File exists but is not executable: <filename>%1</filename></message>"
 msgstr "<message>文件存在但不可执行：<filename>%1</filename></message>"
 
-#: src/taskvalidator.cpp:141
+#: src/taskvalidator.cpp:145
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>File not found: <filename>%1</filename></message>"
 msgstr "<message>找不到文件：<filename>%1</filename></message>"
 
-#: src/taskvalidator.cpp:161
+#: src/taskvalidator.cpp:165
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Command not found: <command>%1</command></message>"
 msgstr "<message>找不到命令：<command>%1</command></message>"
 
-#: src/taskvalidator.cpp:177
-#, kde-kuit-format
-msgctxt "@info"
-msgid "<message>Please select from the <b>Months</b> section</message>"
-msgstr "<message>请从 <b>月</b> 区段中选择一项</message>"
-
-#: src/taskvalidator.cpp:202
-#, kde-kuit-format
+#: src/taskvalidator.cpp:181
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "<message>Please select from the <b>Months</b> section</message>"
 msgctxt "@info"
 msgid ""
-"<message>Please select from either the <b>Days of Month</b> or the <b>Days "
-"of Week</b> section</message>"
+"<message>Please select from the <emphasis strong=\"1\">Months</emphasis> "
+"section</message>"
+msgstr "<message>请从 <b>月</b> 区段中选择一项</message>"
+
+#: src/taskvalidator.cpp:199
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "<message>Please select from the <b>Months</b> section</message>"
+msgctxt "@info"
+msgid ""
+"<message>Please select from the <emphasis strong=\"1\">Days of Month</"
+"emphasis> section</message>"
+msgstr "<message>请从 <b>月</b> 区段中选择一项</message>"
+
+#: src/taskvalidator.cpp:217
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "<message>Please select from either the <b>Days of Month</b> or the "
+#| "<b>Days of Week</b> section</message>"
+msgctxt "@info"
+msgid ""
+"<message>Please select from the <emphasis strong=\"1\">Days of Week</"
+"emphasis> section</message>"
 msgstr ""
 "<message>请从 <b>月日期</b> 或者 <b>周日期</b> 区段中选择一项</message>"
 
-#: src/taskvalidator.cpp:220
-#, kde-kuit-format
+#: src/taskvalidator.cpp:235
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "<message>Please select from the <b>Hours</b> section</message>"
 msgctxt "@info"
-msgid "<message>Please select from the <b>Hours</b> section</message>"
+msgid ""
+"<message>Please select from the <emphasis strong=\"1\">Hours</emphasis> "
+"section</message>"
 msgstr "<message>请从 <b>小时</b> 区段中选择一项</message>"
 
-#: src/taskvalidator.cpp:238
-#, kde-kuit-format
+#: src/taskvalidator.cpp:253
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "<message>Please select from the <b>Minutes</b> section</message>"
 msgctxt "@info"
-msgid "<message>Please select from the <b>Minutes</b> section</message>"
+msgid ""
+"<message>Please select from the <emphasis strong=\"1\">Minutes</emphasis> "
+"section</message>"
 msgstr "<message>请从 <b>分钟</b> 区段中选择一项</message>"
 
 #: src/ui/main.qml:45

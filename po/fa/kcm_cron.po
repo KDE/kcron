@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-05 00:45+0000\n"
+"POT-Creation-Date: 2026-05-14 00:46+0000\n"
 "PO-Revision-Date: 2007-09-02 12:01+0330\n"
 "Last-Translator: Nazanin Kazemi <kazemi@itland.ir>\n"
 "Language-Team: Persian <kde-i18n-fa@kde.org>\n"
@@ -557,61 +557,75 @@ msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
 msgstr ""
 
-#: src/taskvalidator.cpp:105
+#: src/taskvalidator.cpp:109
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Choose a program to run</message>"
 msgstr ""
 
-#: src/taskvalidator.cpp:113 src/taskvalidator.cpp:120
+#: src/taskvalidator.cpp:117 src/taskvalidator.cpp:124
 #, fuzzy, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please type a valid command line</message>"
 msgstr "<i>لطفاً، نام متغیر را وارد کنید ...</i>"
 
-#: src/taskvalidator.cpp:136
+#: src/taskvalidator.cpp:140
 #, fuzzy, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>File exists but is not executable: <filename>%1</filename></message>"
 msgstr "<i>لطفاً، برنامه‌ای اجرایی برگزینید ...</i>"
 
-#: src/taskvalidator.cpp:141
+#: src/taskvalidator.cpp:145
 #, fuzzy, kde-kuit-format
 msgctxt "@info"
 msgid "<message>File not found: <filename>%1</filename></message>"
 msgstr "<i>لطفاً، نام متغیر را وارد کنید ...</i>"
 
-#: src/taskvalidator.cpp:161
+#: src/taskvalidator.cpp:165
 #, fuzzy, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Command not found: <command>%1</command></message>"
 msgstr "<i>لطفاً، نام متغیر را وارد کنید ...</i>"
 
-#: src/taskvalidator.cpp:177
-#, fuzzy, kde-kuit-format
-msgctxt "@info"
-msgid "<message>Please select from the <b>Months</b> section</message>"
-msgstr "<i>لطفاً، از بخش »ماه« برگزینید ...</i>"
-
-#: src/taskvalidator.cpp:202
+#: src/taskvalidator.cpp:181
 #, fuzzy, kde-kuit-format
 msgctxt "@info"
 msgid ""
-"<message>Please select from either the <b>Days of Month</b> or the <b>Days "
-"of Week</b> section</message>"
+"<message>Please select from the <emphasis strong=\"1\">Months</emphasis> "
+"section</message>"
+msgstr "<i>لطفاً، از بخش »ماه« برگزینید ...</i>"
+
+#: src/taskvalidator.cpp:199
+#, fuzzy, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"<message>Please select from the <emphasis strong=\"1\">Days of Month</"
+"emphasis> section</message>"
+msgstr "<i>لطفاً، از بخش »ماه« برگزینید ...</i>"
+
+#: src/taskvalidator.cpp:217
+#, fuzzy, kde-kuit-format
+msgctxt "@info"
+msgid ""
+"<message>Please select from the <emphasis strong=\"1\">Days of Week</"
+"emphasis> section</message>"
 msgstr "<i>لطفاً، یا از بخش »روز ماه« یا »روز هفته« برگزینید ...</i>"
 
-#: src/taskvalidator.cpp:220
+#: src/taskvalidator.cpp:235
 #, fuzzy, kde-kuit-format
 msgctxt "@info"
-msgid "<message>Please select from the <b>Hours</b> section</message>"
+msgid ""
+"<message>Please select from the <emphasis strong=\"1\">Hours</emphasis> "
+"section</message>"
 msgstr "<i>لطفاً، از بخش »ساعت« برگزینید ...</i>"
 
-#: src/taskvalidator.cpp:238
+#: src/taskvalidator.cpp:253
 #, fuzzy, kde-kuit-format
 msgctxt "@info"
-msgid "<message>Please select from the <b>Minutes</b> section</message>"
+msgid ""
+"<message>Please select from the <emphasis strong=\"1\">Minutes</emphasis> "
+"section</message>"
 msgstr "<i>لطفاً، از بخش »دقیقه« برگزینید ...</i>"
 
 #: src/ui/main.qml:45

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeadmin-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-05 00:45+0000\n"
+"POT-Creation-Date: 2026-05-14 00:46+0000\n"
 "PO-Revision-Date: 2026-01-07 20:41+0300\n"
 "Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -567,19 +567,19 @@ msgid "End of script execution. Type Enter or Ctrl+C to exit."
 msgstr ""
 "Betik yürütmesinin sonu. Çıkmak için Giriş veya Kontrol+C düğmelerine basın."
 
-#: src/taskvalidator.cpp:105
+#: src/taskvalidator.cpp:109
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Choose a program to run</message>"
 msgstr "<message>Çalıştırılacak bir program seçin</message>"
 
-#: src/taskvalidator.cpp:113 src/taskvalidator.cpp:120
+#: src/taskvalidator.cpp:117 src/taskvalidator.cpp:124
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please type a valid command line</message>"
 msgstr "<message>Lütfen geçerli bir komut satırı girin</message>"
 
-#: src/taskvalidator.cpp:136
+#: src/taskvalidator.cpp:140
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -588,44 +588,70 @@ msgstr ""
 "<message>Dosya var; ancak yürütülebilir değil: <filename>%1</filename></"
 "message>"
 
-#: src/taskvalidator.cpp:141
+#: src/taskvalidator.cpp:145
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>File not found: <filename>%1</filename></message>"
 msgstr "<message>Dosya bulunamadı: <filename>%1</filename></message>"
 
-#: src/taskvalidator.cpp:161
+#: src/taskvalidator.cpp:165
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Command not found: <command>%1</command></message>"
 msgstr "<message>Komut bulunamadı: <command>%1</command></message>"
 
-#: src/taskvalidator.cpp:177
-#, kde-kuit-format
-msgctxt "@info"
-msgid "<message>Please select from the <b>Months</b> section</message>"
-msgstr "<message>Lütfen <b>Aylar</b> bölümünden seçin</message>"
-
-#: src/taskvalidator.cpp:202
-#, kde-kuit-format
+#: src/taskvalidator.cpp:181
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "<message>Please select from the <b>Months</b> section</message>"
 msgctxt "@info"
 msgid ""
-"<message>Please select from either the <b>Days of Month</b> or the <b>Days "
-"of Week</b> section</message>"
+"<message>Please select from the <emphasis strong=\"1\">Months</emphasis> "
+"section</message>"
+msgstr "<message>Lütfen <b>Aylar</b> bölümünden seçin</message>"
+
+#: src/taskvalidator.cpp:199
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "<message>Please select from the <b>Months</b> section</message>"
+msgctxt "@info"
+msgid ""
+"<message>Please select from the <emphasis strong=\"1\">Days of Month</"
+"emphasis> section</message>"
+msgstr "<message>Lütfen <b>Aylar</b> bölümünden seçin</message>"
+
+#: src/taskvalidator.cpp:217
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "<message>Please select from either the <b>Days of Month</b> or the "
+#| "<b>Days of Week</b> section</message>"
+msgctxt "@info"
+msgid ""
+"<message>Please select from the <emphasis strong=\"1\">Days of Week</"
+"emphasis> section</message>"
 msgstr ""
 "<message>Lütfen ya <b>Ayın Günleri</b> ya da <b>Haftanın Günleri</b> "
 "bölümünden seçin</message>"
 
-#: src/taskvalidator.cpp:220
-#, kde-kuit-format
+#: src/taskvalidator.cpp:235
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "<message>Please select from the <b>Hours</b> section</message>"
 msgctxt "@info"
-msgid "<message>Please select from the <b>Hours</b> section</message>"
+msgid ""
+"<message>Please select from the <emphasis strong=\"1\">Hours</emphasis> "
+"section</message>"
 msgstr "<message>Lütfen <b>Saatler</b> bölümünden seçin</message>"
 
-#: src/taskvalidator.cpp:238
-#, kde-kuit-format
+#: src/taskvalidator.cpp:253
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "<message>Please select from the <b>Minutes</b> section</message>"
 msgctxt "@info"
-msgid "<message>Please select from the <b>Minutes</b> section</message>"
+msgid ""
+"<message>Please select from the <emphasis strong=\"1\">Minutes</emphasis> "
+"section</message>"
 msgstr "<message>Lütfen <b>Dakikalar</b> bölümünden seçin</message>"
 
 #: src/ui/main.qml:45

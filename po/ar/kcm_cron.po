@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-01-05 00:45+0000\n"
+"POT-Creation-Date: 2026-05-14 00:46+0000\n"
 "PO-Revision-Date: 2026-01-07 19:09+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
@@ -570,19 +570,19 @@ msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
 msgstr "نهاية تنفيذ البرنامج النصي. اضغط على زر الإدخال  أو Ctrl+C للخروج."
 
-#: src/taskvalidator.cpp:105
+#: src/taskvalidator.cpp:109
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Choose a program to run</message>"
 msgstr "<message>اختر برنامجًا لتشغيله</message>"
 
-#: src/taskvalidator.cpp:113 src/taskvalidator.cpp:120
+#: src/taskvalidator.cpp:117 src/taskvalidator.cpp:124
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Please type a valid command line</message>"
 msgstr "<message>رجاء اكتب سطر الأوامر صحيحا…</message>"
 
-#: src/taskvalidator.cpp:136
+#: src/taskvalidator.cpp:140
 #, kde-kuit-format
 msgctxt "@info"
 msgid ""
@@ -591,43 +591,69 @@ msgstr ""
 "<message>الملف موجود ولكنه غير قابل للتنفيذ: <filename>%1</filename></"
 "message>"
 
-#: src/taskvalidator.cpp:141
+#: src/taskvalidator.cpp:145
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>File not found: <filename>%1</filename></message>"
 msgstr "<message>لم يُعثر على الملف: <filename>%1</filename></message>"
 
-#: src/taskvalidator.cpp:161
+#: src/taskvalidator.cpp:165
 #, kde-kuit-format
 msgctxt "@info"
 msgid "<message>Command not found: <command>%1</command></message>"
 msgstr "<message>لم يُعثر على الأمر: <command>%1</command></message>"
 
-#: src/taskvalidator.cpp:177
-#, kde-kuit-format
-msgctxt "@info"
-msgid "<message>Please select from the <b>Months</b> section</message>"
-msgstr "<message>من فضلك حدد من قسم 'الشهور'  …</message>"
-
-#: src/taskvalidator.cpp:202
-#, kde-kuit-format
+#: src/taskvalidator.cpp:181
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "<message>Please select from the <b>Months</b> section</message>"
 msgctxt "@info"
 msgid ""
-"<message>Please select from either the <b>Days of Month</b> or the <b>Days "
-"of Week</b> section</message>"
+"<message>Please select from the <emphasis strong=\"1\">Months</emphasis> "
+"section</message>"
+msgstr "<message>من فضلك حدد من قسم 'الشهور'  …</message>"
+
+#: src/taskvalidator.cpp:199
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "<message>Please select from the <b>Months</b> section</message>"
+msgctxt "@info"
+msgid ""
+"<message>Please select from the <emphasis strong=\"1\">Days of Month</"
+"emphasis> section</message>"
+msgstr "<message>من فضلك حدد من قسم 'الشهور'  …</message>"
+
+#: src/taskvalidator.cpp:217
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid ""
+#| "<message>Please select from either the <b>Days of Month</b> or the "
+#| "<b>Days of Week</b> section</message>"
+msgctxt "@info"
+msgid ""
+"<message>Please select from the <emphasis strong=\"1\">Days of Week</"
+"emphasis> section</message>"
 msgstr ""
 "<message>من فضلك حدد إما من قسم 'أيام الشهر' أو 'أيام الأسبوع'…</message>"
 
-#: src/taskvalidator.cpp:220
-#, kde-kuit-format
+#: src/taskvalidator.cpp:235
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "<message>Please select from the <b>Hours</b> section</message>"
 msgctxt "@info"
-msgid "<message>Please select from the <b>Hours</b> section</message>"
+msgid ""
+"<message>Please select from the <emphasis strong=\"1\">Hours</emphasis> "
+"section</message>"
 msgstr "<message>من فضلك حدد من قسم 'الساعات' …</message>"
 
-#: src/taskvalidator.cpp:238
-#, kde-kuit-format
+#: src/taskvalidator.cpp:253
+#, fuzzy, kde-kuit-format
+#| msgctxt "@info"
+#| msgid "<message>Please select from the <b>Minutes</b> section</message>"
 msgctxt "@info"
-msgid "<message>Please select from the <b>Minutes</b> section</message>"
+msgid ""
+"<message>Please select from the <emphasis strong=\"1\">Minutes</emphasis> "
+"section</message>"
 msgstr "<message>من فضلك حدد من قسم 'الدقائق'  …</message>"
 
 #: src/ui/main.qml:45
