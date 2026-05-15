@@ -11,21 +11,21 @@
 # Rinse de Vries <rinsedevries@kde.nl>, 2004, 2007, 2008, 2009.
 # Tom Albers <tomalbers@kde.nl>, 2004.
 # Tom Albers <toma@kovoks.nl>, 2004.
-# SPDX-FileCopyrightText: 2009, 2023, 2024, 2025, 2026 Freek de Kruijf <f.de.kruijf@hetnet.nl>
+# SPDX-FileCopyrightText: 2009, 2023-2026 Freek de Kruijf <f.de.kruijf@hetnet.nl>
 # Freek de Kruijf <freekdekruijf@kde.nl>, 2010, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-14 00:46+0000\n"
-"PO-Revision-Date: 2026-01-05 11:32+0100\n"
+"PO-Revision-Date: 2026-05-14 17:22+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.12.0\n"
+"X-Generator: Lokalize 26.04.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: src/cronPrinter.cpp:62
@@ -606,58 +606,54 @@ msgid "<message>Command not found: <command>%1</command></message>"
 msgstr "<message>Opdracht niet gevonden: <command>%1</command></message>"
 
 #: src/taskvalidator.cpp:181
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Months</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Months</emphasis> "
 "section</message>"
-msgstr "<message>Maak een keuze bij de sectie <b>Maand</b></message>"
+msgstr ""
+"<message>Maak een keuze uit de sectie <emphasis strong=\"1\">Maanden</"
+"emphasis></message>"
 
 #: src/taskvalidator.cpp:199
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Months</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Days of Month</"
 "emphasis> section</message>"
-msgstr "<message>Maak een keuze bij de sectie <b>Maand</b></message>"
+msgstr ""
+"<message>Maak een keuze uit de sectie <emphasis strong=\"1\">Maand</"
+"emphasis></message>"
 
 #: src/taskvalidator.cpp:217
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "<message>Please select from either the <b>Days of Month</b> or the "
-#| "<b>Days of Week</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Days of Week</"
 "emphasis> section</message>"
 msgstr ""
-"<message>Maak een keuze bij de sectie <b>Dagen van de maand</b> of <b>Dagen "
-"van de week</b></message>"
+"<message>Maak een keuze uit de sectie <emphasis strong=\"1\">Dagen van de "
+"maand</emphasis></message>"
 
 #: src/taskvalidator.cpp:235
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Hours</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Hours</emphasis> "
 "section</message>"
-msgstr "<message>Maak een keuze bij de sectie <b>Uren</b></message>"
+msgstr ""
+"<message>Maak een keuze uit de sectie <emphasis strong=\"1\">Uren</emphasis> "
+"</message>"
 
 #: src/taskvalidator.cpp:253
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Minutes</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Minutes</emphasis> "
 "section</message>"
-msgstr "<message>Maak een keuze bij de sectie <b>Minuten</b></message>"
+msgstr ""
+"<message>Maak een keuze bij de sectie <emphasis strong=\"1\">Minuten</"
+"emphasis> </message>"
 
 #: src/ui/main.qml:45
 #, kde-format

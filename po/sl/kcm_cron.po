@@ -1,7 +1,7 @@
 # Translation of kcron.po to Slovenian
 # KDEADMIN translation to Slovenian language.
 # Copyright (C) 2001,2003, 2004, 2005 Free Software Foundation, Inc.
-# $Id: kcm_cron.po 1736830 2026-05-14 01:28:46Z scripty $
+# $Id: kcm_cron.po 1736885 2026-05-15 01:29:20Z scripty $
 # $Source$
 #
 # Rok Papez <rok@slo.net>, 2000.
@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-14 00:46+0000\n"
-"PO-Revision-Date: 2026-01-05 07:07+0100\n"
+"PO-Revision-Date: 2026-05-14 07:16+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "Translator: Andrej Mernik <andrejm@ubuntu.si>\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #: src/cronPrinter.cpp:62
 msgctxt "@title Note: that is an HTML tag"
@@ -607,58 +607,53 @@ msgid "<message>Command not found: <command>%1</command></message>"
 msgstr "<message>Ukaza ni najdenega: <command>%1</command></message>"
 
 #: src/taskvalidator.cpp:181
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Months</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Months</emphasis> "
 "section</message>"
-msgstr "<message>Izberite v razdelku <b>Meseci</b></message>"
+msgstr ""
+"<message>Izberite v razdelku <emphasis strong=\"1\">Meseci</emphasis></"
+"message>"
 
 #: src/taskvalidator.cpp:199
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Months</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Days of Month</"
 "emphasis> section</message>"
-msgstr "<message>Izberite v razdelku <b>Meseci</b></message>"
+msgstr ""
+"<message>Izberite v razdelku <emphasis strong=\"1\">Dnevi v mesecu</"
+"emphasis></message>"
 
 #: src/taskvalidator.cpp:217
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "<message>Please select from either the <b>Days of Month</b> or the "
-#| "<b>Days of Week</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Days of Week</"
 "emphasis> section</message>"
 msgstr ""
-"<message>Izberite v razdelku <b>Dnevi v mesecu</b> ali <b>Dnevi v tednu</b></"
-"message>"
+"<message>Izberite v razdelku <emphasis strong=\"1\">Dnevi v tednu</"
+"emphasis></message>"
 
 #: src/taskvalidator.cpp:235
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Hours</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Hours</emphasis> "
 "section</message>"
-msgstr "<message>Izberite v razdelku <b>Ure</b></message>"
+msgstr ""
+"<message>Izberite v razdelku <emphasis strong=\"1\">Ure</emphasis></message>"
 
 #: src/taskvalidator.cpp:253
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Minutes</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Minutes</emphasis> "
 "section</message>"
-msgstr "<message>Izberite v razdelku <b>Minute</b></message>"
+msgstr ""
+"<message>Izberite v razdelku <emphasis strong=\"1\">Minute</emphasis></"
+"message>"
 
 #: src/ui/main.qml:45
 #, kde-format

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-14 00:46+0000\n"
-"PO-Revision-Date: 2026-01-14 12:33+0100\n"
+"PO-Revision-Date: 2026-05-14 11:37+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #: src/cronPrinter.cpp:62
 msgctxt "@title Note: that is an HTML tag"
@@ -594,58 +594,54 @@ msgid "<message>Command not found: <command>%1</command></message>"
 msgstr "<message>Commando non trovate: <command>%1</command></message>"
 
 #: src/taskvalidator.cpp:181
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Months</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Months</emphasis> "
 "section</message>"
-msgstr "<message>Pro favor tu selige ex le section <b>Menses</b></message>"
+msgstr ""
+"<message>Pro favor tu selige ex le section <emphasis strong=\"1\">Menses</"
+"emphasis></message>"
 
 #: src/taskvalidator.cpp:199
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Months</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Days of Month</"
 "emphasis> section</message>"
-msgstr "<message>Pro favor tu selige ex le section <b>Menses</b></message>"
+msgstr ""
+"<message>Pro favor tu selige ex le section <emphasis strong=\"1\">Dies del "
+"Mense</emphasis> </message>"
 
 #: src/taskvalidator.cpp:217
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "<message>Please select from either the <b>Days of Month</b> or the "
-#| "<b>Days of Week</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Days of Week</"
 "emphasis> section</message>"
 msgstr ""
-"<message>Pro favor selige o ex le section de <b>Dies del menses</b> o de "
-"<b>Dies de Septimana</b></message> "
+"<message>Pro favor tu selige ex le section <emphasis strong=\"1\">Dies de "
+"Septimana</emphasis></message>"
 
 #: src/taskvalidator.cpp:235
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Hours</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Hours</emphasis> "
 "section</message>"
-msgstr "<message>Pro favor selige ex le section de <b>Horas</b></message>"
+msgstr ""
+"<message>Pro favor tu selige ex le section <emphasis strong=\"1\">Horas</"
+"emphasis> </message>"
 
 #: src/taskvalidator.cpp:253
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Minutes</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Minutes</emphasis> "
 "section</message>"
-msgstr "<message>Pro favor selige ex le section de <b>Minutas</b></message>"
+msgstr ""
+"<message>Pro favor tu selige ex le section <emphasis strong=\"1\">Minutas</"
+"emphasis> </message>"
 
 #: src/ui/main.qml:45
 #, kde-format
