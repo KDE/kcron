@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-14 00:46+0000\n"
-"PO-Revision-Date: 2026-01-31 15:22+0200\n"
+"PO-Revision-Date: 2026-05-16 01:10+0300\n"
 "Last-Translator: Mindaugas Baranauskas <opensuse.lietuviu.kalba@gmail.com>\n"
 "Language-Team: lt <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -601,58 +601,54 @@ msgid "<message>Command not found: <command>%1</command></message>"
 msgstr "<message>Komanda nerasta: <command>%1</command></message>"
 
 #: src/taskvalidator.cpp:181
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Months</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Months</emphasis> "
 "section</message>"
-msgstr "<message>Pasirinkite <b>mėnesių</b> skiltyje</message>"
+msgstr ""
+"<message>Pasirinkite <emphasis strong=\"1\">mėnesių</emphasis> skiltyje</"
+"message>"
 
 #: src/taskvalidator.cpp:199
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Months</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Days of Month</"
 "emphasis> section</message>"
-msgstr "<message>Pasirinkite <b>mėnesių</b> skiltyje</message>"
+msgstr ""
+"<message>Pasirinkite <emphasis strong=\"1\">mėnesio dienų</emphasis> "
+"skiltyje</message>"
 
 #: src/taskvalidator.cpp:217
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "<message>Please select from either the <b>Days of Month</b> or the "
-#| "<b>Days of Week</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Days of Week</"
 "emphasis> section</message>"
 msgstr ""
-"<message>Pasirinkite <b>mėnesio dienų</b> ar <b>savaitės dienų</b> skiltyje</"
-"message>"
+"<message>Pasirinkite <emphasis strong=\"1\">savaitės dienų</emphasis> "
+"skiltyje</message>"
 
 #: src/taskvalidator.cpp:235
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Hours</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Hours</emphasis> "
 "section</message>"
-msgstr "<message>Pasirinkite <b>valandų</b> skiltyje</message>"
+msgstr ""
+"<message>Pasirinkite <emphasis strong=\"1\">valandų</emphasis> skiltyje</"
+"message>"
 
 #: src/taskvalidator.cpp:253
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Minutes</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Minutes</emphasis> "
 "section</message>"
-msgstr "<message>Pasirinkite <b>minučių</b> skiltyje</message>"
+msgstr ""
+"<message>Pasirinkite <emphasis strong=\"1\">minučių</emphasis> skiltyje</"
+"message>"
 
 #: src/ui/main.qml:45
 #, kde-format
