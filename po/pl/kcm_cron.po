@@ -1,18 +1,18 @@
-# Version: $Revision: 1736830 $
+# Version: $Revision: 1737013 $
 # translation of kcron.po to Polish
 # translation of kcron.po to
 # translation of kcron.po to
 # Copyright (C) 2002, 2003, 2005, 2008, 2009 Free Software Foundation, Inc.
 # Michał Rudolf <mrudolf@kdewebdev.org>, 2002.
 # Michal Rudolf <mrudolf@kdewebdev.org>, 2002, 2003, 2005, 2008, 2009.
-# SPDX-FileCopyrightText: 2011, 2015, 2016, 2021, 2023, 2024, 2025, 2026 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
+# SPDX-FileCopyrightText: 2011, 2015-2016, 2021, 2023-2026 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-14 00:46+0000\n"
-"PO-Revision-Date: 2026-01-18 15:55+0100\n"
+"PO-Revision-Date: 2026-05-16 13:07+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: pl\n"
 "Language: pl\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 25.08.2\n"
+"X-Generator: Lokalize 26.04.0\n"
 
 #: src/cronPrinter.cpp:62
 msgctxt "@title Note: that is an HTML tag"
@@ -602,58 +602,52 @@ msgid "<message>Command not found: <command>%1</command></message>"
 msgstr "<message>Nie znaleziono polecenia: <command>%1</command></message>"
 
 #: src/taskvalidator.cpp:181
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Months</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Months</emphasis> "
 "section</message>"
-msgstr "<message>Wybierz z obszaru <b>Miesięcy</b></message>"
+msgstr ""
+"<message>Wybierz z obszaru <emphasis strong=\"1\">Miesięcy</emphasis></"
+"message>"
 
 #: src/taskvalidator.cpp:199
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Months</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Days of Month</"
 "emphasis> section</message>"
-msgstr "<message>Wybierz z obszaru <b>Miesięcy</b></message>"
+msgstr ""
+"<message>Wybierz z obszaru <emphasis strong=\"1\">Miesięcy</emphasis></"
+"message>"
 
 #: src/taskvalidator.cpp:217
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "<message>Please select from either the <b>Days of Month</b> or the "
-#| "<b>Days of Week</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Days of Week</"
 "emphasis> section</message>"
 msgstr ""
-"<message>Zaznacz obszar albo <b>Dni miesiąca</b> albo <b>Dni tygodnia</b></"
+"<message>Wybierz z obszaru <emphasis strong=\"1\">Dni tygodnia</emphasis></"
 "message>"
 
 #: src/taskvalidator.cpp:235
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Hours</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Hours</emphasis> "
 "section</message>"
-msgstr "<message>Wybierz z obszaru <b>Godzin</b></message>"
+msgstr ""
+"<message>Wybierz z obszaru <emphasis strong=\"1\">Godzin</emphasis></message>"
 
 #: src/taskvalidator.cpp:253
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Minutes</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Minutes</emphasis> "
 "section</message>"
-msgstr "<message>Wybierz z obszaru <b>Minut</b></message>"
+msgstr ""
+"<message>Wybierz z obszaru <emphasis strong=\"1\">Minut</emphasis></message>"
 
 #: src/ui/main.qml:45
 #, kde-format

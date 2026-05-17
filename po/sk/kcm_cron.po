@@ -597,57 +597,54 @@ msgid "<message>Command not found: <command>%1</command></message>"
 msgstr "<message>Command not found: <command>%1</command></message>"
 
 #: src/taskvalidator.cpp:181
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Months</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Months</emphasis> "
 "section</message>"
-msgstr "<i>Prosím vyberte zo sekcie 'Mesiace'...</i>"
+msgstr ""
+"<message>Prosím vyberte zo sekcie <emphasis strong=\"1\">Mesiace</emphasis></"
+"message>"
 
 #: src/taskvalidator.cpp:199
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Months</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Days of Month</"
 "emphasis> section</message>"
-msgstr "<i>Prosím vyberte zo sekcie 'Mesiace'...</i>"
+msgstr ""
+"<message>Prosím vyberte zo sekcie <emphasis strong=\"1\">Dni v mesiaci</"
+"emphasis></message>"
 
 #: src/taskvalidator.cpp:217
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "<message>Please select from either the <b>Days of Month</b> or the "
-#| "<b>Days of Week</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Days of Week</"
 "emphasis> section</message>"
 msgstr ""
-"<i>Prosím zvoľte si buď sekciu 'Dni v mesiaci' alebo 'Dni v týždni'...</i>"
+"<message>Prosím vyberte zo sekcie <emphasis strong=\"1\">Dni v týždni</"
+"emphasis></message>"
 
 #: src/taskvalidator.cpp:235
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Hours</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Hours</emphasis> "
 "section</message>"
-msgstr "<i>Prosím vyberte zo sekcie 'Hodiny'...</i>"
+msgstr ""
+"<message>Prosím vyberte zo sekcie <emphasis strong=\"1\">Hodiny</emphasis></"
+"message>"
 
 #: src/taskvalidator.cpp:253
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Minutes</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Minutes</emphasis> "
 "section</message>"
-msgstr "<i>Prosím vyberte zo sekcie 'Minúty'...</i>"
+msgstr ""
+"<message>Prosím vyberte zo sekcie <emphasis strong=\"1\">Minúty</emphasis></"
+"message>"
 
 #: src/ui/main.qml:45
 #, kde-format
