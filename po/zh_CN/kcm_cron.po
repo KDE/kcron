@@ -595,6 +595,7 @@ msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Months</emphasis> "
 "section</message>"
 msgstr ""
+"<message>请从 <emphasis strong=\"1\">月</emphasis> 区段中选择一项</message>"
 
 #: src/taskvalidator.cpp:199
 #, kde-kuit-format
@@ -603,6 +604,8 @@ msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Days of Month</"
 "emphasis> section</message>"
 msgstr ""
+"<message>请从 <emphasis strong=\"1\">日 (按月选择)</emphasis> 区段中选择一项"
+"</message>"
 
 #: src/taskvalidator.cpp:217
 #, kde-kuit-format
@@ -611,6 +614,8 @@ msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Days of Week</"
 "emphasis> section</message>"
 msgstr ""
+"<message>请从 <emphasis strong=\"1\">日 (按周选择)</emphasis> 区段中选择一项"
+"</message>"
 
 #: src/taskvalidator.cpp:235
 #, kde-kuit-format
@@ -619,6 +624,7 @@ msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Hours</emphasis> "
 "section</message>"
 msgstr ""
+"<message>请从 <emphasis strong=\"1\">小时</emphasis> 区段中选择一项</message>"
 
 #: src/taskvalidator.cpp:253
 #, kde-kuit-format
@@ -627,6 +633,7 @@ msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Minutes</emphasis> "
 "section</message>"
 msgstr ""
+"<message>请从 <emphasis strong=\"1\">分钟</emphasis> 区段中选择一项</message>"
 
 #: src/ui/main.qml:45
 #, kde-format
