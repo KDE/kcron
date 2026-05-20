@@ -601,7 +601,8 @@ msgid ""
 "<message>Please select from either the <b>Days of Month</b> or the <b>Days "
 "of Week</b> section</message>"
 msgstr ""
-"<message>请从 <b>月日期</b> 或者 <b>周日期</b> 区段中选择一项</message>"
+"<message>请从 <b>日 (按月选择)</b> 或者 <b>日 (按周选择)</b> 区段中选择一项</"
+"message>"
 
 #: src/taskvalidator.cpp:220
 #, kde-kuit-format
