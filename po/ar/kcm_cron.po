@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-14 00:46+0000\n"
-"PO-Revision-Date: 2026-01-07 19:09+0400\n"
+"PO-Revision-Date: 2026-05-21 11:57+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -604,57 +604,54 @@ msgid "<message>Command not found: <command>%1</command></message>"
 msgstr "<message>لم يُعثر على الأمر: <command>%1</command></message>"
 
 #: src/taskvalidator.cpp:181
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Months</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Months</emphasis> "
 "section</message>"
-msgstr "<message>من فضلك حدد من قسم 'الشهور'  …</message>"
+msgstr ""
+"<message>يرجى الاختيار من قسم <emphasis strong=\"1\">الأشهر</emphasis></"
+"message>"
 
 #: src/taskvalidator.cpp:199
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Months</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Days of Month</"
 "emphasis> section</message>"
-msgstr "<message>من فضلك حدد من قسم 'الشهور'  …</message>"
+msgstr ""
+"<message>يرجى الاختيار من قسم <emphasis strong=\"1\">أيام الشهر</emphasis></"
+"message>"
 
 #: src/taskvalidator.cpp:217
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "<message>Please select from either the <b>Days of Month</b> or the "
-#| "<b>Days of Week</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Days of Week</"
 "emphasis> section</message>"
 msgstr ""
-"<message>من فضلك حدد إما من قسم 'أيام الشهر' أو 'أيام الأسبوع'…</message>"
+"<message>يرجى الاختيار من قسم <emphasis strong=\"1\">أيام الأسبوع</"
+"emphasis></message>"
 
 #: src/taskvalidator.cpp:235
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Hours</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Hours</emphasis> "
 "section</message>"
-msgstr "<message>من فضلك حدد من قسم 'الساعات' …</message>"
+msgstr ""
+"<message>يرجى الاختيار من قسم <emphasis strong=\"1\">الساعات</emphasis></"
+"message>"
 
 #: src/taskvalidator.cpp:253
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Minutes</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Minutes</emphasis> "
 "section</message>"
-msgstr "<message>من فضلك حدد من قسم 'الدقائق'  …</message>"
+msgstr ""
+"<message>يرجى الاختيار من قسم <emphasis strong=\"1\">الدقائق</emphasis></"
+"message>"
 
 #: src/ui/main.qml:45
 #, kde-format
