@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-14 00:46+0000\n"
-"PO-Revision-Date: 2026-04-23 14:35-0400\n"
+"PO-Revision-Date: 2026-05-30 17:12-0400\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
 "Language: ug\n"
@@ -80,7 +80,7 @@ msgstr "%1 ئىشلەتكۈچىنىڭ پىلان ۋەزىپىسى"
 #: src/crontablib/ctcron.cpp:85
 #, kde-format
 msgid "No password entry found for uid '%1'"
-msgstr "uid «%1» ئۈچۈن كىرگۈزۈلگەن ئىم كىرگۈزۈش تېپىلمىدى"
+msgstr "uid «%1» ئۈچۈن كىرگۈزۈلگەن ئىم كىرگۈ تېپىلمىدى"
 
 #: src/crontablib/ctcron.cpp:224
 #, kde-format
@@ -595,58 +595,44 @@ msgid "<message>Command not found: <command>%1</command></message>"
 msgstr "<message>بۇيرۇق تېپىلمىدى: <command>%1</command></message>"
 
 #: src/taskvalidator.cpp:181
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Months</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Months</emphasis> "
 "section</message>"
-msgstr "<message><b>ئاي</b> بۆلىكىدىن تاللاڭ</message>"
+msgstr ""
 
 #: src/taskvalidator.cpp:199
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Months</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Days of Month</"
 "emphasis> section</message>"
-msgstr "<message><b>ئاي</b> بۆلىكىدىن تاللاڭ</message>"
+msgstr ""
 
 #: src/taskvalidator.cpp:217
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "<message>Please select from either the <b>Days of Month</b> or the "
-#| "<b>Days of Week</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Days of Week</"
 "emphasis> section</message>"
 msgstr ""
-"<message><b>ئايدىكى كۈن</b> ياكى <b>ھەپتىدىكى كۈن</b> بۆلىكىدىن تاللاڭ</"
-"message>"
 
 #: src/taskvalidator.cpp:235
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Hours</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Hours</emphasis> "
 "section</message>"
-msgstr "<message><b>سائەت</b> بۆلىكىدىن تاللاڭ</message>"
+msgstr ""
 
 #: src/taskvalidator.cpp:253
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Minutes</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Minutes</emphasis> "
 "section</message>"
-msgstr "<message><b>مىنۇت</b> بۆلىكىدىن تاللاڭ</message>"
+msgstr ""
 
 #: src/ui/main.qml:45
 #, kde-format
