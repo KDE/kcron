@@ -44,6 +44,7 @@
   <name xml:lang="sl">KCron</name>
   <name xml:lang="sv">Kcron</name>
   <name xml:lang="tr">KCron</name>
+  <name xml:lang="ug">KCron</name>
   <name xml:lang="uk">KCron</name>
   <name xml:lang="vi">KCron</name>
   <name xml:lang="zh-CN">KCron 任务计划程序</name>
@@ -87,6 +88,7 @@
   <summary xml:lang="sl">Razporejevalnik opravil (Task scheduler)</summary>
   <summary xml:lang="sv">Jobbschemaläggare</summary>
   <summary xml:lang="tr">Görev Zamanlayıcı</summary>
+  <summary xml:lang="ug">ۋەزىپە كۈنتەرتىپلىگۈچ</summary>
   <summary xml:lang="uk">Планувальник завдань</summary>
   <summary xml:lang="vi">Trình lập lịch tác vụ</summary>
   <summary xml:lang="zh-CN">任务计划程序</summary>
