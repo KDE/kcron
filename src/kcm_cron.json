@@ -1,5 +1,6 @@
 {
     "KPlugin": {
+        "BugReportUrl": "https://bugs.kde.org/enter_bug.cgi?product=systemsettings&component=kcm_cron",
         "Description": "Configure and schedule tasks",
         "Description[ar]": "اضبط وجدول المهامّ",
         "Description[be]": "Наладжванне і планаванне задач",
