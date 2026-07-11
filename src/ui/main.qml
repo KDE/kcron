@@ -11,6 +11,7 @@ import QtQuick.Controls as QQC2
 
 import org.kde.kirigami as Kirigami
 import org.kde.kcmutils as KCM
+import org.kde.private.kcms.cron
 
 KCM.AbstractKCM {
     id: root
@@ -83,14 +84,12 @@ KCM.AbstractKCM {
         }
     }
 
-    Settings {
-        id: persistentSettings
-
-        property var viewState
+    KCronState {
+        id: stateData
     }
 
-    Component.onCompleted: view.restoreState(persistentSettings.viewState)
-    Component.onDestruction: persistentSettings.viewState = view.saveState()
+    Component.onCompleted: view.restoreState(stateData.viewState)
+    Component.onDestruction: stateData.viewState = view.saveState()
 
     Connections {
         target: kcm

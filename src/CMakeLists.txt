@@ -45,6 +45,7 @@ target_sources(kcm_cron PRIVATE
    taskvalidator.cpp taskvalidator.h
 
    kcmCron.cpp kcmCron.h 
+   state.cpp state.h
 )
 
 target_link_libraries(kcm_cron
