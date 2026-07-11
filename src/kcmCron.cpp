@@ -13,6 +13,7 @@
 #include "ctInitializationError.h"
 #include "ctcron.h"
 #include "cthost.h"
+#include "state.h"
 #include "task.h"
 #include "tasksmodel.h"
 #include "taskvalidator.h"
@@ -158,6 +159,7 @@ void KCMCron::registerTypes()
     qmlRegisterUncreatableType<VariablesModel>(uri, 1, 0, "VariablesModel", QStringLiteral("Cannot create instances of VariablesModel"));
     qmlRegisterUncreatableType<TasksModel>(uri, 1, 0, "TasksModel", QStringLiteral("Cannot create instances of TasksModel"));
     qmlRegisterType<TaskValidator>(uri, 1, 0, "TaskValidator");
+    qmlRegisterType<State>(uri, 1, 0, "KCronState");
 }
 
 CTCron *KCMCron::currentCron()
