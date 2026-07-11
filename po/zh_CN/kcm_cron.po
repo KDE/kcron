@@ -14,8 +14,8 @@ msgstr ""
 "X-Crowdin-Project: kdeorg\n"
 "X-Crowdin-Project-ID: 269464\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf6-trunk/messages/kcron/kcm_cron.pot\n"
-"X-Crowdin-File-ID: 58468\n"
+"X-Crowdin-File: /kf6-stable/messages/kcron/kcm_cron.pot\n"
+"X-Crowdin-File-ID: 58460\n"
 
 #: src/cronPrinter.cpp:62
 msgctxt "@title Note: that is an HTML tag"
