@@ -314,7 +314,7 @@
 <varlistentry>
 <term
 ><guibutton
->Starten tijdens systeemstart</guibutton
+>Uitvoeren tijdens systeemstart</guibutton
 ></term>
 <listitem>
 <para
