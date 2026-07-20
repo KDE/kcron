@@ -3,21 +3,22 @@
 # SPDX-FileCopyrightText: 2010, 2011, 2013, 2014, 2023, 2024, 2025, 2026 Vít Pelčák <vit@pelcak.org>
 # Tomáš Chvátal <tomas.chvatal@gmail.com>, 2012, 2013.
 # Vit Pelcak <vit@pelcak.org>, 2021.
+# SPDX-FileCopyrightText: 2026 Libor Filípek <libor.filipek@gmail.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-14 00:46+0000\n"
-"PO-Revision-Date: 2026-03-17 10:23+0100\n"
-"Last-Translator:  Vít Pelčák <vit@pelcak.org>\n"
+"PO-Revision-Date: 2026-07-19 11:46+0200\n"
+"Last-Translator: Libor Filípek <libor.filipek@gmail.com>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 25.12.3\n"
+"X-Generator: Poedit 3.9\n"
 
 #: src/cronPrinter.cpp:62
 msgctxt "@title Note: that is an HTML tag"
@@ -596,58 +597,54 @@ msgid "<message>Command not found: <command>%1</command></message>"
 msgstr "<message>Příkaz nebyl nalezen: <command>%1</command></message>"
 
 #: src/taskvalidator.cpp:181
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Months</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Months</emphasis> "
 "section</message>"
-msgstr "<message>Prosím, vyberte ze sekce <b>Měsíce</b></message>"
+msgstr ""
+"<message>Prosím vyberte ze sekce <emphasis strong=\"1\">Měsíce</emphasis></"
+"message>"
 
 #: src/taskvalidator.cpp:199
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Months</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Days of Month</"
 "emphasis> section</message>"
-msgstr "<message>Prosím, vyberte ze sekce <b>Měsíce</b></message>"
+msgstr ""
+"<message>Prosím vyberte ze sekce <emphasis strong=\"1\">Dny v měsíci</"
+"emphasis></message>"
 
 #: src/taskvalidator.cpp:217
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid ""
-#| "<message>Please select from either the <b>Days of Month</b> or the "
-#| "<b>Days of Week</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Days of Week</"
 "emphasis> section</message>"
 msgstr ""
-"<message>Prosím vyberte buďto ze sekce <b>Dny měsíce</b> nebo <b>Dny týdne</"
-"b>.</message>"
+"<message>Prosím vyberte ze sekce <emphasis strong=\"1\">Dny v týdnu</"
+"emphasis></message>"
 
 #: src/taskvalidator.cpp:235
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Hours</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Hours</emphasis> "
 "section</message>"
-msgstr "<message>Prosím, vyberte ze sekce <b>Hodiny</b>...</message>"
+msgstr ""
+"<message>Prosím vyberte ze sekce <emphasis strong=\"1\">Hodiny</emphasis></"
+"message>"
 
 #: src/taskvalidator.cpp:253
-#, fuzzy, kde-kuit-format
-#| msgctxt "@info"
-#| msgid "<message>Please select from the <b>Minutes</b> section</message>"
+#, kde-kuit-format
 msgctxt "@info"
 msgid ""
 "<message>Please select from the <emphasis strong=\"1\">Minutes</emphasis> "
 "section</message>"
-msgstr "<message>Prosím, vyberte ze sekce <b>Minuty</b>...</message>"
+msgstr ""
+"<message>Prosím vyberte ze sekce <emphasis strong=\"1\">Minuty</emphasis></"
+"message>"
 
 #: src/ui/main.qml:45
 #, kde-format
@@ -671,12 +668,12 @@ msgstr "Plán systému"
 #, kde-format
 msgctxt "@action:button"
 msgid "Print Summary…"
-msgstr "Vypsat shrnutí..."
+msgstr "Vypsat shrnutí…"
 
 #: src/ui/Onboarding.qml:22
 #, kde-format
 msgid "Welcome to Task Scheduler!"
-msgstr "Vítejte v Plánovači úloh."
+msgstr "Vítejte v Plánovači úloh!"
 
 #: src/ui/Onboarding.qml:24
 #, kde-kuit-format
@@ -686,6 +683,10 @@ msgid ""
 "schedule and automate repetitive tasks like downloading files or sending "
 "emails. <link url='%1'>Learn more</link>"
 msgstr ""
+"Naplánujte spouštění programů na pozadí. Nastavte úlohy tak, aby se "
+"spouštěly podle pevného harmonogramu, a automatizujte opakující se úkony, "
+"jako je stahování souborů nebo odesílání e-mailů. <link url='%1'>Další "
+"informace</link>"
 
 #: src/ui/Onboarding.qml:27
 #, kde-format
@@ -787,13 +788,13 @@ msgstr "Měsíce"
 #, kde-format
 msgctxt "@title:group"
 msgid "Days of Month"
-msgstr "Dny měsíce"
+msgstr "Dny v měsíci"
 
 #: src/ui/TaskPage.qml:208
 #, kde-format
 msgctxt "@title:group"
 msgid "Days of Week"
-msgstr "Dny týdne"
+msgstr "Dny v týdnu"
 
 #: src/ui/TaskPage.qml:228
 #, kde-format
@@ -1116,7 +1117,7 @@ msgstr "Proměnná:"
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Value:"
-msgstr "hodnota:"
+msgstr "Hodnota:"
 
 #: src/ui/VariablePage.qml:126
 #, kde-format
