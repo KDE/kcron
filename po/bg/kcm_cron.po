@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-14 00:46+0000\n"
+"POT-Creation-Date: 2026-07-28 00:48+0000\n"
 "PO-Revision-Date: 2026-05-29 16:50+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -645,25 +645,25 @@ msgstr ""
 "<message>Моля, изберете от раздела <emphasis strong=\"1\">Минути</emphasis></"
 "message>"
 
-#: src/ui/main.qml:45
+#: src/ui/main.qml:46
 #, kde-format
 msgctxt "@text"
 msgid "Show:"
 msgstr "Показване:"
 
-#: src/ui/main.qml:49
+#: src/ui/main.qml:50
 #, kde-format
 msgctxt "@title:tab"
 msgid "User Schedule"
 msgstr "Потребителско разписание"
 
-#: src/ui/main.qml:55
+#: src/ui/main.qml:56
 #, kde-format
 msgctxt "@title:tab"
 msgid "System Schedule"
 msgstr "Системен график"
 
-#: src/ui/main.qml:64
+#: src/ui/main.qml:65
 #, kde-format
 msgctxt "@action:button"
 msgid "Print Summary…"

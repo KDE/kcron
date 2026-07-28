@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-14 00:46+0000\n"
+"POT-Creation-Date: 2026-07-28 00:48+0000\n"
 "PO-Revision-Date: 2002-11-07 11:26+0200\n"
 "Last-Translator: WEB-Translator <http://kde.af.org.za>\n"
 "Language-Team: AFRIKAANS <AF@lia.org.za>\n"
@@ -649,27 +649,27 @@ msgid ""
 "section</message>"
 msgstr "Asseblief invoer die veranderlike naam."
 
-#: src/ui/main.qml:45
+#: src/ui/main.qml:46
 #, kde-format
 msgctxt "@text"
 msgid "Show:"
 msgstr ""
 
-#: src/ui/main.qml:49
+#: src/ui/main.qml:50
 #, fuzzy, kde-format
 #| msgid "Task Scheduler"
 msgctxt "@title:tab"
 msgid "User Schedule"
 msgstr "Opdrag Skeduleerder"
 
-#: src/ui/main.qml:55
+#: src/ui/main.qml:56
 #, fuzzy, kde-format
 #| msgid "Task Scheduler"
 msgctxt "@title:tab"
 msgid "System Schedule"
 msgstr "Opdrag Skeduleerder"
 
-#: src/ui/main.qml:64
+#: src/ui/main.qml:65
 #, kde-format
 msgctxt "@action:button"
 msgid "Print Summary…"

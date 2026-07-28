@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-14 00:46+0000\n"
+"POT-Creation-Date: 2026-07-28 00:48+0000\n"
 "PO-Revision-Date: 2025-11-30 11:33+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-l10n-ta@kde.org>\n"
@@ -643,27 +643,27 @@ msgid ""
 "section</message>"
 msgstr "மாறியின் பெயரை உள்ளிடுக"
 
-#: src/ui/main.qml:45
+#: src/ui/main.qml:46
 #, kde-format
 msgctxt "@text"
 msgid "Show:"
 msgstr ""
 
-#: src/ui/main.qml:49
+#: src/ui/main.qml:50
 #, fuzzy, kde-format
 #| msgid "Task Scheduler"
 msgctxt "@title:tab"
 msgid "User Schedule"
 msgstr "பணி காலமுறைப்படுத்தி"
 
-#: src/ui/main.qml:55
+#: src/ui/main.qml:56
 #, fuzzy, kde-format
 #| msgid "Task Scheduler"
 msgctxt "@title:tab"
 msgid "System Schedule"
 msgstr "பணி காலமுறைப்படுத்தி"
 
-#: src/ui/main.qml:64
+#: src/ui/main.qml:65
 #, kde-format
 msgctxt "@action:button"
 msgid "Print Summary…"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-14 00:46+0000\n"
+"POT-Creation-Date: 2026-07-28 00:48+0000\n"
 "PO-Revision-Date: 2024-12-20 22:01+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
@@ -651,25 +651,25 @@ msgid ""
 "section</message>"
 msgstr "<message>कृपया <b>Minutes इति</b> विभागात् चिनोतु</message>"
 
-#: src/ui/main.qml:45
+#: src/ui/main.qml:46
 #, kde-format
 msgctxt "@text"
 msgid "Show:"
 msgstr "दर्शयतु:"
 
-#: src/ui/main.qml:49
+#: src/ui/main.qml:50
 #, kde-format
 msgctxt "@title:tab"
 msgid "User Schedule"
 msgstr "उपयोक्ता अनुसूची"
 
-#: src/ui/main.qml:55
+#: src/ui/main.qml:56
 #, kde-format
 msgctxt "@title:tab"
 msgid "System Schedule"
 msgstr "प्रणाली अनुसूची"
 
-#: src/ui/main.qml:64
+#: src/ui/main.qml:65
 #, kde-format
 msgctxt "@action:button"
 msgid "Print Summary…"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-14 00:46+0000\n"
+"POT-Creation-Date: 2026-07-28 00:48+0000\n"
 "PO-Revision-Date: 2026-05-14 04:43+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -644,25 +644,25 @@ msgstr ""
 "<message>აირჩიეთ <emphasis strong=\"1\">წუთების</emphasis> სექციიდან</"
 "message>"
 
-#: src/ui/main.qml:45
+#: src/ui/main.qml:46
 #, kde-format
 msgctxt "@text"
 msgid "Show:"
 msgstr "ჩვენება:"
 
-#: src/ui/main.qml:49
+#: src/ui/main.qml:50
 #, kde-format
 msgctxt "@title:tab"
 msgid "User Schedule"
 msgstr "მომხმარებლის განრიგი"
 
-#: src/ui/main.qml:55
+#: src/ui/main.qml:56
 #, kde-format
 msgctxt "@title:tab"
 msgid "System Schedule"
 msgstr "სისტემის განრიგი"
 
-#: src/ui/main.qml:64
+#: src/ui/main.qml:65
 #, kde-format
 msgctxt "@action:button"
 msgid "Print Summary…"

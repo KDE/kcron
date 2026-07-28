@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-14 00:46+0000\n"
+"POT-Creation-Date: 2026-07-28 00:48+0000\n"
 "PO-Revision-Date: 2026-05-14 06:33-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -664,25 +664,25 @@ msgstr ""
 "<message>Selecione a partir da seção <emphasis strong=\"1\">Minutos</"
 "emphasis></message>"
 
-#: src/ui/main.qml:45
+#: src/ui/main.qml:46
 #, kde-format
 msgctxt "@text"
 msgid "Show:"
 msgstr "Mostrar:"
 
-#: src/ui/main.qml:49
+#: src/ui/main.qml:50
 #, kde-format
 msgctxt "@title:tab"
 msgid "User Schedule"
 msgstr "Agenda do usuário"
 
-#: src/ui/main.qml:55
+#: src/ui/main.qml:56
 #, kde-format
 msgctxt "@title:tab"
 msgid "System Schedule"
 msgstr "Agenda do sistema"
 
-#: src/ui/main.qml:64
+#: src/ui/main.qml:65
 #, kde-format
 msgctxt "@action:button"
 msgid "Print Summary…"

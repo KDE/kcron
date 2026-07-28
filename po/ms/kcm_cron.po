@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mimos\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-14 00:46+0000\n"
+"POT-Creation-Date: 2026-07-28 00:48+0000\n"
 "PO-Revision-Date: 2005-09-22 14:45+0730\n"
 "Last-Translator: MIMOS <opensource@mimos.my>\n"
 "Language-Team: Malay <kedidiemas@yahoogroups.com>\n"
@@ -648,27 +648,27 @@ msgid ""
 "section</message>"
 msgstr "Masukkan nama variabel."
 
-#: src/ui/main.qml:45
+#: src/ui/main.qml:46
 #, kde-format
 msgctxt "@text"
 msgid "Show:"
 msgstr ""
 
-#: src/ui/main.qml:49
+#: src/ui/main.qml:50
 #, fuzzy, kde-format
 #| msgid "Task Scheduler"
 msgctxt "@title:tab"
 msgid "User Schedule"
 msgstr "Penjadual Tugas"
 
-#: src/ui/main.qml:55
+#: src/ui/main.qml:56
 #, fuzzy, kde-format
 #| msgid "Task Scheduler"
 msgctxt "@title:tab"
 msgid "System Schedule"
 msgstr "Penjadual Tugas"
 
-#: src/ui/main.qml:64
+#: src/ui/main.qml:65
 #, kde-format
 msgctxt "@action:button"
 msgid "Print Summary…"

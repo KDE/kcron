@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-05-14 00:46+0000\n"
+"POT-Creation-Date: 2026-07-28 00:48+0000\n"
 "PO-Revision-Date: 2024-04-22 15:58\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -635,25 +635,25 @@ msgid ""
 msgstr ""
 "<message>请从 <emphasis strong=\"1\">分钟</emphasis> 区段中选择一项</message>"
 
-#: src/ui/main.qml:45
+#: src/ui/main.qml:46
 #, kde-format
 msgctxt "@text"
 msgid "Show:"
 msgstr "显示："
 
-#: src/ui/main.qml:49
+#: src/ui/main.qml:50
 #, kde-format
 msgctxt "@title:tab"
 msgid "User Schedule"
 msgstr "用户计划"
 
-#: src/ui/main.qml:55
+#: src/ui/main.qml:56
 #, kde-format
 msgctxt "@title:tab"
 msgid "System Schedule"
 msgstr "系统计划"
 
-#: src/ui/main.qml:64
+#: src/ui/main.qml:65
 #, kde-format
 msgctxt "@action:button"
 msgid "Print Summary…"
