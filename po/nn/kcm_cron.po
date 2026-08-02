@@ -2,6 +2,7 @@
 #
 # Gaute Hvoslef Kvalnes <gaute@verdsveven.com>, 2000, 2002, 2004.
 # Eirik U. Birkeland <eirbir@gmail.com>, 2008.
+# Karl Ove Hufthammer <karl@huftis.org>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
