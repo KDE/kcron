@@ -114,7 +114,7 @@
 >Start des Moduls</title>
 
 <para
->Beim Start dieses Moduls wird eine Liste bereits geplanter Aufträge und dazugehöriger Umgebungsvariablen angezeigt. Wenn Sie dieses Modul mit Systemverwalterrechten benutzen, werden sowohl die geplanten Aufträge aller Benutzer des Systems wie auch die systeminternen Aufträge angezeigt.</para>
+>Beim Start dieses Moduls wird eine Liste bereits geplanter Aufträge und dazugehöriger Umgebungsvariablen angezeigt. Wenn Sie dieses Modul mit Systemverwalterrechten verwenden, werden sowohl die geplanten Aufträge aller Benutzer des Systems wie auch die systeminternen Aufträge angezeigt.</para>
 <!--admin mode-->
 <screenshot>
 <screeninfo
@@ -262,20 +262,20 @@
 >Neue Aufträge hinzufügen</title>
 
 <para
->Um eine neuen Auftrag hinzuzufügen, klicken Sie auf den Knopf <guibutton
->Neuer Auftrag ...</guibutton
-> Diese Aktion kann auch aus dem Kontextmenü gewählt werden, das durch Klicken mit der <mousebutton
+>Um einen neuen Auftrag hinzuzufügen, klicken Sie auf den Knopf <guibutton
+>Neuer Auftrag …</guibutton
+>. Diese Aktion kann auch aus dem Kontextmenü gewählt werden, das durch Klicken mit der <mousebutton
 >rechten</mousebutton
 > Maustaste aufgerufen wird.</para>
 
 <sect3>
 <title
->Der Dialog Neuer Auftrag</title>
+>Der Dialog „Auftrag bearbeiten“</title>
 
 <screenshot>
 <screeninfo
 >Der Dialog<guilabel
->Neuer Auftrag</guilabel
+>Auftrag bearbeiten</guilabel
 >.</screeninfo>
 <mediaobject>
 <imageobject
@@ -283,7 +283,7 @@
 <textobject
 ><phrase
 >Der Dialog<guilabel
->Neuer Auftrag</guilabel
+>Auftrag bearbeiten</guilabel
 ></phrase
 ></textobject>
 </mediaobject>
@@ -328,11 +328,11 @@
 <varlistentry>
 <term
 ><guibutton
->Ausführen während des Systemstarts</guibutton
+>Beim Systemstart ausführen</guibutton
 ></term>
 <listitem>
 <para
->Aktivieren Sie diese Einstellung, um Aufträge beim Hochfahren des Rechners ausführen zu lassen.</para>
+>Aktivieren Sie diese Einstellung, um den Auftrag beim Hochfahren des Rechners ausführen zu lassen.</para>
 </listitem>
 </varlistentry>
 
@@ -396,9 +396,9 @@
 ></term>
 <listitem
 ><para
->Wählen Sie die Minute(n), zu der der Auftrag ausgeführt werden soll. Das Programm <command
+>Wählen Sie die Minute(n), zu der/denen der Auftrag ausgeführt werden soll. Das Programm <command
 >cron</command
-> kann Aufträge nur im Mindestzeitabstand von einer Minute ausführen.</para>
+> unterstützt keine Auftragsplanung in Intervallen von weniger als einer Minute.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
@@ -424,7 +424,7 @@
 </variablelist>
 
 <para
->Wenn Sie sowohl Monatstag(e) als auch Wochentag(e) angeben, wird der Auftrag sowohl bei einem passenden Datum als auch an einem passenden Wochentag ausgeführt. Wenn Sie z. B. den 1. und 15. und Sonntag auswählen, wird das Programm am 1. und 15. der gewählten Monate unabhängig vom Wochentag ausgeführt, und außerdem an jedem Sonntag der Monate, egal, auf welches Datum sie fallen.</para>
+>Wenn Sie sowohl Monatstag(e) als auch Wochentag(e) angeben, wird der Auftrag sowohl bei einem passenden Datum als auch an einem passenden Wochentag ausgeführt. Wenn Sie z. B. den 1. und 15. und Sonntag auswählen, wird das Programm am 1. und 15. der gewählten Monate unabhängig vom Wochentag ausgeführt, und außerdem an jedem Sonntag der Monate, egal, auf welches Datum sie fallen.</para>
 
 <para
 >Der Auftrag ist erst dann fertig aufgenommen, wenn die <filename
@@ -454,7 +454,7 @@
 
 <para
 >Um eine neue Umgebungsvariable zu erstellen, klicken Sie auf den Knopf <guibutton
->Neue Variable ...</guibutton
+>Neue Variable …</guibutton
 >.</para>
 
 <para
@@ -536,7 +536,7 @@
 ></term>
 <listitem
 ><para
->Shell, die anstelle der normalen Shell benutzt wird</para
+>Shell, die anstelle der normalen Shell verwendet wird</para
 ></listitem>
 </varlistentry>
 
