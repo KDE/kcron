@@ -169,137 +169,137 @@ msgstr "4t"
 #: src/crontablib/ctdom.cpp:34
 #, kde-format
 msgid "5th"
-msgstr "5è"
+msgstr "5é"
 
 #: src/crontablib/ctdom.cpp:34
 #, kde-format
 msgid "6th"
-msgstr "6è"
+msgstr "6é"
 
 #: src/crontablib/ctdom.cpp:34
 #, kde-format
 msgid "7th"
-msgstr "7è"
+msgstr "7é"
 
 #: src/crontablib/ctdom.cpp:34
 #, kde-format
 msgid "8th"
-msgstr "8è"
+msgstr "8é"
 
 #: src/crontablib/ctdom.cpp:35
 #, kde-format
 msgid "9th"
-msgstr "9è"
+msgstr "9é"
 
 #: src/crontablib/ctdom.cpp:35
 #, kde-format
 msgid "10th"
-msgstr "10è"
+msgstr "10é"
 
 #: src/crontablib/ctdom.cpp:35
 #, kde-format
 msgid "11th"
-msgstr "11è"
+msgstr "11é"
 
 #: src/crontablib/ctdom.cpp:35
 #, kde-format
 msgid "12th"
-msgstr "12è"
+msgstr "12é"
 
 #: src/crontablib/ctdom.cpp:35
 #, kde-format
 msgid "13th"
-msgstr "13è"
+msgstr "13é"
 
 #: src/crontablib/ctdom.cpp:35
 #, kde-format
 msgid "14th"
-msgstr "14è"
+msgstr "14é"
 
 #: src/crontablib/ctdom.cpp:35
 #, kde-format
 msgid "15th"
-msgstr "15è"
+msgstr "15é"
 
 #: src/crontablib/ctdom.cpp:35
 #, kde-format
 msgid "16th"
-msgstr "16è"
+msgstr "16é"
 
 #: src/crontablib/ctdom.cpp:35
 #, kde-format
 msgid "17th"
-msgstr "17è"
+msgstr "17é"
 
 #: src/crontablib/ctdom.cpp:36
 #, kde-format
 msgid "18th"
-msgstr "18è"
+msgstr "18é"
 
 #: src/crontablib/ctdom.cpp:36
 #, kde-format
 msgid "19th"
-msgstr "19è"
+msgstr "19é"
 
 #: src/crontablib/ctdom.cpp:36
 #, kde-format
 msgid "20th"
-msgstr "20è"
+msgstr "20é"
 
 #: src/crontablib/ctdom.cpp:36
 #, kde-format
 msgid "21st"
-msgstr "21è"
+msgstr "21é"
 
 #: src/crontablib/ctdom.cpp:36
 #, kde-format
 msgid "22nd"
-msgstr "22è"
+msgstr "22é"
 
 #: src/crontablib/ctdom.cpp:36
 #, kde-format
 msgid "23rd"
-msgstr "23è"
+msgstr "23é"
 
 #: src/crontablib/ctdom.cpp:36
 #, kde-format
 msgid "24th"
-msgstr "24è"
+msgstr "24é"
 
 #: src/crontablib/ctdom.cpp:36
 #, kde-format
 msgid "25th"
-msgstr "25è"
+msgstr "25é"
 
 #: src/crontablib/ctdom.cpp:37
 #, kde-format
 msgid "26th"
-msgstr "26è"
+msgstr "26é"
 
 #: src/crontablib/ctdom.cpp:37
 #, kde-format
 msgid "27th"
-msgstr "27è"
+msgstr "27é"
 
 #: src/crontablib/ctdom.cpp:37
 #, kde-format
 msgid "28th"
-msgstr "28è"
+msgstr "28é"
 
 #: src/crontablib/ctdom.cpp:37
 #, kde-format
 msgid "29th"
-msgstr "29è"
+msgstr "29é"
 
 #: src/crontablib/ctdom.cpp:37
 #, kde-format
 msgid "30th"
-msgstr "30è"
+msgstr "30é"
 
 #: src/crontablib/ctdom.cpp:37
 #, kde-format
 msgid "31st"
-msgstr "31è"
+msgstr "31é"
 
 # skip-rule: punctuation-period-no
 #: src/crontablib/ctdow.cpp:59
