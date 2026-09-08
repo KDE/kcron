@@ -49,6 +49,7 @@ target_sources(kcm_cron PRIVATE
 
 target_link_libraries(kcm_cron
     Qt6::Core
+    Qt6::Qml
     Qt6::PrintSupport
     KF6::ConfigWidgets
     KF6::I18n
