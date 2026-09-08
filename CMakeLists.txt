@@ -28,6 +28,7 @@ kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
 
 find_package (Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     Core
+    Qml
     PrintSupport
     Quick
 )
