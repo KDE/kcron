@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: kcron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-07-28 00:48+0000\n"
-"PO-Revision-Date: 2026-05-30 17:12-0400\n"
+"PO-Revision-Date: 2026-09-22 18:03+0900\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
-"Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
+"Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
 "Language: ug\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -379,11 +379,6 @@ msgid ""
 "\n"
 "Check the crontab man page for further details."
 msgstr ""
-"سىز /etc/cron ياكى /etc/cron.deny دىكى خالىغان بىر ھۆججەت تەرىپىدىن KCron "
-"ئىشلىتىشىڭىز چەكلەندى.\n"
-"\n"
-"\n"
-"تېخىمۇ كۆپ تەپسىلاتى ئۈچۈن crontab قوللانما بەتنى كۆرۈڭ."
 
 #: src/crontablib/ctmonth.cpp:22
 #, kde-format
@@ -455,7 +450,7 @@ msgstr "دېكابىر"
 #: src/crontablib/ctSystemCron.cpp:29
 #, kde-format
 msgid "root"
-msgstr "root"
+msgstr ""
 
 #: src/crontablib/cttask.cpp:265
 #, kde-format
@@ -490,7 +485,7 @@ msgstr "%2 كەبى %1"
 #, kde-format
 msgctxt "1:Hour, 2:Minute"
 msgid "%1:%2"
-msgstr "%1:%2"
+msgstr ""
 
 #: src/crontablib/cttask.cpp:345
 #, kde-format
@@ -559,7 +554,6 @@ msgstr "يەرلىك ئۆزگەرگۈچى"
 msgctxt "Do not use any quote characters (') in this string"
 msgid "End of script execution. Type Enter or Ctrl+C to exit."
 msgstr ""
-"قوليازما ئىجراسى تامام. Enter كىرگۈزسىڭىز ياكى Ctrl+C نى باسسىڭىز چېكىنىدۇ."
 
 #: src/taskvalidator.cpp:109
 #, kde-kuit-format
@@ -671,10 +665,6 @@ msgid ""
 "schedule and automate repetitive tasks like downloading files or sending "
 "emails. <link url='%1'>Learn more</link>"
 msgstr ""
-"ئارقا سۇپىدا ئىجرا قىلىنىدىغان پىروگراممىنى كۈنتەرتىپكە تىزىدۇ. مۇقىم "
-"ۋاقىتتا ئىجرا قىلىنىدىغان ۋەزىپىنى تەڭشەيدۇ ۋە ھۆججەت چۈشۈرۈش ياكى ئېلخەت "
-"يوللاشقا ئوخشاش تەكرارلىنىدىغان ۋەزىپىنى ئاپتوماتلاشتۇرىدۇ.<link "
-"url='%1'>مول بىلىم</link>"
 
 #: src/ui/Onboarding.qml:27
 #, kde-format
