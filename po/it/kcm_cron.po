@@ -1,8 +1,8 @@
 # translation of kcron.po to Italian
-# SPDX-FileCopyrightText: 2021, 2023, 2024, 2025, 2026 Valter Mura <valtermura@gmail.com>
 # Daniele Medri <madrid@linuxmeeting.net>, 2003.
 # Federico Zenith <federico.zenith@member.fsf.org>, 2004, 2005, 2007, 2009, 2010.
 # Federico Zenith <zenith@chemeng.ntnu.no>, 2008.
+# SPDX-FileCopyrightText: 2021, 2023, 2024, 2025, 2026 Valter Mura <valtermura@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kcron\n"
